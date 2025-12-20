@@ -161,10 +161,31 @@
     "text": "Getting started with R\nDownload and install R:\nhttps://cran.cnr.berkeley.edu\nDownload and install RStudio https://rstudio.com/products/rstudio/download\n\n\nhttps://?meta:prerelease-subdomainquarto.org"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sociology 106",
+    "section": "",
+    "text": "Welcome to Sociology 106: Quantitative Sociological Methods.\nCourse materials, including lecture slides and the syllabus, will be posted here throughout the semester."
+  },
+  {
+    "objectID": "slides/index.html",
+    "href": "slides/index.html",
+    "title": "Lecture Slides",
+    "section": "",
+    "text": "Week 1: Introduction\nWeek 2: Data and Measurement\nWeek 3: Descriptive Statistics"
+  },
+  {
     "objectID": "slides/index.html#slides",
     "href": "slides/index.html#slides",
     "title": "Lecture Slides",
-    "section": "Slides",
-    "text": "Slides\n\nWeek 1: Introduction\nWeek 2: Data and Measurement\nWeek 3: Descriptive Statistics"
+    "section": "",
+    "text": "Week 1: Introduction\nWeek 2: Data and Measurement\nWeek 3: Descriptive Statistics"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   }
 ]

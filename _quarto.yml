@@ -6,13 +6,13 @@ website:
   title: "Sociology 106"
   navbar:
     left:
+      - text: "Home"
+        href: index.qmd
       - text: "Slides"
         href: slides/index.qmd
       - text: "Syllabus"
         href: syllabus.qmd
 
 format:
-  revealjs:
-    slide-number: true
-    incremental: true
+  html:
     theme: default
