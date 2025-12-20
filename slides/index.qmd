@@ -1,0 +1,9 @@
+---
+title: "Lecture Slides"
+---
+
+## Slides
+
+- [Week 1: Introduction](week1.html)
+- Week 2: Data and Measurement
+- Week 3: Descriptive Statistics

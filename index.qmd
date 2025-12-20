@@ -2,8 +2,6 @@
 title: "Sociology 106"
 ---
 
-## Course Slides
+Welcome to **Sociology 106: Quantitative Sociological Methods**.
 
-- [Week 1: Introduction](slides/week1.html)
-- Week 2: Data and Measurement
-- Week 3: Descriptive Statistics
+Course materials, including lecture slides and the syllabus, will be posted here throughout the semester.

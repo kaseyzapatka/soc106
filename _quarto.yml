@@ -3,11 +3,13 @@ project:
   output-dir: docs
 
 website:
-  title: "Sociology 106: Quantitative Sociological Methods"
+  title: "Sociology 106"
   navbar:
     left:
       - text: "Slides"
-        href: slides/week1.qmd
+        href: slides/index.qmd
+      - text: "Syllabus"
+        href: syllabus.qmd
 
 format:
   revealjs:
