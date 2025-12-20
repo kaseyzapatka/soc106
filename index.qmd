@@ -1,0 +1,9 @@
+---
+title: "Sociology 106"
+---
+
+## Course Slides
+
+- [Week 1: Introduction](slides/01-introduction.html)
+- Week 2: Data and Measurement
+- Week 3: Descriptive Statistics

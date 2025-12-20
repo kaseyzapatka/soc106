@@ -1,0 +1,201 @@
+---
+title: "Sociology 106: Quantitative Sociological Methods"
+subtitle: "Week 1"
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    #logo: berkeley_logo.png
+    #css: styles.css
+    footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
+---
+
+## Housekeeping
+
+Office hours this week
+
+- Right after this class, until 11, Barrows 420
+- Tuesday (not Monday!), 10:30-11:30, Barrows 483
+    - Sign up at wejoinin.com/joelabriola@berkeley.edu
+
+Study groups
+
+- I will create your study groups after class, when I should have a better idea of who will remain in the class
+
+HW #1: due Tuesday, September 4, end of day
+
+
+## Sociology 106 is…
+
+...an intermediate undergraduate social science research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables. The course will also train students in the use of the R statistical programming language for data management and analysis.
+
+## Sociology 106 is not…
+
+...about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.
+
+- This course can be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications
+
+- We will be more applied, still with some math
+
+...about the “one true way to answer sociological questions”.
+
+## For this course, we will assume:
+
+1. Social categories and phenomena can be usefully represented using numbers.
+2. Variables measure what they purport to measure.
+3. All samples are good samples.
+
+
+## After completing Sociology 106, you will be able to:
+
+1. Understand the basic logic of statistical inference.
+2. Identify the appropriate statistical test given a specific type of data.
+3. Compute descriptive statistics, graphs, tables, and simple statistical tests using R.
+4. Interpret the results of statistical tests and discuss their relevance to a particular research question.
+
+---
+
+## Example: in past semesters, has Sociology 106 been more appealing to male or female students?
+
+- One possibility: gender doesn’t make a difference!
+- Another possibility: male students are more likely to have taken Sociology 106 in the past
+
+---
+
+## Some descriptive statistics…(from a previous semester!)
+
+
+---
+
+## The probability model
+
+---
+
+Example: in past semesters, has Sociology 106 been more appealing to male or female students?
+
+One possibility: gender doesn’t make a difference!
+Null hypothesis: P(student is male) = 50%
+Another possibility: male students are more likely to major in Statistics
+Alternative hypothesis: P(student is male) > 50%
+
+---
+
+A statistical test
+
+---
+
+The same test, in R
+
+---
+
+By the end of this course…
+
+You will be able to test:
+Theories involving one categorical or continuous variable.
+Ex: gender is often measured as a categorical variable (male / female / other)
+Ex: income is often measured as a continuous variable (the number of dollars one earns is a real number)
+Theories involving how one (or more) binary or continuous variable affects another binary or continuous variable.
+
+---
+
+Questions?
+
+---
+
+Required Course Materials
+
+Textbook: David Lane’s “Introduction to Statistics”, which is free and online
+onlinestatbook.com/Online_Statistics_Education.pdf
+We won’t be working directly from this, but it’s a good resource to review concepts before / after lecture
+Access to a computer where you can download R and RStudio (a program which makes R easier to use), as well as data to analyze in R / RStudio
+We’ll start installation of R and RStudio at the end of class; must be done by class next week
+
+---
+
+Course Elements
+
+Attendance and participation
+Weekly homework assignments
+Research paper
+Final exam
+
+---
+
+Class Format (after today)
+
+The first half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R
+Then, in the second half of class, you will get to practice implementing these concepts in R using data and problems provided by me
+
+---
+
+Weekly Assignment – Typical Structure
+
+Part 1: 1-3 problems to do by hand
+Show your work; circle / box final answer; write out conclusions and interpret results as necessary
+Part 2: Brief analysis in R and write-up
+Work with your own dataset to apply methods introduced in lecture
+Ideally the same dataset from week to week (that you will also use for your research paper)
+For the first assignment, I will provide a dataset on bCourses
+Think carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset
+Write up using template, to be provided on bCourses
+
+---
+
+Research Paper
+
+You will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your finding
+You can use your weekly assignments to work on your research question
+Several milestones throughout the semester will help you progress towards the final paper
+
+---
+
+Keys to Success in Sociology 106
+
+Material is cumulative, so it is critical to keep up
+Please ask questions during lecture!
+If you find yourself falling behind, seek help immediately from me during office hours
+Learning statistics requires thinking through how to solve problems.
+This is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment
+Feel free to work on assignments in groups, though what you turn in must be your own work.
+
+---
+
+## Keys to Success in Sociology 106
+
+Learning statistics is like learning a language
+
+- The material in this course can be challenging / counterintuitive if you haven’t seen it before
+- It is important not to be intimidated by new terms or the use of letters to represent quantities or variables
+- Review your algebra skills if necessary
+
+Lecture slides will be made available, but are not a substitute for careful note taking
+
+---
+
+## Office Hours
+
+I can help in office hours with questions about concepts from lecture or about coding in R
+
+- Mondays: 10:30-11:30 AM, Barrows 483 (by appt.: https://wejoinin.com/joelabriola@berkeley.edu)
+- Thursdays: 10-11 AM, Barrows 420 (walk-in, right after class)
+- If you can’t make either, e-mail me and we’ll find a time
+
+Outside of office hours, your best resources are your fellow classmates!
+
+- If something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture
+
+---
+
+Questions?
+
+---
+
+## Getting started with R
+
+Download and install R:  
+    <https://cran.cnr.berkeley.edu>
+
+Download and install RStudio 
+	<https://rstudio.com/products/rstudio/download>

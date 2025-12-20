@@ -1,0 +1,16 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Sociology 106: Quantitative Sociological Methods"
+  navbar:
+    left:
+      - text: "Slides"
+        href: slides/01-introduction.html
+
+format:
+  revealjs:
+    slide-number: true
+    incremental: true
+    theme: default

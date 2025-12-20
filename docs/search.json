@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html#course-slides",
+    "href": "index.html#course-slides",
+    "title": "Sociology 106",
+    "section": "Course Slides",
+    "text": "Course Slides\n\nWeek 1: Introduction\nWeek 2: Data and Measurement\nWeek 3: Descriptive Statistics"
+  },
+  {
+    "objectID": "slides/week1.html#housekeeping",
+    "href": "slides/week1.html#housekeeping",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nOffice hours this week\n\nRight after this class, until 11, Barrows 420\nTuesday (not Monday!), 10:30-11:30, Barrows 483\n\nSign up at wejoinin.com/joelabriola@berkeley.edu\n\n\nStudy groups\n\nI will create your study groups after class, when I should have a better idea of who will remain in the class\n\nHW #1: due Tuesday, September 4, end of day"
+  },
+  {
+    "objectID": "slides/week1.html#sociology-106-is",
+    "href": "slides/week1.html#sociology-106-is",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Sociology 106 is…",
+    "text": "Sociology 106 is…\n…an intermediate undergraduate social science research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables. The course will also train students in the use of the R statistical programming language for data management and analysis."
+  },
+  {
+    "objectID": "slides/week1.html#sociology-106-is-not",
+    "href": "slides/week1.html#sociology-106-is-not",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Sociology 106 is not…",
+    "text": "Sociology 106 is not…\n…about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.\n\nThis course can be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications\nWe will be more applied, still with some math\n\n…about the “one true way to answer sociological questions”."
+  },
+  {
+    "objectID": "slides/week1.html#for-this-course-we-will-assume",
+    "href": "slides/week1.html#for-this-course-we-will-assume",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "For this course, we will assume:",
+    "text": "For this course, we will assume:\n\nSocial categories and phenomena can be usefully represented using numbers.\nVariables measure what they purport to measure.\nAll samples are good samples."
+  },
+  {
+    "objectID": "slides/week1.html#after-completing-sociology-106-you-will-be-able-to",
+    "href": "slides/week1.html#after-completing-sociology-106-you-will-be-able-to",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "After completing Sociology 106, you will be able to:",
+    "text": "After completing Sociology 106, you will be able to:\n\nUnderstand the basic logic of statistical inference.\nIdentify the appropriate statistical test given a specific type of data.\nCompute descriptive statistics, graphs, tables, and simple statistical tests using R.\nInterpret the results of statistical tests and discuss their relevance to a particular research question."
+  },
+  {
+    "objectID": "slides/week1.html#example-in-past-semesters-has-sociology-106-been-more-appealing-to-male-or-female-students",
+    "href": "slides/week1.html#example-in-past-semesters-has-sociology-106-been-more-appealing-to-male-or-female-students",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Example: in past semesters, has Sociology 106 been more appealing to male or female students?",
+    "text": "Example: in past semesters, has Sociology 106 been more appealing to male or female students?\n\nOne possibility: gender doesn’t make a difference!\nAnother possibility: male students are more likely to have taken Sociology 106 in the past"
+  },
+  {
+    "objectID": "slides/week1.html#some-descriptive-statisticsfrom-a-previous-semester",
+    "href": "slides/week1.html#some-descriptive-statisticsfrom-a-previous-semester",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Some descriptive statistics…(from a previous semester!)",
+    "text": "Some descriptive statistics…(from a previous semester!)"
+  },
+  {
+    "objectID": "slides/week1.html#the-probability-model",
+    "href": "slides/week1.html#the-probability-model",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "The probability model",
+    "text": "The probability model"
+  },
+  {
+    "objectID": "slides/week1.html#keys-to-success-in-sociology-106",
+    "href": "slides/week1.html#keys-to-success-in-sociology-106",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Keys to Success in Sociology 106",
+    "text": "Keys to Success in Sociology 106\nLearning statistics is like learning a language\n\nThe material in this course can be challenging / counterintuitive if you haven’t seen it before\nIt is important not to be intimidated by new terms or the use of letters to represent quantities or variables\nReview your algebra skills if necessary\n\nLecture slides will be made available, but are not a substitute for careful note taking"
+  },
+  {
+    "objectID": "slides/week1.html#office-hours",
+    "href": "slides/week1.html#office-hours",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Office Hours",
+    "text": "Office Hours\nI can help in office hours with questions about concepts from lecture or about coding in R\n\nMondays: 10:30-11:30 AM, Barrows 483 (by appt.: https://wejoinin.com/joelabriola@berkeley.edu)\nThursdays: 10-11 AM, Barrows 420 (walk-in, right after class)\nIf you can’t make either, e-mail me and we’ll find a time\n\nOutside of office hours, your best resources are your fellow classmates!\n\nIf something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture"
+  },
+  {
+    "objectID": "slides/week1.html#getting-started-with-r",
+    "href": "slides/week1.html#getting-started-with-r",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Getting started with R",
+    "text": "Getting started with R\nDownload and install R:\nhttps://cran.cnr.berkeley.edu\nDownload and install RStudio https://rstudio.com/products/rstudio/download\n\n\nhttps://?meta:prerelease-subdomainquarto.org"
+  }
+]
