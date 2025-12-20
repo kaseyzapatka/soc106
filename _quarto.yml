@@ -7,7 +7,7 @@ website:
   navbar:
     left:
       - text: "Slides"
-        href: slides/01-introduction.html
+        href: slides/week1.html
 
 format:
   revealjs:
