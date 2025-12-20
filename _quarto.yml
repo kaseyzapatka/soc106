@@ -15,4 +15,4 @@ website:
 
 format:
   html:
-    theme: default
+    theme: lux
