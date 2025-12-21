@@ -9,7 +9,7 @@ format:
     preview-links: auto
     #logo: berkeley_logo.png
     css: slides.css
-    footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
+    footer: '[Click here for GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
 
 
@@ -17,20 +17,19 @@ format:
 
 [Kasey Zapatka](http://kaseyzapatka.com), **Postdoctoral Researcher** 
 
-- Sociology Department and Urban Displacement Project
 - PhD, Sociology, CUNY Graduate Center
 - Urban inequality with a focus on housing, affordability, and neighborhood change
-- Dissertation: examined how gentrification influences housing affordability and traced housing affordability over life course  - spatial econometrics and spatial analysis
+  - Dissertation: how gentrification influences housing affordability and traced housing affordability over life course 
+  - spatial econometrics and spatial analysis
 
-**Teaching**
+**Teaching:**
 
 - [Computational Social Science](https://github.com/kaseyzapatka/Computational-Social-Science-Training-Program) --> course covering machine learning, text analysis, and causal inference
-- SOC 106
 
 **Current Research**
 
 - Developing a longitudinal database of evictions 
-- Evaluating impact of Emergency Rental Assistance (ERA) and tenant protections on evictions during the COVID-19 pandemic using BART models
+- Evaluating impact of Emergency Rental Assistance and tenant protections on evictions during COVID-19 pandemic 
 
 ## Now your turn
 
@@ -103,6 +102,7 @@ Students will gain practical experience in R for conducting statistical analyses
 ## We could look at some descriptive statistics
 
 Some descriptive statistics…(from a previous semester!)
+
 ![](images/week1/last_semester.png){width=100%,fig-align="center"}
 
 
@@ -154,7 +154,7 @@ You will be able to test:
 
 ## Required Course Materials
 
-1. Textbook: David Lane’s “Introduction to Statistics”, which is free and you can obtain it [online](onlinestatbook.com/Online_Statistics_Education.pdf)
+1. Textbook: [David Lane’s “Introduction to Statistics”](onlinestatbook.com/Online_Statistics_Education.pdf), which is free and you can obtain it online for free
 
 2. Access to a computer where you can download [R](http://cran.rstudio.com) and [Positron](https://positron.posit.co/download.html) (a free program that makes working in R much easier  and is at the cutting edge of data science right now), as well as data to analyze
 
@@ -170,11 +170,11 @@ You will be able to test:
 
 ## Class Format
 
-- First half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R
+- **First half** of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R
 
-- Second half of class, you will get to practice implementing these concepts in R using data and problems provided by me
+- **Second half** of class, you will get to practice implementing these concepts in R using data and problems provided by me
 
-## Typical Weekly Assignment 
+## Typical Weekly Assignment{.small-text}
 
 **Part 1:** 1-3 problems 
 
@@ -183,7 +183,7 @@ Show your work; write out conclusions and interpret results as necessary
 **Part 2:** Brief analysis in R and write-up
 
 - Work with your own dataset to apply methods introduced in lecture
-- Ideally the same dataset from week to week (you should use the same dataset for your research paper so you can use these analyses in paper)
+- Ideally the same dataset from week to week (use the same dataset for your research paper)
 - For the first assignment, I will provide a dataset on bCourses
 - Think carefully about the method, the types of questions it can  answer, and the types of variables that can be used in the method  before choosing variables from your dataset
 - Write up using quarto template provided on bCourses and submit to bCourse
@@ -196,29 +196,34 @@ You will develop and present a research question of your choice, address it usin
 - You can *(and should)* use your weekly assignments to work on your research question
 
 - Several milestones throughout the semester will help you progress towards the final paper
+  - Paper proposal (5%)
+  - Annotated bibliography (5%)
+  - In-class presentation (5%)
+  - Final paper (20%)
 
 
 ## Keys to Success
 
-Material is cumulative, so it is critical to keep up
+<span class="highlight">Material is cumulative, so it is critical to keep up</span>
 
 - Please ask questions during lecture!
 - If you find yourself falling behind, seek help immediately from me during office hours
 
-Learning statistics requires thinking through how to solve problems.
+<span class="highlight">Learning statistics requires thinking through how to solve problems</span>
 
 - This is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment
 - Feel free to work on assignments in groups, though what you turn in must be your own work.
 
 ## Keys to Success
 
-Learning statistics is like learning a language
+<span class="highlight">Learning statistics is like learning a language</span>
 
 - The material in this course can be challenging / counterintuitive if you haven’t seen it before
 - It is important not to be intimidated by new terms or the use of letters to represent quantities or variables
 - Review your algebra skills if necessary
 
-Lecture slides will be made available, but are not a substitute for careful note taking
+<span class="highlight">Lecture slides will be made available, but are not a substitute for careful note taking.</span>
+
 
 ## Office Hours
 
@@ -233,12 +238,20 @@ Outside of office hours, your best resources are your fellow classmates!
 
 - If something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture
 
+## Online and Generative AI Policy
+
+- <span class="highlight">PLEASE USE THEM!</span>--AI tools (e.g., ChatGPT), Google, and online resources (e.g., [StackOverflow](https://stackoverflow.com/questions)  or [StackExchange](https://stackexchange.com))
+- <span class="highlight">DO</span> use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning. 
+- <span class="highlight">DO NOT</span> to copy or paraphrase AI-generated content in any assignment, as this counts as plagiarism
+- <span class="highlight">The goal</span> is to use them to support your learning and problem-solving, not to replace it. 
+
+> If you are going to spend the time taking this course, you should learn as much as you can.
 
 ## Study groups
 
 - I will create your study groups after class, when I should have a better idea of who will remain in the class
 
-- HW #1: due Tuesday, September 4, end of day
+- <span class="highlight">HW #1: due Tuesday, January 4, end of day</span>
 
 
 ## Questions?
