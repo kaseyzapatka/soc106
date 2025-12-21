@@ -54,14 +54,16 @@ The textbook we will use for this course is free and accessible online: *David L
 
 You are required to have a laptop that can access the internet to take this course. If you wish to take this course and do not have access to a computer, please let me know immediately. A major component of this course is learning the statistical programming language R and getting practice using R to analyze data.
 
-In our first class, we will walk through downloading R onto your computer (<http://cran.rstudio.com>), as well as Positron, a free program that makes working in R much easier (<https://positron.posit.co/download.html>) and is at the cutting edge of data science right now. Downloading and installing R and Positron on Windows and Mac computers is straightforward.[^Mac] Installing them on a Chromebook may be more difficult; please let me know immediately if you are using a Chromebook for this course, and I will try to connect you with someone who can help with the installation.
+In our first class, we will walk through downloading R onto your computer (<http://cran.rstudio.com>), as well as Positron, a free program that makes working in R much easier (<https://positron.posit.co/download.html>) and is at the cutting edge of data science right now. Downloading and installing R[^Rdownload]: and Positron[^Positrondownload] is straightforward for Windows, but requires knowing your Mac hardware. Installing them on a Chromebook may be more difficult; please let me know immediately if you are using a Chromebook for this course, and I will try to connect you with someone who can help with the installation.
 
-[^Mac]: If you have a Mac, you need to check whether your laptop has an Apple Silicon (M1/M2) or Intel processor. Be sure to download the appropriate version of R and Positron for the Mac. You can check the process by:   
+[^Rdownload]: If you have a Mac, you need to check whether your laptop has an Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac. You can check the process by:   
 1. Click the Apple menu () in the top-left corner of your screen.  
 2. Select **About This Mac**.  
 3. Look at the **Processor** or **Chip** line:  
    - If it says **Apple M1**, **M2**, or similar → you have Apple Silicon.  
    - If it says **Intel Core i5**, **i7**, etc. → you have an Intel Mac.
+
+[^Positrondownload]: You'll want to do the same here or just download use the "Universal" option, which is slightly larger file and might not be quite as optimized. 
 
 ## HOW WE WILL USE CLASS TIME
 

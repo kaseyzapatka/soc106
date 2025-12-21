@@ -1,6 +1,6 @@
 ---
-title: "Sociology 106: Quantitative Sociological Methods"
-subtitle: "Week 1"
+title: "Week 1"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
 format:
   revealjs: 
     slide-number: true
@@ -8,44 +8,80 @@ format:
       buttons: false
     preview-links: auto
     #logo: berkeley_logo.png
-    #css: styles.css
+    css: slides.css
     footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
 ---
 
-## Housekeeping
 
-Office hours this week
+## Introductions 
 
-- Right after this class, until 11, Barrows 420
-- Tuesday (not Monday!), 10:30-11:30, Barrows 483
-    - Sign up at wejoinin.com/joelabriola@berkeley.edu
+[Kasey Zapatka](http://kaseyzapatka.com), **Postdoctoral Researcher** 
 
-Study groups
+- Sociology Department and Urban Displacement Project
+- PhD, Sociology, CUNY Graduate Center
+- Urban inequality with a focus on housing, affordability, and neighborhood change
+- Dissertation: examined how gentrification influences housing affordability and traced housing affordability over life course  - spatial econometrics and spatial analysis
 
-- I will create your study groups after class, when I should have a better idea of who will remain in the class
+**Teaching**
 
-HW #1: due Tuesday, September 4, end of day
+- [Computational Social Science](https://github.com/kaseyzapatka/Computational-Social-Science-Training-Program) --> course covering machine learning, text analysis, and causal inference
+- SOC 106
 
+**Current Research**
+
+- Developing a longitudinal database of evictions 
+- Evaluating impact of Emergency Rental Assistance (ERA) and tenant protections on evictions during the COVID-19 pandemic using BART models
+
+## Now your turn
+
+- Name
+- Year
+- Experience with R (no right answer)
+- Mac or Windows user? (there's a right answer)
+- Why are you taking this course?
+- What are you most looking forward to in this course?
+
+## Agenda 
+
+Welcome, and a few remarks about the course
+
+Introductions/Ice Breaker
+
+Discussion of each of today’s learning goals:
+
+- Understand similarities and differences between conventional social science statistics and data science approaches
+- Explore the opportunities and risks of “big data” and data science methods/tools for social scientists
 
 ## Sociology 106 is…
 
-...an intermediate undergraduate social science research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables. The course will also train students in the use of the R statistical programming language for data management and analysis.
+...an intermediate undergraduate social science research methods course emphasizes the motivation, computation, and interpretation of statistical tests.
+
+**Course Content**
+
+- Statistical tests for one or two continuous or categorical variables
+- Interpretation of linear and logistic regression
+- Introduction to machine learning framework in the last week
+- Data management and analysis using R statistical programming language
+
+**Skills Developed**
+
+Students will gain practical experience in R for conducting statistical analyses and managing data.
 
 ## Sociology 106 is not…
 
 ...about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.
 
-- This course can be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications
+- This course will be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications
 
-- We will be more applied, still with some math
+- We will be more applied, still with some math (and some equations)
 
-...about the “one true way to answer sociological questions”.
+...about the “one true way to answer sociological questions” *(where quals at?)*.
 
 ## For this course, we will assume:
 
 1. Social categories and phenomena can be usefully represented using numbers.
 2. Variables measure what they purport to measure.
-3. All samples are good samples.
+3. All samples are good samples (unless they are bad samples)
 
 
 ## After completing Sociology 106, you will be able to:
@@ -54,117 +90,127 @@ HW #1: due Tuesday, September 4, end of day
 2. Identify the appropriate statistical test given a specific type of data.
 3. Compute descriptive statistics, graphs, tables, and simple statistical tests using R.
 4. Interpret the results of statistical tests and discuss their relevance to a particular research question.
+5. Interpret output from regression and have a basic understanding of the machine learning framework.
 
----
+## So, what is a statical question?
 
-## Example: in past semesters, has Sociology 106 been more appealing to male or female students?
+> In past semesters, has Sociology 106 been more appealing to male or female students?
 
 - One possibility: gender doesn’t make a difference!
 - Another possibility: male students are more likely to have taken Sociology 106 in the past
 
----
 
-## Some descriptive statistics…(from a previous semester!)
+## We could look at some descriptive statistics
 
+Some descriptive statistics…(from a previous semester!)
+![](images/week1/last_semester.png){width=100%,fig-align="center"}
 
----
 
 ## The probability model
 
----
+![](images/week1/probability_model.png){width=100%, fig-align="center"}
+
+
 
 ## One example: 
 
-In past semesters, has Sociology 106 been more appealing to male or female students?
+> In past semesters, has Sociology 106 been more appealing to male or female students?
 
 One possibility: gender doesn’t make a difference!
-Null hypothesis: P(student is male) = 50%
-Another possibility: male students are more likely to major in Statistics
-Alternative hypothesis: P(student is male) > 50%
 
----
+- <span class="highlight">Null hypothesis: P(student is male) = 50%</span>
+
+Another possibility: male students are more likely to major in Statistics
+
+- Alternative hypothesis: P(student is male) > 50%
+
+
 
 ## A statistical test
 
----
+![](images/week1/statistical_test.png){width=100%, fig-align="center"}
 
-The same test, in R
 
----
 
-By the end of this course…
+## The same test, but in R
+
+```{r echo=TRUE}
+
+binom.test(c(8,3), p = 0.5, alternative="greater")
+
+```
+
+## By the end of this course…
 
 You will be able to test:
-Theories involving one categorical or continuous variable.
-Ex: gender is often measured as a categorical variable (male / female / other)
-Ex: income is often measured as a continuous variable (the number of dollars one earns is a real number)
-Theories involving how one (or more) binary or continuous variable affects another binary or continuous variable.
 
----
+- Theories involving one categorical or continuous variable.
+  - Ex: gender is often measured as a categorical variable (male / female / other)
+  - Ex: income is often measured as a continuous variable (the number of dollars one earns is a real number)
+- Theories involving how one (or more) binary or continuous variable affects another binary or continuous variable.
 
-Questions?
+## Questions?
 
----
 
-Required Course Materials
+## Required Course Materials
 
-Textbook: David Lane’s “Introduction to Statistics”, which is free and online
-onlinestatbook.com/Online_Statistics_Education.pdf
-We won’t be working directly from this, but it’s a good resource to review concepts before / after lecture
-Access to a computer where you can download R and RStudio (a program which makes R easier to use), as well as data to analyze in R / RStudio
-We’ll start installation of R and RStudio at the end of class; must be done by class next week
+1. Textbook: David Lane’s “Introduction to Statistics”, which is free and you can obtain it [online](onlinestatbook.com/Online_Statistics_Education.pdf)
 
----
+2. Access to a computer where you can download [R](http://cran.rstudio.com) and [Positron](https://positron.posit.co/download.html) (a free program that makes working in R much easier  and is at the cutting edge of data science right now), as well as data to analyze
 
-Course Elements
+3. We’ll start installation of R and RStudio at the end of class--<span class="highlight">this must be done by class next week</span>
 
-Attendance and participation
-Weekly homework assignments
-Research paper
-Final exam
 
----
+## Course Elements
 
-Class Format (after today)
+- Attendance and participation (10%)
+- Weekly homework assignments  (30%)
+- Research paper (40%)
+- Final exam (20%)
 
-The first half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R
-Then, in the second half of class, you will get to practice implementing these concepts in R using data and problems provided by me
+## Class Format
 
----
+- First half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R
 
-Weekly Assignment – Typical Structure
+- Second half of class, you will get to practice implementing these concepts in R using data and problems provided by me
 
-Part 1: 1-3 problems to do by hand
-Show your work; circle / box final answer; write out conclusions and interpret results as necessary
-Part 2: Brief analysis in R and write-up
-Work with your own dataset to apply methods introduced in lecture
-Ideally the same dataset from week to week (that you will also use for your research paper)
-For the first assignment, I will provide a dataset on bCourses
-Think carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset
-Write up using template, to be provided on bCourses
+## Typical Weekly Assignment 
 
----
+**Part 1:** 1-3 problems 
 
-Research Paper
+Show your work; write out conclusions and interpret results as necessary
 
-You will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your finding
-You can use your weekly assignments to work on your research question
-Several milestones throughout the semester will help you progress towards the final paper
+**Part 2:** Brief analysis in R and write-up
 
----
+- Work with your own dataset to apply methods introduced in lecture
+- Ideally the same dataset from week to week (you should use the same dataset for your research paper so you can use these analyses in paper)
+- For the first assignment, I will provide a dataset on bCourses
+- Think carefully about the method, the types of questions it can  answer, and the types of variables that can be used in the method  before choosing variables from your dataset
+- Write up using quarto template provided on bCourses and submit to bCourse
 
-Keys to Success in Sociology 106
+
+## Research Paper
+
+You will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings
+
+- You can *(and should)* use your weekly assignments to work on your research question
+
+- Several milestones throughout the semester will help you progress towards the final paper
+
+
+## Keys to Success
 
 Material is cumulative, so it is critical to keep up
-Please ask questions during lecture!
-If you find yourself falling behind, seek help immediately from me during office hours
+
+- Please ask questions during lecture!
+- If you find yourself falling behind, seek help immediately from me during office hours
+
 Learning statistics requires thinking through how to solve problems.
-This is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment
-Feel free to work on assignments in groups, though what you turn in must be your own work.
 
----
+- This is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment
+- Feel free to work on assignments in groups, though what you turn in must be your own work.
 
-## Keys to Success in Sociology 106
+## Keys to Success
 
 Learning statistics is like learning a language
 
@@ -174,30 +220,45 @@ Learning statistics is like learning a language
 
 Lecture slides will be made available, but are not a substitute for careful note taking
 
----
-
 ## Office Hours
 
 I can help in office hours with questions about concepts from lecture or about coding in R
 
-- Mondays: 10:30-11:30 AM, Barrows 483 (by appt.: https://wejoinin.com/joelabriola@berkeley.edu)
-- Thursdays: 10-11 AM, Barrows 420 (walk-in, right after class)
+- **Tuesdays**, right before 11:30 AM-1:00 PM, TBA
+- **Tuesdays**, right after class, until 4:30 PM, TBA
+    - Sign up at <https://www.wejoinin.com/kaseyzapatka@berkeley.edu>
 - If you can’t make either, e-mail me and we’ll find a time
 
 Outside of office hours, your best resources are your fellow classmates!
 
 - If something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture
 
----
 
-Questions?
+## Study groups
 
----
+- I will create your study groups after class, when I should have a better idea of who will remain in the class
 
-## Getting started with R
+- HW #1: due Tuesday, September 4, end of day
 
-Download and install R:  
-    <https://cran.cnr.berkeley.edu>
 
-Download and install RStudio 
-	<https://rstudio.com/products/rstudio/download>
+## Questions?
+
+
+
+## Getting started with R and Positron
+
+Download and install R:[^Rdownload]  
+  <https://cran.rstudio.com>
+
+
+Download and install Positron[^Positrondownload]  
+	<https://positron.posit.co/download.html>
+
+[^Rdownload]: Mac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:   
+1. Click the Apple menu () in the top-left corner of your screen.  
+2. Select **About This Mac**.  
+3. Look at the **Processor** or **Chip** line:  
+   - If it says **Apple M1**, **M2**, or similar → you have Apple Silicon.  
+   - If it says **Intel Core i5**, **i7**, etc. → you have an Intel Mac.
+
+[^Positrondownload]: You can just download the "Universal" option, but know it is slightly larger file and might not be quite as optimized. 

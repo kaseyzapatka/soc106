@@ -86,93 +86,93 @@
   {
     "objectID": "slides/week1.html#housekeeping",
     "href": "slides/week1.html#housekeeping",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Housekeeping",
-    "text": "Housekeeping\nOffice hours this week\n\nRight after this class, until 11, Barrows 420\nTuesday (not Monday!), 10:30-11:30, Barrows 483\n\nSign up at wejoinin.com/joelabriola@berkeley.edu\n\n\nStudy groups\n\nI will create your study groups after class, when I should have a better idea of who will remain in the class\n\nHW #1: due Tuesday, September 4, end of day"
+    "text": "Housekeeping\nOffice hours this semester\n\nTuesdays, right before 11:30 AM-1:00 PM, TBA\nTuesdays, right after class, until 4:30 PM, TBA\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\n\nStudy groups\n\nI will create your study groups after class, when I should have a better idea of who will remain in the class\n\nHW #1: due Tuesday, September 4, end of day"
   },
   {
     "objectID": "slides/week1.html#sociology-106-is",
     "href": "slides/week1.html#sociology-106-is",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Sociology 106 is…",
-    "text": "Sociology 106 is…\n…an intermediate undergraduate social science research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables. The course will also train students in the use of the R statistical programming language for data management and analysis."
+    "text": "Sociology 106 is…\n…an intermediate undergraduate social science research methods course emphasizes the motivation, computation, and interpretation of statistical tests.\nCourse Content\n\nStatistical tests for one or two continuous or categorical variables\nInterpretation of linear and logistic regression\nIntroduction to machine learning framework in the last week\nData management and analysis using R statistical programming language\n\nSkills Developed\nStudents will gain practical experience in R for conducting statistical analyses and managing data."
   },
   {
     "objectID": "slides/week1.html#sociology-106-is-not",
     "href": "slides/week1.html#sociology-106-is-not",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Sociology 106 is not…",
-    "text": "Sociology 106 is not…\n…about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.\n\nThis course can be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications\nWe will be more applied, still with some math\n\n…about the “one true way to answer sociological questions”."
+    "text": "Sociology 106 is not…\n…about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.\n\nThis course will be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications\nWe will be more applied, still with some math (and some equations)\n\n…about the “one true way to answer sociological questions” (where quals at?)."
   },
   {
     "objectID": "slides/week1.html#for-this-course-we-will-assume",
     "href": "slides/week1.html#for-this-course-we-will-assume",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "For this course, we will assume:",
-    "text": "For this course, we will assume:\n\nSocial categories and phenomena can be usefully represented using numbers.\nVariables measure what they purport to measure.\nAll samples are good samples."
+    "text": "For this course, we will assume:\n\nSocial categories and phenomena can be usefully represented using numbers.\nVariables measure what they purport to measure.\nAll samples are good samples (unless they are bad samples)"
   },
   {
     "objectID": "slides/week1.html#after-completing-sociology-106-you-will-be-able-to",
     "href": "slides/week1.html#after-completing-sociology-106-you-will-be-able-to",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "After completing Sociology 106, you will be able to:",
-    "text": "After completing Sociology 106, you will be able to:\n\nUnderstand the basic logic of statistical inference.\nIdentify the appropriate statistical test given a specific type of data.\nCompute descriptive statistics, graphs, tables, and simple statistical tests using R.\nInterpret the results of statistical tests and discuss their relevance to a particular research question."
+    "text": "After completing Sociology 106, you will be able to:\n\nUnderstand the basic logic of statistical inference.\nIdentify the appropriate statistical test given a specific type of data.\nCompute descriptive statistics, graphs, tables, and simple statistical tests using R.\nInterpret the results of statistical tests and discuss their relevance to a particular research question.\nInterpret output from regression and have a basic understanding of the machine learning framework."
   },
   {
     "objectID": "slides/week1.html#example-in-past-semesters-has-sociology-106-been-more-appealing-to-male-or-female-students",
     "href": "slides/week1.html#example-in-past-semesters-has-sociology-106-been-more-appealing-to-male-or-female-students",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Example: in past semesters, has Sociology 106 been more appealing to male or female students?",
     "text": "Example: in past semesters, has Sociology 106 been more appealing to male or female students?\n\nOne possibility: gender doesn’t make a difference!\nAnother possibility: male students are more likely to have taken Sociology 106 in the past"
   },
   {
     "objectID": "slides/week1.html#some-descriptive-statisticsfrom-a-previous-semester",
     "href": "slides/week1.html#some-descriptive-statisticsfrom-a-previous-semester",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Some descriptive statistics…(from a previous semester!)",
-    "text": "Some descriptive statistics…(from a previous semester!)"
+    "text": "Some descriptive statistics…(from a previous semester!)\nSome descriptive statistics…(from a previous semester!)"
   },
   {
     "objectID": "slides/week1.html#the-probability-model",
     "href": "slides/week1.html#the-probability-model",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "The probability model",
     "text": "The probability model"
   },
   {
     "objectID": "slides/week1.html#one-example",
     "href": "slides/week1.html#one-example",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "One example:",
-    "text": "One example:\nIn past semesters, has Sociology 106 been more appealing to male or female students?\nOne possibility: gender doesn’t make a difference! Null hypothesis: P(student is male) = 50% Another possibility: male students are more likely to major in Statistics Alternative hypothesis: P(student is male) &gt; 50%"
+    "text": "One example:\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\nOne possibility: gender doesn’t make a difference!\n\nNull hypothesis: P(student is male) = 50%\n\nAnother possibility: male students are more likely to major in Statistics\n\nAlternative hypothesis: P(student is male) &gt; 50%"
   },
   {
     "objectID": "slides/week1.html#a-statistical-test",
     "href": "slides/week1.html#a-statistical-test",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "A statistical test",
     "text": "A statistical test"
   },
   {
     "objectID": "slides/week1.html#keys-to-success-in-sociology-106",
     "href": "slides/week1.html#keys-to-success-in-sociology-106",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Keys to Success in Sociology 106",
-    "text": "Keys to Success in Sociology 106\nLearning statistics is like learning a language\n\nThe material in this course can be challenging / counterintuitive if you haven’t seen it before\nIt is important not to be intimidated by new terms or the use of letters to represent quantities or variables\nReview your algebra skills if necessary\n\nLecture slides will be made available, but are not a substitute for careful note taking"
+    "text": "Keys to Success in Sociology 106\nMaterial is cumulative, so it is critical to keep up\n\nPlease ask questions during lecture!\nIf you find yourself falling behind, seek help immediately from me during office hours\n\nLearning statistics requires thinking through how to solve problems.\n\nThis is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment\nFeel free to work on assignments in groups, though what you turn in must be your own work."
   },
   {
     "objectID": "slides/week1.html#office-hours",
     "href": "slides/week1.html#office-hours",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Office Hours",
-    "text": "Office Hours\nI can help in office hours with questions about concepts from lecture or about coding in R\n\nMondays: 10:30-11:30 AM, Barrows 483 (by appt.: https://wejoinin.com/joelabriola@berkeley.edu)\nThursdays: 10-11 AM, Barrows 420 (walk-in, right after class)\nIf you can’t make either, e-mail me and we’ll find a time\n\nOutside of office hours, your best resources are your fellow classmates!\n\nIf something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture"
+    "text": "Office Hours\nI can help in office hours with questions about concepts from lecture or about coding in R\n\nTuesdays, right before 11:30 AM-1:00 PM, TBA\nTuesdays, right after class, until 4:30 PM, TBA\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nOutside of office hours, your best resources are your fellow classmates!\n\nIf something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture"
   },
   {
     "objectID": "slides/week1.html#getting-started-with-r",
     "href": "slides/week1.html#getting-started-with-r",
-    "title": "Sociology 106: Quantitative Sociological Methods",
+    "title": "Week 1",
     "section": "Getting started with R",
-    "text": "Getting started with R\nDownload and install R:\nhttps://cran.cnr.berkeley.edu\nDownload and install RStudio https://rstudio.com/products/rstudio/download\n\n\nhttps://?meta:prerelease-subdomainquarto.org"
+    "text": "Getting started with R\nDownload and install R:\nhttps://cran.rstudio.com\nDownload and install RStudio https://rstudio.com/products/rstudio/download\n\n\nhttps://?meta:prerelease-subdomainquarto.org"
   },
   {
     "objectID": "index.html",
@@ -201,5 +201,187 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "slides/week1.html#introductions",
+    "href": "slides/week1.html#introductions",
+    "title": "Week 1",
+    "section": "Introductions",
+    "text": "Introductions\nKasey Zapatka, Postdoctoral Researcher\n\nSociology Department and Urban Displacement Project\nPhD, Sociology, CUNY Graduate Center\nUrban inequality with a focus on housing, affordability, and neighborhood change\nDissertation: examined how gentrification influences housing affordability and traced housing affordability over life course - spatial econometrics and spatial analysis\n\nTeaching\n\nComputational Social Science –&gt; course covering machine learning, text analysis, and causal inference\nSOC 106\n\nCurrent Research\n\nDeveloping a longitudinal database of evictions\nEvaluating impact of Emergency Rental Assistance (ERA) and tenant protections on evictions during the COVID-19 pandemic using BART models"
+  },
+  {
+    "objectID": "slides/week1.html#the-same-test-but-in-r",
+    "href": "slides/week1.html#the-same-test-but-in-r",
+    "title": "Week 1",
+    "section": "The same test, but in R",
+    "text": "The same test, but in R\n\nbinom.test(c(8,3), p = 0.5, alternative=\"greater\")\n\n\n    Exact binomial test\n\ndata:  c(8, 3)\nnumber of successes = 8, number of trials = 11, p-value = 0.1133\nalternative hypothesis: true probability of success is greater than 0.5\n95 percent confidence interval:\n 0.4356258 1.0000000\nsample estimates:\nprobability of success \n             0.7272727"
+  },
+  {
+    "objectID": "slides/week1.html#by-the-end-of-this-course",
+    "href": "slides/week1.html#by-the-end-of-this-course",
+    "title": "Week 1",
+    "section": "By the end of this course…",
+    "text": "By the end of this course…\nYou will be able to test:\n\nTheories involving one categorical or continuous variable.\n\nEx: gender is often measured as a categorical variable (male / female / other)\nEx: income is often measured as a continuous variable (the number of dollars one earns is a real number)\n\nTheories involving how one (or more) binary or continuous variable affects another binary or continuous variable."
+  },
+  {
+    "objectID": "slides/week1.html#questions",
+    "href": "slides/week1.html#questions",
+    "title": "Week 1",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week1.html#required-course-materials",
+    "href": "slides/week1.html#required-course-materials",
+    "title": "Week 1",
+    "section": "Required Course Materials",
+    "text": "Required Course Materials\n\nTextbook: David Lane’s “Introduction to Statistics”, which is free and you can obtain it online\nAccess to a computer where you can download R and Positron (a free program that makes working in R much easier and is at the cutting edge of data science right now), as well as data to analyze\nWe’ll start installation of R and RStudio at the end of class–this must be done by class next week"
+  },
+  {
+    "objectID": "slides/week1.html#course-elements",
+    "href": "slides/week1.html#course-elements",
+    "title": "Week 1",
+    "section": "Course Elements",
+    "text": "Course Elements\n\nAttendance and participation (10%)\nWeekly homework assignments (30%)\nResearch paper (40%)\nFinal exam (20%)"
+  },
+  {
+    "objectID": "slides/week1.html#class-format-after-today",
+    "href": "slides/week1.html#class-format-after-today",
+    "title": "Week 1",
+    "section": "Class Format (after today)",
+    "text": "Class Format (after today)\nThe first half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R Then, in the second half of class, you will get to practice implementing these concepts in R using data and problems provided by me"
+  },
+  {
+    "objectID": "slides/week1.html#weekly-assignment-typical-structure",
+    "href": "slides/week1.html#weekly-assignment-typical-structure",
+    "title": "Week 1",
+    "section": "Weekly Assignment – Typical Structure",
+    "text": "Weekly Assignment – Typical Structure\nPart 1: 1-3 problems to do by hand\nShow your work; circle / box final answer; write out conclusions and interpret results as necessary\nPart 2: Brief analysis in R and write-up Work with your own dataset to apply methods introduced in lecture Ideally the same dataset from week to week (that you will also use for your research paper) For the first assignment, I will provide a dataset on bCourses Think carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset Write up using template, to be provided on bCourses"
+  },
+  {
+    "objectID": "slides/week1.html#sociology-106-is-1",
+    "href": "slides/week1.html#sociology-106-is-1",
+    "title": "Sociology 106: Quantitative Sociological Methods",
+    "section": "Sociology 106 is…",
+    "text": "Sociology 106 is…\n…an intermediate undergraduate social science research methods course emphasizes the motivation, computation, and interpretation of statistical tests.\nCourse Content\n\nStatistical tests for one or two continuous or categorical variables\nInterpretation of linear and logistic regression\nIntroduction to machine learning framework in the last week\nData management and analysis using R statistical programming language\n\nSkills Developed\nStudents will gain practical experience in R for conducting statistical analyses and managing data."
+  },
+  {
+    "objectID": "slides/week1.html",
+    "href": "slides/week1.html",
+    "title": "Sociology 106",
+    "section": "",
+    "text": "title: “Sociology 106: Quantitative Sociological Methods” subtitle: “Week 1” format: revealjs: slide-number: true chalkboard: buttons: false preview-links: auto #logo: berkeley_logo.png #css: styles.scss footer: ‘https://?meta:prerelease-subdomainquarto.org’"
+  },
+  {
+    "objectID": "slides/week1.html#now-your-turn",
+    "href": "slides/week1.html#now-your-turn",
+    "title": "Week 1",
+    "section": "Now your turn",
+    "text": "Now your turn\n\nName\nYear\nExperience with R (no right answer)\nMac or Windows user? (there’s a right answer)\nWhy are you taking this course?\nWhat are you most looking forward to in this course?"
+  },
+  {
+    "objectID": "slides/week1.html#agenda",
+    "href": "slides/week1.html#agenda",
+    "title": "Week 1",
+    "section": "Agenda",
+    "text": "Agenda\nWelcome, and a few remarks about the course\nIntroductions/Ice Breaker\nDiscussion of each of today’s learning goals:\n\nUnderstand similarities and differences between conventional social science statistics and data science approaches\nExplore the opportunities and risks of “big data” and data science methods/tools for social scientists"
+  },
+  {
+    "objectID": "slides/week1.html#office-hours-1",
+    "href": "slides/week1.html#office-hours-1",
+    "title": "Week 1",
+    "section": "Office Hours",
+    "text": "Office Hours\nI can help in office hours with questions about concepts from lecture or about coding in R\n\nMondays: 10:30-11:30 AM, Barrows 483 (by appt.: https://wejoinin.com/joelabriola@berkeley.edu)\nThursdays: 10-11 AM, Barrows 420 (walk-in, right after class)\nIf you can’t make either, e-mail me and we’ll find a time\n\nOutside of office hours, your best resources are your fellow classmates!\n\nIf something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture\n\nQuestions?"
+  },
+  {
+    "objectID": "slides/week1.html#study-groups",
+    "href": "slides/week1.html#study-groups",
+    "title": "Week 1",
+    "section": "Study groups",
+    "text": "Study groups\n\nI will create your study groups after class, when I should have a better idea of who will remain in the class\nHW #1: due Tuesday, September 4, end of day"
+  },
+  {
+    "objectID": "slides/week1.html#questions-1",
+    "href": "slides/week1.html#questions-1",
+    "title": "Week 1",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week1.html#section",
+    "href": "slides/week1.html#section",
+    "title": "Week 1",
+    "section": "",
+    "text": "Example: in past semesters, has Sociology 106 been more appealing to male or female students?\n\n\nOne possibility: gender doesn’t make a difference!\nAnother possibility: male students are more likely to have taken Sociology 106 in the past"
+  },
+  {
+    "objectID": "slides/week1.html#so-what-is-a-statical-question",
+    "href": "slides/week1.html#so-what-is-a-statical-question",
+    "title": "Week 1",
+    "section": "So, what is a statical question?",
+    "text": "So, what is a statical question?\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\n\nOne possibility: gender doesn’t make a difference!\nAnother possibility: male students are more likely to have taken Sociology 106 in the past"
+  },
+  {
+    "objectID": "slides/week1.html#we-could-look-at-some-descriptive-statistics",
+    "href": "slides/week1.html#we-could-look-at-some-descriptive-statistics",
+    "title": "Week 1",
+    "section": "We could look at some descriptive statistics",
+    "text": "We could look at some descriptive statistics\nSome descriptive statistics…(from a previous semester!)"
+  },
+  {
+    "objectID": "slides/week1.html#research-paper",
+    "href": "slides/week1.html#research-paper",
+    "title": "Week 1",
+    "section": "Research Paper",
+    "text": "Research Paper\nYou will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings\n\nYou can (and should) use your weekly assignments to work on your research question\nSeveral milestones throughout the semester will help you progress towards the final paper"
+  },
+  {
+    "objectID": "slides/week1.html#class-format",
+    "href": "slides/week1.html#class-format",
+    "title": "Week 1",
+    "section": "Class Format",
+    "text": "Class Format\n\nFirst half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R\nSecond half of class, you will get to practice implementing these concepts in R using data and problems provided by me"
+  },
+  {
+    "objectID": "slides/week1.html#typical-weekly-assignment-structure",
+    "href": "slides/week1.html#typical-weekly-assignment-structure",
+    "title": "Week 1",
+    "section": "Typical Weekly Assignment – Structure",
+    "text": "Typical Weekly Assignment – Structure\nPart 1: 1-3 problems to do by hand\nShow your work; circle / box final answer; write out conclusions and interpret results as necessary\nPart 2: Brief analysis in R and write-up Work with your own dataset to apply methods introduced in lecture Ideally the same dataset from week to week (that you will also use for your research paper) For the first assignment, I will provide a dataset on bCourses Think carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset Write up using template, to be provided on bCourses"
+  },
+  {
+    "objectID": "slides/week1.html#typical-weekly-assignment",
+    "href": "slides/week1.html#typical-weekly-assignment",
+    "title": "Week 1",
+    "section": "Typical Weekly Assignment",
+    "text": "Typical Weekly Assignment\nPart 1: 1-3 problems\nShow your work; write out conclusions and interpret results as necessary\nPart 2: Brief analysis in R and write-up\n\nWork with your own dataset to apply methods introduced in lecture\nIdeally the same dataset from week to week (you should use the same dataset for your research paper so you can use these analyses in paper)\nFor the first assignment, I will provide a dataset on bCourses\nThink carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset\nWrite up using quarto template provided on bCourses and submit to bCourse"
+  },
+  {
+    "objectID": "slides/week1.html#keys-to-success-in-sociology-106-1",
+    "href": "slides/week1.html#keys-to-success-in-sociology-106-1",
+    "title": "Week 1",
+    "section": "Keys to Success in Sociology 106",
+    "text": "Keys to Success in Sociology 106\nLearning statistics is like learning a language\n\nThe material in this course can be challenging / counterintuitive if you haven’t seen it before\nIt is important not to be intimidated by new terms or the use of letters to represent quantities or variables\nReview your algebra skills if necessary\n\nLecture slides will be made available, but are not a substitute for careful note taking"
+  },
+  {
+    "objectID": "slides/week1.html#keys-to-success",
+    "href": "slides/week1.html#keys-to-success",
+    "title": "Week 1",
+    "section": "Keys to Success",
+    "text": "Keys to Success\nMaterial is cumulative, so it is critical to keep up\n\nPlease ask questions during lecture!\nIf you find yourself falling behind, seek help immediately from me during office hours\n\nLearning statistics requires thinking through how to solve problems.\n\nThis is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment\nFeel free to work on assignments in groups, though what you turn in must be your own work."
+  },
+  {
+    "objectID": "slides/week1.html#keys-to-success-1",
+    "href": "slides/week1.html#keys-to-success-1",
+    "title": "Week 1",
+    "section": "Keys to Success",
+    "text": "Keys to Success\nLearning statistics is like learning a language\n\nThe material in this course can be challenging / counterintuitive if you haven’t seen it before\nIt is important not to be intimidated by new terms or the use of letters to represent quantities or variables\nReview your algebra skills if necessary\n\nLecture slides will be made available, but are not a substitute for careful note taking"
+  },
+  {
+    "objectID": "slides/week1.html#getting-started-with-r-and-positron",
+    "href": "slides/week1.html#getting-started-with-r-and-positron",
+    "title": "Week 1",
+    "section": "Getting started with R and Positron",
+    "text": "Getting started with R and Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nhttps://?meta:prerelease-subdomainquarto.org\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
   }
 ]
