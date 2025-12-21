@@ -15,4 +15,5 @@ website:
 
 format:
   html:
-    theme: Lux
+    theme: lux
+    css: styles.css
