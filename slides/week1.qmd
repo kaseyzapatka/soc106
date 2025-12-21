@@ -73,7 +73,9 @@ HW #1: due Tuesday, September 4, end of day
 
 ---
 
-Example: in past semesters, has Sociology 106 been more appealing to male or female students?
+## One example: 
+
+In past semesters, has Sociology 106 been more appealing to male or female students?
 
 One possibility: gender doesn’t make a difference!
 Null hypothesis: P(student is male) = 50%
@@ -82,7 +84,7 @@ Alternative hypothesis: P(student is male) > 50%
 
 ---
 
-A statistical test
+## A statistical test
 
 ---
 

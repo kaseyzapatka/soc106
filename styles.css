@@ -12,7 +12,17 @@ a:hover {
 }
 
 /* Restore real bold text */
-strong, b {
-  font-weight: 700;
+/*strong, b {
+/*  font-weight: 700;
+/*}
+
+
+.navbar {
+  background-color: #212529; /* dark gray */
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: #f8f9fa !important;
 }
 
