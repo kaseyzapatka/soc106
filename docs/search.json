@@ -270,7 +270,7 @@
     "href": "slides/week1.html#getting-started-with-r-and-positron",
     "title": "Week 1",
     "section": "Getting started with R and Positron",
-    "text": "Getting started with R and Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nClick here for GitHub course repo\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
+    "text": "Getting started with R and Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
   },
   {
     "objectID": "index.html",
@@ -284,14 +284,14 @@
     "href": "slides/index.html",
     "title": "Lecture Slides",
     "section": "",
-    "text": "Week 1: Introduction\nWeek 2: Data and Measurement\nWeek 3: Descriptive Statistics"
+    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing and power\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: TBD\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final (11:30AM - 2:30PM)"
   },
   {
     "objectID": "slides/index.html#slides",
     "href": "slides/index.html#slides",
     "title": "Lecture Slides",
     "section": "",
-    "text": "Week 1: Introduction\nWeek 2: Data and Measurement\nWeek 3: Descriptive Statistics"
+    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing and power\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: TBD\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final (11:30AM - 2:30PM)"
   },
   {
     "objectID": "about.html",
