@@ -6,7 +6,6 @@ format:
     toc: true
     toc-depth: 2
     number-sections: false
-    theme: default
   pdf:
     documentclass: article
     geometry: margin=1in
