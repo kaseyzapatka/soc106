@@ -28,13 +28,6 @@
     "text": "REQUIRED COURSE MATERIALS\nThe textbook we will use for this course is free and accessible online: David Lane’s Online Statistics (http://onlinestatbook.com/Online_Statistics_Education.pdf).\nYou are required to have a laptop that can access the internet to take this course. If you wish to take this course and do not have access to a computer, please let me know immediately. A major component of this course is learning the statistical programming language R and getting practice using R to analyze data.\nIn our first class, we will walk through downloading R onto your computer (http://cran.rstudio.com), as well as Positron, a free program that makes working in R much easier (https://positron.posit.co/download.html) and is at the cutting edge of data science right now. Downloading and installing R2: and Positron3 is straightforward for Windows, but requires knowing your Mac hardware. Installing them on a Chromebook may be more difficult; please let me know immediately if you are using a Chromebook for this course, and I will try to connect you with someone who can help with the installation."
   },
   {
-    "objectID": "syllabus.html#how-we-will-use-class-time",
-    "href": "syllabus.html#how-we-will-use-class-time",
-    "title": "Sociology 106",
-    "section": "HOW WE WILL USE CLASS TIME",
-    "text": "HOW WE WILL USE CLASS TIME\nFor most weeks, we will have assigned readings and sometimes pre-recorded videos, typically in 10-15 minute segments. You should read the assigned readings or watch the assigned videos BEFORE you come come to class. Class “lecture” meeting times will be used to review key points, answer questions and discuss the readings."
-  },
-  {
     "objectID": "syllabus.html#course-requirements",
     "href": "syllabus.html#course-requirements",
     "title": "Sociology 106",
@@ -49,11 +42,11 @@
     "text": "DATA FOR ASSIGNMENTS AND RESEARCH PAPER\nOver the course of the semester, you will work with one (or more) datasets of your choosing in your assignments and your final paper. You may use any data you like, and are encouraged to consult with me as you choose and begin working with your data. Below are some online repositories where data are available:\n\nThe Survey Documentation and Analysis page at https://sda.berkeley.edu/archive.htm This site has opinion data from the General Social Surveys, American National Election Studies, and various studies on racial attitudes and prejudice, among other surveys on household finance and health.\nThe Inter-university Consortium for Political and Social Research (ICPSR) has thousands of surveys. You may search for surveys at https://www.icpsr.umich.edu/sites/icpsr/find-data\nThe Association of Religion Data Archives (ARDA) also has a voluminous collection of surveys on religion, accessible at https://thearda.com/Archive/browse.asp.\nThe Integrated Public Use Microdata Series (IPUMS) is the most accessible way to access lots of U.S. and international census and survey data: https://www.ipums.org\nFinally, the Roper Center at Cornell University has a massive database of public opinion polls: https://ropercenter.cornell.edu\n[INSERT A FEW MORE?]"
   },
   {
-    "objectID": "syllabus.html#keys-to-success",
-    "href": "syllabus.html#keys-to-success",
+    "objectID": "syllabus.html#keys-to-sucess",
+    "href": "syllabus.html#keys-to-sucess",
     "title": "Sociology 106",
-    "section": "KEYS TO SUCCESS",
-    "text": "KEYS TO SUCCESS\n\nIn some ways, learning statistics is in some ways like learning a language, and it is important not to be intimidated by new terms to represent quantities or concepts. It is often helpful to write in plain language the meaning of the quantities or concepts represented by a letter or symbol.\nPlease ask questions during lecture or during lab if you do not understand. If something is unclear to you, it is probably unclear to other students as well.\nLectures and labs are planned to allow time for questions and answers.\nLecture slides will be made available, but are not a substitute for careful note taking.\nFor most students, learning statistics requires thinking through how to solve problems. Statistics cannot be learned simply by reading a book or listening to a lecture. You should not expect to fully understand the material until after you have completed the relevant assignment.\nBecause most of the material is cumulative, it is essential that you keep up with the course material. If you find yourself falling behind, seek help immediately from me during office hours.\nThe most effective way to study for the exams is to do practice problems. As such, the assignments are a critical part of the course. You are strongly encouraged to do homework assignments and study for exams in groups."
+    "section": "Keys to sucess",
+    "text": "Keys to sucess\n\nIn some ways, learning statistics is like learning a language, and it is important not to be intimidated by new terms and concepts. It is often helpful to write in plain language the meaning of the quantities or concepts represented by a letter or symbol.\nPlease ask questions during lecture or during lab if you do not understand. If something is unclear to you, it is probably unclear to other students as well.\nLectures and labs are planned to allow time for questions and answers.\nLecture slides will be made available, but are not a substitute for careful note taking.\nFor most students, learning statistics requires thinking through how to solve problems. Statistics cannot be learned simply by reading a book or listening to a lecture. You should not expect to fully understand the material until after you have completed the relevant assignment.\nBecause most of the material is cumulative, it is essential that you keep up with the course material. If you find yourself falling behind, seek help immediately from me during office hours.\nThe most effective way to study for the exams is to do practice problems. As such, the assignments are a critical part of the course. You are strongly encouraged to do homework assignments and study for exams in groups."
   },
   {
     "objectID": "syllabus.html#classroom-policies",
@@ -74,7 +67,7 @@
     "href": "syllabus.html#schedule",
     "title": "Sociology 106",
     "section": "SCHEDULE",
-    "text": "SCHEDULE\n\n\n\n\n\n\n\n\n\n\nWeek\nClass Date\nTopic\nPages in Textbook\nAssignments Due\n\n\n\n\n1\n8/23\nIntroduction\n-\n-\n\n\n2\n8/30\nStatistical computing and finding data\nbCourses handouts\n-\n\n\n3\n9/6\nVisualizing distributions\np. 82-85, 92-108, 165-169\nHW #1 due 9/4\n\n\n4\n9/13\nSummarizing distributions\np. 131-133, 144-151, 170-175\nHW #2 due 9/11\n\n\n5\n9/20\nBasics of probability theory\np. 189-197\nHW #3 due 9/18\n\n\n6\n9/27\nProbability models of distributions\np. 249-262\nHW #4 due 9/25; paper proposal due 9/28\n\n\n7\n10/4\nSampling distributions\np. 300-315, 319-321\nHW #5 due 10/2\n\n\n8\n10/11\nEstimates and confidence intervals\np. 329-355, 358-359\nHW #6 due 10/9\n\n\n9\n10/18\nHypothesis testing\np. 369-376, 379-391, 398-411\nHW #7 due 10/16; annotated bibliography due 10/19\n\n\n10\n10/25\nChi-square test\np. 597-607\nHW #8 due 10/23\n\n\n11\n11/1\nLinear regression\np. 461-481\nHW #9 due 10/30\n\n\n12\n11/8\nLogistic regression\nbCourses handouts\nHW #10 due 11/6; revised paper proposal due 11/9\n\n\n13\n11/15\nExtensions to regression\nTBD\nHW #11 due 11/13\n\n\n13\n11/22\nThanksgiving; no class\n-\n-\n\n\n14\n11/29\nResearch presentations; wrap-up\n-\n-\n\n\n15\n12/6\nRRR Week–no new material\n-\nFinal paper due 12/4\n\n\n16\n12/12\nFinal (3-6 PM)\n-\n-"
+    "text": "SCHEDULE\n\n\n\nWeek\nDate\nTopic\nSuggested Readings/Videos\nAssignments Due\n\n\n\n\n1\n1/20/2026\nIntroduction–course overview\n-\n-\n\n\n2\n1/27/2026\nStatistical computing in R\nPositron tutorial; Positron + Quarto tutorial; Wickham 7.1, 7.2, 7.21, 7.23, 7.5; Thompson and Keith (Introduction p. 336-340, Discussion p. 351-354)\nHW #1 due 2/5\n\n\n3\n2/3/2026\nVisualizing distributions\nLane p. 82-85, 92-108, 165-169; Wickham 1.1,1.3, 1.4, 1.5, 1.6; Thompson and Keith (Data and Methods p.342-344)\nHW #2 due 2/12\n\n\n4\n2/10/2026\nSummarizing distributions\nLane p. 123-128, 131-135, 140-144-153, 170-175\nHW #3 due 2/19\n\n\n5\n2/17/2026\nBasics of probability theory\nLane p. 189-197, 212-214\nHW #4 due 2/26; paper proposal due 2/26\n\n\n6\n2/24/2026\nProbability models of distributions\nLane p. 248-265\nHW #5 due 3/5\n\n\n7\n3/3/2026\nSampling distributions\nLane p. 300-315, 319-321; seeing theory - central limits theorem\nHW #6 due 3/12\n\n\n8\n3/10/2026\nEstimates and confidence intervals\nLane p. 328-355, 358-359; seeing theory - confidence intervals\nHW #7 due 3/19; annotated bibliography due 3/19\n\n\n9\n3/17/2026\nHypothesis testing and power\nLane p. 369-391, 398-411, 448-457, 597-607\nHW #8 due 4/2\n\n\n10\n3/24/2026\nSpring Recess – no class\n-\n-\n\n\n11\n3/31/2026\nLinear regression\nLane p. 461-481; Thompson and Keith (Results p. 344-348)\nHW #9 due 4/9\n\n\n12\n4/7/2026\nLogistic regression\nFreeman and Braconi (focus on Methodology, Results)\nHW #10 due 4/16; revised proposal with outline due 4/16\n\n\n13\n4/14/2026\nExtensions to regression\nThompson and Keith (Results p.349-351)\nHW #11 due 4/23\n\n\n14\n4/21/2026\nTBD\nTBD\nHW #12 due 4/30\n\n\n15\n4/28/2026\nResearch presentations; wrap-up\n-\n-\n\n\n16\n5/5/2026\nRRR Week – no new material\n-\nFinal paper due 5/7\n\n\n17\n5/11/2026\nFinal (11:30AM - 2:30PM)\n-\n-"
   },
   {
     "objectID": "syllabus.html#footnotes",
@@ -299,5 +292,19 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "syllabus.html#how-we-will-use-class-time",
+    "href": "syllabus.html#how-we-will-use-class-time",
+    "title": "Sociology 106",
+    "section": "HOW WE WILL USE CLASS TIME",
+    "text": "HOW WE WILL USE CLASS TIME\nFor most weeks, we will have assigned readings and sometimes pre-recorded videos, typically in 10-15 minute segments. You should read the assigned readings or watch the assigned videos BEFORE you come come to class. Class “lecture” meeting times will be used to review key points, answer questions and discuss the readings."
+  },
+  {
+    "objectID": "syllabus.html#keys-to-success",
+    "href": "syllabus.html#keys-to-success",
+    "title": "Sociology 106",
+    "section": "KEYS TO SUCCESS",
+    "text": "KEYS TO SUCCESS\n\nIn some ways, learning statistics is in some ways like learning a language, and it is important not to be intimidated by new terms to represent quantities or concepts. It is often helpful to write in plain language the meaning of the quantities or concepts represented by a letter or symbol.\nPlease ask questions during lecture or during lab if you do not understand. If something is unclear to you, it is probably unclear to other students as well.\nLectures and labs are planned to allow time for questions and answers.\nLecture slides will be made available, but are not a substitute for careful note taking.\nFor most students, learning statistics requires thinking through how to solve problems. Statistics cannot be learned simply by reading a book or listening to a lecture. You should not expect to fully understand the material until after you have completed the relevant assignment.\nBecause most of the material is cumulative, it is essential that you keep up with the course material. If you find yourself falling behind, seek help immediately from me during office hours.\nThe most effective way to study for the exams is to do practice problems. As such, the assignments are a critical part of the course. You are strongly encouraged to do homework assignments and study for exams in groups."
   }
 ]
