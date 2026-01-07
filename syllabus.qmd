@@ -90,7 +90,7 @@ In addition, your overall grade may be negatively affected by unexcused absences
 
 ### Weekly assignments (30%)
 
-Weekly assignments may include a short problem set designed to test your comprehension of the concepts from lecture, or require that you address a research question of your choice by using R to analyze data of your choice using one of the techniques we discussed in the previous lecture. Most weeks there will be a bit of both. **The write-up must follow the template provided on the bCourses website and be no longer than 1-2 single-spaced pages (not including the appendix of R code and output).** It is highly recommended that you spend some time during the first week of the semester to choose a single dataset that interests you that you will use throughout the semester for your assignments and possibly for your final paper (see below for where to find data). 
+Weekly assignments may include a short problem set designed to test your comprehension of the concepts from lecture, or require that you address a research question of your choice by using R to analyze data of your choice using one of the techniques we discussed in the previous lecture. Most weeks there will be a bit of both. You will be provided a .qmd file  on bCourses to use as a template to complete the assignment. It is highly recommended that you spend some time during the first week of the semester to choose a single dataset that interests you that you will use throughout the semester for your assignments and to use for your final paper (see below for where to find data). 
 
 I encourage you to find data for and work on these assignments with other students. If you do so, you must report who you worked with on the assignment and still must write up your own work in your own words and submit your own R code and output. All students need practice writing up their analysis of data. Copying is plagiarism and will be treated as such (see [UC Berkeley’s Academic Code of Conduct](https://conduct.berkeley.edu/wp-content/uploads/2025/08/Code-of-Student-Conduct-August-2025.pdf)). 
 
@@ -100,7 +100,7 @@ Weekly assignments will be posted on bCourses. Assignments will be graded on the
  - 1 = below expectations
  - 2 = meets expectations 
  
-Assignments are due on bCourses at 11:59 PM on Thursdays; this timing is so that I can review the assignments and provide feedback to you before class the following Tuesday. There will be 12 weekly assignments over the course of the semester. I will drop your lowest 2 weekly assignment score when calculating your grades on weekly assignments. Each assignment is thus worth 3% of your total grade (3%*10 = 30%).
+Assignments are due on bCourses at 11:59 PM on Thursdays; this timing is so that I can review the assignments and provide feedback to you before class the following Tuesday. There will be 11 weekly assignments over the course of the semester. I will drop your lowest weekly assignment score when calculating your grades on weekly assignments. Each assignment is thus worth 3% of your total grade (3%*10 = 30%).
 
 ### Research paper (40%)
 
@@ -194,7 +194,7 @@ Like any other skill, effective writing can be developed with practice and assis
 | 11 | 3/31 | Linear regression | Lane p. 461-481; Thompson and Keith (Results p. 344-348) | HW #9 due 4/9 |
 | 12 | 4/7 | Logistic regression | Freeman and Braconi (focus on Methodology, Results) | HW #10 due 4/16; revised proposal with outline due 4/16 |
 | 13 | 4/14 | Extensions to regression | Thompson and Keith (Results p.349-351) | HW #11 due 4/23 |
-| 14 | 4/21 | TBD | TBD | HW #12 due 4/30 |
-| 15 | 4/28 | Research presentations |  |  |
+| 14 | 4/21 | TBD  |
+| 15 | 4/28 | Research presentations |   |
 | 16 | 5/5 | RRR Week |  | Final paper due 5/7 |
 | 17 | 5/11 | Final | 11:30AM 2:30PM |

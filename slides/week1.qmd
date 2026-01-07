@@ -13,7 +13,7 @@ format:
 ---
 
 
-## Introductions 
+## Introductions
 
 [Kasey Zapatka](http://kaseyzapatka.com), **Postdoctoral Researcher** 
 
@@ -22,7 +22,9 @@ format:
   - Dissertation: how gentrification influences housing affordability and traced housing affordability over life course 
   - spatial econometrics and spatial analysis
 
-**Teaching:**
+## Introductions
+
+**Teaching**
 
 - [Computational Social Science](https://github.com/kaseyzapatka/Computational-Social-Science-Training-Program) --> course covering machine learning, text analysis, and causal inference
 
@@ -83,7 +85,7 @@ Students will gain practical experience in R for conducting statistical analyses
 3. All samples are good samples (unless they are bad samples)
 
 
-## After completing Sociology 106, you will be able to:
+## After Sociology 106, you will:
 
 1. Understand the basic logic of statistical inference.
 2. Identify the appropriate statistical test given a specific type of data.
@@ -91,26 +93,85 @@ Students will gain practical experience in R for conducting statistical analyses
 4. Interpret the results of statistical tests and discuss their relevance to a particular research question.
 5. Interpret output from regression and have a basic understanding of the machine learning framework.
 
-## So, what is a statical question?
+## So, what is a statistical question?
 
 > In past semesters, has Sociology 106 been more appealing to male or female students?
 
 - One possibility: gender doesn’t make a difference!
 - Another possibility: male students are more likely to have taken Sociology 106 in the past
 
-
-## We could look at some descriptive statistics
+## Could look at descriptive statistics
 
 Some descriptive statistics…(from a previous semester!)
 
-![](images/week1/last_semester.png){width=100%,fig-align="center"}
+```{r}
+
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+
+# data
+# ----------
+students_summary <- data.frame(
+  gender = c("male", "female"),
+  count = c(8, 3)
+)
+
+# plot
+# ----------
+students_summary |> 
+  ggplot(aes(x = gender, y = count)) +
+  geom_col(fill = "#0d467cff", width = 0.6) +
+  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +
+  labs(
+    x = NULL,
+    y = "Number of students",
+    caption = "Percentage of male students = 72.2%"
+  ) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.text = element_text(size = 12),
+    axis.title.y = element_text(size = 12),
+    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))
+  )
+
+```
 
 
 ## The probability model
 
-![](images/week1/probability_model.png){width=100%, fig-align="center"}
+```{r}
 
+# Create data for the binomial distribution
+df <- tibble(
+  male_students = 0:11,
+  probability = dbinom(male_students, size = 11, prob = 0.5)
+)
 
+# Plot
+ggplot(df, aes(x = male_students, y = probability)) +
+  geom_col(fill = "steelblue", width = 0.6) +
+  scale_y_continuous(
+    labels = scales::percent_format(accuracy = 1),
+    limits = c(0, 0.25)
+  ) +
+  scale_x_continuous(breaks = 0:11) +
+  labs(
+    title = "Assuming P(student is male) = 50%, for a class of 11 students:",
+    x = "Number of male students",
+    y = "Probability of outcome"
+  ) +
+  theme_minimal(base_size = 16) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    panel.grid.minor = element_blank()
+  )
+
+```
 
 ## One example: 
 
@@ -118,7 +179,7 @@ Some descriptive statistics…(from a previous semester!)
 
 One possibility: gender doesn’t make a difference!
 
-- <span class="highlight">Null hypothesis: P(student is male) = 50%</span>
+- Null hypothesis: P(student is male) = 50%
 
 Another possibility: male students are more likely to major in Statistics
 
@@ -128,8 +189,60 @@ Another possibility: male students are more likely to major in Statistics
 
 ## A statistical test
 
-![](images/week1/statistical_test.png){width=100%, fig-align="center"}
+```{r}
 
+
+# Parameters
+n <- 11
+p <- 0.5
+
+# Create probability distribution
+df <- tibble(
+  male_students = 0:n,
+  prob = dbinom(male_students, size = n, prob = p)
+) %>%
+  mutate(
+    highlight = male_students >= 8
+  )
+
+# Compute tail probability
+tail_prob <- sum(df$prob[df$male_students >= 8])
+
+# Plot
+ggplot(df, aes(x = male_students, y = prob, fill = highlight)) +
+  geom_col(width = 0.6) +
+  scale_fill_manual(
+    values = c("FALSE" = "#5b9bd5", "TRUE" = "#c00000"),
+    guide = "none"
+  ) +
+  scale_y_continuous(
+    labels = scales::percent_format(accuracy = 1),
+    limits = c(0, 0.26)
+  ) +
+  scale_x_continuous(breaks = 0:11) +
+  labs(
+    x = "Number of male students",
+    y = "Probability of outcome"
+  ) +
+  annotate(
+    "text",
+    x = 8.6,
+    y = 0.115,
+    label = paste0(
+      "P(# male students ≥ 8) = ",
+      scales::percent(tail_prob, accuracy = 0.1)
+    ),
+    color = "#c00000",
+    size = 5,
+    hjust = 0.2
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    panel.grid.minor = element_blank()
+  )
+
+
+```
 
 
 ## The same test, but in R
@@ -152,13 +265,28 @@ You will be able to test:
 ## Questions?
 
 
+## Required Course Readings{.smaller}
+
+1. **David Lane's Online Statistics** (<http://onlinestatbook.com/Online_Statistics_Education.pdf>). 
+
+2. **Hadley Wickham's R for Data Science 2nd Edition** (<https://r4ds.hadley.nz>), which is also free online.
+
+3. We'll read two journal articles to see how social scientists use regression analysis in practice. 
+
+  - **Thompson, M.S., & Keith, V. M.** (2001). The Blacker the Berry: Gender, Skin Tone, Self-Esteem, and Self-Efficacy. Gender & Society, 15(3), 336-357. (<https://doi.org/10.1177/089124301015003002>) 
+  
+  - **Freeman, L., & Braconi, F.** (2004). Gentrification and Displacement New York City in the 1990s. Journal of the American Planning Association, 70(1), 39–52. (<https://doi.org/10.1080/01944360408976337>)
+
+
 ## Required Course Materials
 
-1. Textbook: [David Lane’s “Introduction to Statistics”](onlinestatbook.com/Online_Statistics_Education.pdf), which is free and you can obtain it online for free
+Access to a **laptop** where you can download: 
 
-2. Access to a computer where you can download [R](http://cran.rstudio.com) and [Positron](https://positron.posit.co/download.html) (a free program that makes working in R much easier  and is at the cutting edge of data science right now), as well as data to analyze
+1. **R** (<http://cran.rstudio.com>), an open-source programming language
 
-3. We’ll start installation of R and RStudio at the end of class--<span class="highlight">this must be done by class next week</span>
+2. **Positron** (<https://positron.posit.co/download.html>), a free program that makes working in R much easier and is at the cutting edge of data science right now. 
+
+We’ll start installation of R and Positron at the end of class--<span class="highlight">this must be done by class next week</span>
 
 
 ## Course Elements
@@ -174,9 +302,9 @@ You will be able to test:
 
 - **Second half** of class, you will get to practice implementing these concepts in R using data and problems provided by me
 
-## Typical Weekly Assignment{.small-text}
+## Typical Weekly Assignment{.smaller}
 
-**Part 1:** 1-3 problems 
+**Part 1:** 3-5 problems 
 
 Show your work; write out conclusions and interpret results as necessary
 
@@ -185,11 +313,11 @@ Show your work; write out conclusions and interpret results as necessary
 - Work with your own dataset to apply methods introduced in lecture
 - Ideally the same dataset from week to week (use the same dataset for your research paper)
 - For the first assignment, I will provide a dataset on bCourses
-- Think carefully about the method, the types of questions it can  answer, and the types of variables that can be used in the method  before choosing variables from your dataset
-- Write up using quarto template provided on bCourses and submit to bCourse
+- Think carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method  before choosing variables from your dataset
+- Write up using quarto (.qmd file) template provided on bCourses and submit to bCourse
 
 
-## Research Paper
+## Research Paper{.smaller}
 
 You will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings
 
@@ -198,11 +326,11 @@ You will develop and present a research question of your choice, address it usin
 - Several milestones throughout the semester will help you progress towards the final paper
   - Paper proposal (5%)
   - Annotated bibliography (5%)
-  - In-class presentation (5%)
+  - In-class presentation (5%)  -- 7-10 mins
   - Final paper (20%)
 
 
-## Keys to Success
+## Keys to Success{.smaller}
 
 <span class="highlight">Material is cumulative, so it is critical to keep up</span>
 
@@ -214,7 +342,7 @@ You will develop and present a research question of your choice, address it usin
 - This is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment
 - Feel free to work on assignments in groups, though what you turn in must be your own work.
 
-## Keys to Success
+## Keys to Success{.smaller}
 
 <span class="highlight">Learning statistics is like learning a language</span>
 
@@ -222,10 +350,10 @@ You will develop and present a research question of your choice, address it usin
 - It is important not to be intimidated by new terms or the use of letters to represent quantities or variables
 - Review your algebra skills if necessary
 
-<span class="highlight">Lecture slides will be made available, but are not a substitute for careful note taking.</span>
+<span class="highlight">Lecture slides will be made available, but are not a substitute for careful note taking</span>
 
 
-## Office Hours
+## Office Hours{.smaller}
 
 I can help in office hours with questions about concepts from lecture or about coding in R
 
@@ -238,7 +366,7 @@ Outside of office hours, your best resources are your fellow classmates!
 
 - If something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture
 
-## Online and Generative AI Policy
+## Online and Generative AI Policy{.smaller}
 
 - <span class="highlight">PLEASE USE THEM!</span>--AI tools (e.g., ChatGPT), Google, and online resources (e.g., [StackOverflow](https://stackoverflow.com/questions)  or [StackExchange](https://stackexchange.com))
 - <span class="highlight">DO</span> use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning. 
@@ -246,13 +374,6 @@ Outside of office hours, your best resources are your fellow classmates!
 - <span class="highlight">The goal</span> is to use them to support your learning and problem-solving, not to replace it. 
 
 > If you are going to spend the time taking this course, you should learn as much as you can.
-
-## Study groups
-
-- I will create your study groups after class, when I should have a better idea of who will remain in the class
-
-- <span class="highlight">HW #1: due Tuesday, January 4, end of day</span>
-
 
 ## Questions?
 
