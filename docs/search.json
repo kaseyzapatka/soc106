@@ -77,338 +77,611 @@
     "text": "Footnotes\n\n\nI thank Joe LaBriola for their work designing this syllabus in previous semesters, as well as David Harding for his work designing the Sociology 271B class.↩︎\nIf you wish to take this course and do not have access to a computer, please let me know immediately. Also, if installing R on a Chromebook may be more difficult; please let me know immediately if you are using a Chromebook for this course, and I will try to connect you with someone who can help with the installation.↩︎\nIf you have a Mac, you need to check whether your laptop has an Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac. You can check the process by:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.↩︎\nYou’ll want to do the same here or just download and use the “Universal” option, which is a slightly larger file and might not be quite as optimized.↩︎"
   },
   {
-    "objectID": "slides/week1.html#introductions",
-    "href": "slides/week1.html#introductions",
-    "title": "Week 1",
-    "section": "Introductions",
-    "text": "Introductions\nKasey Zapatka, Postdoctoral Researcher\n\nPhD, Sociology, CUNY Graduate Center\nUrban inequality with a focus on housing, affordability, and neighborhood change\n\nDissertation: how gentrification influences housing affordability and traced housing affordability over life course\nspatial econometrics and spatial analysis"
+    "objectID": "slides/week2.html#housekeeping",
+    "href": "slides/week2.html#housekeeping",
+    "title": "Week 2",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nOffice hours this week\n\nTuesdays, right before 11:30 AM-1:00 PM, TBA\nTuesdays, right after class, until 4:30 PM, TBA\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nHW #1: due Thursday, February 5, 11:59 PM"
   },
   {
-    "objectID": "slides/week1.html#introductions-1",
-    "href": "slides/week1.html#introductions-1",
-    "title": "Week 1",
-    "section": "Introductions",
-    "text": "Introductions\nTeaching\n\nComputational Social Science –&gt; course covering machine learning, text analysis, and causal inference\n\nCurrent Research\n\nDeveloping a longitudinal database of evictions\nEvaluating impact of Emergency Rental Assistance and tenant protections on evictions during COVID-19 pandemic"
-  },
-  {
-    "objectID": "slides/week1.html#now-your-turn",
-    "href": "slides/week1.html#now-your-turn",
-    "title": "Week 1",
-    "section": "Now your turn",
-    "text": "Now your turn\n\nName\nYear\nExperience with R (no right answer)\nMac or Windows user? (there’s a right answer)\nWhy are you taking this course?\nWhat are you most looking forward to in this course?"
-  },
-  {
-    "objectID": "slides/week1.html#agenda",
-    "href": "slides/week1.html#agenda",
-    "title": "Week 1",
+    "objectID": "slides/week2.html#agenda",
+    "href": "slides/week2.html#agenda",
+    "title": "Week 2",
     "section": "Agenda",
-    "text": "Agenda\nWelcome, and a few remarks about the course\nIntroductions/Ice Breaker\nDiscussion of each of today’s learning goals:\n\nUnderstand similarities and differences between conventional social science statistics and data science approaches\nExplore the opportunities and risks of “big data” and data science methods/tools for social scientists"
+    "text": "Agenda\n\nExploring R and Positron\n\nScripting basics and best practices\nQuarto for submitting hw assignments\n\nTypes of variables\nLogical operators\nData structures\nThe Tidyverse\n\nload and manipulate data"
   },
   {
-    "objectID": "slides/week1.html#sociology-106-is",
-    "href": "slides/week1.html#sociology-106-is",
-    "title": "Week 1",
-    "section": "Sociology 106 is…",
-    "text": "Sociology 106 is…\n…an intermediate undergraduate social science research methods course emphasizes the motivation, computation, and interpretation of statistical tests.\nCourse Content\n\nStatistical tests for one or two continuous or categorical variables\nInterpretation of linear and logistic regression\nIntroduction to machine learning framework in the last week\nData management and analysis using R statistical programming language\n\nSkills Developed\nStudents will gain practical experience in R for conducting statistical analyses and managing data."
+    "objectID": "slides/week2.html#exploring-r-and-positron",
+    "href": "slides/week2.html#exploring-r-and-positron",
+    "title": "Week 2",
+    "section": "Exploring R and Positron",
+    "text": "Exploring R and Positron\nR and positron are very powerful\n\nToday may seem like a lot if you haven’t had much programming experience\nPlease stop me if you are not sure you understand—you are probably not the only one!\nHelpful if you can follow along in Positron\n\nGoal of today’s lecture:\n\nBasics of using R (through Positron)\nHow to load data\nHow to complete homework"
   },
   {
-    "objectID": "slides/week1.html#sociology-106-is-not",
-    "href": "slides/week1.html#sociology-106-is-not",
-    "title": "Week 1",
-    "section": "Sociology 106 is not…",
-    "text": "Sociology 106 is not…\n…about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.\n\nThis course will be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications\nWe will be more applied, still with some math (and some equations)\n\n…about the “one true way to answer sociological questions” (where quals at?)."
+    "objectID": "slides/week2.html#positron",
+    "href": "slides/week2.html#positron",
+    "title": "Week 2",
+    "section": "Positron",
+    "text": "Positron\n\nOpen sourced Integrated Development Environment (IDE)\nDeveloped by Posit and descendent of R-studio\nSpecifically designed to use R and Python interchangeably\nTons of custom extensions - e.g., air, gitlens, quarto, docker\nCan be used for data science, web apps, websites, books, etc.\n\nCheck out Andres Heiss’ blog for more fun things"
   },
   {
-    "objectID": "slides/week1.html#for-this-course-we-will-assume",
-    "href": "slides/week1.html#for-this-course-we-will-assume",
-    "title": "Week 1",
-    "section": "For this course, we will assume:",
-    "text": "For this course, we will assume:\n\nSocial categories and phenomena can be usefully represented using numbers.\nVariables measure what they purport to measure.\nAll samples are good samples (unless they are bad samples)"
+    "objectID": "slides/week2.html#positron-1",
+    "href": "slides/week2.html#positron-1",
+    "title": "Week 2",
+    "section": "Positron",
+    "text": "Positron\n\n\n\nScript panel\nConsole panel\nObjects panel\nPlot panel"
   },
   {
-    "objectID": "slides/week1.html#after-sociology-106-you-will",
-    "href": "slides/week1.html#after-sociology-106-you-will",
-    "title": "Week 1",
-    "section": "After Sociology 106, you will:",
-    "text": "After Sociology 106, you will:\n\nUnderstand the basic logic of statistical inference.\nIdentify the appropriate statistical test given a specific type of data.\nCompute descriptive statistics, graphs, tables, and simple statistical tests using R.\nInterpret the results of statistical tests and discuss their relevance to a particular research question.\nInterpret output from regression and have a basic understanding of the machine learning framework."
+    "objectID": "slides/week2.html#script-panel",
+    "href": "slides/week2.html#script-panel",
+    "title": "Week 2",
+    "section": "Script Panel",
+    "text": "Script Panel"
   },
   {
-    "objectID": "slides/week1.html#so-what-is-a-statistical-question",
-    "href": "slides/week1.html#so-what-is-a-statistical-question",
-    "title": "Week 1",
-    "section": "So, what is a statistical question?",
-    "text": "So, what is a statistical question?\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\n\nOne possibility: gender doesn’t make a difference!\nAnother possibility: male students are more likely to have taken Sociology 106 in the past"
+    "objectID": "slides/week2.html#console-panel",
+    "href": "slides/week2.html#console-panel",
+    "title": "Week 2",
+    "section": "Console Panel",
+    "text": "Console Panel"
   },
   {
-    "objectID": "slides/week1.html#could-look-at-descriptive-statistics",
-    "href": "slides/week1.html#could-look-at-descriptive-statistics",
-    "title": "Week 1",
-    "section": "Could look at descriptive statistics",
-    "text": "Could look at descriptive statistics\nSome descriptive statistics…(from a previous semester!)"
+    "objectID": "slides/week2.html#object-panel",
+    "href": "slides/week2.html#object-panel",
+    "title": "Week 2",
+    "section": "Object Panel",
+    "text": "Object Panel"
   },
   {
-    "objectID": "slides/week1.html#the-probability-model",
-    "href": "slides/week1.html#the-probability-model",
-    "title": "Week 1",
-    "section": "The probability model",
-    "text": "The probability model"
+    "objectID": "slides/week2.html#positron-2",
+    "href": "slides/week2.html#positron-2",
+    "title": "Week 2",
+    "section": "Positron",
+    "text": "Positron\nLet’s explore Positron live:\n\nFile explorer\nTerminal (command line)\nInterpreter and Folder\nNew file\nOpen\nViewer"
   },
   {
-    "objectID": "slides/week1.html#one-example",
-    "href": "slides/week1.html#one-example",
-    "title": "Week 1",
-    "section": "One example:",
-    "text": "One example:\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\nOne possibility: gender doesn’t make a difference!\n\nNull hypothesis: P(student is male) = 50%\n\nAnother possibility: male students are more likely to major in Statistics\n\nAlternative hypothesis: P(student is male) &gt; 50%"
+    "objectID": "slides/week2.html#writing-with-script.r",
+    "href": "slides/week2.html#writing-with-script.r",
+    "title": "Week 2",
+    "section": "Writing with script.R",
+    "text": "Writing with script.R\nBest practice to write all code in a script file\n\nReproducible code\nDocuments exactly what you have done\nAllows you to easily correct mistakes\n\nTwo typs of files we’ll work with\n\nR file (.R) - only accepts R code\nQuarto file (.qmd) - allows for R/Python and text"
   },
   {
-    "objectID": "slides/week1.html#a-statistical-test",
-    "href": "slides/week1.html#a-statistical-test",
-    "title": "Week 1",
-    "section": "A statistical test",
-    "text": "A statistical test"
+    "objectID": "slides/week2.html#writing-with-script.r-1",
+    "href": "slides/week2.html#writing-with-script.r-1",
+    "title": "Week 2",
+    "section": "Writing with script.R",
+    "text": "Writing with script.R\nUse a hashtag (#) at the start of lines in your script to tell R not to run that line\n\nUseful for making comments about what your code is doing:\nHelps you remember what you did\nHelps others (like me, reading your homework) see what you were doing\n\n#| eval: false\n#| echo: true\n# load data\ncensus_data &lt;- read_csv(\"data/acs2021.csv\")"
   },
   {
-    "objectID": "slides/week1.html#the-same-test-but-in-r",
-    "href": "slides/week1.html#the-same-test-but-in-r",
-    "title": "Week 1",
-    "section": "The same test, but in R",
-    "text": "The same test, but in R\n\nbinom.test(c(8,3), p = 0.5, alternative=\"greater\")\n\n\n    Exact binomial test\n\ndata:  c(8, 3)\nnumber of successes = 8, number of trials = 11, p-value = 0.1133\nalternative hypothesis: true probability of success is greater than 0.5\n95 percent confidence interval:\n 0.4356258 1.0000000\nsample estimates:\nprobability of success \n             0.7272727"
+    "objectID": "slides/week2.html#writing-with-script.r-2",
+    "href": "slides/week2.html#writing-with-script.r-2",
+    "title": "Week 2",
+    "section": "Writing with script.R",
+    "text": "Writing with script.R\nRunning code:\n\nWindows: highlight the entire line, and hit Ctrl + r\nMac: cursor on line, hit command + return"
   },
   {
-    "objectID": "slides/week1.html#by-the-end-of-this-course",
-    "href": "slides/week1.html#by-the-end-of-this-course",
-    "title": "Week 1",
-    "section": "By the end of this course…",
-    "text": "By the end of this course…\nYou will be able to test:\n\nTheories involving one categorical or continuous variable.\n\nEx: gender is often measured as a categorical variable (male / female / other)\nEx: income is often measured as a continuous variable (the number of dollars one earns is a real number)\n\nTheories involving how one (or more) binary or continuous variable affects another binary or continuous variable."
+    "objectID": "slides/week2.html#variable-assignment-in-script.r",
+    "href": "slides/week2.html#variable-assignment-in-script.r",
+    "title": "Week 2",
+    "section": "Variable assignment in script.R",
+    "text": "Variable assignment in script.R\nR is an object-oriented programming language, meaning you can create new objects from any type of value, store it R’s memory, and call it when necessary\n\nDefine variables using the assignment operator: &lt;-\nGive variables meaningful names when assigning\n\n#| eval: false\n#| echo: true\n# load data\nacs21 &lt;- read_csv(\"data/acs2021.csv\")"
   },
   {
-    "objectID": "slides/week1.html#questions",
-    "href": "slides/week1.html#questions",
-    "title": "Week 1",
+    "objectID": "slides/week2.html#common-values-for-variables",
+    "href": "slides/week2.html#common-values-for-variables",
+    "title": "Week 2",
+    "section": "Common values for variables",
+    "text": "Common values for variables\nValues can be:\n\nnumeric (3, 4.5, pi)\ncharacter (“Welcome!”, “foo”)\nboolean (true / false)\n\n#| eval: false\n#| echo: true\nnumeric_variable &lt;- 4\ncharacter_variable &lt;- \"Welcome to Soc 106!\"\nboolean_variable &lt;- TRUE"
+  },
+  {
+    "objectID": "slides/week2.html#variable-assignment-in-script.r-1",
+    "href": "slides/week2.html#variable-assignment-in-script.r-1",
+    "title": "Week 2",
+    "section": "Variable assignment in script.R",
+    "text": "Variable assignment in script.R\nVariable names must be unique\n\nReusing an old name will overwrite the definition of the variable\n\n\n# First assignment\nmy_variable &lt;- 10\nmy_variable\n\n[1] 10\n\n# Overwriting the variable\nmy_variable &lt;- 20\nmy_variable\n\n[1] 20"
+  },
+  {
+    "objectID": "slides/week2.html#types-of-variables-numeric",
+    "href": "slides/week2.html#types-of-variables-numeric",
+    "title": "Week 2",
+    "section": "Types of variables: numeric",
+    "text": "Types of variables: numeric\nNumeric variables can store any real numbers and you can perform standard mathematical operations on numeric variables:\n\na &lt;- 10\nb &lt;- 3\n\na + b\n\n[1] 13\n\na - b\n\n[1] 7\n\na * b\n\n[1] 30\n\na / b\n\n[1] 3.333333"
+  },
+  {
+    "objectID": "slides/week2.html#types-of-variables-character",
+    "href": "slides/week2.html#types-of-variables-character",
+    "title": "Week 2",
+    "section": "Types of variables: character",
+    "text": "Types of variables: character\nCharacter variables can store any text, and are always contained within quotation marks.\n\nfirst_name &lt;- \"John\"\nlast_name &lt;- \"Doe\"\n\n# Combine character strings\npaste(first_name, last_name)\n\n[1] \"John Doe\""
+  },
+  {
+    "objectID": "slides/week2.html#types-of-variables-boolean",
+    "href": "slides/week2.html#types-of-variables-boolean",
+    "title": "Week 2",
+    "section": "Types of variables: boolean",
+    "text": "Types of variables: boolean\nBoolean variables are stored as TRUE or FALSE, which R stores as 1 or 0\nSo, in essence, R stores boolean variables as numeric variables\n\nis_enrolled &lt;- TRUE\nhas_laptop &lt;- FALSE\n\n# R treats TRUE as 1 and FALSE as 0\nis_enrolled + has_laptop\n\n[1] 1\n\nsum(is_enrolled, has_laptop)\n\n[1] 1"
+  },
+  {
+    "objectID": "slides/week2.html#converting-variable-types",
+    "href": "slides/week2.html#converting-variable-types",
+    "title": "Week 2",
+    "section": "Converting variable types",
+    "text": "Converting variable types\nUnder certain circumstances, we can force R to change the type that it classifies a vector\n\nCan always convert numeric → character using the as.character function\nCan convert character → numeric, if the original character vector consists of numbers, using the as.numeric function\n\nIf it contains characters, then WE PROB DON’T WANT TO!\n\n\n\n\nIf you see a . in a function name like as.numeric, it is likely base R."
+  },
+  {
+    "objectID": "slides/week2.html#converting-variable-types-1",
+    "href": "slides/week2.html#converting-variable-types-1",
+    "title": "Week 2",
+    "section": "Converting variable types",
+    "text": "Converting variable types\nHere’s what it looks like R:\n\n# Numeric to character\nnum_var &lt;- 42\nchar_var &lt;- as.character(num_var)\nchar_var\n\n[1] \"42\"\n\n# Character to numeric\ntext_num &lt;- \"123\"\nconverted_num &lt;- as.numeric(text_num)\nconverted_num\n\n[1] 123"
+  },
+  {
+    "objectID": "slides/week2.html#logical-operators",
+    "href": "slides/week2.html#logical-operators",
+    "title": "Week 2",
+    "section": "Logical operators",
+    "text": "Logical operators\n\nUse logical operators to compare two variables or objects\nUseful for manipulating data\n\n\n\n\nOperator\nMeaning\n\n\n\n\n==\nEqual to\n\n\n!=\nNot equal to\n\n\n&lt;\nLess than\n\n\n&gt;\nGreater than\n\n\n&lt;=\nLess than or equal to\n\n\n&gt;=\nGreater than or equal to"
+  },
+  {
+    "objectID": "slides/week2.html#logical-operators-1",
+    "href": "slides/week2.html#logical-operators-1",
+    "title": "Week 2",
+    "section": "Logical operators",
+    "text": "Logical operators\nHere’s what that might look like in R:\n\nx &lt;- 10\ny &lt;- 5\n\nx == y\n\n[1] FALSE\n\nx != y\n\n[1] TRUE\n\nx &gt; y\n\n[1] TRUE\n\nx &lt; y\n\n[1] FALSE\n\nx &gt;= 10\n\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/week2.html#questions",
+    "href": "slides/week2.html#questions",
+    "title": "Week 2",
     "section": "Questions?",
     "text": "Questions?"
   },
   {
-    "objectID": "slides/week1.html#required-course-readings",
-    "href": "slides/week1.html#required-course-readings",
-    "title": "Week 1",
-    "section": "Required Course Readings",
-    "text": "Required Course Readings\n\nDavid Lane’s Online Statistics (http://onlinestatbook.com/Online_Statistics_Education.pdf).\nHadley Wickham’s R for Data Science 2nd Edition (https://r4ds.hadley.nz), which is also free online.\nWe’ll read two journal articles to see how social scientists use regression analysis in practice.\n\n\nThompson, M.S., & Keith, V. M. (2001). The Blacker the Berry: Gender, Skin Tone, Self-Esteem, and Self-Efficacy. Gender & Society, 15(3), 336-357. (https://doi.org/10.1177/089124301015003002)\nFreeman, L., & Braconi, F. (2004). Gentrification and Displacement New York City in the 1990s. Journal of the American Planning Association, 70(1), 39–52. (https://doi.org/10.1080/01944360408976337)"
+    "objectID": "slides/week2.html#data-structures",
+    "href": "slides/week2.html#data-structures",
+    "title": "Week 2",
+    "section": "Data structures",
+    "text": "Data structures\nData structures are simply collections of the data objects we have been working with:\n\nNumeric\nCharacter\nBoolean variables\n\nWhile there are many types of data structures in R, we will focus on two for our purposes: the vector and the dataframe"
   },
   {
-    "objectID": "slides/week1.html#required-course-materials",
-    "href": "slides/week1.html#required-course-materials",
-    "title": "Week 1",
-    "section": "Required Course Materials",
-    "text": "Required Course Materials\nAccess to a laptop where you can download:\n\nR (http://cran.rstudio.com), an open-source programming language\nPositron (https://positron.posit.co/download.html), a free program that makes working in R much easier and is at the cutting edge of data science right now.\n\nWe’ll start installation of R and Positron at the end of class–this must be done by class next week"
+    "objectID": "slides/week2.html#vectors",
+    "href": "slides/week2.html#vectors",
+    "title": "Week 2",
+    "section": "Vectors",
+    "text": "Vectors\nVectors are ordered collections of the same type of objects\n\nOrdered: position matters\nSame type: e.g., can’t mix numeric and character\n\nWe create vectors using the c() operator:\n\n# Numeric vector\nages &lt;- c(22, 25, 19, 30)\n\n# Character vector\nnames &lt;- c(\"Alice\", \"Bob\", \"Charlie\", \"Diana\")\n\nThe c() operator works on already-existing vectors as well as variables (if of same type)"
   },
   {
-    "objectID": "slides/week1.html#course-elements",
-    "href": "slides/week1.html#course-elements",
-    "title": "Week 1",
-    "section": "Course Elements",
-    "text": "Course Elements\n\nAttendance and participation (10%)\nWeekly homework assignments (30%)\nResearch paper (40%)\nFinal exam (20%)"
+    "objectID": "slides/week2.html#vectors-1",
+    "href": "slides/week2.html#vectors-1",
+    "title": "Week 2",
+    "section": "Vectors",
+    "text": "Vectors\nWe can call individual elements within vectors two ways:\n\nusing bracket notation: vector[i]\nusing the Tidyverse: nth()\n\n\nBase RTidyverse\n\n\nUse bracket at end of vector name with index\nThe first element of a vector is indexed as 1.\n\nages &lt;- c(22, 25, 19, 30)\n\n# Get the first element\nages[1]\n\n[1] 22\n\n# Get the third element\nages[3]\n\n[1] 19\n\n# Get multiple elements\nages[c(1, 3)]\n\n[1] 22 19\n\n\n\n\nUse nth() function to do the same thing more intuitively\nStill need Base R to do some things\n\n# load the Tidyverse library\nlibrary(tidyverse)\n\n# Get the first element\nnth(ages, 1) \n\n[1] 22\n\n# Get the third element\nnth(ages, 3)   \n\n[1] 19\n\n# Still need Base R to get multiple elements\nages[c(1, 3)]\n\n[1] 22 19"
   },
   {
-    "objectID": "slides/week1.html#class-format",
-    "href": "slides/week1.html#class-format",
-    "title": "Week 1",
-    "section": "Class Format",
-    "text": "Class Format\n\nFirst half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R\nSecond half of class, you will get to practice implementing these concepts in R using data and problems provided by me"
+    "objectID": "slides/week2.html#dataframes",
+    "href": "slides/week2.html#dataframes",
+    "title": "Week 2",
+    "section": "Dataframes",
+    "text": "Dataframes\nA dataframe is a list of equal-length vectors\n\nEqual length: same # elements in each vector\nBut, vectors can be of different types!\n\nWe create a dataframe using the tibble function:\n\nstudents &lt;- tibble(\n  name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  age = c(22, 25, 19),\n  enrolled = c(TRUE, TRUE, FALSE),\n  stringsAsFactors = FALSE\n)\nstudents\n\n# A tibble: 3 × 4\n  name      age enrolled stringsAsFactors\n  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;           \n1 Alice      22 TRUE     FALSE           \n2 Bob        25 TRUE     FALSE           \n3 Charlie    19 FALSE    FALSE           \n\n\n\n\nstringsAsFactors=FALSE makes sure that character vectors remain in character type and are not converted to factor type (which we may talk about later in the course)."
   },
   {
-    "objectID": "slides/week1.html#typical-weekly-assignment",
-    "href": "slides/week1.html#typical-weekly-assignment",
-    "title": "Week 1",
-    "section": "Typical Weekly Assignment",
-    "text": "Typical Weekly Assignment\nPart 1: 3-5 problems\nShow your work; write out conclusions and interpret results as necessary\nPart 2: Brief analysis in R and write-up\n\nWork with your own dataset to apply methods introduced in lecture\nIdeally the same dataset from week to week (use the same dataset for your research paper)\nFor the first assignment, I will provide a dataset on bCourses\nThink carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset\nWrite up using quarto (.qmd file) template provided on bCourses and submit to bCourse"
+    "objectID": "slides/week2.html#learning-about-dataframes",
+    "href": "slides/week2.html#learning-about-dataframes",
+    "title": "Week 2",
+    "section": "Learning about dataframes",
+    "text": "Learning about dataframes\n\nglimpse(): view data and summary info of dataframe\nhead(): looks at first few observations (similar to print())\nstr(): returns structure of dataframe\ncolnames(): returns column names\n\n\nglimpse()head()str()colnames()\n\n\n\nglimpse(students)\n\nRows: 3\nColumns: 4\n$ name             &lt;chr&gt; \"Alice\", \"Bob\", \"Charlie\"\n$ age              &lt;dbl&gt; 22, 25, 19\n$ enrolled         &lt;lgl&gt; TRUE, TRUE, FALSE\n$ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE\n\n\n\n\n\nhead(students)\n\n# A tibble: 3 × 4\n  name      age enrolled stringsAsFactors\n  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;           \n1 Alice      22 TRUE     FALSE           \n2 Bob        25 TRUE     FALSE           \n3 Charlie    19 FALSE    FALSE           \n\n\n\n\n\nstr(students)\n\ntibble [3 × 4] (S3: tbl_df/tbl/data.frame)\n $ name            : chr [1:3] \"Alice\" \"Bob\" \"Charlie\"\n $ age             : num [1:3] 22 25 19\n $ enrolled        : logi [1:3] TRUE TRUE FALSE\n $ stringsAsFactors: logi [1:3] FALSE FALSE FALSE\n\n\n\n\n\ncolnames(students)\n\n[1] \"name\"             \"age\"              \"enrolled\"         \"stringsAsFactors\""
   },
   {
-    "objectID": "slides/week1.html#research-paper",
-    "href": "slides/week1.html#research-paper",
-    "title": "Week 1",
-    "section": "Research Paper",
-    "text": "Research Paper\nYou will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings\n\nYou can (and should) use your weekly assignments to work on your research question\nSeveral milestones throughout the semester will help you progress towards the final paper\n\nPaper proposal (5%)\nAnnotated bibliography (5%)\nIn-class presentation (5%) – 7-10 mins\nFinal paper (20%)"
+    "objectID": "slides/week2.html#the-tidyverse",
+    "href": "slides/week2.html#the-tidyverse",
+    "title": "Week 2",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\nWhat is it?\n\nA collection of R packages designed for data science that share a common philosophy and grammar\nBy far the most common approach to working with R\nMost intuitive way to do data science"
   },
   {
-    "objectID": "slides/week1.html#keys-to-success",
-    "href": "slides/week1.html#keys-to-success",
-    "title": "Week 1",
-    "section": "Keys to Success",
-    "text": "Keys to Success\nMaterial is cumulative, so it is critical to keep up\n\nPlease ask questions during lecture!\nIf you find yourself falling behind, seek help immediately from me during office hours\n\nLearning statistics requires thinking through how to solve problems\n\nThis is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment\nFeel free to work on assignments in groups, though what you turn in must be your own work."
+    "objectID": "slides/week2.html#the-tidyverse-1",
+    "href": "slides/week2.html#the-tidyverse-1",
+    "title": "Week 2",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\nKey Features\n\nPipe operator (|&gt; or %&gt;%): chains functions together for readable code\nConsistent syntax: functions work similarly across packages\nHuman-readable: code reads like sentences\n\n# |eval=FALSE\n# |echo=TRUE\n\n# Base R\nmean(subset(dataframe, age &gt; 18)$score)\n  \n# Tidyverse - \"take dataframe, filter where age &gt; 18, \n# then pull score, then calculate mean\"\ndataframe |&gt; filter(age &gt; 18) |&gt; pull(score) |&gt; mean()"
   },
   {
-    "objectID": "slides/week1.html#keys-to-success-1",
-    "href": "slides/week1.html#keys-to-success-1",
-    "title": "Week 1",
-    "section": "Keys to Success",
-    "text": "Keys to Success\nLearning statistics is like learning a language\n\nThe material in this course can be challenging / counterintuitive if you haven’t seen it before\nIt is important not to be intimidated by new terms or the use of letters to represent quantities or variables\nReview your algebra skills if necessary\n\nLecture slides will be made available, but are not a substitute for careful note taking"
+    "objectID": "slides/week2.html#the-tidyverse-2",
+    "href": "slides/week2.html#the-tidyverse-2",
+    "title": "Week 2",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\nCore Packages we’ll be using\n\nreadr: for importing data (read_csv())\ndplyr: for manipulating data (filter(), select(), mutate(), summarize())\nggplot2: for data visualization"
   },
   {
-    "objectID": "slides/week1.html#office-hours",
-    "href": "slides/week1.html#office-hours",
-    "title": "Week 1",
-    "section": "Office Hours",
-    "text": "Office Hours\nI can help in office hours with questions about concepts from lecture or about coding in R\n\nTuesdays, right before 11:30 AM-1:00 PM, TBA\nTuesdays, right after class, until 4:30 PM, TBA\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nOutside of office hours, your best resources are your fellow classmates!\n\nIf something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture"
+    "objectID": "slides/week2.html#the-tidyverse-3",
+    "href": "slides/week2.html#the-tidyverse-3",
+    "title": "Week 2",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\nHow the packages work together\n# |eval=FALSE\n# |echo=TRUE\n\n# Install (only once)\ninstall.packages(\"tidyverse\") # install library\n\n# Load library\nlibrary(tidyverse) # load library\n\n# Load data\ndata &lt;- read_csv(\"data.csv\") # read in csv\n\n# Process\ndata |&gt;\n  filter(year == 2020) |&gt;  # filter rows based on conditions\n  select(name, score)  |&gt;  # select specific columns\n  arrange(desc(score)) |&gt;  # order columns\n  glimpse()                # glimpse"
   },
   {
-    "objectID": "slides/week1.html#online-and-generative-ai-policy",
-    "href": "slides/week1.html#online-and-generative-ai-policy",
-    "title": "Week 1",
-    "section": "Online and Generative AI Policy",
-    "text": "Online and Generative AI Policy\n\nPLEASE USE THEM!–AI tools (e.g., ChatGPT), Google, and online resources (e.g., StackOverflow or StackExchange)\nDO use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning.\nDO NOT to copy or paraphrase AI-generated content in any assignment, as this counts as plagiarism\nThe goal is to use them to support your learning and problem-solving, not to replace it.\n\n\nIf you are going to spend the time taking this course, you should learn as much as you can."
+    "objectID": "slides/week2.html#keys-functions",
+    "href": "slides/week2.html#keys-functions",
+    "title": "Week 2",
+    "section": "Keys functions",
+    "text": "Keys functions\n\n\n\n\n\n\n\n\nTidyverse Function\nPurpose\nExample\n\n\n\n\nread_csv()\nImport CSV data\nread_csv(\"data.csv\")\n\n\nglimpse()\nPreview dataframe structure\ndf |&gt; glimpse()\n\n\ncolnames()\nGet column names\ncolnames(df)\n\n\nselect()\nChoose columns\ndf |&gt; select(name, age)\n\n\nfilter()\nChoose rows by condition\ndf |&gt; filter(age &gt; 20)\n\n\nslice()\nChoose rows by position\nslice(df, 1:10)\n\n\narrange()\nSort rows\narrange(df, desc(age))\n\n\nmutate()\nCreate/modify columns\ndf |&gt; mutate(age_2x = age * 2)"
   },
   {
-    "objectID": "slides/week1.html#questions-1",
-    "href": "slides/week1.html#questions-1",
-    "title": "Week 1",
+    "objectID": "slides/week2.html#key-functions-in-action",
+    "href": "slides/week2.html#key-functions-in-action",
+    "title": "Week 2",
+    "section": "Key functions in action",
+    "text": "Key functions in action\n\n# Access a column\nstudents |&gt; colnames() # get column names\n\n[1] \"name\"             \"age\"              \"enrolled\"         \"stringsAsFactors\"\n\n# Access specific rows and columns\nstudents %&gt;% \n  slice(1:2) %&gt;%       # select rows\n  select(name, age)    # select columns\n\n# A tibble: 2 × 2\n  name    age\n  &lt;chr&gt; &lt;dbl&gt;\n1 Alice    22\n2 Bob      25\n\n# Subset based on condition\nstudents %&gt;% \n  filter(age &gt; 20)     # filter rows\n\n# A tibble: 2 × 4\n  name    age enrolled stringsAsFactors\n  &lt;chr&gt; &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;           \n1 Alice    22 TRUE     FALSE           \n2 Bob      25 TRUE     FALSE"
+  },
+  {
+    "objectID": "slides/week2.html#questions-1",
+    "href": "slides/week2.html#questions-1",
+    "title": "Week 2",
     "section": "Questions?",
     "text": "Questions?"
   },
   {
-    "objectID": "slides/week1.html#getting-started-with-r-and-positron",
-    "href": "slides/week1.html#getting-started-with-r-and-positron",
-    "title": "Week 1",
-    "section": "Getting started with R and Positron",
-    "text": "Getting started with R and Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
+    "objectID": "slides/week2.html#file-paths-and-working-directories",
+    "href": "slides/week2.html#file-paths-and-working-directories",
+    "title": "Week 2",
+    "section": "File paths and working directories",
+    "text": "File paths and working directories\nTo load data, R needs to know where to look\n\nNeed to give it directions\nThe file path: \"file/path/to/data.csv\"\n\nThe Problem\n\nWork on different operating systems or different computers?\nBut what if you move data?\n\n\n# These break on different computers or operating systems:\nread_csv(\"C:\\Users\\YourName\\Documents\\project\\data\\mydata.csv\") # windows\nread_csv(\"~/Desktop/project/data/mydata.csv\")                   # mac"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sociology 106",
+    "objectID": "slides/week2.html#the-here-package",
+    "href": "slides/week2.html#the-here-package",
+    "title": "Week 2",
+    "section": "The here Package",
+    "text": "The here Package\nWhat is it? The here package helps you build file paths that work across different computers and operating systems, making your code more reproducible.\nHow It Works\n\nhere() finds your project root (where your project is located)\nBuilds paths relative to that root\nWorks the same on Windows, Mac, and Linux\n\nThe Solution\n\n# load library\nlibrary(here)\n\n# Check where here thinks your project root is\nhere()\n\n# Loading data \ndata &lt;- read_csv(here(\"data\", \"raw\", \"mydata.csv\"))\n\n# Saving results\nwrite_csv(results, here(\"output\", \"results.csv\"))"
+  },
+  {
+    "objectID": "slides/week2.html#saving-and-loading-data",
+    "href": "slides/week2.html#saving-and-loading-data",
+    "title": "Week 2",
+    "section": "Saving and loading data",
+    "text": "Saving and loading data\nYou can save dataframes as .csv files using the write_csv() function:\n\n# save data\n#write_csv(object, filepath)\nwrite_csv(results, here(\"output\", \"results.csv\"))\n\nYou can also read .csv files into dataframes using the read_csv function:\n\n# load data\n#read_csv(filepath)\ndata &lt;- read_csv(here(\"data\", \"raw\", \"mydata.csv\"))"
+  },
+  {
+    "objectID": "slides/week2.html#other-data-types",
+    "href": "slides/week2.html#other-data-types",
+    "title": "Week 2",
+    "section": "Other data types",
+    "text": "Other data types\nYou can also load Excel files into R\nFirst, load the readxl package:\n\nlibrary(readxl)\n\nThen, use the read_excel function:\n\n# load\ndata &lt;- read_excel(\"file_name.xlsx\")\n\nIn fact, R can import all types of data files\nGoogling “import SAS/STATA/SPSS files into R” will point you in the right direction"
+  },
+  {
+    "objectID": "slides/week2.html#some-helpful-r-commands",
+    "href": "slides/week2.html#some-helpful-r-commands",
+    "title": "Week 2",
+    "section": "Some helpful R commands",
+    "text": "Some helpful R commands\n\n?[function_name] brings up a help page\n??[function_name] will (sometimes) lead to helpful examples of how to use the function\nls() lists all objects in the global environment\nrm(object_name) removes an object\nrm(list=ls()) removes all objects"
+  },
+  {
+    "objectID": "slides/week2.html#want-to-know-more-r-tips",
+    "href": "slides/week2.html#want-to-know-more-r-tips",
+    "title": "Week 2",
+    "section": "Want to know more R tips?",
+    "text": "Want to know more R tips?\nMuch of this lecture is based on the first two RFundamentals classes, which are run at the D-Lab\n\nD-Lab trainings: https://dlab.berkeley.edu/training\nIf you want to see the RFundamentals class notes: https://github.com/dlab-berkeley/R-Fundamentals\nOtherwise: Google is your friend!"
+  },
+  {
+    "objectID": "slides/week2.html#questions-2",
+    "href": "slides/week2.html#questions-2",
+    "title": "Week 2",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week2.html#anatomy-of-a-.qmd-file",
+    "href": "slides/week2.html#anatomy-of-a-.qmd-file",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\nThree Main Parts\n\nYAML header\nMarkdown text\nCode chunks\n\nKey Difference\n\nscript.R: runs only code\nscript.qmd: knits together code and text"
+  },
+  {
+    "objectID": "slides/week2.html#anatomy-of-a-.qmd-file-1",
+    "href": "slides/week2.html#anatomy-of-a-.qmd-file-1",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\n\nYAML Header (metadata)\n\nSets document properties, output format, misc. settings\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\ndate: \"2024-01-07\"\nformat: html  # output format (e.g., pdf, docx, html)\n---"
+  },
+  {
+    "objectID": "slides/week2.html#anatomy-of-a-.qmd-file-2",
+    "href": "slides/week2.html#anatomy-of-a-.qmd-file-2",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\n\nMarkdown Text (narrative)\n\nAllows you to document code or write explanations, interpretations, and conclusions\n# Analysis\n\nThis is my larger analysis.\n\n## Method\nI can use regular text explaining my analysis. I can also use **bold**, *italics*, and imbed [hyperlinks](https://quarto).Markdown is a simple language to learn how to use.\nRead more about markdown basics you might want to use"
+  },
+  {
+    "objectID": "slides/week2.html#markdown-basics-formatting",
+    "href": "slides/week2.html#markdown-basics-formatting",
+    "title": "Week 2",
+    "section": "Markdown Basics: Formatting",
+    "text": "Markdown Basics: Formatting\nText Formatting\nHere are the most common ways to format text in markdown:\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n**bold**\nbold\n\n\n*italics*\nitalics\n\n\n***bold italics***\nbold italics\n\n\nsuperscript^2^\nsuperscript2\n\n\nsubscript~2~*\nsubscript2\n\n\n~~strikethrough~~\nstrikethrough\n\n\n`verbatim code`\nverbatim code"
+  },
+  {
+    "objectID": "slides/week2.html#markdown-basics-headings",
+    "href": "slides/week2.html#markdown-basics-headings",
+    "title": "Week 2",
+    "section": "Markdown Basics: Headings",
+    "text": "Markdown Basics: Headings\nYou can put headers as well to organize your work. They go up to 6 levels:\nHeadings\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n# Heading 1\nHeading 1\n\n\n## Heading 2\nHeading 2\n\n\n### Heading 3\nHeading 3"
+  },
+  {
+    "objectID": "slides/week2.html#anatomy-of-a-.qmd-file-3",
+    "href": "slides/week2.html#anatomy-of-a-.qmd-file-3",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\n\nCode Chunks (analysis)\n\nFinally, you can include R code and its output direclty in quarto documents:\n```{{r}}\n\n# load data\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)\n```"
+  },
+  {
+    "objectID": "slides/week2.html#anatomy-of-a-.qmd-file-4",
+    "href": "slides/week2.html#anatomy-of-a-.qmd-file-4",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\nSo to summarize .qmd and .R scripts:\n\n\n\n\n\n\n\n\nFeature\n.R Script\n.qmd Document\n\n\n\n\nPurpose\nRun code\nCreate reports\n\n\nContent\nCode only\nCode + text + output\n\n\nOutput\nConsole results\nFormatted document (e.g., HTML/PDF/Word)\n\n\nComments\n# comment\nFull markdown formatting\n\n\nBest for\nData cleaning, functions\nAnalysis reports, presentations, hw"
+  },
+  {
+    "objectID": "slides/week2.html#rendering-quarto-documents",
+    "href": "slides/week2.html#rendering-quarto-documents",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nWhat is Rendering?\nRendering (or “knitting”) converts your .qmd file into a finished document (HTML, PDF, or Word) by:\n\nRunning all your R code chunks\nCombining code output with your text\nFormatting everything into your chosen output format\n\nHow to Render\n\nClick the “Preview” button at the top of your .qmd file\nRender on save so you can see all changes\nI usually work with it open"
+  },
+  {
+    "objectID": "slides/week2.html#rendering-quarto-documents-1",
+    "href": "slides/week2.html#rendering-quarto-documents-1",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nOutput Formats\nFor this course, make sure html is specified in your YAML header:\n---\ntitle: \"My Analysis\"\nformat: html        # or pdf, docx\n---\nCan format many different formats (e.g., pdf, docx, odt, epubs, pptx)"
+  },
+  {
+    "objectID": "slides/week2.html#rendering-quarto-documents-2",
+    "href": "slides/week2.html#rendering-quarto-documents-2",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nSource vs Visual Mode\nPositron provides two ways to edit .qmd files. Toggle between them using the buttons at the top-left of your editor.\n\n\n\nSource Mode\n\nShows raw markdown syntax\nSee the actual code: **bold**, ## Heading\nMore control over formatting\nBetter for experienced users\n\n\nVisual Mode\n\nWYSIWYG editor (What You See Is What You Get)\nFormatting toolbar (like Microsoft Word)\nLive preview of how text will look\nEasier for beginners"
+  },
+  {
+    "objectID": "slides/week2.html#rendering-quarto-documents-3",
+    "href": "slides/week2.html#rendering-quarto-documents-3",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nWhich Should You Use?\n\nVisual Mode: Great when starting out or writing lots of text\nSource Mode: Better for precise control and learning markdown\n\n\nSwitch between them! Use Visual for writing, Source for troubleshooting. Just be sure to save when switching in between"
+  },
+  {
+    "objectID": "slides/week2.html#rendering-quarto-documents-4",
+    "href": "slides/week2.html#rendering-quarto-documents-4",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nTips for making it work\n\nSave your .qmd file before rendering\nAll code must run without errors to render successfully\nCheck the “Render” tab for error messages if rendering fails\n\nMost common “knitting” errors:\n\nQuarto can’t execute code\nCode chunks have the same name\n\nShould be fine if you don’t do anything fancy and don’t mess with quarto settings"
+  },
+  {
+    "objectID": "slides/week2.html#homework-1",
+    "href": "slides/week2.html#homework-1",
+    "title": "Week 2",
+    "section": "Homework #1",
+    "text": "Homework #1\nFor this week only, I will provide a dataset for you to use on your homework assignment\n\nattain.csv: data from the General Social Survey\nin bCourses, Files → Weekly Assignments → HW 1\n\nTurn in your assignment on bCourses\n\nHW #1: due Thursday, February 5, 11:59 PM\nTurn in BOTH hw1.qmd and hw1.html files\nWrite code and text response intermittenly in file"
+  },
+  {
+    "objectID": "slides/week2.html#in-class-lab",
+    "href": "slides/week2.html#in-class-lab",
+    "title": "Week 2",
+    "section": "In-class lab",
+    "text": "In-class lab\nLet’s setup Positron environment for the course! STEPS:\n\nDownload hw_example.qmd and attain.csv from bCourse\nCreate soc16 folder on your desktop\nCreate data and assignments folders inside\nData always goes inside data folder and assignment always goes instead assignment\nOpen Positron\nClick the Open Folder button and navigate to soc16\nAllow access, check “Trust the authors..”, and click “Yes, …”\nUse Explorer button on left to find hw_example.qmd\nCheck Render on Save button and hit preview\nIf Viewer frame opens with html file - SUCCESS!"
+  },
+  {
+    "objectID": "slides/index.html",
+    "href": "slides/index.html",
+    "title": "Lecture Slides",
     "section": "",
-    "text": "Welcome to Sociology 106: Quantitative Sociological Methods.\nCourse materials, including lecture slides and the syllabus, will be posted here throughout the semester."
+    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing and power\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: TBD\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final (11:30AM - 2:30PM)"
+  },
+  {
+    "objectID": "slides/index.html#slides",
+    "href": "slides/index.html#slides",
+    "title": "Lecture Slides",
+    "section": "",
+    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing and power\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: TBD\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final (11:30AM - 2:30PM)"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html",
+    "href": "assignments/hw10/hw10_key.html",
+    "title": "Weekly Assignment #10",
+    "section": "",
+    "text": "Submission Instructions\n\n\n\n\nDownload this hw10.qmd file from bCourse and use the dataset for your final research paper.\nSave both files on your computer. Make sure to save your data in your data folder and hw10.qmd in your assignments folder.\nFollow the Weekly Assignment Analysis Template structure below to complete the assignment.\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file.\nSubmit the hw10.qmd file to bCourse before the deadline.\nMake sure your name appears in the “author” field in the YAML header above."
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#setup",
+    "href": "assignments/hw10/hw10_key.html#setup",
+    "title": "Weekly Assignment #10",
+    "section": "Setup",
+    "text": "Setup\n\n# Clear environment\nrm(list = ls())\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(here)\nlibrary(modelsummary)\n# Add more libraries here if you need them!"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#question",
+    "href": "assignments/hw10/hw10_key.html#question",
+    "title": "Weekly Assignment #10",
+    "section": "Question",
+    "text": "Question\nWrite your research question here as a single sentence ending in a question mark. This should involve the relationship between your independent variable(s) and a binary dependent variable.\nYour research question:"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#predictions-and-brief-justification",
+    "href": "assignments/hw10/hw10_key.html#predictions-and-brief-justification",
+    "title": "Weekly Assignment #10",
+    "section": "Prediction(s) and Brief Justification",
+    "text": "Prediction(s) and Brief Justification\n**State what you expect to find and why. Be specific about the direction of relationships you expect. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises. \nYour prediction and justification (3-5 sentences):"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#data",
+    "href": "assignments/hw10/hw10_key.html#data",
+    "title": "Weekly Assignment #10",
+    "section": "Data",
+    "text": "Data\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data. Be sure to describe your binary dependent variable and independent variable(s).\nYour data description:"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#analytic-strategy",
+    "href": "assignments/hw10/hw10_key.html#analytic-strategy",
+    "title": "Weekly Assignment #10",
+    "section": "Analytic Strategy",
+    "text": "Analytic Strategy\nDescribe the exact procedure you are going to use to analyze the data, including:\n\nYour binary dependent variable (Y) and independent variable(s) (X)\nIf using categorical variables, what the baseline category is\nWhat your regression equation looks like\nWhat your null hypothesis (H₀) and alternative hypothesis (H₁) are\nWhat significance level (α) you will use\nWhat specific R functions you will use\nBe sure to explain why you are using logitistic regression instead of linear regression\n\nThis should be 3-6 sentences, but no longer than 1/3 of a page.\nYour analytic strategy:"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#code-and-analysis",
+    "href": "assignments/hw10/hw10_key.html#code-and-analysis",
+    "title": "Weekly Assignment #10",
+    "section": "Code and Analysis",
+    "text": "Code and Analysis\nLoad your data and conduct your analysis below. Show all relevant code.\n\nLoad your data\n\n# Load your data\n# Your code here\n\n\n\nData cleaning\n\n# Any data cleaning or variable creation needed\n# Create binary dependent variable if necessary\n# If using categorical variables, create factors and set baseline categories\n# Your code here\n\n\n\nAny descriptives\n\n# Show descriptive statistics for your key variables\n# Your code here\n\n\n\nRun your regression\n\n# Run your logistic regression\n# Your code here\n# Example: model &lt;- glm(outcome ~ x1 + x2, data = mydata, family = binomial(link = \"logit\"))\n\n\n\nDisplay your results\n\n# Display a clean summary of your regression results\n# You can use summary(), modelsummary(), or other formatting functions. \n# Your code here\n\n\n\nOdds ratio\n\n# Calculate and display odds ratios (exponentiated coefficients)\n# Your code here\n# Example: exp(coef(model))\n# Or: exp(confint(model))\n\n\n\nPredicted probabilities\n\n# Calculate predicted probabilities at different values of your independent variable(s)\n# Your code here\n# You may want to create a new data frame with specific values and use predict()"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#results",
+    "href": "assignments/hw10/hw10_key.html#results",
+    "title": "Weekly Assignment #10",
+    "section": "Results",
+    "text": "Results\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Include:\n\nWhether the relationship is significant in the predicted direction\nThe log-odds coefficients for each independent variable\nThe percentage change in odds given by each coefficient\nThe predicted probabilities at two or more values of the independent variable\nWhether you reject or fail to reject your null hypothesis\n\nThis should be 5-8 sentences.\nYour results:"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#discussion-of-results",
+    "href": "assignments/hw10/hw10_key.html#discussion-of-results",
+    "title": "Weekly Assignment #10",
+    "section": "Discussion of Results",
+    "text": "Discussion of Results\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. Discuss both the statistical significance and the practical/substantive significance of your findings. One to three sentences will do.\nYour discussion:"
+  },
+  {
+    "objectID": "assignments/hw10/hw10_key.html#limitations-and-alternative-explanations",
+    "href": "assignments/hw10/hw10_key.html#limitations-and-alternative-explanations",
+    "title": "Weekly Assignment #10",
+    "section": "Limitations and Alternative Explanations",
+    "text": "Limitations and Alternative Explanations\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nYour limitations and alternative explanations:\n\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nYou’ve clearly identified your binary dependent variable and independent variable(s)\nIf using categorical variables, you’ve specified the baseline category\nYou’ve reported log-odds coefficients AND odds ratios (percentage change in odds)\nYou’ve calculated and reported predicted probabilities at different values\nYou’ve stated your null and alternative hypotheses\nAll code chunks run without errors\nYou’ve answered all sections of the analysis template\nYou’ve discussed both statistical and substantive significance\nYou’ve included your complete R output in the appendix\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html",
     "href": "assignments/hw9/hw9_key.html",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "",
     "text": "Submission Instructions\n\n\n\n\nDownload this hw9.qmd file from bCourse and use the dataset for your final research paper.\nSave both files on your computer. Make sure to save your data in your data folder and hw9.qmd in your assignments folder.\nFollow the Weekly Assignment Analysis Template structure below to complete the assignment.\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file.\nSubmit the hw9.qmd file to bCourse before the deadline.\nMake sure your name appears in the “author” field in the YAML header above."
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#setup",
     "href": "assignments/hw9/hw9_key.html#setup",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Setup",
     "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only if you need it\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\nlibrary(here)\nlibrary(modelsummary)\n# Add more libraries here if you need them!"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#question",
     "href": "assignments/hw9/hw9_key.html#question",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Question",
     "text": "Question\nWrite your research question here as a single sentence ending in a question mark. This should involve the relationship between your independent variable(s) and a continuous dependent variable.\nYour research question:"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#predictions-and-brief-justification",
     "href": "assignments/hw9/hw9_key.html#predictions-and-brief-justification",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Prediction(s) and Brief Justification",
     "text": "Prediction(s) and Brief Justification\nState what you expect to find and why. Be specific about the direction and magnitude of relationships you expect. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.”\nYour prediction and justification (3-5 sentences):"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#data",
     "href": "assignments/hw9/hw9_key.html#data",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Data",
     "text": "Data\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data. Be sure to describe your dependent variable and independent variable(s).\nYour data description:"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#analytic-strategy",
     "href": "assignments/hw9/hw9_key.html#analytic-strategy",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Analytic Strategy",
     "text": "Analytic Strategy\nDescribe the exact procedure you are going to use to analyze the data, including:\n\nYour dependent variable (Y) and independent variable(s) (X)\nIf using categorical variables, what the baseline category is\nWhat your regression equation looks like\nWhat your null hypothesis (H₀) and alternative hypothesis (H₁) are\nWhat significance level (α) you will use\nWhat specific R functions you will use\n\nThis should be 3-6 sentences, but no longer than 1/3 of a page.\nYour analytic strategy:"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#code-and-analysis",
     "href": "assignments/hw9/hw9_key.html#code-and-analysis",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Code and Analysis",
     "text": "Code and Analysis\nLoad your data and conduct your analysis below. Show all relevant code.\n\n# Load your data\n# Your code here\n\n\n# Any data cleaning or variable creation needed\n# If using categorical variables, create factors and set baseline categories\n# Your code here\n\n\n# Show descriptive statistics for your key variables\n# Your code here\n\n\n# Run your OLS regression\n# Your code here\n\n\n# Display a clean summary of your regression results\n# You can use summary(), modelsummary(), or other formatting functions. \n# Your code here"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#results",
     "href": "assignments/hw9/hw9_key.html#results",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Results",
     "text": "Results\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Include:\n\nThe estimated coefficients for each independent variable\nThe interpretation of each coefficient (magnitude and direction)\nThe standard errors and/or confidence intervals\nThe p-values and statistical significance\nThe R-squared value\nWhether you reject or fail to reject your null hypothesis\n\nThis should be 4-7 sentences.\nYour results:"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#discussion-of-results",
     "href": "assignments/hw9/hw9_key.html#discussion-of-results",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Discussion of Results",
     "text": "Discussion of Results\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. Discuss both the statistical significance and the practical/substantive significance of your findings. One to three sentences will do.\nYour discussion:"
   },
   {
     "objectID": "assignments/hw9/hw9_key.html#limitations-and-alternative-explanations",
     "href": "assignments/hw9/hw9_key.html#limitations-and-alternative-explanations",
-    "title": "Weekly Assignment #98",
+    "title": "Weekly Assignment #9",
     "section": "Limitations and Alternative Explanations",
     "text": "Limitations and Alternative Explanations\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nYour limitations and alternative explanations:\n\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nYou’ve clearly identified your dependent and independent variable(s)\nIf using categorical variables, you’ve specified the baseline category\nYou’ve interpreted the magnitude and meaning of your coefficients\nYou’ve stated your null and alternative hypotheses\nAll code chunks run without errors\nYou’ve answered all sections of the analysis template\nYou’ve discussed both statistical and substantive significance\nYou’ve included your complete R output in the appendix\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
   },
   {
     "objectID": "assignments/hw_example.html",
     "href": "assignments/hw_example.html",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
-    "text": "Using a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting.\n\n\nWhat is your research question that you want to answer with this plot? (Remember a research question should end with a “?”)\nIs Berkeley Sociology’s graduate program more appealing to men than women?\n\n\n\nState what you expect to find and why. The justifcation can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.\nAlthough the Berkeley Sociology Department is committed to gender balance and despite its reputation as a center for gender research, there seems to be a recent trend toward disproportionately male graduate student cohorts. Based on informal interviews with faculty, I believe that this is not simply a fluke and that Berkeley now disproportionately attracts male students. I therefore predict that men who are admitted to Berkeley will be more likely to accept an offer than women who are admitted.\n\n\n\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.\nI use the count of women and men in the 2010 Berkeley incoming sociology cohort to test this hypothesis. These data come from a list I received from the department in April 2010. Using data from multiple years would allow more accurate estimates but they would apply to a longer period. I use only the most recent year of data in order to assess the current state of the program.\n\n\n\nDescribe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.\nIf gender is irrelevant to accepting an offer from Berkeley and equal numbers of both genders are admitted, then a reasonable model of cohort composition is one that follows a binomial distribution with Pr(male) = Pr(female) = .5. I use Stata’s “bitest” function to estimate how probable it is that the observed data were generated by this model. If the model does not fit the data, this would provide evidence that gender does, in fact, play a role in whether or not an admitted student accepts an offer.\n\n\n\nBuild your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )\n\n\n\n\n\n\n\n\n\n\n\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.\nIn 2010, 15 out of 21 (or 71%) of the incoming students are men, which is a rather large gender imbalance. Based on the model above, the probability that this occurred by chance is .039, which is the probability of observing 15 or more male students given 21 independent binomial trials with Pr(male) = .5. Using the conventional benchmark for statistical significance (p &lt; .05) we can reject the model that assumes that gender is irrelevant to the process of accepting an offer from Berkeley.\n\n\n\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.\nMy initial predictions were supported—there are more men than women in the 2010 cohort and this difference does not appear to be the result of chance alone. This suggests that Berkeley sociology may indeed appeal more to men than to women and that any model of the processes that lead to accepting an offer must include gender as a factor.\n\n\n\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nThe conclusions we can draw from the data are limited because they come from a single year. Perhaps gender matters this year for some reason but this is not a general trend. The analysis may also be flawed if the assumption that men and women are equally likely to be admitted is inaccurate. Other factors associated with gender might also be the real culprits rather than gender differences in the appeal of the program. Perhaps Berkeley is equally appealing to both genders but women are more likely than men to receive multiple offers from top schools. This would make it less likely that women would accept an offer from any program, not just Berkeley."
+    "text": "Using a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting.\n\n\nWhat is your research question that you want to answer with this plot? (Remember a research question should end with a “?”)\nIs Berkeley Sociology’s graduate program more appealing to men than women?\n\n\n\nState what you expect to find and why. The justifcation can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.\nAlthough the Berkeley Sociology Department is committed to gender balance and despite its reputation as a center for gender research, there seems to be a recent trend toward disproportionately male graduate student cohorts. Based on informal interviews with faculty, I believe that this is not simply a fluke and that Berkeley now disproportionately attracts male students. I therefore predict that men who are admitted to Berkeley will be more likely to accept an offer than women who are admitted.\n\n\n\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.\nI use the count of women and men in the 2010 Berkeley incoming sociology cohort to test this hypothesis. These data come from a list I received from the department in April 2010. Using data from multiple years would allow more accurate estimates but they would apply to a longer period. I use only the most recent year of data in order to assess the current state of the program.\n\n\n\nDescribe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.\nIf gender is irrelevant to accepting an offer from Berkeley and equal numbers of both genders are admitted, then a reasonable model of cohort composition is one that follows a binomial distribution with Pr(male) = Pr(female) = .5. I use Stata’s “bitest” function to estimate how probable it is that the observed data were generated by this model. If the model does not fit the data, this would provide evidence that gender does, in fact, play a role in whether or not an admitted student accepts an offer.\n\n\n\nBuild your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )\n\n\n\n\n\n\n\n\n\n\n\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.\nIn 2010, 15 out of 21 (or 71%) of the incoming students are men, which is a rather large gender imbalance. Based on the model above, the probability that this occurred by chance is .039, which is the probability of observing 15 or more male students given 21 independent binomial trials with Pr(male) = .5. Using the conventional benchmark for statistical significance (p &lt; .05) we can reject the model that assumes that gender is irrelevant to the process of accepting an offer from Berkeley.\n\n\n\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.\nMy initial predictions were supported—there are more men than women in the 2010 cohort and this difference does not appear to be the result of chance alone. This suggests that Berkeley sociology may indeed appeal more to men than to women and that any model of the processes that lead to accepting an offer must include gender as a factor.\n\n\n\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nThe conclusions we can draw from the data are limited because they come from a single year. Perhaps gender matters this year for some reason but this is not a general trend. The analysis may also be flawed if the assumption that men and women are equally likely to be admitted is inaccurate. Other factors associated with gender might also be the real culprits rather than gender differences in the appeal of the program. Perhaps Berkeley is equally appealing to both genders but women are more likely than men to receive multiple offers from top schools. This would make it less likely that women would accept an offer from any program, not just Berkeley."
   },
   {
     "objectID": "assignments/hw_example.html#research-question",
     "href": "assignments/hw_example.html#research-question",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
     "text": "What is your research question that you want to answer with this plot? (Remember a research question should end with a “?”)\nIs Berkeley Sociology’s graduate program more appealing to men than women?"
   },
   {
     "objectID": "assignments/hw_example.html#prediction-and-brief-justification",
     "href": "assignments/hw_example.html#prediction-and-brief-justification",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
     "text": "State what you expect to find and why. The justifcation can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.\nAlthough the Berkeley Sociology Department is committed to gender balance and despite its reputation as a center for gender research, there seems to be a recent trend toward disproportionately male graduate student cohorts. Based on informal interviews with faculty, I believe that this is not simply a fluke and that Berkeley now disproportionately attracts male students. I therefore predict that men who are admitted to Berkeley will be more likely to accept an offer than women who are admitted."
   },
   {
     "objectID": "assignments/hw_example.html#data",
     "href": "assignments/hw_example.html#data",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
     "text": "Describe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.\nI use the count of women and men in the 2010 Berkeley incoming sociology cohort to test this hypothesis. These data come from a list I received from the department in April 2010. Using data from multiple years would allow more accurate estimates but they would apply to a longer period. I use only the most recent year of data in order to assess the current state of the program."
   },
   {
     "objectID": "assignments/hw_example.html#analytic-strategy",
     "href": "assignments/hw_example.html#analytic-strategy",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
     "text": "Describe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.\nIf gender is irrelevant to accepting an offer from Berkeley and equal numbers of both genders are admitted, then a reasonable model of cohort composition is one that follows a binomial distribution with Pr(male) = Pr(female) = .5. I use Stata’s “bitest” function to estimate how probable it is that the observed data were generated by this model. If the model does not fit the data, this would provide evidence that gender does, in fact, play a role in whether or not an admitted student accepts an offer."
   },
   {
     "objectID": "assignments/hw_example.html#code",
     "href": "assignments/hw_example.html#code",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
-    "text": "Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )"
+    "text": "Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )"
   },
   {
     "objectID": "assignments/hw_example.html#results",
     "href": "assignments/hw_example.html#results",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
     "text": "Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.\nIn 2010, 15 out of 21 (or 71%) of the incoming students are men, which is a rather large gender imbalance. Based on the model above, the probability that this occurred by chance is .039, which is the probability of observing 15 or more male students given 21 independent binomial trials with Pr(male) = .5. Using the conventional benchmark for statistical significance (p &lt; .05) we can reject the model that assumes that gender is irrelevant to the process of accepting an offer from Berkeley."
   },
   {
     "objectID": "assignments/hw_example.html#discussion-of-results",
     "href": "assignments/hw_example.html#discussion-of-results",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
     "text": "Here’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.\nMy initial predictions were supported—there are more men than women in the 2010 cohort and this difference does not appear to be the result of chance alone. This suggests that Berkeley sociology may indeed appeal more to men than to women and that any model of the processes that lead to accepting an offer must include gender as a factor."
   },
   {
     "objectID": "assignments/hw_example.html#limitations-and-alternative-explanations",
     "href": "assignments/hw_example.html#limitations-and-alternative-explanations",
-    "title": "Weekly Assignment #2",
+    "title": "Weekly Assignment Example",
     "section": "",
     "text": "This is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nThe conclusions we can draw from the data are limited because they come from a single year. Perhaps gender matters this year for some reason but this is not a general trend. The analysis may also be flawed if the assumption that men and women are equally likely to be admitted is inaccurate. Other factors associated with gender might also be the real culprits rather than gender differences in the appeal of the program. Perhaps Berkeley is equally appealing to both genders but women are more likely than men to receive multiple offers from top schools. This would make it less likely that women would accept an offer from any program, not just Berkeley."
   },
@@ -1078,18 +1351,207 @@
     "text": "Appendix: R Commands and Results\nCopy and paste your complete R output here. Use a fixed-width font (code block) so that everything lines up properly.\n\n# Copy your complete analysis code here for reference\n# This should include:\n# - Data loading\n# - Any data manipulation\n# - Contingency table creation\n# - Measure of association calculation\n# - Chi-squared test\n\n\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nYou’ve clearly identified your two categorical variables\nYou’ve calculated a measure of association (difference in proportions, relative risk, or polychoric correlation)\nYou’ve conducted a Chi-squared test\nYou’ve stated your null and alternative hypotheses\nAll code chunks run without errors\nYou’ve answered all sections of the analysis template\nYou’ve stated whether you reject or fail to reject the null hypothesis\nYou’ve included your complete R output in the appendix\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
   },
   {
-    "objectID": "slides/index.html",
-    "href": "slides/index.html",
-    "title": "Lecture Slides",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sociology 106",
     "section": "",
-    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing and power\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: TBD\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final (11:30AM - 2:30PM)"
+    "text": "Welcome to Sociology 106: Quantitative Sociological Methods.\nCourse materials, including lecture slides and the syllabus, will be posted here throughout the semester."
   },
   {
-    "objectID": "slides/index.html#slides",
-    "href": "slides/index.html#slides",
-    "title": "Lecture Slides",
-    "section": "",
-    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing and power\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: TBD\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final (11:30AM - 2:30PM)"
+    "objectID": "slides/week1.html#introductions",
+    "href": "slides/week1.html#introductions",
+    "title": "Week 1",
+    "section": "Introductions",
+    "text": "Introductions\nKasey Zapatka, Postdoctoral Researcher\n\nPhD, Sociology, CUNY Graduate Center\nUrban inequality with a focus on housing, affordability, and neighborhood change\n\nDissertation: how gentrification influences housing affordability and traced housing affordability over life course\nspatial econometrics and spatial analysis"
+  },
+  {
+    "objectID": "slides/week1.html#introductions-1",
+    "href": "slides/week1.html#introductions-1",
+    "title": "Week 1",
+    "section": "Introductions",
+    "text": "Introductions\nTeaching\n\nComputational Social Science –&gt; course covering machine learning, text analysis, and causal inference\n\nCurrent Research\n\nDeveloping a longitudinal database of evictions\nEvaluating impact of Emergency Rental Assistance and tenant protections on evictions during COVID-19 pandemic"
+  },
+  {
+    "objectID": "slides/week1.html#now-your-turn",
+    "href": "slides/week1.html#now-your-turn",
+    "title": "Week 1",
+    "section": "Now your turn",
+    "text": "Now your turn\n\nName\nYear\nExperience with R (no right answer)\nMac or Windows user? (there’s a right answer)\nWhy are you taking this course?\nWhat are you most looking forward to in this course?"
+  },
+  {
+    "objectID": "slides/week1.html#agenda",
+    "href": "slides/week1.html#agenda",
+    "title": "Week 1",
+    "section": "Agenda",
+    "text": "Agenda\nWelcome, and a few remarks about the course\nIntroductions/Ice Breaker\nDiscussion of each of today’s learning goals:\n\nUnderstand similarities and differences between conventional social science statistics and data science approaches\nExplore the opportunities and risks of “big data” and data science methods/tools for social scientists"
+  },
+  {
+    "objectID": "slides/week1.html#sociology-106-is",
+    "href": "slides/week1.html#sociology-106-is",
+    "title": "Week 1",
+    "section": "Sociology 106 is…",
+    "text": "Sociology 106 is…\n…an intermediate undergraduate social science research methods course emphasizes the motivation, computation, and interpretation of statistical tests.\nCourse Content\n\nStatistical tests for one or two continuous or categorical variables\nInterpretation of linear and logistic regression\nIntroduction to machine learning framework in the last week\nData management and analysis using R statistical programming language\n\nSkills Developed\nStudents will gain practical experience in R for conducting statistical analyses and managing data."
+  },
+  {
+    "objectID": "slides/week1.html#sociology-106-is-not",
+    "href": "slides/week1.html#sociology-106-is-not",
+    "title": "Week 1",
+    "section": "Sociology 106 is not…",
+    "text": "Sociology 106 is not…\n…about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.\n\nThis course will be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications\nWe will be more applied, still with some math (and some equations)\n\n…about the “one true way to answer sociological questions” (where quals at?)."
+  },
+  {
+    "objectID": "slides/week1.html#for-this-course-we-will-assume",
+    "href": "slides/week1.html#for-this-course-we-will-assume",
+    "title": "Week 1",
+    "section": "For this course, we will assume:",
+    "text": "For this course, we will assume:\n\nSocial categories and phenomena can be usefully represented using numbers.\nVariables measure what they purport to measure.\nAll samples are good samples (unless they are bad samples)"
+  },
+  {
+    "objectID": "slides/week1.html#after-sociology-106-you-will",
+    "href": "slides/week1.html#after-sociology-106-you-will",
+    "title": "Week 1",
+    "section": "After Sociology 106, you will:",
+    "text": "After Sociology 106, you will:\n\nUnderstand the basic logic of statistical inference.\nIdentify the appropriate statistical test given a specific type of data.\nCompute descriptive statistics, graphs, tables, and simple statistical tests using R.\nInterpret the results of statistical tests and discuss their relevance to a particular research question.\nInterpret output from regression and have a basic understanding of the machine learning framework."
+  },
+  {
+    "objectID": "slides/week1.html#so-what-is-a-statistical-question",
+    "href": "slides/week1.html#so-what-is-a-statistical-question",
+    "title": "Week 1",
+    "section": "So, what is a statistical question?",
+    "text": "So, what is a statistical question?\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\n\nOne possibility: gender doesn’t make a difference!\nAnother possibility: male students are more likely to have taken Sociology 106 in the past"
+  },
+  {
+    "objectID": "slides/week1.html#could-look-at-descriptive-statistics",
+    "href": "slides/week1.html#could-look-at-descriptive-statistics",
+    "title": "Week 1",
+    "section": "Could look at descriptive statistics",
+    "text": "Could look at descriptive statistics\nSome descriptive statistics…(from a previous semester!)"
+  },
+  {
+    "objectID": "slides/week1.html#the-probability-model",
+    "href": "slides/week1.html#the-probability-model",
+    "title": "Week 1",
+    "section": "The probability model",
+    "text": "The probability model"
+  },
+  {
+    "objectID": "slides/week1.html#one-example",
+    "href": "slides/week1.html#one-example",
+    "title": "Week 1",
+    "section": "One example:",
+    "text": "One example:\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\nOne possibility: gender doesn’t make a difference!\n\nNull hypothesis: P(student is male) = 50%\n\nAnother possibility: male students are more likely to major in Statistics\n\nAlternative hypothesis: P(student is male) &gt; 50%"
+  },
+  {
+    "objectID": "slides/week1.html#a-statistical-test",
+    "href": "slides/week1.html#a-statistical-test",
+    "title": "Week 1",
+    "section": "A statistical test",
+    "text": "A statistical test"
+  },
+  {
+    "objectID": "slides/week1.html#the-same-test-but-in-r",
+    "href": "slides/week1.html#the-same-test-but-in-r",
+    "title": "Week 1",
+    "section": "The same test, but in R",
+    "text": "The same test, but in R\n\nbinom.test(c(8,3), p = 0.5, alternative=\"greater\")\n\n\n    Exact binomial test\n\ndata:  c(8, 3)\nnumber of successes = 8, number of trials = 11, p-value = 0.1133\nalternative hypothesis: true probability of success is greater than 0.5\n95 percent confidence interval:\n 0.4356258 1.0000000\nsample estimates:\nprobability of success \n             0.7272727"
+  },
+  {
+    "objectID": "slides/week1.html#by-the-end-of-this-course",
+    "href": "slides/week1.html#by-the-end-of-this-course",
+    "title": "Week 1",
+    "section": "By the end of this course…",
+    "text": "By the end of this course…\nYou will be able to test:\n\nTheories involving one categorical or continuous variable.\n\nEx: gender is often measured as a categorical variable (male / female / other)\nEx: income is often measured as a continuous variable (the number of dollars one earns is a real number)\n\nTheories involving how one (or more) binary or continuous variable affects another binary or continuous variable."
+  },
+  {
+    "objectID": "slides/week1.html#questions",
+    "href": "slides/week1.html#questions",
+    "title": "Week 1",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week1.html#required-course-readings",
+    "href": "slides/week1.html#required-course-readings",
+    "title": "Week 1",
+    "section": "Required Course Readings",
+    "text": "Required Course Readings\n\nDavid Lane’s Online Statistics (http://onlinestatbook.com/Online_Statistics_Education.pdf).\nHadley Wickham’s R for Data Science 2nd Edition (https://r4ds.hadley.nz), which is also free online.\nWe’ll read two journal articles to see how social scientists use regression analysis in practice.\n\n\nThompson, M.S., & Keith, V. M. (2001). The Blacker the Berry: Gender, Skin Tone, Self-Esteem, and Self-Efficacy. Gender & Society, 15(3), 336-357. (https://doi.org/10.1177/089124301015003002)\nFreeman, L., & Braconi, F. (2004). Gentrification and Displacement New York City in the 1990s. Journal of the American Planning Association, 70(1), 39–52. (https://doi.org/10.1080/01944360408976337)"
+  },
+  {
+    "objectID": "slides/week1.html#required-course-materials",
+    "href": "slides/week1.html#required-course-materials",
+    "title": "Week 1",
+    "section": "Required Course Materials",
+    "text": "Required Course Materials\nAccess to a laptop where you can download:\n\nR (http://cran.rstudio.com), an open-source programming language\nPositron (https://positron.posit.co/download.html), a free program that makes working in R much easier and is at the cutting edge of data science right now.\n\nWe’ll start installation of R and Positron at the end of class–this must be done by class next week"
+  },
+  {
+    "objectID": "slides/week1.html#course-elements",
+    "href": "slides/week1.html#course-elements",
+    "title": "Week 1",
+    "section": "Course Elements",
+    "text": "Course Elements\n\nAttendance and participation (10%)\nWeekly homework assignments (30%)\nResearch paper (40%)\nFinal exam (20%)"
+  },
+  {
+    "objectID": "slides/week1.html#class-format",
+    "href": "slides/week1.html#class-format",
+    "title": "Week 1",
+    "section": "Class Format",
+    "text": "Class Format\n\nFirst half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R\nSecond half of class, you will get to practice implementing these concepts in R using data and problems provided by me"
+  },
+  {
+    "objectID": "slides/week1.html#typical-weekly-assignment",
+    "href": "slides/week1.html#typical-weekly-assignment",
+    "title": "Week 1",
+    "section": "Typical Weekly Assignment",
+    "text": "Typical Weekly Assignment\nPart 1: 3-5 problems\nShow your work; write out conclusions and interpret results as necessary\nPart 2: Brief analysis in R and write-up\n\nWork with your own dataset to apply methods introduced in lecture\nIdeally the same dataset from week to week (use the same dataset for your research paper)\nFor the first assignment, I will provide a dataset on bCourses\nThink carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset\nWrite up using quarto (.qmd file) template provided on bCourses and submit to bCourse"
+  },
+  {
+    "objectID": "slides/week1.html#research-paper",
+    "href": "slides/week1.html#research-paper",
+    "title": "Week 1",
+    "section": "Research Paper",
+    "text": "Research Paper\nYou will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings\n\nYou can (and should) use your weekly assignments to work on your research question\nSeveral milestones throughout the semester will help you progress towards the final paper\n\nPaper proposal (5%)\nAnnotated bibliography (5%)\nIn-class presentation (5%) – 7-10 mins\nFinal paper (20%)"
+  },
+  {
+    "objectID": "slides/week1.html#keys-to-success",
+    "href": "slides/week1.html#keys-to-success",
+    "title": "Week 1",
+    "section": "Keys to Success",
+    "text": "Keys to Success\nMaterial is cumulative, so it is critical to keep up\n\nPlease ask questions during lecture!\nIf you find yourself falling behind, seek help immediately from me during office hours\n\nLearning statistics requires thinking through how to solve problems\n\nThis is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment\nFeel free to work on assignments in groups, though what you turn in must be your own work."
+  },
+  {
+    "objectID": "slides/week1.html#keys-to-success-1",
+    "href": "slides/week1.html#keys-to-success-1",
+    "title": "Week 1",
+    "section": "Keys to Success",
+    "text": "Keys to Success\nLearning statistics is like learning a language\n\nThe material in this course can be challenging / counterintuitive if you haven’t seen it before\nIt is important not to be intimidated by new terms or the use of letters to represent quantities or variables\nReview your algebra skills if necessary\n\nLecture slides will be made available, but are not a substitute for careful note taking"
+  },
+  {
+    "objectID": "slides/week1.html#office-hours",
+    "href": "slides/week1.html#office-hours",
+    "title": "Week 1",
+    "section": "Office Hours",
+    "text": "Office Hours\nI can help in office hours with questions about concepts from lecture or about coding in R\n\nTuesdays, right before 11:30 AM-1:00 PM, TBA\nTuesdays, right after class, until 4:30 PM, TBA\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nOutside of office hours, your best resources are your fellow classmates!\n\nIf something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture"
+  },
+  {
+    "objectID": "slides/week1.html#online-and-generative-ai-policy",
+    "href": "slides/week1.html#online-and-generative-ai-policy",
+    "title": "Week 1",
+    "section": "Online and Generative AI Policy",
+    "text": "Online and Generative AI Policy\n\nPLEASE USE THEM!–AI tools (e.g., ChatGPT), Google, and online resources (e.g., StackOverflow or StackExchange)\nDO use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning.\nDO NOT to copy or paraphrase AI-generated content in any assignment, as this counts as plagiarism\nThe goal is to use them to support your learning and problem-solving, not to replace it.\n\n\nIf you are going to spend the time taking this course, you should learn as much as you can."
+  },
+  {
+    "objectID": "slides/week1.html#questions-1",
+    "href": "slides/week1.html#questions-1",
+    "title": "Week 1",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week1.html#getting-started-with-r-and-positron",
+    "href": "slides/week1.html#getting-started-with-r-and-positron",
+    "title": "Week 1",
+    "section": "Getting started with R and Positron",
+    "text": "Getting started with R and Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
   },
   {
     "objectID": "about.html",

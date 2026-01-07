@@ -1,0 +1,841 @@
+---
+title: "Week 2"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 02/27/2026
+date-format: long
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    #logo: berkeley_logo.png
+    css: slides.css
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+## Housekeeping
+
+**Office hours this week**
+
+-   **Tuesdays**, right before 11:30 AM-1:00 PM, TBA
+-   **Tuesdays**, right after class, until 4:30 PM, TBA
+    -   Sign up at [https://www.wejoinin.com/kaseyzapatka\@berkeley.edu](https://www.wejoinin.com/kaseyzapatka@berkeley.edu){.uri}
+-   If you can’t make either, e-mail me and we’ll find a time
+
+**HW #1:** due Thursday, February 5, 11:59 PM
+
+## Agenda {.smaller}
+
+-   Exploring R and Positron
+    -   Scripting basics and best practices
+    -   [Quarto](https://quarto.org) for submitting hw assignments
+-   Types of variables
+-   Logical operators
+-   Data structures
+-   The [Tidyverse](https://tidyverse.org)
+    -   load and manipulate data
+
+## Exploring R and Positron {.smaller}
+
+**R and positron are very powerful**
+
+-   Today may seem like a lot if you haven't had much programming experience
+-   Please stop me if you are not sure you understand—you are probably not the only one!
+-   Helpful if you can follow along in Positron
+
+**Goal of today's lecture:**
+
+-   Basics of using R (through Positron)
+-   How to load data
+-   How to complete homework
+
+## Positron
+
+-   Open sourced Integrated Development Environment (IDE)
+-   Developed by Posit and descendent of R-studio
+-   Specifically designed to use R and Python interchangeably
+-   Tons of custom extensions - e.g., air, gitlens, quarto, docker
+-   Can be used for data science, web apps, websites, books, etc.
+
+Check out [Andres Heiss' blog](https://www.andrewheiss.com/blog/2024/07/08/fun-with-positron/#my-extensions) for more fun things
+
+## Positron {.smaller}
+
+::::: columns
+::: {.column width="20%"}
+-   Script panel
+-   Console panel
+-   Objects panel
+-   Plot panel
+:::
+
+::: {.column width="80%"}
+![](images/week2/positron.png){width="100%,fig-align=\"center\""}
+:::
+:::::
+
+## Script Panel
+
+![](images/week2/script_panel.png){width="100%,fig-align=\"center\""}
+
+## Console Panel
+
+![](images/week2/console_panel.png){width="100%,fig-align=\"center\""}
+
+## Object Panel
+
+![](images/week2/object_panel.png){width="100%,fig-align=\"center\""}
+
+## Positron
+
+Let's explore Positron live:
+
+-   File explorer
+-   Terminal (command line)
+-   Interpreter and Folder
+-   `New file`
+-   `Open`
+-   Viewer
+
+## Writing with `script.R`
+
+**Best practice to write all code in a script file**
+
+-   Reproducible code
+-   Documents exactly what you have done
+-   Allows you to easily correct mistakes
+
+**Two typs of files we'll work with**
+
+-   R file (.R) - only accepts R code
+-   Quarto file (.qmd) - allows for R/Python and text
+
+## Writing with `script.R`
+
+**Use a hashtag (`#`)** at the start of lines in your script to tell R not to run that line
+
+-   Useful for making comments about what your code is doing:
+-   Helps you remember what you did
+-   Helps others (like me, reading your homework) see what you were doing
+
+``` {.r code-line-numbers="3"}
+#| eval: false
+#| echo: true
+# load data
+census_data <- read_csv("data/acs2021.csv")
+```
+
+## Writing with `script.R`
+
+**Running code:**
+
+-   Windows: highlight the entire line, and hit `Ctrl + r`
+-   Mac: cursor on line, hit `command + return`
+
+## Variable assignment in `script.R`
+
+R is an ***object-oriented programming language***, meaning you can create new objects from any type of value, store it R's memory, and call it when necessary
+
+-   Define variables using the assignment operator: `<-`
+-   Give variables meaningful names when assigning
+
+``` {.r code-line-numbers="4"}
+#| eval: false
+#| echo: true
+# load data
+acs21 <- read_csv("data/acs2021.csv")
+```
+
+## Common values for variables
+
+Values can be:
+
+-   numeric (3, 4.5, `pi`)
+-   character ("Welcome!", "foo")
+-   boolean (true / false)
+
+``` {.r code-line-numbers="3|4|5"}
+#| eval: false
+#| echo: true
+numeric_variable <- 4
+character_variable <- "Welcome to Soc 106!"
+boolean_variable <- TRUE
+```
+
+## Variable assignment in `script.R`
+
+Variable names must be unique
+
+-   Reusing an old name will overwrite the definition of the variable
+
+```{r echo=TRUE}
+# First assignment
+my_variable <- 10
+my_variable
+
+# Overwriting the variable
+my_variable <- 20
+my_variable
+```
+
+## Types of variables: numeric
+
+**Numeric variables** can store any real numbers and you can perform standard mathematical operations on numeric variables:
+
+```{r echo=TRUE}
+a <- 10
+b <- 3
+
+a + b
+a - b
+a * b
+a / b
+```
+
+## Types of variables: character
+
+**Character variables** can store any text, and are always contained within quotation marks.
+
+```{r echo=TRUE}
+first_name <- "John"
+last_name <- "Doe"
+
+# Combine character strings
+paste(first_name, last_name)
+```
+
+## Types of variables: boolean
+
+**Boolean variables** are stored as `TRUE` or `FALSE`, which R stores as 1 or 0
+
+So, in essence, R stores boolean variables as numeric variables
+
+```{r echo=TRUE}
+is_enrolled <- TRUE
+has_laptop <- FALSE
+
+# R treats TRUE as 1 and FALSE as 0
+is_enrolled + has_laptop
+
+sum(is_enrolled, has_laptop)
+```
+
+## Converting variable types
+
+Under certain circumstances, we can force R to change the type that it classifies a vector
+
+-   Can always convert numeric → character using the `as.character` function
+-   Can convert character → numeric, if the original character vector consists of numbers, using the `as.numeric` function
+    -   If it contains characters, then **WE PROB DON'T WANT TO!**
+
+::: aside
+If you see a `.` in a function name like `as.numeric`, it is likely base R.
+:::
+
+## Converting variable types
+
+Here's what it looks like R:
+
+```{r echo=TRUE}
+# Numeric to character
+num_var <- 42
+char_var <- as.character(num_var)
+char_var
+
+# Character to numeric
+text_num <- "123"
+converted_num <- as.numeric(text_num)
+converted_num
+```
+
+## Logical operators
+
+-   Use logical operators to compare two variables or objects
+
+-   Useful for manipulating data
+
+| Operator | Meaning                  |
+|----------|--------------------------|
+| `==`     | Equal to                 |
+| `!=`     | Not equal to             |
+| `<`      | Less than                |
+| `>`      | Greater than             |
+| `<=`     | Less than or equal to    |
+| `>=`     | Greater than or equal to |
+
+## Logical operators
+
+Here's what that might look like in R:
+
+```{r echo=TRUE}
+x <- 10
+y <- 5
+
+x == y
+x != y
+x > y
+x < y
+x >= 10
+```
+
+## Questions?
+
+## Data structures
+
+Data structures are simply collections of the data objects we have been working with:
+
+-   Numeric
+-   Character
+-   Boolean variables
+
+While there are many types of data structures in R, we will focus on two for our purposes: the **vector** and the **dataframe**
+
+## Vectors {.smaller}
+
+Vectors are ordered collections of the same type of objects
+
+-   **Ordered**: position matters
+-   **Same type**: e.g., can't mix numeric and character
+
+We create vectors using the `c()` operator:
+
+```{r echo=TRUE}
+# Numeric vector
+ages <- c(22, 25, 19, 30)
+
+# Character vector
+names <- c("Alice", "Bob", "Charlie", "Diana")
+```
+
+The `c()` operator works on already-existing vectors as well as variables (if of same type)
+
+## Vectors {.smaller}
+
+We can call individual elements within vectors two ways:
+
+-   using bracket notation: `vector[i]`
+-   using the [Tidyverse:](https://tidyverse.org) `nth()`
+
+::: panel-tabset
+## Base R
+
+Use bracket at end of vector name with index
+
+The first element of a vector is indexed as 1.
+
+```{r echo=TRUE}
+ages <- c(22, 25, 19, 30)
+
+# Get the first element
+ages[1]
+
+# Get the third element
+ages[3]
+
+# Get multiple elements
+ages[c(1, 3)]
+```
+
+## Tidyverse
+
+Use `nth()` function to do the same thing more intuitively
+
+Still need Base R to do some things
+
+```{r echo=TRUE}
+
+# load the Tidyverse library
+library(tidyverse)
+
+# Get the first element
+nth(ages, 1) 
+
+# Get the third element
+nth(ages, 3)   
+
+# Still need Base R to get multiple elements
+ages[c(1, 3)]
+```
+:::
+
+## Dataframes {.smaller}
+
+A dataframe is a list of equal-length vectors
+
+-   **Equal length**: same \# elements in each vector
+-   But, vectors can be of different types!
+
+We create a dataframe using the `tibble` function:
+
+```{r echo=TRUE}
+students <- tibble(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(22, 25, 19),
+  enrolled = c(TRUE, TRUE, FALSE),
+  stringsAsFactors = FALSE
+)
+students
+```
+
+::: aside
+`stringsAsFactors=FALSE` makes sure that character vectors remain in character type and are not converted to factor type (which we may talk about later in the course).
+:::
+
+## Learning about dataframes {.smaller}
+
+-   `glimpse()`: view data and summary info of dataframe
+-   `head()`: looks at first few observations (similar to `print()`)
+-   `str()`: returns structure of dataframe
+-   `colnames()`: returns column names
+
+::: panel-tabset
+```{r echo=FALSE}
+library(tidyverse)
+
+students <- tibble(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(22, 25, 19),
+  enrolled = c(TRUE, TRUE, FALSE),
+  stringsAsFactors = FALSE
+)
+
+```
+
+### glimpse()
+
+```{r echo=TRUE}
+
+glimpse(students)
+```
+
+### head()
+
+```{r echo=TRUE}
+
+head(students)
+```
+
+### str()
+
+```{r echo=TRUE}
+str(students)
+
+```
+
+### colnames()
+
+```{r echo=TRUE}
+colnames(students)
+
+```
+:::
+
+## The `Tidyverse`{.smaller}
+
+**What is it?**
+
+-   A collection of R packages designed for data science that share a common philosophy and grammar
+-   By far the most common approach to working with R
+-   Most intuitive way to do data science
+
+## The `Tidyverse`{.smaller}
+
+**Key Features**
+
+-   **Pipe operator** (`|>` or `%>%`): chains functions together for readable code
+-   **Consistent syntax**: functions work similarly across packages
+-   **Human-readable**: code reads like sentences
+
+``` {.r code-line-numbers="5|9"}
+# |eval=FALSE
+# |echo=TRUE
+
+# Base R
+mean(subset(dataframe, age > 18)$score)
+  
+# Tidyverse - "take dataframe, filter where age > 18, 
+# then pull score, then calculate mean"
+dataframe |> filter(age > 18) |> pull(score) |> mean()
+```
+
+## The `Tidyverse`{.smaller}
+
+**Core Packages we'll be using**
+
+-   [**readr**](https://readr.tidyverse.org): for importing data (`read_csv()`)
+-   [**dplyr**](https://dplyr.tidyverse.org): for manipulating data (`filter()`, `select()`, `mutate()`, `summarize()`)
+-   [**ggplot2**](https://ggplot2.tidyverse.org): for data visualization
+
+## The `Tidyverse`{.smaller}
+
+How the packages work together
+
+``` {.r code-line-numbers="5|8|11|14-18"}
+# |eval=FALSE
+# |echo=TRUE
+
+# Install (only once)
+install.packages("tidyverse") # install library
+
+# Load library
+library(tidyverse) # load library
+
+# Load data
+data <- read_csv("data.csv") # read in csv
+
+# Process
+data |>
+  filter(year == 2020) |>  # filter rows based on conditions
+  select(name, score)  |>  # select specific columns
+  arrange(desc(score)) |>  # order columns
+  glimpse()                # glimpse
+```
+
+## Keys functions {.smaller}
+
+| Tidyverse Function | Purpose | Example |
+|--------------------------|-----------------------|-----------------------|
+| `read_csv()` | Import CSV data | `read_csv("data.csv")` |
+| `glimpse()` | Preview dataframe structure | `df |> glimpse()` |
+| `colnames()` | Get column names | `colnames(df)` |
+| `select()` | Choose columns | `df |> select(name, age)` |
+| `filter()` | Choose rows by condition | `df |> filter(age > 20)` |
+| `slice()` | Choose rows by position | `slice(df, 1:10)` |
+| `arrange()` | Sort rows | `arrange(df, desc(age))` |
+| `mutate()` | Create/modify columns | `df |> mutate(age_2x = age * 2)` |
+
+## Key functions in action {.smaller}
+
+```{r echo=TRUE}
+
+# Access a column
+students |> colnames() # get column names
+
+# Access specific rows and columns
+students %>% 
+  slice(1:2) %>%       # select rows
+  select(name, age)    # select columns
+
+# Subset based on condition
+students %>% 
+  filter(age > 20)     # filter rows
+```
+
+## Questions?
+
+## File paths and working directories
+
+To load data, R needs to know where to look
+
+-   Need to give it directions
+-   The file path: `"file/path/to/data.csv"`
+
+**The Problem**
+
+-   Work on different operating systems or different computers?
+-   But what if you move data?
+
+```{r eval=FALSE, echo=TRUE}
+# These break on different computers or operating systems:
+read_csv("C:\Users\YourName\Documents\project\data\mydata.csv") # windows
+read_csv("~/Desktop/project/data/mydata.csv")                   # mac
+```
+
+## The `here` Package {.smaller}
+
+**What is it?** The [`here`](https://here.r-lib.org) package helps you build file paths that work across different computers and operating systems, making your code more reproducible.
+
+**How It Works**
+
+-   `here()` finds your project root (where your project is located)
+-   Builds paths relative to that root
+-   Works the same on Windows, Mac, and Linux
+
+**The Solution**
+
+```{r eval=FALSE, echo=TRUE}
+# load library
+library(here)
+
+# Check where here thinks your project root is
+here()
+
+# Loading data 
+data <- read_csv(here("data", "raw", "mydata.csv"))
+
+# Saving results
+write_csv(results, here("output", "results.csv"))
+
+```
+
+## Saving and loading data
+
+You can save dataframes as .csv files using the `write_csv()` function:
+
+```{r eval=FALSE, echo=TRUE}
+
+# save data
+#write_csv(object, filepath)
+write_csv(results, here("output", "results.csv"))
+
+```
+
+You can also read .csv files into dataframes using the `read_csv` function:
+
+```{r eval=FALSE, echo=TRUE}
+# load data
+#read_csv(filepath)
+data <- read_csv(here("data", "raw", "mydata.csv"))
+```
+
+## Other data types
+
+You can also load Excel files into R
+
+First, load the [`readxl`](https://readxl.tidyverse.org) package:
+
+```{r eval=FALSE, echo=TRUE}
+library(readxl)
+```
+
+Then, use the `read_excel` function:
+
+```{r eval=FALSE, echo=TRUE}
+# load
+data <- read_excel("file_name.xlsx")
+```
+
+In fact, R can import all types of data files
+
+Googling "import SAS/STATA/SPSS files into R" will point you in the right direction
+
+## Some helpful R commands
+
+-   `?[function_name]` brings up a help page
+-   `??[function_name]` will (sometimes) lead to helpful examples of how to use the function
+-   `ls()` lists all objects in the global environment
+-   `rm(object_name)` removes an object
+-   `rm(list=ls())` removes all objects
+
+## Want to know more R tips?
+
+Much of this lecture is based on the first two RFundamentals classes, which are run at the [D-Lab](https://dlab.berkeley.edu/home)
+
+-   **D-Lab trainings**: <https://dlab.berkeley.edu/training>
+-   If you want to see the RFundamentals class notes: <https://github.com/dlab-berkeley/R-Fundamentals>
+-   Otherwise: Google is your friend!
+
+## Questions?
+
+## Anatomy of a `.qmd` File
+
+**Three Main Parts**
+
+1.  YAML header
+2.  Markdown text
+3.  Code chunks
+
+**Key Difference**
+
+-   `script.R`: runs only code
+-   `script.qmd`: knits together code and text
+
+## Anatomy of a `.qmd` File
+
+1.  YAML Header (metadata)
+
+Sets document properties, output format, misc. settings
+
+``` yaml
+---
+title: "My Analysis"
+author: "Your Name"
+date: "2024-01-07"
+format: html  # output format (e.g., pdf, docx, html)
+---
+```
+
+## Anatomy of a `.qmd` File
+
+2.  Markdown Text (narrative)
+
+Allows you to document code or write explanations, interpretations, and conclusions
+
+``` markdown
+# Analysis
+
+This is my larger analysis.
+
+## Method
+I can use regular text explaining my analysis. I can also use **bold**, *italics*, and imbed [hyperlinks](https://quarto).Markdown is a simple language to learn how to use.
+```
+
+Read more about [markdown basics](https://quarto.org/docs/authoring/markdown-basics.html) you might want to use
+
+## Markdown Basics: Formatting {.smaller}
+
+**Text Formatting**
+
+Here are the most common ways to format text in markdown:
+
+| Markdown Syntax       | Output             |
+|-----------------------|--------------------|
+| `**bold**`            | **bold**           |
+| `*italics*`           | *italics*          |
+| `***bold italics***`  | ***bold italics*** |
+| `superscript^2^`      | superscript^2^     |
+| `subscript~2~*`       | subscript~2~       |
+| `~~strikethrough~~`   | ~~strikethrough~~  |
+| `` `verbatim code` `` | `verbatim code`    |
+
+## Markdown Basics: Headings {.smaller}
+
+You can put headers as well to organize your work. They go up to 6 levels:
+
+**Headings**
+
+| Markdown Syntax | Output |
+|------------------------------------------------|-------------------------|
+| `# Heading 1` | [Heading 1]{style="font-size: 2em; font-weight: bold;"} |
+| `## Heading 2` | [Heading 2]{style="font-size: 1.5em; font-weight: bold;"} |
+| `### Heading 3` | [Heading 3]{style="font-size: 1.17em; font-weight: bold;"} |
+
+## Anatomy of a `.qmd` File
+
+3.  Code Chunks (analysis)
+
+Finally, you can include R code and its output direclty in quarto documents:
+
+```{{{r}}}
+
+# load data
+data <- read_csv("data.csv")
+summary(data)
+```
+
+## Anatomy of a `.qmd` File {.smaller}
+
+So to summarize `.qmd` and `.R` scripts:
+
+| Feature | `.R` Script | `.qmd` Document |
+|------------------|------------------------|------------------------------|
+| **Purpose** | Run code | Create reports |
+| **Content** | Code only | Code + text + output |
+| **Output** | Console results | Formatted document (e.g., HTML/PDF/Word) |
+| **Comments** | `# comment` | Full markdown formatting |
+| **Best for** | Data cleaning, functions | Analysis reports, presentations, hw |
+
+## Rendering Quarto Documents {.smaller}
+
+**What is Rendering?**
+
+Rendering (or "knitting") converts your `.qmd` file into a finished document (HTML, PDF, or Word) by:
+
+1.  Running all your R code chunks
+2.  Combining code output with your text
+3.  Formatting everything into your chosen output format
+
+**How to Render**
+
+-   Click the **"Preview"** button at the top of your .qmd file
+-   Render on save so you can see all changes
+-   I usually work with it open
+
+## Rendering Quarto Documents {.smaller}
+
+**Output Formats**
+
+For this course, make sure `html` is specified in your YAML header:
+
+``` yaml
+---
+title: "My Analysis"
+format: html        # or pdf, docx
+---
+```
+
+Can format many different formats (e.g., pdf, docx, odt, epubs, pptx)
+
+## Rendering Quarto Documents {.smaller}
+
+**Source vs Visual Mode**
+
+Positron provides two ways to edit `.qmd` files. Toggle between them using the buttons at the top-left of your editor.
+
+<br>
+
+::::: columns
+::: {.column width="50%"}
+**Source Mode**
+
+-   Shows raw markdown syntax
+-   See the actual code: `**bold**`, `## Heading`
+-   More control over formatting
+-   Better for experienced users
+:::
+
+::: {.column width="50%"}
+**Visual Mode**
+
+-   WYSIWYG editor (What You See Is What You Get)
+-   Formatting toolbar (like Microsoft Word)
+-   Live preview of how text will look
+-   Easier for beginners
+:::
+:::::
+
+
+
+## Rendering Quarto Documents {.smaller}
+
+**Which Should You Use?**
+
+-   **Visual Mode**: Great when starting out or writing lots of text
+-   **Source Mode**: Better for precise control and learning markdown
+
+> Switch between them! Use Visual for writing, Source for troubleshooting. Just be sure to save when switching in between
+
+## Rendering Quarto Documents {.smaller}
+
+**Tips for making it work**
+
+-   Save your .qmd file before rendering
+-   All code must run without errors to render successfully
+-   Check the "Render" tab for error messages if rendering fails
+
+**Most common "knitting" errors:**
+
+- Quarto can't execute code 
+- Code chunks have the same name 
+
+Should be fine if you don't do anything fancy and don't mess with quarto settings
+
+
+## Homework #1 {.smaller}
+
+For this week only, I will provide a dataset for you to use on your homework assignment
+
+-   **attain.csv**: data from the General Social Survey
+-   in bCourses, Files → Weekly Assignments → HW 1
+
+**Turn in your assignment on bCourses**
+
+-   **HW #1:** due Thursday, February 5, 11:59 PM
+-   Turn in **BOTH** `hw1.qmd` and `hw1.html` files
+-   Write code and text response intermittenly in file
+
+## In-class lab{.smaller}
+
+Let's setup Positron environment for the course! STEPS: 
+
+1. Download `hw_example.qmd` and `attain.csv` from bCourse
+2. Create `soc16` folder on your desktop 
+3. Create `data` and `assignments` folders inside 
+4. Data always goes inside data folder and assignment always goes instead `assignment`
+5. Open Positron 
+6. Click the `Open Folder` button and navigate to `soc16`
+7. Allow access, check "Trust the authors..", and click "Yes, ..."
+8. Use `Explorer` button on left to find `hw_example.qmd`
+9. Check `Render on Save` button and hit preview
+10. If `Viewer` frame opens with html file  - SUCCESS!
