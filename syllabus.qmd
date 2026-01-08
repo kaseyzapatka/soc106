@@ -124,15 +124,17 @@ The final exam for our class will be on Monday, May 11 from 11:30 AM to 2:30 PM.
 
 Over the course of the semester, you will work with one (or more) datasets of your choosing in your assignments and your final paper. You may use any data you like, and are encouraged to consult with me as you choose and begin working with your data. Below are some examples of online repositories where data are available:
 
-- The Inter-university Consortium for Political and Social Research (ICPSR) has thousands of surveys. You may search for surveys at <https://www.icpsr.umich.edu/sites/icpsr/find-data>
+- The **Inter-university Consortium for Political and Social Research (ICPSR)** has thousands of surveys. You may search for surveys at <https://www.icpsr.umich.edu/sites/icpsr/find-data>
 
 - The Association of Religion Data Archives (ARDA) also has a voluminous collection of surveys on religion, accessible at <https://thearda.com/Archive/browse.asp>.
 
-- The Integrated Public Use Microdata Series (IPUMS) is the most accessible way to access lots of U.S. and international census and survey data: <https://www.ipums.org>
+- The **Integrated Public Use Microdata Series (IPUMS)** is the most accessible way to access lots of U.S. and international census and survey data: <https://www.ipums.org>
 
-- The Survey Documentation and Analysis page at <https://sda.berkeley.edu/archive.htm> This site has opinion data from the General Social Surveys, American National Election Studies, and various studies on racial attitudes and prejudice, among other surveys on household finance and health.
+- The **Survey Documentation and Analysis** page at <https://sda.berkeley.edu/archive.htm> This site has opinion data from the General Social Surveys, American National Election Studies, and various studies on racial attitudes and prejudice, among other surveys on household finance and health.
 
-- The Roper Center at Cornell University has a massive database of public opinion polls: <https://ropercenter.cornell.edu>
+- The **Roper Center at Cornell University** has a massive database of public opinion polls: <https://ropercenter.cornell.edu>
+
+- The **Google Dataset Search** is a newer resource that serves as comprehensive search tool and could be another good source of data : <https://datasetsearch.research.google.com/>
 
 
 ## Keys to sucess
