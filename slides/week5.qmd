@@ -1,0 +1,493 @@
+---
+title: "Week 5"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 02/17/2026
+date-format: long
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    css: slides.css
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+```{r}
+#| echo: false
+#| results: false
+
+# code for lecture
+# ---------
+
+# load tidyverse
+library(tidyverse)
+library(here)
+
+# load attain library
+attain <- read_csv(here("data/attain.csv")) 
+```
+
+## Housekeeping: HW #3 {.smaller}
+
+[[**ADD IT IN LATER**]]
+
+## Questions?
+
+## Course Overview {.smaller}
+
+**Where we've been:**
+
+First, we learned about how to find data from the "real world" and describe it (both graphically and using summary statistics like the mean & variance)
+
+**Where we're going:**
+
+Now, we will turn to what we can **infer** about the "real world", given the data that we have
+
+But first, we'll momentarily take a step back from the actual data to think about the **processes that generated the data**
+
+The models that we will create to understand these processes will allow us to make powerful inferences about the "real world" from the data
+
+## Agenda {.smaller}
+
+**Basics of Probability**
+
+- Probability models
+- Sample spaces
+- Density curves
+- Rules of probability
+- Probabilities of multiple events
+  - Unions and intersections
+  - Conditional probabilities
+  - Bayes' theorem
+
+## Randomness and Probability {.smaller}
+
+We will consider a phenomenon to be **random** if individual outcomes are uncertain but there is, nonetheless, a regular distribution of outcomes in a large number of repetitions. Think of there being some level of randomness involved
+
+**Some examples:**
+
+- **Rolling a dice**: all outcomes are equally likely
+- **Playing the lottery**: winning is unlikely and rare
+- **Taking a standardized test**: not all outcomes are equally likely for a given test-taker, but a test-taker will usually not get the same score every time they take a test
+
+## Randomness and Probability {.smaller}
+
+The **probability** of any outcome of a random phenomenon can be defined as the proportion of times the outcome would occur in a very large number of independent repetitions
+
+- We denote the probability of an event A as **P(A)**
+- $P(A) = \frac{\text{number of repetitions where event A occurs}}{\text{total number of repetitions}}$
+
+Repetitions are **independent** if the result of one repetition does not influence the result of other repetitions
+
+## Example: A Coin Toss {.smaller}
+
+::::: columns
+::: {.column width="60%"}
+While the result of any single coin toss is random, the result over many tosses is predictable as long as the tosses are independent
+
+If tosses are independent, then we can say that the probability of tossing "heads" is the proportion of "heads" in a large number of trials
+
+
+:::
+
+::: {.column width="40%"}
+
+![](images/week5/cointoss.png){width="100%,fig-align=\"center\""}
+
+
+:::
+:::::
+
+
+> This illustrates how randomness at the individual level produces predictability at the aggregate level
+
+## Calculating Probabilities {.smaller}
+
+**Empirical approach**
+
+- We can calculate probabilities by observing many trials of a random phenomenon
+
+- The sample proportion of the number of times the outcome occurred is the **probability**
+
+- This is an **estimate** of the actual probability, but a reasonably good one as we observe more and more trials
+
+**Theoretical approach**
+
+- We can also calculate theoretical probabilities based on assumptions about the random phenomena (i.e., all die rolls equally likely)
+
+## Probability Models {.smaller}
+
+**Probability models** are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:
+
+1. **Sample space (S)**: This is a set, or list, of all possible outcomes of a random process. An event is a subset of the sample space
+
+2. **A probability for each possible event** in the sample space S
+
+## Properties of Probability Models {.smaller}
+
+**Three fundamental properties:**
+
+1. **Range**: Probabilities for any given event range from 0 (can't happen) to 1 (happens every time)
+   - Formally, for any event A: $0 \leq P(A) \leq 1$
+   - So, the range of probability must be between 0 and 1
+
+2. **Exhaustiveness**: $P(S) = 1$. That is, the sample space is exhaustive of all possibilities
+  - In other words, there cannot be any limits on the probability of an occurance
+
+3. **Complement rule**: The probability of an event not occurring is 1 minus the probability that it does occur
+   - $P(\text{not } A) = 1 - P(A)$
+   - $P(\text{not } A)$ is called the **complement** of A
+
+## Probability Models: Example {.smaller}
+
+**Probability model for a coin toss:**
+
+- **Sample space S**: {Heads, Tails}
+
+- **Probabilities** (assuming a fair coin):
+  - $P(\text{Heads}) = 0.5$
+  - $P(\text{Tails}) = 0.5$
+
+**Check:** Does this fit the properties?
+
+::: {.fragment}
+1. Range: Both probabilities are between 0 and 1 ✓
+:::
+
+::: {.fragment}
+2. Exhaustiveness: $0.5 + 0.5 = 1$ ✓
+:::
+
+::: {.fragment}
+3. Complement: $P(\text{not Heads}) = P(\text{Tails}) = 1 - 0.5 = 0.5$ ✓
+:::
+
+## Compound Events {.smaller}
+
+Pretty simple, right? But this becomes more useful when we want to predict **compound events** that are the result of multiple trials
+
+We can figure out the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome
+
+**Example**: What's the probability of getting two heads in two coin flips?
+
+> We need to consider all possible outcomes and their probabilities
+
+
+## Example 1: Order matters {.smaller}
+
+A basketball player shoots three free throws. Each shot is either a Hit (H) or Miss (M).
+
+**Sample space** (all possible sequences):
+
+$$S = \{HHH, HHM, HMH, HMM, MHH, MHM, MMH, MMM\}$$
+
+- Total outcomes: **8**
+- Reason: Each shot has 2 outcomes → $2^3 = 8$
+- 🔑 **Order matters** (HHM ≠ HMH)
+  - HHM = Hit, Hit, Miss
+  - HMH = Hit, Miss, Hit
+  - These are different sequences!
+
+
+## Example 2: Order doesn't matter {.smaller}
+
+Now we only care about **how many baskets are made**, not the order
+
+**Sample space:**
+
+$$S = \{0, 1, 2, 3\}$$
+
+- Each value represents the **number of hits**
+- Total outcomes: **4**
+- 🔑 **Order doesn't matter**
+  - HMH and MHH both → 2 baskets
+  - We collapse multiple sequences into single counts
+
+## Example 3: Continuous outcomes {.smaller}
+
+A nutrition researcher feeds a new diet to a lab rat and measures weight gain (grams)
+
+**Sample space:**
+
+$$S = [0, \infty)$$
+
+- Any non-negative real number is possible
+- Infinite number of outcomes
+- 🔑 **Continuous sample space**
+  - Can't list all outcomes individually
+  - Must use intervals and density curves
+
+## Comparing Sample Space Types {.smaller}
+
+| Scenario | Type of Sample Space | Order Matters? | Number of Outcomes |
+|----------|---------------------|----------------|-------------------|
+| Free throw sequences | Discrete | ✅ Yes | 8 |
+| Number of baskets | Discrete | ❌ No | 4 |
+| Weight gain | Continuous | ❌ No | Infinite (∞) |
+
+**Key takeaway:** The same physical situation (free throws) can have different sample spaces depending on what question we're asking!
+
+## Discrete Sample Spaces {.smaller}
+
+**Discrete sample spaces** deal with data that can only take on certain values, known in advance (that is, categorical data)
+
+**Example**: Throwing a single die
+
+- $S = \{1, 2, 3, 4, 5, 6\}$
+- Probability of each event, assuming a fair die: $1/6$
+
+These are straightforward because we can list all possible outcomes
+
+## Continuous Sample Spaces {.smaller}
+
+On the other hand, **continuous sample spaces** contain an infinite number of outcomes. They are typically intervals of possible, continuously distributed outcomes.
+
+**Example**: Picking a random real number between 0 and 1
+
+- $S = [0,1]$ (the interval containing all real numbers between 0 and 1)
+
+**Question**: How do we assign probabilities to outcomes in an infinite sample space?
+
+## Probabilities in Continuous Sample Spaces {.smaller}
+
+::::: columns
+::: {.column width="60%"}
+
+We use **density curves** to represent probabilities across the continuous sample space, and compute probabilities for intervals as the **area under the curve**
+
+**Example**: Uniform density curve over $S = [0,1]$
+
+Uniform density curves represent when all outcomes in a continuous sample space are equally likely
+
+The shaded portion represents:
+
+$P(0.3 \leq x \leq 0.7) = (0.7 - 0.3) \times 1 = 0.4$
+
+:::
+
+::: {.column width="40%"}
+
+![Uniform density curve with shaded region between 0.3 and 0.7](images/week5/density_curve.png){width="100%,fig-align=\"center\""}
+
+:::
+:::::
+
+## Properties of Density Curves {.smaller}
+
+**Three key properties:**
+
+1. **Single point probability**: The probability of a single outcome under a density curve is zero
+   - Think: what is the probability that a random number between 0 and 1 is, say, π/4?
+   - Only intervals have non-zero probability
+
+2. **Total area**: The total area under a density curve is equal to 1
+   - This is the analogue of $P(S) = 1$
+
+3. **Non-negativity**: Density curves are always positive
+
+## Density Curve Examples {.smaller}
+
+::::: columns
+::: {.column width="60%"}
+
+Density curves come in all shapes and sizes:
+
+- Some are well-known mathematically; others aren't
+- Some are described by simple equations; others aren't
+
+**Common types we'll encounter:**
+
+- Uniform distribution (equal probability across range)
+- Normal distribution (bell curve)
+- Exponential distribution
+- And many others...
+
+:::
+
+::: {.column width="40%"}
+
+![Sample of various types of density curves](images/week5/density_curves.png){width="100%,fig-align=\"center\""}
+
+:::
+:::::
+
+## Questions?
+
+## Compound Probabilities: Multiple Events! {.smaller}
+
+
+::::: columns
+::: {.column width="60%"}
+
+**Union of events:**
+
+Let A and B be subsets of the sample space S (that is, A and B are events)
+
+The **union** of A and B ("A or B") consists of outcomes that are in A, or in B, or in both A and B
+
+**Notation**: $A \cup B$
+
+:::
+::: {.column width="40%"}
+
+![](images/week5/union.png){width="40%,fig-align=\"center\""}
+
+:::
+:::::
+
+
+::: aside
+In words, whenever you see the $\cup$, it means "the union between". Or put more plainly "everything that’s in A, everything that’s in B, and anything they share."
+:::
+
+## Probability of the Union of Two Events {.smaller}
+
+
+::::: columns
+::: {.column width="50%"}
+
+**Addition rule**: For the union of two events,
+
+$$P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)$$
+
+:::
+::: {.column width="40%"}
+
+![](images/week5/addition.png){width="100%,fig-align=\"center\""}
+
+:::
+:::::
+
+**Special case - Disjoint events:**
+
+If the events are **disjoint** (mutually exclusive), then $P(A \text{ and } B) = 0$
+
+Therefore: $P(A \text{ or } B) = P(A) + P(B)$
+
+
+## Intersection of Two Events {.smaller}
+
+::::: columns
+::: {.column width="60%"}
+
+
+The **intersection** of A and B ("A and B") consists of outcomes that are in both A and B
+
+**Notation**: $A \cap B$
+
+This represents the overlap between two events
+
+:::
+::: {.column width="40%"}
+
+![](images/week5/intersection.png){width="100%,fig-align=\"center\""}
+
+:::
+:::::
+
+
+::: aside
+In words, whenever you see the $\cap$, it means "the intersection between". Or put more plainly, "only the things that A and B have in common."
+:::
+
+
+## Conditional Probabilities {.smaller}
+
+For events A and B, the **conditional probability** of event A, given that event B has occurred, is:
+
+$$P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$$
+
+
+**Reading the notation:**
+
+- $P(A|B)$ is read as "the probability of (event) A, given (event) B"
+- The vertical slash represents the word "given" or "conditional on"
+
+**Interpretation:**
+
+Of all the times that B occurs, $P(A|B)$ is the proportion of times that A also occurs
+
+## Conditional Probabilities: Connection to Marginal Frequencies {.smaller}
+
+Note that this is equivalent to the **marginal frequency**, which we discussed last week
+
+This shows how probability theory connects to the descriptive statistics we've already learned
+
+![](images/week5/conditional_freq.png){width="100%,fig-align=\"center\""}
+
+
+## Multiplication Rule {.smaller}
+
+For the intersection of two events:
+
+$$P(A \text{ and } B) = P(A) \times P(B|A)$$
+
+Alternatively: $P(A \text{ and } B) = P(B) \times P(A|B)$
+
+It doesn't matter which event we choose first!
+
+## Independent Events {.smaller}
+
+If two events are **independent**, the probability that one event occurs is not affected by whether the other event occurs
+
+**This implies:**
+
+- $P(B|A) = P(B)$
+- $P(A|B) = P(A)$
+- $P(A \text{ and } B) = P(A) \times P(B)$
+
+**Example**: Coin flips are independent - knowing the first flip doesn't tell you anything about the second flip
+
+## Questions?
+
+## Next Week: Probability Distributions {.smaller}
+
+We will learn about **random variables**, which are numerical measurements of a random phenomenon that take on particular values (or ranges of values) with certain probabilities
+
+- We can represent any variable we've talked about so far in this class—hair color of students, height, income—as a random variable
+
+Then, we'll look at probability models of the distributions of random variables
+
+## Homework {.smaller}
+
+**Assignment details:**
+
+- No data analysis, or even anything in R
+- A relatively shorter assignment than last week's
+- Rest of class: work on HW in groups
+
+**Groups:**
+
+- Group 1: [**ASSIGN**]
+- Group 2: [**ASSIGN**]
+- Group 3: [**ASSIGN**]
+
+**Reminder**: <span class="highlight">Research paper proposal is due next Thursday, February 26</span>
+
+Shorter weekly assignment → good opportunity to work on your proposal!
+
+## Research Paper Proposal {.smaller}
+
+**Required components:**
+
+1. **Research question**, asked as a question (1 sentence)
+
+2. **Motivation**: why do we care? (one paragraph)
+
+3. **Hypotheses** about what the answer is, and why (one paragraph)
+
+4. **Data** (1-2 paragraphs):
+   - Describe who collected the data, what the units of analysis are (i.e., people, cities, organizations, countries)
+   - What year the data is from, how many observations will be in your sample
+   - Specifically describe your main independent and dependent variables: what is their level of measurement? If nominal/ordinal, what are the categories? If continuous, what are the units?
+
+## Research Paper Proposal {.smaller}
+
+You don't have to write about what statistical analysis you will use, but you should end with a sentence that talks generally about the relationship you expect to see between your independent and dependent variables
+
+**Example:**
+
+> "I expect that people who report higher family incomes will be more likely to agree with the survey question that the government should reduce taxes."
+
+**Note**: Your proposal can (and prob should) use the data/topic that you've been working with in weekly assignments so far.
