@@ -2602,5 +2602,460 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "slides/week7.html#housekeeping",
+    "href": "slides/week7.html#housekeeping",
+    "title": "Week 7",
+    "section": "Housekeeping",
+    "text": "Housekeeping\n[[ADD IT IN LATER]]"
+  },
+  {
+    "objectID": "slides/week7.html#research-paper-proposals",
+    "href": "slides/week7.html#research-paper-proposals",
+    "title": "Week 7",
+    "section": "Research Paper Proposals",
+    "text": "Research Paper Proposals\nOverall, great job—super interesting topics!\nI tried to give feedback in two areas:\n\nResearch design: How to construct variables of interest, what units of analysis may be most appropriate for your research question, other issues you may want to think about going forward\nWhat has been written in the academic literature on your topic\n\nSome people have questions that have had a lot written about them: this is a good sign that your question is important!"
+  },
+  {
+    "objectID": "slides/week7.html#research-paper-proposals-literature",
+    "href": "slides/week7.html#research-paper-proposals-literature",
+    "title": "Week 7",
+    "section": "Research Paper Proposals: Literature",
+    "text": "Research Paper Proposals: Literature\nI tried to give feedback in two areas:\n\nWhat has been written in the academic literature on your topic\n\nSome people have questions that have had a lot written about them: this is a good sign that your question is important!\nIf you find that your question has been more or less answered as you do your annotated bibliography:\n\nYou can still answer something that has been answered before if you use a different data source\nOr, try to think about related questions that haven’t been answered (often discussed in the conclusion section of papers)"
+  },
+  {
+    "objectID": "slides/week7.html#annotated-bibliography-due-1019",
+    "href": "slides/week7.html#annotated-bibliography-due-1019",
+    "title": "Week 7",
+    "section": "Annotated Bibliography: Due 10/19",
+    "text": "Annotated Bibliography: Due 10/19\nDue March 19\nIdentify ten scholarly sources\nFor each source: Discuss in 1-2 paragraphs how the source relates to your research question\n\nGood sources:Bad sources:\n\n\n\nArticles in academic journals\nAcademic books\nBook chapters from edited volumes\nNon-political reports from research centers / government agencies\n\n\n\n\nBlogs, internet / newspaper articles\nWikipedia pages\nPolitical reports from research centers / govt"
+  },
+  {
+    "objectID": "slides/week7.html#what-to-include-for-each-source",
+    "href": "slides/week7.html#what-to-include-for-each-source",
+    "title": "Week 7",
+    "section": "What to Include for Each Source",
+    "text": "What to Include for Each Source\nYour 1-2 paragraph discussion should include, but is not limited to:\n\nThe overall argument\nThe types of evidence used to support the argument\nAny possible weaknesses or strengths in the paper\n\nThis helps you engage critically with the literature!"
+  },
+  {
+    "objectID": "slides/week7.html#how-to-find-academic-articles",
+    "href": "slides/week7.html#how-to-find-academic-articles",
+    "title": "Week 7",
+    "section": "How to Find Academic Articles",
+    "text": "How to Find Academic Articles\nSearch on Google Scholar or JSTOR\nYou’ll usually get somewhere by taking your independent and dependent variables and searching for:\n\n“effect of independent variable on dependent variable”\n\nYou may need to use a UC Berkeley Library proxy to access some academic articles\nThis is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help\nNOTE: AI will hallucinate citations, so don’t use"
+  },
+  {
+    "objectID": "slides/week7.html#how-to-read-academic-articles",
+    "href": "slides/week7.html#how-to-read-academic-articles",
+    "title": "Week 7",
+    "section": "How to Read Academic Articles",
+    "text": "How to Read Academic Articles\nRead the abstract first:\n\nGeneral overview of the paper\nSets up research question, tells us data used to answer it, and result\n\nIf the paper seems relevant, then read/skim the introduction and conclusion:\n\nIntroduction: Slightly more detailed than the abstract, but similar format\nConclusion: Talks more deeply about result and how it relates to the research question. Discusses alternative explanations and the limitations of the study\n\nThe conclusion is a good place to find future research topics—what is important to know but hasn’t been done yet!"
+  },
+  {
+    "objectID": "slides/week7.html#how-to-read-academic-articles-continued",
+    "href": "slides/week7.html#how-to-read-academic-articles-continued",
+    "title": "Week 7",
+    "section": "How to Read Academic Articles (continued)",
+    "text": "How to Read Academic Articles (continued)\nNext, you may want to skim the background section:\n\nRight after the introduction, before the data section\nDiscusses the previous research that motivates the research question\nThis makes the background a good place to find other sources you may want to include in your annotated bibliography\n\nThe data section can be useful to skim:\n\nWill help you understand how the researcher constructs their sample\nMore generally what data sources researchers use to answer these types of questions\n\nMethods: Don’t worry about this too much (yet!)\n\nThe name for this section can vary (e.g., “Analytic Strategy”, “Analysis”)"
+  },
+  {
+    "objectID": "slides/week7.html#questions",
+    "href": "slides/week7.html#questions",
+    "title": "Week 7",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week7.html#last-two-weeks-recap",
+    "href": "slides/week7.html#last-two-weeks-recap",
+    "title": "Week 7",
+    "section": "Last Two Weeks: Recap",
+    "text": "Last Two Weeks: Recap\nWhat we learned:\n\nWe learned the rules of probability to determine the chances of observing patterns of disjoint, independent outcomes\nWe used these patterns to discuss probability distributions for random variables\n\nNow: We move from theory to practice—how do we apply these concepts to real data?"
+  },
+  {
+    "objectID": "slides/week7.html#this-weeks-lecture",
+    "href": "slides/week7.html#this-weeks-lecture",
+    "title": "Week 7",
+    "section": "This Week’s Lecture",
+    "text": "This Week’s Lecture\nTopics we’ll cover:\n\nSampling: The collection of (approximately) random sets of observations from a larger population\nSampling distributions: Probability distributions of sample statistics\n\nExamples: sample proportions, sample means\n\nThe Central Limit Theorem: For sufficiently large samples, we can know a lot about the sampling distribution, even if we don’t know anything about the population distribution"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-basic-concepts",
+    "href": "slides/week7.html#sampling-basic-concepts",
+    "title": "Week 7",
+    "section": "Sampling: Basic Concepts",
+    "text": "Sampling: Basic Concepts\n\n\nPopulation: The whole universe to which a study aspires to generalize\nParameter: A number describing some attribute of the population\n\nWe saw how parameters can describe probability distributions of populations\n\n\nSample: The part of the population we actually have data on\n\nHow well the sample represents the population depends on the sample design\n\nStatistic: A number describing some attribute of the sample"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-from-a-population",
+    "href": "slides/week7.html#sampling-from-a-population",
+    "title": "Week 7",
+    "section": "Sampling from a Population",
+    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-from-a-population-continued",
+    "href": "slides/week7.html#sampling-from-a-population-continued",
+    "title": "Week 7",
+    "section": "Sampling from a Population (continued)",
+    "text": "Sampling from a Population (continued)\n\nThe relationship between target population and a sample"
+  },
+  {
+    "objectID": "slides/week7.html#sample-design",
+    "href": "slides/week7.html#sample-design",
+    "title": "Week 7",
+    "section": "Sample Design",
+    "text": "Sample Design\nTo do inferential statistics, we need a representative sample—that is, we would like for each unit of the population to have an equal chance of being included in the sample\nWe also want samples that are large enough for precision, which increases with sample size\nImportant note: Precision is also inversely proportional to the diversity of the values, which implies that larger samples are necessary to draw inferences about small groups (race, educational, sexual orientation, etc.)"
+  },
+  {
+    "objectID": "slides/week7.html#examples-of-sampling-designs",
+    "href": "slides/week7.html#examples-of-sampling-designs",
+    "title": "Week 7",
+    "section": "Examples of Sampling Designs",
+    "text": "Examples of Sampling Designs\nNow there are number of different types of sampling techniques. Let’s look at a few:\n\nSimple randomStratified randomCluster\n\n\nSimple random sample: If you have a list of the population, you can use a random number generator to randomly select a sample from the population\n\n\n\n\n\n\n\nStratified random sample: Organize the population into homogenous groups (strata), then use simple random sampling in each strata\n\nGenerally improves precision\nCan over-sample within smaller strata (e.g., minority groups) to obtain large enough sample size for inferences within those strata\n\n\n\n\n\n\n\n\nCluster sampling: A two-stage process:\n\nCreate subpopulations (clusters) then:\nRandomly select a sample of clusters\nThen, randomly select units within the sampled clusters"
+  },
+  {
+    "objectID": "slides/week7.html#cluster-sampling",
+    "href": "slides/week7.html#cluster-sampling",
+    "title": "Week 7",
+    "section": "Cluster Sampling",
+    "text": "Cluster Sampling\nCluster sampling: A two-stage process, in which you create subpopulations (clusters) and then:\n\nRandomly select a sample of clusters\nThen, randomly select units within the sampled clusters\n\nKey difference: Differs from stratified random sampling, where individuals in all strata are sampled. Here, some strata are not sampled\nImportant: To ensure that each unit has an equal chance of being sampled, larger clusters are more likely to be chosen"
+  },
+  {
+    "objectID": "slides/week7.html#creating-a-representative-sample",
+    "href": "slides/week7.html#creating-a-representative-sample",
+    "title": "Week 7",
+    "section": "Creating a Representative Sample",
+    "text": "Creating a Representative Sample\nThe problem: It is actually usually infeasible to create a true random sample—most of the time, we don’t have a list of everyone in the population\nBut: Often we know enough about the data collection process to be able to estimate the probability that an individual will be selected into the sample, based on:\n\nDemographic information (age, sex, race…)\nGeographic location\nOther characteristics"
+  },
+  {
+    "objectID": "slides/week7.html#sample-weights",
+    "href": "slides/week7.html#sample-weights",
+    "title": "Week 7",
+    "section": "Sample Weights",
+    "text": "Sample Weights\nThe solution: We can use these probabilities to construct sampling weights that are inversely proportional to the likelihood that an individual will be selected in the sample\nKey idea: Sampled individuals who are less likely to be sampled should be weighted more to represent similar individuals who are not sampled\nThus, we can use sampling weights to create a representative sample"
+  },
+  {
+    "objectID": "slides/week7.html#example-sample-weights-in-the-gss",
+    "href": "slides/week7.html#example-sample-weights-in-the-gss",
+    "title": "Week 7",
+    "section": "Example: Sample Weights in the GSS",
+    "text": "Example: Sample Weights in the GSS\nSampling design:\nClustered sample on “primary sampling units”\n\nLarge metro areas chosen with certainty\nOther areas drawn randomly with probability proportional to number of households\n\nThen, within sampled clusters, households sampled at random\nThen, one adult within each household is chosen to be interviewed, based on the date of the next birthday\nOther complexities: Oversampling minority respondents, re-sampling households that don’t respond the first time, etc."
+  },
+  {
+    "objectID": "slides/week7.html#gss-weighting-strategy",
+    "href": "slides/week7.html#gss-weighting-strategy",
+    "title": "Week 7",
+    "section": "GSS Weighting Strategy",
+    "text": "GSS Weighting Strategy\nBased on the sampling design, all households are sampled at random → no weighting necessary for household-level variables\nBut: Individuals living in large households are less likely to be sampled!\nSo, we need to weight individual-level variables in proportion to the number of adults in the household\nAlso different weights given for:\n\nAnalyzing the black oversample\nAccounting for the re-sampling of respondents who don’t respond the first time"
+  },
+  {
+    "objectID": "slides/week7.html#gss-weight-variables",
+    "href": "slides/week7.html#gss-weight-variables",
+    "title": "Week 7",
+    "section": "GSS Weight Variables",
+    "text": "GSS Weight Variables\n\nTable showing different GSS weight variables and their purposes"
+  },
+  {
+    "objectID": "slides/week7.html#using-weights-in-r",
+    "href": "slides/week7.html#using-weights-in-r",
+    "title": "Week 7",
+    "section": "Using Weights in R",
+    "text": "Using Weights in R\nThere are a number of weights packages that you can use to create representative samples:\n\nTidyverseHmiscWeightsRegression\n\n\n[[ADD SOMETHING HERE]]\nIn the tidyverse, you can also use the weights() function when summarizing data to get weighted tabulations:\nlook here svydesign package\n\n\n[[ADD SOMETHING HERE]]\n\n# Package \"Hmisc\"\nlibrary(Hmisc)\n\nwtd.mean(x, weights = NULL, ...)\nwtd.var(x, weights = NULL, ...)\nwtd.quantile(x, weights = NULL, ...)\nwtd.table(x, weights = NULL, ...)\n\n\n\n[[ADD SOMETHING HERE]]\n\n# Package \"weights\"\nlibrary(weights)\n\nwtd.cor(x, weights = NULL, ...)\nwtd.hist(x, weights = NULL, ...)\n\n\n\n[[ADD SOMETHING HERE]]"
+  },
+  {
+    "objectID": "slides/week7.html#questions-1",
+    "href": "slides/week7.html#questions-1",
+    "title": "Week 7",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-distributions",
+    "href": "slides/week7.html#sampling-distributions",
+    "title": "Week 7",
+    "section": "Sampling Distributions",
+    "text": "Sampling Distributions\nA sampling distribution is the probability distribution of a sample statistic calculated for independent samples from the same population\nKey insights:\n\nSampling distributions describe the variability that occurs from study to study using statistics to estimate population parameters\nSampling distributions help to predict how close a statistic falls to the parameter it estimates"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-distribution-of-a-proportion",
+    "href": "slides/week7.html#sampling-distribution-of-a-proportion",
+    "title": "Week 7",
+    "section": "Sampling Distribution of a Proportion",
+    "text": "Sampling Distribution of a Proportion\nLast week we learned about the binomial probability distribution, which is a distribution of the number of successes in n independent trials, each with probability \\(\\pi\\) of success\nWe learned the mean (\\(\\mu\\)) and the standard deviation (\\(\\sigma\\)) of \\(X \\sim B(n, \\pi)\\) was:\n\\[\\mu = \\pi \\times n\\] \\[\\sigma = \\sqrt{\\pi \\times n \\times (1-\\pi)}\\]"
+  },
+  {
+    "objectID": "slides/week7.html#from-binomial-to-sample-proportion",
+    "href": "slides/week7.html#from-binomial-to-sample-proportion",
+    "title": "Week 7",
+    "section": "From Binomial to Sample Proportion",
+    "text": "From Binomial to Sample Proportion\nThe mean (\\(\\mu\\)) and the standard deviation (\\(\\sigma\\)) of the sampling distribution of a proportion \\(\\pi\\) with a sample size of \\(n\\) is equal to the mean and standard deviation of the binomial probability distribution, divided by n:\n\\[\\mu = \\frac{\\pi \\times n}{n} = \\pi\\]\n\\[\\sigma = \\frac{\\sqrt{\\pi \\times n \\times (1-\\pi)}}{n} = \\sqrt{\\frac{\\pi \\times (1-\\pi)}{n}}\\]\nImportant terminology: To distinguish the SD of a sample statistic from the SD of a sample or population, we refer to it as the standard error"
+  },
+  {
+    "objectID": "slides/week7.html#example-racial-profiling",
+    "href": "slides/week7.html#example-racial-profiling",
+    "title": "Week 7",
+    "section": "Example: Racial Profiling?",
+    "text": "Example: Racial Profiling?\nData:\n\n262 police car stops in Philadelphia in 1997\n207 of the drivers stopped were African-American\nPhiladelphia’s population in 1997 was 42.2% African-American\n\nQuestion: Is the number of African-Americans stopped higher than we would expect if cars were stopped at random?"
+  },
+  {
+    "objectID": "slides/week7.html#example-racial-profiling-analysis",
+    "href": "slides/week7.html#example-racial-profiling-analysis",
+    "title": "Week 7",
+    "section": "Example: Racial Profiling Analysis",
+    "text": "Example: Racial Profiling Analysis\nAssume we can model \\(X \\sim B(262, 0.422)\\). Let’s calculate the mean and standard deviation of the expected sampling distribution:\n\\(\\mu = 0.422\\)\n\\(\\sigma = \\sqrt{\\frac{0.422 \\times 0.578}{262}} = 0.03\\)\nBut: The observed proportion of African-Americans who are stopped is \\(207/262 = 0.79\\)!\nThis is extremely far from what we’d expect under random sampling!"
+  },
+  {
+    "objectID": "slides/week7.html#understanding-the-three-distributions",
+    "href": "slides/week7.html#understanding-the-three-distributions",
+    "title": "Week 7",
+    "section": "Understanding the Three Distributions",
+    "text": "Understanding the Three Distributions\nIn the racial profiling example:\n\nThe population distribution consists of the 1.45 million residents of Philadelphia in 1997\nThe sample (or data) consists of the 262 drivers stopped by the police in Philadelphia in 1997\nThe sampling distribution consists of the possible values of the proportion of individuals who are African-American in a simple random sample of 262 Philadelphia residents"
+  },
+  {
+    "objectID": "slides/week7.html#visualizing-population-distribution",
+    "href": "slides/week7.html#visualizing-population-distribution",
+    "title": "Week 7",
+    "section": "Visualizing Population Distribution",
+    "text": "Visualizing Population Distribution\n\n\\(N = 4\\)\\(N = 6\\)\\(N = 8\\)\\(N = 10\\)\\(N = 40\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKey takeaway: As \\(N\\) becomes larger and larger, the binomial distribution approximates the normal distribution."
+  },
+  {
+    "objectID": "slides/week7.html#visualizing-sample-distribution",
+    "href": "slides/week7.html#visualizing-sample-distribution",
+    "title": "Week 7",
+    "section": "Visualizing Sample Distribution",
+    "text": "Visualizing Sample Distribution\n\nShows the actual sample of 262 police stops"
+  },
+  {
+    "objectID": "slides/week7.html#visualizing-sampling-distribution",
+    "href": "slides/week7.html#visualizing-sampling-distribution",
+    "title": "Week 7",
+    "section": "Visualizing Sampling Distribution",
+    "text": "Visualizing Sampling Distribution\n\nShows the theoretical distribution of sample proportions"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-distribution-continued",
+    "href": "slides/week7.html#sampling-distribution-continued",
+    "title": "Week 7",
+    "section": "Sampling Distribution (continued)",
+    "text": "Sampling Distribution (continued)\n\nHighlights where the observed sample falls on the sampling distribution"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-distribution-continued-1",
+    "href": "slides/week7.html#sampling-distribution-continued-1",
+    "title": "Week 7",
+    "section": "Sampling Distribution (continued)",
+    "text": "Sampling Distribution (continued)\n\nShows the extreme nature of the observed proportion"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-distribution-of-the-mean",
+    "href": "slides/week7.html#sampling-distribution-of-the-mean",
+    "title": "Week 7",
+    "section": "Sampling Distribution of the Mean",
+    "text": "Sampling Distribution of the Mean\nKey assumption about our sampling practices that makes this all work:\nThe most common sampling distribution that is used in practice is that of the mean\nFor a random sample of size n from a population having mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the sampling distribution of the sample mean \\(\\bar{x}\\) follows a normal distribution with the following parameters:\n\nThe mean of \\(\\bar{x}\\) is equal to the population mean \\(\\mu\\)\nThe standard error of \\(\\bar{x}\\) equals the population standard deviation, divided by the square root of the sample size: \\(\\frac{\\sigma}{\\sqrt{n}}\\)"
+  },
+  {
+    "objectID": "slides/week7.html#standard-error-and-sample-size",
+    "href": "slides/week7.html#standard-error-and-sample-size",
+    "title": "Week 7",
+    "section": "Standard Error and Sample Size",
+    "text": "Standard Error and Sample Size\nAs the sample size n becomes larger, the standard error of the sample mean becomes smaller\nThis is why the precision of our estimates increase with larger sample sizes!\nExample: Sampling distribution of \\(\\bar{x}\\), where \\(X \\sim N(0,1)\\)\n\nShows how sampling distributions become tighter with larger \\(N\\)"
+  },
+  {
+    "objectID": "slides/week7.html#example-pizza-sales",
+    "href": "slides/week7.html#example-pizza-sales",
+    "title": "Week 7",
+    "section": "Example: Pizza Sales",
+    "text": "Example: Pizza Sales\nSuppose the daily sales at a pizza restaurant have mean \\(\\mu = \\$900\\) and standard deviation \\(\\sigma = \\$300\\)\nQuestion: What are the mean and standard error of a random sample of seven days?"
+  },
+  {
+    "objectID": "slides/week7.html#example-pizza-sales-solution",
+    "href": "slides/week7.html#example-pizza-sales-solution",
+    "title": "Week 7",
+    "section": "Example: Pizza Sales Solution",
+    "text": "Example: Pizza Sales Solution\nSuppose the daily sales at a pizza restaurant have mean \\(\\mu = \\$900\\) and standard deviation \\(\\sigma = \\$300\\)\nQuestion: What are the mean and standard error of a random sample of seven days?\nSolution:\n\\(\\bar{x} = \\$900\\)\n\\(SE(\\bar{x}) = \\frac{\\$300}{\\sqrt{7}} = \\$113\\)"
+  },
+  {
+    "objectID": "slides/week7.html#questions-2",
+    "href": "slides/week7.html#questions-2",
+    "title": "Week 7",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-distribution-of-the-mean-1",
+    "href": "slides/week7.html#sampling-distribution-of-the-mean-1",
+    "title": "Week 7",
+    "section": "Sampling Distribution of the Mean",
+    "text": "Sampling Distribution of the Mean\nWe didn’t talk about how, say, the daily pizza sales were distributed when calculating the sampling distribution of the sample mean\nThis begs the question: Does the probability distribution of a random variable (or of a variable in a population) affect the sampling distribution of the sample mean?\n\nAnswer: As long as the sample size is sufficiently large, no!"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-distribution-of-the-mean-2",
+    "href": "slides/week7.html#sampling-distribution-of-the-mean-2",
+    "title": "Week 7",
+    "section": "Sampling Distribution of the Mean",
+    "text": "Sampling Distribution of the Mean\nWe didn’t talk about how, say, the daily pizza sales were distributed when calculating the sampling distribution of the sample mean\nThis begs the question: Does the probability distribution of a random variable (or of a variable in a population) affect the sampling distribution of the sample mean?\nAnswer: As long as the sample size is sufficiently large, no!"
+  },
+  {
+    "objectID": "slides/week7.html#central-limit-theorem",
+    "href": "slides/week7.html#central-limit-theorem",
+    "title": "Week 7",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\nThis is one of the most powerful theorems in statistics!\n\nIf repeated independent samples of size \\(N\\) are drawn from any population (no matter the distribution) having a mean of \\(\\mu\\) and standard deviation of \\(\\sigma\\), then—as \\(N\\) becomes “large”—the sampling distribution of sample means approaches a normal distribution with mean \\(\\mu\\) and standard error \\(\\frac{\\sigma}{\\sqrt{N}}\\)"
+  },
+  {
+    "objectID": "slides/week7.html#central-limit-theorem-interactive-demo",
+    "href": "slides/week7.html#central-limit-theorem-interactive-demo",
+    "title": "Week 7",
+    "section": "Central Limit Theorem: Interactive Demo",
+    "text": "Central Limit Theorem: Interactive Demo\nExplore the CLT:\nhttp://wise.cgu.edu/portfolio/samplingdistribution/\nThis interactive tool shows how the sampling distribution approaches normality as sample size increases, regardless of the population distribution"
+  },
+  {
+    "objectID": "slides/week7.html#how-large-a-sample",
+    "href": "slides/week7.html#how-large-a-sample",
+    "title": "Week 7",
+    "section": "How Large a Sample?",
+    "text": "How Large a Sample?\nThe sampling distribution of the sample mean takes more of a normal shape as the random sample size \\(n\\) increases\nGuidelines:\n\nThe more skewed the population distribution, the larger \\(n\\) must be before the shape of the sampling distribution is close to normal\nIf the population distribution is normal, the sampling distribution will be normal for all sample sizes\n\n\nIn practice: If \\(n &gt; 30\\), the sampling distribution will be close enough to normal for any distribution"
+  },
+  {
+    "objectID": "slides/week7.html#example-rolling-dice",
+    "href": "slides/week7.html#example-rolling-dice",
+    "title": "Week 7",
+    "section": "Example: Rolling Dice",
+    "text": "Example: Rolling Dice\nWhat is the probability that the mean of a random sample of 35 dice rolls (\\(\\mu = 3.5\\), \\(\\sigma = \\sqrt{35/12}\\)) will be less than 3?\n\nStepsSolution\n\n\n\nCalculate the mean and standard error for the sampling distribution:\nBy the Central Limit Theorem, \\(\\bar{x}\\) is normally distributed with:\n\nMean = \\(3.5\\)\nStandard error = \\(\\frac{\\sqrt{35/12}}{\\sqrt{35}} = \\frac{1}{\\sqrt{12}} = 0.2887\\)\n\n\n\n\nSo, we can calculate \\(P(\\bar{x} &lt; 3)\\) in R:\n\npnorm(3, mean = 3.5, sd = 1/sqrt(12))\n\n[1] 0.04163226\n\n\nThe probability is approximately 4.2%"
+  },
+  {
+    "objectID": "slides/week7.html#example-rolling-dice-solution",
+    "href": "slides/week7.html#example-rolling-dice-solution",
+    "title": "Week 7",
+    "section": "Example: Rolling Dice Solution",
+    "text": "Example: Rolling Dice Solution\nSo, we can calculate \\(P(\\bar{x} &lt; 3)\\) in R:\n\npnorm(3, mean = 3.5, sd = 1/sqrt(12))\n\n[1] 0.04163226\n\n\nThe probability is approximately 4.2%"
+  },
+  {
+    "objectID": "slides/week7.html#extension-difference-between-means",
+    "href": "slides/week7.html#extension-difference-between-means",
+    "title": "Week 7",
+    "section": "Extension: Difference Between Means",
+    "text": "Extension: Difference Between Means\nSuppose, within subpopulation\\(_1\\), a variable \\(X\\) has mean \\(\\mu_1\\) and standard deviation \\(\\sigma_1\\), and within subpopulation\\(_1\\), \\(X\\) has mean \\(\\mu_2\\) and standard deviation \\(\\sigma_2\\)\nWe can calculate the mean and standard error of the sampling distribution of the difference between means:\n\\[\\mu_{\\bar{x}_1 - \\bar{x}_2} = \\mu_1 - \\mu_2\\]\n\\[SE(\\bar{x}_1 - \\bar{x}_2) = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}\\]\nNot surprisingly, the sampling distribution of the difference between means is also normal!"
+  },
+  {
+    "objectID": "slides/week7.html#summing-up",
+    "href": "slides/week7.html#summing-up",
+    "title": "Week 7",
+    "section": "Summing Up",
+    "text": "Summing Up\nThis week, we learned how to construct distributions of sampling statistics, given known population parameters and sample size\nBut: Most of the time we don’t actually know the population parameters\nThe real power of the Central Limit Theorem: It allows us to make inferences about unknown population parameters, based on the distribution of the sampling statistic\nWe’ll talk more about this next week!"
+  },
+  {
+    "objectID": "slides/week7.html#homework",
+    "href": "slides/week7.html#homework",
+    "title": "Week 7",
+    "section": "Homework",
+    "text": "Homework\nFormat: Similar to last week: solving word problems, using R when necessary\nLooking ahead: Next week, we’ll probably get back to answering questions using data of your choice (hopefully, data you will use in your final paper!)\nAnnotated bibliography reminder: It would also be a good idea to start working on your annotated bibliography this week!\n\nDue March 19\nFinding relevant papers will take some time\nDon’t expect that the first 10 papers you come across will be relevant to your project\nStart early!\n\n\n\nGitHub course repo"
+  },
+  {
+    "objectID": "slides/week7.html#agenda",
+    "href": "slides/week7.html#agenda",
+    "title": "Week 7",
+    "section": "Agenda",
+    "text": "Agenda\n\nDiscuss research paper proposals\nDiscuss annotated bibliography due March 19\nSampling\nSampling distributions\nCentral limit theorem\nLab time to work on hw"
+  },
+  {
+    "objectID": "slides/week7.html#research-paper-proposals-1",
+    "href": "slides/week7.html#research-paper-proposals-1",
+    "title": "Week 7",
+    "section": "Research Paper Proposals",
+    "text": "Research Paper Proposals\nIf you find that your question has been more or less answered as you do your annotated bibliography:\n\nYou can still answer something that has been answered before if you use a different data source\nOr, try to think about related questions that haven’t been answered (often discussed in the conclusion section of papers)\n\nHappy to talk further about these topics in office hours!"
+  },
+  {
+    "objectID": "slides/week7.html#annotated-bibliography",
+    "href": "slides/week7.html#annotated-bibliography",
+    "title": "Week 7",
+    "section": "Annotated Bibliography",
+    "text": "Annotated Bibliography\nDue March 19\nIdentify ten scholarly sources\nFor each source: Discuss in 1-2 paragraphs how the source relates to your research question\n\nGood sources:Bad sources:\n\n\n\nArticles in academic journals\nAcademic books\nBook chapters from edited volumes\nNon-political reports from research centers / government agencies\n\n\n\n\nBlogs, internet / newspaper articles\nWikipedia pages\nPolitical reports from research centers / govt"
+  },
+  {
+    "objectID": "slides/week7.html#today",
+    "href": "slides/week7.html#today",
+    "title": "Week 7",
+    "section": "Today",
+    "text": "Today\n\nSampling: The collection of (approximately) random sets of observations from a larger population\nSampling distributions: Probability distributions of sample statistics\n\nExamples: sample proportions, sample means\n\nThe Central Limit Theorem: For sufficiently large samples, we can know a lot about the sampling distribution, even if we don’t know anything about the population distribution"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-from-a-population-1",
+    "href": "slides/week7.html#sampling-from-a-population-1",
+    "title": "Week 7",
+    "section": "Sampling from a Population",
+    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+  },
+  {
+    "objectID": "slides/week7.html#stratified-vs-cluster",
+    "href": "slides/week7.html#stratified-vs-cluster",
+    "title": "Week 7",
+    "section": "Stratified vs Cluster",
+    "text": "Stratified vs Cluster\nStratified and cluster sampling sound very similar. The key difference is that in cluster sampling, not all strata are sampled but in stratified all strata are sampled.\nKey for cluster sampling: To ensure that each unit has an equal chance of being sampled, larger clusters are more likely to be chosen"
+  },
+  {
+    "objectID": "slides/week7.html#sampling-from-a-population-2",
+    "href": "slides/week7.html#sampling-from-a-population-2",
+    "title": "Week 7",
+    "section": "Sampling from a Population",
+    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+  },
+  {
+    "objectID": "slides/week7.html#worked-example-for-gss",
+    "href": "slides/week7.html#worked-example-for-gss",
+    "title": "Week 7",
+    "section": "Worked Example for GSS",
+    "text": "Worked Example for GSS\nLet’s take a look at a worked example from the GSS, which uses a clustered sampling design:\n\nCreate subpopulations from “primary sampling units”\n\nLarge metro areas chosen with certainty\nOther areas drawn randomly with probability proportional to number of households\n\nRandomly sample clusters\nWithin sampled clusters, households sampled at random\nWithin sampled households, one adult within each household is chosen to be interviewed, based on the date of the next birthday\n\nOther complexities: Oversampling black respondents, re-sampling households that don’t respond the first time, etc."
+  },
+  {
+    "objectID": "slides/week7.html#racial-profiling-example",
+    "href": "slides/week7.html#racial-profiling-example",
+    "title": "Week 7",
+    "section": "Racial Profiling Example",
+    "text": "Racial Profiling Example\nData:\n\n262 police car stops in Philadelphia in 1997\n207 of the drivers stopped were African-American\nPhiladelphia’s population in 1997 was 42.2% African-American\n\nQuestion: Is the number of African-Americans stopped higher than we would expect if cars were stopped at random?"
+  },
+  {
+    "objectID": "slides/week7.html#racial-profiling-example-analysis",
+    "href": "slides/week7.html#racial-profiling-example-analysis",
+    "title": "Week 7",
+    "section": "Racial Profiling Example Analysis",
+    "text": "Racial Profiling Example Analysis\nAssume we can model \\(X \\sim B(262, 0.422)\\). Let’s calculate the mean and standard deviation of the expected sampling distribution:\n\\[\\mu = 0.422\\]\n\\[\\sigma = \\sqrt{\\frac{0.422 \\times 0.578}{262}} = 0.03\\]\nBut: The observed proportion of African-Americans (from last slide) that were stopped is \\(207/262 = 0.79\\)!\nThis is extremely far from what we’d expect under random sampling!"
+  },
+  {
+    "objectID": "slides/week7.html#worked-example-pizza-sales",
+    "href": "slides/week7.html#worked-example-pizza-sales",
+    "title": "Week 7",
+    "section": "Worked Example: Pizza Sales",
+    "text": "Worked Example: Pizza Sales\nSuppose the daily sales at a pizza restaurant have mean \\(\\mu = \\$900\\) and standard deviation \\(\\sigma = \\$300\\)\nQuestion: What are the mean and standard error of a random sample of seven days?\n\nSolution:\n\\(\\bar{x} = \\$900\\)\n\\(SE(\\bar{x}) = \\frac{\\$300}{\\sqrt{7}} = \\$113\\)"
+  },
+  {
+    "objectID": "slides/week7.html#central-limit-theorem-demo",
+    "href": "slides/week7.html#central-limit-theorem-demo",
+    "title": "Week 7",
+    "section": "Central Limit Theorem: Demo",
+    "text": "Central Limit Theorem: Demo\nLet’s check out this interactive visualization of the Central Limit Theorem (CLT): https://seeing-theory.brown.edu/probability-distributions/index.html#section3\n\nThis interactive tool shows how the sampling distribution approaches normality as sample size increases, regardless of the population distribution (sample shape)\nTry playing with \\(\\alpha\\) and \\(\\beta\\) to see how that affects the sampling distribution."
+  },
+  {
+    "objectID": "slides/week7.html#worked-example-gender-wage-gap",
+    "href": "slides/week7.html#worked-example-gender-wage-gap",
+    "title": "Week 7",
+    "section": "Worked Example: Gender Wage Gap",
+    "text": "Worked Example: Gender Wage Gap\nResearch question: What is the average wage difference between men and women?\n\n\n\nPopulation parameters\n(unknown, but assume):\n\nMen: \\(\\mu_1 = 55,000\\), \\(\\sigma_1 = 15,000\\)\nWomen: \\(\\mu_2 = 48,000\\), \\(\\sigma_2 = 12,000\\)\n\n\nOur samples:\n\n\\(n_1 = 100\\) men\n\\(n_2 = 100\\) women"
+  },
+  {
+    "objectID": "slides/week7.html#worked-example-calculations",
+    "href": "slides/week7.html#worked-example-calculations",
+    "title": "Week 7",
+    "section": "Worked Example: Calculations",
+    "text": "Worked Example: Calculations\nStep 1: Expected difference in sample means\n\n\\[\\mu_{\\bar{x}_1 - \\bar{x}_2} = 55,000 - 48,000 = 7,000\\]\n\nStep 2: Standard error of the difference\n\n\\[SE(\\bar{x}_1 - \\bar{x}_2) = \\sqrt{\\frac{15,000^2}{100} + \\frac{12,000^2}{100}}\\]\n\n\n\\[= \\sqrt{\\frac{225,000,000}{100} + \\frac{144,000,000}{100}}\\]\n\n\n\\[= \\sqrt{2,250,000 + 1,440,000} = \\sqrt{3,690,000} \\approx 1,921\\]"
+  },
+  {
+    "objectID": "slides/week7.html#worked-example-interpretation",
+    "href": "slides/week7.html#worked-example-interpretation",
+    "title": "Week 7",
+    "section": "Worked Example: Interpretation",
+    "text": "Worked Example: Interpretation\nWhat this tells us:\n\n\nThe expected difference between our sample means is $7,000\nBut due to sampling variability, our observed difference will vary with \\(SE \\approx \\$1,921\\)\n\n\n\nIf we repeated this sampling many times:\n\nAbout 68% of the time, our observed difference would be between:\n\n\\(7,000 \\pm 1,921\\) = [$5,079, $8,921]\n\nAbout 95% of the time, it would be between:\n\n\\(7,000 \\pm 2(1,921)\\) = [$3,158, $10,842]\n\n\n\n\nThis is the sampling distribution of the difference between means!"
   }
 ]
