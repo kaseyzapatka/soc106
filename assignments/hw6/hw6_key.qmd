@@ -1,0 +1,214 @@
+---
+title: "Weekly Assignment #6"
+author: "Your Name Here"  # Replace with your name
+date: 03/12/2026
+date-format: long
+format: 
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw6.qmd` file from bCourse.
+2.  Save the file in your assignments folder.
+3.  Follow the instructions below to complete the assignment. Show your work for all calculations where necessary!
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit the `hw6.qmd` file to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. Make sure your document renders without errors before submitting.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+# ---------
+rm(list = ls())
+
+# install libraries -- shouldn't need for this assignment
+# ---------
+# install.packages("tidyverse")
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+```
+
+------------------------------------------------------------------------
+
+## Question 1: Sampling Distribution
+
+**In a city, 70% of the people prefer Candidate A. Suppose 30 people from this city were sampled.**
+
+**a) What is the mean of the sampling distribution of p?**
+
+*Your answer here: `mean = .7`*
+
+**b) What is the standard error of p?**
+
+```{r}
+
+# Your code here
+sqrt(.7*.3/30) 
+
+```
+
+*Your answer here: `0.0836`*
+
+**c) What is the probability that 80% or more of this sample will prefer Candidate A?**
+
+```{r}
+
+# Your code here
+1 - pnorm(.8,.7,.0836666) 
+
+# I also accepted using the binomial distribution here, which gives a slightly different answer. In larger sample sizes, these answers would be almost identical:
+1 - pbinom(23,30,.7)
+
+```
+
+*Your answer here: `0.116 or 0.159`*
+
+------------------------------------------------------------------------
+
+## Question 2: Sample Size and Sampling Distribution
+
+**In the population, the mean SAT score is 1000. Would you be more likely (or equally likely) to get a sample mean of 1200 if you randomly sampled 10 students or if you randomly sampled 30 students? Explain.**
+
+*Your answer here: `You are more likely to get a mean of around 1,200 in a smaller sample because there is more variance in a smaller sample`*
+
+------------------------------------------------------------------------
+
+## Question 3: Normal Distribution and Sample Means
+
+**Given a test that is normally distributed with a mean of 100 and a standard deviation of 12, find:**
+
+**a) The probability that a single score drawn at random will be greater than 110**
+
+```{r}
+
+# Your code here
+1 - pnorm(110,100,12) 
+
+```
+
+*Your answer here: `0..2023284`*
+
+**b) The probability that a sample of 25 scores will have a mean greater than 105**
+
+```{r}
+
+# Your code here
+1 - pnorm(105,100,12/5)
+
+```
+
+*Your answer here: `0..0186`*
+
+**c) The probability that a sample of 64 scores will have a mean greater than 105**
+
+```{r}
+
+# Your code here
+1 - pnorm(105,100,12/8) 
+
+```
+
+*Your answer here: `0.000429`*
+
+**d) The probability that the mean of a sample of 16 scores will be either less than 95 or greater than 105**
+
+```{r}
+
+# Your code here
+pnorm(95,100,12/4) + (1 - pnorm(105,100,12/4))
+
+```
+
+*Your answer here: `0.0956`*
+
+------------------------------------------------------------------------
+
+## Question 4: Comparing Two Schools
+
+**The mean GPA for students in School A is 3.0; the mean GPA for students in School B is 2.8. The standard deviation in both schools is 0.25. The GPAs of both schools are normally distributed. If 9 students are randomly sampled from each school, what is the probability that:**
+
+**a) The sample mean for School B will be greater than the sample mean for School A?**
+
+```{r}
+
+# Your code here
+pnorm(0, .2, sqrt(.25^2/9 + .25^2/9)) 
+
+```
+
+*Your answer here: `0.0448`*
+
+**b) The sample mean for School A will exceed that of School B by 0.5 or more?**
+
+```{r}
+
+# Your code here
+1 - pnorm(.5, .2, sqrt(.25^2/9 + .25^2/9)) 
+
+```
+
+*Your answer here: `0.00545`*
+
+------------------------------------------------------------------------
+
+## Question 5: Freight Elevator Problem
+
+**A large freight elevator can transport a maximum of 7600 pounds. Suppose a load of cargo containing 39 boxes must be transported via the elevator. Experience has shown that the weight of boxes of this type of cargo follows a distribution with mean µ = 200 pounds and standard deviation σ = 15 pounds. Based on this information, what is the probability that all 39 boxes can be safely loaded onto the freight elevator and transported?**
+
+```{r}
+
+# Your code here
+pnorm(7600/39, 200, 15/sqrt(39)) 
+
+
+```
+
+*Your answer here: `To safely transport a sample of 39 boxes, their sampling mean must be below 7600/39. The probability of this is 0.01637879`*
+
+------------------------------------------------------------------------
+
+## Question 6: Wine Inventory Management
+
+Suppose the number of bottles of wine a restaurant sells each week is normally distributed with mean 500 bottles and standard deviation of 100 bottles. The restaurant starts with 800 bottles, and has a scheduled delivery at the beginning of each week of 450 bottles.
+
+**a) Find the probability that, after 10 weeks, the supply of wine will be below 200 bottles.**
+
+```{r}
+
+# Your code here
+1 - pnorm(510,500,100/sqrt(10)) 
+
+```
+
+*Your answer here: `After 10 weeks, the restaurant will have an input of 800 + 450*10 = 5300 bottles of wine. If the restaurant is below 200 bottles of wine after 10 weeks, then the average weekly output must be greater than 5100/10 = 510. The probability of this is 0.3759148.`*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all written response questions and shown your work
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting the .qmd file to bCourse
+:::

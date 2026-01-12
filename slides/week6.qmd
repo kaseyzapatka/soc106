@@ -1,0 +1,442 @@
+---
+title: "Week 6"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 02/24/2026
+date-format: long
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    #logo: berkeley_logo.png
+    css: slides.css
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+```{r}
+#| echo: false
+#| results: false
+
+# code for lecture
+# ---------
+
+# load tidyverse
+library(tidyverse)
+library(here)
+```
+
+## Housekeeping {.smaller}
+
+**Good work on last week's HW!**
+
+**Reminder**: Research paper proposal is due tomorrow, September 28, by 11:59 PM
+
+- I created the assignment on bCourses yesterday
+- Please submit your proposal there
+
+**Any additional questions about:**
+
+- The rules of probability from last week's class?
+- The research paper proposal?
+
+## This Week's Lecture {.smaller}
+
+**Topics we'll cover:**
+
+- Random variables
+- Probability models of distributions
+
+**Discrete distributions:**
+
+- Binary distribution: modeling whether an outcome occurs or not in one trial
+- Binomial distribution: modeling how many occurrences we get of a binary outcome in multiple trials
+
+**Continuous distributions:**
+
+- Normal distribution: can be seen as an extension of the Bernoulli distribution to the continuous case
+
+## Random Variables {.smaller}
+
+Inferential statistics assume that the numerical values which a variable takes are the result of some **random phenomenon**
+
+**Examples:**
+
+- **Rolling a die**: the outcome is random
+- **The height of a random individual** in a population will depend on who we randomly select
+- **Even within a specific individual**, their height can be considered to be the result of randomness, in addition to information we know about them (i.e., sex, age, ethnicity, parental height) that helps explain their height
+
+## Random Variables: Definition {.smaller}
+
+A **random variable** is a numerical measurement of a random phenomenon
+
+**Notation:**
+
+- We denote random variables using **capital letters** (X)
+- We denote the particular values that random variables can take using **lowercase letters** (x)
+
+**Example**: Rolling a die
+
+- Let X be the random variable corresponding to the outcomes from rolling a die
+- Then the possible values for x are the same as the values in X's sample space S: {1, 2, 3, 4, 5, 6}
+
+## Probability Distributions {.smaller}
+
+The **probability distribution** of a random variable is a probability model for that random variable
+
+**Remember**: Probability models consist of:
+
+- The sample space of all possible outcomes
+- A probability associated with each outcome
+
+**Example**: For rolling a die, we can say that the probability distribution of the random variable X is defined by:
+
+$$P(X = x) = 1/6, \text{ for all values } x \text{ in } S$$
+
+## Discrete Probability Distributions {.smaller}
+
+In some cases, we can describe a probability distribution by listing all possible values a random variable can have, as well as the probabilities associated with each value
+
+This is generally the case with **categorical** (also known as **discrete**) probability distributions
+
+However, just as we described a sample distribution in terms of summary statistics, we can also describe a probability distribution in terms of **parameters**
+
+## Binary Probability Distributions {.smaller}
+
+Perhaps the most basic family of discrete probability distributions is the **binary** (or **Bernoulli**) distribution, which models whether an outcome occurs or not in one trial
+
+A **binary random variable** X, also known as an **indicator variable**, is equal to:
+
+- 1 if the outcome occurs
+- 0 if the outcome does not occur
+
+## Binary Probability Distributions: Formula {.smaller}
+
+The probability distribution of a binary random variable:
+
+$$P(X = 1) = \pi$$
+$$P(X = 0) = 1 - \pi$$
+
+Here, $\pi$ is a **parameter** that can take any value from 0 to 1
+
+**Key insight**: Parameters are why we can refer to a **family** of binary probability distributions that share the same structure but can vary through having different parameter values
+
+## Means of Random Variables {.smaller}
+
+As stated earlier, we can summarize information about the probability distribution using **parameters**
+
+For instance, the **mean** ($\mu$) of a discrete random variable—the expected value it would take across a large number of trials—is equal to the sum, across all values in the sample space, of the value times the probability that that value occurs
+
+**For a binary random variable:**
+
+$$\mu = 0 \times P(X = 0) + 1 \times P(X = 1) = 0 \times (1-\pi) + 1 \times \pi = \pi$$
+
+$\mu$ is sometimes written as $E[X]$ (the expected value of X)
+
+## Standard Deviation of Random Variables {.smaller}
+
+**Recall** from the lecture on summarizing data that the standard deviation of a variable in a data set is the square root of the variance of the variable in a data set
+
+We calculate the variance by:
+
+1. Summing (across all data points) each point's squared deviation from the mean
+2. Dividing this sum by the number of observations in the data set, minus one
+
+## Standard Deviation: Random Variables vs. Data {.smaller}
+
+For **random variables**, we calculate the variance similarly, except we **weight** each value's squared deviation from the mean by the probability of that value occurring, instead of standardizing over the number of values
+
+**Formulas:**
+
+$$\text{Var}(X) = \sum P(X = x) \times (x - \mu)^2$$
+
+$$\sigma(X) = \sqrt{\text{Var}(X)}$$
+
+## Standard Deviation: Binary Random Variable {.smaller}
+
+**Example**: Binary random variable X
+
+$$\text{Var}(X) = P(X = 0) \times (0-\pi)^2 + P(X = 1) \times (1-\pi)^2$$
+
+$$\text{Var}(X) = (1-\pi) \times \pi^2 + \pi \times (1-\pi)^2$$
+
+$$\text{Var}(X) = (1-\pi) \times \pi \times (\pi + 1 - \pi)$$
+
+$$\text{Var}(X) = (1-\pi) \times \pi$$
+
+$$\rightarrow \sigma(X) = \sqrt{(1-\pi) \times \pi}$$
+
+## Binary Probability Distributions: Summary {.smaller}
+
+So, for a binary random variable X, where $P(X = 1) = \pi$ and $P(X = 0) = 1 - \pi$, we can calculate both:
+
+- **Mean**: $\mu = \pi$
+- **Standard deviation**: $\sigma = \sqrt{(1-\pi) \times \pi}$
+
+Both are functions of the parameter $\pi$
+
+**Notation**: We may write $X \sim \text{Binary}(\pi)$ (or $X \sim \text{Bernoulli}(\pi)$), which can be read as:
+
+> "X is a random variable with a Binary (Bernoulli) probability distribution and mean $\pi$"
+
+## Binary Probability Distribution: Visualization {.smaller}
+
+We can graph the **probability density function**, which shows $P(X = x)$ across the sample space:
+
+![Binary/Bernoulli Distribution](https://via.placeholder.com/600x400?text=Binary+Distribution+Graph)
+
+*Shows probability mass at x=0 and x=1*
+
+## Questions?
+
+## Binomial Probability Distribution {.smaller}
+
+The **binomial probability distribution** measures the distribution of the sum of n binary random variables, all with probability $\pi$
+
+**Alternatively**: The distribution of n independent trials where 'success' occurs with probability $\pi$
+
+**Notation**: If Y is a binomial random variable, we write $Y \sim B(n, \pi)$
+
+**Question**: What are the possible values of Y?
+
+## Binomial Probability Distribution: Possible Values {.smaller}
+
+The binomial probability distribution measures the distribution of the sum of n binary random variables, all with probability $\pi$
+
+**Alternatively**: The distribution of n **independent** trials where 'success' occurs with probability $\pi$
+
+**Notation**: If Y is a binomial random variable, we write $Y \sim B(n, \pi)$
+
+**Answer**: Y can equal any whole number between:
+
+- 0 (all binary random variables equal 0) to
+- n (all equal 1)
+
+## Binomial Probability Distribution: Formula {.smaller}
+
+**What are the probabilities of each value of Y?**
+
+We can construct a general formula for $P(Y = k)$:
+
+**Step 1**: Consider one sequence of n trials with k successes
+
+- The k successes occur with probability $\pi^k$
+- Similarly, the n-k failures occur with probability $(1-\pi)^{n-k}$
+- Because each trial is independent, we multiply: $\pi^k \times (1-\pi)^{n-k}$
+
+**Step 2**: Account for all possible sequences
+
+- The k successes can occur anywhere among the n trials
+- Number of ways = $\binom{n}{k} = \frac{n!}{k!(n-k)!}$, where $n! = 1 \times 2 \times 3 \times ... \times n$
+
+## Binomial Probability Distribution: Formula {.smaller}
+
+**Thus, we have:**
+
+$$P(Y = k) = \binom{n}{k} \times \pi^k \times (1-\pi)^{n-k}$$
+
+where $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+
+## Binomial Probability Distribution: Example {.smaller}
+
+**Example**: I shoot 5 three-pointers and I have a 30% chance of making each one. What is the probability I make exactly 2 three-pointers?
+
+$Y \sim B(5, 0.3)$ (n = 5 trials with $\pi = 0.3$)
+
+$$P(Y = 2) = \binom{5}{2} \times 0.3^2 \times (1-0.3)^{5-2}$$
+
+$$= \frac{5!}{2! \times 3!} \times 0.3^2 \times 0.7^3$$
+
+$$= \frac{1 \times 2 \times 3 \times 4 \times 5}{(1 \times 2) \times (1 \times 2 \times 3)} \times 0.3^2 \times 0.7^3$$
+
+$$= 0.3087$$
+
+**In R**: `dbinom(2, size = 5, prob = 0.3)`
+
+## Binomial Distribution: Mean and Standard Deviation {.smaller}
+
+We can do more math (not shown) to find that, for $Y \sim B(n, \pi)$:
+
+**Mean:**
+
+$$\mu = \pi \times n$$
+
+The mean is equal to the probability of one trial succeeding, times the total number of trials
+
+**Standard deviation:**
+
+$$\sigma = \sqrt{\pi \times n \times (1-\pi)}$$
+
+## Binomial Distribution: PDF Shifts with π {.smaller}
+
+The **probability density function (pdf)** of a binomial random variable shifts with $\pi$...
+
+![Binomial Distribution PDFs](https://via.placeholder.com/700x400?text=Binomial+PDFs+with+varying+pi)
+
+*Shows how distribution shape changes with different values of π*
+
+## Binomial Distribution: Cumulative Probabilities {.smaller}
+
+We can also answer questions like:
+
+> "After n free throws made with probability π, what is the probability that I have made less than k free throws?"
+
+In notation: If $Y \sim B(n, \pi)$, what is $P(Y \leq k)$?
+
+**The challenge**: Centuries ago, if n and k were large, this would have been really difficult to answer!
+
+**Example**: Say $Y \sim B(100, 0.5)$, and we want to know $P(Y \leq 65)$
+
+This would require summing: $P(Y = 0) + P(Y = 1) + ... + P(Y = 65)$
+
+**Today, in R**: `pbinom(65, size = 100, prob = 0.5)`
+
+## Questions?
+
+## Binomial Distribution Approaches Normal {.smaller}
+
+As n gets larger, the probability distribution function of a binomial random variable approaches a smooth curve:
+
+![Binomial approaching Normal](https://via.placeholder.com/700x450?text=Binomial+Distribution+as+n+increases)
+
+*Shows binomial distribution becoming smoother and more bell-shaped*
+
+## From Binomial to Normal {.smaller}
+
+As n gets larger, the probability distribution function of a binomial random variable approaches a smooth curve
+
+**(According to our textbook)**: The search for ways to approximate the binomial distribution at large values of n led to the discovery of **normal distributions**
+
+**Normal distributions** are a family of continuous probability distributions that are able to closely model the distribution of many natural phenomena
+
+## Normal Distributions {.smaller}
+
+Normal distributions are defined by parameters for the **mean** ($\mu$) and the **standard deviation** ($\sigma$)
+
+**The formula for the probability density function is:**
+
+$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
+
+where:
+
+- $\pi = 3.14159...$ (pi)
+- $e = 2.71828...$ (the base of the natural logarithm)
+
+**Notation**: We write $X \sim N(\mu, \sigma)$
+
+That is, X is a normally distributed random variable with mean $\mu$ and standard deviation $\sigma$
+
+## PDF of the Normal Distribution {.smaller}
+
+![Normal Distribution PDF](https://via.placeholder.com/700x400?text=Normal+Distribution+Curve)
+
+*Classic bell curve showing symmetric distribution around mean μ*
+
+## Properties of the Normal Distribution {.smaller}
+
+**Key properties:**
+
+1. The normal distribution is **symmetric** around its mean
+
+2. The **mean, median, and mode** of the normal distribution are the same
+
+3. The **percentiles** of the distribution of a given random variable $X \sim N(\mu, \sigma)$ are known, such that:
+   - X will be within 1σ of μ roughly **68%** of the time
+   - X will be within 2σ of μ roughly **95%** of the time
+   - X will be within 3σ of μ roughly **99.7%** of the time
+
+## The 68-95-99.7 Rule {.smaller}
+
+![Empirical Rule Visualization](https://via.placeholder.com/700x400?text=68-95-99.7+Rule)
+
+*Shows the percentage of data within 1, 2, and 3 standard deviations*
+
+## The Standard Normal Distribution {.smaller}
+
+Because all normal distributions share the same properties, we can **standardize** any normal distribution $N(\mu, \sigma)$ into the **standard normal distribution**, $N(0, 1)$
+
+**How to standardize:**
+
+We do so by:
+
+1. First subtracting $\mu$
+2. Then dividing by $\sigma$
+
+$$Z = \frac{X - \mu}{\sigma}$$
+
+## Z-Scores {.smaller}
+
+For any given value of x in $X \sim N(\mu, \sigma)$, we can calculate the **z-score**, which is the number of standard deviations that a value x is away from $\mu$
+
+**Formula:**
+
+$$z = \frac{x - \mu}{\sigma}$$
+
+**Interpretation:**
+
+- If $x < \mu$, z is **negative**
+- If $x > \mu$, z is **positive**
+
+## Continuous Probability Distribution {.smaller}
+
+**Question**: How do we assign probabilities to outcomes in an infinite sample space when we think the probability distribution is normal?
+
+**Answer**: We compute probabilities for **intervals** under the normal density curve:
+
+![Normal Distribution with Shaded Area](https://via.placeholder.com/700x400?text=Normal+Curve+with+Shaded+Interval)
+
+*Shows area under curve representing probability*
+
+## Calculating Probabilities in R {.smaller}
+
+**In R**: If $X \sim N(\mu, \sigma)$, we can:
+
+**Calculate** $P(X \leq x)$ **as:**
+
+```r
+pnorm(x, mean = μ, sd = σ)
+```
+
+**Calculate the area under the normal density curve** of X in the interval $[x_1, x_2]$ as:
+
+$$P(X \leq x_2) - P(X \leq x_1) = P(x_1 \leq X \leq x_2)$$
+
+**In R:**
+
+```r
+pnorm(x2, μ, σ) - pnorm(x1, μ, σ)
+```
+
+## Finding Percentiles in R {.smaller}
+
+We can also calculate what the value is at a given percentile q of X as:
+
+```r
+qnorm(q, mean = μ, sd = σ)
+```
+
+**Note**: q should be entered in decimal form (i.e., between 0 and 1, not between 0 and 100)
+
+**Example**: To find the 95th percentile:
+
+```r
+qnorm(0.95, mean = μ, sd = σ)
+```
+
+## Questions?
+
+## Weekly Assignment #5 {.smaller}
+
+**Due**: Tuesday, October 2 by 11:59 PM
+
+**Format**: Similar to last week's weekly assignment: mostly a problem set
+
+**Important**: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses
+
+**Rest of class**: Work on HW in groups
+
+**Groups:**
+
+- Group 1: Arjun, Garth, Emanuela, Brenna
+- Group 2: Jessie, Sofia, Joe
+- Group 3: Haavard, Yuyang, Eugene, and David

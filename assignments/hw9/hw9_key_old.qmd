@@ -1,0 +1,217 @@
+---
+title: "Weekly Assignment #9"
+author: "Your Name Here"  # Replace with your name
+date: 04/09/2026
+date-format: long
+format: 
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw9.qmd` file from bCourse and use the dataset for your final research paper.
+2.  Save both files on your computer. Make sure to save your data in your data folder and `hw9.qmd` in your assignments folder.
+3.  Follow the Weekly Assignment Analysis Template structure below to complete the assignment.
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit the `hw9.qmd` file to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Using the dataset that you will use in your final paper, formulate a research question involving the relationship between two categorical variables. Then:
+
+1.  Calculate a measure of association between the two variables—**EITHER** the difference in proportions **OR** the relative risk ratio **OR** the polychoric correlation (which is probably the best option if each of your categorical variables has 3+ categories), **and**
+2.  Perform a Chi-squared test to test whether there is an association between the two variables.
+
+Write up your analysis using the Weekly Assignment Analysis Template structure below.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+rm(list = ls())
+
+# Load libraries
+library(tidyverse)
+library(here)
+# Add more libraries here if you need them!
+
+```
+
+------------------------------------------------------------------------
+
+## Question
+
+*Write your research question here as a single sentence ending in a question mark. This should involve the relationship between two categorical variables.*
+
+**Example:** Is there an association between education level and political party affiliation?
+
+*Your research question:*
+
+------------------------------------------------------------------------
+
+## Prediction(s) and Brief Justification
+
+*State what you expect to find and why. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., "If Marx is right, we should find P; but if Weber is right, then we should find Q."*
+
+*Your prediction and justification (3-5 sentences):*
+
+------------------------------------------------------------------------
+
+## Data
+
+*Describe the data in one or two sentences. Then state in one or two sentences why you're using this data instead of different data. Be sure to describe your two categorical variables and their categories.*
+
+**Example:** I use data from the General Social Survey 2020, which includes information on education level (less than high school, high school, some college, bachelor's degree, graduate degree) and political party (Democrat, Republican, Independent). These variables are central to understanding political polarization in the United States.
+
+*Your data description:*
+
+------------------------------------------------------------------------
+
+## Analytic Strategy
+
+*Describe the exact procedure you are going to use to analyze the data, including:*
+
+-   *Which measure of association you will calculate and why (difference in proportions, relative risk ratio, or polychoric correlation)*
+-   *What your null hypothesis (H₀) and alternative hypothesis (H₁) are for the Chi-squared test*
+-   *What significance level (α) you will use*
+-   *What specific R functions you will use*
+
+*This should be 3-5 sentences, but no longer than 1/3 of a page.*
+
+**Example:** I will create a contingency table of education level by political party and calculate the polychoric correlation since both variables have multiple ordered categories. I will then conduct a Chi-squared test of independence to determine whether there is a statistically significant association between education and political party. My null hypothesis is H₀: education level and political party are independent, and my alternative hypothesis is H₁: education level and political party are not independent. I will use a significance level of α = 0.05. I will use R's `table()`, `polychor()` from the polycor package, and `chisq.test()` functions.
+
+*Your analytic strategy:*
+
+------------------------------------------------------------------------
+
+## Code and Analysis
+
+**Load your data and conduct your analysis below. Show all relevant code.**
+
+```{r}
+#| label: load-data
+
+# Load your data
+# Your code here
+
+```
+
+```{r}
+#| label: contingency-table
+
+# Create contingency table and calculate frequencies
+# Your code here
+
+```
+
+```{r}
+#| label: measure-of-association
+
+# Calculate your chosen measure of association
+# (difference in proportions, relative risk ratio, or polychoric correlation)
+# Your code here
+
+```
+
+```{r}
+#| label: chi-squared-test
+
+# Conduct Chi-squared test
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
+## Results
+
+*Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Include:*
+
+-   *The contingency table or relevant frequencies*
+-   *The value of your measure of association and its interpretation*
+-   *The Chi-squared test statistic*
+-   *The degrees of freedom*
+-   *The p-value*
+-   *Whether you reject or fail to reject the null hypothesis*
+
+*This should be 4-6 sentences.*
+
+**Example:** The contingency table shows that 45% of those with graduate degrees identify as Democrats, compared to only 25% of those with less than high school education. The polychoric correlation between education level and political party is 0.32, indicating a moderate positive association. The Chi-squared test yielded χ²(8) = 124.5 with a p-value \< 0.001. Using the conventional benchmark for statistical significance (p \< .05), we can reject the null hypothesis of independence between education level and political party affiliation.
+
+*Your results:*
+
+------------------------------------------------------------------------
+
+## Discussion of Results
+
+*Here's where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.*
+
+**Example:** My initial predictions were supported—there is a statistically significant association between education level and political party affiliation, with higher education levels associated with greater Democratic party identification. This suggests that education plays a role in shaping political preferences.
+
+*Your discussion:*
+
+------------------------------------------------------------------------
+
+## Limitations and Alternative Explanations
+
+*This is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please discuss:*
+
+1.  *One limitation of your data*
+2.  *One limitation of your analysis*
+3.  *One possible alternative explanation for your findings*
+
+*This should be 3-5 sentences.*
+
+**Example:** The conclusions we can draw are limited because the GSS data are cross-sectional and cannot establish causal relationships. The Chi-squared test also assumes that observations are independent, which may be violated if multiple respondents come from the same household. An alternative explanation is that the association between education and political party is confounded by age—younger cohorts are both more educated and more likely to identify as Democrats, so the relationship may be driven by generational differences rather than education itself.
+
+*Your limitations and alternative explanations:*
+
+------------------------------------------------------------------------
+
+## Appendix: R Commands and Results
+
+*Copy and paste your complete R output here. Use a fixed-width font (code block) so that everything lines up properly.*
+
+```{r}
+#| label: appendix
+#| echo: true
+#| eval: false
+
+# Copy your complete analysis code here for reference
+# This should include:
+# - Data loading
+# - Any data manipulation
+# - Contingency table creation
+# - Measure of association calculation
+# - Chi-squared test
+
+```
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] You've clearly identified your two categorical variables
+-   [ ] You've calculated a measure of association (difference in proportions, relative risk, or polychoric correlation)
+-   [ ] You've conducted a Chi-squared test
+-   [ ] You've stated your null and alternative hypotheses
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all sections of the analysis template
+-   [ ] You've stated whether you reject or fail to reject the null hypothesis
+-   [ ] You've included your complete R output in the appendix
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting the .qmd file to bCourse
+:::

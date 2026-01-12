@@ -1,0 +1,214 @@
+---
+title: "Weekly Assignment #1"
+author: "Your Name Here"  # Replace with your name
+date: "Due Thursday, February 5 at 11:59 PM"
+format: 
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw1.qmd` file and the `attain.csv` data file from bCourse.
+2.  Save both files on your computer. Make sure to save `attain.csv` in your data folder and `hw1.qmd` in your assignments folder.
+3.  Complete all questions by writing your code in the provided code chunks.
+4.  Click the "Render" button at the top of Positron to generate an html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it's working).
+5.  Submit the `hw1.qmd` file to bCourse before the deadline
+6.  Make sure your name appears in the "author" field in the YAML header above
+:::
+
+## Instructions
+
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. Make sure your document renders without errors before submitting.
+
+```{r}
+
+# Clear environment
+# ---------
+rm(list = ls())
+
+# install libraries -- shouldn't need for this assignment
+# ---------
+# install.packages("tidyverse")
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+
+```
+
+## Question 1
+
+Load the data file `attain.csv` into R using the `read_csv` function (the code has already been provide but make sure it runs!) Be sure to use the `here()` library to ensure a relative file path and that the data is saved in the "data" folder. Once you've loaded it, then use the `glimpse()` function to examine the structure of the data and the variables.
+
+```{r}
+#| label: load-data
+#| warning: false
+
+# Your code here
+attain <- read_csv(here("data/attain.csv"))
+
+```
+
+**Write 1-2 sentences describing what you observe in the data:**
+
+*Your answer here (replace this text)*
+
+------------------------------------------------------------------------
+
+## Question 2
+
+Create a vector called `ages` from the data set (column name = `age`) using appropriate tidyverse function and glimpse the vector. What is the type of variable in the column vector? Use the `class()` or `typeof()` function to check.
+
+```{r}
+#| label: q2-age-vector
+
+# Your code here
+# attain |> 
+
+
+```
+
+**What is the type of variable?**
+
+*Your answer here*
+
+------------------------------------------------------------------------
+
+## Question 3
+
+Now create a vector of marital status (column name = `marital`), call it `marital_status`, and `glimpse` it in the viewer. What is the type of variable in this column vector?
+
+```{r}
+#| label: q3-marital-vector
+
+# Your code here
+# attain |> 
+
+```
+
+**What is the type of variable?**
+
+*Your answer here*
+
+------------------------------------------------------------------------
+
+## Question 4
+
+Suppose we want to only look at a smaller dataset that contains the respondent's age, sex, race, marital status, and age of first marriage (column names `age`, `sex`, `race`, `marital`, `agewed`, respectively). Create a subset of this data (call it `subset1`) using the appropriate tidyverse function. Make sure to glimpse it.
+
+```{r}
+#| label: q4-subset-columns
+
+# Your code here
+# attain |> 
+```
+
+------------------------------------------------------------------------
+
+## Question 5
+
+Now suppose we want a smaller dataset that only contains the first 1000 observations. Create a subset of this data (call it `subset1`) using the appropriate tidyverse function. Make sure to glimpse it.
+
+```{r}
+#| label: q5-subset-rows
+
+# Your code here
+# subset1 <- attain |> 
+
+```
+
+------------------------------------------------------------------------
+
+## Question 6
+
+Now, suppose we are really concerned about unemployment within our sample (column name `unemp`). But, we notice that many respondents have missing unemployment statuses (i.e., `unemp` is equal to `NA`). Create a subset (call it `subset3`) that consists of all respondents who do not have missing unemployment information. (Hint: to find observations that are not missing, use the `!` (not) logical operator and the `is.na` function combined with the appropriate tidyverse function.)
+
+```{r}
+#| label: q6-unemp-subset
+
+# Your code here
+# attain |> 
+# Don't forget to check how many respondents are in your subset!
+
+```
+
+**How many respondents are in this subset?**
+
+*Your answer here*
+
+------------------------------------------------------------------------
+
+## Question 7
+
+Repeat Question 6 (call it `subset4`), but this time creating a subset of respondents who all have information about their father's education (column name `paeduc`).
+
+```{r}
+#| label: q7-paeduc-subset
+
+# Your code here
+# attain |> 
+```
+
+**How many respondents are in this subset?**
+
+*Your answer here*
+
+------------------------------------------------------------------------
+
+## Question 8
+
+Now suppose we want to investigate the relationship between unemployment status and father's education. This time, create a subset (call it `subset5`) of respondents who have non-missing information for **both** unemployment status and father's education. (Hint: use the `&` logical operator.)
+
+```{r}
+#| label: q8-both-subset
+
+# Your code here
+```
+
+**How many respondents are in this subset?**
+
+*Your answer here*
+
+------------------------------------------------------------------------
+
+## Question 9
+
+Create a new variable in the dataset that measures the number of years since the birth of the respondent's first child, using the variables `age` and `agekdbrn`. Call the new dataset `attain_kids`. Use the appropriate tidyverse function to do this (Hint: You'll want to create a new variable, call it `years_since_kid`.)
+
+```{r}
+#| label: q9-new-variable
+
+# Your code here
+# attain |> 
+```
+
+------------------------------------------------------------------------
+
+## Question 10
+
+Finally, create a Boolean variable in the dataset (call it `attain_breadwinner`) that identifies respondents who are sole breadwinners in their household (that is, their income `rincom91` is equal to their household's `income91`). (Hint: The easiest way to do this is to use the `==` logical operator)
+
+```{r}
+#| label: q10-boolean-variable
+
+# Your code here
+# attain |> 
+```
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all written response questions
+-   [ ] You've clicked "Render" and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)
+-   [ ] You're submitting the `hw1.qmd` file to bCourse
+:::

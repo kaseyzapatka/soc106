@@ -1,0 +1,165 @@
+---
+title: "Weekly Assignment #8"
+author: "Your Name Here"  # Replace with your name
+date: 04/02/2026
+date-format: long
+format: 
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw8.qmd` file from bCourse and use the dataset for your final research paper.
+2.  Save both files on your computer. Make sure to save your data in your data folder and `hw8.qmd` in your assignments folder.
+3.  Follow the Weekly Assignment Analysis Template structure below to complete the assignment.
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit the `hw8.qmd` file to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Using the dataset that you will use in your final paper, formulate a research question that involves **one** of the following:
+
+1.  Testing a null hypothesis that a proportion variable has a population proportion P (where P is of your choosing, based on what you think is theoretically interesting)
+2.  Testing a null hypothesis that a continuous variable has a population mean μ (where μ is of your choosing, based on what you think is theoretically interesting)
+3.  Testing a null hypothesis that the mean of a continuous variable in one subsample of your data is the same as the mean of that continuous variable in another subsample of your data
+
+Then, test your hypothesis and decide whether to reject or to not reject the null hypothesis. Write up your analysis using the Weekly Assignment Analysis Template structure below.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+rm(list = ls())
+
+# Load libraries
+library(tidyverse)
+library(here)
+# Add more libraries here if you need them!
+
+```
+
+------------------------------------------------------------------------
+
+## Question
+
+**Write your research question here as a single sentence ending in a question mark. This should be specific and testable with your data.**
+
+*Your research question:*
+
+------------------------------------------------------------------------
+
+## Prediction(s) and Brief Justification
+
+**State what you expect to find and why. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., "If Marx is right, we should find P; but if Weber is right, then we should find Q."**
+
+*Your prediction and justification (3-5 sentences):*
+
+------------------------------------------------------------------------
+
+## Data
+
+**Describe the data in one or two sentences. Then state in one or two sentences why you're using this data instead of different data.**
+
+*Your data description:*
+
+------------------------------------------------------------------------
+
+## Analytic Strategy
+
+**Describe the exact procedure you are going to use to analyze the data, including:**
+
+-   *What type of hypothesis test you will conduct (one-sample proportion test, one-sample t-test, two-sample t-test, etc.)*
+-   *What your null hypothesis (H₀) and alternative hypothesis (H₁) are*
+-   *What significance level (α) you will use*
+-   *What specific R functions you will use*
+
+*This should be 3-5 sentences, but no longer than 1/3 of a page.*
+
+*Your analytic strategy:*
+
+------------------------------------------------------------------------
+
+## Code and Analysis
+
+**Load your data and conduct your hypothesis test below. Show all relevant code.**
+
+```{r}
+
+# Clear environment
+# ---------
+rm(list = ls())
+
+# install libraries -- only install new libraries if needed
+
+# ---------
+# install.packages("tidyverse")
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+# add more libraries here if you need them!
+
+```
+
+```{r}
+
+# Conduct your hypothesis test
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
+## Results
+
+**Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. This should be 3-5 sentences and should include:**
+
+-   **The test statistic value**
+-   **The p-value**
+-   **Whether you reject or fail to reject the null hypothesis**
+-   **The confidence interval (if applicable)**
+
+*Your results:*
+
+------------------------------------------------------------------------
+
+## Discussion of Results
+
+**Here's where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.**
+
+*Your discussion:*
+
+------------------------------------------------------------------------
+
+## Limitations and Alternative Explanations
+
+**This is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.**
+
+*Your limitations and alternative explanations:*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] You've clearly stated your null and alternative hypotheses
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all sections of the analysis template
+-   [ ] You've stated whether you reject or fail to reject the null hypothesis
+-   [ ] You've included your complete R output in the appendix
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting the .qmd file to bCourse
+:::
