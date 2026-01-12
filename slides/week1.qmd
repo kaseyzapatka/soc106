@@ -1,13 +1,14 @@
 ---
 title: "Week 1"
 subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 02/20/2026
+date-format: long
 format:
   revealjs: 
     slide-number: true
     chalkboard: 
       buttons: false
     preview-links: auto
-    #logo: berkeley_logo.png
     css: slides.css
     footer: '[Click here for GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
