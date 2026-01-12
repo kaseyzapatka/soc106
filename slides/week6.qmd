@@ -9,7 +9,6 @@ format:
     chalkboard: 
       buttons: false
     preview-links: auto
-    #logo: berkeley_logo.png
     css: slides.css
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
@@ -28,43 +27,45 @@ library(here)
 
 ## Housekeeping {.smaller}
 
-**Good work on last week's HW!**
 
-**Reminder**: Research paper proposal is due tomorrow, September 28, by 11:59 PM
+[[**ADD IT IN LATER**]]
 
-- I created the assignment on bCourses yesterday
-- Please submit your proposal there
+## Agenda {.smaller}
 
-**Any additional questions about:**
-
-- The rules of probability from last week's class?
-- The research paper proposal?
-
-## This Week's Lecture {.smaller}
-
-**Topics we'll cover:**
 
 - Random variables
 - Probability models of distributions
 
 **Discrete distributions:**
 
-- Binary distribution: modeling whether an outcome occurs or not in one trial
-- Binomial distribution: modeling how many occurrences we get of a binary outcome in multiple trials
+- **Binary distribution: **modeling whether an outcome occurs or not in one trial
+- **Binomial distribution:** modeling how many occurrences we get of a binary outcome in multiple trials
 
 **Continuous distributions:**
 
-- Normal distribution: can be seen as an extension of the Bernoulli distribution to the continuous case
+- **Normal distribution:** can be seen as an extension of the Bernoulli distribution to the continuous case
+
+## Key takeaways {.smaller}
+
+- **Random variables** → how we mathematically represent uncertainty
+- **Probability distributions** → how likely each possible value is
+- **Binary (Bernoulli) distribution** → the simplest possible case
+- **Binomial distribution** → sums of binary variables
+- **Normal distribution** → what binomial distributions approach when samples get large
+
+> A **binary probability distribution** describes the **randomness** of a single yes/no outcome using one parameter, $π$; summing many such binary outcomes produces a **binomial distribution**, which in turn approaches a **normal distribution** as the number of trials grows large.
 
 ## Random Variables {.smaller}
 
 Inferential statistics assume that the numerical values which a variable takes are the result of some **random phenomenon**
 
-**Examples:**
+A **random variable** is: 
+
+> a numerical measurement whose value is not known in advance because it depends on randomness
 
 - **Rolling a die**: the outcome is random
 - **The height of a random individual** in a population will depend on who we randomly select
-- **Even within a specific individual**, their height can be considered to be the result of randomness, in addition to information we know about them (i.e., sex, age, ethnicity, parental height) that helps explain their height
+- **Even your height** can be considered to be the result of randomness, once we condition on information we know about you (i.e., sex, age, ethnicity, parental height) that helps explain their height
 
 ## Random Variables: Definition {.smaller}
 
@@ -72,75 +73,155 @@ A **random variable** is a numerical measurement of a random phenomenon
 
 **Notation:**
 
-- We denote random variables using **capital letters** (X)
-- We denote the particular values that random variables can take using **lowercase letters** (x)
+- **Capital letter $X$:** the random variable
+- **Lowercase letter $x$:** a realized value
+
 
 **Example**: Rolling a die
 
-- Let X be the random variable corresponding to the outcomes from rolling a die
-- Then the possible values for x are the same as the values in X's sample space S: {1, 2, 3, 4, 5, 6}
+- $X$ = “outcome of a die roll”
+- All the possible values for $x$ are the same as the values in $X$'s sample space S: `{1, 2, 3, 4, 5, 6}`
+- but $x$=4 since “this roll came out as a 4”
 
 ## Probability Distributions {.smaller}
 
-The **probability distribution** of a random variable is a probability model for that random variable
+A **probability distribution** answers:
+
+> If I repeated this random process many times, how often would I see each possible value?
 
 **Remember**: Probability models consist of:
 
 - The sample space of all possible outcomes
 - A probability associated with each outcome
 
-**Example**: For rolling a die, we can say that the probability distribution of the random variable X is defined by:
+**Example**: For rolling a six-sided die: the probability distribution of the random variable $X$ is defined by:
+$$P(X = x) = \frac{1}{6} \text{ for x} \in S:  \{1, 2, 3, 4, 5, 6\}$$
 
-$$P(X = x) = 1/6, \text{ for all values } x \text{ in } S$$
+which fully describes the randomness of the die.
 
 ## Discrete Probability Distributions {.smaller}
 
 In some cases, we can describe a probability distribution by listing all possible values a random variable can have, as well as the probabilities associated with each value
 
-This is generally the case with **categorical** (also known as **discrete**) probability distributions
+- This is generally the case with **categorical** (also known as **discrete**) probability distributions
 
 However, just as we described a sample distribution in terms of summary statistics, we can also describe a probability distribution in terms of **parameters**
 
 ## Binary Probability Distributions {.smaller}
 
-Perhaps the most basic family of discrete probability distributions is the **binary** (or **Bernoulli**) distribution, which models whether an outcome occurs or not in one trial
+Let's strip things down to the simplest possible random variable: 
 
-A **binary random variable** X, also known as an **indicator variable**, is equal to:
+Perhaps the most basic *family* of discrete probability distributions is the **binary** (or **Bernoulli**) distribution, which models whether an outcome occurs or not in one trial
+
+A **binary random variable** $X$ is equal to:
+
+$$X \in \{0, 1\}$$
+
+
+::::: columns
+::: {.column width="50%"}
+
+**Interpretation:**
 
 - 1 if the outcome occurs
 - 0 if the outcome does not occur
 
-## Binary Probability Distributions: Formula {.smaller}
+:::
+::: {.column width="50%"}
+
+**Examples:**
+
+- Eviction occurred (1) or not (0)
+- Voted (1) or didn’t vote (0)
+- Policy passed (1) or failed (0)
+
+:::
+:::::
+
+::: aside
+This is why these are also called indicator variables.
+:::
+
+## Binary Probability Distributions {.smaller}
 
 The probability distribution of a binary random variable:
 
 $$P(X = 1) = \pi$$
 $$P(X = 0) = 1 - \pi$$
 
-Here, $\pi$ is a **parameter** that can take any value from 0 to 1
+**In plain language:** There are only two possible outcomes, so we only need one number to describe the entire distribution.
+
+$$π= \text{probability the event occurs}$$
+
+if $P(X = 1) = \pi$,  then automatically $P(X = 0) = 1 - \pi$ since probabilities sum to 1
+
+
+## Binary Probability Distributions {.smaller}
+
+**This is powerful** because this single parameter $\pi$:
+
+- Completely defines the distribution
+- Can vary from 0 to 1
+- Represents the underlying data-generating process
+
+Different values of $\pi$ → different worlds.
 
 **Key insight**: Parameters are why we can refer to a **family** of binary probability distributions that share the same structure but can vary through having different parameter values
 
 ## Means of Random Variables {.smaller}
 
-As stated earlier, we can summarize information about the probability distribution using **parameters**
+So why does $\pi$ matter?
 
-For instance, the **mean** ($\mu$) of a discrete random variable—the expected value it would take across a large number of trials—is equal to the sum, across all values in the sample space, of the value times the probability that that value occurs
+- We can summarize information about the probability distribution using **parameters**
+- The mean is the expected value over many repetitions.
 
-**For a binary random variable:**
+**For binary $X$:**
 
-$$\mu = 0 \times P(X = 0) + 1 \times P(X = 1) = 0 \times (1-\pi) + 1 \times \pi = \pi$$
+$$\mu = 0 \cdot P(X=0) + 1 \cdot P(X=1) = \pi$$
 
-$\mu$ is sometimes written as $E[X]$ (the expected value of X)
+**This is a HUGE result:** For a binary variable, the mean equals the probability of success.
 
-## Standard Deviation of Random Variables {.smaller}
+**This is why:**
 
-**Recall** from the lecture on summarizing data that the standard deviation of a variable in a data set is the square root of the variance of the variable in a data set
+* Sample means of 0/1 variables are proportions
+* Estimating probabilities = estimating means
+* Linear probability models even exist
+
+**Key insight:** This connects probability directly to statistics.
+
+## Variance and Uncertainty {.smaller}
+
+Recall that **variance**
+ 
+>  measures how much randomness there is 
 
 We calculate the variance by:
 
 1. Summing (across all data points) each point's squared deviation from the mean
 2. Dividing this sum by the number of observations in the data set, minus one
+
+For a binary variable:
+
+$$\text{Var}(X) = \pi(1-\pi)$$
+
+::::: columns
+::: {.column width="50%"}
+**Key intuition:**
+
+* Max variance at $\pi = 0.5$
+* No variance at $\pi = 0$ or $\pi = 1$
+
+:::
+::: {.column width="50%"}
+
+**So:**
+
+* Perfect certainty → no randomness
+* Most uncertainty → coin flip
+
+:::
+:::::
+
 
 ## Standard Deviation: Random Variables vs. Data {.smaller}
 
@@ -183,9 +264,8 @@ Both are functions of the parameter $\pi$
 
 We can graph the **probability density function**, which shows $P(X = x)$ across the sample space:
 
-![Binary/Bernoulli Distribution](https://via.placeholder.com/600x400?text=Binary+Distribution+Graph)
+![](images/week6/bernouli_prob.png){width="100%,fig-align=\"center\""}
 
-*Shows probability mass at x=0 and x=1*
 
 ## Questions?
 
@@ -267,13 +347,11 @@ The mean is equal to the probability of one trial succeeding, times the total nu
 
 $$\sigma = \sqrt{\pi \times n \times (1-\pi)}$$
 
-## Binomial Distribution: PDF Shifts with π {.smaller}
+## PDF Shifts with $π$ {.smaller}
 
 The **probability density function (pdf)** of a binomial random variable shifts with $\pi$...
 
-![Binomial Distribution PDFs](https://via.placeholder.com/700x400?text=Binomial+PDFs+with+varying+pi)
-
-*Shows how distribution shape changes with different values of π*
+![Shows how distribution shape changes with different values of π](images/week6/pdf_shifts.png){width="100%,fig-align=\"center\""}
 
 ## Binomial Distribution: Cumulative Probabilities {.smaller}
 
@@ -289,25 +367,85 @@ In notation: If $Y \sim B(n, \pi)$, what is $P(Y \leq k)$?
 
 This would require summing: $P(Y = 0) + P(Y = 1) + ... + P(Y = 65)$
 
-**Today, in R**: `pbinom(65, size = 100, prob = 0.5)`
+**Today, in R**: 
+
+```{r}
+#| echo: true
+
+pbinom(65, size = 100, prob = 0.5)
+
+```
+
 
 ## Questions?
 
-## Binomial Distribution Approaches Normal {.smaller}
+
+## Binomial Approaches Normal {.smaller}
+
+The **key takeaway** if that as $n$ gets larger, the probability distribution function of a binomial random variable approaches a smooth curve:
+
+<br> 
+
+
+![](images/week6/pdf_to_normal.png){width="100%" fig-align="center"}
+
+## From Bernoulli → Binomial {.smaller}
+
+**The important statistical leap:** What if I repeat this binary process many times?
+
+**Let:**
+
+* Each trial be Bernoulli($\pi$)
+* $Y$ = sum of $n$ binary variables
+
+**Then:**
+
+$$Y \sim \text{Binomial}(n, \pi)$$
+
+**Interpretation:**
+
+* $Y$ = number of successes
+* Possible values: $0, 1, \ldots, n$
+
+**This is literally just:** adding up 0s and 1s
+
+## From Bernoulli → Binomial {.smaller}
 
 As n gets larger, the probability distribution function of a binomial random variable approaches a smooth curve:
 
-![Binomial approaching Normal](https://via.placeholder.com/700x450?text=Binomial+Distribution+as+n+increases)
-
-*Shows binomial distribution becoming smoother and more bell-shaped*
-
-## From Binomial to Normal {.smaller}
-
-As n gets larger, the probability distribution function of a binomial random variable approaches a smooth curve
-
-**(According to our textbook)**: The search for ways to approximate the binomial distribution at large values of n led to the discovery of **normal distributions**
+**(According to our textbook)**: The search for ways to approximate the binomial distribution at large values of $n$ led to the discovery of **normal distributions**
 
 **Normal distributions** are a family of continuous probability distributions that are able to closely model the distribution of many natural phenomena
+
+## Why Binomial Leads to Normal {.smaller}
+
+As $n$ gets large:
+
+- The binomial distribution becomes smooth
+- It starts to look continuous
+- It approaches a normal distribution
+
+This is an early encounter with the **Central Limit Theorem**:
+
+> Sums of many small random variables tend to look Normal.
+
+**So historically:**
+
+- People struggled to compute binomial probabilities
+- Normal distributions were discovered as approximations
+- Today, normals explain many natural phenomena
+
+## Connecting It All Together {.smaller}
+
+**One-sentence summary:**
+
+A binary probability distribution describes the randomness of a single yes/no outcome using one parameter, $\pi$; summing many such binary outcomes produces a binomial distribution, which in turn approaches a normal distribution as the number of trials grows large.
+
+**This connects:**
+
+- Individual randomness (Bernoulli)
+- Repeated processes (Binomial)
+- Continuous phenomena (Normal)
 
 ## Normal Distributions {.smaller}
 
@@ -328,9 +466,7 @@ That is, X is a normally distributed random variable with mean $\mu$ and standar
 
 ## PDF of the Normal Distribution {.smaller}
 
-![Normal Distribution PDF](https://via.placeholder.com/700x400?text=Normal+Distribution+Curve)
-
-*Classic bell curve showing symmetric distribution around mean μ*
+![Classic bell curve showing symmetric distribution around mean μ](images/week6/pdf_of_normal.png){width="100%" fig-align="center"}
 
 ## Properties of the Normal Distribution {.smaller}
 
@@ -347,7 +483,7 @@ That is, X is a normally distributed random variable with mean $\mu$ and standar
 
 ## The 68-95-99.7 Rule {.smaller}
 
-![Empirical Rule Visualization](https://via.placeholder.com/700x400?text=68-95-99.7+Rule)
+![Classic bell curve showing symmetric distribution around mean $μ$](images/week6/standard_normal.png){width="100%" fig-align="center"}
 
 *Shows the percentage of data within 1, 2, and 3 standard deviations*
 
@@ -383,9 +519,8 @@ $$z = \frac{x - \mu}{\sigma}$$
 
 **Answer**: We compute probabilities for **intervals** under the normal density curve:
 
-![Normal Distribution with Shaded Area](https://via.placeholder.com/700x400?text=Normal+Curve+with+Shaded+Interval)
+![Shows area under curve representing probability](images/week6/probabilities_on_normal.png){width="100%" fig-align="center"}
 
-*Shows area under curve representing probability*
 
 ## Calculating Probabilities in R {.smaller}
 
@@ -427,7 +562,7 @@ qnorm(0.95, mean = μ, sd = σ)
 
 ## Weekly Assignment #5 {.smaller}
 
-**Due**: Tuesday, October 2 by 11:59 PM
+**Due**: Thursday, March 5 by 11:59 PM
 
 **Format**: Similar to last week's weekly assignment: mostly a problem set
 
@@ -437,6 +572,6 @@ qnorm(0.95, mean = μ, sd = σ)
 
 **Groups:**
 
-- Group 1: Arjun, Garth, Emanuela, Brenna
-- Group 2: Jessie, Sofia, Joe
-- Group 3: Haavard, Yuyang, Eugene, and David
+- Group 1: *ADD*
+- Group 2: *ADD*
+- Group 3: *ADD*

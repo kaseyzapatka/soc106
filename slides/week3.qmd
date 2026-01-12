@@ -9,7 +9,6 @@ format:
     chalkboard: 
       buttons: false
     preview-links: auto
-    #logo: berkeley_logo.png
     css: slides.css
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
