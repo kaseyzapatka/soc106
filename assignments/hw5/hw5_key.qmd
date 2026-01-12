@@ -1,0 +1,262 @@
+---
+title: "Weekly Assignment #5"
+author: "Your Name Here"  # Replace with your name
+date: 03/05/2026
+date-format: long
+format: 
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw5.qmd` file from bCourse.
+2.  Save the file in your assignments folder.
+3.  Follow the instructions below to complete the assignment. Show your work for all calculations!
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit the `hw5.qmd` file to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. For questions requiring hand calculations, show your work in the text sections. Make sure your document renders without errors before submitting.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+# ---------
+rm(list = ls())
+
+# install libraries -- shouldn't need for this assignment
+# ---------
+# install.packages("tidyverse")
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+```
+
+------------------------------------------------------------------------
+
+## Question 1: Free Throw Probability
+
+**Lisa makes free throws 75% of the time, and shoots eight free throws at the end of practice.**
+
+**a) By hand: what is the probability that she will make exactly five free throws?**
+
+*Show your work here (you can use LaTeX math notation or just write it out):*
+
+```{r}
+
+# You can verify your hand calculation with R code if you'd like
+
+```
+
+*Your final answer:*
+
+**b) By hand: what is the probability that she will make at least seven free throws?**
+
+*Show your work here:*
+
+```{r}
+
+# You can verify your hand calculation with R code if you'd like
+
+```
+
+*Your final answer:*
+
+**c) In R: what is the probability that she will make between four and six free throws?**
+
+```{r}
+
+# Your code here
+dbinom(4, size = 8, prob = .75) + dbinom(5, size = 8, prob = .75) + dbinom(6, size = 8, prob = .75) # .6056213
+# OR
+pbinom(6, size = 8, prob = .75) - pbinom(3, size = 8, prob = .75) # .6056213
+
+
+```
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+## Question 2: Exam Performance
+
+**Javier takes a 50 question exam. In practice exams, he has answered all exam questions correctly 80% of the time, and his likelihood of answering each question correctly is independent of one another.**
+
+**a) What is the mean number of questions he will get correct on the exam? What is the standard deviation of the number of questions he will get correct?**
+
+*Show your work here:*
+
+```{r}
+
+# Your code here
+# mean 
+50*.8 # 40
+
+# SD
+sqrt(50*.8*.2) # 2.828...
+
+```
+
+*Your answer here: `mean: 40, SD: 2.828`*
+
+**b) A student needs to get 70% of questions correct to pass the exam. What is the probability that he will pass the exam? (use R to answer)**
+
+```{r}
+
+# Your code here
+1 - pbinom(34, 50, .8) 
+
+```
+
+*Your answer here: `0..969`*
+
+------------------------------------------------------------------------
+
+## Question 3: Height and Z-scores
+
+**Andre is selected from a population where height is distributed normally with mean 69 inches and standard deviation 3 inches. The individual is measured with a height of 75 inches.**
+
+**a) Calculate the z-score of Andre's height.**
+
+*Show your work here:*
+
+```{r}
+
+# Your code here
+(75-69)/3 # 2
+
+```
+
+*Your answer here: 2*
+
+**b) Just from the z-score, can you tell whether Andre's height is above the 95th percentile of height? Why or why not? How about the 97th percentile of height? Why or why not?**
+
+*Your answer here: `We know that 95% of observations in a normal distribution are within two standard deviations of the mean--so, all of these observations are below Andre's height. We also know that the mean is symmetrical. So, among the remaining 5% of observations outside 2 SDs from the mean, 2.5% of observations are over 2 SD below (and below Andre's height), and 2.5% SD are over 2 SD above (and above Andre's height). This means that 97.5% of individuals are below Andre's height --> Andre is at the 97.5th percentile. So, Andre's height is above the 95th and 97.5th percentile`.*
+
+------------------------------------------------------------------------
+
+## Question 4: Vehicle Speeds on I-5
+
+**Assume the speed of vehicles along a stretch of I-5 has an approximately normal distribution with a mean of 71 mph and a standard deviation of 8 mph.**
+
+**a) The current speed limit is 65 mph. What is the proportion of vehicles less than or equal to the speed limit?**
+
+```{r}
+
+# Your code here
+pnorm(65, 71, 8) 
+
+
+```
+
+*Your answer here: `0..2266`*
+
+**b) What proportion of the vehicles would be going less than or equal to 50 mph?**
+
+```{r}
+
+# Your code here
+pnorm(50, 71, 8) 
+
+```
+
+*Your answer here: `0.00433`*
+
+**c) A new speed limit will be initiated such that approximately 10% of vehicles will be over the speed limit. What is the new speed limit based on this criterion?**
+
+```{r}
+
+# Your code here
+qnorm(.9, 71, 8) 
+
+```
+
+*Your answer here: `81.25241`*
+
+**d) In what way do you think the actual distribution of speeds differs from a normal distribution?**
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+## Question 5: NCAA SAT Requirements
+
+**The NCAA requires Division I athletes to score over 820 on the combined math and verbal SAT exam to compete in their first college year. The SAT scores of 2003 were approximately normal with mean 1026 and standard deviation 209.**
+
+**a) What proportion of all students would be NCAA qualifiers (SAT \> 820)?**
+
+```{r}
+
+# Your code here
+1 - pnorm(820, 1026, 209) 
+
+```
+
+*Your answer here: `0.837`*
+
+**b) The NCAA defines a "partial qualifier" eligible to practice and receive an athletic scholarship, but not to compete, as a combined SAT score over 720 but less than or equal to 820. What proportion of all students who take the SAT would be partial qualifiers?**
+
+```{r}
+
+# Your code here
+pnorm(820, 1026, 209) - pnorm(720, 1026, 209) 
+
+```
+
+*Your answer here: `0.09057`*
+
+------------------------------------------------------------------------
+
+## Question 6: Height Comparisons Between Men and Women
+
+**Suppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.**
+
+**a) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?**
+
+```{r}
+
+# Your code here
+(pnorm(70,70,3) - pnorm(68,70,3)) - (pnorm(70,64,3) - pnorm(68,64,3)) 
+
+```
+
+*Your answer here: `0.179`*
+
+**b) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?**
+
+```{r}
+
+# Your code here
+(pnorm(70,70,3) - pnorm(68,70,3)) / (pnorm(70,64,3) - pnorm(68,64,3))
+
+```
+
+*Your answer here: `3.615`*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] All code chunks run without errors
+-   [ ] You've shown your work for hand calculations
+-   [ ] You've answered all written response questions
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting the .qmd file to bCourse
+:::

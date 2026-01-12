@@ -1,0 +1,276 @@
+---
+title: "Weekly Assignment #3"
+author: "Your Name Here"  # Replace with your name
+date: "02/19/2026"
+format: 
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw3.qmd` fiel and the `attain.csv` data file from bCourse.
+2.  Save both files on your computer. Make sure to save `attain.csv` in your data folder and `hw3.qmd` in your assignments folder.
+3.  Follow the instructions below to complete the assignment. A sample code chunk has been provided but you might need more.
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it's working).
+5.  Submit the `hw3.qmd` file to bCourse before the deadline
+6.  Make sure your name appears in the "author" field in the YAML header above
+:::
+
+# Instructions
+
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. Make sure your document renders without errors before submitting.
+
+## Setup
+
+```{r}
+# Clear environment
+# ---------
+rm(list = ls())
+
+# install libraries -- shouldn't need for this assignment
+# ---------
+# install.packages("tidyverse")
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+
+# load data
+# ---------
+# Your code here
+attain <- read_csv(here("data/attain.csv")) 
+attain |> glimpse()
+```
+
+## Question 1: Analyzing Marital Status and Education
+
+**a) Create a subset of the data (call it `subset1`) that includes only respondents with non-missing information for both degree (`degree`) and marital status (`martial`). Be sure to glimpse it.**
+
+```{r}
+#| label: load-data
+#| warning: false
+
+# Your code here
+subset1 <- attain %>%
+  filter(!is.na(degree) & !is.na(marital)) |> 
+  glimpse()
+
+
+```
+
+**b) Using `subset1`, create a frequency table (call it `table_marital`) for marital status (`marital`). Then calculate the relative frequencies (proportions) for each marital status category. What proportion of respondents are married?**
+
+```{r}
+
+# Your code here
+table_marital <- 
+  subset1 %>%
+  count(marital) %>%
+  mutate(rel_freq = n / sum(n))
+
+table_marital
+
+```
+
+*Insert your answer here: `51.6%`*
+
+**c) Still using `subset1,` create a frequency table for education level (`degree`). Then calculate the relative frequencies (proportions) for each education category. What proportion of respondents have a high school education?**
+
+```{r}
+
+# Your code here
+table_degree <- 
+  subset1 %>%
+  count(degree) %>%
+  mutate(rel_freq = n / sum(n))
+
+table_degree
+
+```
+
+*Insert your answer here: `53.2%`*
+
+**c) Among respondents with a bachelor's degree and using the full `attain` dataset, create a frequency table for marital status. Calculate the marginal (relative) frequencies. What proportion of bachelor's degree holders (`bachelor`) are married?**
+
+```{r}
+
+# Your code here
+table_marital_bachelor <- 
+  attain %>%
+  filter(degree == "bachelor", !is.na(marital)) %>%
+  count(marital) %>%
+  mutate(marg_freq = n / sum(n))
+
+table_marital_bachelor
+
+```
+
+*Insert your answer here: `57.9%`*
+
+**d) Among respondents with less than high school education (`lt high`) in the full `attain` datset, create a frequency table for marital status and calculate the marginal frequencies. What proportion of respondents that have never married (`never ma`)?**
+
+```{r}
+
+# Your code here
+table_marital_lths <- 
+  attain %>%
+  filter(degree == "lt high", !is.na(marital)) %>%
+  count(marital) %>%
+  mutate(marg_freq = n / sum(n))
+
+table_marital_lths
+
+```
+
+*Insert your answer here: `19.5%`*
+
+**e) Using the two tables crated in part c) and d), what is the difference in the proportion married between bachelor's degree holders (`bachelor`) and those with less than high school education? (`lt high`)**
+
+```{r}
+
+# Calculate difference in proportion married
+table_marital_bachelor %>% filter(marital == "married") %>% pull(marg_freq) -
+  table_marital_lths %>% filter(marital == "married") %>% pull(marg_freq)
+
+
+```
+
+*Insert your answer here: `16.0%`*
+
+**f) Now, calculate the relative risk of being married for bachelor's degree holders compared to those with less than high school education. Interpret this value.**
+
+```{r}
+
+# Your code here
+relative_risk_bach_lths <- 
+  (table_marital_bachelor %>% filter(marital == "married") %>% pull(marg_freq)) /
+  (table_marital_lths %>% filter(marital == "married") %>% pull(marg_freq))
+
+relative_risk_bach_lths  # 1.383797
+
+```
+
+*Insert your answer here: `1.383797%`*
+
+------------------------------------------------------------------------
+
+## Question 2: Mode of Religion
+
+**Find the mode (most common value) of the `relig` variable. What is the modal religion in the dataset? (Hint: Use will prob have to use a function from the `slice()` family to answer this question.)**
+
+```{r}
+
+# Your code here
+attain %>%
+  count(relig) %>%
+  slice_max(n, n = 1) %>%
+  pull(relig) # "protesta"
+
+```
+
+*Insert your answer here: `protesta`*
+
+## Question 3: Summarizing Number of Siblings
+
+**Using the `sibs` variable (number of siblings), calculate the following summary statistics. Be sure to handle missing values appropriately.**
+
+**a) What is the median number of siblings?**
+
+```{r}
+
+# Your code here
+attain %>% summarize(median_sibs = median(sibs, na.rm = TRUE))
+
+# modern tidyverse code 
+#attain |> reframe(median_sibs = median(sibs, na.rm = TRUE))
+
+```
+
+*Insert your answer here: `3`*
+
+**b) What is the mean number of siblings?**
+
+```{r}
+
+# Your code here
+attain %>% summarise(mean_sibs = mean(sibs, na.rm = TRUE)) 
+
+```
+
+*Insert your answer here: `3.72`*
+
+**c) What are the 10th, 25th, 75th, and 90th percentiles for number of siblings?**
+
+```{r}
+
+# Your code here
+attain %>%
+  summarise(
+    q10 = quantile(sibs, 0.10, na.rm = TRUE),
+    q25 = quantile(sibs, 0.25, na.rm = TRUE),
+    q75 = quantile(sibs, 0.75, na.rm = TRUE),
+    q90 = quantile(sibs, 0.90, na.rm = TRUE)
+  )
+
+```
+
+*Insert your answer here: `10th: 1, 25th: 2, 75th: 5, 90th: 8`*
+
+**d) What are the variance and standard deviation of the number of siblings?**
+
+```{r}
+
+# Your code here
+ attain %>%
+  filter(!is.na(sibs)) %>%
+  summarise(
+    variance = var(sibs),
+    std_dev = sd(sibs)
+  )
+
+```
+
+*Insert your answer here: variance: `9.78`, std_deviation `3.13`*
+
+## Question 4: Associations Between Variables
+
+**For this question, we're going to calculate the covariance and correlation coefficient between years of education (educ) and 1991 income (income91).**
+
+**a) Calculate covariance.**
+
+```{r}
+
+# Your code here
+attain %>%
+  summarize(covariance = cov(educ, income91, use = "complete.obs")) 
+
+```
+
+*Insert your answer here: `31806`*
+
+**b)** Calculate and interpret the correlation coefficient. What does it tell you about the relationship between education and income? Be sure to deal appropriately with missing observations. (Note that you can do this by (1) either create a subset that includes only respondents with non-missing information for educ and income91 or (2) specifying a particular parameter in the `cor` argument.\*\*
+
+```{r}
+
+attain %>%
+  summarize(correlation = cor(educ, income91, use = "complete.obs"))
+
+```
+
+*Insert your answer here: `0.393` It is a moderately strong relationship.*
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all written response questions
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting the .qmd file to bCourse
+:::
