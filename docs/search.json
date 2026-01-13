@@ -3057,5 +3057,299 @@
     "title": "Week 7",
     "section": "Worked Example: Interpretation",
     "text": "Worked Example: Interpretation\nWhat this tells us:\n\n\nThe expected difference between our sample means is $7,000\nBut due to sampling variability, our observed difference will vary with \\(SE \\approx \\$1,921\\)\n\n\n\nIf we repeated this sampling many times:\n\nAbout 68% of the time, our observed difference would be between:\n\n\\(7,000 \\pm 1,921\\) = [$5,079, $8,921]\n\nAbout 95% of the time, it would be between:\n\n\\(7,000 \\pm 2(1,921)\\) = [$3,158, $10,842]\n\n\n\n\nThis is the sampling distribution of the difference between means!"
+  },
+  {
+    "objectID": "slides/week8.html#housekeeping",
+    "href": "slides/week8.html#housekeeping",
+    "title": "Week 8",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nAnnotated Bibliography: Due March 19\nExample of annotated bibliography posted on course site (in the Research Paper folder)\nGeneral format:\n\nOne paragraph summarizing the argument of the article\nOne paragraph discussing how it relates to and/or helps to answer your research question"
+  },
+  {
+    "objectID": "slides/week8.html#agenda",
+    "href": "slides/week8.html#agenda",
+    "title": "Week 8",
+    "section": "Agenda",
+    "text": "Agenda\n\nReview last week’s homework???\nFrom sampling to inference\nPoint estimators and their properties\nConfidence intervals\n\nFor proportions\nFor means\n\nLab time to work on homework"
+  },
+  {
+    "objectID": "slides/week8.html#last-weeks-homework",
+    "href": "slides/week8.html#last-weeks-homework",
+    "title": "Week 8",
+    "section": "Last Week’s Homework",
+    "text": "Last Week’s Homework\n[[ADD IT IN LATER]]\nSome common issues and clarifications:\nProblem with small samples: When using the sampling distribution of a proportion vs. binomial distribution\n\nAnswers may differ slightly due to smaller sample size\nBut these converge as \\(N\\) becomes large\n\nContinuous distributions: Probability of any exact value = 0\n\nBut we can still compare likelihoods\nRemember: larger sample → sample mean closer to population mean"
+  },
+  {
+    "objectID": "slides/week8.html#questions-about-homework",
+    "href": "slides/week8.html#questions-about-homework",
+    "title": "Week 8",
+    "section": "Questions About Homework?",
+    "text": "Questions About Homework?"
+  },
+  {
+    "objectID": "slides/week8.html#last-week-recap",
+    "href": "slides/week8.html#last-week-recap",
+    "title": "Week 8",
+    "section": "Last Week: Recap",
+    "text": "Last Week: Recap\nWhat we learned:\n\nSampling: The collection of (approximately) random sets of observations from a larger population\nSampling distributions: Probability distributions of sample statistics\n\nWe learned how to construct these given known population parameters and sample size\n\nCentral Limit Theorem: For sufficiently large samples, sampling distributions are approximately normal"
+  },
+  {
+    "objectID": "slides/week8.html#this-week-inference",
+    "href": "slides/week8.html#this-week-inference",
+    "title": "Week 8",
+    "section": "This Week: Inference",
+    "text": "This Week: Inference\nLast week, we could construct sampling distributions because we knew the population parameters\nBut in reality: We almost never know the population parameters!\nThis week: We flip the problem around\n\nWe use sample statistics to make inferences about unknown population parameters\nWe quantify our uncertainty using confidence intervals"
+  },
+  {
+    "objectID": "slides/week8.html#key-concepts",
+    "href": "slides/week8.html#key-concepts",
+    "title": "Week 8",
+    "section": "Key Concepts",
+    "text": "Key Concepts\n\n\nPopulation\n\nParameter: unknown value we want to estimate\nExamples: \\(\\mu\\), \\(\\pi\\), \\(\\sigma\\)\n\n\nSample\n\nStatistic: observed value from our data\nExamples: \\(\\bar{x}\\), \\(\\hat{p}\\), \\(s\\)\n\n\n\nThe goal: Use statistics to estimate parameters while accounting for uncertainty"
+  },
+  {
+    "objectID": "slides/week8.html#estimators",
+    "href": "slides/week8.html#estimators",
+    "title": "Week 8",
+    "section": "Estimators",
+    "text": "Estimators\nAn estimator is a rule (usually a mathematical formula) for making inferences about a population parameter using sample data\nThe value of an estimator is called an estimate\nMost summary statistics can be used as estimators:\n\nProportions\nMeans\nMedians\nVariance and standard deviations\nCovariances and correlations"
+  },
+  {
+    "objectID": "slides/week8.html#types-of-estimators",
+    "href": "slides/week8.html#types-of-estimators",
+    "title": "Week 8",
+    "section": "Types of Estimators",
+    "text": "Types of Estimators\nThere are two main kinds of estimators: point estimators and interval estimators\n\n\nPoint EstimatorsInterval Estimators\n\n\nA point estimator of a population parameter is a single value that is used to predict the value of the parameter\nExamples: All the summary statistics on the previous slide are point estimators\n\nSample mean \\(\\bar{x}\\) estimates population mean \\(\\mu\\)\nSample proportion \\(\\hat{p}\\) estimates population proportion \\(\\pi\\)\n\n\n\nAn interval estimator of a population parameter is an interval that is predicted to contain the parameter\nThe confidence level we ascribe to the interval is the probability that it will contain the parameter\nExample: A 95% confidence interval for the mean"
+  },
+  {
+    "objectID": "slides/week8.html#properties-of-point-estimators",
+    "href": "slides/week8.html#properties-of-point-estimators",
+    "title": "Week 8",
+    "section": "Properties of Point Estimators",
+    "text": "Properties of Point Estimators\nA point estimator has two important properties:\n\n1. Bias: The difference between the expected value of the estimator in repeated samples and the population value of interest\n\nThe estimator is unbiased if the difference is zero\nIn a single sample, lack of bias = accuracy\n\n\n\n2. Efficiency: The sampling variability of the estimator\n\nAn estimator is efficient if its sampling variability is lowest among alternative estimators\nIn a single sample, efficiency = precision"
+  },
+  {
+    "objectID": "slides/week8.html#visualizing-bias-and-efficiency",
+    "href": "slides/week8.html#visualizing-bias-and-efficiency",
+    "title": "Week 8",
+    "section": "Visualizing Bias and Efficiency",
+    "text": "Visualizing Bias and Efficiency\n\nRemember: bias relates to accuracy, efficiency relates to precision"
+  },
+  {
+    "objectID": "slides/week8.html#confidence-intervals",
+    "href": "slides/week8.html#confidence-intervals",
+    "title": "Week 8",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nTo construct a confidence interval for a population parameter, we use the sampling distribution of the point estimator for that parameter\n\nKey components:\n\nThe mean of the sampling distribution equals the point estimator itself\n\n\n\n\nWe use the sample standard error to approximate the standard deviation of the sampling distribution\n\nSometimes this is efficient; sometimes not"
+  },
+  {
+    "objectID": "slides/week8.html#confidence-level-and-margin-of-error",
+    "href": "slides/week8.html#confidence-level-and-margin-of-error",
+    "title": "Week 8",
+    "section": "Confidence Level and Margin of Error",
+    "text": "Confidence Level and Margin of Error\n\nConfidence level: The probability that a confidence interval contains the population parameter\n\nMost common: 95%\nAlso used: 90%, 99%, and even 99.9%\n\n\n\nMargin of error: A measure of how accurate the point estimate is likely to be in estimating a parameter\n\nUsually expressed in standard errors away from the point estimate\nConfidence interval = (point estimate ± margin of error)\n\n\n\n\nAn example from election results: Candidate A is expected to receive 41% ± 3% of the vote."
+  },
+  {
+    "objectID": "slides/week8.html#trade-offs-in-confidence-intervals",
+    "href": "slides/week8.html#trade-offs-in-confidence-intervals",
+    "title": "Week 8",
+    "section": "Trade-offs in Confidence Intervals",
+    "text": "Trade-offs in Confidence Intervals\nAs confidence level increases → margin of error increases\n\nTo be more confident our interval contains the parameter, we need to expand our interval\n\nAs sample size increases → margin of error decreases\n\nWith more data, we can be more certain the population parameter is close to the sample statistic\nSo we can be as confident with a smaller interval"
+  },
+  {
+    "objectID": "slides/week8.html#questions",
+    "href": "slides/week8.html#questions",
+    "title": "Week 8",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week8.html#confidence-interval-for-a-proportion",
+    "href": "slides/week8.html#confidence-interval-for-a-proportion",
+    "title": "Week 8",
+    "section": "Confidence Interval for a Proportion",
+    "text": "Confidence Interval for a Proportion\nThe sample proportion \\(\\hat{p}\\) is an unbiased estimator of the population proportion \\(\\pi\\)\nThe exact standard error is \\(\\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\), but we don’t know \\(\\pi\\) in practice\nTherefore, we estimate the standard error as:\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\\]\nThis standard error is also an unbiased estimator of the exact standard error"
+  },
+  {
+    "objectID": "slides/week8.html#constructing-the-confidence-interval",
+    "href": "slides/week8.html#constructing-the-confidence-interval",
+    "title": "Week 8",
+    "section": "Constructing the Confidence Interval",
+    "text": "Constructing the Confidence Interval\nIn large samples (at least 15 ‘successes’ and 15 ‘failures’), the sampling distribution of a sample proportion is approximately normal\nTherefore: We can use the normal distribution to calculate the margin of error\nWe express the margin of error in terms of the z-score: the number of standard deviations away from the mean in a standard normal distribution"
+  },
+  {
+    "objectID": "slides/week8.html#formula-for-ci-of-a-proportion",
+    "href": "slides/week8.html#formula-for-ci-of-a-proportion",
+    "title": "Week 8",
+    "section": "Formula for CI of a Proportion",
+    "text": "Formula for CI of a Proportion\nThe confidence interval for a population proportion \\(\\pi\\) in a large sample is:\n\\[\\hat{p} \\pm z^* \\times SE(\\hat{p})\\]\nwhere \\(z^*\\) is the critical value from the standard normal distribution for the desired confidence level\n\nFor a 95% confidence interval:\n\\[\\hat{p} \\pm 1.96 \\times \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\\]\ncritical value for a z-score for a 95% confidence interval is ~1.96 (we’ll learn later)"
+  },
+  {
+    "objectID": "slides/week8.html#example-environmental-protection",
+    "href": "slides/week8.html#example-environmental-protection",
+    "title": "Week 8",
+    "section": "Example: Environmental Protection",
+    "text": "Example: Environmental Protection\nIn 2000, the GSS asked: “Are you willing to pay much higher prices in order to protect the environment?”\n\n518 said yes\n636 said no\n\nQuestion: What is the 95% confidence interval of the population proportion of adult Americans willing to do so at the time of the survey?\n(Ignoring sample weights for now…)"
+  },
+  {
+    "objectID": "slides/week8.html#example-calculations",
+    "href": "slides/week8.html#example-calculations",
+    "title": "Week 8",
+    "section": "Example: Calculations",
+    "text": "Example: Calculations\nStep 1: Identify the values\n\n\\(\\bar{x} = 67.2\\)\n\\(s = 3.9\\)\n\\(n = 7\\)\n\\(df = 7 - 1 = 6\\)\n\nStep 2: Find the critical t-value\n\nqt(0.975, df = 6)\n\n[1] 2.446912"
+  },
+  {
+    "objectID": "slides/week8.html#example-higher-confidence-level",
+    "href": "slides/week8.html#example-higher-confidence-level",
+    "title": "Week 8",
+    "section": "Example: Higher Confidence Level",
+    "text": "Example: Higher Confidence Level\nNow let’s say you wanted a higher confidence level–99% instead of 95%. You’d do the same calculations but use the critical value of \\(2.576\\) instead of \\(1.96\\)\nFor a 99% confidence interval (\\(z^* = 2.576\\)):\n\\[0.449 \\pm 2.576 \\times 0.0146 = 0.449 \\pm 0.038 = [0.411, 0.487]\\]\n\n\n95% confidence interval\n\\([0.420, 0.478]\\)\n\n99% confidence interval\n\\([0.411, 0.487]\\)\n\n\n\nNotice: The 99% CI is wider than the 95% CI. We need a wider interval to be more confident it contains the true parameter"
+  },
+  {
+    "objectID": "slides/week8.html#finding-critical-values-in-r",
+    "href": "slides/week8.html#finding-critical-values-in-r",
+    "title": "Week 8",
+    "section": "Finding Critical Values in R",
+    "text": "Finding Critical Values in R\nMany people used to look up z-scores for different confidence using in tables, but we can also use R to quickly do that as well. Here are some common CI intervals, with 95% being the most common.\n\n90% CI95% CI97% CI99% CI\n\n\n\n# For 90% confidence interval\nqnorm(0.90)                           # one-tail\n\n[1] 1.281552\n\nqnorm((1-0.90)/2, lower.tail = FALSE) # two-tail \n\n[1] 1.644854\n\n\n\n\n\n# For 95% confidence interval\nqnorm(0.95)                           # one-tail\n\n[1] 1.644854\n\nqnorm((1-0.95)/2, lower.tail = FALSE) # two-tail \n\n[1] 1.959964\n\n\n\n\n\n# For 97% confidence interval\nqnorm(0.97)                           # one-tail\n\n[1] 1.880794\n\nqnorm((1-0.97)/2, lower.tail = FALSE) # two-tail \n\n[1] 2.17009\n\n\n\n\n\n# For 99.5% confidence interval\nqnorm(0.99)                           # one-tail\n\n[1] 2.326348\n\nqnorm((1-0.99)/2, lower.tail = FALSE) # two-tail \n\n[1] 2.575829"
+  },
+  {
+    "objectID": "slides/week8.html#questions-1",
+    "href": "slides/week8.html#questions-1",
+    "title": "Week 8",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week8.html#confidence-interval-for-a-mean",
+    "href": "slides/week8.html#confidence-interval-for-a-mean",
+    "title": "Week 8",
+    "section": "Confidence Interval for a Mean",
+    "text": "Confidence Interval for a Mean\nThe sample mean \\(\\bar{x}\\) is an unbiased estimator of the population mean \\(\\mu\\)\nThe exact standard error is \\(\\frac{\\sigma}{\\sqrt{n}}\\)—but we don’t know \\(\\sigma\\) in practice, so we estimate it using the standard error of the mean \\(s\\):\n\\[SE(\\bar{x}) = \\frac{s}{\\sqrt{n}}\\]\nLet’s look at each part in plain language:\n\n\\(\\bar{x}\\) – the sample mean\\(s\\) – sample standard deviation\\(n\\) – sample size\n\n\n\n\\(\\bar{x}\\) is the quantity we are trying to estimate (the population mean \\(\\mu\\))\n\n\n\n\n\\(s\\) is the standard deviation of the sample means \\(s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\)\nHow spread out individual observations are\nMore variability → more uncertainty in the mean\n\n\n\n\n\\(n\\) is the size of each sample\nAveraging more observations reduces randomness\nLarger \\(n\\) → smaller standard error"
+  },
+  {
+    "objectID": "slides/week8.html#the-t-distribution",
+    "href": "slides/week8.html#the-t-distribution",
+    "title": "Week 8",
+    "section": "The t-Distribution",
+    "text": "The t-Distribution\nProblem: In small samples, \\(s\\) is a biased estimator of \\(\\sigma\\)\n\nSolution: To account for this increased error, we replace the z-score with a slightly larger score, the t-score\n\n\nThe t-score comes from the t-distribution, which is:\n\nSimilar to the normal distribution (bell-shaped, symmetric around the mean)\nBut with slightly larger tails—more spread out\nShape depends on degrees of freedom (df): here, df = \\(n - 1\\)"
+  },
+  {
+    "objectID": "slides/week8.html#properties-of-the-t-distribution",
+    "href": "slides/week8.html#properties-of-the-t-distribution",
+    "title": "Week 8",
+    "section": "Properties of the t-Distribution",
+    "text": "Properties of the t-Distribution\nKey properties:\n\nWhen df &gt; 100, the t-distribution is basically the same as the normal distribution\nWith smaller samples, t-distribution has fatter tails\nIn small samples, we also need to assume the variable is approximately normally distributed in the population\n\n\nThe t-distribution compared to the normal distribution"
+  },
+  {
+    "objectID": "slides/week8.html#formula-for-ci-of-a-mean",
+    "href": "slides/week8.html#formula-for-ci-of-a-mean",
+    "title": "Week 8",
+    "section": "Formula for CI of a Mean",
+    "text": "Formula for CI of a Mean\nWhen the standard deviation of the population is unknown, the confidence interval for the population mean \\(\\mu\\) is:\n\\[\\bar{x} \\pm t^* \\times \\frac{s}{\\sqrt{n}}\\]\nwhere \\(t^*\\) is the critical value from the t-distribution with \\(n-1\\) degrees of freedom\nTo find the t critical value using R:\n\ncodeworked example\n\n\n\nqt((1 - conf_level)/2, df = n - 1, lower.tail = FALSE)\n\n\n\nLet’s assume we want a 95% confidence interval and our sample is 100.\n\n# confidence = 95%\n# df = 100, 100 - 1\nqt((1 - 0.95)/2, df = 99, lower.tail = FALSE) \n\n[1] 1.984217\n\n\nThe \\(t^*\\) critical value is therefore ~1.98."
+  },
+  {
+    "objectID": "slides/week8.html#example-heights",
+    "href": "slides/week8.html#example-heights",
+    "title": "Week 8",
+    "section": "Example: Heights",
+    "text": "Example: Heights\nA study of 7 American adults from a simple random sample yields:\n\nAverage height: 67.2 inches\nStandard deviation: 3.9 inches\n\nAssuming heights are normally distributed, what is the 95% confidence interval for the average height of all American adults?\n\n\nStep 1Step 2Step 3Step 4\n\n\nStep 1: Identify the values\n\n\\(\\bar{x} = 67.2\\)\n\\(s = 3.9\\)\n\\(n = 7\\)\n\\(df = 7 - 1 = 6\\)\n\n\n\nStep 2: Find the critical t-value\n\nqt(0.975, df = 6)\n\n[1] 2.446912\n\n\n\n\nStep 3: Calculate standard error\n\\[SE(\\bar{x}) = \\frac{3.9}{\\sqrt{7}} = \\frac{3.9}{2.646} = 1.474\\]\n\n\nStep 4: Calculate 95% CI\n\\[67.2 \\pm 2.447 \\times 1.474 = 67.2 \\pm 3.6 = [63.6, 70.8]\\]\nInterpretation: We are 95% confident that the average height of all American adults is between 63.6 and 70.8 inches"
+  },
+  {
+    "objectID": "slides/week8.html#example-calculations-1",
+    "href": "slides/week8.html#example-calculations-1",
+    "title": "Week 8",
+    "section": "Example: Calculations",
+    "text": "Example: Calculations\nStep 1: Identify the values\n\n\\(\\bar{x} = 67.2\\)\n\\(s = 3.9\\)\n\\(n = 7\\)\n\\(df = 7 - 1 = 6\\)\n\nStep 2: Find the critical t-value\n\nqt(0.975, df = 6)\n\n[1] 2.446912"
+  },
+  {
+    "objectID": "slides/week8.html#example-confidence-interval",
+    "href": "slides/week8.html#example-confidence-interval",
+    "title": "Week 8",
+    "section": "Example: Confidence Interval",
+    "text": "Example: Confidence Interval\nStep 3: Calculate standard error\n\\[SE(\\bar{x}) = \\frac{3.9}{\\sqrt{7}} = \\frac{3.9}{2.646} = 1.474\\]\nStep 4: Calculate 95% CI\n\\[67.2 \\pm 2.447 \\times 1.474 = 67.2 \\pm 3.6 = [63.6, 70.8]\\]\nInterpretation: We are 95% confident that the average height of all American adults is between 63.6 and 70.8 inches"
+  },
+  {
+    "objectID": "slides/week8.html#comparing-z-and-t",
+    "href": "slides/week8.html#comparing-z-and-t",
+    "title": "Week 8",
+    "section": "Comparing z and t",
+    "text": "Comparing z and t\nNotice that for this small sample (\\(n = 7\\)):\n\nt-critical value = 2.447\nz-critical value would be = 1.96\n\nThe difference matters! Using \\(z\\) instead of \\(t\\) would give us:\n\\[67.2 \\pm 1.96 \\times 1.474 = 67.2 \\pm 2.9 = [64.3, 70.1]\\]\nThis interval is too narrow and would not have the correct coverage"
+  },
+  {
+    "objectID": "slides/week8.html#when-to-use-z-vs.-t",
+    "href": "slides/week8.html#when-to-use-z-vs.-t",
+    "title": "Week 8",
+    "section": "When to Use z vs. t",
+    "text": "When to Use z vs. t\n\n\nUse the t-distribution when:\n\nEstimating a population mean\nPopulation standard deviation is unknown\nEspecially important for small samples (\\(n &lt; 30\\))\n\n\nUse the z-distribution when:\n\nEstimating a population proportion (in large samples)\nPopulation standard deviation is actually known (rare!)\nVery large samples (\\(n &gt; 100\\)) where \\(t ≈ z\\)"
+  },
+  {
+    "objectID": "slides/week8.html#summary",
+    "href": "slides/week8.html#summary",
+    "title": "Week 8",
+    "section": "Summary",
+    "text": "Summary\nThis week we learned:\n\nHow to use sample statistics as estimators of population parameters\nThe properties of good estimators: bias (accuracy) and efficiency (precision)\nHow to construct confidence intervals to quantify uncertainty:\n\nFor proportions (using z-distribution)\nFor means (using t-distribution)\n\nHow to interpret confidence intervals in context"
+  },
+  {
+    "objectID": "slides/week8.html#homework",
+    "href": "slides/week8.html#homework",
+    "title": "Week 8",
+    "section": "Homework",
+    "text": "Homework\n[[UDPATE]]\nUsing the dataset that you want to use in your final research project, calculate confidence intervals around:\n\nThe population mean of a proportion (based on the values of an indicator variable)\nThe population mean of a continuous variable\nThe population mean of a continuous variable for different values of an indicator variable\n\nAlso: Keep working on your annotated bibliography!\n\nDue March 19\nStart early—finding relevant papers takes time\n\n\n\nGitHub course repo"
+  },
+  {
+    "objectID": "slides/week8.html#annotated-bibliography-example",
+    "href": "slides/week8.html#annotated-bibliography-example",
+    "title": "Week 8",
+    "section": "Annotated Bibliography Example",
+    "text": "Annotated Bibliography Example"
+  },
+  {
+    "objectID": "slides/week8.html#confidence-intervals-.smaller-auto-animatetrue",
+    "href": "slides/week8.html#confidence-intervals-.smaller-auto-animatetrue",
+    "title": "Week 8",
+    "section": "Confidence Intervals {.smaller, auto-animate=true}",
+    "text": "Confidence Intervals {.smaller, auto-animate=true}\nTo construct a confidence interval for a population parameter, we use the sampling distribution of the point estimator for that parameter\nKey components:\n\nThe mean of the sampling distribution equals the point estimator itself\nWe use the sample standard error to approximate the standard deviation of the sampling distribution\n\nSometimes this is efficient; sometimes not"
+  },
+  {
+    "objectID": "slides/week8.html#environmental-protection-example",
+    "href": "slides/week8.html#environmental-protection-example",
+    "title": "Week 8",
+    "section": "Environmental Protection Example",
+    "text": "Environmental Protection Example\nIn 2000, the GSS asked: “Are you willing to pay much higher prices in order to protect the environment?”\n\n518 said yes\n636 said no\n\nQuestion: What is the 95% confidence interval of the population proportion of adult Americans willing to do so at the time of the survey?\n(Ignoring sample weights for now…)"
+  },
+  {
+    "objectID": "slides/week8.html#environmental-protection-calculations",
+    "href": "slides/week8.html#environmental-protection-calculations",
+    "title": "Week 8",
+    "section": "Environmental Protection Calculations",
+    "text": "Environmental Protection Calculations\nStep 1: Calculate sample proportion\n\n\\[\\hat{p} = \\frac{518}{518 + 636} = \\frac{518}{1154} = 0.449\\]\n\n\nStep 2: Calculate standard error\n\\[SE(\\hat{p}) = \\sqrt{\\frac{0.449(1-0.449)}{1154}} = \\sqrt{\\frac{0.449 \\times 0.551}{1154}} = 0.0146\\]\n\n\nStep 3: Calculate 95% CI\n\\[0.449 \\pm 1.96 \\times 0.0146 = 0.449 \\pm 0.029 = [0.420, 0.478]\\]"
+  },
+  {
+    "objectID": "slides/week8.html#worked-example",
+    "href": "slides/week8.html#worked-example",
+    "title": "Week 8",
+    "section": "Worked Example",
+    "text": "Worked Example\nEnvironmental Protection:In 2000, the GSS asked: “Are you willing to pay much higher prices in order to protect the environment?”\n\n518 said yes\n636 said no\n\nQuestion: What is the 95% confidence interval of the population proportion of adult Americans willing to do so at the time of the survey?\n(Ignoring sample weights for now…)"
+  },
+  {
+    "objectID": "slides/week8.html#worked-calculations",
+    "href": "slides/week8.html#worked-calculations",
+    "title": "Week 8",
+    "section": "Worked Calculations",
+    "text": "Worked Calculations\nStep 1: Calculate sample proportion\n\n\\[\\hat{p} = \\frac{518}{518 + 636} = \\frac{518}{1154} = 0.449\\]\n\n\nStep 2: Calculate standard error\n\\[SE(\\hat{p}) = \\sqrt{\\frac{0.449(1-0.449)}{1154}} = \\sqrt{\\frac{0.449 \\times 0.551}{1154}} = 0.0146\\]\n\n\nStep 3: Calculate 95% CI\n\\[0.449 \\pm 1.96 \\times 0.0146 = 0.449 \\pm 0.029 = [0.420, 0.478]\\]"
+  },
+  {
+    "objectID": "slides/week8.html#vs-2-tailed-tests",
+    "href": "slides/week8.html#vs-2-tailed-tests",
+    "title": "Week 8",
+    "section": "1 vs 2-tailed tests",
+    "text": "1 vs 2-tailed tests\nWhen we test for differences, we either test for them in one or both directions.\n\nA one-tailed testA two-tailed test\n\n\nA one-tailed test checks for a significant effect in one specific direction (e.g., greater than or less than)\n\n\nA two-tailed test looks for any significant difference (greater than or less than) in either direction, making it more comprehensive but requiring more data to reach significance"
+  },
+  {
+    "objectID": "slides/week8.html#when-to-use-z-vs-t",
+    "href": "slides/week8.html#when-to-use-z-vs-t",
+    "title": "Week 8",
+    "section": "When to Use z vs t",
+    "text": "When to Use z vs t\nSo, when do we use \\(z\\) and when do we use \\(t\\)?\n\n\n\nUse the z-distribution when:\n\nEstimating a population proportion (in large samples)\nPopulation standard deviation is actually known (rare!)\nVery large samples (\\(n &gt; 100\\)) where \\(t ≈ z\\)\n\n\nUse the t-distribution when:\n\nEstimating a population mean\nPopulation standard deviation is unknown\nEspecially important for small samples (\\(n &lt; 30\\))"
   }
 ]
