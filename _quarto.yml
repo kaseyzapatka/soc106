@@ -12,6 +12,8 @@ website:
         href: slides/index.qmd
       - text: "Syllabus"
         href: syllabus.qmd
+      - text: "Assignments"
+        href: assignments/index.qmd
 
 format:
   html:
