@@ -1892,42 +1892,42 @@
   {
     "objectID": "slides/week1.html#introductions",
     "href": "slides/week1.html#introductions",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Introductions",
-    "text": "Introductions\nKasey Zapatka, Postdoctoral Researcher\n\nPhD, Sociology, CUNY Graduate Center\nUrban inequality with a focus on housing, affordability, and neighborhood change\n\nDissertation: how gentrification influences housing affordability and traced housing affordability over life course\nspatial econometrics and spatial analysis"
+    "text": "Introductions\nKasey Zapatka, Postdoctoral Researcher\n\nPhD, Sociology, CUNY Graduate Center\nUrban inequality with a focus on housing, affordability, and neighborhood change\n\nDissertation: how gentrification influences housing affordability and traced housing affordability over life course\nR/python, Machine Learning, MLM, causal inference, spatial econometrics"
   },
   {
     "objectID": "slides/week1.html#introductions-1",
     "href": "slides/week1.html#introductions-1",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Introductions",
-    "text": "Introductions\nTeaching\n\nComputational Social Science –&gt; course covering machine learning, text analysis, and causal inference\n\nCurrent Research\n\nDeveloping a longitudinal database of evictions\nEvaluating impact of Emergency Rental Assistance and tenant protections on evictions during COVID-19 pandemic"
+    "text": "Introductions\nTeaching\n\nComputational Social Science - course covering machine learning, text analysis, and causal inference\n\nCurrent Research\n\nDeveloping a longitudinal database of evictions\nEvaluating impact of Emergency Rental Assistance and tenant protections on evictions during COVID-19 pandemic"
   },
   {
     "objectID": "slides/week1.html#now-your-turn",
     "href": "slides/week1.html#now-your-turn",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Now your turn",
     "text": "Now your turn\n\nName\nYear\nExperience with R (no right answer)\nMac or Windows user? (there’s a right answer)\nWhy are you taking this course?\nWhat are you most looking forward to in this course?"
   },
   {
     "objectID": "slides/week1.html#agenda",
     "href": "slides/week1.html#agenda",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Agenda",
-    "text": "Agenda\nWelcome, and a few remarks about the course\nIntroductions/Ice Breaker\nDiscussion of each of today’s learning goals:\n\nUnderstand similarities and differences between conventional social science statistics and data science approaches\nExplore the opportunities and risks of “big data” and data science methods/tools for social scientists"
+    "text": "Agenda\nIntroductions\nWelcome, and a few remarks about the course\nDiscussion of each of today’s learning goals:\n\nHave a sense of what the course is, what it is not, and what we’ll cover this semester\nUnderstand structure and requirements of the course\nDownload and install Rand Positron\n\nInstall R and Positron – must be done by class next week"
   },
   {
     "objectID": "slides/week1.html#sociology-106-is",
     "href": "slides/week1.html#sociology-106-is",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Sociology 106 is…",
     "text": "Sociology 106 is…\n…an intermediate undergraduate social science research methods course emphasizes the motivation, computation, and interpretation of statistical tests.\nCourse Content\n\nStatistical tests for one or two continuous or categorical variables\nInterpretation of linear and logistic regression\nIntroduction to machine learning framework in the last week\nData management and analysis using R statistical programming language\n\nSkills Developed\nStudents will gain practical experience in R for conducting statistical analyses and managing data."
   },
   {
     "objectID": "slides/week1.html#sociology-106-is-not",
     "href": "slides/week1.html#sociology-106-is-not",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Sociology 106 is not…",
     "text": "Sociology 106 is not…\n…about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.\n\nThis course will be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications\nWe will be more applied, still with some math (and some equations)\n\n…about the “one true way to answer sociological questions” (where quals at?)."
   },
@@ -1941,149 +1941,149 @@
   {
     "objectID": "slides/week1.html#after-sociology-106-you-will",
     "href": "slides/week1.html#after-sociology-106-you-will",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "After Sociology 106, you will:",
-    "text": "After Sociology 106, you will:\n\nUnderstand the basic logic of statistical inference.\nIdentify the appropriate statistical test given a specific type of data.\nCompute descriptive statistics, graphs, tables, and simple statistical tests using R.\nInterpret the results of statistical tests and discuss their relevance to a particular research question.\nInterpret output from regression and have a basic understanding of the machine learning framework."
+    "text": "After Sociology 106, you will:\n\nUnderstand the logic of statistical inference\nIdentify appropriate statistical tests for different types of data\nVisualize data and produce descriptive statistics and simple statistical tests using R\nInterpret and communicate statistical results and discuss their relevance in the context of a particular research question"
   },
   {
     "objectID": "slides/week1.html#so-what-is-a-statistical-question",
     "href": "slides/week1.html#so-what-is-a-statistical-question",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "So, what is a statistical question?",
     "text": "So, what is a statistical question?\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\n\nOne possibility: gender doesn’t make a difference!\nAnother possibility: male students are more likely to have taken Sociology 106 in the past"
   },
   {
     "objectID": "slides/week1.html#could-look-at-descriptive-statistics",
     "href": "slides/week1.html#could-look-at-descriptive-statistics",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Could look at descriptive statistics",
     "text": "Could look at descriptive statistics\nSome descriptive statistics…(from a previous semester!)"
   },
   {
     "objectID": "slides/week1.html#the-probability-model",
     "href": "slides/week1.html#the-probability-model",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "The probability model",
     "text": "The probability model"
   },
   {
     "objectID": "slides/week1.html#one-example",
     "href": "slides/week1.html#one-example",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "One example:",
     "text": "One example:\n\nIn past semesters, has Sociology 106 been more appealing to male or female students?\n\nOne possibility: gender doesn’t make a difference!\n\nNull hypothesis: P(student is male) = 50%\n\nAnother possibility: male students are more likely to major in Statistics\n\nAlternative hypothesis: P(student is male) &gt; 50%"
   },
   {
     "objectID": "slides/week1.html#a-statistical-test",
     "href": "slides/week1.html#a-statistical-test",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "A statistical test",
     "text": "A statistical test"
   },
   {
     "objectID": "slides/week1.html#the-same-test-but-in-r",
     "href": "slides/week1.html#the-same-test-but-in-r",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "The same test, but in R",
     "text": "The same test, but in R\n\nbinom.test(c(8,3), p = 0.5, alternative=\"greater\")\n\n\n    Exact binomial test\n\ndata:  c(8, 3)\nnumber of successes = 8, number of trials = 11, p-value = 0.1133\nalternative hypothesis: true probability of success is greater than 0.5\n95 percent confidence interval:\n 0.4356258 1.0000000\nsample estimates:\nprobability of success \n             0.7272727"
   },
   {
     "objectID": "slides/week1.html#by-the-end-of-this-course",
     "href": "slides/week1.html#by-the-end-of-this-course",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "By the end of this course…",
     "text": "By the end of this course…\nYou will be able to test:\n\nTheories involving one categorical or continuous variable.\n\nEx: gender is often measured as a categorical variable (male / female / other)\nEx: income is often measured as a continuous variable (the number of dollars one earns is a real number)\n\nTheories involving how one (or more) binary or continuous variable affects another binary or continuous variable."
   },
   {
     "objectID": "slides/week1.html#questions",
     "href": "slides/week1.html#questions",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Questions?",
     "text": "Questions?"
   },
   {
     "objectID": "slides/week1.html#required-course-readings",
     "href": "slides/week1.html#required-course-readings",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Required Course Readings",
     "text": "Required Course Readings\n\nDavid Lane’s Online Statistics (http://onlinestatbook.com/Online_Statistics_Education.pdf).\nHadley Wickham’s R for Data Science 2nd Edition (https://r4ds.hadley.nz), which is also free online.\nWe’ll read two journal articles to see how social scientists use regression analysis in practice.\n\n\nThompson, M.S., & Keith, V. M. (2001). The Blacker the Berry: Gender, Skin Tone, Self-Esteem, and Self-Efficacy. Gender & Society, 15(3), 336-357. (https://doi.org/10.1177/089124301015003002)\nFreeman, L., & Braconi, F. (2004). Gentrification and Displacement New York City in the 1990s. Journal of the American Planning Association, 70(1), 39–52. (https://doi.org/10.1080/01944360408976337)"
   },
   {
     "objectID": "slides/week1.html#required-course-materials",
     "href": "slides/week1.html#required-course-materials",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Required Course Materials",
     "text": "Required Course Materials\nAccess to a laptop where you can download:\n\nR (http://cran.rstudio.com), an open-source programming language\nPositron (https://positron.posit.co/download.html), a free program that makes working in R much easier and is at the cutting edge of data science right now.\n\nWe’ll start installation of R and Positron at the end of class–this must be done by class next week"
   },
   {
     "objectID": "slides/week1.html#course-elements",
     "href": "slides/week1.html#course-elements",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Course Elements",
     "text": "Course Elements\n\nAttendance and participation (10%)\nWeekly homework assignments (30%)\nResearch paper (40%)\nFinal exam (20%)"
   },
   {
     "objectID": "slides/week1.html#class-format",
     "href": "slides/week1.html#class-format",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Class Format",
-    "text": "Class Format\n\nFirst half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R\nSecond half of class, you will get to practice implementing these concepts in R using data and problems provided by me"
+    "text": "Class Format\nFirst half of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R\n\n\nSecond half of class, either you will have time:\n\nto start hw assignments that practice implementing these concepts in R\nwe’ll have extra time for questions/followups\nwe’ll discuss the research papers a bit more in-depth"
   },
   {
     "objectID": "slides/week1.html#typical-weekly-assignment",
     "href": "slides/week1.html#typical-weekly-assignment",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Typical Weekly Assignment",
-    "text": "Typical Weekly Assignment\nPart 1: 3-5 problems\nShow your work; write out conclusions and interpret results as necessary\nPart 2: Brief analysis in R and write-up\n\nWork with your own dataset to apply methods introduced in lecture\nIdeally the same dataset from week to week (use the same dataset for your research paper)\nFor the first assignment, I will provide a dataset on bCourses\nThink carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset\nWrite up using quarto (.qmd file) template provided on bCourses and submit to bCourse"
+    "text": "Typical Weekly Assignment\n\nAnywhere from 3-10 problems with brief analysis and write-up in R and quarto\nBe sure to show your work – writing out conclusions and interpreting results as necessary\nWith couple of exceptions, you’ll work with your own dataset to apply methods introduced in lecture\nIdeally the same dataset from week to week (use the same dataset for your research paper)\nFor the first assignment, I will provide a dataset on bCourses\nThink carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method before choosing variables from your dataset\nWrite up using quarto (.qmd file) template provided on bCourses to submit to bCourse"
   },
   {
     "objectID": "slides/week1.html#research-paper",
     "href": "slides/week1.html#research-paper",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Research Paper",
-    "text": "Research Paper\nYou will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings\n\nYou can (and should) use your weekly assignments to work on your research question\nSeveral milestones throughout the semester will help you progress towards the final paper\n\nPaper proposal (5%)\nAnnotated bibliography (5%)\nIn-class presentation (5%) – 7-10 mins\nFinal paper (20%)"
+    "text": "Research Paper\nYou will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings\n\nYou can (and should) use your weekly assignments to work on your research question\nSeveral milestones throughout the semester will help you progress towards the final paper\n\nPaper proposal (5%)\nAnnotated bibliography (5%)\nRevised paper proposal with outline (5%)\nIn-class presentation (5%) – 7-10 mins\nFinal paper (20%)"
   },
   {
     "objectID": "slides/week1.html#keys-to-success",
     "href": "slides/week1.html#keys-to-success",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Keys to Success",
     "text": "Keys to Success\nMaterial is cumulative, so it is critical to keep up\n\nPlease ask questions during lecture!\nIf you find yourself falling behind, seek help immediately from me during office hours\n\nLearning statistics requires thinking through how to solve problems\n\nThis is what the weekly assignments are for; you should not expect to fully understand the material until after you have completed the assignment\nFeel free to work on assignments in groups, though what you turn in must be your own work."
   },
   {
     "objectID": "slides/week1.html#keys-to-success-1",
     "href": "slides/week1.html#keys-to-success-1",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Keys to Success",
     "text": "Keys to Success\nLearning statistics is like learning a language\n\nThe material in this course can be challenging / counterintuitive if you haven’t seen it before\nIt is important not to be intimidated by new terms or the use of letters to represent quantities or variables\nReview your algebra skills if necessary\n\nLecture slides will be made available, but are not a substitute for careful note taking"
   },
   {
     "objectID": "slides/week1.html#office-hours",
     "href": "slides/week1.html#office-hours",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Office Hours",
     "text": "Office Hours\nI can help in office hours with questions about concepts from lecture or about coding in R\n\nTuesdays, right before 11:30 AM-1:00 PM, TBA\nTuesdays, right after class, until 4:30 PM, TBA\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nOutside of office hours, your best resources are your fellow classmates!\n\nIf something is really unclear to you and others, e-mail me and we can go over it in next week’s lecture"
   },
   {
     "objectID": "slides/week1.html#online-and-generative-ai-policy",
     "href": "slides/week1.html#online-and-generative-ai-policy",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Online and Generative AI Policy",
-    "text": "Online and Generative AI Policy\n\nPLEASE USE THEM!–AI tools (e.g., ChatGPT), Google, and online resources (e.g., StackOverflow or StackExchange)\nDO use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning.\nDO NOT to copy or paraphrase AI-generated content in any assignment, as this counts as plagiarism\nThe goal is to use them to support your learning and problem-solving, not to replace it.\n\n\nIf you are going to spend the time taking this course, you should learn as much as you can."
+    "text": "Online and Generative AI Policy\n\nPLEASE USE THEM!–AI tools (e.g., ChatGPT), Google, and online resources (e.g., StackOverflow or StackExchange)\n\nDO use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning.\nDO NOT copy or paraphrase AI-generated content in any assignment, as this counts as plagiarism\n\nThe goal is to use them to support your learning and problem-solving, not to replace it.\n\n\nIf you are going to spend the time taking this course, you should learn as much as you can."
   },
   {
     "objectID": "slides/week1.html#questions-1",
     "href": "slides/week1.html#questions-1",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Questions?",
     "text": "Questions?"
   },
   {
     "objectID": "slides/week1.html#getting-started-with-r-and-positron",
     "href": "slides/week1.html#getting-started-with-r-and-positron",
-    "title": "Week 1",
+    "title": "Week 2",
     "section": "Getting started with R and Positron",
-    "text": "Getting started with R and Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nClick here for GitHub course repo\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
+    "text": "Getting started with R and Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nClick here for GitHub course repo\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of Rfor Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
   },
   {
     "objectID": "slides/week3.html#housekeeping",
@@ -3365,5 +3365,376 @@
     "title": "Week 7",
     "section": "",
     "text": "[[ADD IT IN LATER]]"
+  },
+  {
+    "objectID": "slides/week1.html#getting-started-with-rand-positron",
+    "href": "slides/week1.html#getting-started-with-rand-positron",
+    "title": "Week 1",
+    "section": "Getting started with Rand Positron",
+    "text": "Getting started with Rand Positron\nDownload and install R:1\nhttps://cran.rstudio.com\nDownload and install Positron2\nhttps://positron.posit.co/download.html\n\n\nClick here for GitHub course repo\n\nMac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of Rfor Mac:\n1. Click the Apple menu () in the top-left corner of your screen.\n2. Select About This Mac.\n3. Look at the Processor or Chip line:\n- If it says Apple M1, M2, or similar → you have Apple Silicon.\n- If it says Intel Core i5, i7, etc. → you have an Intel Mac.You can just download the “Universal” option, but know it is slightly larger file and might not be quite as optimized."
+  },
+  {
+    "objectID": "slides/week1.html#course-goals",
+    "href": "slides/week1.html#course-goals",
+    "title": "Week 1",
+    "section": "Course Goals",
+    "text": "Course Goals\n\nUnderstand the logic of statistical inference\nIdentify appropriate statistical tests for different types of data\nVisualize data and produce descriptive statistics and simple statistical tests using R\nInterpret and communicate statistical results and discuss their relevance in the context of a particular research question"
+  },
+  {
+    "objectID": "slides/week1.html#course-expectations",
+    "href": "slides/week1.html#course-expectations",
+    "title": "Week 2",
+    "section": "Course Expectations",
+    "text": "Course Expectations\n\nActive learning - Lecture is for you so interrupt to ask questions if you have them\nSafe and productive learning space for researchers using these methods and supporting each other\nExpose you to a lot of coding and technical things but we can do it together\n\nWe’re only learning the basics and that’s all I expect from you\nCoding in R can be intimidating, but promise it’s worth learning how use\nPositron is cutting edge IDE (most of grad students don’t use), but it’s the future of social science research"
+  },
+  {
+    "objectID": "slides/week1.html#survey",
+    "href": "slides/week1.html#survey",
+    "title": "Week 1",
+    "section": "Survey?",
+    "text": "Survey?"
+  },
+  {
+    "objectID": "slides/week1.html#open-week",
+    "href": "slides/week1.html#open-week",
+    "title": "Week 2",
+    "section": "Open week",
+    "text": "Open week\nRight now I have an open week at the end and I want to fill it with something that is useful to you all. Material will likely not be included on final exam.\nSome options:\n\nbrief intro to machine learning\nsurvey of more advanced methods (e.g., fixed effects, MLM, spatial regression, Poisson/Negative Binomial, etc.)\nopen to class suggestions of what would be useful to you all\n\nLet me know and we can take a vote in week 3"
+  },
+  {
+    "objectID": "slides/week1.html#course-resources",
+    "href": "slides/week1.html#course-resources",
+    "title": "Week 1",
+    "section": "Course Resources",
+    "text": "Course Resources\n\nbCourse is our bible\n\nhome\nannouncements\nassignments\npages\n\nGitHub course repo\n\nslides (each week )\nsyllabus (pdf on bCourse)"
+  },
+  {
+    "objectID": "slides/week1.html#course-navigation",
+    "href": "slides/week1.html#course-navigation",
+    "title": "Week 2",
+    "section": "Course Navigation",
+    "text": "Course Navigation\n\n\n\nbCourse is our bible\n\nhome\nannouncements\nassignments\npages\n\n\n\n\nGitHub course repo\n\nslides (each week )\nsyllabus (pdf on bCourse)"
+  },
+  {
+    "objectID": "slides/week1.html#housekeeping",
+    "href": "slides/week1.html#housekeeping",
+    "title": "Week 2",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nOffice hours this week\n\nTuesdays, right before 11:30 AM-1:00 PM, TBA\nTuesdays, right after class, until 4:30 PM, TBA\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nHW #1: due Thursday, February 5, 11:59 PM"
+  },
+  {
+    "objectID": "slides/week1.html#agenda-1",
+    "href": "slides/week1.html#agenda-1",
+    "title": "Week 2",
+    "section": "Agenda",
+    "text": "Agenda\n\nExploring R and Positron\n\nScripting basics and best practices\nQuarto for submitting hw assignments\n\nTypes of variables\nLogical operators\nData structures\nThe Tidyverse\n\nload and manipulate data"
+  },
+  {
+    "objectID": "slides/week1.html#exploring-r-and-positron",
+    "href": "slides/week1.html#exploring-r-and-positron",
+    "title": "Week 2",
+    "section": "Exploring R and Positron",
+    "text": "Exploring R and Positron\nR and positron are very powerful\n\nToday may seem like a lot if you haven’t had much programming experience\nPlease stop me if you are not sure you understand—you are probably not the only one!\nHelpful if you can follow along in Positron\n\nGoal of today’s lecture:\n\nBasics of using R (through Positron)\nHow to load data\nHow to complete homework"
+  },
+  {
+    "objectID": "slides/week1.html#positron",
+    "href": "slides/week1.html#positron",
+    "title": "Week 2",
+    "section": "Positron",
+    "text": "Positron\n\nOpen sourced Integrated Development Environment (IDE)\nDeveloped by Posit and descendent of R-studio\nSpecifically designed to use R and Python interchangeably\nTons of custom extensions - e.g., air, gitlens, quarto, docker\nCan be used for data science, web apps, websites, books, etc.\n\nCheck out Andres Heiss’ blog for more fun things"
+  },
+  {
+    "objectID": "slides/week1.html#positron-1",
+    "href": "slides/week1.html#positron-1",
+    "title": "Week 2",
+    "section": "Positron",
+    "text": "Positron\n\n\n\nScript panel\nConsole panel\nObjects panel\nPlot panel"
+  },
+  {
+    "objectID": "slides/week1.html#script-panel",
+    "href": "slides/week1.html#script-panel",
+    "title": "Week 2",
+    "section": "Script Panel",
+    "text": "Script Panel"
+  },
+  {
+    "objectID": "slides/week1.html#console-panel",
+    "href": "slides/week1.html#console-panel",
+    "title": "Week 2",
+    "section": "Console Panel",
+    "text": "Console Panel"
+  },
+  {
+    "objectID": "slides/week1.html#object-panel",
+    "href": "slides/week1.html#object-panel",
+    "title": "Week 2",
+    "section": "Object Panel",
+    "text": "Object Panel"
+  },
+  {
+    "objectID": "slides/week1.html#positron-2",
+    "href": "slides/week1.html#positron-2",
+    "title": "Week 2",
+    "section": "Positron",
+    "text": "Positron\nLet’s explore Positron live:\n\nFile explorer\nTerminal (command line)\nInterpreter and Folder\nNew file\nOpen\nViewer"
+  },
+  {
+    "objectID": "slides/week1.html#writing-with-script.r",
+    "href": "slides/week1.html#writing-with-script.r",
+    "title": "Week 2",
+    "section": "Writing with script.R",
+    "text": "Writing with script.R\nBest practice to write all code in a script file\n\nReproducible code\nDocuments exactly what you have done\nAllows you to easily correct mistakes\n\nTwo typs of files we’ll work with\n\nR file (.R) - only accepts R code\nQuarto file (.qmd) - allows for R/Python and text"
+  },
+  {
+    "objectID": "slides/week1.html#writing-with-script.r-1",
+    "href": "slides/week1.html#writing-with-script.r-1",
+    "title": "Week 2",
+    "section": "Writing with script.R",
+    "text": "Writing with script.R\nUse a hashtag (#) at the start of lines in your script to tell R not to run that line\n\nUseful for making comments about what your code is doing:\nHelps you remember what you did\nHelps others (like me, reading your homework) see what you were doing\n\n#| eval: false\n#| echo: true\n# load data\ncensus_data &lt;- read_csv(\"data/acs2021.csv\")"
+  },
+  {
+    "objectID": "slides/week1.html#writing-with-script.r-2",
+    "href": "slides/week1.html#writing-with-script.r-2",
+    "title": "Week 2",
+    "section": "Writing with script.R",
+    "text": "Writing with script.R\nRunning code:\n\nWindows: highlight the entire line, and hit Ctrl + r\nMac: cursor on line, hit command + return"
+  },
+  {
+    "objectID": "slides/week1.html#variable-assignment-in-script.r",
+    "href": "slides/week1.html#variable-assignment-in-script.r",
+    "title": "Week 2",
+    "section": "Variable assignment in script.R",
+    "text": "Variable assignment in script.R\nR is an object-oriented programming language, meaning you can create new objects from any type of value, store it R’s memory, and call it when necessary\n\nDefine variables using the assignment operator: &lt;-\nGive variables meaningful names when assigning\n\n#| eval: false\n#| echo: true\n# load data\nacs21 &lt;- read_csv(\"data/acs2021.csv\")"
+  },
+  {
+    "objectID": "slides/week1.html#common-values-for-variables",
+    "href": "slides/week1.html#common-values-for-variables",
+    "title": "Week 2",
+    "section": "Common values for variables",
+    "text": "Common values for variables\nValues can be:\n\nnumeric (3, 4.5, pi)\ncharacter (“Welcome!”, “foo”)\nboolean (true / false)\n\n#| eval: false\n#| echo: true\nnumeric_variable &lt;- 4\ncharacter_variable &lt;- \"Welcome to Soc 106!\"\nboolean_variable &lt;- TRUE"
+  },
+  {
+    "objectID": "slides/week1.html#variable-assignment-in-script.r-1",
+    "href": "slides/week1.html#variable-assignment-in-script.r-1",
+    "title": "Week 2",
+    "section": "Variable assignment in script.R",
+    "text": "Variable assignment in script.R\nVariable names must be unique\n\nReusing an old name will overwrite the definition of the variable\n\n```{r echo=TRUE} # First assignment my_variable &lt;- 10 my_variable"
+  },
+  {
+    "objectID": "slides/week1.html#types-of-variables-character",
+    "href": "slides/week1.html#types-of-variables-character",
+    "title": "Week 2",
+    "section": "Types of variables: character",
+    "text": "Types of variables: character\nCharacter variables can store any text, and are always contained within quotation marks.\n```{r echo=TRUE} first_name &lt;- “John” last_name &lt;- “Doe”"
+  },
+  {
+    "objectID": "slides/week1.html#converting-variable-types",
+    "href": "slides/week1.html#converting-variable-types",
+    "title": "Week 2",
+    "section": "Converting variable types",
+    "text": "Converting variable types\nUnder certain circumstances, we can force R to change the type that it classifies a vector\n\nCan always convert numeric → character using the as.character function\nCan convert character → numeric, if the original character vector consists of numbers, using the as.numeric function\n\nIf it contains characters, then WE PROB DON’T WANT TO!\n\n\n\n\nIf you see a . in a function name like as.numeric, it is likely base R."
+  },
+  {
+    "objectID": "slides/week1.html#converting-variable-types-1",
+    "href": "slides/week1.html#converting-variable-types-1",
+    "title": "Week 2",
+    "section": "Converting variable types",
+    "text": "Converting variable types\nHere’s what it looks like R:\n```{r echo=TRUE} # Numeric to character num_var &lt;- 42 char_var &lt;- as.character(num_var) char_var"
+  },
+  {
+    "objectID": "slides/week1.html#questions-2",
+    "href": "slides/week1.html#questions-2",
+    "title": "Week 2",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week1.html#data-structures",
+    "href": "slides/week1.html#data-structures",
+    "title": "Week 2",
+    "section": "Data structures",
+    "text": "Data structures\nData structures are simply collections of the data objects we have been working with:\n\nNumeric\nCharacter\nBoolean variables\n\nWhile there are many types of data structures in R, we will focus on two for our purposes: the vector and the dataframe"
+  },
+  {
+    "objectID": "slides/week1.html#vectors",
+    "href": "slides/week1.html#vectors",
+    "title": "Week 2",
+    "section": "Vectors",
+    "text": "Vectors\nVectors are ordered collections of the same type of objects\n\nOrdered: position matters\nSame type: e.g., can’t mix numeric and character\n\nWe create vectors using the c() operator:\n```{r echo=TRUE} # Numeric vector ages &lt;- c(22, 25, 19, 30)"
+  },
+  {
+    "objectID": "slides/week1.html#tidyverse",
+    "href": "slides/week1.html#tidyverse",
+    "title": "Week 2",
+    "section": "Tidyverse",
+    "text": "Tidyverse\nUse nth() function to do the same thing more intuitively\nStill need Base R to do some things\n```{r echo=TRUE}"
+  },
+  {
+    "objectID": "slides/week1.html#learning-about-dataframes",
+    "href": "slides/week1.html#learning-about-dataframes",
+    "title": "Week 2",
+    "section": "Learning about dataframes",
+    "text": "Learning about dataframes\n\nglimpse(): view data and summary info of dataframe\nhead(): looks at first few observations (similar to print())\nstr(): returns structure of dataframe\ncolnames(): returns column names\n\n::: panel-tabset ```{r echo=FALSE} library(tidyverse)\nstudents &lt;- tibble( name = c(“Alice”, “Bob”, “Charlie”), age = c(22, 25, 19), enrolled = c(TRUE, TRUE, FALSE), stringsAsFactors = FALSE )\n\n### glimpse()\n\n```{r echo=TRUE}\n\nglimpse(students)\nhead()\n```{r echo=TRUE}\nhead(students)\n\n### str()\n\n```{r echo=TRUE}\nstr(students)\n\ncolnames()\n```{r echo=TRUE} colnames(students)\n:::\n\n## The `Tidyverse`{.smaller}\n\n**What is it?**\n\n-   A collection of R packages designed for data science that share a common philosophy and grammar\n-   By far the most common approach to working with R\n-   Most intuitive way to do data science\n\n## The `Tidyverse`{.smaller}\n\n**Key Features**\n\n-   **Pipe operator** (`|&gt;` or `%&gt;%`): chains functions together for readable code\n-   **Consistent syntax**: functions work similarly across packages\n-   **Human-readable**: code reads like sentences\n\n``` {.r code-line-numbers=\"5|9\"}\n# |eval=FALSE\n# |echo=TRUE\n\n# Base R\nmean(subset(dataframe, age &gt; 18)$score)\n  \n# Tidyverse - \"take dataframe, filter where age &gt; 18, \n# then pull score, then calculate mean\"\ndataframe |&gt; filter(age &gt; 18) |&gt; pull(score) |&gt; mean()"
+  },
+  {
+    "objectID": "slides/week1.html#the-tidyverse",
+    "href": "slides/week1.html#the-tidyverse",
+    "title": "Week 2",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\nCore Packages we’ll be using\n\nreadr: for importing data (read_csv())\ndplyr: for manipulating data (filter(), select(), mutate(), summarize())\nggplot2: for data visualization"
+  },
+  {
+    "objectID": "slides/week1.html#the-tidyverse-1",
+    "href": "slides/week1.html#the-tidyverse-1",
+    "title": "Week 2",
+    "section": "The Tidyverse",
+    "text": "The Tidyverse\nHow the packages work together\n# |eval=FALSE\n# |echo=TRUE\n\n# Install (only once)\ninstall.packages(\"tidyverse\") # install library\n\n# Load library\nlibrary(tidyverse) # load library\n\n# Load data\ndata &lt;- read_csv(\"data.csv\") # read in csv\n\n# Process\ndata |&gt;\n  filter(year == 2020) |&gt;  # filter rows based on conditions\n  select(name, score)  |&gt;  # select specific columns\n  arrange(desc(score)) |&gt;  # order columns\n  glimpse()                # glimpse"
+  },
+  {
+    "objectID": "slides/week1.html#keys-functions",
+    "href": "slides/week1.html#keys-functions",
+    "title": "Week 2",
+    "section": "Keys functions",
+    "text": "Keys functions\n\n\n\n\n\n\n\n\nTidyverse Function\nPurpose\nExample\n\n\n\n\nread_csv()\nImport CSV data\nread_csv(\"data.csv\")\n\n\nglimpse()\nPreview dataframe structure\ndf |&gt; glimpse()\n\n\ncolnames()\nGet column names\ncolnames(df)\n\n\nselect()\nChoose columns\ndf |&gt; select(name, age)\n\n\nfilter()\nChoose rows by condition\ndf |&gt; filter(age &gt; 20)\n\n\nslice()\nChoose rows by position\nslice(df, 1:10)\n\n\narrange()\nSort rows\narrange(df, desc(age))\n\n\nmutate()\nCreate/modify columns\ndf |&gt; mutate(age_2x = age * 2)"
+  },
+  {
+    "objectID": "slides/week1.html#key-functions-in-action",
+    "href": "slides/week1.html#key-functions-in-action",
+    "title": "Week 2",
+    "section": "Key functions in action",
+    "text": "Key functions in action\n```{r echo=TRUE}"
+  },
+  {
+    "objectID": "slides/week1.html#the-here-package",
+    "href": "slides/week1.html#the-here-package",
+    "title": "Week 2",
+    "section": "The here Package",
+    "text": "The here Package\nWhat is it? The here package helps you build file paths that work across different computers and operating systems, making your code more reproducible.\nHow It Works\n\nhere() finds your project root (where your project is located)\nBuilds paths relative to that root\nWorks the same on Windows, Mac, and Linux\n\nThe Solution\n```{r eval=FALSE, echo=TRUE} # load library library(here)"
+  },
+  {
+    "objectID": "slides/week1.html#other-data-types",
+    "href": "slides/week1.html#other-data-types",
+    "title": "Week 2",
+    "section": "Other data types",
+    "text": "Other data types\nYou can also load Excel files into R\nFirst, load the readxl package:\n{r eval=FALSE, echo=TRUE} library(readxl)\nThen, use the read_excel function:\n{r eval=FALSE, echo=TRUE} # load data &lt;- read_excel(\"file_name.xlsx\")\nIn fact, R can import all types of data files\nGoogling “import SAS/STATA/SPSS files into R” will point you in the right direction"
+  },
+  {
+    "objectID": "slides/week1.html#some-helpful-r-commands",
+    "href": "slides/week1.html#some-helpful-r-commands",
+    "title": "Week 2",
+    "section": "Some helpful R commands",
+    "text": "Some helpful R commands\n\n?[function_name] brings up a help page\n??[function_name] will (sometimes) lead to helpful examples of how to use the function\nls() lists all objects in the global environment\nrm(object_name) removes an object\nrm(list=ls()) removes all objects"
+  },
+  {
+    "objectID": "slides/week1.html#want-to-know-more-r-tips",
+    "href": "slides/week1.html#want-to-know-more-r-tips",
+    "title": "Week 2",
+    "section": "Want to know more R tips?",
+    "text": "Want to know more R tips?\nMuch of this lecture is based on the first two RFundamentals classes, which are run at the D-Lab\n\nD-Lab trainings: https://dlab.berkeley.edu/training\nIf you want to see the RFundamentals class notes: https://github.com/dlab-berkeley/R-Fundamentals\nOtherwise: Google is your friend!"
+  },
+  {
+    "objectID": "slides/week1.html#questions-3",
+    "href": "slides/week1.html#questions-3",
+    "title": "Week 2",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week1.html#anatomy-of-a-.qmd-file",
+    "href": "slides/week1.html#anatomy-of-a-.qmd-file",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\nThree Main Parts\n\nYAML header\nMarkdown text\nCode chunks\n\nKey Difference\n\nscript.R: runs only code\nscript.qmd: knits together code and text"
+  },
+  {
+    "objectID": "slides/week1.html#anatomy-of-a-.qmd-file-1",
+    "href": "slides/week1.html#anatomy-of-a-.qmd-file-1",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\n\nYAML Header (metadata)\n\nSets document properties, output format, misc. settings\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\ndate: \"2024-01-07\"\nformat: html  # output format (e.g., pdf, docx, html)\n---"
+  },
+  {
+    "objectID": "slides/week1.html#anatomy-of-a-.qmd-file-2",
+    "href": "slides/week1.html#anatomy-of-a-.qmd-file-2",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\n\nMarkdown Text (narrative)\n\nAllows you to document code or write explanations, interpretations, and conclusions\n# Analysis\n\nThis is my larger analysis.\n\n## Method\nI can use regular text explaining my analysis. I can also use **bold**, *italics*, and imbed [hyperlinks](https://quarto).Markdown is a simple language to learn how to use.\nRead more about markdown basics you might want to use"
+  },
+  {
+    "objectID": "slides/week1.html#markdown-basics-formatting",
+    "href": "slides/week1.html#markdown-basics-formatting",
+    "title": "Week 2",
+    "section": "Markdown Basics: Formatting",
+    "text": "Markdown Basics: Formatting\nText Formatting\nHere are the most common ways to format text in markdown:\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n**bold**\nbold\n\n\n*italics*\nitalics\n\n\n***bold italics***\nbold italics\n\n\nsuperscript^2^\nsuperscript2\n\n\nsubscript~2~*\nsubscript2\n\n\n~~strikethrough~~\nstrikethrough\n\n\n`verbatim code`\nverbatim code"
+  },
+  {
+    "objectID": "slides/week1.html#markdown-basics-headings",
+    "href": "slides/week1.html#markdown-basics-headings",
+    "title": "Week 2",
+    "section": "Markdown Basics: Headings",
+    "text": "Markdown Basics: Headings\nYou can put headers as well to organize your work. They go up to 6 levels:\nHeadings\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n# Heading 1\nHeading 1\n\n\n## Heading 2\nHeading 2\n\n\n### Heading 3\nHeading 3"
+  },
+  {
+    "objectID": "slides/week1.html#anatomy-of-a-.qmd-file-3",
+    "href": "slides/week1.html#anatomy-of-a-.qmd-file-3",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\n\nCode Chunks (analysis)\n\nFinally, you can include R code and its output direclty in quarto documents:\n\n# load data\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)"
+  },
+  {
+    "objectID": "slides/week1.html#anatomy-of-a-.qmd-file-4",
+    "href": "slides/week1.html#anatomy-of-a-.qmd-file-4",
+    "title": "Week 2",
+    "section": "Anatomy of a .qmd File",
+    "text": "Anatomy of a .qmd File\nSo to summarize .qmd and .R scripts:\n\n\n\n\n\n\n\n\nFeature\n.R Script\n.qmd Document\n\n\n\n\nPurpose\nRun code\nCreate reports\n\n\nContent\nCode only\nCode + text + output\n\n\nOutput\nConsole results\nFormatted document (e.g., HTML/PDF/Word)\n\n\nComments\n# comment\nFull markdown formatting\n\n\nBest for\nData cleaning, functions\nAnalysis reports, presentations, hw"
+  },
+  {
+    "objectID": "slides/week1.html#rendering-quarto-documents",
+    "href": "slides/week1.html#rendering-quarto-documents",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nWhat is Rendering?\nRendering (or “knitting”) converts your .qmd file into a finished document (HTML, PDF, or Word) by:\n\nRunning all your R code chunks\nCombining code output with your text\nFormatting everything into your chosen output format\n\nHow to Render\n\nClick the “Preview” button at the top of your .qmd file\nRender on save so you can see all changes\nI usually work with it open"
+  },
+  {
+    "objectID": "slides/week1.html#rendering-quarto-documents-1",
+    "href": "slides/week1.html#rendering-quarto-documents-1",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nOutput Formats\nFor this course, make sure html is specified in your YAML header:\n---\ntitle: \"My Analysis\"\nformat: html        # or pdf, docx\n---\nCan format many different formats (e.g., pdf, docx, odt, epubs, pptx)"
+  },
+  {
+    "objectID": "slides/week1.html#rendering-quarto-documents-2",
+    "href": "slides/week1.html#rendering-quarto-documents-2",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nSource vs Visual Mode\nPositron provides two ways to edit .qmd files. Toggle between them using the buttons at the top-left of your editor.\n\n\n\nSource Mode\n\nShows raw markdown syntax\nSee the actual code: **bold**, ## Heading\nMore control over formatting\nBetter for experienced users\n\n\nVisual Mode\n\nWYSIWYG editor (What You See Is What You Get)\nFormatting toolbar (like Microsoft Word)\nLive preview of how text will look\nEasier for beginners"
+  },
+  {
+    "objectID": "slides/week1.html#rendering-quarto-documents-3",
+    "href": "slides/week1.html#rendering-quarto-documents-3",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nWhich Should You Use?\n\nVisual Mode: Great when starting out or writing lots of text\nSource Mode: Better for precise control and learning markdown\n\n\nSwitch between them! Use Visual for writing, Source for troubleshooting. Just be sure to save when switching in between"
+  },
+  {
+    "objectID": "slides/week1.html#rendering-quarto-documents-4",
+    "href": "slides/week1.html#rendering-quarto-documents-4",
+    "title": "Week 2",
+    "section": "Rendering Quarto Documents",
+    "text": "Rendering Quarto Documents\nTips for making it work\n\nSave your .qmd file before rendering\nAll code must run without errors to render successfully\nCheck the “Render” tab for error messages if rendering fails\n\nMost common “knitting” errors:\n\nQuarto can’t execute code\nCode chunks have the same name\n\nShould be fine if you don’t do anything fancy and don’t mess with quarto settings"
+  },
+  {
+    "objectID": "slides/week1.html#homework-1",
+    "href": "slides/week1.html#homework-1",
+    "title": "Week 2",
+    "section": "Homework #1",
+    "text": "Homework #1\nFor this week only, I will provide a dataset for you to use on your homework assignment\n\nattain.csv: data from the General Social Survey\nin bCourses, Files → Weekly Assignments → HW 1\n\nTurn in your assignment on bCourses\n\nHW #1: due Thursday, February 5, 11:59 PM\nTurn in BOTH hw1.qmd and hw1.html files\nWrite code and text response intermittenly in file"
+  },
+  {
+    "objectID": "slides/week1.html#in-class-lab",
+    "href": "slides/week1.html#in-class-lab",
+    "title": "Week 2",
+    "section": "In-class lab",
+    "text": "In-class lab\nLet’s setup Positron environment for the course! STEPS:\n\nDownload hw_example.qmd and attain.csv from bCourse\nCreate soc16 folder on your desktop\nCreate data and assignments folders inside\nData always goes inside data folder and assignment always goes instead assignment\nOpen Positron\nClick the Open Folder button and navigate to soc16\nAllow access, check “Trust the authors..”, and click “Yes, …”\nUse Explorer button on left to find hw_example.qmd\nCheck Render on Save button and hit preview\nIf Viewer frame opens with html file - SUCCESS!"
   }
 ]

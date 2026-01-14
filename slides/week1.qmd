@@ -1,7 +1,7 @@
 ---
 title: "Week 1"
 subtitle: "Sociology 106: Quantitative Sociological Methods"
-date: 02/20/2026
+date: 01/20/2026
 date-format: long
 format:
   revealjs: 
@@ -13,6 +13,19 @@ format:
     footer: '[Click here for GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
 
+## Agenda 
+
+Introductions
+
+Welcome, and a few remarks about the course
+
+Discussion of each of today’s learning goals:
+
+- Have a sense of what the course is, what it is not, and what we'll cover this semester
+- Understand structure and requirements of the course
+- Download and install `R`and Positron
+
+Install `R` and Positron -- <span class="highlight">must be done by class next week</span>
 
 ## Introductions
 
@@ -21,13 +34,13 @@ format:
 - PhD, Sociology, CUNY Graduate Center
 - Urban inequality with a focus on housing, affordability, and neighborhood change
   - Dissertation: how gentrification influences housing affordability and traced housing affordability over life course 
-  - spatial econometrics and spatial analysis
+  - R/python, Machine Learning, MLM, causal inference, spatial econometrics
 
 ## Introductions
 
 **Teaching**
 
-- [Computational Social Science](https://github.com/kaseyzapatka/Computational-Social-Science-Training-Program) --> course covering machine learning, text analysis, and causal inference
+- [Computational Social Science](https://github.com/kaseyzapatka/Computational-Social-Science-Training-Program) - course covering machine learning, text analysis, and causal inference
 
 **Current Research**
 
@@ -38,21 +51,11 @@ format:
 
 - Name
 - Year
-- Experience with R (no right answer)
+- Experience with `R` (no right answer)
 - Mac or Windows user? (there's a right answer)
 - Why are you taking this course?
 - What are you most looking forward to in this course?
 
-## Agenda 
-
-Welcome, and a few remarks about the course
-
-Introductions/Ice Breaker
-
-Discussion of each of today’s learning goals:
-
-- Understand similarities and differences between conventional social science statistics and data science approaches
-- Explore the opportunities and risks of “big data” and data science methods/tools for social scientists
 
 ## Sociology 106 is…
 
@@ -63,11 +66,11 @@ Discussion of each of today’s learning goals:
 - Statistical tests for one or two continuous or categorical variables
 - Interpretation of linear and logistic regression
 - Introduction to machine learning framework in the last week
-- Data management and analysis using R statistical programming language
+- Data management and analysis using `R` statistical programming language
 
 **Skills Developed**
 
-Students will gain practical experience in R for conducting statistical analyses and managing data.
+Students will gain practical experience in `R` for conducting statistical analyses and managing data.
 
 ## Sociology 106 is not…
 
@@ -79,20 +82,13 @@ Students will gain practical experience in R for conducting statistical analyses
 
 ...about the “one true way to answer sociological questions” *(where quals at?)*.
 
-## For this course, we will assume:
-
-1. Social categories and phenomena can be usefully represented using numbers.
-2. Variables measure what they purport to measure.
-3. All samples are good samples (unless they are bad samples)
-
-
 ## After Sociology 106, you will:
 
-1. Understand the basic logic of statistical inference.
-2. Identify the appropriate statistical test given a specific type of data.
-3. Compute descriptive statistics, graphs, tables, and simple statistical tests using R.
-4. Interpret the results of statistical tests and discuss their relevance to a particular research question.
-5. Interpret output from regression and have a basic understanding of the machine learning framework.
+1. Understand the logic of statistical inference
+2. Identify appropriate statistical tests for different types of data
+3. Visualize data and produce descriptive statistics and simple statistical tests using `R`
+4. Interpret and communicate statistical results and discuss their relevance in the context of a particular research question
+
 
 ## So, what is a statistical question?
 
@@ -265,6 +261,51 @@ You will be able to test:
 
 ## Questions?
 
+## Course Expectations{.smaller} 
+
+- **Active learning** - Lecture is for you so interrupt to ask questions if you have them
+- **Safe and productive learning space** for researchers using these methods and supporting each other
+- **Expose you to a lot** of coding and technical things but we can do it together
+    - We're only learning the basics and that's all I expect from you
+    - Coding in `R` can be intimidating, but promise it's worth learning how use
+    - Positron is cutting edge IDE (most of grad students don't use), but it's the future of social science research
+
+## Open week{.smaller} 
+
+Right now I have an open week at the end and I want to fill it with something that is useful to you all. Material will likely not be included on final exam. 
+
+Some options:
+
+- brief intro to **machine learning**
+- survey of more **advanced methods** (e.g., fixed effects, MLM, spatial regression, Poisson/Negative Binomial, etc.)
+- open to class suggestions of what would be useful to you all
+
+Let me know and we can take a vote in week 3 
+
+## Course Navigation{.smaller} 
+
+
+::::: columns
+::: {.column width="50%"}
+
+- [bCourse](https://bcourses.berkeley.edu/courses/1551992) is our bible
+  - home 
+  - announcements
+  - assignments
+  - pages
+
+:::
+::: {.column width="50%"}
+
+
+- [GitHub course repo](https://www.kaseyzapatka.com/soc106/)
+  - slides (each week )
+  - syllabus (pdf on bCourse)
+
+:::
+:::::
+
+
 
 ## Required Course Readings{.smaller}
 
@@ -283,11 +324,11 @@ You will be able to test:
 
 Access to a **laptop** where you can download: 
 
-1. **R** (<http://cran.rstudio.com>), an open-source programming language
+1. **`R`** (<http://cran.rstudio.com>), an open-source programming language
 
-2. **Positron** (<https://positron.posit.co/download.html>), a free program that makes working in R much easier and is at the cutting edge of data science right now. 
+2. **Positron** (<https://positron.posit.co/download.html>), a free program that makes working in `R` much easier and is at the cutting edge of data science right now. 
 
-We’ll start installation of R and Positron at the end of class--<span class="highlight">this must be done by class next week</span>
+We’ll start installation of `R` and Positron at the end of class--<span class="highlight">this must be done by class next week</span>
 
 
 ## Course Elements
@@ -299,34 +340,39 @@ We’ll start installation of R and Positron at the end of class--<span class="h
 
 ## Class Format
 
-- **First half** of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in R
+**First half** of class (give or take) will be a lecture where I go over new statistical concepts and show you how to implement these statistical concepts in `R`
 
-- **Second half** of class, you will get to practice implementing these concepts in R using data and problems provided by me
+<br>
+
+::: {.fragment .fade-up}
+**Second half** of class, either you will have time: 
+
+  1. to start hw assignments that practice implementing these concepts in `R`
+  2. we'll have extra time for questions/followups
+  3. we'll discuss the research papers a bit more in-depth
+::: 
 
 ## Typical Weekly Assignment{.smaller}
 
-**Part 1:** 3-5 problems 
-
-Show your work; write out conclusions and interpret results as necessary
-
-**Part 2:** Brief analysis in R and write-up
-
-- Work with your own dataset to apply methods introduced in lecture
+- Anywhere from **3-10 problems** with brief analysis and write-up in `R` and quarto
+- Be sure to show your work -- **writing out conclusions** and interpreting results as necessary
+- With couple of exceptions, you'll **work with your own dataset** to apply methods introduced in lecture
 - Ideally the same dataset from week to week (use the same dataset for your research paper)
 - For the first assignment, I will provide a dataset on bCourses
 - Think carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method  before choosing variables from your dataset
-- Write up using quarto (.qmd file) template provided on bCourses and submit to bCourse
+- Write up using **quarto (.qmd file)** template provided on bCourses to **submit to bCourse**
 
 
 ## Research Paper{.smaller}
 
-You will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in R, and write a paper summarizing your findings
+You will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in `R`, and write a paper summarizing your findings
 
 - You can *(and should)* use your weekly assignments to work on your research question
 
 - Several milestones throughout the semester will help you progress towards the final paper
   - Paper proposal (5%)
   - Annotated bibliography (5%)
+  - Revised paper proposal with outline (5%)
   - In-class presentation (5%)  -- 7-10 mins
   - Final paper (20%)
 
@@ -356,7 +402,7 @@ You will develop and present a research question of your choice, address it usin
 
 ## Office Hours{.smaller}
 
-I can help in office hours with questions about concepts from lecture or about coding in R
+I can help in office hours with questions about concepts from lecture or about coding in `R`
 
 - **Tuesdays**, right before 11:30 AM-1:00 PM, TBA
 - **Tuesdays**, right after class, until 4:30 PM, TBA
@@ -370,8 +416,8 @@ Outside of office hours, your best resources are your fellow classmates!
 ## Online and Generative AI Policy{.smaller}
 
 - <span class="highlight">PLEASE USE THEM!</span>--AI tools (e.g., ChatGPT), Google, and online resources (e.g., [StackOverflow](https://stackoverflow.com/questions)  or [StackExchange](https://stackexchange.com))
-- <span class="highlight">DO</span> use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning. 
-- <span class="highlight">DO NOT</span> to copy or paraphrase AI-generated content in any assignment, as this counts as plagiarism
+    - <span class="highlight">DO</span> use these tools to better understand concepts, debug code, suggest libraries or packages, or offer sample code to guide learning. 
+    - <span class="highlight">DO NOT</span> copy or paraphrase AI-generated content in any assignment, as this counts as plagiarism
 - <span class="highlight">The goal</span> is to use them to support your learning and problem-solving, not to replace it. 
 
 > If you are going to spend the time taking this course, you should learn as much as you can.
@@ -379,17 +425,16 @@ Outside of office hours, your best resources are your fellow classmates!
 ## Questions?
 
 
+## Getting started with `R` and Positron
 
-## Getting started with R and Positron
-
-Download and install R:[^Rdownload]  
+Download and install `R`:[^Rdownload]  
   <https://cran.rstudio.com>
 
 
 Download and install Positron[^Positrondownload]  
 	<https://positron.posit.co/download.html>
 
-[^Rdownload]: Mac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of R for Mac:   
+[^Rdownload]: Mac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of `R`for Mac:   
 1. Click the Apple menu () in the top-left corner of your screen.  
 2. Select **About This Mac**.  
 3. Look at the **Processor** or **Chip** line:  
