@@ -1,0 +1,24 @@
+---
+title: "Assignments"
+---
+
+## Templates with instructions for each week
+
+- [HW #1](hw1/hw1.qmd){download="hw1.qmd"}
+- [HW# 2](hw2/hw2.qmd)
+- Week 2: Statistical computing in R
+- Week 3: Visualizing distributions
+- Week 4: Summarizing distributions
+- Week 5: Basics of probability theory
+- Week 6: Probability models of distributions
+- Week 7: Sampling distributions
+- Week 8: Estimates and confidence intervals
+- Week 9: Hypothesis testing and power
+- Week 10: Spring Recess – no class
+- Week 11: Linear regression
+- Week 12: Logistic regression
+- Week 13: Extensions to regression
+- Week 14: TBD
+- Week 15: Research presentations; wrap-up
+- Week 16: RRR Week – no new material
+- Week 17: Final (11:30AM - 2:30PM)

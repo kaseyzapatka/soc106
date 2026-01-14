@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!assignments*/*.qmd"  # Don't render homework qmd files
 
 website:
   title: "Sociology 106"
