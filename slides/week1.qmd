@@ -10,22 +10,20 @@ format:
       buttons: false
     preview-links: auto
     css: slides.css
-    footer: '[Click here for GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
 
 ## Agenda 
 
-Introductions
-
-Welcome, and a few remarks about the course
+Introductions, welcome, and a few remarks about the course
 
 Discussion of each of today’s learning goals:
 
 - Have a sense of what the course is, what it is not, and what we'll cover this semester
 - Understand structure and requirements of the course
-- Download and install `R`and Positron
+- Download and install `R` and Positron
 
-Install `R` and Positron -- <span class="highlight">must be done by class next week</span>
+Install `R` and Positron -- <span class="highlight">should be done by class next week</span>
 
 ## Introductions
 
@@ -288,19 +286,20 @@ Let me know and we can take a vote in week 3
 ::::: columns
 ::: {.column width="50%"}
 
-- [bCourse](https://bcourses.berkeley.edu/courses/1551992) is our bible
-  - home 
-  - announcements
-  - assignments
-  - pages
+[bCourse](https://bcourses.berkeley.edu/courses/1551992) is our bible
+
+- home 
+- announcements
+- assignments
+- pages
 
 :::
 ::: {.column width="50%"}
 
+[GitHub course repo](https://www.kaseyzapatka.com/soc106/)
 
-- [GitHub course repo](https://www.kaseyzapatka.com/soc106/)
-  - slides (each week )
-  - syllabus (pdf on bCourse)
+- slides (each week)
+- syllabus (pdf on bCourse)
 
 :::
 :::::
