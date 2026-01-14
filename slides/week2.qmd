@@ -1,7 +1,7 @@
 ---
 title: "Week 2"
 subtitle: "Sociology 106: Quantitative Sociological Methods"
-date: 02/27/2026
+date: 01/27/2026
 date-format: long
 format:
   revealjs: 
