@@ -4,7 +4,7 @@ title: "Assignments"
 
 ## Templates with instructions for each week
 
-- [HW# 1](hw1/hw1.qmd)
+- [HW #1](hw1/hw1.qmd){download="hw1.qmd"}
 - [HW# 2](hw2/hw2.qmd)
 - Week 2: Statistical computing in R
 - Week 3: Visualizing distributions
