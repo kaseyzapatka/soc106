@@ -412,24 +412,19 @@
 </ul></li>
 <li>If you can’t make either, e-mail me and we’ll find a time</li>
 </ul>
-<p><strong>HW #1:</strong> due Thursday, February 5, 11:59 PM</p>
+<p><span class="highlight">HW #1: due Thursday, February 5 by 11:59 PM</span></p>
 </section>
 <section id="agenda" class="slide level2 smaller">
 <h2>Agenda</h2>
-<ul>
-<li>Exploring R and Positron
-<ul>
-<li>Scripting basics and best practices</li>
-<li><a href="https://quarto.org">Quarto</a> for submitting hw assignments</li>
-</ul></li>
-<li>Types of variables</li>
-<li>Logical operators</li>
-<li>Data structures</li>
-<li>The <a href="https://tidyverse.org">Tidyverse</a>
-<ul>
-<li>load and manipulate data</li>
-</ul></li>
-</ul>
+<ol type="1">
+<li>Gain some familiarity with R and Positron</li>
+<li>Develop basic proficiency with R and Positron</li>
+<li>Write, run, and troubleshoot R scripts using proper syntax and R’s help tools</li>
+<li>Understand core data concepts: variable types, logical operators, and common data structures</li>
+<li>Import, manipulate, and export data using fundamental R` commands</li>
+<li>Understand what the <code>Tidyverse</code> is and how it differs from base R</li>
+<li>Prepare and submit homework assignments using <a href="https://quarto.org">Quarto</a></li>
+</ol>
 </section>
 <section id="exploring-r-and-positron" class="slide level2 smaller">
 <h2>Exploring R and Positron</h2>
@@ -439,20 +434,21 @@
 <li>Please stop me if you are not sure you understand—you are probably not the only one!</li>
 <li>Helpful if you can follow along in Positron</li>
 </ul>
-<p><strong>Goal of today’s lecture:</strong></p>
+<p><strong>Programming goals for today:</strong></p>
 <ul>
 <li>Basics of using R (through Positron)</li>
 <li>How to load data</li>
 <li>How to complete homework</li>
 </ul>
 </section>
-<section id="positron" class="slide level2">
+<section id="positron" class="slide level2 smaller">
 <h2>Positron</h2>
 <ul>
 <li>Open sourced Integrated Development Environment (IDE)</li>
 <li>Developed by Posit and descendent of R-studio</li>
 <li>Specifically designed to use R and Python interchangeably</li>
-<li>Tons of custom extensions - e.g., air, gitlens, quarto, docker</li>
+<li>Tons of custom extensions - e.g., <a href="https://open-vsx.org/extension/posit/air-vscode">air</a>, <a href="https://open-vsx.org/extension/eamodio/gitlens">gitlens</a>, <a href="https://open-vsx.org/extension/quarto/quarto">quarto</a>, <a href="https://open-vsx.org/extension/ms-azuretools/vscode-docker">docker</a></li>
+<li>Check out the <a href="https://open-vsx.org/?search=docker&amp;sortBy=relevance&amp;sortOrder=desc">registry for extensions</a> to see if there are any that you might want to add</li>
 <li>Can be used for data science, web apps, websites, books, etc.</li>
 </ul>
 <p>Check out <a href="https://www.andrewheiss.com/blog/2024/07/08/fun-with-positron/#my-extensions">Andres Heiss’ blog</a> for more fun things</p>
@@ -486,17 +482,17 @@
 <img data-src="images/week2/object_panel.png" class="r-stretch"></section>
 <section id="positron-2" class="slide level2">
 <h2>Positron</h2>
-<p>Let’s explore Positron live:</p>
+<p>Let’s explore Positron together:</p>
 <ul>
 <li>File explorer</li>
 <li>Terminal (command line)</li>
 <li>Interpreter and Folder</li>
-<li><code>New file</code></li>
-<li><code>Open</code></li>
+<li>New file</li>
+<li>Open</li>
 <li>Viewer</li>
 </ul>
 </section>
-<section id="writing-with-script.r" class="slide level2">
+<section id="writing-with-script.r" class="slide level2 smaller scrollable">
 <h2>Writing with <code>script.R</code></h2>
 <p><strong>Best practice to write all code in a script file</strong></p>
 <ul>
@@ -504,26 +500,27 @@
 <li>Documents exactly what you have done</li>
 <li>Allows you to easily correct mistakes</li>
 </ul>
-<p><strong>Two typs of files we’ll work with</strong></p>
+<p><strong>Two types of files we’ll work with</strong></p>
 <ul>
-<li>R file (.R) - only accepts R code</li>
-<li>Quarto file (.qmd) - allows for R/Python and text</li>
+<li><strong>R files (<code>.R</code>):</strong> accept R code and are very similar to text files except that they read R code.</li>
+<li><strong>Quarto files (<code>.qmd</code>):</strong> allow to intersperse R/Python (other languages too!) with text. It’s great for putting text next to analysis.</li>
 </ul>
 </section>
-<section id="writing-with-script.r-1" class="slide level2">
+<section id="writing-with-script.r-1" class="slide level2 smaller">
 <h2>Writing with <code>script.R</code></h2>
-<p><strong>Use a hashtag (<code>#</code>)</strong> at the start of lines in your script to tell R not to run that line</p>
+<p>Use a <strong>hashtag (<code>#</code>)</strong> at the start of lines in your script to tell R not to run that line</p>
 <ul>
 <li>Useful for making comments about what your code is doing:</li>
 <li>Helps you remember what you did</li>
 <li>Helps others (like me, reading your homework) see what you were doing</li>
 </ul>
+<p>Check out this example:</p>
 <div class="sourceCode" id="cb1" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">#| echo: true</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># load data</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>census_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/acs2021.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="writing-with-script.r-2" class="slide level2">
+<section id="writing-with-script.r-2" class="slide level2 smaller">
 <h2>Writing with <code>script.R</code></h2>
 <p><strong>Running code:</strong></p>
 <ul>
@@ -531,7 +528,7 @@
 <li>Mac: cursor on line, hit <code>command + return</code></li>
 </ul>
 </section>
-<section id="variable-assignment-in-script.r" class="slide level2">
+<section id="variable-assignment-in-script.r" class="slide level2 smaller">
 <h2>Variable assignment in <code>script.R</code></h2>
 <p>R is an <strong><em>object-oriented programming language</em></strong>, meaning you can create new objects from any type of value, store it R’s memory, and call it when necessary</p>
 <ul>
@@ -543,7 +540,7 @@
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># load data</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>acs21 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/acs2021.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="common-values-for-variables" class="slide level2">
+<section id="common-values-for-variables" class="slide level2 smaller">
 <h2>Common values for variables</h2>
 <p>Values can be:</p>
 <ul>
@@ -557,7 +554,7 @@
 <span id="cb3-4"><a href="#cb3-4"></a>character_variable <span class="ot">&lt;-</span> <span class="st">"Welcome to Soc 106!"</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a>boolean_variable <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="variable-assignment-in-script.r-1" class="slide level2">
+<section id="variable-assignment-in-script.r-1" class="slide level2 smaller">
 <h2>Variable assignment in <code>script.R</code></h2>
 <p>Variable names must be unique</p>
 <ul>
@@ -670,7 +667,7 @@
 </div>
 </div>
 </section>
-<section id="logical-operators" class="slide level2">
+<section id="logical-operators" class="slide level2 smaller">
 <h2>Logical operators</h2>
 <ul>
 <li><p>Use logical operators to compare two variables or objects</p></li>
@@ -711,7 +708,7 @@
 </tbody>
 </table>
 </section>
-<section id="logical-operators-1" class="slide level2">
+<section id="logical-operators-1" class="slide level2 smaller">
 <h2>Logical operators</h2>
 <p>Here’s what that might look like in R:</p>
 <div class="cell">
@@ -743,7 +740,7 @@
 <section id="questions" class="slide level2">
 <h2>Questions?</h2>
 </section>
-<section id="data-structures" class="slide level2">
+<section id="data-structures" class="slide level2 smaller">
 <h2>Data structures</h2>
 <p>Data structures are simply collections of the data objects we have been working with:</p>
 <ul>
@@ -919,8 +916,8 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </div>
 </div>
 </section>
-<section id="the-tidyverse" class="slide level2">
-<h2>The <code class="smaller">Tidyverse</code></h2>
+<section id="the-tidyverse" class="slide level2 smaller">
+<h2>The <code>Tidyverse</code></h2>
 <p><strong>What is it?</strong></p>
 <ul>
 <li>A collection of R packages designed for data science that share a common philosophy and grammar</li>
@@ -928,8 +925,8 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <li>Most intuitive way to do data science</li>
 </ul>
 </section>
-<section id="the-tidyverse-1" class="slide level2">
-<h2>The <code class="smaller">Tidyverse</code></h2>
+<section id="the-tidyverse-1" class="slide level2 smaller">
+<h2>The <code>Tidyverse</code></h2>
 <p><strong>Key Features</strong></p>
 <ul>
 <li><strong>Pipe operator</strong> (<code>|&gt;</code> or <code>%&gt;%</code>): chains functions together for readable code</li>
@@ -946,8 +943,8 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <span id="cb59-8"><a href="#cb59-8"></a><span class="co"># then pull score, then calculate mean"</span></span>
 <span id="cb59-9"><a href="#cb59-9"></a>dataframe <span class="sc">|&gt;</span> <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(score) <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="the-tidyverse-2" class="slide level2">
-<h2>The <code class="smaller">Tidyverse</code></h2>
+<section id="the-tidyverse-2" class="slide level2 smaller">
+<h2>The <code>Tidyverse</code></h2>
 <p><strong>Core Packages we’ll be using</strong></p>
 <ul>
 <li><a href="https://readr.tidyverse.org"><strong>readr</strong></a>: for importing data (<code>read_csv()</code>)</li>
@@ -955,8 +952,8 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <li><a href="https://ggplot2.tidyverse.org"><strong>ggplot2</strong></a>: for data visualization</li>
 </ul>
 </section>
-<section id="the-tidyverse-3" class="slide level2">
-<h2>The <code class="smaller">Tidyverse</code></h2>
+<section id="the-tidyverse-3" class="slide level2 smaller">
+<h2>The <code>Tidyverse</code></h2>
 <p>How the packages work together</p>
 <div class="sourceCode" id="cb60" data-code-line-numbers="5|8|11|14-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># |eval=FALSE</span></span>
 <span id="cb60-2"><a href="#cb60-2"></a><span class="co"># |echo=TRUE</span></span>
@@ -1070,7 +1067,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
 </section>
-<section id="file-paths-and-working-directories" class="slide level2">
+<section id="file-paths-and-working-directories" class="slide level2 smaller">
 <h2>File paths and working directories</h2>
 <p>To load data, R needs to know where to look</p>
 <ul>
@@ -1112,7 +1109,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <span id="cb68-11"><a href="#cb68-11"></a><span class="fu">write_csv</span>(results, <span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"results.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="saving-and-loading-data" class="slide level2">
+<section id="saving-and-loading-data" class="slide level2 smaller">
 <h2>Saving and loading data</h2>
 <p>You can save dataframes as .csv files using the <code>write_csv()</code> function:</p>
 <div class="cell">
@@ -1127,7 +1124,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <span id="cb70-3"><a href="#cb70-3"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"mydata.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="other-data-types" class="slide level2">
+<section id="other-data-types" class="slide level2 smaller">
 <h2>Other data types</h2>
 <p>You can also load Excel files into R</p>
 <p>First, load the <a href="https://readxl.tidyverse.org"><code>readxl</code></a> package:</p>
@@ -1142,7 +1139,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <p>In fact, R can import all types of data files</p>
 <p>Googling “import SAS/STATA/SPSS files into R” will point you in the right direction</p>
 </section>
-<section id="some-helpful-r-commands" class="slide level2">
+<section id="some-helpful-r-commands" class="slide level2 smaller">
 <h2>Some helpful R commands</h2>
 <ul>
 <li><code>?[function_name]</code> brings up a help page</li>
@@ -1152,7 +1149,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <li><code>rm(list=ls())</code> removes all objects</li>
 </ul>
 </section>
-<section id="want-to-know-more-r-tips" class="slide level2">
+<section id="want-to-know-more-r-tips" class="slide level2 smaller">
 <h2>Want to know more R tips?</h2>
 <p>Much of this lecture is based on the first two RFundamentals classes, which are run at the <a href="https://dlab.berkeley.edu/home">D-Lab</a></p>
 <ul>
@@ -1164,7 +1161,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <section id="questions-2" class="slide level2">
 <h2>Questions?</h2>
 </section>
-<section id="anatomy-of-a-.qmd-file" class="slide level2">
+<section id="anatomy-of-a-.qmd-file" class="slide level2 smaller">
 <h2>Anatomy of a <code>.qmd</code> File</h2>
 <p><strong>Three Main Parts</strong></p>
 <ol type="1">
@@ -1178,7 +1175,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <li><code>script.qmd</code>: knits together code and text</li>
 </ul>
 </section>
-<section id="anatomy-of-a-.qmd-file-1" class="slide level2">
+<section id="anatomy-of-a-.qmd-file-1" class="slide level2 smaller">
 <h2>Anatomy of a <code>.qmd</code> File</h2>
 <ol type="1">
 <li>YAML Header (metadata)</li>
@@ -1191,7 +1188,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <span id="cb73-5"><a href="#cb73-5"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span><span class="co">  # output format (e.g., pdf, docx, html)</span></span>
 <span id="cb73-6"><a href="#cb73-6"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="anatomy-of-a-.qmd-file-2" class="slide level2">
+<section id="anatomy-of-a-.qmd-file-2" class="slide level2 smaller">
 <h2>Anatomy of a <code>.qmd</code> File</h2>
 <ol start="2" type="1">
 <li>Markdown Text (narrative)</li>
@@ -1279,7 +1276,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </tbody>
 </table>
 </section>
-<section id="anatomy-of-a-.qmd-file-3" class="slide level2">
+<section id="anatomy-of-a-.qmd-file-3" class="slide level2 smaller">
 <h2>Anatomy of a <code>.qmd</code> File</h2>
 <ol start="3" type="1">
 <li>Code Chunks (analysis)</li>
@@ -1292,7 +1289,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </section>
 <section id="anatomy-of-a-.qmd-file-4" class="slide level2 smaller">
 <h2>Anatomy of a <code>.qmd</code> File</h2>
-<p>So to summarize <code>.qmd</code> and <code>.R</code> scripts:</p>
+<p>So to summarize <code>.R</code> and <code>.qmd</code> scripts:</p>
 <table>
 <colgroup>
 <col style="width: 25%">
@@ -1361,28 +1358,34 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <span id="cb76-4"><a href="#cb76-4"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Can format many different formats (e.g., pdf, docx, odt, epubs, pptx)</p>
 </section>
-<section id="rendering-quarto-documents-2" class="slide level2 smaller">
+<section id="rendering-quarto-documents-2" class="slide level2 smaller scrollable">
 <h2>Rendering Quarto Documents</h2>
 <p><strong>Source vs Visual Mode</strong></p>
 <p>Positron provides two ways to edit <code>.qmd</code> files. Toggle between them using the buttons at the top-left of your editor.</p>
 <p><br></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Source Mode</strong></p>
-<ul>
-<li>Shows raw markdown syntax</li>
-<li>See the actual code: <code>**bold**</code>, <code>## Heading</code></li>
-<li>More control over formatting</li>
-<li>Better for experienced users</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Visual Mode</strong></p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Visual</a></li><li><a href="#tabset-3-2">Source</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p><strong>Visual,</strong> which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:</p>
 <ul>
 <li>WYSIWYG editor (What You See Is What You Get)</li>
 <li>Formatting toolbar (like Microsoft Word)</li>
 <li>Live preview of how text will look</li>
 <li>Easier for beginners</li>
 </ul>
+<p><img data-src="images/week2/quarto_script1.png"></p>
+</div>
+<div id="tabset-3-2">
+<p><strong>Source,</strong> which is the source actual code:</p>
+<ul>
+<li>Shows raw markdown syntax</li>
+<li>See the actual code: <code>**bold**</code>, <code>## Heading</code></li>
+<li>More control over formatting</li>
+<li>Better for experienced users</li>
+</ul>
+<p><img data-src="images/week2/quarto_script2.png"></p>
+</div>
 </div>
 </div>
 </section>
@@ -1417,7 +1420,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <p>For this week only, I will provide a dataset for you to use on your homework assignment</p>
 <ul>
 <li><strong>attain.csv</strong>: data from the General Social Survey</li>
-<li>in bCourses, Files → Weekly Assignments → HW 1</li>
+<li>in bCourses, Assignments → HW# 1</li>
 </ul>
 <p><strong>Turn in your assignment on bCourses</strong></p>
 <ul>
@@ -1426,20 +1429,22 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <li>Write code and text response intermittenly in file</li>
 </ul>
 </section>
-<section id="in-class-lab" class="slide level2 smaller">
-<h2>In-class lab</h2>
-<p>Let’s setup Positron environment for the course! STEPS:</p>
+<section id="in-class-lab-hw-0" class="slide level2 smaller">
+<h2>In-class lab HW #0</h2>
+<p>Let’s follow these steps to Positron environment for the course and complete HW #0!</p>
 <ol type="1">
-<li>Download <code>hw_example.qmd</code> and <code>attain.csv</code> from bCourse</li>
-<li>Create <code>soc16</code> folder on your desktop</li>
-<li>Create <code>data</code> and <code>assignments</code> folders inside</li>
+<li>Download <code>hw0.qmd</code> and <code>attain.csv</code> from bCourse under “assignments” &gt; “HW #0”</li>
+<li>Create <code>soc16</code> folder on your desktop (or another place if you prefer)</li>
+<li>Create <code>data</code> and <code>assignments</code> folders inside of <code>soc16</code></li>
 <li>Data always goes inside data folder and assignment always goes instead <code>assignment</code></li>
-<li>Open Positron</li>
-<li>Click the <code>Open Folder</code> button and navigate to <code>soc16</code></li>
+<li>Open Positron, click the <code>Open Folder</code> button and navigate to <code>soc16</code></li>
 <li>Allow access, check “Trust the authors..”, and click “Yes, …”</li>
-<li>Use <code>Explorer</code> button on left to find <code>hw_example.qmd</code></li>
-<li>Check <code>Render on Save</code> button and hit preview</li>
-<li>If <code>Viewer</code> frame opens with html file - SUCCESS!</li>
+<li>Use <code>Explorer</code> button on left to find <code>hw0.qmd</code></li>
+<li>Check <code>Render on Save</code> button</li>
+<li>Replace “Karl Marx” with your name – make sure to keep it in “quotes”</li>
+<li>Save and hit “Preview”</li>
+<li>If <code>Viewer</code> frame opens as an html file and you see you name - SUCCESS!</li>
+<li>Navigate back to bCourse and upload both <code>hw0.qmd</code> and <code>hw0.html</code> files</li>
 </ol>
 
 <div class="footer footer-default">
