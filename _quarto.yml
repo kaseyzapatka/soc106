@@ -1,9 +1,6 @@
 project:
   type: website
   output-dir: docs
-  render:
-    - "*.qmd"
-    - "!assignments*/*.qmd"  # Don't render homework qmd files
 
 website:
   title: "Sociology 106"
@@ -15,8 +12,6 @@ website:
         href: slides/index.qmd
       - text: "Syllabus"
         href: syllabus.qmd
-      - text: "Assignments"
-        href: assignments/index.qmd
 
 format:
   html:
