@@ -24,13 +24,13 @@ format:
 **Instructor:** Kasey Zapatka  
 **Email:** [kaseyzapatka@berkeley.edu](mailto:kaseyzapatka@berkeley.edu)  
 **Lecture:** Tuesdays 2:00-3:59 PM, 246 Dwinelle  
-**Office Hours:** Tuesdays 11:30 AM-1:00 PM, and 4:00-4:30 PM, **TBA**
+**Office Hours:** Tuesdays 11:30 AM-1:00 PM, and 4:00-4:30 PM, Social Science Building Room 444
 <br>
 (signup at <https://www.wejoinin.com/kaseyzapatka@berkeley.edu>)
 
 ## Course description and objectives
 
-Sociology 106[^thx] is an intermediate undergraduate sociology research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables and give students familarity with basic regression analysis. The course will also train students in the use of the R statistical programming language for data management and analysis.
+Sociology 106[^thx] is an intermediate undergraduate sociology research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables and give students familiarity with basic regression analysis. The course will also train students in the use of the R statistical programming language for data management and analysis.
 
 Sociology 106 is most appropriate for social science undergraduates who have some familiarity with sociological research methods and wish to learn how to carry out a quantitative sociological research project.
 
