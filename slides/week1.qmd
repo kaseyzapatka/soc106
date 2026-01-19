@@ -403,8 +403,8 @@ You will develop and present a research question of your choice, address it usin
 
 I can help in office hours with questions about concepts from lecture or about coding in `R`
 
-- **Tuesdays**, right before 11:30 AM-1:00 PM, TBA
-- **Tuesdays**, right after class, until 4:30 PM, TBA
+- **Tuesdays**, right before 11:30 AM-1:00 PM, Social Science Building Room 444
+- **Tuesdays**, right after class, until 4:30 PM, Social Science Building Room 444
     - Sign up at <https://www.wejoinin.com/kaseyzapatka@berkeley.edu>
 - If you can’t make either, e-mail me and we’ll find a time
 
@@ -433,7 +433,7 @@ Download and install `R`:[^Rdownload]
 Download and install Positron[^Positrondownload]  
 	<https://positron.posit.co/download.html>
 
-[^Rdownload]: Mac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of `R`for Mac:   
+[^Rdownload]: Mac users need to check whether they have a Apple Silicon (M1/M2) or Intel processor and download the appropriate version of `R` for Mac:   
 1. Click the Apple menu () in the top-left corner of your screen.  
 2. Select **About This Mac**.  
 3. Look at the **Processor** or **Chip** line:  
