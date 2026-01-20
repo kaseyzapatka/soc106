@@ -15,15 +15,21 @@ format:
 
 ## Agenda 
 
-Introductions, welcome, and a few remarks about the course
+Introductions
 
-Discussion of each of today’s learning goals:
+Welcome
+
+Understanding the course
+
+Install `R` and Positron -- <span class="highlight">should be done by class next week</span>
+
+## Learning Goals
+
+Today’s learning goals:
 
 - Have a sense of what the course is, what it is not, and what we'll cover this semester
 - Understand structure and requirements of the course
 - Download and install `R` and Positron
-
-Install `R` and Positron -- <span class="highlight">should be done by class next week</span>
 
 ## Introductions
 
@@ -31,7 +37,7 @@ Install `R` and Positron -- <span class="highlight">should be done by class next
 
 - PhD, Sociology, CUNY Graduate Center
 - Urban inequality with a focus on housing, affordability, and neighborhood change
-  - Dissertation: how gentrification influences housing affordability and traced housing affordability over life course 
+  - **Dissertation**: gentrification -> influences housing affordability and affordability over the life course
   - R/python, Machine Learning, MLM, causal inference, spatial econometrics
 
 ## Introductions
@@ -42,8 +48,9 @@ Install `R` and Positron -- <span class="highlight">should be done by class next
 
 **Current Research**
 
-- Developing a longitudinal database of evictions 
-- Evaluating impact of Emergency Rental Assistance and tenant protections on evictions during COVID-19 pandemic 
+- Impact of Emergency Rental Assistance on evictions during COVID-19 pandemic 
+- Voting turnout in New York City 
+- Text analysis of federal environmental review process
 
 ## Now your turn
 
@@ -61,22 +68,21 @@ Install `R` and Positron -- <span class="highlight">should be done by class next
 
 **Course Content**
 
-- Statistical tests for one or two continuous or categorical variables
+- Statistical tests and their context (different types of variables)
 - Interpretation of linear and logistic regression
-- Introduction to machine learning framework in the last week
-- Data management and analysis using `R` statistical programming language
+- Open methods week
 
 **Skills Developed**
 
 Students will gain practical experience in `R` for conducting statistical analyses and managing data.
 
-## Sociology 106 is not…
+## Sociology 106 is NOT...
 
-...about math. Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.
+...about math. *Statistics is about adjudicating between rival explanations of phenomena about a population, using data from that population.*
 
-- This course will be taught with more of a focus on the math / statistical theory or with more of a focus on sociological applications
+- Focus on intuitive understanding and sociological application
 
-- We will be more applied, still with some math (and some equations)
+- Be more applied -> how and when to use the equation, not the equation
 
 ...about the “one true way to answer sociological questions” *(where quals at?)*.
 
@@ -87,13 +93,21 @@ Students will gain practical experience in `R` for conducting statistical analys
 3. Visualize data and produce descriptive statistics and simple statistical tests using `R`
 4. Interpret and communicate statistical results and discuss their relevance in the context of a particular research question
 
-
-## So, what is a statistical question?
+## One example: 
 
 > In past semesters, has Sociology 106 been more appealing to male or female students?
 
-- One possibility: gender doesn’t make a difference!
-- Another possibility: male students are more likely to have taken Sociology 106 in the past
+One possibility: gender doesn’t make a difference!
+
+::: {.fragment}
+- **Null hypothesis**: P(student is male) = 50%
+:::
+
+Another possibility: male students are more likely to major in Statistics
+
+::: {.fragment}
+- **Alternative hypothesis**: P(student is male) > 50%
+:::
 
 ## Could look at descriptive statistics
 
@@ -167,19 +181,6 @@ ggplot(df, aes(x = male_students, y = probability)) +
   )
 
 ```
-
-## One example: 
-
-> In past semesters, has Sociology 106 been more appealing to male or female students?
-
-One possibility: gender doesn’t make a difference!
-
-- Null hypothesis: P(student is male) = 50%
-
-Another possibility: male students are more likely to major in Statistics
-
-- Alternative hypothesis: P(student is male) > 50%
-
 
 
 ## A statistical test
@@ -268,18 +269,6 @@ You will be able to test:
     - Coding in `R` can be intimidating, but promise it's worth learning how use
     - Positron is cutting edge IDE (most of grad students don't use), but it's the future of social science research
 
-## Open week{.smaller} 
-
-Right now I have an open week at the end and I want to fill it with something that is useful to you all. Material will likely not be included on final exam. 
-
-Some options:
-
-- brief intro to **machine learning**
-- survey of more **advanced methods** (e.g., fixed effects, MLM, spatial regression, Poisson/Negative Binomial, etc.)
-- open to class suggestions of what would be useful to you all
-
-Let me know and we can take a vote in week 3 
-
 ## Course Navigation{.smaller} 
 
 
@@ -304,8 +293,6 @@ Let me know and we can take a vote in week 3
 :::
 :::::
 
-
-
 ## Required Course Readings{.smaller}
 
 1. **David Lane's Online Statistics** (<http://onlinestatbook.com/Online_Statistics_Education.pdf>). 
@@ -317,6 +304,19 @@ Let me know and we can take a vote in week 3
   - **Thompson, M.S., & Keith, V. M.** (2001). The Blacker the Berry: Gender, Skin Tone, Self-Esteem, and Self-Efficacy. Gender & Society, 15(3), 336-357. (<https://doi.org/10.1177/089124301015003002>) 
   
   - **Freeman, L., & Braconi, F.** (2004). Gentrification and Displacement New York City in the 1990s. Journal of the American Planning Association, 70(1), 39–52. (<https://doi.org/10.1080/01944360408976337>)
+
+
+## Open week{.smaller} 
+
+Open week at the end to fill it with something useful to you all. 
+
+Some options:
+
+- brief intro to **machine learning**
+- survey of more **advanced methods** (e.g., fixed effects, MLM, spatial regression, Poisson/Negative Binomial, etc.)
+- open to class suggestions
+
+Will take a class vote in week 3 
 
 
 ## Required Course Materials
@@ -353,22 +353,26 @@ We’ll start installation of `R` and Positron at the end of class--<span class=
 
 ## Typical Weekly Assignment{.smaller}
 
-- Anywhere from **3-10 problems** with brief analysis and write-up in `R` and quarto
-- Be sure to show your work -- **writing out conclusions** and interpreting results as necessary
-- With couple of exceptions, you'll **work with your own dataset** to apply methods introduced in lecture
-- Ideally the same dataset from week to week (use the same dataset for your research paper)
-- For the first assignment, I will provide a dataset on bCourses
-- Think carefully about the method, the types of questions it can answer, and the types of variables that can be used in the method  before choosing variables from your dataset
-- Write up using **quarto (.qmd file)** template provided on bCourses to **submit to bCourse**
+- From **3-10 problems** with brief analysis and write-up in `R` and quarto
+- Show your work -- **explain conclusions** and **interpret results** as necessary
+- **Work with your own dataset** (with some exceptions) and apply methods
+    - Use same dataset each week -> research paper
+    - For the first assignment, I will provide a dataset on bCourses
+- Think carefully about the method, types of questions it can answer, types of variables that can be used before choosing variables from your dataset
+- Submit answers using **Quarto (.qmd)** template provided on bCourses to **submit to bCourse**
+- Grading: 
+    - 0 = not turned in
+    - 1 = below expectations
+    - 2 = meets expectations 
 
 
 ## Research Paper{.smaller}
 
-You will develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in `R`, and write a paper summarizing your findings
+Develop and present a research question of your choice, address it using statistical techniques from the course that you apply to data in `R`, and write a paper summarizing your findings
 
 - You can *(and should)* use your weekly assignments to work on your research question
 
-- Several milestones throughout the semester will help you progress towards the final paper
+- Several milestones throughout the semester **(40%)** 
   - Paper proposal (5%)
   - Annotated bibliography (5%)
   - Revised paper proposal with outline (5%)
@@ -403,8 +407,8 @@ You will develop and present a research question of your choice, address it usin
 
 I can help in office hours with questions about concepts from lecture or about coding in `R`
 
-- **Tuesdays**, right before 11:30 AM-1:00 PM, Social Science Building Room 444
-- **Tuesdays**, right after class, until 4:30 PM, Social Science Building Room 444
+- **Tuesdays**, 11:30 AM-1:00 PM, 444 Social Science Building
+- **Tuesdays**, 4:00 PM-4:30 PM, 444 Social Science Building
     - Sign up at <https://www.wejoinin.com/kaseyzapatka@berkeley.edu>
 - If you can’t make either, e-mail me and we’ll find a time
 
@@ -426,7 +430,7 @@ Outside of office hours, your best resources are your fellow classmates!
 
 ## Getting started with `R` and Positron
 
-Download and install `R`:[^Rdownload]  
+Download and install `R`[^Rdownload]  
   <https://cran.rstudio.com>
 
 
