@@ -23,14 +23,14 @@ format:
 
 **Instructor:** Kasey Zapatka  
 **Email:** [kaseyzapatka@berkeley.edu](mailto:kaseyzapatka@berkeley.edu)  
-**Lecture:** Tuesdays 2:00--3:59 PM, 246 Dwinelle  
-**Office Hours:** Tuesdays 11:30 AM-1:00 PM, and 4:00-4:30 PM, **TBA**
+**Lecture:** Tuesdays 2:00-3:59 PM, 246 Dwinelle  
+**Office Hours:** Tuesdays 11:30 AM-1:00 PM, and 4:00-4:30 PM, Social Science Building Room 444
 <br>
 (signup at <https://www.wejoinin.com/kaseyzapatka@berkeley.edu>)
 
 ## Course description and objectives
 
-Sociology 106[^thx] is an intermediate undergraduate sociology research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables and give students familarity with basic regression analysis. The course will also train students in the use of the R statistical programming language for data management and analysis.
+Sociology 106[^thx] is an intermediate undergraduate sociology research methods course. It will emphasize the motivation, computation, and interpretation of statistical tests for one or two continuous or categorical variables and give students familiarity with basic regression analysis. The course will also train students in the use of the R statistical programming language for data management and analysis.
 
 Sociology 106 is most appropriate for social science undergraduates who have some familiarity with sociological research methods and wish to learn how to carry out a quantitative sociological research project.
 
@@ -41,7 +41,7 @@ By the end of the semester, students should be able to:
 - Understand the logic of statistical inference
 - Identify appropriate statistical tests for different types of data
 - Visualize data and produce descriptive statistics and simple statistical tests using R
-- Interpret and communicate statistical results and discuss their relevance in the context of a particular research question.
+- Interpret and communicate statistical results and discuss their relevance in the context of a particular research question
 
 [^thx]: I thank Joe LaBriola for their work designing this syllabus in previous semesters, as well as David Harding for his work designing the Sociology 271B class.
 
@@ -108,9 +108,11 @@ Each student will develop and present a research question of their choice, addre
 
 There will be several milestones throughout the semester to help you smoothly progress towards a final paper. I will give you feedback at each step of the way. Your overall grade on the research paper will be the sum of your grades on the following assignments:
 
-- **Paper proposal (5%)**: A (no more than) two-page double spaced proposal for the final paper will be due on bCourses by Thursday, February 26 at 11:59 PM. The proposal should succinctly state the research question, why we might care about the answer to this question, hypotheses about what you think the answer is to the research question (and why), the data source you will use to answer this question, and the key independent and dependent variables in the data. At this point, you do not need to discuss what statistical techniques you will use to answer your research question.
+- **Paper proposal (5%)**: A (no more than) two-page double-spaced proposal for the final paper will be due on bCourses by Thursday, February 26 at 11:59 PM. The proposal should succinctly state the research question, why we might care about the answer to this question, hypotheses about what you think the answer is to the research question (and why), the data source you will use to answer this question, and the key independent and dependent variables in the data. At this point, you do not need to discuss what statistical techniques you will use to answer your research question.
 
 - **Annotated bibliography (5%)**: Next, you will identify ten scholarly sources related to your research question. Articles in academic journals, books, and book chapters from edited volumes are all considered to be scholarly sources. Blogs, internet and newspaper articles, Wikipedia pages, etc., are NOT considered to be scholarly sources. After identifying these ten scholarly sources, for each source, you will briefly (one to two paragraphs) describe how this source relates to your research question. This includes, but is not limited to, the overall argument in the article or book, the types of evidence the author(s) use to support their article, and any possible weaknesses or strengths in the paper. This annotated bibliography will be due on bCourses by Thursday, March 19 at 11:59 PM.
+
+- **Revised paper proposal with outline (5%):** Building on the feedback you received on your initial proposal and the work you've completed in your annotated bibliography, you will submit a revised proposal with a detailed outline for your final paper. This revised proposal will be due on bCourses by Thursday, April 16 at 11:59 PM. The revised proposal should be no more than three to four pages double-spaced and should include: (1) a refined research question that incorporates feedback from your initial proposal, (2) a very brief literature review that synthesizes insights from your annotated bibliography and explains how your research contributes to existing scholarship, (3) updated hypotheses and a clear explanation of the theoretical reasoning behind them, (4) a short description of your data source, key variables, and the statistical techniques you plan to use to test your hypotheses, and (5) a detailed outline of your final paper showing the main sections and key points you will cover in each section. This assignment will help ensure that you are on track to complete a strong final paper and will give you an opportunity to receive additional feedback before your in-class presentation.
 
 - **In-class presentation (5%)**: Then, during our class on April 28, you will give a brief presentation (7-10 minutes) to the class on your research paper. By this point, you should have conducted the statistical analyses you have proposed to answer your research question. Thus, in your presentation, you should discuss the research question, motivation for the research question, hypotheses, data, variables, analyses, and the results of your analyses. This is a great opportunity to get feedback on your (mostly-completed) research project from other members of the class as well as from me.
 
@@ -118,7 +120,7 @@ There will be several milestones throughout the semester to help you smoothly pr
 
 ### Final exam (20%)
 
-The final exam for our class will be on Monday, May 11 from 11:30 AM to 2:30 PM. The final will be somewhat similar to the weekly homework assignments, except that you will not be asked to analyze data using R. **The test will be closed-book and closed-computer, but you will be able to bring a “formula sheet” that contains mathematical formulas, lists of steps typically involved in solving problems, assumptions underlying particular statistical procedures, etc. You may use both sides of one 8.5 x 11 inch piece of paper to create your formula sheet. Your formula sheet must be handwritten personally by you, and you must submit your formula sheet with your exam (I will return your sheet after the exam).**
+The final exam for our class will be on Monday, May 11 from 11:30 AM to 2:30 PM. The final will be somewhat similar to the weekly homework assignments and be a mixture of 10 multiple choice and 5-10 short answer/regression analysis/interpretation questions. The test will be closed-book and closed-computer, but I'll give you a clear sense of the types of questions during the review week so you can focus your preparation and you will be provided with any formulas or tables that you need during the exam.
 
 ## Data for assignments and research paper
 
@@ -137,7 +139,7 @@ Over the course of the semester, you will work with one (or more) datasets of yo
 - The **Google Dataset Search** is a newer resource that serves as comprehensive search tool and could be another good source of data : <https://datasetsearch.research.google.com/>
 
 
-## Keys to sucess
+## Keys to success
 
 -  In some ways, learning statistics is like learning a language, and it is important not to be intimidated by new terms and concepts. It is often helpful to write in plain language the meaning of the quantities or concepts represented by a letter or symbol. 
 
@@ -159,13 +161,13 @@ Over the course of the semester, you will work with one (or more) datasets of yo
 
 - **Office hours:** I encourage you to come to office hours. Office hours are a good time to introduce yourself, talk about ideas you are thinking about, and ask substantive questions about the course material. Office hours are a great opportunity to start to work on your weekly assignments while being able to ask me for help. I have office hours on Tuesdays before class and right after class (see above). You may sign up for office hours at <https://www.wejoinin.com/kaseyzapatka@berkeley.edu> or just drop in. I also encourage you to sign up in groups.
 
-- **E-mail:** E-mail is best for asking logistical questions about the course and should not be used for substantive questions about the course materials or about coding. Please re-read the syllabus before sending a logistical question about the course to ensure that your question is not answered here. If you have a substantive question about the course material (i.e., you are not sure you understand a concept from lecture), please make an appointment to meet me in office hours instead. If you cannot meet during my scheduled office hours, e-mail me and we’ll figure something out. I will endeavor to respond to e-mails received during the week (8 AM Monday-5 PM Friday) within 24 hours, and to e-mails received outside this time by 5 PM Monday.
+- **E-mail:** E-mail is best for asking logistical questions about the course and should not be used for substantive questions about the course materials or about coding. Please re-read the syllabus before sending a logistical question about the course to ensure that your question is not answered here. If you have a substantive question about the course material (i.e., you are not sure you understand a concept from lecture), please make an appointment to meet me in office hours instead. If you cannot meet during my scheduled office hours, e-mail me and we’ll figure something out. I will endeavor to respond to e-mails received during the week (8:00 AM Monday-5:00 PM Friday) within 24 hours, and to e-mails received outside this time by 5:00 PM Monday.
 
 - **Accommodation:** I will provide the necessary accommodations to any student who provides me with a letter from a DSP Specialist. Please arrange for me to receive this letter as early in the semester as possible, as I cannot retroactively provide accommodations after I receive this letter. Please notify me over e-mail by the second week of the term about any known or potential extracurricular conflicts (such as religious observances, graduate or medical school interviews, or team activities). I will try my best to help you with making accommodations, but cannot promise them in all cases. In the event there is no mutually-workable solution, you may be dropped from the class.
 
 - **Late work:** The precise due dates of both the weekly assignments and of assignments related to the research paper are listed above. For the weekly assignments, one point (out of two) will be automatically deducted for assignments that are turned in up to one day after the due date; assignments will not be accepted after this. Further, I may not be able to provide timely feedback on late assignments. For assignments related to the research paper, assignments turned in late will be penalized one letter grade for every day late (e.g., from an A to a B). If you have a real emergency, contact me at least 24 hours before the assignment deadline. 
 
-  - If you know now that you will have a conflict with the final exam time (**Monday, May 11 from 11:30AM - 2:30PM**), either do not take the course or speak with me as soon as possible so that we can work out an accommodation. If you have a truly unforeseen emergency that prevents you from attending the exam, contact me as soon as possible.
+  - If you know now that you will have a conflict with the final exam time (**Monday, May 11 from 11:30 AM-2:30 PM**), either do not take the course or speak with me as soon as possible so that we can work out an accommodation. If you have a truly unforeseen emergency that prevents you from attending the exam, contact me as soon as possible.
 
 - **Grading policy:** If you wish to contest a grade, please e-mail me within one week of receiving the grade and outline in writing (1) the assignment you are contesting, (2) the grade you received on the assignment, and (3) why you believe your grade is unfair. I will consider your appeal and may decide to re-grade your assignment. Please note that a re-grade involves a closer scrutiny of your work and may result in you receiving a lower grade.
 
@@ -184,8 +186,8 @@ Like any other skill, effective writing can be developed with practice and assis
 | Week | Date | Topic | Readings/Videos | Assignments |
 |:----:|:----:|:------|:--------------------------|:----------------|
 | 1 | 1/20 | Introduction |
-| 2 | 1/27 | Statistical computing in R | Positron tutorial; Positron + Quarto tutorial; Wickham 7.1, 7.2, 7.21, 7.23, 7.5; Thompson and Keith (Introduction p. 336-340, Discussion p. 351-354) | HW #1 due 2/5 |
-| 3 | 2/3 | Visualizing distributions | Lane p. 82-85, 92-108, 165-169; Wickham 1.1,1.3, 1.4, 1.5, 1.6; Thompson and Keith (Data and Methods p.342-344) | HW #2 due 2/12 |
+| 2 | 1/27 | Statistical computing in R | [Positron tutorial](https://www.youtube.com/watch?v=4Ir_HX4riHw); [Positron + Quarto tutorial](https://www.youtube.com/watch?v=QU0N--y-skA); Wickham 7.1, 7.2, 7.2.1, 7.2.3, 7.5 | HW #1 due 2/5 |
+| 3 | 2/3 | Visualizing distributions | Lane p. 82-85, 92-108, 165-169; [Exploratory Data Analysis in R with Positron](https://www.youtube.com/watch?v=ndq2Mm3Dju8&t=343s); Wickham 1.1, 1.3, 1.4, 1.5, 1.6 | HW #2 due 2/12 |
 | 4 | 2/10 | Summarizing distributions | Lane p. 123-128, 131-135, 140-153, 170-175 | HW #3 due 2/19 |
 | 5 | 2/17 | Basics of probability theory | Lane p. 189-197, 212-214 | HW #4 due 2/26; paper proposal due 2/26 |
 | 6 | 2/24 | Probability models of distributions | Lane p. 248-265 | HW #5 due 3/5 |
@@ -193,10 +195,10 @@ Like any other skill, effective writing can be developed with practice and assis
 | 8 | 3/10 | Estimates and confidence intervals | Lane p. 328-355, 358-359; [seeing theory-confidence intervals](https://seeing-theory.brown.edu/frequentist-inference/index.html#section2) | HW #7 due 3/19; annotated bibliography due 3/19 |
 | 9 | 3/17 | Hypothesis testing and power | Lane p. 369-391, 398-411, 448-457, 597-607 | HW #8 due 4/2 |
 | 10 | 3/24 | Spring Recess |
-| 11 | 3/31 | Linear regression | Lane p. 461-481; Thompson and Keith (Results p. 344-348) | HW #9 due 4/9 |
+| 11 | 3/31 | Linear regression | Lane p. 461-481; Thompson and Keith (Introduction p. 336-340, Data and Methods p.342-344, Results p. 344-348) | HW #9 due 4/9 |
 | 12 | 4/7 | Logistic regression | Freeman and Braconi (focus on Methodology, Results) | HW #10 due 4/16; revised proposal with outline due 4/16 |
-| 13 | 4/14 | Extensions to regression | Thompson and Keith (Results p.349-351) | HW #11 due 4/23 |
+| 13 | 4/14 | Extensions to regression | Thompson and Keith (Results p.349-351, Discussion p. 351-354) | HW #11 due 4/23 |
 | 14 | 4/21 | TBD  |
 | 15 | 4/28 | Research presentations |   |
 | 16 | 5/5 | RRR Week |  | Final paper due 5/7 |
-| 17 | 5/11 | Final | 11:30AM 2:30PM |
+| 17 | 5/11 | Final | 11:30 AM - 2:30 PM |

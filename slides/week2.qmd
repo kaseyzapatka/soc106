@@ -1,7 +1,7 @@
 ---
 title: "Week 2"
 subtitle: "Sociology 106: Quantitative Sociological Methods"
-date: 02/27/2026
+date: 01/27/2026
 date-format: long
 format:
   revealjs: 
@@ -9,7 +9,6 @@ format:
     chalkboard: 
       buttons: false
     preview-links: auto
-    #logo: berkeley_logo.png
     css: slides.css
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
@@ -23,18 +22,17 @@ format:
     -   Sign up at [https://www.wejoinin.com/kaseyzapatka\@berkeley.edu](https://www.wejoinin.com/kaseyzapatka@berkeley.edu){.uri}
 -   If you can’t make either, e-mail me and we’ll find a time
 
-**HW #1:** due Thursday, February 5, 11:59 PM
+<span class="highlight">HW #1: due Thursday, February 5 by 11:59 PM</span>
 
 ## Agenda {.smaller}
 
--   Exploring R and Positron
-    -   Scripting basics and best practices
-    -   [Quarto](https://quarto.org) for submitting hw assignments
--   Types of variables
--   Logical operators
--   Data structures
--   The [Tidyverse](https://tidyverse.org)
-    -   load and manipulate data
+1. Gain some familiarity with R and Positron
+2. Develop basic proficiency with R and Positron
+3. Write, run, and troubleshoot R scripts using proper syntax and R's help tools
+4. Understand core data concepts: variable types, logical operators, and common data structures
+5. Import, manipulate, and export data using fundamental R` commands
+6. Understand what the `Tidyverse` is and how it differs from base R
+7. Prepare and submit homework assignments using [Quarto](https://quarto.org)
 
 ## Exploring R and Positron {.smaller}
 
@@ -44,18 +42,19 @@ format:
 -   Please stop me if you are not sure you understand—you are probably not the only one!
 -   Helpful if you can follow along in Positron
 
-**Goal of today's lecture:**
+**Programming goals for today:**
 
 -   Basics of using R (through Positron)
 -   How to load data
 -   How to complete homework
 
-## Positron
+## Positron{.smaller}
 
 -   Open sourced Integrated Development Environment (IDE)
 -   Developed by Posit and descendent of R-studio
 -   Specifically designed to use R and Python interchangeably
--   Tons of custom extensions - e.g., air, gitlens, quarto, docker
+-   Tons of custom extensions - e.g., [air](https://open-vsx.org/extension/posit/air-vscode), [gitlens](https://open-vsx.org/extension/eamodio/gitlens), [quarto](https://open-vsx.org/extension/quarto/quarto), [docker](https://open-vsx.org/extension/ms-azuretools/vscode-docker)
+- Check out the [registry for extensions](https://open-vsx.org/?search=docker&sortBy=relevance&sortOrder=desc) to see if there are any that you might want to add
 -   Can be used for data science, web apps, websites, books, etc.
 
 Check out [Andres Heiss' blog](https://www.andrewheiss.com/blog/2024/07/08/fun-with-positron/#my-extensions) for more fun things
@@ -89,16 +88,16 @@ Check out [Andres Heiss' blog](https://www.andrewheiss.com/blog/2024/07/08/fun-w
 
 ## Positron
 
-Let's explore Positron live:
+Let's explore Positron together:
 
 -   File explorer
 -   Terminal (command line)
 -   Interpreter and Folder
--   `New file`
--   `Open`
+-   New file
+-   Open
 -   Viewer
 
-## Writing with `script.R`
+## Writing with `script.R` {.smaller .scrollable}
 
 **Best practice to write all code in a script file**
 
@@ -106,18 +105,20 @@ Let's explore Positron live:
 -   Documents exactly what you have done
 -   Allows you to easily correct mistakes
 
-**Two typs of files we'll work with**
+**Two types of files we'll work with**
 
--   R file (.R) - only accepts R code
--   Quarto file (.qmd) - allows for R/Python and text
+- **R files (`.R`):** accept R code and are very similar to text files except that they read R code.
+- **Quarto files (`.qmd`):** allow to intersperse R/Python (other languages too!) with text. It's great for putting text next to analysis. 
 
-## Writing with `script.R`
+## Writing with `script.R` {.smaller}
 
-**Use a hashtag (`#`)** at the start of lines in your script to tell R not to run that line
+Use a **hashtag (`#`)** at the start of lines in your script to tell R not to run that line
 
 -   Useful for making comments about what your code is doing:
 -   Helps you remember what you did
 -   Helps others (like me, reading your homework) see what you were doing
+
+Check out this example:
 
 ``` {.r code-line-numbers="3"}
 #| eval: false
@@ -126,14 +127,14 @@ Let's explore Positron live:
 census_data <- read_csv("data/acs2021.csv")
 ```
 
-## Writing with `script.R`
+## Writing with `script.R` {.smaller}
 
 **Running code:**
 
 -   Windows: highlight the entire line, and hit `Ctrl + r`
 -   Mac: cursor on line, hit `command + return`
 
-## Variable assignment in `script.R`
+## Variable assignment in `script.R` {.smaller}
 
 R is an ***object-oriented programming language***, meaning you can create new objects from any type of value, store it R's memory, and call it when necessary
 
@@ -147,7 +148,7 @@ R is an ***object-oriented programming language***, meaning you can create new o
 acs21 <- read_csv("data/acs2021.csv")
 ```
 
-## Common values for variables
+## Common values for variables {.smaller}
 
 Values can be:
 
@@ -163,7 +164,7 @@ character_variable <- "Welcome to Soc 106!"
 boolean_variable <- TRUE
 ```
 
-## Variable assignment in `script.R`
+## Variable assignment in `script.R` {.smaller}
 
 Variable names must be unique
 
@@ -249,7 +250,7 @@ converted_num <- as.numeric(text_num)
 converted_num
 ```
 
-## Logical operators
+## Logical operators{.smaller}
 
 -   Use logical operators to compare two variables or objects
 
@@ -264,7 +265,7 @@ converted_num
 | `<=`     | Less than or equal to    |
 | `>=`     | Greater than or equal to |
 
-## Logical operators
+## Logical operators{.smaller}
 
 Here's what that might look like in R:
 
@@ -281,7 +282,7 @@ x >= 10
 
 ## Questions?
 
-## Data structures
+## Data structures {.smaller}
 
 Data structures are simply collections of the data objects we have been working with:
 
@@ -337,7 +338,7 @@ ages[3]
 ages[c(1, 3)]
 ```
 
-## Tidyverse
+## Tidyverse {.smaller}
 
 Use `nth()` function to do the same thing more intuitively
 
@@ -431,7 +432,7 @@ colnames(students)
 ```
 :::
 
-## The `Tidyverse`{.smaller}
+## The `Tidyverse` {.smaller}
 
 **What is it?**
 
@@ -439,7 +440,7 @@ colnames(students)
 -   By far the most common approach to working with R
 -   Most intuitive way to do data science
 
-## The `Tidyverse`{.smaller}
+## The `Tidyverse` {.smaller}
 
 **Key Features**
 
@@ -459,7 +460,7 @@ mean(subset(dataframe, age > 18)$score)
 dataframe |> filter(age > 18) |> pull(score) |> mean()
 ```
 
-## The `Tidyverse`{.smaller}
+## The `Tidyverse` {.smaller}
 
 **Core Packages we'll be using**
 
@@ -467,7 +468,7 @@ dataframe |> filter(age > 18) |> pull(score) |> mean()
 -   [**dplyr**](https://dplyr.tidyverse.org): for manipulating data (`filter()`, `select()`, `mutate()`, `summarize()`)
 -   [**ggplot2**](https://ggplot2.tidyverse.org): for data visualization
 
-## The `Tidyverse`{.smaller}
+## The `Tidyverse` {.smaller}
 
 How the packages work together
 
@@ -524,7 +525,7 @@ students %>%
 
 ## Questions?
 
-## File paths and working directories
+## File paths and working directories {.smaller}
 
 To load data, R needs to know where to look
 
@@ -569,7 +570,7 @@ write_csv(results, here("output", "results.csv"))
 
 ```
 
-## Saving and loading data
+## Saving and loading data {.smaller}
 
 You can save dataframes as .csv files using the `write_csv()` function:
 
@@ -589,7 +590,7 @@ You can also read .csv files into dataframes using the `read_csv` function:
 data <- read_csv(here("data", "raw", "mydata.csv"))
 ```
 
-## Other data types
+## Other data types {.smaller}
 
 You can also load Excel files into R
 
@@ -610,7 +611,7 @@ In fact, R can import all types of data files
 
 Googling "import SAS/STATA/SPSS files into R" will point you in the right direction
 
-## Some helpful R commands
+## Some helpful R commands {.smaller}
 
 -   `?[function_name]` brings up a help page
 -   `??[function_name]` will (sometimes) lead to helpful examples of how to use the function
@@ -618,7 +619,7 @@ Googling "import SAS/STATA/SPSS files into R" will point you in the right direct
 -   `rm(object_name)` removes an object
 -   `rm(list=ls())` removes all objects
 
-## Want to know more R tips?
+## Want to know more R tips? {.smaller}
 
 Much of this lecture is based on the first two RFundamentals classes, which are run at the [D-Lab](https://dlab.berkeley.edu/home)
 
@@ -628,7 +629,7 @@ Much of this lecture is based on the first two RFundamentals classes, which are 
 
 ## Questions?
 
-## Anatomy of a `.qmd` File
+## Anatomy of a `.qmd` File {.smaller}
 
 **Three Main Parts**
 
@@ -641,7 +642,7 @@ Much of this lecture is based on the first two RFundamentals classes, which are 
 -   `script.R`: runs only code
 -   `script.qmd`: knits together code and text
 
-## Anatomy of a `.qmd` File
+## Anatomy of a `.qmd` File {.smaller}
 
 1.  YAML Header (metadata)
 
@@ -656,7 +657,7 @@ format: html  # output format (e.g., pdf, docx, html)
 ---
 ```
 
-## Anatomy of a `.qmd` File
+## Anatomy of a `.qmd` File {.smaller}
 
 2.  Markdown Text (narrative)
 
@@ -701,7 +702,7 @@ You can put headers as well to organize your work. They go up to 6 levels:
 | `## Heading 2` | [Heading 2]{style="font-size: 1.5em; font-weight: bold;"} |
 | `### Heading 3` | [Heading 3]{style="font-size: 1.17em; font-weight: bold;"} |
 
-## Anatomy of a `.qmd` File
+## Anatomy of a `.qmd` File {.smaller}
 
 3.  Code Chunks (analysis)
 
@@ -716,7 +717,7 @@ summary(data)
 
 ## Anatomy of a `.qmd` File {.smaller}
 
-So to summarize `.qmd` and `.R` scripts:
+So to summarize `.R` and `.qmd` scripts:
 
 | Feature | `.R` Script | `.qmd` Document |
 |------------------|------------------------|------------------------------|
@@ -757,7 +758,7 @@ format: html        # or pdf, docx
 
 Can format many different formats (e.g., pdf, docx, odt, epubs, pptx)
 
-## Rendering Quarto Documents {.smaller}
+## Rendering Quarto Documents {.smaller .scrollable}
 
 **Source vs Visual Mode**
 
@@ -765,25 +766,32 @@ Positron provides two ways to edit `.qmd` files. Toggle between them using the b
 
 <br>
 
-::::: columns
-::: {.column width="50%"}
-**Source Mode**
 
--   Shows raw markdown syntax
--   See the actual code: `**bold**`, `## Heading`
--   More control over formatting
--   Better for experienced users
-:::
+::: panel-tabset
 
-::: {.column width="50%"}
-**Visual Mode**
+### Visual
+
+**Visual,** which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:
 
 -   WYSIWYG editor (What You See Is What You Get)
 -   Formatting toolbar (like Microsoft Word)
 -   Live preview of how text will look
 -   Easier for beginners
+
+![](images/week2/quarto_script1.png){width="100%,fig-align=\"center\""}
+
+### Source
+
+**Source,** which is the source actual code: 
+
+-   Shows raw markdown syntax
+-   See the actual code: `**bold**`, `## Heading`
+-   More control over formatting
+-   Better for experienced users
+
+![](images/week2/quarto_script2.png){width="100%,fig-align=\"center\""}
+
 :::
-:::::
 
 
 
@@ -817,7 +825,7 @@ Should be fine if you don't do anything fancy and don't mess with quarto setting
 For this week only, I will provide a dataset for you to use on your homework assignment
 
 -   **attain.csv**: data from the General Social Survey
--   in bCourses, Files → Weekly Assignments → HW 1
+-   in bCourses, Assignments → HW# 1
 
 **Turn in your assignment on bCourses**
 
@@ -825,17 +833,19 @@ For this week only, I will provide a dataset for you to use on your homework ass
 -   Turn in **BOTH** `hw1.qmd` and `hw1.html` files
 -   Write code and text response intermittenly in file
 
-## In-class lab{.smaller}
+## In-class lab HW #0 {.smaller}
 
-Let's setup Positron environment for the course! STEPS: 
+Let's follow these steps to Positron environment for the course and complete HW #0!
 
-1. Download `hw_example.qmd` and `attain.csv` from bCourse
-2. Create `soc16` folder on your desktop 
-3. Create `data` and `assignments` folders inside 
+1. Download `hw0.qmd` and `attain.csv` from bCourse under "assignments" >  "HW #0"
+2. Create `soc16` folder on your desktop (or another place if you prefer)
+3. Create `data` and `assignments` folders inside of `soc16`
 4. Data always goes inside data folder and assignment always goes instead `assignment`
-5. Open Positron 
-6. Click the `Open Folder` button and navigate to `soc16`
-7. Allow access, check "Trust the authors..", and click "Yes, ..."
-8. Use `Explorer` button on left to find `hw_example.qmd`
-9. Check `Render on Save` button and hit preview
-10. If `Viewer` frame opens with html file  - SUCCESS!
+5. Open Positron, click the `Open Folder` button and navigate to `soc16`
+6. Allow access, check "Trust the authors..", and click "Yes, ..."
+7. Use `Explorer` button on left to find `hw0.qmd`
+8. Check `Render on Save` button
+9. Replace "Karl Marx" with your name -- make sure to keep it in "quotes"
+10. Save and hit "Preview"
+11. If `Viewer` frame opens as an html file and you see you name - SUCCESS!
+12. Navigate back to bCourse and upload both `hw0.qmd` and `hw0.html` files

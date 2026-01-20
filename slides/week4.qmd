@@ -9,7 +9,6 @@ format:
     chalkboard: 
       buttons: false
     preview-links: auto
-    #logo: berkeley_logo.png
     css: slides.css
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
@@ -668,11 +667,10 @@ Use the results of the marginal frequency tables
 
 ```{r}
 #| echo: true
-#| eval: false
 
 # Covariance
-attain %>%
-  summarize(covariance = cov(educ, income91, use = "complete.obs")) |> 
+attain %>% 
+  summarize(covariance = cov(rincom91, income91, use = "complete.obs")) |> 
   glimpse()
 
 ```
@@ -682,11 +680,10 @@ attain %>%
 
 ```{r}
 #| echo: true
-#| eval: false
 
 # Correlation coefficient
 attain %>%
-  summarize(correlation = cor(educ, income91, use = "complete.obs"))
+  summarize(correlation = cor(rincom91, income91, use = "complete.obs"))
 
 ```
 :::
