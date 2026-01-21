@@ -208,8 +208,8 @@
 <h2>Housekeeping</h2>
 <p><strong>Office hours this week</strong></p>
 <ul>
-<li><strong>Tuesdays</strong>, right before 11:30 AM-1:00 PM, TBA</li>
-<li><strong>Tuesdays</strong>, right after class, until 4:30 PM, TBA
+<li><strong>Tuesdays</strong>, 11:30 AM-1:00 PM, 444 Social Science Buliding</li>
+<li><strong>Tuesdays</strong>, 4:00 PM-4:30 PM, 444 Social Science Buliding
 <ul>
 <li>Sign up at <a href="https://www.wejoinin.com/kaseyzapatka@berkeley.edu" class="uri">https://www.wejoinin.com/kaseyzapatka@berkeley.edu</a></li>
 </ul></li>
@@ -222,41 +222,84 @@
 <ol type="1">
 <li>Gain some familiarity with R and Positron</li>
 <li>Develop basic proficiency with R and Positron</li>
-<li>Write, run, and troubleshoot R scripts using proper syntax and R’s help tools</li>
 <li>Understand core data concepts: variable types, logical operators, and common data structures</li>
-<li>Import, manipulate, and export data using fundamental R` commands</li>
 <li>Understand what the <code>Tidyverse</code> is and how it differs from base R</li>
+<li>Import, manipulate, and export data using fundamental R commands</li>
 <li>Prepare and submit homework assignments using <a href="https://quarto.org">Quarto</a></li>
 </ol>
-</section>
-<section id="exploring-r-and-positron" class="slide level2 smaller">
-<h2>Exploring R and Positron</h2>
-<p><strong>R and positron are very powerful</strong></p>
-<ul>
-<li>Today may seem like a lot if you haven’t had much programming experience</li>
-<li>Please stop me if you are not sure you understand—you are probably not the only one!</li>
-<li>Helpful if you can follow along in Positron</li>
-</ul>
 <p><strong>Programming goals for today:</strong></p>
 <ul>
-<li>Basics of using R (through Positron)</li>
+<li>Basics of using R and Positron</li>
 <li>How to load data</li>
 <li>How to complete homework</li>
 </ul>
 </section>
-<section id="positron" class="slide level2 smaller">
-<h2>Positron</h2>
+<section id="what-is-positron" class="slide level2 smaller">
+<h2>What is Positron?</h2>
+<p><strong>Positron</strong> is an Integrated Development Environment (IDE)—a complete workspace for writing, testing, and managing code in one window.</p>
+<div class="fragment fade-up">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>An IDE provides:</strong></p>
 <ul>
-<li>Open sourced Integrated Development Environment (IDE)</li>
-<li>Developed by Posit and descendent of R-studio</li>
-<li>Specifically designed to use R and Python interchangeably</li>
-<li>Tons of custom extensions - e.g., <a href="https://open-vsx.org/extension/posit/air-vscode">air</a>, <a href="https://open-vsx.org/extension/eamodio/gitlens">gitlens</a>, <a href="https://open-vsx.org/extension/quarto/quarto">quarto</a>, <a href="https://open-vsx.org/extension/ms-azuretools/vscode-docker">docker</a></li>
-<li>Check out the <a href="https://open-vsx.org/?search=docker&amp;sortBy=relevance&amp;sortOrder=desc">registry for extensions</a> to see if there are any that you might want to add</li>
-<li>Can be used for data science, web apps, websites, books, etc.</li>
+<li>Code editor with syntax highlighting</li>
+<li>Console/terminal to run code</li>
+<li>File browser for your projects</li>
+<li>Debugging tools</li>
+<li>Version control (Git)</li>
 </ul>
-<p>Check out <a href="https://www.andrewheiss.com/blog/2024/07/08/fun-with-positron/#my-extensions">Andres Heiss’ blog</a> for more fun things</p>
+</div><div class="column" style="width:50%;">
+<p><strong>About Positron:</strong></p>
+<ul>
+<li>Open-source</li>
+<li>Developed by Posit (creators of RStudio)</li>
+<li>Next-generation descendant of RStudio</li>
+<li>Designed for R and Python</li>
+</ul>
+</div></div>
+</div>
 </section>
-<section id="positron-1" class="slide level2 smaller">
+<section id="why-positron" class="slide level2 smaller">
+<h2>Why Positron?</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Bilingual</a></li><li><a href="#tabset-1-2">Modern &amp; Flexible</a></li><li><a href="#tabset-1-3">Extensible</a></li><li><a href="#tabset-1-4">Applications</a></li><li><a href="#tabset-1-5">Learn More</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ul>
+<li>Work with R and Python in the same environment</li>
+<li>No need to switch between different IDEs</li>
+</ul>
+</div>
+<div id="tabset-1-2">
+<ul>
+<li>Streamlined workflow for data science</li>
+<li>Easy to switch between tasks</li>
+</ul>
+</div>
+<div id="tabset-1-3">
+<p>Key extensions:</p>
+<ul>
+<li><a href="https://open-vsx.org/extension/posit/air-vscode">air</a> (formatting code)</li>
+<li><a href="https://open-vsx.org/extension/eamodio/gitlens">GitLens</a> (Git)</li>
+<li><a href="https://open-vsx.org/extension/quarto/quarto">Quarto</a> (publishing)</li>
+<li><a href="https://open-vsx.org/extension/ms-azuretools/vscode-docker">Docker</a> (websites)</li>
+</ul>
+<p>Browse more at <a href="https://open-vsx.org/">Open VSX Registry</a></p>
+</div>
+<div id="tabset-1-4">
+<ul>
+<li>Data science and analysis</li>
+<li>Web applications and websites</li>
+<li>Books and technical documentation</li>
+</ul>
+</div>
+<div id="tabset-1-5">
+<p><a href="https://www.andrewheiss.com/blog/2024/07/08/fun-with-positron/#my-extensions">Andrew Heiss’ blog</a> for tips and use cases</p>
+</div>
+</div>
+</div>
+</section>
+<section id="positron" class="slide level2 smaller">
 <h2>Positron</h2>
 <div class="columns">
 <div class="column" style="width:20%;">
@@ -282,30 +325,30 @@
 <h2>Object Panel</h2>
 
 <img data-src="images/week2/object_panel.png" class="r-stretch"></section>
-<section id="positron-2" class="slide level2">
+<section id="positron-1" class="slide level2">
 <h2>Positron</h2>
-<p>Let’s explore Positron together:</p>
+<p>Let’s explore Positron together on your laptop:</p>
 <ul>
-<li>File explorer</li>
-<li>Terminal (command line)</li>
-<li>Interpreter and Folder</li>
-<li>New file</li>
-<li>Open</li>
-<li>Viewer</li>
+<li class="fragment">File explorer</li>
+<li class="fragment">Terminal (command line)</li>
+<li class="fragment">Interpreter and Folder</li>
+<li class="fragment">New file</li>
+<li class="fragment">Open</li>
+<li class="fragment">Viewer</li>
 </ul>
 </section>
 <section id="writing-with-script.r" class="slide level2 smaller scrollable">
 <h2>Writing with <code>script.R</code></h2>
 <p><strong>Best practice to write all code in a script file</strong></p>
 <ul>
-<li>Reproducible code</li>
-<li>Documents exactly what you have done</li>
-<li>Allows you to easily correct mistakes</li>
+<li class="fragment">Reproducible code</li>
+<li class="fragment">Documents exactly what you have done</li>
+<li class="fragment">Allows you to easily correct mistakes</li>
 </ul>
 <p><strong>Two types of files we’ll work with</strong></p>
 <ul>
-<li><strong>R files (<code>.R</code>):</strong> accept R code and are very similar to text files except that they read R code.</li>
-<li><strong>Quarto files (<code>.qmd</code>):</strong> allow to intersperse R/Python (other languages too!) with text. It’s great for putting text next to analysis.</li>
+<li class="fragment"><strong>R files (<code>.R</code>):</strong> accept R code and are very similar to text files except that they read R code.</li>
+<li class="fragment"><strong>Quarto files (<code>.qmd</code>):</strong> allow to intersperse R/Python (other languages too!) with text. It’s great for putting text next to analysis.</li>
 </ul>
 </section>
 <section id="writing-with-script.r-1" class="slide level2 smaller">
@@ -326,8 +369,8 @@
 <h2>Writing with <code>script.R</code></h2>
 <p><strong>Running code:</strong></p>
 <ul>
-<li>Windows: highlight the entire line, and hit <code>Ctrl + r</code></li>
-<li>Mac: cursor on line, hit <code>command + return</code></li>
+<li>Mac: cursor on line, hit <code>Command + Return</code></li>
+<li>Windows: highlight the entire line, and hit <code>Ctrl + Enter</code></li>
 </ul>
 </section>
 <section id="variable-assignment-in-script.r" class="slide level2 smaller">
@@ -369,7 +412,7 @@
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Overwriting the variable</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Overwriting that assignment</span></span>
 <span id="cb6-2"><a></a>my_variable <span class="ot">&lt;-</span> <span class="dv">20</span></span>
 <span id="cb6-3"><a></a>my_variable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -377,7 +420,7 @@
 </div>
 </div>
 </section>
-<section id="types-of-variables-numeric" class="slide level2">
+<section id="types-of-variables-numeric" class="slide level2 smaller">
 <h2>Types of variables: numeric</h2>
 <p><strong>Numeric variables</strong> can store any real numbers and you can perform standard mathematical operations on numeric variables:</p>
 <div class="cell">
@@ -402,7 +445,7 @@
 </div>
 </div>
 </section>
-<section id="types-of-variables-character" class="slide level2">
+<section id="types-of-variables-character" class="slide level2 smaller">
 <h2>Types of variables: character</h2>
 <p><strong>Character variables</strong> can store any text, and are always contained within quotation marks.</p>
 <div class="cell">
@@ -416,7 +459,7 @@
 </div>
 </div>
 </section>
-<section id="types-of-variables-boolean" class="slide level2">
+<section id="types-of-variables-boolean" class="slide level2 smaller">
 <h2>Types of variables: boolean</h2>
 <p><strong>Boolean variables</strong> are stored as <code>TRUE</code> or <code>FALSE</code>, which R stores as 1 or 0</p>
 <p>So, in essence, R stores boolean variables as numeric variables</p>
@@ -435,23 +478,13 @@
 </div>
 </div>
 </section>
-<section id="converting-variable-types" class="slide level2">
+<section id="converting-variable-types" class="slide level2 smaller">
 <h2>Converting variable types</h2>
 <p>Under certain circumstances, we can force R to change the type that it classifies a vector</p>
+<div class="fragment fade-up">
 <ul>
 <li>Can always convert numeric → character using the <code>as.character</code> function</li>
-<li>Can convert character → numeric, if the original character vector consists of numbers, using the <code>as.numeric</code> function
-<ul>
-<li>If it contains characters, then <strong>WE PROB DON’T WANT TO!</strong></li>
-</ul></li>
 </ul>
-
-<aside><div>
-<p>If you see a <code>.</code> in a function name like <code>as.numeric</code>, it is likely base R.</p>
-</div></aside></section>
-<section id="converting-variable-types-1" class="slide level2">
-<h2>Converting variable types</h2>
-<p>Here’s what it looks like R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># Numeric to character</span></span>
 <span id="cb22-2"><a></a>num_var <span class="ot">&lt;-</span> <span class="dv">42</span></span>
@@ -460,12 +493,20 @@
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "42"</code></pre>
 </div>
+</div>
+</div>
+<div class="fragment fade-up">
+<ul>
+<li>Can convert character → numeric, but only if the original character vector consists of numbers, using the <code>as.numeric</code> function</li>
+</ul>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># Character to numeric</span></span>
 <span id="cb24-2"><a></a>text_num <span class="ot">&lt;-</span> <span class="st">"123"</span></span>
 <span id="cb24-3"><a></a>converted_num <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(text_num)</span>
 <span id="cb24-4"><a></a>converted_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 123</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -577,16 +618,16 @@
 <li>using the <a href="https://tidyverse.org">Tidyverse:</a> <code>nth()</code></li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Base R</a></li><li><a href="#tabset-1-2">Tidyverse</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Base R</a></li><li><a href="#tabset-2-2">Tidyverse</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1">
-<p>Use bracket at end of vector name with index</p>
-<p>The first element of a vector is indexed as 1.</p>
+<div id="tabset-2-1">
+<p>Use bracket at end of vector name with index, with first element indexed as 1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">19</span>, <span class="dv">30</span>)</span>
-<span id="cb37-2"><a></a></span>
-<span id="cb37-3"><a></a><span class="co"># Get the first element</span></span>
-<span id="cb37-4"><a></a>ages[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="co"># create a vector of values</span></span>
+<span id="cb37-2"><a></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">19</span>, <span class="dv">30</span>)</span>
+<span id="cb37-3"><a></a></span>
+<span id="cb37-4"><a></a><span class="co"># Get the first element</span></span>
+<span id="cb37-5"><a></a>ages[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 22</code></pre>
 </div>
@@ -602,20 +643,19 @@
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
-<p>Use <code>nth()</code> function to do the same thing more intuitively</p>
-<p>Still need Base R to do some things</p>
+<div id="tabset-2-2">
+<p>Use <code>nth()</code> function to do the same thing, but still need indexing sometimes</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="co"># load the Tidyverse library</span></span>
 <span id="cb43-2"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb43-3"><a></a></span>
 <span id="cb43-4"><a></a><span class="co"># Get the first element</span></span>
-<span id="cb43-5"><a></a><span class="fu">nth</span>(ages, <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-5"><a></a><span class="fu">nth</span>(ages, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 22</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="co"># Get the third element</span></span>
-<span id="cb45-2"><a></a><span class="fu">nth</span>(ages, <span class="dv">3</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-2"><a></a><span class="fu">nth</span>(ages, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 19</code></pre>
 </div>
@@ -631,11 +671,46 @@
 </section>
 <section id="dataframes" class="slide level2 smaller">
 <h2>Dataframes</h2>
-<p>A dataframe is a list of equal-length vectors</p>
+<p>A dataframe is a list of equal-length vectors, in this course, we’ll focus on using <strong>tidy dataframe</strong>, which organize data so that:</p>
+<div class="fragment fade-up">
 <ul>
-<li><strong>Equal length</strong>: same # elements in each vector</li>
-<li>But, vectors can be of different types!</li>
+<li>Each <strong>column</strong> is a variable</li>
+<li>Each <strong>row</strong> is an observation</li>
 </ul>
+<table class="table-striped caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>name</th>
+<th>age</th>
+<th>enrolled</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Obs 1</td>
+<td>Alice</td>
+<td>22</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>Obs 2</td>
+<td>Bob</td>
+<td>25</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>Obs 3</td>
+<td>Charlie</td>
+<td>19</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="creating-tidy-dataframes" class="slide level2 smaller">
+<h2>Creating Tidy Dataframes</h2>
 <p>We create a dataframe using the <code>tibble</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>students <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
@@ -658,8 +733,8 @@
 <aside><div>
 <p><code>stringsAsFactors=FALSE</code> makes sure that character vectors remain in character type and are not converted to factor type (which we may talk about later in the course).</p>
 </div></aside></section>
-<section id="learning-about-dataframes" class="slide level2 smaller">
-<h2>Learning about dataframes</h2>
+<section id="inspecting-dataframes" class="slide level2 smaller">
+<h2>Inspecting dataframes</h2>
 <ul>
 <li><code>glimpse()</code>: view data and summary info of dataframe</li>
 <li><code>head()</code>: looks at first few observations (similar to <code>print()</code>)</li>
@@ -667,9 +742,9 @@
 <li><code>colnames()</code>: returns column names</li>
 </ul>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">glimpse()</a></li><li><a href="#tabset-2-2">head()</a></li><li><a href="#tabset-2-3">str()</a></li><li><a href="#tabset-2-4">colnames()</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">glimpse()</a></li><li><a href="#tabset-3-2">head()</a></li><li><a href="#tabset-3-3">str()</a></li><li><a href="#tabset-3-4">colnames()</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-3-1">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">glimpse</span>(students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -682,7 +757,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-3-2">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">head</span>(students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -695,7 +770,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-2-3">
+<div id="tabset-3-3">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">str</span>(students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -707,7 +782,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-2-4">
+<div id="tabset-3-4">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">colnames</span>(students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -717,6 +792,86 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="questions-1" class="slide level2">
+<h2>Questions?</h2>
+</section>
+<section id="file-paths-and-working-directories" class="slide level2 smaller">
+<h2>File paths and working directories</h2>
+<p>To load data, R needs to know where to look</p>
+<ul>
+<li>Need to give it directions</li>
+<li>The file path: <code>"file/path/to/data.csv"</code></li>
+</ul>
+<p><strong>The Problem</strong></p>
+<ul>
+<li>Work on different operating systems or different computers?</li>
+<li>But what if you move data?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="co"># These break on different computers or operating systems:</span></span>
+<span id="cb59-2"><a></a><span class="fu">read_csv</span>(<span class="st">"C:\Users\YourName\Documents\project\data\mydata.csv"</span>) <span class="co"># windows</span></span>
+<span id="cb59-3"><a></a><span class="fu">read_csv</span>(<span class="st">"~/Desktop/project/data/mydata.csv"</span>)                   <span class="co"># mac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-here-package" class="slide level2 smaller scrollable">
+<h2>The <code>here</code> Package</h2>
+<p><strong>What is it?</strong> The <a href="https://here.r-lib.org"><code>here</code></a> package helps you build file paths that work across different computers and operating systems, making your code more reproducible.</p>
+<p><strong>How It Works</strong></p>
+<ul>
+<li><code>here()</code> finds your project root (where your project is located)</li>
+<li>Default to whatever you open in Positron (why we use it)</li>
+<li>Builds paths relative to that root with each <code>"folder_name"</code> as a subfolder</li>
+<li>Works the same on Windows, Mac, and Linux</li>
+</ul>
+<p><strong>The Solution</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="co"># load library</span></span>
+<span id="cb60-2"><a></a><span class="fu">library</span>(here)</span>
+<span id="cb60-3"><a></a></span>
+<span id="cb60-4"><a></a><span class="co"># Check where here thinks your project root is</span></span>
+<span id="cb60-5"><a></a><span class="fu">here</span>()</span>
+<span id="cb60-6"><a></a></span>
+<span id="cb60-7"><a></a><span class="co"># Loading data</span></span>
+<span id="cb60-8"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"mydata.csv"</span>))</span>
+<span id="cb60-9"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data/raw/mydata.csv"</span>))</span>
+<span id="cb60-10"><a></a></span>
+<span id="cb60-11"><a></a><span class="co"># Saving results</span></span>
+<span id="cb60-12"><a></a><span class="fu">write_csv</span>(results, <span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"results.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="saving-and-loading-data" class="slide level2 smaller">
+<h2>Saving and loading data</h2>
+<p>You can save dataframes as .csv files using the <code>write_csv()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="co"># save data</span></span>
+<span id="cb61-2"><a></a><span class="co">#write_csv(object, filepath)</span></span>
+<span id="cb61-3"><a></a><span class="fu">write_csv</span>(results, <span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"results.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can also read .csv files into dataframes using the <code>read_csv</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a><span class="co"># load data</span></span>
+<span id="cb62-2"><a></a><span class="co">#read_csv(filepath)</span></span>
+<span id="cb62-3"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"mydata.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="other-data-types" class="slide level2 smaller">
+<h2>Other data types</h2>
+<p>You can also load Excel files into R</p>
+<p>First, load the <a href="https://readxl.tidyverse.org"><code>readxl</code></a> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, use the <code>read_excel</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a><span class="co"># load</span></span>
+<span id="cb64-2"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"file_name.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In fact, R can import all types of data files</p>
+<p>Googling “import SAS/STATA/SPSS files into R” will point you in the right direction</p>
+</section>
+<section id="questions-2" class="slide level2">
+<h2>Questions?</h2>
 </section>
 <section id="the-tidyverse" class="slide level2 smaller">
 <h2>The <code>Tidyverse</code></h2>
@@ -735,15 +890,15 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <li><strong>Consistent syntax</strong>: functions work similarly across packages</li>
 <li><strong>Human-readable</strong>: code reads like sentences</li>
 </ul>
-<div class="sourceCode" id="cb59" data-code-line-numbers="5|9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="co"># |eval=FALSE</span></span>
-<span id="cb59-2"><a></a><span class="co"># |echo=TRUE</span></span>
-<span id="cb59-3"><a></a></span>
-<span id="cb59-4"><a></a><span class="co"># Base R</span></span>
-<span id="cb59-5"><a></a><span class="fu">mean</span>(<span class="fu">subset</span>(dataframe, age <span class="sc">&gt;</span> <span class="dv">18</span>)<span class="sc">$</span>score)</span>
-<span id="cb59-6"><a></a>  </span>
-<span id="cb59-7"><a></a><span class="co"># Tidyverse - "take dataframe, filter where age &gt; 18, </span></span>
-<span id="cb59-8"><a></a><span class="co"># then pull score, then calculate mean"</span></span>
-<span id="cb59-9"><a></a>dataframe <span class="sc">|&gt;</span> <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(score) <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb65" data-code-line-numbers="5|9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="co"># |eval=FALSE</span></span>
+<span id="cb65-2"><a></a><span class="co"># |echo=TRUE</span></span>
+<span id="cb65-3"><a></a></span>
+<span id="cb65-4"><a></a><span class="co"># Base R</span></span>
+<span id="cb65-5"><a></a><span class="fu">mean</span>(<span class="fu">subset</span>(dataframe, age <span class="sc">&gt;</span> <span class="dv">18</span>)<span class="sc">$</span>score)</span>
+<span id="cb65-6"><a></a></span>
+<span id="cb65-7"><a></a><span class="co"># Tidyverse - "take dataframe, filter where age &gt; 18,</span></span>
+<span id="cb65-8"><a></a><span class="co"># then pull score, then calculate mean"</span></span>
+<span id="cb65-9"><a></a>dataframe <span class="sc">|&gt;</span> <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(score) <span class="sc">|&gt;</span> <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="the-tidyverse-2" class="slide level2 smaller">
 <h2>The <code>Tidyverse</code></h2>
@@ -757,32 +912,32 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <section id="the-tidyverse-3" class="slide level2 smaller">
 <h2>The <code>Tidyverse</code></h2>
 <p>How the packages work together</p>
-<div class="sourceCode" id="cb60" data-code-line-numbers="5|8|11|14-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="co"># |eval=FALSE</span></span>
-<span id="cb60-2"><a></a><span class="co"># |echo=TRUE</span></span>
-<span id="cb60-3"><a></a></span>
-<span id="cb60-4"><a></a><span class="co"># Install (only once)</span></span>
-<span id="cb60-5"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co"># install library</span></span>
-<span id="cb60-6"><a></a></span>
-<span id="cb60-7"><a></a><span class="co"># Load library</span></span>
-<span id="cb60-8"><a></a><span class="fu">library</span>(tidyverse) <span class="co"># load library</span></span>
-<span id="cb60-9"><a></a></span>
-<span id="cb60-10"><a></a><span class="co"># Load data</span></span>
-<span id="cb60-11"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data.csv"</span>) <span class="co"># read in csv</span></span>
-<span id="cb60-12"><a></a></span>
-<span id="cb60-13"><a></a><span class="co"># Process</span></span>
-<span id="cb60-14"><a></a>data <span class="sc">|&gt;</span></span>
-<span id="cb60-15"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span>  <span class="co"># filter rows based on conditions</span></span>
-<span id="cb60-16"><a></a>  <span class="fu">select</span>(name, score)  <span class="sc">|&gt;</span>  <span class="co"># select specific columns</span></span>
-<span id="cb60-17"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(score)) <span class="sc">|&gt;</span>  <span class="co"># order columns</span></span>
-<span id="cb60-18"><a></a>  <span class="fu">glimpse</span>()                <span class="co"># glimpse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66" data-code-line-numbers="5|8|11|14-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a><span class="co"># |eval=FALSE</span></span>
+<span id="cb66-2"><a></a><span class="co"># |echo=TRUE</span></span>
+<span id="cb66-3"><a></a></span>
+<span id="cb66-4"><a></a><span class="co"># Install (only once)</span></span>
+<span id="cb66-5"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co"># install library</span></span>
+<span id="cb66-6"><a></a></span>
+<span id="cb66-7"><a></a><span class="co"># Load library</span></span>
+<span id="cb66-8"><a></a><span class="fu">library</span>(tidyverse) <span class="co"># load library</span></span>
+<span id="cb66-9"><a></a></span>
+<span id="cb66-10"><a></a><span class="co"># Load data</span></span>
+<span id="cb66-11"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data.csv"</span>) <span class="co"># read in csv</span></span>
+<span id="cb66-12"><a></a></span>
+<span id="cb66-13"><a></a><span class="co"># Process</span></span>
+<span id="cb66-14"><a></a>data <span class="sc">|&gt;</span></span>
+<span id="cb66-15"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span>  <span class="co"># filter rows based on conditions</span></span>
+<span id="cb66-16"><a></a>  <span class="fu">select</span>(name, score)  <span class="sc">|&gt;</span>  <span class="co"># select specific columns</span></span>
+<span id="cb66-17"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(score)) <span class="sc">|&gt;</span>  <span class="co"># order columns</span></span>
+<span id="cb66-18"><a></a>  <span class="fu">glimpse</span>()                <span class="co"># glimpse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="keys-functions" class="slide level2 smaller">
-<h2>Keys functions</h2>
+<section id="key-functions" class="slide level2 smaller scrollable">
+<h2>Key functions</h2>
 <table class="caption-top">
 <colgroup>
+<col style="width: 26%">
 <col style="width: 36%">
-<col style="width: 31%">
-<col style="width: 31%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -832,21 +987,26 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <td>Create/modify columns</td>
 <td><code>df |&gt; mutate(age_2x = age * 2)</code></td>
 </tr>
+<tr class="odd">
+<td><code>rename()</code></td>
+<td>Rename columns</td>
+<td><code>df |&gt; rename(new = old)</code></td>
+</tr>
 </tbody>
 </table>
 </section>
 <section id="key-functions-in-action" class="slide level2 smaller">
 <h2>Key functions in action</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="co"># Access a column</span></span>
-<span id="cb61-2"><a></a>students <span class="sc">|&gt;</span> <span class="fu">colnames</span>() <span class="co"># get column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="co"># Access a column</span></span>
+<span id="cb67-2"><a></a>students <span class="sc">|&gt;</span> <span class="fu">colnames</span>() <span class="co"># get column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "name"             "age"              "enrolled"         "stringsAsFactors"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="co"># Access specific rows and columns</span></span>
-<span id="cb63-2"><a></a>students <span class="sc">%&gt;%</span> </span>
-<span id="cb63-3"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">%&gt;%</span>       <span class="co"># select rows</span></span>
-<span id="cb63-4"><a></a>  <span class="fu">select</span>(name, age)    <span class="co"># select columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a><span class="co"># Access specific rows and columns</span></span>
+<span id="cb69-2"><a></a>students <span class="sc">%&gt;%</span></span>
+<span id="cb69-3"><a></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">%&gt;%</span>       <span class="co"># select rows</span></span>
+<span id="cb69-4"><a></a>  <span class="fu">select</span>(name, age)    <span class="co"># select columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   name    age
@@ -854,9 +1014,9 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 1 Alice    22
 2 Bob      25</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="co"># Subset based on condition</span></span>
-<span id="cb65-2"><a></a>students <span class="sc">%&gt;%</span> </span>
-<span id="cb65-3"><a></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">20</span>)     <span class="co"># filter rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="co"># Subset based on condition</span></span>
+<span id="cb71-2"><a></a>students <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span> <span class="dv">20</span>)     <span class="co"># filter rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   name    age enrolled stringsAsFactors
@@ -866,80 +1026,26 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </div>
 </div>
 </section>
-<section id="questions-1" class="slide level2">
+<section id="questions-3" class="slide level2">
 <h2>Questions?</h2>
 </section>
-<section id="file-paths-and-working-directories" class="slide level2 smaller">
-<h2>File paths and working directories</h2>
-<p>To load data, R needs to know where to look</p>
-<ul>
-<li>Need to give it directions</li>
-<li>The file path: <code>"file/path/to/data.csv"</code></li>
-</ul>
-<p><strong>The Problem</strong></p>
-<ul>
-<li>Work on different operating systems or different computers?</li>
-<li>But what if you move data?</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="co"># These break on different computers or operating systems:</span></span>
-<span id="cb67-2"><a></a><span class="fu">read_csv</span>(<span class="st">"C:\Users\YourName\Documents\project\data\mydata.csv"</span>) <span class="co"># windows</span></span>
-<span id="cb67-3"><a></a><span class="fu">read_csv</span>(<span class="st">"~/Desktop/project/data/mydata.csv"</span>)                   <span class="co"># mac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="tidyverse-in-practice-attain-data" class="slide level2 smaller">
+<h2>Tidyverse in Practice: <code>attain</code> Data</h2>
+<p>Let’s practice some of these commands together using the <code>attain</code> data we’ll be using for our homework.</p>
+<p>Follow these steps to get set up so we can follow along:</p>
+<ol type="1">
+<li>Download <code>lab1.qmd</code> and <code>attain.csv</code> from bCourse under “labs” &gt; “Lab #1”</li>
+<li>Create <code>soc16</code> folder on your desktop (or another place if you prefer)</li>
+<li>Create <code>data</code> and <code>lab</code> folders inside of <code>soc16</code></li>
+<li>Data always goes inside data folder and assignment always goes instead <code>lab</code></li>
+<li>Open Positron, click the <code>Open Folder</code> button and navigate to <code>soc16</code></li>
+<li>Allow access, check “Trust the authors..”, and click “Yes, …”</li>
+<li>Use <code>Explorer</code> button on left to find <code>lab1.qmd</code></li>
+</ol>
+<p><strong>Now you’re ready to code along with me!</strong></p>
 </section>
-<section id="the-here-package" class="slide level2 smaller">
-<h2>The <code>here</code> Package</h2>
-<p><strong>What is it?</strong> The <a href="https://here.r-lib.org"><code>here</code></a> package helps you build file paths that work across different computers and operating systems, making your code more reproducible.</p>
-<p><strong>How It Works</strong></p>
-<ul>
-<li><code>here()</code> finds your project root (where your project is located)</li>
-<li>Builds paths relative to that root</li>
-<li>Works the same on Windows, Mac, and Linux</li>
-</ul>
-<p><strong>The Solution</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a><span class="co"># load library</span></span>
-<span id="cb68-2"><a></a><span class="fu">library</span>(here)</span>
-<span id="cb68-3"><a></a></span>
-<span id="cb68-4"><a></a><span class="co"># Check where here thinks your project root is</span></span>
-<span id="cb68-5"><a></a><span class="fu">here</span>()</span>
-<span id="cb68-6"><a></a></span>
-<span id="cb68-7"><a></a><span class="co"># Loading data </span></span>
-<span id="cb68-8"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"mydata.csv"</span>))</span>
-<span id="cb68-9"><a></a></span>
-<span id="cb68-10"><a></a><span class="co"># Saving results</span></span>
-<span id="cb68-11"><a></a><span class="fu">write_csv</span>(results, <span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"results.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="saving-and-loading-data" class="slide level2 smaller">
-<h2>Saving and loading data</h2>
-<p>You can save dataframes as .csv files using the <code>write_csv()</code> function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a><span class="co"># save data</span></span>
-<span id="cb69-2"><a></a><span class="co">#write_csv(object, filepath)</span></span>
-<span id="cb69-3"><a></a><span class="fu">write_csv</span>(results, <span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"results.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You can also read .csv files into dataframes using the <code>read_csv</code> function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a><span class="co"># load data</span></span>
-<span id="cb70-2"><a></a><span class="co">#read_csv(filepath)</span></span>
-<span id="cb70-3"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"mydata.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="other-data-types" class="slide level2 smaller">
-<h2>Other data types</h2>
-<p>You can also load Excel files into R</p>
-<p>First, load the <a href="https://readxl.tidyverse.org"><code>readxl</code></a> package:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then, use the <code>read_excel</code> function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a><span class="co"># load</span></span>
-<span id="cb72-2"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"file_name.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In fact, R can import all types of data files</p>
-<p>Googling “import SAS/STATA/SPSS files into R” will point you in the right direction</p>
+<section id="questions-4" class="slide level2">
+<h2>Questions?</h2>
 </section>
 <section id="some-helpful-r-commands" class="slide level2 smaller">
 <h2>Some helpful R commands</h2>
@@ -951,16 +1057,19 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <li><code>rm(list=ls())</code> removes all objects</li>
 </ul>
 </section>
-<section id="want-to-know-more-r-tips" class="slide level2 smaller">
-<h2>Want to know more R tips?</h2>
-<p>Much of this lecture is based on the first two RFundamentals classes, which are run at the <a href="https://dlab.berkeley.edu/home">D-Lab</a></p>
+<section id="want-to-know-more-r" class="slide level2 smaller">
+<h2>Want to know more R?</h2>
+<p>Lecture is based on the first two RFundamentals classes, which are run at the <a href="https://dlab.berkeley.edu/home">D-Lab</a></p>
 <ul>
-<li><strong>D-Lab trainings</strong>: <a href="https://dlab.berkeley.edu/training" class="uri">https://dlab.berkeley.edu/training</a></li>
+<li><strong>D-Lab trainings</strong>: <a href="https://dlab.berkeley.edu/training" class="uri">https://dlab.berkeley.edu/training</a>
+<ul>
 <li>If you want to see the RFundamentals class notes: <a href="https://github.com/dlab-berkeley/R-Fundamentals" class="uri">https://github.com/dlab-berkeley/R-Fundamentals</a></li>
+<li><a href="https://dlab.my.salesforce-sites.com/events/event/home/rdatavis20260211">R Data Visualization workshop</a> on Feb 11, 2026</li>
+</ul></li>
 <li>Otherwise: Google is your friend!</li>
 </ul>
 </section>
-<section id="questions-2" class="slide level2">
+<section id="questions-5" class="slide level2">
 <h2>Questions?</h2>
 </section>
 <section id="anatomy-of-a-.qmd-file" class="slide level2 smaller">
@@ -1168,9 +1277,9 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 <p>Positron provides two ways to edit <code>.qmd</code> files. Toggle between them using the buttons at the top-left of your editor.</p>
 <p><br></p>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Visual</a></li><li><a href="#tabset-3-2">Source</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Visual</a></li><li><a href="#tabset-4-2">Source</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-4-1">
 <p><strong>Visual,</strong> which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:</p>
 <ul>
 <li>WYSIWYG editor (What You See Is What You Get)</li>
@@ -1180,7 +1289,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </ul>
 <p><img data-src="images/week2/quarto_script1.png"></p>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-4-2">
 <p><strong>Source,</strong> which is the source actual code:</p>
 <ul>
 <li>Shows raw markdown syntax</li>
@@ -1228,7 +1337,7 @@ $ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE</code></pre>
 </ul>
 <p><strong>Turn in your assignment on bCourses</strong></p>
 <ul>
-<li><strong>HW #1:</strong> due Thursday, February 5, 11:59 PM</li>
+<li><a href="https://bcourses.berkeley.edu/courses/1551992/assignments/9023060"><strong>HW #1:</strong> due Thursday, February 5, 11:59 PM</a></li>
 <li>Turn in <strong>BOTH</strong> <code>hw1.qmd</code> and <code>hw1.html</code> files</li>
 <li>Write code and text response intermittenly in file</li>
 </ul>
