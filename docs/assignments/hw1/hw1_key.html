@@ -3959,30 +3959,31 @@ Submission Instructions
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Download this .qmd file and the <code>attain.csv</code> data file from bCourse</li>
-<li>Save both files in the same folder on your computer</li>
+<li>Download this <code>hw1.qmd</code> file and the <code>attain.csv</code> data file from bCourse</li>
+<li>Save the <code>hw1.qmd</code> file in the assignments folder and .csv in the data folder</li>
 <li>Complete all questions by writing your code in the provided code chunks</li>
 <li>Click the “Render” button at the top of Positron to generate an HTML file</li>
-<li>Submit BOTH the .qmd file AND the .html file to bCourse before the deadline</li>
+<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline</li>
 <li>Make sure your name appears in the “author” field in the YAML header above</li>
 </ol>
 </div>
 </div>
 <section id="instructions" class="level2">
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Complete all questions below, writing your code in the code chunks provided. Replace <code># Your code here</code> with your actual code. Make sure your document renders without errors before submitting.</p>
+<p>Complete all questions below, writing your code in the code chunks provided. Replace <code># Your code here</code> lines with your actual code. Make sure your document renders without errors before submitting.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear environment</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install libraries -- shouldn&#39;t need for this assignment</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install libraries -- you might need to install these libraries if you haven&#39;t yet</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tidyverse&quot;)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;here&quot;)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -4003,7 +4004,7 @@ Submission Instructions
 </section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p>Load the data file <code>attain.csv</code> into R using the <code>read_csv</code> function (the code has already been provide but make sure it runs!) Be sure to use the <code>here()</code> library to ensure a relative file path and that the data is saved in the “data” folder. Once you’ve loaded it, then use the <code>glimpse()</code> function to examine the structure of the data and the variables.</p>
+<p>Load the data file <code>attain.csv</code> into R using the <code>read_csv</code> function. Be sure to use the <code>here()</code> library to ensure you are using a relative file path and that the csv file is saved in the “data” folder and the .qmd file is saved in the “assignments” folder. Once you’ve loaded the dataset, use the <code>glimpse()</code> function to examine the structure of the data and the variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>attain <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data/attain.csv&quot;</span>)) </span>
@@ -4063,36 +4064,41 @@ $ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 187
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<p>Create a vector called <code>ages</code> from the data set (column name = <code>age</code>) using appropriate tidyverse function and glimpse the vector. What is the type of variable in the column vector? Use the <code>class()</code> or <code>typeof()</code> function to check.</p>
+<p>Create a new object called <code>ages</code> from the <code>attain</code> dataset by selecting the column name called <code>age</code> using the appropriate tidyverse function and glimpsing the vector. What is the type of variable in it? (e.g., numeric, character, boolean). Specifically, what is this called?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">pull</span>(age) </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">select</span>(age)  <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;numeric&quot;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;double&quot;</code></pre>
+<pre><code>Rows: 2,992
+Columns: 1
+$ age &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 25, 52…</code></pre>
 </div>
 </div>
 <p><strong>What is the type of variable?</strong></p>
-<p><em>Check for data; Numeric or double</em></p>
+<p><em>Check for data; Should be numeric or double</em></p>
 <hr>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<p>Now create a vector of marital status (column name = <code>marital</code>), call it <code>marital_status</code>, and <code>glimpse</code> it in the viewer. What is the type of variable in this column vector?</p>
+<p>Now create a new object from the the original <code>attain</code> dataset (column name = <code>marital</code>), call it <code>marital_status</code>, and view the object using the <code>print</code> function. What is the type of variable in this column vector?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>marital_status <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">pull</span>(marital) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>marital_status <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">select</span>(marital) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> chr [1:2992] &quot;divorced&quot; &quot;married&quot; &quot;married&quot; &quot;married&quot; &quot;never ma&quot; ...</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(marital_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;character&quot;</code></pre>
+<pre><code># A tibble: 2,992 × 1
+   marital 
+   &lt;chr&gt;   
+ 1 divorced
+ 2 married 
+ 3 married 
+ 4 married 
+ 5 never ma
+ 6 never ma
+ 7 widowed 
+ 8 never ma
+ 9 widowed 
+10 divorced
+# ℹ 2,982 more rows</code></pre>
 </div>
 </div>
 <p><strong>What is the type of variable?</strong></p>
@@ -4101,12 +4107,12 @@ $ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 187
 </section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
-<p>Suppose we want to only look at a smaller dataset that contains the respondent’s age, sex, race, marital status, and age of first marriage (column names <code>age</code>, <code>sex</code>, <code>race</code>, <code>marital</code>, <code>agewed</code>, respectively). Create a subset of this data (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it.</p>
+<p>Suppose we want to only look at a smaller dataset that contains the respondent’s age, sex, race, marital status, and age at marriage (column names <code>age</code>, <code>sex</code>, <code>race</code>, <code>marital</code>, <code>agewed</code>, respectively). Create a subset of the original <code>attain</code> dataset (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it so we can see what it looks like.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>subset1 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, sex, race, marital, agewed) <span class="sc">|&gt;</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>subset1 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, sex, race, marital, agewed) <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,992
 Columns: 5
@@ -4122,12 +4128,12 @@ $ agewed  &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA
 </section>
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
-<p>Now suppose we want a smaller dataset that only contains the first 1000 observations. Create a subset of this data (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it.</p>
+<p>Now suppose we want a smaller dataset that only contains the first 1000 observations. Create a subset of <code>attain</code> data (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it. How do you know you did it correctly?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>subset2 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>subset2 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 44
@@ -4182,12 +4188,12 @@ $ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 187
 </section>
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
-<p>Now, suppose we are really concerned about unemployment within our sample (column name <code>unemp</code>). But, we notice that many respondents have missing unemployment statuses (i.e., <code>unemp</code> is equal to <code>NA</code>). Let’s create a subset that consists of all respondents who do not have missing unemployment information. (Hint: to find observations that are not missing, use the <code>!</code> (not) logical operator and the <code>is.na</code> function.)</p>
+<p>Now, suppose we are really concerned about unemployment within our sample (column name <code>unemp</code>). But, we notice that many respondents have missing unemployment statuses (i.e., <code>unemp</code> is equal to <code>NA</code>). Let’s create a subset that consists of all respondents who do not have missing unemployment information. (<em>Hint: to find observations that are not missing, use the <code>!</code> (not) logical operator and the <code>is.na</code> function.</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to check how many respondents are in your subset!</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>subset3 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(unemp)) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>() <span class="co"># 2,004 respondents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to check how many respondents are in your subset!</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>subset3 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(unemp)) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>() <span class="co"># 2,004 respondents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,004
 Columns: 44
@@ -4245,10 +4251,10 @@ $ rincom91 &lt;dbl&gt; NA, NA, 18750, NA, 11250, 18750, NA, 45000, 32500, 100000
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
 <p>Repeat Question 6 (call it <code>subset4</code>), but this time creating a subset of respondents who all have information about their father’s education (column name <code>paeduc</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>subset4 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(paeduc)) <span class="sc">|&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()  <span class="co"># 2,155 respondents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>subset4 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(paeduc)) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()  <span class="co"># 2,155 respondents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,155
 Columns: 44
@@ -4299,17 +4305,17 @@ $ rincom91 &lt;dbl&gt; NA, 23750, 11250, 18750, 45000, 32500, 100000, 45000, NA,
 </div>
 </div>
 <p><strong>How many respondents are in this subset?</strong></p>
-<p><em>2,155e</em></p>
+<p><em>2,155</em></p>
 <hr>
 </section>
 <section id="question-8" class="level2">
 <h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
-<p>Now suppose we want to investigate the relationship between unemployment status and father’s education. This time, create a subset (call it <code>subset5</code>) of respondents who have non-missing information for <strong>both</strong> unemployment status and father’s education. (Hint: use the <code>&amp;</code> logical operator.)</p>
+<p>Now suppose we want to investigate the relationship between unemployment status and father’s education. This time, create a subset (call it <code>subset5</code>) of respondents who have non-missing information for <strong>both</strong> unemployment status and father’s education. (<em>Hint: You will need to use a logical operator again for this one.</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>subset5 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(unemp) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(paeduc)) <span class="sc">|&gt;</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()  <span class="co"># 1,441 respondents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>subset5 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(unemp) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(paeduc)) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()  <span class="co"># 1,441 respondents</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,441
 Columns: 44
@@ -4365,12 +4371,12 @@ $ rincom91 &lt;dbl&gt; NA, 11250, 18750, 45000, 32500, 100000, 45000, 67500, NA,
 </section>
 <section id="question-9" class="level2">
 <h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
-<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (Hint: You’ll want to create a new variable, call it <code>years_since_kid</code>.)</p>
+<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (<em>Hint: Ccreate a new variable and call it <code>years_since_kid</code>.</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>attain_kids <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">years_since_kid =</span> age <span class="sc">-</span> agekdbrn) <span class="sc">|&gt;</span> </span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>attain_kids <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">years_since_kid =</span> age <span class="sc">-</span> agekdbrn) <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,992
 Columns: 45
@@ -4425,62 +4431,63 @@ $ years_since_kid &lt;dbl&gt; 12, NA, NA, 36, NA, NA, 23, 2, 24, 28, NA, NA, 26,
 </section>
 <section id="question-10" class="level2">
 <h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
-<p>Finally, create a Boolean variable in the dataset (call it <code>attain_breadwinner</code>) that identifies respondents who are sole breadwinners in their household (that is, their income <code>rincom91</code> is equal to their household’s <code>income91</code>). (Hint: The easiest way to do this is to use the <code>==</code> logical operator)</p>
+<p>Finally, there a is a left over variable in this dataset from the original .csv file that we want to drop. Using the <code>attain</code> dataset again, let’s’ first rename the variable–“to_drop”–and then drop it from the dataset. How can you tell for sure that this worked (<em>Hint: think about how many rows you should have.</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>attain_breadwinner <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">breadwinner =</span> income91 <span class="sc">==</span> rincom91) <span class="sc">|&gt;</span> </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>attain_breadwinner <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">to_drop =</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>to_drop) <span class="sc">|&gt;</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,992
-Columns: 45
-$ ...1        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
-$ id          &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
-$ wrkstat     &lt;chr&gt; &quot;keeping&quot;, &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;wo…
-$ hrs1        &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46…
-$ prestg80    &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73…
-$ marital     &lt;chr&gt; &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;never ma&quot;, &quot;…
-$ agewed      &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA…
-$ papres80    &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75…
-$ mapres80    &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60…
-$ sibs        &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, …
-$ childs      &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0…
-$ age         &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36…
-$ agekdbrn    &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA…
-$ educ        &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 1…
-$ paeduc      &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 1…
-$ maeduc      &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18…
-$ degree      &lt;chr&gt; &quot;high sch&quot;, &quot;high sch&quot;, &quot;lt high&quot;, &quot;lt high&quot;, &quot;high sch&quot;, …
-$ sex         &lt;chr&gt; &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;f…
-$ race        &lt;chr&gt; &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;oth…
-$ weekswrk    &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52,…
-$ partfull    &lt;chr&gt; NA, &quot;full-tim&quot;, &quot;full-tim&quot;, &quot;full-tim&quot;, &quot;part-tim&quot;, &quot;part-…
-$ region      &lt;chr&gt; &quot;middle a&quot;, &quot;middle a&quot;, &quot;middle a&quot;, &quot;middle a&quot;, &quot;middle a&quot;…
-$ xnorcsiz    &lt;chr&gt; &quot;city gt&quot;, &quot;city gt&quot;, &quot;city gt&quot;, &quot;city gt&quot;, &quot;city gt&quot;, &quot;ci…
-$ srcbelt     &lt;chr&gt; &quot;12 lrgst&quot;, &quot;12 lrgst&quot;, &quot;12 lrgst&quot;, &quot;12 lrgst&quot;, &quot;12 lrgst&quot;…
-$ size        &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323…
-$ partyid     &lt;chr&gt; &quot;strong d&quot;, &quot;not str&quot;, &quot;ind,near&quot;, &quot;not str&quot;, &quot;strong d&quot;, …
-$ polviews    &lt;chr&gt; &quot;slightly&quot;, &quot;moderate&quot;, &quot;slghtly&quot;, &quot;slightly&quot;, &quot;conserva&quot;,…
-$ relig       &lt;chr&gt; &quot;protesta&quot;, &quot;catholic&quot;, &quot;protesta&quot;, &quot;catholic&quot;, &quot;protesta&quot;…
-$ attend      &lt;chr&gt; &quot;sevrl ti&quot;, &quot;every we&quot;, &quot;more thn&quot;, &quot;once a y&quot;, &quot;once a y&quot;…
-$ satjob      &lt;chr&gt; &quot;mod. sat&quot;, &quot;very sat&quot;, &quot;very sat&quot;, &quot;mod. sat&quot;, &quot;mod. sat&quot;…
-$ class       &lt;chr&gt; &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;lower cl&quot;, &quot;w…
-$ satfin      &lt;chr&gt; &quot;more or&quot;, &quot;more or&quot;, &quot;more or&quot;, &quot;not at a&quot;, &quot;not at a&quot;, &quot;…
-$ finalter    &lt;chr&gt; &quot;better&quot;, &quot;stayed s&quot;, &quot;stayed s&quot;, &quot;worse&quot;, &quot;worse&quot;, &quot;worse…
-$ finrela     &lt;chr&gt; &quot;below av&quot;, &quot;below av&quot;, &quot;average&quot;, &quot;average&quot;, &quot;far belo&quot;, …
-$ wksub       &lt;chr&gt; NA, NA, &quot;no&quot;, NA, &quot;yes&quot;, &quot;yes&quot;, &quot;yes&quot;, NA, &quot;yes&quot;, &quot;no&quot;, NA…
-$ wksup       &lt;chr&gt; NA, NA, &quot;no&quot;, NA, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, NA, &quot;no&quot;, &quot;no&quot;, NA, NA…
-$ unemp       &lt;chr&gt; &quot;yes&quot;, &quot;no&quot;, NA, &quot;yes&quot;, &quot;no&quot;, NA, NA, &quot;no&quot;, NA, &quot;yes&quot;, &quot;ye…
-$ union       &lt;chr&gt; &quot;neither&quot;, &quot;neither&quot;, NA, &quot;neither&quot;, &quot;neither&quot;, NA, NA, &quot;n…
-$ parsol      &lt;chr&gt; &quot;somewhat&quot;, NA, NA, &quot;somewhat&quot;, NA, NA, NA, &quot;much bet&quot;, NA…
-$ tvhours     &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, …
-$ dwelown     &lt;chr&gt; &quot;pays ren&quot;, &quot;pays ren&quot;, &quot;pays ren&quot;, &quot;own or i&quot;, NA, &quot;pays …
-$ wordsum     &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8…
-$ income91    &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500…
-$ rincom91    &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 1875…
-$ breadwinner &lt;lgl&gt; NA, NA, TRUE, TRUE, NA, FALSE, TRUE, TRUE, FALSE, TRUE, NA…</code></pre>
+Columns: 43
+$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
+$ wrkstat  &lt;chr&gt; &quot;keeping&quot;, &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;worki…
+$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…
+$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…
+$ marital  &lt;chr&gt; &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;never ma&quot;, &quot;nev…
+$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…
+$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…
+$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…
+$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …
+$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…
+$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…
+$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…
+$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …
+$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …
+$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…
+$ degree   &lt;chr&gt; &quot;high sch&quot;, &quot;high sch&quot;, &quot;lt high&quot;, &quot;lt high&quot;, &quot;high sch&quot;, &quot;hi…
+$ sex      &lt;chr&gt; &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;fema…
+$ race     &lt;chr&gt; &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;other&quot;…
+$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…
+$ partfull &lt;chr&gt; NA, &quot;full-tim&quot;, &quot;full-tim&quot;, &quot;full-tim&quot;, &quot;part-tim&quot;, &quot;part-tim…
+$ region   &lt;chr&gt; &quot;middle a&quot;, &quot;middle a&quot;, &quot;middle a&quot;, &quot;middle a&quot;, &quot;middle a&quot;, &quot;…
+$ xnorcsiz &lt;chr&gt; &quot;city gt&quot;, &quot;city gt&quot;, &quot;city gt&quot;, &quot;city gt&quot;, &quot;city gt&quot;, &quot;city …
+$ srcbelt  &lt;chr&gt; &quot;12 lrgst&quot;, &quot;12 lrgst&quot;, &quot;12 lrgst&quot;, &quot;12 lrgst&quot;, &quot;12 lrgst&quot;, &quot;…
+$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…
+$ partyid  &lt;chr&gt; &quot;strong d&quot;, &quot;not str&quot;, &quot;ind,near&quot;, &quot;not str&quot;, &quot;strong d&quot;, &quot;ot…
+$ polviews &lt;chr&gt; &quot;slightly&quot;, &quot;moderate&quot;, &quot;slghtly&quot;, &quot;slightly&quot;, &quot;conserva&quot;, &quot;l…
+$ relig    &lt;chr&gt; &quot;protesta&quot;, &quot;catholic&quot;, &quot;protesta&quot;, &quot;catholic&quot;, &quot;protesta&quot;, &quot;…
+$ attend   &lt;chr&gt; &quot;sevrl ti&quot;, &quot;every we&quot;, &quot;more thn&quot;, &quot;once a y&quot;, &quot;once a y&quot;, &quot;…
+$ satjob   &lt;chr&gt; &quot;mod. sat&quot;, &quot;very sat&quot;, &quot;very sat&quot;, &quot;mod. sat&quot;, &quot;mod. sat&quot;, &quot;…
+$ class    &lt;chr&gt; &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;working&quot;, &quot;lower cl&quot;, &quot;work…
+$ satfin   &lt;chr&gt; &quot;more or&quot;, &quot;more or&quot;, &quot;more or&quot;, &quot;not at a&quot;, &quot;not at a&quot;, &quot;not…
+$ finalter &lt;chr&gt; &quot;better&quot;, &quot;stayed s&quot;, &quot;stayed s&quot;, &quot;worse&quot;, &quot;worse&quot;, &quot;worse&quot;, …
+$ finrela  &lt;chr&gt; &quot;below av&quot;, &quot;below av&quot;, &quot;average&quot;, &quot;average&quot;, &quot;far belo&quot;, &quot;be…
+$ wksub    &lt;chr&gt; NA, NA, &quot;no&quot;, NA, &quot;yes&quot;, &quot;yes&quot;, &quot;yes&quot;, NA, &quot;yes&quot;, &quot;no&quot;, NA, N…
+$ wksup    &lt;chr&gt; NA, NA, &quot;no&quot;, NA, &quot;no&quot;, &quot;no&quot;, &quot;no&quot;, NA, &quot;no&quot;, &quot;no&quot;, NA, NA, N…
+$ unemp    &lt;chr&gt; &quot;yes&quot;, &quot;no&quot;, NA, &quot;yes&quot;, &quot;no&quot;, NA, NA, &quot;no&quot;, NA, &quot;yes&quot;, &quot;yes&quot;,…
+$ union    &lt;chr&gt; &quot;neither&quot;, &quot;neither&quot;, NA, &quot;neither&quot;, &quot;neither&quot;, NA, NA, &quot;neit…
+$ parsol   &lt;chr&gt; &quot;somewhat&quot;, NA, NA, &quot;somewhat&quot;, NA, NA, NA, &quot;much bet&quot;, NA, &quot;…
+$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …
+$ dwelown  &lt;chr&gt; &quot;pays ren&quot;, &quot;pays ren&quot;, &quot;pays ren&quot;, &quot;own or i&quot;, NA, &quot;pays ren…
+$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…
+$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…
+$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …</code></pre>
 </div>
 </div>
+<p><strong>How many respondents are in this subset?</strong></p>
+<p><em>should be 43 rows instead of 44</em></p>
 <hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
