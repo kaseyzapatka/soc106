@@ -44,20 +44,20 @@ If gender is irrelevant to accepting an offer from Berkeley and equal numbers of
 **Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.**
 
 ```{r}
-# Clear environment
-# ---------
-rm(list = ls())
-
-# install libraries -- only install new libraries if needed
-
-# ---------
+#| echo: false
+#| results: false
+# Uncomment following two lines to install libraries -
 # install.packages("tidyverse")
+# install.packages("here")
+```
 
+```{r}
+#| echo: false
+#| results: false
 # load libraries
 # ---------
 library(tidyverse)
 library(here)
-# add more libraries here if you need them!
 ```
 
 ```{r}

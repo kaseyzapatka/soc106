@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Your Name Here">
+<meta name="dcterms.date" content="2026-02-05">
 
 <title>Weekly Assignment #1 – Sociology 106</title>
 <style>
@@ -3899,7 +3900,7 @@ color: #f8f9fa !important;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
@@ -3935,7 +3936,7 @@ color: #f8f9fa !important;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">February 5, 2026</p>
     </div>
   </div>
   
@@ -3958,30 +3959,43 @@ Submission Instructions
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Download this <code>hw1.qmd</code> file and the <code>attain.csv</code> data file from bCourse.</li>
-<li>Save both files on your computer. Make sure to save <code>attain.csv</code> in your data folder and <code>hw1.qmd</code> in your assignments folder.</li>
-<li>Complete all questions by writing your code in the provided code chunks.</li>
-<li>Click the “Render” button at the top of Positron to generate an html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it’s working).</li>
-<li>Submit the <code>hw1.qmd</code> file to bCourse before the deadline</li>
-<li>Make sure your name appears in the “author” field in the YAML header above</li>
+<li>Download this <code>hw1.qmd</code> file. The <code>attain.csv</code> data should already be in your data folder.</li>
+<li>Save the <code>hw1.qmd</code> file in the assignments folder.</li>
+<li>Complete all questions by writing your code in the provided code chunks. Replace <code># Your code here</code> lines with your actual code.</li>
+<li>Click the “Render” button at the top of Positron to generate an HTML file.</li>
+<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline on February 5, 2026</li>
+<li>Make sure your name appears in the “author” field in the YAML header above.</li>
+<li>Make sure your document renders without errors before submitting.</li>
 </ol>
 </div>
 </div>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Complete all questions below, writing your code in the code chunks provided. Replace <code># Your code here</code> with your actual code. Make sure your document renders without errors before submitting.</p>
+<p>Once you add <code>hw1.qmd</code>, your folder structure should look like this:</p>
+<pre><code>soc106/
+├── _quarto.yml
+├── assignments/
+│   └── hw0.qmd
+│   └── hw1.qmd
+├── data/
+│   └── attain.csv
+└── labs/
+    └── lab1.qmd</code></pre>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>Run this code to set up your environment. If you need to install any libraries, make sure to do that in the console.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear environment</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install libraries -- shouldn&#39;t need for this assignment</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tidyverse&quot;)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear environment</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install libraries -- These should already have been installed but they are here just in case.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tidyverse&quot;)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;here&quot;)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -3994,7 +4008,10 @@ Submission Instructions
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package &#39;here&#39; was built under R version 4.3.3</code></pre>
+</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/Dora/git/teaching/soc106</code></pre>
 </div>
@@ -4002,104 +4019,99 @@ Submission Instructions
 </section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p>Load the data file <code>attain.csv</code> into R using the <code>read_csv</code> function (the code has already been provide but make sure it runs!) Be sure to use the <code>here()</code> library to ensure a relative file path and that the data is saved in the “data” folder. Once you’ve loaded it, then use the <code>glimpse()</code> function to examine the structure of the data and the variables.</p>
+<p>Load the data file <code>attain.csv</code> into R using the <code>read_csv</code> function. Be sure to use the <code>here()</code> library to ensure you are using a relative file path and that the csv file is saved in the “data” folder and the .qmd file is saved in the “assignments” folder. Once you’ve loaded the dataset, use the <code>glimpse()</code> function to examine the structure of the data and the variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>attain <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data/attain.csv&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Write 1-2 sentences describing what you observe in the data:</strong></p>
-<p><em>Your answer here (replace this text)</em></p>
+<p><em>Your response here</em></p>
 <hr>
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<p>Create a vector called <code>ages</code> from the data set (column name = <code>age</code>) using appropriate tidyverse function and glimpse the vector. What is the type of variable in the column vector? Use the <code>class()</code> or <code>typeof()</code> function to check.</p>
+<p>Create a new object called <code>ages</code> from the <code>attain</code> dataset by selecting the column name called <code>age</code> using the appropriate tidyverse function and glimpsing the object. What is the type of variable in it? (e.g., numeric, character, boolean). Specifically, what is this called?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># attain |&gt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>What is the type of variable?</strong></p>
-<p><em>Your answer here</em></p>
+<p><em>Your response here</em></p>
 <hr>
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<p>Now create a vector of marital status (column name = <code>marital</code>), call it <code>marital_status</code>, and <code>glimpse</code> it in the viewer. What is the type of variable in this column vector?</p>
+<p>Now create a new object from the the original <code>attain</code> dataset (column name = <code>marital</code>), call it <code>marital_status</code>, and view the object using the <code>print</code> function. What is the type of variable in this column vector?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># attain |&gt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>What is the type of variable?</strong></p>
-<p><em>Your answer here</em></p>
+<p><em>Your response here</em></p>
 <hr>
 </section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
-<p>Suppose we want to only look at a smaller dataset that contains the respondent’s age, sex, race, marital status, and age of first marriage (column names <code>age</code>, <code>sex</code>, <code>race</code>, <code>marital</code>, <code>agewed</code>, respectively). Create a subset of this data (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it.</p>
+<p>Suppose we want to only look at a smaller dataset that contains the respondent’s age, sex, race, marital status, and age at marriage (column names <code>age</code>, <code>sex</code>, <code>race</code>, <code>marital</code>, <code>agewed</code>, respectively). Create a subset of the original <code>attain</code> dataset (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it so we can see what it looks like.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># attain |&gt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
-<p>Now suppose we want a smaller dataset that only contains the first 1000 observations. Create a subset of this data (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it.</p>
+<p>Now suppose we want a smaller dataset that only contains the first 1000 observations. Create a subset of <code>attain</code> data (call it <code>subset2</code>) using the appropriate tidyverse function. Make sure to glimpse it. How do you know you did it correctly?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># subset1 &lt;- attain |&gt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>How do you know you did it correctly?</strong></p>
+<p><em>Your response here</em></p>
 <hr>
 </section>
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
-<p>Now, suppose we are really concerned about unemployment within our sample (column name <code>unemp</code>). But, we notice that many respondents have missing unemployment statuses (i.e., <code>unemp</code> is equal to <code>NA</code>). Create a subset (call it <code>subset3</code>) that consists of all respondents who do not have missing unemployment information. (Hint: to find observations that are not missing, use the <code>!</code> (not) logical operator and the <code>is.na</code> function combined with the appropriate tidyverse function.)</p>
+<p>Now, suppose we are really concerned about unemployment within our sample (column name <code>unemp</code>). But, we notice that many respondents have missing unemployment statuses (i.e., <code>unemp</code> is equal to <code>NA</code>). Let’s create a subset that consists of all respondents who do not have missing unemployment information. (<em>Hint: to find observations that are not missing, use the <code>!</code> (not) logical operator and the <code>is.na</code> function.</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># attain |&gt; </span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to check how many respondents are in your subset!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to check how many respondents are in your subset!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>How many respondents are in this subset?</strong></p>
-<p><em>Your answer here</em></p>
+<p><em>Your response here</em></p>
 <hr>
 </section>
 <section id="question-7" class="level2">
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
 <p>Repeat Question 6 (call it <code>subset4</code>), but this time creating a subset of respondents who all have information about their father’s education (column name <code>paeduc</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># attain |&gt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>How many respondents are in this subset?</strong></p>
-<p><em>Your answer here</em></p>
+<p><em>Your response here</em></p>
 <hr>
 </section>
 <section id="question-8" class="level2">
 <h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
-<p>Now suppose we want to investigate the relationship between unemployment status and father’s education. This time, create a subset (call it <code>subset5</code>) of respondents who have non-missing information for <strong>both</strong> unemployment status and father’s education. (Hint: use the <code>&amp;</code> logical operator.)</p>
+<p>Now suppose we want to investigate the relationship between unemployment status and father’s education. This time, create a subset (call it <code>subset5</code>) of respondents who have non-missing information for <strong>both</strong> unemployment status and father’s education. (<em>Hint: You will need to use a logical operator again for this one.</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>How many respondents are in this subset?</strong></p>
-<p><em>Your answer here</em></p>
+<p><em>Your response here</em></p>
 <hr>
 </section>
 <section id="question-9" class="level2">
 <h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
-<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (Hint: You’ll want to create a new variable, call it <code>years_since_kid</code>.)</p>
+<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (<em>Hint: Create a new variable and call it <code>years_since_kid</code>. You’ll have to do some subtration here!</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># attain |&gt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
 <section id="question-10" class="level2">
 <h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
-<p>Finally, create a Boolean variable in the dataset (call it <code>attain_breadwinner</code>) that identifies respondents who are sole breadwinners in their household (that is, their income <code>rincom91</code> is equal to their household’s <code>income91</code>). (Hint: The easiest way to do this is to use the <code>==</code> logical operator)</p>
+<p>Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the <code>attain</code> dataset again, let’s’ first rename the variable–call it “to_drop”–and then drop it from the dataset (<em>Hint: You can use a negative sign before the variable to select everything but that one.</em>). How can you tell for sure that this worked (<em>Hint: think about how many columns you should have.</em>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># attain |&gt; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>How can you tell this worked?</strong></p>
+<p><em>Your response here</em></p>
 <hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -4115,8 +4127,8 @@ Before You Submit
 <li><label><input type="checkbox">Your name is in the author field at the top of this document</label></li>
 <li><label><input type="checkbox">All code chunks run without errors</label></li>
 <li><label><input type="checkbox">You’ve answered all written response questions</label></li>
-<li><label><input type="checkbox">You’ve clicked “Render” and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)</label></li>
-<li><label><input type="checkbox">You’re submitting the <code>hw1.qmd</code> file to bCourse</label></li>
+<li><label><input type="checkbox">You’ve clicked “Render” and successfully generated an HTML file</label></li>
+<li><label><input type="checkbox">You’re submitting BOTH the .qmd AND .html files to bCourse</label></li>
 </ul>
 </div>
 </div>

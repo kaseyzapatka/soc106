@@ -24,14 +24,23 @@ format:
 
 [HW #1: due Thursday, February 5 by 11:59 PM]{.highlight}
 
+## Learing Goals {.smaller}
+
+1.  Gain some familiarity and basic proficiencywith R and Positron
+2.  Understand core data concepts: variable types, logical operators, and common data structures
+3.  Understand what the `Tidyverse` is and how it differs from base R
+4.  Import, manipulate, and export data using fundamental R commands
+5.  Prepare and submit homework assignments using [Quarto](https://quarto.org)
+
 ## Agenda {.smaller}
 
-1.  Gain some familiarity with R and Positron
-2.  Develop basic proficiency with R and Positron
-3.  Understand core data concepts: variable types, logical operators, and common data structures
-4.  Understand what the `Tidyverse` is and how it differs from base R
-5.  Import, manipulate, and export data using fundamental R commands
-6.  Prepare and submit homework assignments using [Quarto](https://quarto.org)
+1.  Introduction to Positron IDE
+2.  Working with Quarto **HW #0**: Setting up your folder structure and practicing with `.qmd` files
+3.  R basics: variables, data types, and logical operators
+4.  Data structures and file paths vectors and dataframes
+5.  The Tidyverse and key functions
+6.  **In-class Lab**: Practicing with the Tidyverse
+
 
 ## What is Positron? {.smaller}
 
@@ -94,6 +103,169 @@ Let's explore Positron together on your laptop:
 -   Open
 :::
 
+## Why Quarto? {.smaller}
+
+**Quarto (`.qmd`) files** let you combine code, output, and written analysis in one document. Check out [Quarto's website](https://quarto.org/docs/guide/) for more!
+
+**Why I want you to use them for homework:**
+
+-   **Show your work**: Code and results appear together—I can see exactly what you did
+-   **Explain your thinking**: Add text to interpret results and answer questions
+-   **Reproducible**: I can re-run your code to verify it works
+-   **Professional skill**: This is how data scientists share analysis in the real world
+
+## Anatomy of a `.qmd` File {.smaller .scrollable}
+
+A `.qmd` file has **three main parts** and knits code + text together (unlike `.R` which runs code only):
+
+::: columns
+::: {.column width="50%"}
+**1. YAML Header** (metadata)
+
+``` yaml
+---
+title: "My Analysis"
+author: "Your Name"
+format: html
+---
+```
+:::
+
+::: {.column width="50%"}
+**2. Markdown Text** (narrative)
+
+Use `**bold**`, `*italics*`, `# Headings` to organize your script and write analyses in between code. 
+
+[More markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
+:::
+:::
+
+**3. Code Chunks** (analysis)
+
+Insert `R` (or `python`) code directly in your analyses.
+
+```{{{r}}}
+data <- read_csv("data.csv")
+summary(data)
+```
+
+## Rendering Quarto Documents {.smaller}
+
+**What is Rendering?**
+
+Rendering (or "knitting") converts your `.qmd` file into a finished document (HTML, PDF, or Word) by:
+
+1.  Running all your R code chunks
+2.  Combining code output with your text
+3.  Formatting everything into your chosen output format
+
+**How to Render**
+
+-   Click the **"Preview"** button at the top of your .qmd file
+-   Render on save so you can see all changes
+-   I usually work with it open
+
+## Rendering Quarto Documents {.smaller .scrollable}
+
+**Source vs Visual Mode**
+
+Positron provides two ways to edit `.qmd` files. Toggle between them using the buttons at the top-left of your editor.
+
+<br>
+
+::: panel-tabset
+
+### Source
+
+**Source,** which is the source actual code:
+
+-   Shows raw markdown syntax
+-   See the actual code: `**bold**`, `## Heading`
+-   More control over formatting
+-   Better for experienced users
+
+![](images/week2/quarto_script2.png){width="100%,fig-align=\"center\""}
+
+### Visual
+
+**Visual,** which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:
+
+-   WYSIWYG editor (What You See Is What You Get)
+-   Formatting toolbar (like Microsoft Word)
+-   Live preview of how text will look
+-   Easier for beginners
+
+![](images/week2/quarto_script1.png){width="100%,fig-align=\"center\""}
+
+:::
+
+## Rendering Quarto Documents {.smaller}
+
+**Which Should You Use?**
+
+-   **Visual Mode**: Great when starting out or writing lots of text
+-   **Source Mode**: Better for precise control and learning markdown
+
+> Switch between them! Use Visual for writing, Source for troubleshooting. Just be sure to save when switching in between
+
+## Rendering Quarto Documents {.smaller}
+
+**Tips for making it work**
+
+-   Save your .qmd file before rendering
+-   All code must run without errors to render successfully
+-   Check the "Render" tab for error messages if rendering fails
+
+**Most common "knitting" errors:**
+
+-   Quarto can't execute code
+-   Code chunks have the same name
+
+Should be fine if you don't do anything fancy and don't mess with quarto settings
+
+## Practicing Quarto with HW #0 {.smaller}
+
+::: columns
+::: {.column width="60%"}
+**Set up your folder:**
+
+1.  Download `hw0.qmd`, `attain.csv`, and `_quarto.yml` from bCourse under "assignment" \> "HW #0"
+2.  Create `soc106` folder on your desktop
+3.  Create `data` and `assignments` folders inside
+4.  Place files as shown:
+
+```
+soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+└── assignments/
+    └── hw0.qmd
+```
+:::
+
+::: {.column width="40%"}
+**Open in Positron:**
+
+5.  Click `Open Folder` → navigate to `soc106`
+6.  Trust the authors → click "Yes"
+7.  Use `Explorer` button on left to find `hw0.qmd`
+:::
+:::
+
+## Practicing Quarto with HW #0 {.smaller}
+
+**Edit and render:**
+
+8.  Uncomment rows 50 and 51 and click `Run Cell`
+9.  Ensure packages downloaded correctly 
+10. Replace "Karl Marx" with your name
+11. Check `Render on Save`
+12. Save and hit "Preview"
+13. SUCCESS if you see your name!
+14. Upload `.qmd` and `.html` to bCourses
+
+
 ## Writing with `script.R` {.smaller .scrollable}
 
 ::: incremental
@@ -134,76 +306,60 @@ R is an ***object-oriented programming language***, meaning you can create new o
 -   Give variables meaningful names when assigning
 -   Variable names must be unique—reusing a name will overwrite it
 
-``` {.r code-line-numbers="4"}
+``` {.r code-line-numbers="4|5"}
 #| eval: false
 #| echo: true
 # load data
-acs21 <- read_csv("data/acs2021.csv")
+acs <- read_csv("data/acs2021.csv")
+acs <- read_csv("data/acs2022.csv")
 ```
 
-## Common values for variables {.smaller}
+## Variable types {.smaller .scrollable}
 
-Values can be:
+| Type | Description | Examples |
+|------|-------------|----------|
+| **Numeric** | Real numbers; supports math operations (`+`, `-`, `*`, `/`) | `3`, `4.5`, `8.98443` |
+| **Character** | Text; always in quotation marks | `"Welcome!"`, `"foo"` |
+| **Boolean** | Logical values; R stores as 1 (`TRUE`) or 0 (`FALSE`) | `TRUE`, `FALSE` |
 
--   numeric (3, 4.5, 8.98443)
--   character ("Welcome!", "foo")
--   boolean (true / false)
+::: panel-tabset
 
-``` {.r code-line-numbers="3|4|5"}
-#| eval: false
-#| echo: true
-numeric_variable <- 4
-character_variable <- "Welcome to Soc 106!"
-boolean_variable <- TRUE
-```
-
-## Types of variables: numeric {.smaller}
-
-**Numeric variables** can store any real numbers and you can perform standard mathematical operations on numeric variables:
+### Numeric
 
 ```{r echo=TRUE}
 a <- 10
 b <- 3
-
 a + b
-a - b
 a * b
-a / b
 ```
 
-## Types of variables: character {.smaller}
-
-**Character variables** can store any text, and are always contained within quotation marks.
+### Character
 
 ```{r echo=TRUE}
 first_name <- "John"
 last_name <- "Doe"
-
-# Combine character strings
 paste(first_name, last_name)
 ```
 
-## Types of variables: boolean {.smaller}
-
-**Boolean variables** are stored as `TRUE` or `FALSE`, which R stores as 1 or 0
-
-So, in essence, R stores boolean variables as numeric variables
+### Boolean
 
 ```{r echo=TRUE}
+# R treats TRUE as 1, FALSE as 0
 is_enrolled <- TRUE
 has_laptop <- FALSE
-
-# R treats TRUE as 1 and FALSE as 0
-is_enrolled + has_laptop
-
 sum(is_enrolled, has_laptop)
 ```
+
+:::
 
 ## Logical operators {.smaller}
 
 -   Use logical operators to compare two variables or objects
-
 -   Useful for manipulating data
+
+::: panel-tabset
+
+### Operators
 
 | Operator | Meaning                  |
 |----------|--------------------------|
@@ -214,9 +370,7 @@ sum(is_enrolled, has_laptop)
 | `<=`     | Less than or equal to    |
 | `>=`     | Greater than or equal to |
 
-## Logical operators {.smaller}
-
-Here's what that might look like in R:
+### Example
 
 ```{r echo=TRUE}
 x <- 10
@@ -228,6 +382,8 @@ x > y
 x < y
 x >= 10
 ```
+
+:::
 
 ## Questions?
 
@@ -336,94 +492,64 @@ colnames(students)
 ```
 :::
 
-## Questions?
 
-## File paths and working directories {.smaller}
+## File paths and the `here` package {.smaller}
 
-To load data, R needs to know where to look
+To load data, R needs to know where to look—but file paths break across different computers/operating systems.
 
--   Need to give it directions
--   The file path: `"file/path/to/data.csv"`
+The [`here`](https://here.r-lib.org) package solves this by **building paths relative to your project root (home folder of the project)**.
 
-**The Problem**
+::: panel-tabset
 
--   Work on different operating systems or different computers?
--   But what if you move data?
+### The Problem
 
 ```{r eval=FALSE, echo=TRUE}
-# These break on different computers or operating systems:
+# These break on different computers:
 read_csv("C:\Users\YourName\Documents\project\data\mydata.csv") # windows
 read_csv("~/Desktop/project/data/mydata.csv")                   # mac
 ```
 
-## The `here` Package {.smaller .scrollable}
+### The Solution
 
-**What is it?** The [`here`](https://here.r-lib.org) package helps you build file paths that work across different computers and operating systems, making your code more reproducible.
-
-**How It Works**
-
--   `here()` finds your project root (where your project is located)
--   Default to whatever you open in Positron (why we use it)
--   Builds paths relative to that root with each `"folder_name"` as a subfolder
--   Works the same on Windows, Mac, and Linux
-
-**The Solution**
-
-```{r eval=FALSE, echo=TRUE}
-# load library
+```{.r eval=FALSE, echo=TRUE, code-line-numbers="1|4|8|11"}
 library(here)
 
-# Check where here thinks your project root is
-here()
+# here() finds your project root and builds paths from there
+here()  # check where here thinks your project root is
 
 # Loading data
+#data <- read_csv("~/Desktop/project/data/raw/mydata.csv")     
 data <- read_csv(here("data", "raw", "mydata.csv"))
-data <- read_csv(here("data/raw/mydata.csv"))
 
-# Saving results
+# Saving data
 write_csv(results, here("output", "results.csv"))
-
 ```
 
-## Saving and loading data {.smaller}
-
-You can save dataframes as .csv files using the `write_csv()` function:
-
-```{r eval=FALSE, echo=TRUE}
-
-# save data
-#write_csv(object, filepath)
-write_csv(results, here("output", "results.csv"))
-
-```
-
-You can also read .csv files into dataframes using the `read_csv` function:
-
-```{r eval=FALSE, echo=TRUE}
-# load data
-#read_csv(filepath)
-data <- read_csv(here("data", "raw", "mydata.csv"))
-```
-
-## Questions?
+:::
 
 ## The `Tidyverse` {.smaller}
 
 **What is it?**
 
--   A collection of R packages designed for data science that share a common philosophy and grammar
+-   A [**collection of R packages**](https://tidyverse.org) designed for data science that share a common philosophy and grammar
 -   By far the most common approach to working with R
 -   Most intuitive way to do data science
+
+**Core Packages we'll be using**
+
+-   [**readr**](https://readr.tidyverse.org): for importing data (`read_csv()`)
+-   [**dplyr**](https://dplyr.tidyverse.org): for manipulating data (`filter()`, `select()`, `mutate()`, `summarize()`)
+-   [**ggplot2**](https://ggplot2.tidyverse.org): for data visualization
 
 ## The `Tidyverse` {.smaller}
 
 **Key Features**
 
--   **Pipe operator** `|>`:[^1] chains functions together for readable code
 -   **Consistent syntax**: functions work similarly across packages
 -   **Human-readable**: code reads like sentences
+-   **Pipe operator** `|>`:[^Pipe] chains functions together for readable code
 
-[^1]: The older version of the pipe operator `%>%` also works interchangeably.
+[^Pipe]: The older version of the pipe operator `%>%` also works interchangeably.
 
 ``` {.r code-line-numbers="5|9"}
 # |eval=FALSE
@@ -439,25 +565,11 @@ dataframe |> filter(age > 18) |> pull(score) |> mean()
 
 ## The `Tidyverse` {.smaller}
 
-**Core Packages we'll be using**
-
--   [**readr**](https://readr.tidyverse.org): for importing data (`read_csv()`)
--   [**dplyr**](https://dplyr.tidyverse.org): for manipulating data (`filter()`, `select()`, `mutate()`, `summarize()`)
--   [**ggplot2**](https://ggplot2.tidyverse.org): for data visualization
-
-## The `Tidyverse` {.smaller}
-
 How the packages work together
 
-``` {.r code-line-numbers="5|8|11|14-18"}
+``` {.r code-line-numbers="5|8-12"}
 # |eval=FALSE
 # |echo=TRUE
-
-# Install (only once)
-install.packages("tidyverse") # install library
-
-# Load library
-library(tidyverse) # load library
 
 # Load data
 data <- read_csv("data.csv") # read in csv
@@ -486,133 +598,27 @@ data |>
 
 ## Questions?
 
-## Tidyverse in Practice {.smaller}
+## Tidyverse in Practice (in-class Lab) {.smaller}
 
-Follow these steps to get set up so we can practice together:
+Let's practice using the folder structure you already set up:
 
-1.  Download `lab1.qmd`, `attain.csv`, and `_quarto.yml` from bCourse under "labs" \> "Lab #1"
-2.  Create `soc16` folder on your desktop (or another place if you prefer)
-3.  Create `data` and `lab` folders inside of `soc16`
-4.  Data goes inside data folder and assignment goes instead `lab`
-5.  Make sure the `_quarto.yml` file is in the `soc16` and not `data` or `lab` folders. Your folder structure should look like this:
+1.  Download `lab1.qmd` from bCourse under "assignments" \> "Lab #1"
+2.  Create a `labs` folder inside your `soc106` folder
+3.  Place `lab1.qmd` in the `labs` folder. Your folder structure should now look like this:
 
-```         
+```
 soc106/
 ├── _quarto.yml
 ├── data/
 │   └── attain.csv
+├── assignments/
+│   └── hw0.qmd
 └── labs/
     └── lab1.qmd
 ```
 
-6.  Open Positron, click the `Open Folder` button and navigate to `soc16`
-7.  Allow access, check "Trust the authors..", and click "Yes, ..."
-8.  Use `Explorer` button on left to find `lab1.qmd`
-
-## Anatomy of a `.qmd` File {.smaller .scrollable}
-
-A `.qmd` file has **three main parts** and knits code + text together (unlike `.R` which runs code only):
-
-::: columns
-::: {.column width="50%"}
-**1. YAML Header** (metadata)
-
-``` yaml
----
-title: "My Analysis"
-author: "Your Name"
-format: html
----
-```
-:::
-
-::: {.column width="50%"}
-**2. Markdown Text** (narrative)
-
-Use `**bold**`, `*italics*`, `# Headings`
-
-[More markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
-:::
-:::
-
-**3. Code Chunks** (analysis)
-
-```{{{r}}}
-data <- read_csv("data.csv")
-summary(data)
-```
-
-## Rendering Quarto Documents {.smaller}
-
-**What is Rendering?**
-
-Rendering (or "knitting") converts your `.qmd` file into a finished document (HTML, PDF, or Word) by:
-
-1.  Running all your R code chunks
-2.  Combining code output with your text
-3.  Formatting everything into your chosen output format
-
-**How to Render**
-
--   Click the **"Preview"** button at the top of your .qmd file
--   Render on save so you can see all changes
--   I usually work with it open
-
-## Rendering Quarto Documents {.smaller .scrollable}
-
-**Source vs Visual Mode**
-
-Positron provides two ways to edit `.qmd` files. Toggle between them using the buttons at the top-left of your editor.
-
-<br>
-
-::: panel-tabset
-### Visual
-
-**Visual,** which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:
-
--   WYSIWYG editor (What You See Is What You Get)
--   Formatting toolbar (like Microsoft Word)
--   Live preview of how text will look
--   Easier for beginners
-
-![](images/week2/quarto_script1.png){width="100%,fig-align=\"center\""}
-
-### Source
-
-**Source,** which is the source actual code:
-
--   Shows raw markdown syntax
--   See the actual code: `**bold**`, `## Heading`
--   More control over formatting
--   Better for experienced users
-
-![](images/week2/quarto_script2.png){width="100%,fig-align=\"center\""}
-:::
-
-## Rendering Quarto Documents {.smaller}
-
-**Which Should You Use?**
-
--   **Visual Mode**: Great when starting out or writing lots of text
--   **Source Mode**: Better for precise control and learning markdown
-
-> Switch between them! Use Visual for writing, Source for troubleshooting. Just be sure to save when switching in between
-
-## Rendering Quarto Documents {.smaller}
-
-**Tips for making it work**
-
--   Save your .qmd file before rendering
--   All code must run without errors to render successfully
--   Check the "Render" tab for error messages if rendering fails
-
-**Most common "knitting" errors:**
-
--   Quarto can't execute code
--   Code chunks have the same name
-
-Should be fine if you don't do anything fancy and don't mess with quarto settings
+4. Use the `Explorer` button on the left to find and open `lab1.qmd`
+5. Let's work through it together!
 
 ## Homework #1 {.smaller}
 
@@ -626,19 +632,6 @@ For this week only, I will provide a dataset for you to use on your homework ass
 -   [**HW #1:** due Thursday, February 5, 11:59 PM](https://bcourses.berkeley.edu/courses/1551992/assignments/9023060)
 -   Turn in **BOTH** `hw1.qmd` and `hw1.html` files
 -   Write code and text response intermittenly in file
-
-## In-class lab HW #0 {.smaller}
-
-Now let's complete HW #0 using the folder structure you created during the lab!
-
-1.  Download `hw0.qmd` from bCourse under "assignments" \> "HW #0"
-2.  Place `hw0.qmd` in your `soc106/assignments` folder (you already have `attain.csv` in your `data` folder)
-3.  In Positron, use the `Explorer` button on the left to find `hw0.qmd`
-4.  Check the `Render on Save` button
-5.  Replace "Karl Marx" with your name -- make sure to keep it in "quotes"
-6.  Save and hit "Preview"
-7.  If the `Viewer` frame opens as an html file and you see your name - SUCCESS!
-8.  Navigate back to bCourse and upload both `hw0.qmd` and `hw0.html` files
 
 # Appendix {.smaller visibility="uncounted"}
 
