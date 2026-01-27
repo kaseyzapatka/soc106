@@ -49,18 +49,24 @@ soc106/
 
 First, we need to load the tidyverse and here packages.
 
+First, install these packages in your console (only need to do this once):
+
+```{r}
+#| eval: false
+
+# Run these in the console ONCE to install
+install.packages("tidyverse")
+install.packages("here")
+```
+
+Then load the libraries:
+
 ```{r}
 #| message: false
 #| warning: false
 
-# Install packages - JUST ONCE  
-install.packages("tidyverse") 
-install.packages("here") 
-
-# Load libraries
 library(tidyverse)
 library(here)
-
 ```
 
 Now, let's import our data and glimpse it.

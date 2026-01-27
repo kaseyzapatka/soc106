@@ -80,8 +80,8 @@
     "objectID": "slides/week4.html#housekeeping",
     "href": "slides/week4.html#housekeeping",
     "title": "Week 4",
-    "section": "Housekeeping",
-    "text": "Housekeeping\n[[ADD IT IN LATER]]"
+    "section": "",
+    "text": "[[ADD IT IN LATER]]"
   },
   {
     "objectID": "slides/week4.html#questions",
@@ -137,7 +137,7 @@
     "href": "slides/week4.html#calculating-frequencies-in-r",
     "title": "Week 4",
     "section": "Calculating frequencies in R",
-    "text": "Calculating frequencies in R\nNow, let’s use R to calculate relative and marginal frequencies\n\nRelative freqMarginal freq (option 1)Marginal freq (option 2)\n\n\nRelative frequency formula : \\(p_{X=i} = \\frac{n_{X=i}}{n_{total}}\\)\n\n\nattain |&gt; \n  # count absolute frequencies\n  count(marital) |&gt; \n  # create a proprotion  \n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 6 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   446   0.149   \n2 married   1541   0.515   \n3 never ma   614   0.205   \n4 separate   102   0.0341  \n5 widowed    288   0.0963  \n6 &lt;NA&gt;         1   0.000334\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  # Table of absolute freq for var1, \n  # for given value for var2\n  filter(sex == \"male\") |&gt; \n  count(marital) |&gt; \n  # Use that table to create relative freq\n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 5 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   165     0.128 \n2 married    730     0.566 \n3 never ma   312     0.242 \n4 separate    34     0.0264\n5 widowed     49     0.0380\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  group_by(sex, marital) |&gt; \n  summarize(n = n(), .groups = \"drop_last\") |&gt; \n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 11 × 4\n# Groups:   sex [2]\n   sex    marital      n proportion\n   &lt;chr&gt;  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n 1 female divorced   281   0.165   \n 2 female married    811   0.476   \n 3 female never ma   302   0.177   \n 4 female separate    68   0.0400  \n 5 female widowed    239   0.140   \n 6 female &lt;NA&gt;         1   0.000588\n 7 male   divorced   165   0.128   \n 8 male   married    730   0.566   \n 9 male   never ma   312   0.242   \n10 male   separate    34   0.0264  \n11 male   widowed     49   0.0380"
+    "text": "Calculating frequencies in R\nNow, let’s use R to calculate relative and marginal frequencies\n\nRelative freqMarginal freq (option 1)Marginal freq (option 2)\n\n\nRelative frequency formula : \\(p_{X=i} = \\frac{n_{X=i}}{n_{total}}\\)\n\nattain |&gt; \n  # count absolute frequencies\n  count(marital) |&gt; \n  # create a proprotion  \n  mutate(proportion = n / sum(n))\n\n# A tibble: 6 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   446   0.149   \n2 married   1541   0.515   \n3 never ma   614   0.205   \n4 separate   102   0.0341  \n5 widowed    288   0.0963  \n6 &lt;NA&gt;         1   0.000334\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\nattain |&gt; \n  # Table of absolute freq for var1, \n  # for given value for var2\n  filter(sex == \"male\") |&gt; \n  count(marital) |&gt; \n  # Use that table to create relative freq\n  mutate(proportion = n / sum(n))\n\n# A tibble: 5 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   165     0.128 \n2 married    730     0.566 \n3 never ma   312     0.242 \n4 separate    34     0.0264\n5 widowed     49     0.0380\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\nattain |&gt; \n  group_by(sex, marital) |&gt; \n  summarize(n = n(), .groups = \"drop_last\") |&gt; \n  mutate(proportion = n / sum(n))\n\n# A tibble: 11 × 4\n# Groups:   sex [2]\n   sex    marital      n proportion\n   &lt;chr&gt;  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n 1 female divorced   281   0.165   \n 2 female married    811   0.476   \n 3 female never ma   302   0.177   \n 4 female separate    68   0.0400  \n 5 female widowed    239   0.140   \n 6 female &lt;NA&gt;         1   0.000588\n 7 male   divorced   165   0.128   \n 8 male   married    730   0.566   \n 9 male   never ma   312   0.242   \n10 male   separate    34   0.0264  \n11 male   widowed     49   0.0380"
   },
   {
     "objectID": "slides/week4.html#questions-1",
@@ -214,7 +214,7 @@
     "href": "slides/week4.html#measures-of-central-tendency-in-r",
     "title": "Week 4",
     "section": "Measures of central tendency in R",
-    "text": "Measures of central tendency in R\nThese measures are simple to calculate in R. Let’s take a look:\n\nMeanMeidanMode\n\n\nTo calculate the mean respondent income in our sample, we can use the summarize() or summarise() function. Be sure to remove missing using na.rm = TRUE, which can affect the calculation.\n\n\n# Mean\nattain |&gt; \n  summarise(mean = mean(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n\n# A tibble: 1 × 1\n    mean\n   &lt;dbl&gt;\n1 25852.\n\n\n\n\nWe can do the same with for the median using the median() function:\n\n\n# Median\nattain |&gt; \n  summarise(mean = median(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n\n# A tibble: 1 × 1\n   mean\n  &lt;dbl&gt;\n1 21250\n\n\n\n\nFor the mode, we’ll simply want to count the number of obs (using count()) and take the largest number. We can do following to see the most common martial status, which is unsurprising “married”.\n\n\n\nattain %&gt;%\n  count(marital) %&gt;%\n  glimpse() |&gt; \n  slice_max(n, n = 1, with_ties = FALSE) %&gt;%\n  pull(marital)\n\n\nRows: 6\nColumns: 2\n$ marital &lt;chr&gt; \"divorced\", \"married\", \"never ma\", \"separate\", \"widowed\", NA\n$ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1\n\n\n[1] \"married\"\n\n\n\n\n\n\nNotice the extra glimpse() call here to see what’s happening under the hood"
+    "text": "Measures of central tendency in R\nThese measures are simple to calculate in R. Let’s take a look:\n\nNotice the extra glimpse() call here to see what’s happening under the hood\n\nMeanMeidanMode\n\n\nTo calculate the mean respondent income in our sample, we can use the summarize() or summarise() function. Be sure to remove missing using na.rm = TRUE, which can affect the calculation.\n\n# Mean\nattain |&gt; \n  summarise(mean = mean(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n# A tibble: 1 × 1\n    mean\n   &lt;dbl&gt;\n1 25852.\n\n\n\n\nWe can do the same with for the median using the median() function:\n\n# Median\nattain |&gt; \n  summarise(mean = median(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n# A tibble: 1 × 1\n   mean\n  &lt;dbl&gt;\n1 21250\n\n\n\n\nFor the mode, we’ll simply want to count the number of obs (using count()) and take the largest number. We can do following to see the most common martial status, which is unsurprising “married”.\n\n\nattain %&gt;%\n  count(marital) %&gt;%\n  glimpse() |&gt; \n  slice_max(n, n = 1, with_ties = FALSE) %&gt;%\n  pull(marital)\n\nRows: 6\nColumns: 2\n$ marital &lt;chr&gt; \"divorced\", \"married\", \"never ma\", \"separate\", \"widowed\", NA\n$ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1\n\n\n[1] \"married\""
   },
   {
     "objectID": "slides/week4.html#questions-2",
@@ -284,7 +284,7 @@
     "href": "slides/week4.html#measures-of-dispersion-in-r",
     "title": "Week 4",
     "section": "Measures of dispersion in R",
-    "text": "Measures of dispersion in R\nHow do we use R to calculate measures of dispersion? Let’s look at variosu measures of dispersion of respondent’s income in our attain dataset?\n\nPercentilesVarianceStandard DeviationAll at once\n\n\nThis will return the values at those specific percentiles–25th, 50th, and 75th. So, a respondent with an income of $32,500 is in the 75th percentile of the sample.\n\n\n# Percentiles\nattain %&gt;%\n  summarise(\n    p25 = quantile(rincom91, 0.25, na.rm = TRUE),\n    p50 = quantile(rincom91, 0.50, na.rm = TRUE),\n    p75 = quantile(rincom91, 0.75, na.rm = TRUE)\n  ) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 3\n$ p25 &lt;dbl&gt; 11250\n$ p50 &lt;dbl&gt; 21250\n$ p75 &lt;dbl&gt; 32500\n\n\n\n\nThis will return the measure of variance in our sample for this specific income variable.\n\n\n# Variance\nattain %&gt;%\n  summarise(variance = var(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ variance &lt;dbl&gt; 432600678\n\n\n\n\nThis will return the standard deviation (std_dev) of variance in our sample for this specific income variable.\n\n\n# Standard deviation\nattain %&gt;%\n  summarise(std_dev = sd(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ std_dev &lt;dbl&gt; 20799.05\n\n\n\n\nwe can calculate all of these measures simultaneously. We can also calculate sd manually if we’d like.\n\nHere I use the gt package to make the table output a bit nicer. Check out the documentation!\n\n\n# Verify sd equals sqrt(var)\nattain %&gt;%\n  summarise(\n    variance = var(rincom91, na.rm = TRUE),\n    std_dev  = sd(rincom91, na.rm = TRUE),\n    sqrt_var = sqrt(var(rincom91, na.rm = TRUE))\n  ) |&gt; \n  # use `gt` for nicer table formatting!\n  gt::gt()\n\n\n\n\n\n\n\n\nvariance\nstd_dev\nsqrt_var\n\n\n\n\n432600678\n20799.05\n20799.05"
+    "text": "Measures of dispersion in R\nHow do we use R to calculate measures of dispersion? Let’s look at variosu measures of dispersion of respondent’s income in our attain dataset?\n\nPercentilesVarianceStandard DeviationAll at once\n\n\nThis will return the values at those specific percentiles–25th, 50th, and 75th. So, a respondent with an income of $32,500 is in the 75th percentile of the sample.\n\n# Percentiles\nattain %&gt;%\n  summarise(\n    p25 = quantile(rincom91, 0.25, na.rm = TRUE),\n    p50 = quantile(rincom91, 0.50, na.rm = TRUE),\n    p75 = quantile(rincom91, 0.75, na.rm = TRUE)\n  ) |&gt; \n  glimpse()\n\nRows: 1\nColumns: 3\n$ p25 &lt;dbl&gt; 11250\n$ p50 &lt;dbl&gt; 21250\n$ p75 &lt;dbl&gt; 32500\n\n\n\n\nThis will return the measure of variance in our sample for this specific income variable.\n\n# Variance\nattain %&gt;%\n  summarise(variance = var(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\nRows: 1\nColumns: 1\n$ variance &lt;dbl&gt; 432600678\n\n\n\n\nThis will return the standard deviation (std_dev) of variance in our sample for this specific income variable.\n\n# Standard deviation\nattain %&gt;%\n  summarise(std_dev = sd(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\nRows: 1\nColumns: 1\n$ std_dev &lt;dbl&gt; 20799.05\n\n\n\n\nwe can calculate all of these measures simultaneously. We can also calculate sd manually if we’d like.\n\nHere I use the gt package to make the table output a bit nicer. Check out the documentation!\n\n# Verify sd equals sqrt(var)\nattain %&gt;%\n  summarise(\n    variance = var(rincom91, na.rm = TRUE),\n    std_dev  = sd(rincom91, na.rm = TRUE),\n    sqrt_var = sqrt(var(rincom91, na.rm = TRUE))\n  ) |&gt; \n  # use `gt` for nicer table formatting!\n  gt::gt()\n\n\n\n\n\n\n\nvariance\nstd_dev\nsqrt_var\n\n\n\n\n432600678\n20799.05\n20799.05"
   },
   {
     "objectID": "slides/week4.html#questions-3",
@@ -395,8 +395,8 @@
     "objectID": "slides/week7.html#housekeeping",
     "href": "slides/week7.html#housekeeping",
     "title": "Week 7",
-    "section": "Housekeeping",
-    "text": "Housekeeping\n[[ADD IT IN LATER]]"
+    "section": "",
+    "text": "[[ADD IT IN LATER]]"
   },
   {
     "objectID": "slides/week7.html#agenda",
@@ -487,21 +487,21 @@
     "href": "slides/week7.html#sampling-from-a-population",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+    "text": "Sampling from a Population\n\n\n\nThe relationship between target population and a sample"
   },
   {
     "objectID": "slides/week7.html#sampling-from-a-population-1",
     "href": "slides/week7.html#sampling-from-a-population-1",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+    "text": "Sampling from a Population\n\n\n\nThe relationship between target population and a sample"
   },
   {
     "objectID": "slides/week7.html#sampling-from-a-population-2",
     "href": "slides/week7.html#sampling-from-a-population-2",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+    "text": "Sampling from a Population\n\n\n\nThe relationship between target population and a sample"
   },
   {
     "objectID": "slides/week7.html#sample-design",
@@ -557,7 +557,7 @@
     "href": "slides/week7.html#gss-weight-variables",
     "title": "Week 7",
     "section": "GSS Weight Variables",
-    "text": "GSS Weight Variables\n\nTable showing different GSS weight variables and their purposes"
+    "text": "GSS Weight Variables\n\n\n\nTable showing different GSS weight variables and their purposes"
   },
   {
     "objectID": "slides/week7.html#using-weights-in-r",
@@ -634,7 +634,7 @@
     "href": "slides/week7.html#standard-error-and-sample-size",
     "title": "Week 7",
     "section": "Standard Error and Sample Size",
-    "text": "Standard Error and Sample Size\nAs the sample size n becomes larger, the standard error of the sample mean becomes smaller\nThis is why the precision of our estimates increase with larger sample sizes!\nExample: Sampling distribution of \\(\\bar{x}\\), where \\(X \\sim N(0,1)\\)\n\nShows how sampling distributions become tighter with larger \\(N\\)"
+    "text": "Standard Error and Sample Size\nAs the sample size n becomes larger, the standard error of the sample mean becomes smaller\nThis is why the precision of our estimates increase with larger sample sizes!\nExample: Sampling distribution of \\(\\bar{x}\\), where \\(X \\sim N(0,1)\\)\n\n\n\nShows how sampling distributions become tighter with larger \\(N\\)"
   },
   {
     "objectID": "slides/week7.html#worked-example-pizza-sales",
@@ -739,7 +739,7 @@
     "href": "slides/week2.html#agenda",
     "title": "Week 2",
     "section": "Agenda",
-    "text": "Agenda\n\nGain some familiarity with R and Positron\nDevelop basic proficiency with R and Positron\nUnderstand core data concepts: variable types, logical operators, and common data structures\nUnderstand what the Tidyverse is and how it differs from base R\nImport, manipulate, and export data using fundamental R commands\nPrepare and submit homework assignments using Quarto"
+    "text": "Agenda\n\nIntroduction to Positron IDE\nR basics: variables, data types, and logical operators\nData structures and file paths vectors and dataframes\nThe Tidyverse and key functions\nLab: Setting up your folder structure and practicing with .qmd files\nHW #0: Complete and submit in class"
   },
   {
     "objectID": "slides/week2.html#exploring-r-and-positron",
@@ -760,7 +760,7 @@
     "href": "slides/week2.html#positron-1",
     "title": "Week 2",
     "section": "Positron",
-    "text": "Positron\nLet’s explore Positron together on your laptop:\n\n\nFile explorer\nConsole\nInterpreter and Folder\nNew\nOpen"
+    "text": "Positron\nLet’s explore Positron together on your laptop:\n\nFile explorer\nConsole\nInterpreter and Folder\nNew\nOpen"
   },
   {
     "objectID": "slides/week2.html#script-panel",
@@ -795,7 +795,7 @@
     "href": "slides/week2.html#writing-with-script.r",
     "title": "Week 2",
     "section": "Writing with script.R",
-    "text": "Writing with script.R\n\nBest practice to write all code in a script file\n\nReproducible code\nDocuments exactly what you have done\nAllows you to easily correct mistakes\n\nTwo types of files we’ll work with\n\nR files (.R): accept R code and are very similar to text files except that they read R code.\nQuarto files (.qmd): allow to intersperse R/Python (other languages too!) with text. It’s great for putting text next to analysis."
+    "text": "Writing with script.R\nBest practice to write all code in a script file\n\nReproducible code\nDocuments exactly what you have done\nAllows you to easily correct mistakes\n\nTwo types of files we’ll work with\n\nR files (.R): accept R code and are very similar to text files except that they read R code.\nQuarto files (.qmd): allow to intersperse R/Python (other languages too!) with text. It’s great for putting text next to analysis."
   },
   {
     "objectID": "slides/week2.html#writing-with-script.r-1",
@@ -816,7 +816,7 @@
     "href": "slides/week2.html#variable-assignment-in-script.r",
     "title": "Week 2",
     "section": "Variable assignment in script.R",
-    "text": "Variable assignment in script.R\nR is an object-oriented programming language, meaning you can create new objects from any type of value, store it R’s memory, and call it when necessary\n\nDefine variables using the assignment operator: &lt;-\nGive variables meaningful names when assigning\nVariable names must be unique—reusing a name will overwrite it\n\n#| eval: false\n#| echo: true\n# load data\nacs21 &lt;- read_csv(\"data/acs2021.csv\")"
+    "text": "Variable assignment in script.R\nR is an object-oriented programming language, meaning you can create new objects from any type of value, store it R’s memory, and call it when necessary\n\nDefine variables using the assignment operator: &lt;-\nGive variables meaningful names when assigning\nVariable names must be unique—reusing a name will overwrite it\n\n#| eval: false\n#| echo: true\n# load data\nacs &lt;- read_csv(\"data/acs2021.csv\")\nacs &lt;- read_csv(\"data/acs2022.csv\")"
   },
   {
     "objectID": "slides/week2.html#common-values-for-variables",
@@ -872,7 +872,7 @@
     "href": "slides/week2.html#logical-operators",
     "title": "Week 2",
     "section": "Logical operators",
-    "text": "Logical operators\n\nUse logical operators to compare two variables or objects\nUseful for manipulating data\n\n\n\n\nOperator\nMeaning\n\n\n\n\n==\nEqual to\n\n\n!=\nNot equal to\n\n\n&lt;\nLess than\n\n\n&gt;\nGreater than\n\n\n&lt;=\nLess than or equal to\n\n\n&gt;=\nGreater than or equal to"
+    "text": "Logical operators\n\nUse logical operators to compare two variables or objects\nUseful for manipulating data\n\n\nOperatorsExample\n\n\n\n\n\nOperator\nMeaning\n\n\n\n\n==\nEqual to\n\n\n!=\nNot equal to\n\n\n&lt;\nLess than\n\n\n&gt;\nGreater than\n\n\n&lt;=\nLess than or equal to\n\n\n&gt;=\nGreater than or equal to\n\n\n\n\n\n\nx &lt;- 10\ny &lt;- 5\n\nx == y\n\n[1] FALSE\n\nx != y\n\n[1] TRUE\n\nx &gt; y\n\n[1] TRUE\n\nx &lt; y\n\n[1] FALSE\n\nx &gt;= 10\n\n[1] TRUE"
   },
   {
     "objectID": "slides/week2.html#logical-operators-1",
@@ -928,21 +928,21 @@
     "href": "slides/week2.html#the-tidyverse",
     "title": "Week 2",
     "section": "The Tidyverse",
-    "text": "The Tidyverse\nWhat is it?\n\nA collection of R packages designed for data science that share a common philosophy and grammar\nBy far the most common approach to working with R\nMost intuitive way to do data science"
+    "text": "The Tidyverse\nWhat is it?\n\nA collection of R packages designed for data science that share a common philosophy and grammar\nBy far the most common approach to working with R\nMost intuitive way to do data science\n\nCore Packages we’ll be using\n\nreadr: for importing data (read_csv())\ndplyr: for manipulating data (filter(), select(), mutate(), summarize())\nggplot2: for data visualization"
   },
   {
     "objectID": "slides/week2.html#the-tidyverse-1",
     "href": "slides/week2.html#the-tidyverse-1",
     "title": "Week 2",
     "section": "The Tidyverse",
-    "text": "The Tidyverse\nKey Features\n\nPipe operator |&gt;:1 chains functions together for readable code\nConsistent syntax: functions work similarly across packages\nHuman-readable: code reads like sentences\n\n# |eval=FALSE\n# |echo=TRUE\n\n# Base R\nmean(subset(dataframe, age &gt; 18)$score)\n\n# Tidyverse - \"take dataframe, filter where age &gt; 18,\n# then pull score, then calculate mean\"\ndataframe |&gt; filter(age &gt; 18) |&gt; pull(score) |&gt; mean()\nThe older version of the pipe operator %&gt;% also works interchangeably."
+    "text": "The Tidyverse\nKey Features\n\nConsistent syntax: functions work similarly across packages\nHuman-readable: code reads like sentences\nPipe operator |&gt;:1 chains functions together for readable code\n\n# |eval=FALSE\n# |echo=TRUE\n\n# Base R\nmean(subset(dataframe, age &gt; 18)$score)\n\n# Tidyverse - \"take dataframe, filter where age &gt; 18,\n# then pull score, then calculate mean\"\ndataframe |&gt; filter(age &gt; 18) |&gt; pull(score) |&gt; mean()\nThe older version of the pipe operator %&gt;% also works interchangeably."
   },
   {
     "objectID": "slides/week2.html#the-tidyverse-2",
     "href": "slides/week2.html#the-tidyverse-2",
     "title": "Week 2",
     "section": "The Tidyverse",
-    "text": "The Tidyverse\nCore Packages we’ll be using\n\nreadr: for importing data (read_csv())\ndplyr: for manipulating data (filter(), select(), mutate(), summarize())\nggplot2: for data visualization"
+    "text": "The Tidyverse\nHow the packages work together\n# |eval=FALSE\n# |echo=TRUE\n\n# Load data\ndata &lt;- read_csv(\"data.csv\") # read in csv\n\n# Process\ndata |&gt;\n  filter(year == 2020) |&gt;  # filter rows based on conditions\n  select(name, score)  |&gt;  # select specific columns\n  arrange(desc(score)) |&gt;  # order columns\n  glimpse()                # glimpse"
   },
   {
     "objectID": "slides/week2.html#the-tidyverse-3",
@@ -1026,7 +1026,7 @@
     "href": "slides/week2.html#anatomy-of-a-.qmd-file",
     "title": "Week 2",
     "section": "Anatomy of a .qmd File",
-    "text": "Anatomy of a .qmd File\nA .qmd file has three main parts and knits code + text together (unlike .R which runs code only):\n\n\n1. YAML Header (metadata)\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\nformat: html\n---\n\n2. Markdown Text (narrative)\nUse **bold**, *italics*, # Headings\nMore markdown basics\n\n\n3. Code Chunks (analysis)\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)"
+    "text": "Anatomy of a .qmd File\nA .qmd file has three main parts and knits code + text together (unlike .R which runs code only):\n\n\n1. YAML Header (metadata)\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\nformat: html\n---\n\n2. Markdown Text (narrative)\nUse **bold**, *italics*, # Headings\nMore markdown basics\n\n3. Code Chunks (analysis)\n```{{r}}\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)\n```"
   },
   {
     "objectID": "slides/week2.html#anatomy-of-a-.qmd-file-1",
@@ -1103,7 +1103,7 @@
     "href": "slides/week2.html#rendering-quarto-documents-4",
     "title": "Week 2",
     "section": "Rendering Quarto Documents",
-    "text": "Rendering Quarto Documents\nOutput Formats\nFor this course, make sure html is specified in your YAML header:\n---\ntitle: \"My Analysis\"\nformat: html        # or pdf, docx\n---\nCan format many different formats (e.g., pdf, docx, odt, epubs, pptx)\n\n\nGitHub course repo"
+    "text": "Rendering Quarto Documents\nOutput Formats\nFor this course, make sure html is specified in your YAML header:\n---\ntitle: \"My Analysis\"\nformat: html        # or pdf, docx\n---\nCan format many different formats (e.g., pdf, docx, odt, epubs, pptx)"
   },
   {
     "objectID": "slides/week2.html#homework-1",
@@ -1222,7 +1222,7 @@
     "href": "assignments/hw0.html",
     "title": "Weekly Assignment Example",
     "section": "",
-    "text": "Using a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting.\n\n\nWhat is your research question that you want to answer with this plot? (Remember a research question should end with a “?”)\nIs Berkeley Sociology’s graduate program more appealing to men than women?\n\n\n\nState what you expect to find and why. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.\nAlthough the Berkeley Sociology Department is committed to gender balance and despite its reputation as a center for gender research, there seems to be a recent trend toward disproportionately male graduate student cohorts. Based on informal interviews with faculty, I believe that this is not simply a fluke and that Berkeley now disproportionately attracts male students. I therefore predict that men who are admitted to Berkeley will be more likely to accept an offer than women who are admitted.\n\n\n\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.\nI use the count of women and men in the 2010 Berkeley incoming sociology cohort to test this hypothesis. These data come from a list I received from the department in April 2010. Using data from multiple years would allow more accurate estimates but they would apply to a longer period. I use only the most recent year of data in order to assess the current state of the program.\n\n\n\nDescribe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.\nIf gender is irrelevant to accepting an offer from Berkeley and equal numbers of both genders are admitted, then a reasonable model of cohort composition is one that follows a binomial distribution with Pr(male) = Pr(female) = .5. I use Stata’s “bitest” function to estimate how probable it is that the observed data were generated by this model. If the model does not fit the data, this would provide evidence that gender does, in fact, play a role in whether or not an admitted student accepts an offer.\n\n\n\nBuild your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   3.5.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )\n\n\n\n\n\n\n\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.\nIn 2010, 15 out of 21 (or 71%) of the incoming students are men, which is a rather large gender imbalance. Based on the model above, the probability that this occurred by chance is .039, which is the probability of observing 15 or more male students given 21 independent binomial trials with Pr(male) = .5. Using the conventional benchmark for statistical significance (p &lt; .05) we can reject the model that assumes that gender is irrelevant to the process of accepting an offer from Berkeley.\n\n\n\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.\nMy initial predictions were supported—there are more men than women in the 2010 cohort and this difference does not appear to be the result of chance alone. This suggests that Berkeley sociology may indeed appeal more to men than to women and that any model of the processes that lead to accepting an offer must include gender as a factor.\n\n\n\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nThe conclusions we can draw from the data are limited because they come from a single year. Perhaps gender matters this year for some reason but this is not a general trend. The analysis may also be flawed if the assumption that men and women are equally likely to be admitted is inaccurate. Other factors associated with gender might also be the real culprits rather than gender differences in the appeal of the program. Perhaps Berkeley is equally appealing to both genders but women are more likely than men to receive multiple offers from top schools. This would make it less likely that women would accept an offer from any program, not just Berkeley."
+    "text": "Using a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting.\n\n\nWhat is your research question that you want to answer with this plot? (Remember a research question should end with a “?”)\nIs Berkeley Sociology’s graduate program more appealing to men than women?\n\n\n\nState what you expect to find and why. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.\nAlthough the Berkeley Sociology Department is committed to gender balance and despite its reputation as a center for gender research, there seems to be a recent trend toward disproportionately male graduate student cohorts. Based on informal interviews with faculty, I believe that this is not simply a fluke and that Berkeley now disproportionately attracts male students. I therefore predict that men who are admitted to Berkeley will be more likely to accept an offer than women who are admitted.\n\n\n\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.\nI use the count of women and men in the 2010 Berkeley incoming sociology cohort to test this hypothesis. These data come from a list I received from the department in April 2010. Using data from multiple years would allow more accurate estimates but they would apply to a longer period. I use only the most recent year of data in order to assess the current state of the program.\n\n\n\nDescribe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.\nIf gender is irrelevant to accepting an offer from Berkeley and equal numbers of both genders are admitted, then a reasonable model of cohort composition is one that follows a binomial distribution with Pr(male) = Pr(female) = .5. I use Stata’s “bitest” function to estimate how probable it is that the observed data were generated by this model. If the model does not fit the data, this would provide evidence that gender does, in fact, play a role in whether or not an admitted student accepts an offer.\n\n\n\nBuild your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.3\n\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )\n\n\n\n\n\n\n\n\n\n\n\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.\nIn 2010, 15 out of 21 (or 71%) of the incoming students are men, which is a rather large gender imbalance. Based on the model above, the probability that this occurred by chance is .039, which is the probability of observing 15 or more male students given 21 independent binomial trials with Pr(male) = .5. Using the conventional benchmark for statistical significance (p &lt; .05) we can reject the model that assumes that gender is irrelevant to the process of accepting an offer from Berkeley.\n\n\n\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.\nMy initial predictions were supported—there are more men than women in the 2010 cohort and this difference does not appear to be the result of chance alone. This suggests that Berkeley sociology may indeed appeal more to men than to women and that any model of the processes that lead to accepting an offer must include gender as a factor.\n\n\n\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nThe conclusions we can draw from the data are limited because they come from a single year. Perhaps gender matters this year for some reason but this is not a general trend. The analysis may also be flawed if the assumption that men and women are equally likely to be admitted is inaccurate. Other factors associated with gender might also be the real culprits rather than gender differences in the appeal of the program. Perhaps Berkeley is equally appealing to both genders but women are more likely than men to receive multiple offers from top schools. This would make it less likely that women would accept an offer from any program, not just Berkeley."
   },
   {
     "objectID": "assignments/hw0.html#research-question",
@@ -1257,7 +1257,7 @@
     "href": "assignments/hw0.html#code",
     "title": "Weekly Assignment Example",
     "section": "",
-    "text": "Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   3.5.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )"
+    "text": "Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.3\n\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!\n\n\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n\n\n# data\n# ----------\nstudents_summary &lt;- data.frame(\n  gender = c(\"male\", \"female\"),\n  count = c(8, 3)\n)\n\n# plot\n# ----------\nstudents_summary |&gt; \n  ggplot(aes(x = gender, y = count)) +\n  geom_col(fill = \"#0d467cff\", width = 0.6) +\n  scale_y_continuous(breaks = 0:9, limits = c(0, 9)) +\n  labs(\n    x = NULL,\n    y = \"Number of students\",\n    caption = \"Percentage of male students = 72.2%\"\n  ) +\n  theme_bw() +\n  theme(\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    axis.text = element_text(size = 12),\n    axis.title.y = element_text(size = 12),\n    plot.caption = element_text(size = 14, hjust = 0.5, margin = margin(t = 10))\n  )"
   },
   {
     "objectID": "assignments/hw0.html#results",
@@ -2012,8 +2012,8 @@
     "objectID": "slides/week8.html#housekeeping",
     "href": "slides/week8.html#housekeeping",
     "title": "Week 8",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nAnnotated Bibliography: Due March 19\nExample of annotated bibliography posted on course site (in the Research Paper folder)\nGeneral format:\n\nOne paragraph summarizing the argument of the article\nOne paragraph discussing how it relates to and/or helps to answer your research question"
+    "section": "",
+    "text": "Annotated Bibliography: Due March 19\nExample of annotated bibliography posted on course site (in the Research Paper folder)\nGeneral format:\n\nOne paragraph summarizing the argument of the article\nOne paragraph discussing how it relates to and/or helps to answer your research question"
   },
   {
     "objectID": "slides/week8.html#annotated-bibliography-example",
@@ -2062,7 +2062,7 @@
     "href": "slides/week8.html#key-concepts",
     "title": "Week 8",
     "section": "Key Concepts",
-    "text": "Key Concepts\n\n\nPopulation\n\nParameter: unknown value we want to estimate\nExamples: \\(\\mu\\), \\(\\pi\\), \\(\\sigma\\)\n\n\nSample\n\nStatistic: observed value from our data\nExamples: \\(\\bar{x}\\), \\(\\hat{p}\\), \\(s\\)\n\n\nThe goal: Use statistics to estimate parameters while accounting for uncertainty"
+    "text": "Key Concepts\n\n\nPopulation\n\nParameter: unknown value we want to estimate\nExamples: \\(\\mu\\), \\(\\pi\\), \\(\\sigma\\)\n\n\nSample\n\nStatistic: observed value from our data\nExamples: \\(\\bar{x}\\), \\(\\hat{p}\\), \\(s\\)\n\n\n\nThe goal: Use statistics to estimate parameters while accounting for uncertainty"
   },
   {
     "objectID": "slides/week8.html#estimators",
@@ -2090,7 +2090,7 @@
     "href": "slides/week8.html#visualizing-bias-and-efficiency",
     "title": "Week 8",
     "section": "Visualizing Bias and Efficiency",
-    "text": "Visualizing Bias and Efficiency\n\nRemember: bias relates to accuracy, efficiency relates to precision"
+    "text": "Visualizing Bias and Efficiency\n\n\n\nRemember: bias relates to accuracy, efficiency relates to precision"
   },
   {
     "objectID": "slides/week8.html#confidence-intervals",
@@ -2160,7 +2160,7 @@
     "href": "slides/week8.html#example-higher-confidence-level",
     "title": "Week 8",
     "section": "Example: Higher Confidence Level",
-    "text": "Example: Higher Confidence Level\nNow let’s say you wanted a higher confidence level–99% instead of 95%. You’d do the same calculations but use the critical value of \\(2.576\\) instead of \\(1.96\\)\nFor a 99% confidence interval (\\(z^* = 2.576\\)):\n\\[0.449 \\pm 2.576 \\times 0.0146 = 0.449 \\pm 0.038 = [0.411, 0.487]\\]\n\n\n95% confidence interval\n\\([0.420, 0.478]\\)\n\n99% confidence interval\n\\([0.411, 0.487]\\)\n\n\nNotice: The 99% CI is wider than the 95% CI. We need a wider interval to be more confident it contains the true parameter"
+    "text": "Example: Higher Confidence Level\nNow let’s say you wanted a higher confidence level–99% instead of 95%. You’d do the same calculations but use the critical value of \\(2.576\\) instead of \\(1.96\\)\nFor a 99% confidence interval (\\(z^* = 2.576\\)):\n\\[0.449 \\pm 2.576 \\times 0.0146 = 0.449 \\pm 0.038 = [0.411, 0.487]\\]\n\n\n95% confidence interval\n\\([0.420, 0.478]\\)\n\n99% confidence interval\n\\([0.411, 0.487]\\)\n\n\n\nNotice: The 99% CI is wider than the 95% CI. We need a wider interval to be more confident it contains the true parameter"
   },
   {
     "objectID": "slides/week8.html#finding-critical-values-in-r",
@@ -2202,7 +2202,7 @@
     "href": "slides/week8.html#properties-of-the-t-distribution",
     "title": "Week 8",
     "section": "Properties of the t-Distribution",
-    "text": "Properties of the t-Distribution\nKey properties:\n\nWhen df &gt; 100, the t-distribution is basically the same as the normal distribution\nWith smaller samples, t-distribution has fatter tails\nIn small samples, we also need to assume the variable is approximately normally distributed in the population\n\n\nThe t-distribution compared to the normal distribution"
+    "text": "Properties of the t-Distribution\nKey properties:\n\nWhen df &gt; 100, the t-distribution is basically the same as the normal distribution\nWith smaller samples, t-distribution has fatter tails\nIn small samples, we also need to assume the variable is approximately normally distributed in the population\n\n\n\n\nThe t-distribution compared to the normal distribution"
   },
   {
     "objectID": "slides/week8.html#formula-for-ci-of-a-mean",
@@ -2460,8 +2460,8 @@
     "objectID": "slides/week3.html#housekeeping",
     "href": "slides/week3.html#housekeeping",
     "title": "Week 3",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nWeekly assignments\n\nDue on Thursdays nights\nGenerally, if a couple of things not quite right → still full credit. If more than a couple → half credit\nEach assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped\nBut, multiple assignments not turned in will negatively affect your grade!\n\nHW #1: due Thursday, February 5, 11:59 PM - any questions?"
+    "section": "",
+    "text": "Weekly assignments\n\nDue on Thursdays nights\nGenerally, if a couple of things not quite right → still full credit. If more than a couple → half credit\nEach assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped\nBut, multiple assignments not turned in will negatively affect your grade!\n\nHW #1: due Thursday, February 5, 11:59 PM - any questions?"
   },
   {
     "objectID": "slides/week3.html#agenda",
@@ -2510,7 +2510,7 @@
     "href": "slides/week3.html#putting-it-all-together",
     "title": "Week 3",
     "section": "Putting it all together!",
-    "text": "Putting it all together!\nLet’s put it all together and see what it looks like!\n\n\nggplot(mpg, aes(cty, hwy)) +\n  # to create a scatterplot\n  geom_point() +\n  # to fit and overlay a loess trendline\n  geom_smooth(formula = y ~ x, method = \"lm\")"
+    "text": "Putting it all together!\nLet’s put it all together and see what it looks like!\n\nggplot(mpg, aes(cty, hwy)) +\n  # to create a scatterplot\n  geom_point() +\n  # to fit and overlay a loess trendline\n  geom_smooth(formula = y ~ x, method = \"lm\")"
   },
   {
     "objectID": "slides/week3.html#visualizing-variables",
@@ -2524,35 +2524,35 @@
     "href": "slides/week3.html#bar-charts-geom_bar",
     "title": "Week 3",
     "section": "Bar charts: geom_bar()",
-    "text": "Bar charts: geom_bar()\nFor categorical (nominal or ordinal) variables, we can visualize their distribution in a dataset using a bar chart.\n\nWhat is a bar chart?geom_bar()\n\n\n\nA graph of a frequency table\nHeight of bars indicates the relative frequency of values in our dataset\nX axis: a series of categories\nY axis: absolute frequency of values\nWe can do this using the geom_bar() function\n\n\n\nFrequency of marital status in attain:\n\n\nggplot(data = attain, aes(x = marital)) +\n  geom_bar(fill = \"#0d467cff\") +\n  labs(\n    title = \"Education Distribution\",\n    x = \"Education Level\",\n    y = \"Count\"\n  ) + \n  theme_minimal()"
+    "text": "Bar charts: geom_bar()\nFor categorical (nominal or ordinal) variables, we can visualize their distribution in a dataset using a bar chart.\n\nWhat is a bar chart?geom_bar()\n\n\n\nA graph of a frequency table\nHeight of bars indicates the relative frequency of values in our dataset\nX axis: a series of categories\nY axis: absolute frequency of values\nWe can do this using the geom_bar() function\n\n\n\nFrequency of marital status in attain:\n\nggplot(data = attain, aes(x = marital)) +\n  geom_bar(fill = \"#0d467cff\") +\n  labs(\n    title = \"Education Distribution\",\n    x = \"Education Level\",\n    y = \"Count\"\n  ) + \n  theme_minimal()"
   },
   {
     "objectID": "slides/week3.html#histogram-geom_histogram",
     "href": "slides/week3.html#histogram-geom_histogram",
     "title": "Week 3",
     "section": "Histogram: geom_histogram()",
-    "text": "Histogram: geom_histogram()\nFor continuous (interval or ratio) variables, we can visualize their distribution in a dataset using a histogram.\n\nWhat is a histogram?geom_histogram()bins()binwidth()\n\n\n\nA graph in which a continuous variable is divided into categorical values\nFrequencies shown in a bar graph\nWe can do this using the geom_histogram() function\n\n\n\nR will automatically ‘bin’ a continuous variable into groups and then plot their frequency.\nIt defaults to 30.\n\n\nggplot(data = attain, aes(x = age)) +\n  geom_histogram(fill = \"#0d467cff\") +\n  labs(\n    title = \"Age Distribution\",\n    x = \"Age\",\n    y = \"Frequency\"\n  ) + \n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\nYou can override geom_histogram()’s default by specifying the number of bins(). Here we set it to 100.\n\n\nggplot(data = attain, aes(x = age)) +\n  # here we specify 20\n  geom_histogram(bins = 100, fill = \"#7B2C2F\") +\n  labs(\n    title = \"Age Distribution\",\n    x = \"Age\",\n    y = \"Frequency\"\n  ) + \n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\nAlternatively, you can make the bins wider to include more observations. Here, we set the binwidth = 50, which makes the bins span 50 units.\n\n\nggplot(data = attain, aes(x = age)) +\n  # here we specify 20\n  geom_histogram(binwidth = 50, fill = \"#4CBB17\") +\n  labs(\n    title = \"Age Distribution\",\n    x = \"Age\",\n    y = \"Frequency\"\n  ) + \n  theme_minimal()"
+    "text": "Histogram: geom_histogram()\nFor continuous (interval or ratio) variables, we can visualize their distribution in a dataset using a histogram.\n\nWhat is a histogram?geom_histogram()bins()binwidth()\n\n\n\nA graph in which a continuous variable is divided into categorical values\nFrequencies shown in a bar graph\nWe can do this using the geom_histogram() function\n\n\n\nR will automatically ‘bin’ a continuous variable into groups and then plot their frequency.\nIt defaults to 30.\n\nggplot(data = attain, aes(x = age)) +\n  geom_histogram(fill = \"#0d467cff\") +\n  labs(\n    title = \"Age Distribution\",\n    x = \"Age\",\n    y = \"Frequency\"\n  ) + \n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\nYou can override geom_histogram()’s default by specifying the number of bins(). Here we set it to 100.\n\nggplot(data = attain, aes(x = age)) +\n  # here we specify 20\n  geom_histogram(bins = 100, fill = \"#7B2C2F\") +\n  labs(\n    title = \"Age Distribution\",\n    x = \"Age\",\n    y = \"Frequency\"\n  ) + \n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\nAlternatively, you can make the bins wider to include more observations. Here, we set the binwidth = 50, which makes the bins span 50 units.\n\nggplot(data = attain, aes(x = age)) +\n  # here we specify 20\n  geom_histogram(binwidth = 50, fill = \"#4CBB17\") +\n  labs(\n    title = \"Age Distribution\",\n    x = \"Age\",\n    y = \"Frequency\"\n  ) + \n  theme_minimal()"
   },
   {
     "objectID": "slides/week3.html#line-chart-geom_line",
     "href": "slides/week3.html#line-chart-geom_line",
     "title": "Week 3",
     "section": "Line chart: geom_line()",
-    "text": "Line chart: geom_line()\nA line chart is similar to a bar graph but the tops of the bars are represented by points joined by lines.\n\nWhat is a line chartgeom_line()\n\n\n\nX and Y variables are ordered in some way (ordinal, interval, ratio)\nUseful when you want to show change in a Y variable over your X variable\nMay not work well with missing values\nWe can do this using the geom_line() function\n\n\n\nHere’s a look at unemployment rates over time. Note that if we have data where we have average values of Y for ordered values of X, we can also use line charts.\n\n\neconomics |&gt; \nggplot(aes(x = date, y = unemploy)) + \ngeom_line() + \n  labs(\n    title = \"Employment over time\",\n    x = \"Date\",\n    y = \"Unemployment count\"\n  ) + \n  theme_minimal()"
+    "text": "Line chart: geom_line()\nA line chart is similar to a bar graph but the tops of the bars are represented by points joined by lines.\n\nWhat is a line chartgeom_line()\n\n\n\nX and Y variables are ordered in some way (ordinal, interval, ratio)\nUseful when you want to show change in a Y variable over your X variable\nMay not work well with missing values\nWe can do this using the geom_line() function\n\n\n\nHere’s a look at unemployment rates over time. Note that if we have data where we have average values of Y for ordered values of X, we can also use line charts.\n\neconomics |&gt; \nggplot(aes(x = date, y = unemploy)) + \ngeom_line() + \n  labs(\n    title = \"Employment over time\",\n    x = \"Date\",\n    y = \"Unemployment count\"\n  ) + \n  theme_minimal()"
   },
   {
     "objectID": "slides/week3.html#scatterplot-geom_point",
     "href": "slides/week3.html#scatterplot-geom_point",
     "title": "Week 3",
     "section": "Scatterplot: geom_point()",
-    "text": "Scatterplot: geom_point()\nA scatterplot is a two-dimensional rectangular plot for visualizing the relationship between two continuous variables.\n\nWhat is a scatterplot chart?geom_point()\n\n\n\nX-axis: values of one continuous variable\nY-axis: values of another continuous variable\nWe can do this using the geom_point() function\n\n\n\nLet’s look at the relationship between age an individual was married and the age of when their child was born.\n\n\nattain |&gt; \nggplot(aes(x = agewed, y = agekdbrn)) + \ngeom_point() + \n  labs(\n    title = \"Age of marriage vs childbirth\",\n    x = \"Age married\",\n    y = \"Age child was born\"\n  ) + \n  theme_minimal()"
+    "text": "Scatterplot: geom_point()\nA scatterplot is a two-dimensional rectangular plot for visualizing the relationship between two continuous variables.\n\nWhat is a scatterplot chart?geom_point()\n\n\n\nX-axis: values of one continuous variable\nY-axis: values of another continuous variable\nWe can do this using the geom_point() function\n\n\n\nLet’s look at the relationship between age an individual was married and the age of when their child was born.\n\nattain |&gt; \nggplot(aes(x = agewed, y = agekdbrn)) + \ngeom_point() + \n  labs(\n    title = \"Age of marriage vs childbirth\",\n    x = \"Age married\",\n    y = \"Age child was born\"\n  ) + \n  theme_minimal()"
   },
   {
     "objectID": "slides/week3.html#boxplot-geom_boxplot",
     "href": "slides/week3.html#boxplot-geom_boxplot",
     "title": "Week 3",
     "section": "Boxplot: geom_boxplot()",
-    "text": "Boxplot: geom_boxplot()\nThe boxplot compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all “outlying” points individually.\n\nWhat is boxplot?geom_boxplot() 1 vargeom_boxplot() 2 vars\n\n\nMost useful to see the entire distribution of a variable, by another categorical one\n\nMost useful looking at 2 vars, but can do one\nIf you want 1, specify just one axis\nWe can do this using the geom_boxplot() function\n\n\n\nWe can look we are looking at the distribution of income by sex.\n\n\nattain |&gt; \nggplot(aes(y = rincom91)) + \ngeom_boxplot() + \n  labs(\n    title = \"Income distribution\",\n    x = \"\",\n    y = \"Income\"\n  ) + \n  theme_minimal() + \n    theme(\n    axis.text.x = element_blank(),\n    axis.ticks.x = element_blank()\n  )\n\n\n\n\n\n\n\n\n\n\n\nIn this case, we are looking at the distribution of income by sex.\n\n\nattain |&gt; \nggplot(aes(x = sex, y = rincom91)) + \ngeom_boxplot() + \n  labs(\n    title = \"Income by sex\",\n    x = \"Sex\",\n    y = \"Income\"\n  ) + \n  theme_minimal()"
+    "text": "Boxplot: geom_boxplot()\nThe boxplot compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all “outlying” points individually.\n\nWhat is boxplot?geom_boxplot() 1 vargeom_boxplot() 2 vars\n\n\nMost useful to see the entire distribution of a variable, by another categorical one\n\nMost useful looking at 2 vars, but can do one\nIf you want 1, specify just one axis\nWe can do this using the geom_boxplot() function\n\n\n\nWe can look we are looking at the distribution of income by sex.\n\nattain |&gt; \nggplot(aes(y = rincom91)) + \ngeom_boxplot() + \n  labs(\n    title = \"Income distribution\",\n    x = \"\",\n    y = \"Income\"\n  ) + \n  theme_minimal() + \n    theme(\n    axis.text.x = element_blank(),\n    axis.ticks.x = element_blank()\n  )\n\n\n\n\n\n\n\n\n\n\nIn this case, we are looking at the distribution of income by sex.\n\nattain |&gt; \nggplot(aes(x = sex, y = rincom91)) + \ngeom_boxplot() + \n  labs(\n    title = \"Income by sex\",\n    x = \"Sex\",\n    y = \"Income\"\n  ) + \n  theme_minimal()"
   },
   {
     "objectID": "slides/week3.html#questions",
@@ -2656,8 +2656,8 @@
     "objectID": "slides/week6.html#housekeeping",
     "href": "slides/week6.html#housekeeping",
     "title": "Week 6",
-    "section": "Housekeeping",
-    "text": "Housekeeping\n[[ADD IT IN LATER]]"
+    "section": "",
+    "text": "[[ADD IT IN LATER]]"
   },
   {
     "objectID": "slides/week6.html#agenda",
@@ -2706,7 +2706,7 @@
     "href": "slides/week6.html#binary-probability-distributions",
     "title": "Week 6",
     "section": "Binary Probability Distributions",
-    "text": "Binary Probability Distributions\nLet’s strip things down to the simplest possible random variable:\nPerhaps the most basic family of discrete probability distributions is the binary (or Bernoulli) distribution, which models whether an outcome occurs or not in one trial\nA binary random variable \\(X\\) is equal to:\n\\[X \\in \\{0, 1\\}\\]\n\n\nInterpretation:\n\n1 if the outcome occurs\n0 if the outcome does not occur\n\n\nExamples:\n\nEviction occurred (1) or not (0)\nVoted (1) or didn’t vote (0)\nPolicy passed (1) or failed (0)\n\n\n\n\nThis is why these are also called indicator variables."
+    "text": "Binary Probability Distributions\nLet’s strip things down to the simplest possible random variable:\nPerhaps the most basic family of discrete probability distributions is the binary (or Bernoulli) distribution, which models whether an outcome occurs or not in one trial\nA binary random variable \\(X\\) is equal to:\n\\[X \\in \\{0, 1\\}\\]\n\n\nInterpretation:\n\n1 if the outcome occurs\n0 if the outcome does not occur\n\n\nExamples:\n\nEviction occurred (1) or not (0)\nVoted (1) or didn’t vote (0)\nPolicy passed (1) or failed (0)\n\n\n\n\n\nThis is why these are also called indicator variables."
   },
   {
     "objectID": "slides/week6.html#binary-probability-distributions-1",
@@ -2818,7 +2818,7 @@
     "href": "slides/week6.html#pdf-shifts-with-π",
     "title": "Week 6",
     "section": "PDF Shifts with \\(π\\)",
-    "text": "PDF Shifts with \\(π\\)\nThe probability density function (pdf) of a binomial random variable shifts with \\(\\pi\\)…\n\nShows how distribution shape changes with different values of π"
+    "text": "PDF Shifts with \\(π\\)\nThe probability density function (pdf) of a binomial random variable shifts with \\(\\pi\\)…\n\n\n\nShows how distribution shape changes with different values of π"
   },
   {
     "objectID": "slides/week6.html#binomial-distribution-cumulative-probabilities",
@@ -2881,7 +2881,7 @@
     "href": "slides/week6.html#pdf-of-the-normal-distribution",
     "title": "Week 6",
     "section": "PDF of the Normal Distribution",
-    "text": "PDF of the Normal Distribution\n\nClassic bell curve showing symmetric distribution around mean μ"
+    "text": "PDF of the Normal Distribution\n\n\n\nClassic bell curve showing symmetric distribution around mean μ"
   },
   {
     "objectID": "slides/week6.html#properties-of-the-normal-distribution",
@@ -2895,7 +2895,7 @@
     "href": "slides/week6.html#the-68-95-99.7-rule",
     "title": "Week 6",
     "section": "The 68-95-99.7 Rule",
-    "text": "The 68-95-99.7 Rule\n\nClassic bell curve showing symmetric distribution around mean \\(μ\\)Shows the percentage of data within 1, 2, and 3 standard deviations"
+    "text": "The 68-95-99.7 Rule\n\n\n\nClassic bell curve showing symmetric distribution around mean \\(μ\\)\n\n\nShows the percentage of data within 1, 2, and 3 standard deviations"
   },
   {
     "objectID": "slides/week6.html#the-standard-normal-distribution",
@@ -2916,7 +2916,7 @@
     "href": "slides/week6.html#continuous-probability-distribution",
     "title": "Week 6",
     "section": "Continuous Probability Distribution",
-    "text": "Continuous Probability Distribution\nQuestion: How do we assign probabilities to outcomes in an infinite sample space when we think the probability distribution is normal?\nAnswer: We compute probabilities for intervals under the normal density curve:\n\nShows area under curve representing probability"
+    "text": "Continuous Probability Distribution\nQuestion: How do we assign probabilities to outcomes in an infinite sample space when we think the probability distribution is normal?\nAnswer: We compute probabilities for intervals under the normal density curve:\n\n\n\nShows area under curve representing probability"
   },
   {
     "objectID": "slides/week6.html#calculating-probabilities-in-r",
@@ -3371,7 +3371,7 @@
     "href": "labs/lab1.html#load-libraries-and-data",
     "title": "Lab 1: Introduction to the Tidyverse",
     "section": "Load Libraries and Data",
-    "text": "Load Libraries and Data\nFirst, we need to load the tidyverse and here packages.\n\n# Load libraries\nlibrary(tidyverse)\nlibrary(here)\n\nNow, let’s import our data and glimpse it.\n\n# Load data\nattain &lt;- read_csv(here(\"data\", \"attain.csv\"))\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n# Preview the data structure\nattain |&gt; glimpse()\n\nRows: 2,992\nColumns: 44\n$ ...1     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …\n\n\nThe attain dataset comes from the General Social Survey and contains information about respondents’ demographics, education, and family background."
+    "text": "Load Libraries and Data\nFirst, we need to load the tidyverse and here packages.\nFirst, install these packages in your console (only need to do this once):\n\n# Run these in the console ONCE to install\ninstall.packages(\"tidyverse\")\ninstall.packages(\"here\")\n\nThen load the libraries:\n\nlibrary(tidyverse)\nlibrary(here)\n\nNow, let’s import our data and glimpse it.\n\n# Load data\nattain &lt;- read_csv(here(\"data\", \"attain.csv\"))\n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n# Preview the data structure\nattain |&gt; glimpse()\n\nRows: 2,992\nColumns: 44\n$ ...1     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …\n\n\nThe attain dataset comes from the General Social Survey and contains information about respondents’ demographics, education, and family background."
   },
   {
     "objectID": "labs/lab1.html#using-select",
@@ -3491,5 +3491,61 @@
     "title": "Week 2",
     "section": ".R vs .qmd Files",
     "text": ".R vs .qmd Files\nSo to summarize .R and .qmd scripts:\n\n\n\n\n\n\n\n\nFeature\n.R Script\n.qmd Document\n\n\n\n\nPurpose\nRun code\nCreate reports\n\n\nContent\nCode only\nCode + text + output\n\n\nOutput\nConsole results\nFormatted document (e.g., HTML/PDF/Word)\n\n\nComments\n# comment\nFull markdown formatting\n\n\nBest for\nData cleaning, functions\nAnalysis reports, presentations, hw"
+  },
+  {
+    "objectID": "slides/week2.html#learing-goals",
+    "href": "slides/week2.html#learing-goals",
+    "title": "Week 2",
+    "section": "Learing Goals",
+    "text": "Learing Goals\n\nGain some familiarity and basic proficiencywith R and Positron\nUnderstand core data concepts: variable types, logical operators, and common data structures\nUnderstand what the Tidyverse is and how it differs from base R\nImport, manipulate, and export data using fundamental R commands\nPrepare and submit homework assignments using Quarto"
+  },
+  {
+    "objectID": "slides/week2.html#variable-types",
+    "href": "slides/week2.html#variable-types",
+    "title": "Week 2",
+    "section": "Variable types",
+    "text": "Variable types\n\n\n\n\n\n\n\n\nType\nDescription\nExamples\n\n\n\n\nNumeric\nReal numbers; supports math operations (+, -, *, /)\n3, 4.5, 8.98443\n\n\nCharacter\nText; always in quotation marks\n\"Welcome!\", \"foo\"\n\n\nBoolean\nLogical values; R stores as 1 (TRUE) or 0 (FALSE)\nTRUE, FALSE\n\n\n\n\nNumericCharacterBoolean\n\n\n\na &lt;- 10\nb &lt;- 3\na + b\n\n[1] 13\n\na * b\n\n[1] 30\n\n\n\n\n\nfirst_name &lt;- \"John\"\nlast_name &lt;- \"Doe\"\npaste(first_name, last_name)\n\n[1] \"John Doe\"\n\n\n\n\n\n# R treats TRUE as 1, FALSE as 0\nis_enrolled &lt;- TRUE\nhas_laptop &lt;- FALSE\nsum(is_enrolled, has_laptop)\n\n[1] 1"
+  },
+  {
+    "objectID": "slides/week2.html#file-paths-and-the-here-package",
+    "href": "slides/week2.html#file-paths-and-the-here-package",
+    "title": "Week 2",
+    "section": "File paths and the here package",
+    "text": "File paths and the here package\nTo load data, R needs to know where to look—but file paths break across different computers/operating systems.\nThe here package solves this by building paths relative to your project root (home folder of the project).\n\nThe ProblemThe Solution\n\n\n\n# These break on different computers:\nread_csv(\"C:\\Users\\YourName\\Documents\\project\\data\\mydata.csv\") # windows\nread_csv(\"~/Desktop/project/data/mydata.csv\")                   # mac\n\n\n\nlibrary(here)\n\n# here() finds your project root and builds paths from there\nhere()  # check where here thinks your project root is\n\n# Loading data\n#data &lt;- read_csv(\"~/Desktop/project/data/raw/mydata.csv\")     \ndata &lt;- read_csv(here(\"data\", \"raw\", \"mydata.csv\"))\n\n# Saving data\nwrite_csv(results, here(\"output\", \"results.csv\"))"
+  },
+  {
+    "objectID": "slides/week6.html",
+    "href": "slides/week6.html",
+    "title": "Week 6",
+    "section": "",
+    "text": "[[ADD IT IN LATER]]"
+  },
+  {
+    "objectID": "slides/week3.html",
+    "href": "slides/week3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "Weekly assignments\n\nDue on Thursdays nights\nGenerally, if a couple of things not quite right → still full credit. If more than a couple → half credit\nEach assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped\nBut, multiple assignments not turned in will negatively affect your grade!\n\nHW #1: due Thursday, February 5, 11:59 PM - any questions?"
+  },
+  {
+    "objectID": "slides/week8.html",
+    "href": "slides/week8.html",
+    "title": "Week 8",
+    "section": "",
+    "text": "Annotated Bibliography: Due March 19\nExample of annotated bibliography posted on course site (in the Research Paper folder)\nGeneral format:\n\nOne paragraph summarizing the argument of the article\nOne paragraph discussing how it relates to and/or helps to answer your research question"
+  },
+  {
+    "objectID": "slides/week7.html",
+    "href": "slides/week7.html",
+    "title": "Week 7",
+    "section": "",
+    "text": "[[ADD IT IN LATER]]"
+  },
+  {
+    "objectID": "slides/week4.html",
+    "href": "slides/week4.html",
+    "title": "Week 4",
+    "section": "",
+    "text": "[[ADD IT IN LATER]]"
   }
 ]
