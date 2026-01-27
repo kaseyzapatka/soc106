@@ -22,89 +22,54 @@ format:
     -   Sign up at [https://www.wejoinin.com/kaseyzapatka\@berkeley.edu](https://www.wejoinin.com/kaseyzapatka@berkeley.edu){.uri}
 -   If you can't make either, e-mail me and we'll find a time
 
-<span class="highlight">HW #1: due Thursday, February 5 by 11:59 PM</span>
+[HW #1: due Thursday, February 5 by 11:59 PM]{.highlight}
 
 ## Agenda {.smaller}
 
-1. Gain some familiarity with R and Positron
-2. Develop basic proficiency with R and Positron
-3. Understand core data concepts: variable types, logical operators, and common data structures
-4. Understand what the `Tidyverse` is and how it differs from base R
-5. Import, manipulate, and export data using fundamental R commands
-6. Prepare and submit homework assignments using [Quarto](https://quarto.org)
-
-**Programming goals for today:**
-
--   Basics of using R and Positron
--   How to load data
--   How to complete homework
+1.  Gain some familiarity with R and Positron
+2.  Develop basic proficiency with R and Positron
+3.  Understand core data concepts: variable types, logical operators, and common data structures
+4.  Understand what the `Tidyverse` is and how it differs from base R
+5.  Import, manipulate, and export data using fundamental R commands
+6.  Prepare and submit homework assignments using [Quarto](https://quarto.org)
 
 ## What is Positron? {.smaller}
 
-**Positron** is an Integrated Development Environment (IDE)—a complete workspace for writing, testing, and managing code in one window.
+**Positron** is an Integrated Development Environment (IDE)—essentially a wrapper to make working with a particular software more user-friendly.
 
 ::: {.fragment .fade-up}
-::::: columns
+::: columns
 ::: {.column width="50%"}
 **An IDE provides:**
 
-- Code editor with syntax highlighting
-- Console/terminal to run code
-- File browser for your projects
-- Debugging tools
-- Version control (Git)
+-   Run code with a simpler interface
+-   Gives you a file browser 
+-   Debugging tools
+-   Version control (Git)
 :::
 
 ::: {.column width="50%"}
 **About Positron:**
 
-- Open-source
-- Developed by Posit (creators of RStudio)
-- Next-generation descendant of RStudio
-- Designed for R and Python
+-   Open-source (free to use)
+-   Next-generation descendant of RStudio
+-   Developed by Posit (creators of RStudio)
+-   Designed for R and Python
 :::
-:::::
+:::
 :::
 
 ## Why Positron? {.smaller}
 
-::: panel-tabset
+-   **Bilingual**: Work with R and Python in the same environment
+-   **Modern**: Streamlined workflow for data science
+-   **Easy extensions**: Add extensions for formatting, Git, Quarto, and more
 
-### Bilingual
+Learn more: [Andrew Heiss' blog](https://www.andrewheiss.com/blog/2024/07/08/fun-with-positron/#my-extensions)
 
-- Work with R and Python in the same environment
-- No need to switch between different IDEs
-
-### Modern & Flexible
-
-- Streamlined workflow for data science
-- Easy to switch between tasks
-
-### Extensible
-
-Key extensions: 
-
-- [air](https://open-vsx.org/extension/posit/air-vscode) (formatting code)
-- [GitLens](https://open-vsx.org/extension/eamodio/gitlens) (Git)
-- [Quarto](https://open-vsx.org/extension/quarto/quarto) (publishing)
-- [Docker](https://open-vsx.org/extension/ms-azuretools/vscode-docker) (websites)
-
-Browse more at [Open VSX Registry](https://open-vsx.org/)
-
-### Applications
-
-- Data science and analysis
-- Web applications and websites
-- Books and technical documentation
-
-### Learn More
-
-[Andrew Heiss' blog](https://www.andrewheiss.com/blog/2024/07/08/fun-with-positron/#my-extensions) for tips and use cases
-
-:::
 ## Positron {.smaller}
 
-::::: columns
+::: columns
 ::: {.column width="20%"}
 -   **Script pane:** Left Top
 -   **Console pane:** Left Bottom
@@ -115,23 +80,23 @@ Browse more at [Open VSX Registry](https://open-vsx.org/)
 ::: {.column width="80%"}
 ![](images/week2/positron.png){width="100%,fig-align=\"center\""}
 :::
-:::::
+:::
 
 ## Positron
 
 Let's explore Positron together on your laptop:
 
-::: {.incremental}
+::: incremental
 -   File explorer
 -   Console
 -   Interpreter and Folder
--   New 
+-   New
 -   Open
-::: 
+:::
 
 ## Writing with `script.R` {.smaller .scrollable}
 
-::: {.incremental}
+::: incremental
 **Best practice to write all code in a script file**
 
 -   Reproducible code
@@ -140,9 +105,9 @@ Let's explore Positron together on your laptop:
 
 **Two types of files we'll work with**
 
-- **R files (`.R`):** accept R code and are very similar to text files except that they read R code.
-- **Quarto files (`.qmd`):** allow to intersperse R/Python (other languages too!) with text. It's great for putting text next to analysis.
-::: 
+-   **R files (`.R`):** accept R code and are very similar to text files except that they read R code.
+-   **Quarto files (`.qmd`):** allow to intersperse R/Python (other languages too!) with text. It's great for putting text next to analysis.
+:::
 
 ## Writing with `script.R` {.smaller}
 
@@ -174,6 +139,7 @@ R is an ***object-oriented programming language***, meaning you can create new o
 
 -   Define variables using the assignment operator: `<-`
 -   Give variables meaningful names when assigning
+-   Variable names must be unique—reusing a name will overwrite it
 
 ``` {.r code-line-numbers="4"}
 #| eval: false
@@ -186,7 +152,7 @@ acs21 <- read_csv("data/acs2021.csv")
 
 Values can be:
 
--   numeric (3, 4.5, `pi`)
+-   numeric (3, 4.5, 8.98443)
 -   character ("Welcome!", "foo")
 -   boolean (true / false)
 
@@ -198,23 +164,7 @@ character_variable <- "Welcome to Soc 106!"
 boolean_variable <- TRUE
 ```
 
-## Variable assignment in `script.R` {.smaller}
-
-Variable names must be unique
-
--   Reusing an old name will overwrite the definition of the variable
-
-```{r echo=TRUE}
-# First assignment
-my_variable <- 10
-my_variable
-
-# Overwriting that assignment
-my_variable <- 20
-my_variable
-```
-
-## Types of variables: numeric  {.smaller}
+## Types of variables: numeric {.smaller}
 
 **Numeric variables** can store any real numbers and you can perform standard mathematical operations on numeric variables:
 
@@ -256,8 +206,7 @@ is_enrolled + has_laptop
 sum(is_enrolled, has_laptop)
 ```
 
-
-## Logical operators{.smaller}
+## Logical operators {.smaller}
 
 -   Use logical operators to compare two variables or objects
 
@@ -272,7 +221,7 @@ sum(is_enrolled, has_laptop)
 | `<=`     | Less than or equal to    |
 | `>=`     | Greater than or equal to |
 
-## Logical operators{.smaller}
+## Logical operators {.smaller}
 
 Here's what that might look like in R:
 
@@ -320,21 +269,13 @@ The `c()` operator works on already-existing vectors as well as variables (if of
 
 ## Vectors {.smaller}
 
-We can call individual elements within vectors two ways:
-
--   using bracket notation: `vector[i]`
--   using the [Tidyverse:](https://tidyverse.org) `nth()`
-
-::: panel-tabset
-## Base R
-
-Use bracket at end of vector name with index, with first element indexed as 1.
+Use bracket notation to access individual elements: `vector[i]`
 
 ```{r echo=TRUE}
 # create a vector of values
 ages <- c(22, 25, 19, 30)
 
-# Get the first element
+# Get the first element (indexing starts at 1)
 ages[1]
 
 # Get the third element
@@ -344,62 +285,24 @@ ages[3]
 ages[c(1, 3)]
 ```
 
-## Tidyverse {.smaller}
-
-Use `nth()` function to do the same thing, but still need indexing sometimes
-
-```{r echo=TRUE}
-
-# load the Tidyverse library
-library(tidyverse)
-
-# Get the first element
-nth(ages, 1)
-
-# Get the third element
-nth(ages, 3)
-
-# Still need Base R to get multiple elements
-ages[c(1, 3)]
-```
-:::
-
 ## Dataframes {.smaller}
 
-A dataframe is a list of equal-length vectors, in this course, we'll focus on using **tidy dataframe**, which organize data so that:
+A dataframe is a list of equal-length vectors. We'll focus on **tidy dataframes**, which organize data so that:
 
-::: {.fragment .fade-up}
+-   Each **column** is a variable
+-   Each **row** is an observation
 
-- Each **column** is a variable
-- Each **row** is an observation
+```{r echo=TRUE, message=FALSE}
+library(tidyverse)
 
-|        | name    | age | enrolled |
-|--------|---------|-----|----------|
-| Obs 1  | Alice   | 22  | TRUE     |
-| Obs 2  | Bob     | 25  | TRUE     |
-| Obs 3  | Charlie | 19  | FALSE    |
-
-: {.striped}
-
-:::
-
-## Creating Tidy Dataframes {.smaller}
-
-We create a dataframe using the `tibble` function:
-
-```{r echo=TRUE}
 students <- tibble(
+  Observation = c("Obs1", "Obs2", "Obs3"),
   name = c("Alice", "Bob", "Charlie"),
   age = c(22, 25, 19),
   enrolled = c(TRUE, TRUE, FALSE),
-  stringsAsFactors = FALSE
 )
 students
 ```
-
-::: aside
-`stringsAsFactors=FALSE` makes sure that character vectors remain in character type and are not converted to factor type (which we may talk about later in the course).
-:::
 
 ## Inspecting dataframes {.smaller}
 
@@ -409,17 +312,7 @@ students
 -   `colnames()`: returns column names
 
 ::: panel-tabset
-```{r echo=FALSE}
-library(tidyverse)
 
-students <- tibble(
-  name = c("Alice", "Bob", "Charlie"),
-  age = c(22, 25, 19),
-  enrolled = c(TRUE, TRUE, FALSE),
-  stringsAsFactors = FALSE
-)
-
-```
 
 ### glimpse()
 
@@ -519,27 +412,6 @@ You can also read .csv files into dataframes using the `read_csv` function:
 data <- read_csv(here("data", "raw", "mydata.csv"))
 ```
 
-## Other data types {.smaller}
-
-You can also load Excel files into R
-
-First, load the [`readxl`](https://readxl.tidyverse.org) package:
-
-```{r eval=FALSE, echo=TRUE}
-library(readxl)
-```
-
-Then, use the `read_excel` function:
-
-```{r eval=FALSE, echo=TRUE}
-# load
-data <- read_excel("file_name.xlsx")
-```
-
-In fact, R can import all types of data files
-
-Googling "import SAS/STATA/SPSS files into R" will point you in the right direction
-
 ## Questions?
 
 ## The `Tidyverse` {.smaller}
@@ -554,9 +426,11 @@ Googling "import SAS/STATA/SPSS files into R" will point you in the right direct
 
 **Key Features**
 
--   **Pipe operator** `|>`:[^pipe] chains functions together for readable code
+-   **Pipe operator** `|>`:[^1] chains functions together for readable code
 -   **Consistent syntax**: functions work similarly across packages
 -   **Human-readable**: code reads like sentences
+
+[^1]: The older version of the pipe operator `%>%` also works interchangeably.
 
 ``` {.r code-line-numbers="5|9"}
 # |eval=FALSE
@@ -569,8 +443,6 @@ mean(subset(dataframe, age > 18)$score)
 # then pull score, then calculate mean"
 dataframe |> filter(age > 18) |> pull(score) |> mean()
 ```
-
-[^pipe]: The older version of the pipe operator `%>%` also works interchangeably. 
 
 ## The `Tidyverse` {.smaller}
 
@@ -607,17 +479,17 @@ data |>
 
 ## Key functions {.smaller .scrollable}
 
-| Tidyverse Function | Purpose | Example |
-|-----------------|-----------------------|-----------------------|
-| `read_csv()` | Import CSV data | `read_csv("data.csv")` |
-| `glimpse()` | Preview dataframe structure | `df |> glimpse()` |
-| `colnames()` | Get column names | `colnames(df)` |
-| `select()` | Choose columns | `df |> select(name, age)` |
-| `filter()` | Choose rows by condition | `df |> filter(age > 20)` |
-| `slice()` | Choose rows by position | `slice(df, 1:10)` |
-| `arrange()` | Sort rows | `arrange(df, desc(age))` |
-| `mutate()` | Create/modify columns | `df |> mutate(age_2x = age * 2)` |
-| `rename()` | Rename columns | `df |> rename(new = old)` |
+| Tidyverse Function | Purpose                     | Example                          |
+|--------------------|--------------------------|--------------------------|
+| `read_csv()`       | Import CSV data             | `read_csv("data.csv")`           |
+| `glimpse()`        | Preview dataframe structure | `df |> glimpse()`                |
+| `colnames()`       | Get column names            | `colnames(df)`                   |
+| `select()`         | Choose columns              | `df |> select(name, age)`        |
+| `filter()`         | Choose rows by condition    | `df |> filter(age > 20)`         |
+| `slice()`          | Choose rows by position     | `slice(df, 1:10)`                |
+| `arrange()`        | Sort rows                   | `arrange(df, desc(age))`         |
+| `mutate()`         | Create/modify columns       | `df |> mutate(age_2x = age * 2)` |
+| `rename()`         | Rename columns              | `df |> rename(new = old)`        |
 
 ## Questions?
 
@@ -625,13 +497,13 @@ data |>
 
 Follow these steps to get set up so we can practice together:
 
-1. Download `lab1.qmd`, `attain.csv`, and `_quarto.yml` from bCourse under "labs" >  "Lab #1"
-2. Create `soc16` folder on your desktop (or another place if you prefer)
-3. Create `data` and `lab` folders inside of `soc16`
-4. Data goes inside data folder and assignment goes instead `lab`
-5. Make sure the `_quarto.yml` file is in the `soc16` and not `data` or `lab` folders. Your folder structure should look like this: 
+1.  Download `lab1.qmd`, `attain.csv`, and `_quarto.yml` from bCourse under "labs" \> "Lab #1"
+2.  Create `soc16` folder on your desktop (or another place if you prefer)
+3.  Create `data` and `lab` folders inside of `soc16`
+4.  Data goes inside data folder and assignment goes instead `lab`
+5.  Make sure the `_quarto.yml` file is in the `soc16` and not `data` or `lab` folders. Your folder structure should look like this:
 
-```
+```         
 soc106/
 ├── _quarto.yml
 ├── data/
@@ -640,108 +512,54 @@ soc106/
     └── lab1.qmd
 ```
 
-6. Open Positron, click the `Open Folder` button and navigate to `soc16`
-7. Allow access, check "Trust the authors..", and click "Yes, ..."
-8. Use `Explorer` button on left to find `lab1.qmd`
+6.  Open Positron, click the `Open Folder` button and navigate to `soc16`
+7.  Allow access, check "Trust the authors..", and click "Yes, ..."
+8.  Use `Explorer` button on left to find `lab1.qmd`
 
-## Some helpful R commands {.smaller}
+## Anatomy of a `.qmd` File {.smaller .scrollable}
 
--   `?[function_name]` brings up a help page
--   `??[function_name]` will (sometimes) lead to helpful examples of how to use the function
--   `ls()` lists all objects in the global environment
--   `rm(object_name)` removes an object
--   `rm(list=ls())` removes all objects
+A `.qmd` file has **three main parts** and knits code + text together (unlike `.R` which runs code only):
 
-## Want to know more R? {.smaller}
-
-Lecture and lab are based on the first two RFundamentals classes, which are run at the [D-Lab](https://dlab.berkeley.edu/home)
-
--   **D-Lab trainings**: <https://dlab.berkeley.edu/training>
-    -   If you want to see the RFundamentals class notes: <https://github.com/dlab-berkeley/R-Fundamentals>
-    -   [R Data Visualization workshop](https://dlab.my.salesforce-sites.com/events/event/home/rdatavis20260211) on Feb 11, 2026
-
--   Otherwise: Google is your friend!
-
-## Anatomy of a `.qmd` File {.smaller}
-
-**Three Main Parts**
-
-1.  YAML header
-2.  Markdown text
-3.  Code chunks
-
-**Key Difference**
-
--   `script.R`: runs only code
--   `script.qmd`: knits together code and text
-
-## Anatomy of a `.qmd` File {.smaller}
-
-1.  YAML Header (metadata)
-
-Sets document properties, output format, misc. settings
+::: columns
+::: {.column width="50%"}
+**1. YAML Header** (metadata)
 
 ``` yaml
 ---
 title: "My Analysis"
 author: "Your Name"
-date: "2024-01-07"
-format: html  # output format (e.g., pdf, docx, html)
+format: html
 ---
 ```
+:::
 
-## Anatomy of a `.qmd` File {.smaller}
+::: {.column width="50%"}
+**2. Markdown Text** (narrative)
 
-2.  Markdown Text (narrative)
+Use `**bold**`, `*italics*`, `# Headings`
 
-Allows you to document code or write explanations, interpretations, and conclusions
+[More markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
+:::
+:::
 
-``` markdown
-# Analysis
-
-This is my larger analysis.
-
-## Method
-I can use regular text explaining my analysis. I can also use **bold**, *italics*, and imbed [hyperlinks](https://quarto).Markdown is a simple language to learn how to use.
-```
-
-## Markdown Basics {.smaller .scrollable}
-
-Read more about [markdown coding](https://quarto.org/docs/authoring/markdown-basics.html) you might want to use. Here are the basics:
-
-| Markdown Syntax       | Output             |
-|-----------------------|--------------------|
-| `**bold**`            | **bold**           |
-| `*italics*`           | *italics*          |
-| `# Heading 1`         | Large heading      |
-| `## Heading 2`        | Medium heading     |
-| `### Heading 3`       | Small heading      |
-| `` `verbatim code` `` | `verbatim code`    |
-
-## Anatomy of a `.qmd` File {.smaller}
-
-3.  Code Chunks (analysis)
-
-Finally, you can include R code and its output direclty in quarto documents:
+**3. Code Chunks** (analysis)
 
 ```{{{r}}}
-
-# load data
 data <- read_csv("data.csv")
 summary(data)
 ```
 
-## Anatomy of a `.qmd` File {.smaller}
+## `.R` vs `.qmd` Files {.smaller}
 
 So to summarize `.R` and `.qmd` scripts:
 
-| Feature | `.R` Script | `.qmd` Document |
-|------------------|------------------------|------------------------------|
-| **Purpose** | Run code | Create reports |
-| **Content** | Code only | Code + text + output |
-| **Output** | Console results | Formatted document (e.g., HTML/PDF/Word) |
-| **Comments** | `# comment` | Full markdown formatting |
-| **Best for** | Data cleaning, functions | Analysis reports, presentations, hw |
+| Feature      | `.R` Script              | `.qmd` Document                          |
+|-------------------|------------------------|-----------------------------|
+| **Purpose**  | Run code                 | Create reports                           |
+| **Content**  | Code only                | Code + text + output                     |
+| **Output**   | Console results          | Formatted document (e.g., HTML/PDF/Word) |
+| **Comments** | `# comment`              | Full markdown formatting                 |
+| **Best for** | Data cleaning, functions | Analysis reports, presentations, hw      |
 
 ## Rendering Quarto Documents {.smaller}
 
@@ -782,9 +600,7 @@ Positron provides two ways to edit `.qmd` files. Toggle between them using the b
 
 <br>
 
-
 ::: panel-tabset
-
 ### Visual
 
 **Visual,** which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:
@@ -806,10 +622,7 @@ Positron provides two ways to edit `.qmd` files. Toggle between them using the b
 -   Better for experienced users
 
 ![](images/week2/quarto_script2.png){width="100%,fig-align=\"center\""}
-
 :::
-
-
 
 ## Rendering Quarto Documents {.smaller}
 
@@ -830,11 +643,10 @@ Positron provides two ways to edit `.qmd` files. Toggle between them using the b
 
 **Most common "knitting" errors:**
 
-- Quarto can't execute code
-- Code chunks have the same name
+-   Quarto can't execute code
+-   Code chunks have the same name
 
 Should be fine if you don't do anything fancy and don't mess with quarto settings
-
 
 ## Homework #1 {.smaller}
 
@@ -853,11 +665,51 @@ For this week only, I will provide a dataset for you to use on your homework ass
 
 Now let's complete HW #0 using the folder structure you created during the lab!
 
-1. Download `hw0.qmd` from bCourse under "assignments" >  "HW #0"
-2. Place `hw0.qmd` in your `soc106/assignments` folder (you already have `attain.csv` in your `data` folder)
-3. In Positron, use the `Explorer` button on the left to find `hw0.qmd`
-4. Check the `Render on Save` button
-5. Replace "Karl Marx" with your name -- make sure to keep it in "quotes"
-6. Save and hit "Preview"
-7. If the `Viewer` frame opens as an html file and you see your name - SUCCESS!
-8. Navigate back to bCourse and upload both `hw0.qmd` and `hw0.html` files
+1.  Download `hw0.qmd` from bCourse under "assignments" \> "HW #0"
+2.  Place `hw0.qmd` in your `soc106/assignments` folder (you already have `attain.csv` in your `data` folder)
+3.  In Positron, use the `Explorer` button on the left to find `hw0.qmd`
+4.  Check the `Render on Save` button
+5.  Replace "Karl Marx" with your name -- make sure to keep it in "quotes"
+6.  Save and hit "Preview"
+7.  If the `Viewer` frame opens as an html file and you see your name - SUCCESS!
+8.  Navigate back to bCourse and upload both `hw0.qmd` and `hw0.html` files
+
+# Appendix {.smaller visibility="uncounted"}
+
+## Other data types {.smaller visibility="uncounted"}
+
+You can also load Excel files into R
+
+First, load the [`readxl`](https://readxl.tidyverse.org) package:
+
+```{r eval=FALSE, echo=TRUE}
+library(readxl)
+```
+
+Then, use the `read_excel` function:
+
+```{r eval=FALSE, echo=TRUE}
+# load
+data <- read_excel("file_name.xlsx")
+```
+
+In fact, R can import all types of data files
+
+Googling "import SAS/STATA/SPSS files into R" will point you in the right direction
+
+## Some helpful R commands {.smaller visibility="uncounted"}
+
+-   `?[function_name]` brings up a help page
+-   `??[function_name]` will (sometimes) lead to helpful examples of how to use the function
+-   `ls()` lists all objects in the global environment
+-   `rm(object_name)` removes an object
+-   `rm(list=ls())` removes all objects
+
+## Want to know more R? {.smaller visibility="uncounted"}
+
+Lecture and lab are based on the first two RFundamentals classes, which are run at the [D-Lab](https://dlab.berkeley.edu/home)
+
+-   **D-Lab trainings**: <https://dlab.berkeley.edu/training>
+    -   If you want to see the RFundamentals class notes: <https://github.com/dlab-berkeley/R-Fundamentals>
+    -   [R Data Visualization workshop](https://dlab.my.salesforce-sites.com/events/event/home/rdatavis20260211) on Feb 11, 2026
+-   Otherwise: Google is your friend!

@@ -739,7 +739,7 @@
     "href": "slides/week2.html#agenda",
     "title": "Week 2",
     "section": "Agenda",
-    "text": "Agenda\n\nGain some familiarity with R and Positron\nDevelop basic proficiency with R and Positron\nUnderstand core data concepts: variable types, logical operators, and common data structures\nUnderstand what the Tidyverse is and how it differs from base R\nImport, manipulate, and export data using fundamental R commands\nPrepare and submit homework assignments using Quarto\n\nProgramming goals for today:\n\nBasics of using R and Positron\nHow to load data\nHow to complete homework"
+    "text": "Agenda\n\nGain some familiarity with R and Positron\nDevelop basic proficiency with R and Positron\nUnderstand core data concepts: variable types, logical operators, and common data structures\nUnderstand what the Tidyverse is and how it differs from base R\nImport, manipulate, and export data using fundamental R commands\nPrepare and submit homework assignments using Quarto"
   },
   {
     "objectID": "slides/week2.html#exploring-r-and-positron",
@@ -816,14 +816,14 @@
     "href": "slides/week2.html#variable-assignment-in-script.r",
     "title": "Week 2",
     "section": "Variable assignment in script.R",
-    "text": "Variable assignment in script.R\nR is an object-oriented programming language, meaning you can create new objects from any type of value, store it R’s memory, and call it when necessary\n\nDefine variables using the assignment operator: &lt;-\nGive variables meaningful names when assigning\n\n#| eval: false\n#| echo: true\n# load data\nacs21 &lt;- read_csv(\"data/acs2021.csv\")"
+    "text": "Variable assignment in script.R\nR is an object-oriented programming language, meaning you can create new objects from any type of value, store it R’s memory, and call it when necessary\n\nDefine variables using the assignment operator: &lt;-\nGive variables meaningful names when assigning\nVariable names must be unique—reusing a name will overwrite it\n\n#| eval: false\n#| echo: true\n# load data\nacs21 &lt;- read_csv(\"data/acs2021.csv\")"
   },
   {
     "objectID": "slides/week2.html#common-values-for-variables",
     "href": "slides/week2.html#common-values-for-variables",
     "title": "Week 2",
     "section": "Common values for variables",
-    "text": "Common values for variables\nValues can be:\n\nnumeric (3, 4.5, pi)\ncharacter (“Welcome!”, “foo”)\nboolean (true / false)\n\n#| eval: false\n#| echo: true\nnumeric_variable &lt;- 4\ncharacter_variable &lt;- \"Welcome to Soc 106!\"\nboolean_variable &lt;- TRUE"
+    "text": "Common values for variables\nValues can be:\n\nnumeric (3, 4.5, 8.98443)\ncharacter (“Welcome!”, “foo”)\nboolean (true / false)\n\n#| eval: false\n#| echo: true\nnumeric_variable &lt;- 4\ncharacter_variable &lt;- \"Welcome to Soc 106!\"\nboolean_variable &lt;- TRUE"
   },
   {
     "objectID": "slides/week2.html#variable-assignment-in-script.r-1",
@@ -907,14 +907,14 @@
     "href": "slides/week2.html#vectors-1",
     "title": "Week 2",
     "section": "Vectors",
-    "text": "Vectors\nWe can call individual elements within vectors two ways:\n\nusing bracket notation: vector[i]\nusing the Tidyverse: nth()\n\n\nBase RTidyverse\n\n\nUse bracket at end of vector name with index, with first element indexed as 1.\n\n# create a vector of values\nages &lt;- c(22, 25, 19, 30)\n\n# Get the first element\nages[1]\n\n[1] 22\n\n# Get the third element\nages[3]\n\n[1] 19\n\n# Get multiple elements\nages[c(1, 3)]\n\n[1] 22 19\n\n\n\n\nUse nth() function to do the same thing, but still need indexing sometimes\n\n# load the Tidyverse library\nlibrary(tidyverse)\n\n# Get the first element\nnth(ages, 1)\n\n[1] 22\n\n# Get the third element\nnth(ages, 3)\n\n[1] 19\n\n# Still need Base R to get multiple elements\nages[c(1, 3)]\n\n[1] 22 19"
+    "text": "Vectors\nUse bracket notation to access individual elements: vector[i]\n\n# create a vector of values\nages &lt;- c(22, 25, 19, 30)\n\n# Get the first element (indexing starts at 1)\nages[1]\n\n[1] 22\n\n# Get the third element\nages[3]\n\n[1] 19\n\n# Get multiple elements\nages[c(1, 3)]\n\n[1] 22 19"
   },
   {
     "objectID": "slides/week2.html#dataframes",
     "href": "slides/week2.html#dataframes",
     "title": "Week 2",
     "section": "Dataframes",
-    "text": "Dataframes\nA dataframe is a list of equal-length vectors, in this course, we’ll focus on using tidy dataframe, which organize data so that:\n\n\nEach column is a variable\nEach row is an observation\n\n\n\n\n\n\nname\nage\nenrolled\n\n\n\n\nObs 1\nAlice\n22\nTRUE\n\n\nObs 2\nBob\n25\nTRUE\n\n\nObs 3\nCharlie\n19\nFALSE"
+    "text": "Dataframes\nA dataframe is a list of equal-length vectors. We’ll focus on tidy dataframes, which organize data so that:\n\nEach column is a variable\nEach row is an observation\n\n\nlibrary(tidyverse)\n\nstudents &lt;- tibble(\n  Observation = c(\"Obs1\", \"Obs2\", \"Obs3\"),\n  name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  age = c(22, 25, 19),\n  enrolled = c(TRUE, TRUE, FALSE),\n)\nstudents\n\n# A tibble: 3 × 4\n  Observation name      age enrolled\n  &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;   \n1 Obs1        Alice      22 TRUE    \n2 Obs2        Bob        25 TRUE    \n3 Obs3        Charlie    19 FALSE"
   },
   {
     "objectID": "slides/week2.html#learning-about-dataframes",
@@ -1026,7 +1026,7 @@
     "href": "slides/week2.html#anatomy-of-a-.qmd-file",
     "title": "Week 2",
     "section": "Anatomy of a .qmd File",
-    "text": "Anatomy of a .qmd File\nThree Main Parts\n\nYAML header\nMarkdown text\nCode chunks\n\nKey Difference\n\nscript.R: runs only code\nscript.qmd: knits together code and text"
+    "text": "Anatomy of a .qmd File\nA .qmd file has three main parts and knits code + text together (unlike .R which runs code only):\n\n\n1. YAML Header (metadata)\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\nformat: html\n---\n\n2. Markdown Text (narrative)\nUse **bold**, *italics*, # Headings\nMore markdown basics\n\n\n3. Code Chunks (analysis)\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)"
   },
   {
     "objectID": "slides/week2.html#anatomy-of-a-.qmd-file-1",
@@ -1117,7 +1117,7 @@
     "href": "slides/week2.html#in-class-lab-hw-0",
     "title": "Week 2",
     "section": "In-class lab HW #0",
-    "text": "In-class lab HW #0\nNow let’s complete HW #0 using the folder structure you created during the lab!\n\nDownload hw0.qmd from bCourse under “assignments” &gt; “HW #0”\nPlace hw0.qmd in your soc106/assignments folder (you already have attain.csv in your data folder)\nIn Positron, use the Explorer button on the left to find hw0.qmd\nCheck the Render on Save button\nReplace “Karl Marx” with your name – make sure to keep it in “quotes”\nSave and hit “Preview”\nIf the Viewer frame opens as an html file and you see your name - SUCCESS!\nNavigate back to bCourse and upload both hw0.qmd and hw0.html files\n\n\n\nGitHub course repo"
+    "text": "In-class lab HW #0\nNow let’s complete HW #0 using the folder structure you created during the lab!\n\nDownload hw0.qmd from bCourse under “assignments” &gt; “HW #0”\nPlace hw0.qmd in your soc106/assignments folder (you already have attain.csv in your data folder)\nIn Positron, use the Explorer button on the left to find hw0.qmd\nCheck the Render on Save button\nReplace “Karl Marx” with your name – make sure to keep it in “quotes”\nSave and hit “Preview”\nIf the Viewer frame opens as an html file and you see your name - SUCCESS!\nNavigate back to bCourse and upload both hw0.qmd and hw0.html files"
   },
   {
     "objectID": "slides/index.html",
@@ -3196,7 +3196,7 @@
     "href": "slides/week2.html#what-is-positron",
     "title": "Week 2",
     "section": "What is Positron?",
-    "text": "What is Positron?\nPositron is an Integrated Development Environment (IDE)—a complete workspace for writing, testing, and managing code in one window.\n\n\n\nAn IDE provides:\n\nCode editor with syntax highlighting\nConsole/terminal to run code\nFile browser for your projects\nDebugging tools\nVersion control (Git)\n\n\nAbout Positron:\n\nOpen-source\nDeveloped by Posit (creators of RStudio)\nNext-generation descendant of RStudio\nDesigned for R and Python"
+    "text": "What is Positron?\nPositron is an Integrated Development Environment (IDE)—essentially a wrapper to make working with a particular software more user-friendly.\n\n\n\nAn IDE provides:\n\nRun code with a simpler interface\nGives you a file browser\nDebugging tools\nVersion control (Git)\n\n\nAbout Positron:\n\nOpen-source (free to use)\nNext-generation descendant of RStudio\nDeveloped by Posit (creators of RStudio)\nDesigned for R and Python"
   },
   {
     "objectID": "slides/week2.html#positron-3",
@@ -3217,7 +3217,7 @@
     "href": "slides/week2.html#why-positron",
     "title": "Week 2",
     "section": "Why Positron?",
-    "text": "Why Positron?\n\nBilingualModern & FlexibleExtensibleApplicationsLearn More\n\n\n\nWork with R and Python in the same environment\nNo need to switch between different IDEs\n\n\n\n\nStreamlined workflow for data science\nEasy to switch between tasks\n\n\n\nKey extensions:\n\nair (formatting code)\nGitLens (Git)\nQuarto (publishing)\nDocker (websites)\n\nBrowse more at Open VSX Registry\n\n\n\nData science and analysis\nWeb applications and websites\nBooks and technical documentation\n\n\n\nAndrew Heiss’ blog for tips and use cases"
+    "text": "Why Positron?\n\nBilingual: Work with R and Python in the same environment\nModern: Streamlined workflow for data science\nEasy extensions: Add extensions for formatting, Git, Quarto, and more\n\nLearn more: Andrew Heiss’ blog"
   },
   {
     "objectID": "slides/week2.html#key-functions",
@@ -3231,7 +3231,7 @@
     "href": "slides/week2.html#want-to-know-more-r",
     "title": "Week 2",
     "section": "Want to know more R?",
-    "text": "Want to know more R?\nLecture and lab are based on the first two RFundamentals classes, which are run at the D-Lab\n\nD-Lab trainings: https://dlab.berkeley.edu/training\n\nIf you want to see the RFundamentals class notes: https://github.com/dlab-berkeley/R-Fundamentals\nR Data Visualization workshop on Feb 11, 2026\n\nOtherwise: Google is your friend!"
+    "text": "Want to know more R?\nLecture and lab are based on the first two RFundamentals classes, which are run at the D-Lab\n\nD-Lab trainings: https://dlab.berkeley.edu/training\n\nIf you want to see the RFundamentals class notes: https://github.com/dlab-berkeley/R-Fundamentals\nR Data Visualization workshop on Feb 11, 2026\n\nOtherwise: Google is your friend!\n\n\n\nGitHub course repo"
   },
   {
     "objectID": "slides/week2.html#questions-3",
@@ -3336,14 +3336,14 @@
     "href": "slides/week2.html#creating-tidy-dataframes",
     "title": "Week 2",
     "section": "Creating Tidy Dataframes",
-    "text": "Creating Tidy Dataframes\nWe create a dataframe using the tibble function:\n\nstudents &lt;- tibble(\n  name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  age = c(22, 25, 19),\n  enrolled = c(TRUE, TRUE, FALSE),\n  stringsAsFactors = FALSE\n)\nstudents\n\n# A tibble: 3 × 4\n  name      age enrolled stringsAsFactors\n  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;           \n1 Alice      22 TRUE     FALSE           \n2 Bob        25 TRUE     FALSE           \n3 Charlie    19 FALSE    FALSE           \n\n\n\n\nstringsAsFactors=FALSE makes sure that character vectors remain in character type and are not converted to factor type (which we may talk about later in the course)."
+    "text": "Creating Tidy Dataframes\nWe create a dataframe using the tibble function:\n\nlibrary(tidyverse)\nstudents &lt;- tibble(\n  name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  age = c(22, 25, 19),\n  enrolled = c(TRUE, TRUE, FALSE),\n  stringsAsFactors = FALSE\n)\nstudents\n\n# A tibble: 3 × 4\n  name      age enrolled stringsAsFactors\n  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;           \n1 Alice      22 TRUE     FALSE           \n2 Bob        25 TRUE     FALSE           \n3 Charlie    19 FALSE    FALSE           \n\n\n\n\nstringsAsFactors=FALSE makes sure that character vectors remain in character type and are not converted to factor type (which we may talk about later in the course)."
   },
   {
     "objectID": "slides/week2.html#inspecting-dataframes",
     "href": "slides/week2.html#inspecting-dataframes",
     "title": "Week 2",
     "section": "Inspecting dataframes",
-    "text": "Inspecting dataframes\n\nglimpse(): view data and summary info of dataframe\nhead(): looks at first few observations (similar to print())\nstr(): returns structure of dataframe\ncolnames(): returns column names\n\n\nglimpse()head()str()colnames()\n\n\n\nglimpse(students)\n\nRows: 3\nColumns: 4\n$ name             &lt;chr&gt; \"Alice\", \"Bob\", \"Charlie\"\n$ age              &lt;dbl&gt; 22, 25, 19\n$ enrolled         &lt;lgl&gt; TRUE, TRUE, FALSE\n$ stringsAsFactors &lt;lgl&gt; FALSE, FALSE, FALSE\n\n\n\n\n\nhead(students)\n\n# A tibble: 3 × 4\n  name      age enrolled stringsAsFactors\n  &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;    &lt;lgl&gt;           \n1 Alice      22 TRUE     FALSE           \n2 Bob        25 TRUE     FALSE           \n3 Charlie    19 FALSE    FALSE           \n\n\n\n\n\nstr(students)\n\ntibble [3 × 4] (S3: tbl_df/tbl/data.frame)\n $ name            : chr [1:3] \"Alice\" \"Bob\" \"Charlie\"\n $ age             : num [1:3] 22 25 19\n $ enrolled        : logi [1:3] TRUE TRUE FALSE\n $ stringsAsFactors: logi [1:3] FALSE FALSE FALSE\n\n\n\n\n\ncolnames(students)\n\n[1] \"name\"             \"age\"              \"enrolled\"         \"stringsAsFactors\""
+    "text": "Inspecting dataframes\n\nglimpse(): view data and summary info of dataframe\nhead(): looks at first few observations (similar to print())\nstr(): returns structure of dataframe\ncolnames(): returns column names\n\n\nglimpse()head()str()colnames()\n\n\n\nglimpse(students)\n\nRows: 3\nColumns: 4\n$ Observation &lt;chr&gt; \"Obs1\", \"Obs2\", \"Obs3\"\n$ name        &lt;chr&gt; \"Alice\", \"Bob\", \"Charlie\"\n$ age         &lt;dbl&gt; 22, 25, 19\n$ enrolled    &lt;lgl&gt; TRUE, TRUE, FALSE\n\n\n\n\n\nhead(students)\n\n# A tibble: 3 × 4\n  Observation name      age enrolled\n  &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;   \n1 Obs1        Alice      22 TRUE    \n2 Obs2        Bob        25 TRUE    \n3 Obs3        Charlie    19 FALSE   \n\n\n\n\n\nstr(students)\n\ntibble [3 × 4] (S3: tbl_df/tbl/data.frame)\n $ Observation: chr [1:3] \"Obs1\" \"Obs2\" \"Obs3\"\n $ name       : chr [1:3] \"Alice\" \"Bob\" \"Charlie\"\n $ age        : num [1:3] 22 25 19\n $ enrolled   : logi [1:3] TRUE TRUE FALSE\n\n\n\n\n\ncolnames(students)\n\n[1] \"Observation\" \"name\"        \"age\"         \"enrolled\""
   },
   {
     "objectID": "slides/week2.html#the-here-package-1",
@@ -3484,5 +3484,12 @@
     "title": "Week 2",
     "section": "Markdown Basics",
     "text": "Markdown Basics\nRead more about markdown coding you might want to use. Here are the basics:\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n**bold**\nbold\n\n\n*italics*\nitalics\n\n\n# Heading 1\nLarge heading\n\n\n## Heading 2\nMedium heading\n\n\n### Heading 3\nSmall heading\n\n\n`verbatim code`\nverbatim code"
+  },
+  {
+    "objectID": "slides/week2.html#r-vs-.qmd-files",
+    "href": "slides/week2.html#r-vs-.qmd-files",
+    "title": "Week 2",
+    "section": ".R vs .qmd Files",
+    "text": ".R vs .qmd Files\nSo to summarize .R and .qmd scripts:\n\n\n\n\n\n\n\n\nFeature\n.R Script\n.qmd Document\n\n\n\n\nPurpose\nRun code\nCreate reports\n\n\nContent\nCode only\nCode + text + output\n\n\nOutput\nConsole results\nFormatted document (e.g., HTML/PDF/Word)\n\n\nComments\n# comment\nFull markdown formatting\n\n\nBest for\nData cleaning, functions\nAnalysis reports, presentations, hw"
   }
 ]
