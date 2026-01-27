@@ -1,0 +1,289 @@
+---
+title: "Lab 1: Introduction to the Tidyverse"
+author: "Your Name Here"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+---
+
+## Setup Instructions
+
+Before starting this lab, make sure you have set up your folder structure correctly:
+
+1. **Create your course folder** (if you haven't already):
+   - Create a folder called `soc106` on your Desktop (or another location you prefer)
+
+2. **Create subfolders inside `soc106`**:
+   - `data` - where all datasets will be stored
+   - `labs` - where this lab file should be saved
+
+3. **Download the data**:
+   - Download `attain.csv` from bCourses under "Assignments" > "Lab 1"
+   - Save it in your `data` folder
+
+4. **Save this file**:
+   - Save this `lab1.qmd` file in your `labs` folder
+
+Your folder structure should look like this:
+
+```
+soc106/
+├── data/
+│   └── attain.csv
+└── labs/
+    └── lab1.qmd
+```
+
+5. **Open Positron**:
+   - Click `Open Folder` and navigate to your `soc106` folder
+   - This ensures `here()` will find your project root correctly
+
+---
+
+## Load Libraries and Data
+
+First, we need to load the tidyverse and here packages, then import our data.
+
+```{r}
+#| message: false
+#| warning: false
+
+# Load libraries
+library(tidyverse)
+library(here)
+
+# Load data
+attain <- read_csv(here("data", "attain.csv"))
+
+# Preview the data structure
+attain |> glimpse()
+```
+
+The `attain` dataset comes from the General Social Survey and contains information about respondents' demographics, education, and family background.
+
+---
+
+## Using `select()`
+
+The `select()` function allows you to choose specific columns from a dataframe.
+
+```{r}
+# Select education-related variables
+attain |>
+  select(educ, paeduc, maeduc) |>
+  head(5)
+```
+
+**Try it yourself:** Modify the code above to select different columns like `age`, `sex`, `race`, and `marital`.
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Using `slice()`
+
+The `slice()` function selects specific rows by their position (row number).
+
+```{r}
+# Get rows 50 through 55
+attain |>
+  slice(50:55)
+```
+
+**Try it yourself:** Modify the code to get the first 10 rows of the dataset.
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Using `filter()`
+
+The `filter()` function selects rows based on conditions.
+
+### Filtering with numeric variables
+
+```{r}
+# Find respondents over age 50
+attain |>
+  filter(age > 50) |>
+  head(5)
+```
+
+### Filtering with character variables
+
+You can also filter on character (text) variables using `==`:
+
+```{r}
+# Find married respondents
+attain |>
+  filter(marital == "married") |>
+  head(5)
+```
+
+**Try it yourself:** Find all respondents who are under age 30.
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Combining Functions
+
+One of the most powerful features of the tidyverse is chaining multiple operations together with the pipe (`|>`):
+
+```{r}
+# Find respondents over 40, select key demographics
+attain |>
+  filter(age > 40) |>
+  select(age, sex, educ, marital) |>
+  slice(1:6)
+```
+
+**Try it yourself:** Chain together functions to find married respondents, select their age and education, and show the first 10 rows.
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Using `mutate()`
+
+The `mutate()` function creates new variables based on existing ones.
+
+```{r}
+# Create a variable for years of education beyond high school
+attain |>
+  mutate(college_years = educ - 12) |>
+  select(educ, college_years) |>
+  head(5)
+```
+
+**Try it yourself:** Create a new variable that calculates how many years ago the respondent got married (hint: use `age` and `agewed`).
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Using `rename()`
+
+The `rename()` function changes column names. The syntax is `rename(new_name = old_name)`.
+
+```{r}
+# Rename a column
+attain |>
+  rename(years_of_education = educ) |>
+  select(years_of_education, age) |>
+  head(3)
+```
+
+**Try it yourself:** Rename the `marital` column to `marital_status`.
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Handling Missing Data with `filter()`
+
+Missing values in R are represented as `NA`. Use `is.na()` to find missing values and `!is.na()` to find non-missing values.
+
+```{r}
+# Count how many have missing father's education data
+attain |>
+  filter(is.na(paeduc)) |>
+  nrow()
+```
+
+```{r}
+# Keep only respondents with non-missing father's education
+attain |>
+  filter(!is.na(paeduc)) |>
+  glimpse()
+```
+
+**Try it yourself:** Count how many respondents have missing data for `agewed` (age at first marriage).
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Combining Logical Conditions
+
+Use `&` (and) to combine multiple conditions:
+
+```{r}
+# Find respondents with non-missing data for BOTH educ AND paeduc
+attain |>
+  filter(!is.na(educ) & !is.na(paeduc)) |>
+  select(educ, paeduc) |>
+  head(5)
+```
+
+You can also use `|` (or) to match any of several conditions:
+
+```{r}
+# Find respondents who are either divorced OR widowed
+attain |>
+  filter(marital == "divorced" | marital == "widowed") |>
+  select(age, marital) |>
+  head(5)
+```
+
+**Try it yourself:** Find respondents who are over 40 AND have more than 12 years of education.
+
+```{r}
+# Your code here
+
+```
+
+---
+
+## Summary
+
+In this lab, you learned how to use these key tidyverse functions:
+
+| Function | Purpose |
+|----------|---------|
+| `select()` | Choose columns |
+| `slice()` | Choose rows by position |
+| `filter()` | Choose rows by condition |
+| `mutate()` | Create new variables |
+| `rename()` | Rename columns |
+| `is.na()` / `!is.na()` | Check for missing values |
+
+You also learned how to chain these functions together using the pipe (`|>`) to create readable data manipulation workflows.
+
+---
+
+## Before You Leave
+
+Make sure you can:
+
+- [ ] Load data using `read_csv()` and `here()`
+- [ ] Select specific columns with `select()`
+- [ ] Filter rows based on conditions with `filter()`
+- [ ] Create new variables with `mutate()`
+- [ ] Chain multiple operations together with `|>`
+
+These skills will be essential for completing Homework #1!
