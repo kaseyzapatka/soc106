@@ -20,6 +20,22 @@ format:
 6.  Make sure your name appears in the "author" field in the YAML header above
 :::
 
+
+## Setup Instructions
+
+
+
+```
+soc106/
+├── _quarto.yml
+├── assignments/
+│   └── hw1.qmd
+├── data/
+│   └── attain.csv
+└── labs/
+    └── lab1.qmd
+```
+
 ## Instructions
 
 Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` lines with your actual code. Make sure your document renders without errors before submitting.
