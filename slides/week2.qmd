@@ -35,11 +35,12 @@ format:
 ## Agenda {.smaller}
 
 1.  Introduction to Positron IDE
-2.  R basics: variables, data types, and logical operators
-3.  Data structures and file paths vectors and dataframes
+2. Working with Quarto **HW #0**: Setting up your folder structure and practicing with `.qmd` files
+3.  R basics: variables, data types, and logical operators
+4.  Data structures and file paths vectors and dataframes
 5.  The Tidyverse and key functions
-6.  **Lab**: Setting up your folder structure and practicing with `.qmd` files
-7.  **HW #0**: Complete and submit in class
+6.  **In-class Lab**: Practicing with the Tidyverse
+
 
 ## What is Positron? {.smaller}
 
@@ -222,18 +223,43 @@ Positron provides two ways to edit `.qmd` files. Toggle between them using the b
 
 Should be fine if you don't do anything fancy and don't mess with quarto settings
 
-## In-class lab HW #0 {.smaller}
+## Practicing Quarto with HW #0 {.smaller}
 
-Now let's complete HW #0 using the folder structure you created during the lab!
+::: columns
+::: {.column width="60%"}
+**Set up your folder:**
 
-1.  Download `hw0.qmd` from bCourse under "assignments" \> "HW #0"
-2.  Place `hw0.qmd` in your `soc106/assignments` folder (you already have `attain.csv` in your `data` folder)
-3.  In Positron, use the `Explorer` button on the left to find `hw0.qmd`
-4.  Check the `Render on Save` button
-5.  Replace "Karl Marx" with your name -- make sure to keep it in "quotes"
-6.  Save and hit "Preview"
-7.  If the `Viewer` frame opens as an html file and you see your name - SUCCESS!
-8.  Navigate back to bCourse and upload both `hw0.qmd` and `hw0.html` files
+1.  Download `hw0.qmd`, `attain.csv`, and `_quarto.yml` from bCourse under "assignment" \> "HW #0"
+2.  Create `soc106` folder on your desktop
+3.  Create `data` and `assignments` folders inside
+4.  Place files as shown:
+
+```
+soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+└── assignments/
+    └── hw0.qmd
+```
+:::
+
+::: {.column width="40%"}
+**Open in Positron:**
+
+5.  Click `Open Folder` → navigate to `soc106`
+6.  Trust the authors → click "Yes"
+7.  Use `Explorer` button on left to find `hw0.qmd`
+
+**Edit and render:**
+
+8.  Check `Render on Save`
+9.  Replace "Karl Marx" with your name
+10. Save and hit "Preview"
+11. SUCCESS if you see your name!
+12. Upload `.qmd` and `.html` to bCourses
+:::
+:::
 
 ## Writing with `script.R` {.smaller .scrollable}
 
@@ -570,28 +596,28 @@ data |>
 
 ## Questions?
 
-## Tidyverse in Practice {.smaller}
+## Tidyverse in Practice (in-class Lab) {.smaller}
 
-Follow these steps to get set up so we can practice together:
+Let's practice using the folder structure you already set up:
 
-1.  Download `lab1.qmd`, `attain.csv`, and `_quarto.yml` from bCourse under "labs" \> "Lab #1"
-2.  Create `soc16` folder on your desktop (or another place if you prefer)
-3.  Create `data` and `lab` folders inside of `soc16`
-4.  Data goes inside data folder and assignment goes instead `lab`
-5.  Make sure the `_quarto.yml` file is in the `soc16` and not `data` or `lab` folders. Your folder structure should look like this:
+1.  Download `lab1.qmd` from bCourse under "labs" \> "Lab #1"
+2.  Create a `labs` folder inside your `soc106` folder
+3.  Place `lab1.qmd` in the `labs` folder. Your folder structure should now look like this:
 
-```         
+```
 soc106/
 ├── _quarto.yml
 ├── data/
 │   └── attain.csv
+├── assignments/
+│   └── hw0.qmd
 └── labs/
     └── lab1.qmd
 ```
 
-6.  Open Positron, click the `Open Folder` button and navigate to `soc16`
-7.  Allow access, check "Trust the authors..", and click "Yes, ..."
-8.  Use `Explorer` button on left to find `lab1.qmd`
+4.  Use the `Explorer` button on the left to find and open `lab1.qmd`
+
+5. Let's work through it together!
 
 ## Homework #1 {.smaller}
 

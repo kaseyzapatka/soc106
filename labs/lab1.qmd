@@ -14,34 +14,26 @@ format:
 
 ## Setup Instructions
 
-Before starting this lab, make sure you have set up your folder structure correctly:
+Let's practice using the folder structure you already set up:
 
-1.  **Create your course folder** (if you haven't already):
-    -   Create a folder called `soc106` on your Desktop (or another location you prefer)
-2.  **Create subfolders inside `soc106`**:
-    -   `data` - where all datasets will be stored
-    -   `labs` - where this lab file should be saved
-3.  **Download the data**:
-    -   Download `attain.csv` from bCourses under "Assignments" \> "Lab 1"
-    -   Save it in your `data` folder
-4.  **Save this file**:
-    -   Save this `lab1.qmd` file in your `labs` folder
-5.  \*\*Finally, add the \_quarto.yml file\*\*:
-    -   Save this `quarto.yml` file in soc `labs` folder
-    -   Make sure the `_quarto.yml` file is in the `soc16` and not `data` or `lab` folders. Your folder structure should look like this:
+1.  Download `lab1.qmd` from bCourse under "labs" \> "Lab #1"
+2.  Create a `labs` folder inside your `soc106` folder
+3.  Place `lab1.qmd` in the `labs` folder. Your folder structure should now look like this:
 
-```         
+```
 soc106/
 ├── _quarto.yml
 ├── data/
 │   └── attain.csv
+├── assignments/
+│   └── hw0.qmd
 └── labs/
     └── lab1.qmd
 ```
 
-5.  **Open Positron**:
-    -   Click `Open Folder` and navigate to your `soc106` folder
-    -   This ensures `here()` will find your project root correctly
+4.  Use the `Explorer` button on the left to find and open `lab1.qmd`
+
+5. Let's work through it together!
 
 ------------------------------------------------------------------------
 
@@ -49,7 +41,7 @@ soc106/
 
 First, we need to load the tidyverse and here packages.
 
-First, install these packages in your console (only need to do this once):
+Let's install these packages in your console (only need to do this once). Click the `Run cell` in the console. 
 
 ```{r}
 #| eval: false
@@ -65,6 +57,7 @@ Then load the libraries:
 #| message: false
 #| warning: false
 
+# load libraries
 library(tidyverse)
 library(here)
 ```
@@ -89,6 +82,12 @@ The `attain` dataset comes from the General Social Survey and contains informati
 
 The `select()` function allows you to choose specific columns from a dataframe.
 
+**Syntax:** `select(column1, column2, ...)`
+
+-   List the column names you want to keep, separated by commas
+-   Column names don't need quotes
+-   The order you list them is the order they'll appear
+
 ```{r}
 # Select education-related variables
 attain |>
@@ -107,7 +106,13 @@ attain |>
 
 ## Using `slice()`
 
-The `slice()` function selects specific rows by their position (row number). The colon `:` here means through.
+The `slice()` function selects specific rows by their position (row number).
+
+**Syntax:** `slice(row_numbers)`
+
+-   Use a single number for one row: `slice(5)`
+-   Use `:` to specify a range: `slice(50:55)` means rows 50 through 55
+-   Use `c()` for non-consecutive rows: `slice(c(1, 5, 10))`
 
 ```{r}
 # Get rows 50 through 55
@@ -126,7 +131,16 @@ attain |>
 
 ## Using `filter()`
 
-The `filter()` function selects rows based on conditions. You'll likely want to use some logical operator here (e.g., `>` or `==`)
+The `filter()` function selects rows based on conditions.
+
+**Syntax:** `filter(condition)`
+
+-   Use logical operators to create conditions:
+    -   `==` equal to (note: two equals signs!)
+    -   `!=` not equal to
+    -   `>`, `<`, `>=`, `<=` for comparisons
+-   For text values, put them in quotes: `filter(marital == "married")`
+-   For numbers, no quotes needed: `filter(age > 50)`
 
 ### Filtering with numeric variables
 
@@ -189,6 +203,13 @@ attain |>
 
 The `mutate()` function creates new variables based on existing ones.
 
+**Syntax:** `mutate(new_column_name = expression)`
+
+-   Left side of `=` is the name of your new column
+-   Right side is the calculation or transformation
+-   You can use math operations: `+`, `-`, `*`, `/`
+-   You can reference existing columns by name
+
 ```{r}
 # Create a variable for years of education beyond high school
 attain |>
@@ -208,7 +229,13 @@ attain |>
 
 ## Using `rename()`
 
-The `rename()` function changes column names. The syntax is `rename(new_name = old_name)`.
+The `rename()` function changes column names.
+
+**Syntax:** `rename(new_name = old_name)`
+
+-   Left side of `=` is the NEW name you want
+-   Right side is the OLD name that currently exists
+-   Think of it as: "new_name gets old_name"
 
 ```{r}
 # Rename a column
@@ -229,7 +256,13 @@ attain |>
 
 ## Handling Missing Data with `filter()`
 
-Missing values in R are represented as `NA`. Use `is.na()` to find missing values and `!is.na()` to find non-missing values.
+Missing values in R are represented as `NA` (Not Available).
+
+**Syntax:**
+
+-   `is.na(column)` — returns `TRUE` if the value is missing
+-   `!is.na(column)` — returns `TRUE` if the value is NOT missing (the `!` means "not")
+-   Use these inside `filter()` to keep or remove rows with missing data
 
 ```{r}
 # Count how many have missing father's education data
@@ -256,7 +289,12 @@ attain |>
 
 ## Combining Logical Conditions
 
-Use `&` (and) to combine multiple conditions:
+You can combine multiple conditions inside `filter()`:
+
+**Syntax:**
+
+-   `&` (and) — both conditions must be true
+-   `|` (or) — at least one condition must be true
 
 ```{r}
 # Find respondents with non-missing data for BOTH educ AND paeduc
@@ -301,15 +339,3 @@ In this lab, you learned how to use these key tidyverse functions:
 You also learned how to chain these functions together using the pipe (`|>`) to create readable data manipulation workflows.
 
 ------------------------------------------------------------------------
-
-## Before You Leave
-
-Make sure you can:
-
--   [ ] Load data using `read_csv()` and `here()`
--   [ ] Select specific columns with `select()`
--   [ ] Filter rows based on conditions with `filter()`
--   [ ] Create new variables with `mutate()`
--   [ ] Chain multiple operations together with `|>`
-
-These skills will be essential for completing Homework #1!
