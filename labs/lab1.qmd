@@ -2,6 +2,9 @@
 title: "Lab 1: Introduction to the Tidyverse"
 author: "Your Name Here"
 date: today
+project: 
+  type: website
+  execute-dir: project
 format:
   html:
     toc: true
@@ -13,58 +16,68 @@ format:
 
 Before starting this lab, make sure you have set up your folder structure correctly:
 
-1. **Create your course folder** (if you haven't already):
-   - Create a folder called `soc106` on your Desktop (or another location you prefer)
+1.  **Create your course folder** (if you haven't already):
+    -   Create a folder called `soc106` on your Desktop (or another location you prefer)
+2.  **Create subfolders inside `soc106`**:
+    -   `data` - where all datasets will be stored
+    -   `labs` - where this lab file should be saved
+3.  **Download the data**:
+    -   Download `attain.csv` from bCourses under "Assignments" \> "Lab 1"
+    -   Save it in your `data` folder
+4.  **Save this file**:
+    -   Save this `lab1.qmd` file in your `labs` folder
+5.  \*\*Finally, add the \_quarto.yml file\*\*:
+    -   Save this `quarto.yml` file in soc `labs` folder
+    -   Make sure the `_quarto.yml` file is in the `soc16` and not `data` or `lab` folders. Your folder structure should look like this:
 
-2. **Create subfolders inside `soc106`**:
-   - `data` - where all datasets will be stored
-   - `labs` - where this lab file should be saved
-
-3. **Download the data**:
-   - Download `attain.csv` from bCourses under "Assignments" > "Lab 1"
-   - Save it in your `data` folder
-
-4. **Save this file**:
-   - Save this `lab1.qmd` file in your `labs` folder
-
-Your folder structure should look like this:
-
-```
+```         
 soc106/
+├── _quarto.yml
 ├── data/
 │   └── attain.csv
 └── labs/
     └── lab1.qmd
 ```
 
-5. **Open Positron**:
-   - Click `Open Folder` and navigate to your `soc106` folder
-   - This ensures `here()` will find your project root correctly
+5.  **Open Positron**:
+    -   Click `Open Folder` and navigate to your `soc106` folder
+    -   This ensures `here()` will find your project root correctly
 
----
+------------------------------------------------------------------------
 
 ## Load Libraries and Data
 
-First, we need to load the tidyverse and here packages, then import our data.
+First, we need to load the tidyverse and here packages.
 
 ```{r}
 #| message: false
 #| warning: false
 
+# Install packages - JUST ONCE  
+install.packages("tidyverse") 
+install.packages("here") 
+
 # Load libraries
 library(tidyverse)
 library(here)
+
+```
+
+Now, let's import our data and glimpse it.
+
+```{r}
 
 # Load data
 attain <- read_csv(here("data", "attain.csv"))
 
 # Preview the data structure
 attain |> glimpse()
+
 ```
 
 The `attain` dataset comes from the General Social Survey and contains information about respondents' demographics, education, and family background.
 
----
+------------------------------------------------------------------------
 
 ## Using `select()`
 
@@ -84,11 +97,11 @@ attain |>
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Using `slice()`
 
-The `slice()` function selects specific rows by their position (row number).
+The `slice()` function selects specific rows by their position (row number). The colon `:` here means through.
 
 ```{r}
 # Get rows 50 through 55
@@ -103,11 +116,11 @@ attain |>
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Using `filter()`
 
-The `filter()` function selects rows based on conditions.
+The `filter()` function selects rows based on conditions. You'll likely want to use some logical operator here (e.g., `>` or `==`)
 
 ### Filtering with numeric variables
 
@@ -116,6 +129,13 @@ The `filter()` function selects rows based on conditions.
 attain |>
   filter(age > 50) |>
   head(5)
+```
+
+**Try it yourself:** Find all respondents who are under age 30.
+
+```{r}
+# Your code here
+
 ```
 
 ### Filtering with character variables
@@ -129,14 +149,14 @@ attain |>
   head(5)
 ```
 
-**Try it yourself:** Find all respondents who are under age 30.
+**Try it yourself:** Now divorced respondents
 
 ```{r}
 # Your code here
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Combining Functions
 
@@ -157,7 +177,7 @@ attain |>
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Using `mutate()`
 
@@ -178,7 +198,7 @@ attain |>
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Using `rename()`
 
@@ -199,7 +219,7 @@ attain |>
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Handling Missing Data with `filter()`
 
@@ -226,7 +246,7 @@ attain |>
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Combining Logical Conditions
 
@@ -257,33 +277,33 @@ attain |>
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## Summary
 
 In this lab, you learned how to use these key tidyverse functions:
 
-| Function | Purpose |
-|----------|---------|
-| `select()` | Choose columns |
-| `slice()` | Choose rows by position |
-| `filter()` | Choose rows by condition |
-| `mutate()` | Create new variables |
-| `rename()` | Rename columns |
+| Function               | Purpose                  |
+|------------------------|--------------------------|
+| `select()`             | Choose columns           |
+| `slice()`              | Choose rows by position  |
+| `filter()`             | Choose rows by condition |
+| `mutate()`             | Create new variables     |
+| `rename()`             | Rename columns           |
 | `is.na()` / `!is.na()` | Check for missing values |
 
 You also learned how to chain these functions together using the pipe (`|>`) to create readable data manipulation workflows.
 
----
+------------------------------------------------------------------------
 
 ## Before You Leave
 
 Make sure you can:
 
-- [ ] Load data using `read_csv()` and `here()`
-- [ ] Select specific columns with `select()`
-- [ ] Filter rows based on conditions with `filter()`
-- [ ] Create new variables with `mutate()`
-- [ ] Chain multiple operations together with `|>`
+-   [ ] Load data using `read_csv()` and `here()`
+-   [ ] Select specific columns with `select()`
+-   [ ] Filter rows based on conditions with `filter()`
+-   [ ] Create new variables with `mutate()`
+-   [ ] Chain multiple operations together with `|>`
 
 These skills will be essential for completing Homework #1!
