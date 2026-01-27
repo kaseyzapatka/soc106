@@ -1,5 +1,11 @@
+# hidden files
 /.quarto/
 .DS_Store
+
+# folders
 /resources
 /readings
 /data
+
+# files
+project_overview*
