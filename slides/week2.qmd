@@ -102,6 +102,17 @@ Let's explore Positron together on your laptop:
 -   Open
 :::
 
+## Why Quarto? {.smaller}
+
+**Quarto (`.qmd`) files** let you combine code, output, and written analysis in one document. Check out [Quarto's website](https://quarto.org/docs/guide/) for more!
+
+**Why I want you to use them for homework:**
+
+-   **Show your work**: Code and results appear together—I can see exactly what you did
+-   **Explain your thinking**: Add text to interpret results and answer questions
+-   **Reproducible**: I can re-run your code to verify it works
+-   **Professional skill**: This is how data scientists share analysis in the real world
+
 ## Anatomy of a `.qmd` File {.smaller .scrollable}
 
 A `.qmd` file has **three main parts** and knits code + text together (unlike `.R` which runs code only):
@@ -122,13 +133,15 @@ format: html
 ::: {.column width="50%"}
 **2. Markdown Text** (narrative)
 
-Use `**bold**`, `*italics*`, `# Headings`
+Use `**bold**`, `*italics*`, `# Headings` to organize your script and write analyses in between code. 
 
 [More markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
 :::
 :::
 
 **3. Code Chunks** (analysis)
+
+Insert `R` (or `python`) code directly in your analyses.
 
 ```{{{r}}}
 data <- read_csv("data.csv")
@@ -160,16 +173,6 @@ Positron provides two ways to edit `.qmd` files. Toggle between them using the b
 <br>
 
 ::: panel-tabset
-### Visual
-
-**Visual,** which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:
-
--   WYSIWYG editor (What You See Is What You Get)
--   Formatting toolbar (like Microsoft Word)
--   Live preview of how text will look
--   Easier for beginners
-
-![](images/week2/quarto_script1.png){width="100%,fig-align=\"center\""}
 
 ### Source
 
@@ -181,6 +184,18 @@ Positron provides two ways to edit `.qmd` files. Toggle between them using the b
 -   Better for experienced users
 
 ![](images/week2/quarto_script2.png){width="100%,fig-align=\"center\""}
+
+### Visual
+
+**Visual,** which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:
+
+-   WYSIWYG editor (What You See Is What You Get)
+-   Formatting toolbar (like Microsoft Word)
+-   Live preview of how text will look
+-   Easier for beginners
+
+![](images/week2/quarto_script1.png){width="100%,fig-align=\"center\""}
+
 :::
 
 ## Rendering Quarto Documents {.smaller}

@@ -296,6 +296,17 @@
 <li class="fragment">Open</li>
 </ul>
 </section>
+<section id="why-quarto" class="slide level2 smaller">
+<h2>Why Quarto?</h2>
+<p><strong>Quarto (<code>.qmd</code>) files</strong> let you combine code, output, and written analysis in one document. Check out <a href="https://quarto.org/docs/guide/">Quarto’s website</a> for more!</p>
+<p><strong>Why I want you to use them for homework:</strong></p>
+<ul>
+<li><strong>Show your work</strong>: Code and results appear together—I can see exactly what you did</li>
+<li><strong>Explain your thinking</strong>: Add text to interpret results and answer questions</li>
+<li><strong>Reproducible</strong>: I can re-run your code to verify it works</li>
+<li><strong>Professional skill</strong>: This is how data scientists share analysis in the real world</li>
+</ul>
+</section>
 <section id="anatomy-of-a-.qmd-file" class="slide level2 smaller scrollable">
 <h2>Anatomy of a <code>.qmd</code> File</h2>
 <p>A <code>.qmd</code> file has <strong>three main parts</strong> and knits code + text together (unlike <code>.R</code> which runs code only):</p>
@@ -309,10 +320,11 @@
 <span id="cb1-5"><a></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
 <p><strong>2. Markdown Text</strong> (narrative)</p>
-<p>Use <code>**bold**</code>, <code>*italics*</code>, <code># Headings</code></p>
+<p>Use <code>**bold**</code>, <code>*italics*</code>, <code># Headings</code> to organize your script and write analyses in between code.</p>
 <p><a href="https://quarto.org/docs/authoring/markdown-basics.html">More markdown basics</a></p>
 </div></div>
 <p><strong>3. Code Chunks</strong> (analysis)</p>
+<p>Insert <code>R</code> (or <code>python</code>) code directly in your analyses.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a></a><span class="in">```{{r}}</span></span>
 <span id="cb2-2"><a></a><span class="in">data &lt;- read_csv("data.csv")</span></span>
 <span id="cb2-3"><a></a><span class="in">summary(data)</span></span>
@@ -340,19 +352,9 @@
 <p>Positron provides two ways to edit <code>.qmd</code> files. Toggle between them using the buttons at the top-left of your editor.</p>
 <p><br></p>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Visual</a></li><li><a href="#tabset-1-2">Source</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Source</a></li><li><a href="#tabset-1-2">Visual</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<p><strong>Visual,</strong> which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:</p>
-<ul>
-<li>WYSIWYG editor (What You See Is What You Get)</li>
-<li>Formatting toolbar (like Microsoft Word)</li>
-<li>Live preview of how text will look</li>
-<li>Easier for beginners</li>
-</ul>
-<p><img data-src="images/week2/quarto_script1.png"></p>
-</div>
-<div id="tabset-1-2">
 <p><strong>Source,</strong> which is the source actual code:</p>
 <ul>
 <li>Shows raw markdown syntax</li>
@@ -361,6 +363,16 @@
 <li>Better for experienced users</li>
 </ul>
 <p><img data-src="images/week2/quarto_script2.png"></p>
+</div>
+<div id="tabset-1-2">
+<p><strong>Visual,</strong> which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:</p>
+<ul>
+<li>WYSIWYG editor (What You See Is What You Get)</li>
+<li>Formatting toolbar (like Microsoft Word)</li>
+<li>Live preview of how text will look</li>
+<li>Easier for beginners</li>
+</ul>
+<p><img data-src="images/week2/quarto_script1.png"></p>
 </div>
 </div>
 </div>

@@ -1026,7 +1026,7 @@
     "href": "slides/week2.html#anatomy-of-a-.qmd-file",
     "title": "Week 2",
     "section": "Anatomy of a .qmd File",
-    "text": "Anatomy of a .qmd File\nA .qmd file has three main parts and knits code + text together (unlike .R which runs code only):\n\n\n1. YAML Header (metadata)\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\nformat: html\n---\n\n2. Markdown Text (narrative)\nUse **bold**, *italics*, # Headings\nMore markdown basics\n\n3. Code Chunks (analysis)\n```{{r}}\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)\n```"
+    "text": "Anatomy of a .qmd File\nA .qmd file has three main parts and knits code + text together (unlike .R which runs code only):\n\n\n1. YAML Header (metadata)\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\nformat: html\n---\n\n2. Markdown Text (narrative)\nUse **bold**, *italics*, # Headings to organize your script and write analyses in between code.\nMore markdown basics\n\n3. Code Chunks (analysis)\nInsert R (or python) code directly in your analyses.\n```{{r}}\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)\n```"
   },
   {
     "objectID": "slides/week2.html#anatomy-of-a-.qmd-file-1",
@@ -1082,7 +1082,7 @@
     "href": "slides/week2.html#rendering-quarto-documents-1",
     "title": "Week 2",
     "section": "Rendering Quarto Documents",
-    "text": "Rendering Quarto Documents\nSource vs Visual Mode\nPositron provides two ways to edit .qmd files. Toggle between them using the buttons at the top-left of your editor.\n\n\nVisualSource\n\n\nVisual, which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:\n\nWYSIWYG editor (What You See Is What You Get)\nFormatting toolbar (like Microsoft Word)\nLive preview of how text will look\nEasier for beginners\n\n\n\n\nSource, which is the source actual code:\n\nShows raw markdown syntax\nSee the actual code: **bold**, ## Heading\nMore control over formatting\nBetter for experienced users"
+    "text": "Rendering Quarto Documents\nSource vs Visual Mode\nPositron provides two ways to edit .qmd files. Toggle between them using the buttons at the top-left of your editor.\n\n\nSourceVisual\n\n\nSource, which is the source actual code:\n\nShows raw markdown syntax\nSee the actual code: **bold**, ## Heading\nMore control over formatting\nBetter for experienced users\n\n\n\n\nVisual, which looks a lot like jupyter notebooks and allows you to edit code and text in a more interactive manner:\n\nWYSIWYG editor (What You See Is What You Get)\nFormatting toolbar (like Microsoft Word)\nLive preview of how text will look\nEasier for beginners"
   },
   {
     "objectID": "slides/week2.html#rendering-quarto-documents-2",
@@ -3547,5 +3547,12 @@
     "title": "Week 4",
     "section": "",
     "text": "[[ADD IT IN LATER]]"
+  },
+  {
+    "objectID": "slides/week2.html#why-quarto",
+    "href": "slides/week2.html#why-quarto",
+    "title": "Week 2",
+    "section": "Why Quarto?",
+    "text": "Why Quarto?\nQuarto (.qmd) files let you combine code, output, and written analysis in one document. Check out Quarto’s website for more!\nWhy I want you to use them for homework:\n\nShow your work: Code and results appear together—I can see exactly what you did\nExplain your thinking: Add text to interpret results and answer questions\nReproducible: I can re-run your code to verify it works\nProfessional skill: This is how data scientists share analysis in the real world"
   }
 ]
