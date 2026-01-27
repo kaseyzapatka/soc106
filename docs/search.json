@@ -3560,7 +3560,7 @@
     "href": "slides/week2.html#practicing-quarto-with-hw-0",
     "title": "Week 2",
     "section": "Practicing Quarto with HW #0",
-    "text": "Practicing Quarto with HW #0\n\n\nSet up your folder:\n\nDownload hw0.qmd, attain.csv, and _quarto.yml from bCourse under “assignment” &gt; “HW #0”\nCreate soc106 folder on your desktop\nCreate data and assignments folders inside\nPlace files as shown:\n\nsoc106/\n├── _quarto.yml\n├── data/\n│   └── attain.csv\n└── assignments/\n    └── hw0.qmd\n\nOpen in Positron:\n\nClick Open Folder → navigate to soc106\nTrust the authors → click “Yes”\nUse Explorer button on left to find hw0.qmd\n\nEdit and render:\n\nCheck Render on Save\nReplace “Karl Marx” with your name\nSave and hit “Preview”\nSUCCESS if you see your name!\nUpload .qmd and .html to bCourses"
+    "text": "Practicing Quarto with HW #0\n\n\nSet up your folder:\n\nDownload hw0.qmd, attain.csv, and _quarto.yml from bCourse under “assignment” &gt; “HW #0”\nCreate soc106 folder on your desktop\nCreate data and assignments folders inside\nPlace files as shown:\n\nsoc106/\n├── _quarto.yml\n├── data/\n│   └── attain.csv\n└── assignments/\n    └── hw0.qmd\n\nOpen in Positron:\n\nClick Open Folder → navigate to soc106\nTrust the authors → click “Yes”\nUse Explorer button on left to find hw0.qmd"
   },
   {
     "objectID": "slides/week2.html#tidyverse-in-practice-in-class-lab",
@@ -3568,5 +3568,12 @@
     "title": "Week 2",
     "section": "Tidyverse in Practice (in-class Lab)",
     "text": "Tidyverse in Practice (in-class Lab)\nLet’s practice using the folder structure you already set up:\n\nDownload lab1.qmd from bCourse under “labs” &gt; “Lab #1”\nCreate a labs folder inside your soc106 folder\nPlace lab1.qmd in the labs folder. Your folder structure should now look like this:\n\nsoc106/\n├── _quarto.yml\n├── data/\n│   └── attain.csv\n├── assignments/\n│   └── hw0.qmd\n└── labs/\n    └── lab1.qmd\n\nUse the Explorer button on the left to find and open lab1.qmd\nLet’s work through it together!"
+  },
+  {
+    "objectID": "slides/week2.html#practicing-quarto-with-hw-0-1",
+    "href": "slides/week2.html#practicing-quarto-with-hw-0-1",
+    "title": "Week 2",
+    "section": "Practicing Quarto with HW #0",
+    "text": "Practicing Quarto with HW #0\nEdit and render:\n\nUncomment rows 50 and 51 and click Run Cell\nEnsure packages downloaded correctly\nReplace “Karl Marx” with your name\nCheck Render on Save\nSave and hit “Preview”\nSUCCESS if you see your name!\nUpload .qmd and .html to bCourses"
   }
 ]

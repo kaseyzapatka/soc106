@@ -35,7 +35,7 @@ format:
 ## Agenda {.smaller}
 
 1.  Introduction to Positron IDE
-2. Working with Quarto **HW #0**: Setting up your folder structure and practicing with `.qmd` files
+2.  Working with Quarto **HW #0**: Setting up your folder structure and practicing with `.qmd` files
 3.  R basics: variables, data types, and logical operators
 4.  Data structures and file paths vectors and dataframes
 5.  The Tidyverse and key functions
@@ -250,16 +250,21 @@ soc106/
 5.  Click `Open Folder` → navigate to `soc106`
 6.  Trust the authors → click "Yes"
 7.  Use `Explorer` button on left to find `hw0.qmd`
+:::
+:::
+
+## Practicing Quarto with HW #0 {.smaller}
 
 **Edit and render:**
 
-8.  Check `Render on Save`
-9.  Replace "Karl Marx" with your name
-10. Save and hit "Preview"
-11. SUCCESS if you see your name!
-12. Upload `.qmd` and `.html` to bCourses
-:::
-:::
+8.  Uncomment rows 50 and 51 and click `Run Cell`
+9.  Ensure packages downloaded correctly 
+10. Replace "Karl Marx" with your name
+11. Check `Render on Save`
+12. Save and hit "Preview"
+13. SUCCESS if you see your name!
+14. Upload `.qmd` and `.html` to bCourses
+
 
 ## Writing with `script.R` {.smaller .scrollable}
 
@@ -487,7 +492,6 @@ colnames(students)
 ```
 :::
 
-## Questions?
 
 ## File paths and the `here` package {.smaller}
 
@@ -522,8 +526,6 @@ write_csv(results, here("output", "results.csv"))
 ```
 
 :::
-
-## Questions?
 
 ## The `Tidyverse` {.smaller}
 

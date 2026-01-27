@@ -41,17 +41,15 @@ soc106/
 
 First, we need to load the tidyverse and here packages.
 
-Let's install these packages in your console (only need to do this once). Click the `Run cell` in the console. 
-
 ```{r}
 #| eval: false
 
-# Run these in the console ONCE to install
-install.packages("tidyverse")
-install.packages("here")
+# Run these in the console only if not already installed
+#install.packages("tidyverse")
+#install.packages("here")
 ```
 
-Then load the libraries:
+Load the libraries:
 
 ```{r}
 #| message: false
