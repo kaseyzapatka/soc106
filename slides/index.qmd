@@ -5,7 +5,7 @@ title: "Lecture Slides"
 ## Slides
 
 - [Week 1: Introduction](week1.html)
-- Week 2: Statistical computing in R
+- [Week 2: Statistical computing in R](week2.html)
 - Week 3: Visualizing distributions
 - Week 4: Summarizing distributions
 - Week 5: Basics of probability theory

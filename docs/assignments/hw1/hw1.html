@@ -3900,7 +3900,8 @@ color: #f8f9fa !important;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#question-1" id="toc-question-1" class="nav-link active" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
   <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
@@ -3961,9 +3962,9 @@ Submission Instructions
 <li>Download this <code>hw1.qmd</code> file. The <code>attain.csv</code> data should already be in your data folder.</li>
 <li>Save the <code>hw1.qmd</code> file in the assignments folder.</li>
 <li>Complete all questions by writing your code in the provided code chunks. Replace <code># Your code here</code> lines with your actual code.</li>
-<li>Click the “Render” button at the top of Positron to generate an HTML file</li>
-<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline</li>
-<li>Make sure your name appears in the “author” field in the YAML header above</li>
+<li>Click the “Render” button at the top of Positron to generate an HTML file.</li>
+<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline on February 5, 2026</li>
+<li>Make sure your name appears in the “author” field in the YAML header above.</li>
 <li>Make sure your document renders without errors before submitting.</li>
 </ol>
 </div>
@@ -3978,6 +3979,9 @@ Submission Instructions
 │   └── attain.csv
 └── labs/
     └── lab1.qmd</code></pre>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>Run this code to set up your environment. If you need to install any libraries, make sure to do that in the console.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear environment</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
@@ -4012,6 +4016,7 @@ Submission Instructions
 <pre><code>here() starts at /Users/Dora/git/teaching/soc106</code></pre>
 </div>
 </div>
+</section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <p>Load the data file <code>attain.csv</code> into R using the <code>read_csv</code> function. Be sure to use the <code>here()</code> library to ensure you are using a relative file path and that the csv file is saved in the “data” folder and the .qmd file is saved in the “assignments” folder. Once you’ve loaded the dataset, use the <code>glimpse()</code> function to examine the structure of the data and the variables.</p>

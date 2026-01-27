@@ -3900,7 +3900,7 @@ color: #f8f9fa !important;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
@@ -3961,10 +3961,11 @@ Submission Instructions
 <ol type="1">
 <li>Download this <code>hw1.qmd</code> file. The <code>attain.csv</code> data should already be in your data folder.</li>
 <li>Save the <code>hw1.qmd</code> file in the assignments folder.</li>
-<li>Complete all questions by writing your code in the provided code chunks</li>
-<li>Click the “Render” button at the top of Positron to generate an HTML file</li>
-<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline</li>
-<li>Make sure your name appears in the “author” field in the YAML header above</li>
+<li>Complete all questions by writing your code in the provided code chunks. Replace <code># Your code here</code> lines with your actual code.</li>
+<li>Click the “Render” button at the top of Positron to generate an HTML file.</li>
+<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline on February 5, 2026</li>
+<li>Make sure your name appears in the “author” field in the YAML header above.</li>
+<li>Make sure your document renders without errors before submitting.</li>
 </ol>
 </div>
 </div>
@@ -3978,9 +3979,9 @@ Submission Instructions
 │   └── attain.csv
 └── labs/
     └── lab1.qmd</code></pre>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Complete all questions below, writing your code in the code chunks provided. Replace <code># Your code here</code> lines with your actual code. Make sure your document renders without errors before submitting.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>Run this code to set up your environment. If you need to install any libraries, make sure to do that in the console.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear environment</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------</span></span>
@@ -4142,7 +4143,7 @@ $ agewed  &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA
 </section>
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
-<p>Now suppose we want a smaller dataset that only contains the first 1000 observations. Create a subset of <code>attain</code> data (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it. How do you know you did it correctly?</p>
+<p>Now suppose we want a smaller dataset that only contains the first 1000 observations. Create a subset of <code>attain</code> data (call it <code>subset2</code>) using the appropriate tidyverse function. Make sure to glimpse it. How do you know you did it correctly?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>subset2 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
@@ -4385,7 +4386,7 @@ $ rincom91 &lt;dbl&gt; NA, 11250, 18750, 45000, 32500, 100000, 45000, 67500, NA,
 </section>
 <section id="question-9" class="level2">
 <h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
-<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (<em>Hint: Create a new variable and call it <code>years_since_kid</code>.</em>)</p>
+<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (<em>Hint: Create a new variable and call it <code>years_since_kid</code>. You’ll have to do some subtration here!</em>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>attain_kids <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
@@ -4445,7 +4446,7 @@ $ years_since_kid &lt;dbl&gt; 12, NA, NA, 36, NA, NA, 23, 2, 24, 28, NA, NA, 26,
 </section>
 <section id="question-10" class="level2">
 <h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
-<p>Finally, there a is a left over variable in this dataset from the original .csv file that we want to drop. Using the <code>attain</code> dataset again, let’s’ first rename the variable–“to_drop”–and then drop it from the dataset. How can you tell for sure that this worked (<em>Hint: think about how many rows you should have.</em>)</p>
+<p>Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the <code>attain</code> dataset again, let’s’ first rename the variable–call it “to_drop”–and then drop it from the dataset (<em>Hint: Youe can use a negative sign before the variable to select everything but that one.</em>). How can you tell for sure that this worked (<em>Hint: think about how many rows you should have.</em>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>attain_breadwinner <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
@@ -4501,7 +4502,7 @@ $ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 187
 </div>
 </div>
 <p><strong>How many respondents are in this subset?</strong></p>
-<p><em>should be 43 rows instead of 44</em></p>
+<p><em>should be 43 columns instead of 44</em></p>
 <hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">

@@ -602,7 +602,7 @@ data |>
 
 Let's practice using the folder structure you already set up:
 
-1.  Download `lab1.qmd` from bCourse under "labs" \> "Lab #1"
+1.  Download `lab1.qmd` from bCourse under "assignments" \> "Lab #1"
 2.  Create a `labs` folder inside your `soc106` folder
 3.  Place `lab1.qmd` in the `labs` folder. Your folder structure should now look like this:
 
@@ -617,8 +617,7 @@ soc106/
     └── lab1.qmd
 ```
 
-4.  Use the `Explorer` button on the left to find and open `lab1.qmd`
-
+4. Use the `Explorer` button on the left to find and open `lab1.qmd`
 5. Let's work through it together!
 
 ## Homework #1 {.smaller}
