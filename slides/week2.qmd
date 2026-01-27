@@ -126,13 +126,6 @@ Check out this example:
 census_data <- read_csv("data/acs2021.csv")
 ```
 
-## Writing with `script.R` {.smaller}
-
-**Running code:**
-
--   Mac: cursor on line, hit `Command + Return`
--   Windows: highlight the entire line, and hit `Ctrl + Enter`
-
 ## Variable assignment in `script.R` {.smaller}
 
 R is an ***object-oriented programming language***, meaning you can create new objects from any type of value, store it R's memory, and call it when necessary
@@ -292,7 +285,7 @@ A dataframe is a list of equal-length vectors. We'll focus on **tidy dataframes*
 -   Each **column** is a variable
 -   Each **row** is an observation
 
-```{r echo=TRUE, message=FALSE}
+```{r echo=FALSE, message=FALSE}
 library(tidyverse)
 
 students <- tibble(
@@ -549,18 +542,6 @@ data <- read_csv("data.csv")
 summary(data)
 ```
 
-## `.R` vs `.qmd` Files {.smaller}
-
-So to summarize `.R` and `.qmd` scripts:
-
-| Feature      | `.R` Script              | `.qmd` Document                          |
-|-------------------|------------------------|-----------------------------|
-| **Purpose**  | Run code                 | Create reports                           |
-| **Content**  | Code only                | Code + text + output                     |
-| **Output**   | Console results          | Formatted document (e.g., HTML/PDF/Word) |
-| **Comments** | `# comment`              | Full markdown formatting                 |
-| **Best for** | Data cleaning, functions | Analysis reports, presentations, hw      |
-
 ## Rendering Quarto Documents {.smaller}
 
 **What is Rendering?**
@@ -576,21 +557,6 @@ Rendering (or "knitting") converts your `.qmd` file into a finished document (HT
 -   Click the **"Preview"** button at the top of your .qmd file
 -   Render on save so you can see all changes
 -   I usually work with it open
-
-## Rendering Quarto Documents {.smaller}
-
-**Output Formats**
-
-For this course, make sure `html` is specified in your YAML header:
-
-``` yaml
----
-title: "My Analysis"
-format: html        # or pdf, docx
----
-```
-
-Can format many different formats (e.g., pdf, docx, odt, epubs, pptx)
 
 ## Rendering Quarto Documents {.smaller .scrollable}
 
@@ -713,3 +679,34 @@ Lecture and lab are based on the first two RFundamentals classes, which are run 
     -   If you want to see the RFundamentals class notes: <https://github.com/dlab-berkeley/R-Fundamentals>
     -   [R Data Visualization workshop](https://dlab.my.salesforce-sites.com/events/event/home/rdatavis20260211) on Feb 11, 2026
 -   Otherwise: Google is your friend!
+
+
+
+## `.R` vs `.qmd` Files {.smaller}
+
+So to summarize `.R` and `.qmd` scripts:
+
+| Feature      | `.R` Script              | `.qmd` Document                          |
+|-------------------|------------------------|-----------------------------|
+| **Purpose**  | Run code                 | Create reports                           |
+| **Content**  | Code only                | Code + text + output                     |
+| **Output**   | Console results          | Formatted document (e.g., HTML/PDF/Word) |
+| **Comments** | `# comment`              | Full markdown formatting                 |
+| **Best for** | Data cleaning, functions | Analysis reports, presentations, hw      |
+
+
+
+## Rendering Quarto Documents {.smaller}
+
+**Output Formats**
+
+For this course, make sure `html` is specified in your YAML header:
+
+``` yaml
+---
+title: "My Analysis"
+format: html        # or pdf, docx
+---
+```
+
+Can format many different formats (e.g., pdf, docx, odt, epubs, pptx)
