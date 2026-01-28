@@ -731,8 +731,8 @@
     "objectID": "slides/week2.html#housekeeping",
     "href": "slides/week2.html#housekeeping",
     "title": "Week 2",
-    "section": "",
-    "text": "Office hours this week\n\nTuesdays, 11:30 AM-1:00 PM, 444 Social Science Buliding\nTuesdays, 4:00 PM-4:30 PM, 444 Social Science Buliding\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nHW #1: due Thursday, February 5 by 11:59 PM"
+    "section": "Housekeeping",
+    "text": "Housekeeping\nOffice hours this week\n\nTuesdays, 11:30 AM-1:00 PM, 444 Social Science Buliding\nTuesdays, 4:00 PM-4:30 PM, 444 Social Science Buliding\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nHW #1: due Thursday, February 5 by 11:59 PM"
   },
   {
     "objectID": "slides/week2.html#learing-goals",
@@ -774,7 +774,7 @@
     "href": "slides/week2.html#positron-1",
     "title": "Week 2",
     "section": "Positron",
-    "text": "Positron\nLet’s explore Positron together on your laptop:\n\n\nFile explorer\nConsole\nInterpreter and Folder\nNew\nOpen"
+    "text": "Positron\nLet’s explore Positron together on your laptop:\n\nFile explorer\nConsole\nInterpreter and Folder\nNew\nOpen"
   },
   {
     "objectID": "slides/week2.html#why-quarto",
@@ -788,7 +788,7 @@
     "href": "slides/week2.html#anatomy-of-a-.qmd-file",
     "title": "Week 2",
     "section": "Anatomy of a .qmd File",
-    "text": "Anatomy of a .qmd File\nA .qmd file has three main parts and knits code + text together (unlike .R which runs code only):\n\n\n1. YAML Header (metadata)\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\nformat: html\n---\n\n2. Markdown Text (narrative)\nUse **bold**, *italics*, # Headings to organize your script and write analyses in between code.\nMore markdown basics\n\n\n3. Code Chunks (analysis)\nInsert R (or python) code directly in your analyses.\n```{{r}}\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)\n```"
+    "text": "Anatomy of a .qmd File\nA .qmd file has three main parts and knits code + text together (unlike .R which runs code only):\n\n\n1. YAML Header (metadata)\n---\ntitle: \"My Analysis\"\nauthor: \"Your Name\"\nformat: html\n---\n\n2. Markdown Text (narrative)\nUse **bold**, *italics*, # Headings to organize your script and write analyses in between code.\nMore markdown basics\n\n3. Code Chunks (analysis)\nInsert R (or python) code directly in your analyses.\n```{{r}}\ndata &lt;- read_csv(\"data.csv\")\nsummary(data)\n```"
   },
   {
     "objectID": "slides/week2.html#rendering-quarto-documents",
@@ -837,7 +837,7 @@
     "href": "slides/week2.html#writing-with-script.r",
     "title": "Week 2",
     "section": "Writing with script.R",
-    "text": "Writing with script.R\n\nBest practice to write all code in a script file\n\nReproducible code\nDocuments exactly what you have done\nAllows you to easily correct mistakes\n\nTwo types of files we’ll work with\n\nR files (.R): accept R code and are very similar to text files except that they read R code.\nQuarto files (.qmd): allow to intersperse R/Python (other languages too!) with text. It’s great for putting text next to analysis."
+    "text": "Writing with script.R\nBest practice to write all code in a script file\n\nReproducible code\nDocuments exactly what you have done\nAllows you to easily correct mistakes\n\nTwo types of files we’ll work with\n\nR files (.R): accept R code and are very similar to text files except that they read R code.\nQuarto files (.qmd): allow to intersperse R/Python (other languages too!) with text. It’s great for putting text next to analysis."
   },
   {
     "objectID": "slides/week2.html#writing-with-script.r-1",
@@ -928,7 +928,7 @@
     "href": "slides/week2.html#the-tidyverse-1",
     "title": "Week 2",
     "section": "The Tidyverse",
-    "text": "The Tidyverse\nKey Features\n\nConsistent syntax: functions work similarly across packages\nHuman-readable: code reads like sentences\nPipe operator |&gt;:1 chains functions together for readable code\n\n# |eval=FALSE\n# |echo=TRUE\n\n# Base R\nmean(subset(dataframe, age &gt; 18)$score)\n\n# Tidyverse - \"take dataframe, filter where age &gt; 18,\n# then pull score, then calculate mean\"\ndataframe |&gt; filter(age &gt; 18) |&gt; pull(score) |&gt; mean()"
+    "text": "The Tidyverse\nKey Features\n\nConsistent syntax: functions work similarly across packages\nHuman-readable: code reads like sentences\nPipe operator |&gt;:1 chains functions together for readable code\n\n# |eval=FALSE\n# |echo=TRUE\n\n# Base R\nmean(subset(dataframe, age &gt; 18)$score)\n\n# Tidyverse - \"take dataframe, filter where age &gt; 18,\n# then pull score, then calculate mean\"\ndataframe |&gt; filter(age &gt; 18) |&gt; pull(score) |&gt; mean()\nThe older version of the pipe operator %&gt;% also works interchangeably."
   },
   {
     "objectID": "slides/week2.html#the-tidyverse-2",
@@ -1316,130 +1316,102 @@
     "text": "Question 10\nFinally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the attain dataset again, let’s’ first rename the variable–call it “to_drop”–and then drop it from the dataset (Hint: Youe can use a negative sign before the variable to select everything but that one.).\n\n# Your code here\nattain_breadwinner &lt;- attain %&gt;%\n  rename(to_drop = `...1`) |&gt; \n  select(-to_drop) |&gt; \n  glimpse()\n\nRows: 2,992\nColumns: 43\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …\n\n\nHow can you tell for sure that this worked(Hint: think about how many rows you should have.)?\nshould be 43 columns instead of 44\n\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
   },
   {
-    "objectID": "assignments/hw3/hw3.html",
-    "href": "assignments/hw3/hw3.html",
+    "objectID": "assignments/index.html",
+    "href": "assignments/index.html",
+    "title": "Sociology 106",
+    "section": "",
+    "text": "Weekly assignment example"
+  },
+  {
+    "objectID": "assignments/index.html#slides",
+    "href": "assignments/index.html#slides",
+    "title": "Assignments",
+    "section": "",
+    "text": "Weekly assignment example\nPaper proposal"
+  },
+  {
+    "objectID": "assignments/hw3/hw3_key.html",
+    "href": "assignments/hw3/hw3_key.html",
     "title": "Weekly Assignment #3",
     "section": "",
     "text": "Submission Instructions\n\n\n\n\nDownload this hw3.qmd fiel and the attain.csv data file from bCourse.\nSave both files on your computer. Make sure to save attain.csv in your data folder and hw3.qmd in your assignments folder.\nFollow the instructions below to complete the assignment. A sample code chunk has been provided but you might need more.\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it’s working).\nSubmit the hw3.qmd file to bCourse before the deadline\nMake sure your name appears in the “author” field in the YAML header above"
   },
   {
-    "objectID": "assignments/hw3/hw3.html#instructions",
-    "href": "assignments/hw3/hw3.html#instructions",
+    "objectID": "assignments/hw3/hw3_key.html#setup",
+    "href": "assignments/hw3/hw3_key.html#setup",
     "title": "Weekly Assignment #3",
-    "section": "Instructions",
-    "text": "Instructions\nUsing a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting. Y\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.3\n\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#research-question",
-    "href": "assignments/hw3/hw3.html#research-question",
-    "title": "Weekly Assignment #3",
-    "section": "Research question",
-    "text": "Research question\nWhat is your research question that you want to answer with this plot? (Remember a research question should end with a “?”)\nInsert your answer here"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#prediction-and-brief-justification",
-    "href": "assignments/hw3/hw3.html#prediction-and-brief-justification",
-    "title": "Weekly Assignment #3",
-    "section": "Prediction and brief justification",
-    "text": "Prediction and brief justification\nState what you expect to find and why. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.\nInsert your answer here"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#data",
-    "href": "assignments/hw3/hw3.html#data",
-    "title": "Weekly Assignment #3",
-    "section": "Data",
-    "text": "Data\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.\nInsert your answer here"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#analytic-strategy",
-    "href": "assignments/hw3/hw3.html#analytic-strategy",
-    "title": "Weekly Assignment #3",
-    "section": "Analytic strategy",
-    "text": "Analytic strategy\nDescribe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.\nInsert your answer here"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#code",
-    "href": "assignments/hw3/hw3.html#code",
-    "title": "Weekly Assignment #3",
-    "section": "Code",
-    "text": "Code\nBuild your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Your code here"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#results",
-    "href": "assignments/hw3/hw3.html#results",
-    "title": "Weekly Assignment #3",
-    "section": "Results",
-    "text": "Results\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.\nInsert your answer here"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#discussion-of-results",
-    "href": "assignments/hw3/hw3.html#discussion-of-results",
-    "title": "Weekly Assignment #3",
-    "section": "Discussion of results",
-    "text": "Discussion of results\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.\nInsert your answer here"
-  },
-  {
-    "objectID": "assignments/hw3/hw3.html#limitations-and-alternative-explanations",
-    "href": "assignments/hw3/hw3.html#limitations-and-alternative-explanations",
-    "title": "Weekly Assignment #3",
-    "section": "Limitations and alternative explanations",
-    "text": "Limitations and alternative explanations\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nInsert your answer here\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)\nYou’re submitting the hw1.qmd file to bCourse"
-  },
-  {
-    "objectID": "assignments/hw4/hw4_key.html",
-    "href": "assignments/hw4/hw4_key.html",
-    "title": "Weekly Assignment #4",
-    "section": "",
-    "text": "Submission Instructions\n\n\n\n\nDownload this hw4.qmd file from bCourse.\nSave the file in your assignments folder.\nFollow the instructions below to complete the assignment. Show your work for all calculations!\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file.\nSubmit the hw4.qmd file to bCourse before the deadline.\nMake sure your name appears in the “author” field in the YAML header above."
-  },
-  {
-    "objectID": "assignments/hw4/hw4_key.html#setup",
-    "href": "assignments/hw4/hw4_key.html#setup",
-    "title": "Weekly Assignment #4",
     "section": "Setup",
-    "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- shouldn't need for this assignment\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\nlibrary(here)"
+    "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- shouldn't need for this assignment\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.3\n\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# load data\n# ---------\n# Your code here\nattain &lt;- read_csv(here(\"data/attain.csv\")) \n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\nattain |&gt; glimpse()\n\nRows: 2,992\nColumns: 44\n$ ...1     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …"
   },
   {
-    "objectID": "assignments/hw4/hw4_key.html#question-1-tossing-three-coins",
-    "href": "assignments/hw4/hw4_key.html#question-1-tossing-three-coins",
-    "title": "Weekly Assignment #4",
-    "section": "Question 1: Tossing Three Coins",
-    "text": "Question 1: Tossing Three Coins\nI toss three fair coins, which land heads or tails with equal probability.\na) What is the sample space S of possible outcomes?\nYour answer here (you can list all outcomes or use R to generate them): {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\nb) What is probability that I get two out of three heads? Three out of three heads? At least one head? (hint: remember that P(at least one head) = 1 – P(no heads)!)\nYour answers:\n\nP(two heads) = 3/8\nP(three heads) = 1/8\nP(at least one head) = `7/8"
+    "objectID": "assignments/hw3/hw3_key.html#question-1-analyzing-marital-status-and-education",
+    "href": "assignments/hw3/hw3_key.html#question-1-analyzing-marital-status-and-education",
+    "title": "Weekly Assignment #3",
+    "section": "Question 1: Analyzing Marital Status and Education",
+    "text": "Question 1: Analyzing Marital Status and Education\na) Create a subset of the data (call it subset1) that includes only respondents with non-missing information for both degree (degree) and marital status (martial). Be sure to glimpse it.\n\n# Your code here\nsubset1 &lt;- attain %&gt;%\n  filter(!is.na(degree) & !is.na(marital)) |&gt; \n  glimpse()\n\nRows: 2,981\nColumns: 44\n$ ...1     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …\n\n\nb) Using subset1, create a frequency table (call it table_marital) for marital status (marital). Then calculate the relative frequencies (proportions) for each marital status category. What proportion of respondents are married?\n\n# Your code here\ntable_marital &lt;- \n  subset1 %&gt;%\n  count(marital) %&gt;%\n  mutate(rel_freq = n / sum(n))\n\ntable_marital\n\n# A tibble: 5 × 3\n  marital      n rel_freq\n  &lt;chr&gt;    &lt;int&gt;    &lt;dbl&gt;\n1 divorced   444   0.149 \n2 married   1538   0.516 \n3 never ma   612   0.205 \n4 separate   101   0.0339\n5 widowed    286   0.0959\n\n\nInsert your answer here: 51.6%\nc) Still using subset1, create a frequency table for education level (degree). Then calculate the relative frequencies (proportions) for each education category. What proportion of respondents have a high school education?\n\n# Your code here\ntable_degree &lt;- \n  subset1 %&gt;%\n  count(degree) %&gt;%\n  mutate(rel_freq = n / sum(n))\n\ntable_degree\n\n# A tibble: 5 × 3\n  degree       n rel_freq\n  &lt;chr&gt;    &lt;int&gt;    &lt;dbl&gt;\n1 bachelor   496   0.166 \n2 graduate   216   0.0725\n3 high sch  1586   0.532 \n4 junior c   176   0.0590\n5 lt high    507   0.170 \n\n\nInsert your answer here: 53.2%\nc) Among respondents with a bachelor’s degree and using the full attain dataset, create a frequency table for marital status. Calculate the marginal (relative) frequencies. What proportion of bachelor’s degree holders (bachelor) are married?\n\n# Your code here\ntable_marital_bachelor &lt;- \n  attain %&gt;%\n  filter(degree == \"bachelor\", !is.na(marital)) %&gt;%\n  count(marital) %&gt;%\n  mutate(marg_freq = n / sum(n))\n\ntable_marital_bachelor\n\n# A tibble: 5 × 3\n  marital      n marg_freq\n  &lt;chr&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 divorced    79    0.159 \n2 married    287    0.579 \n3 never ma   104    0.210 \n4 separate     7    0.0141\n5 widowed     19    0.0383\n\n\nInsert your answer here: 57.9%\nd) Among respondents with less than high school education (lt high) in the full attain datset, create a frequency table for marital status and calculate the marginal frequencies. What proportion of respondents that have never married (never ma)?\n\n# Your code here\ntable_marital_lths &lt;- \n  attain %&gt;%\n  filter(degree == \"lt high\", !is.na(marital)) %&gt;%\n  count(marital) %&gt;%\n  mutate(marg_freq = n / sum(n))\n\ntable_marital_lths\n\n# A tibble: 5 × 3\n  marital      n marg_freq\n  &lt;chr&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 divorced    71    0.140 \n2 married    212    0.418 \n3 never ma    99    0.195 \n4 separate    21    0.0414\n5 widowed    104    0.205 \n\n\nInsert your answer here: 19.5%\ne) Using the two tables crated in part c) and d), what is the difference in the proportion married between bachelor’s degree holders (bachelor) and those with less than high school education? (lt high)\n\n# Calculate difference in proportion married\ntable_marital_bachelor %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq) -\n  table_marital_lths %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq)\n\n[1] 0.1604831\n\n\nInsert your answer here: 16.0%\nf) Now, calculate the relative risk of being married for bachelor’s degree holders compared to those with less than high school education. Interpret this value.\n\n# Your code here\nrelative_risk_bach_lths &lt;- \n  (table_marital_bachelor %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq)) /\n  (table_marital_lths %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq))\n\nrelative_risk_bach_lths  # 1.383797\n\n[1] 1.383797\n\n\nInsert your answer here: 1.383797%"
   },
   {
-    "objectID": "assignments/hw4/hw4_key.html#question-2-drawing-from-a-deck",
-    "href": "assignments/hw4/hw4_key.html#question-2-drawing-from-a-deck",
-    "title": "Weekly Assignment #4",
-    "section": "Question 2: Drawing from a Deck",
-    "text": "Question 2: Drawing from a Deck\nI draw one card from a deck. What is the probability that I selected a club or a face card (jack, queen, or king)? (Hint: use the addition rule!)\nYour answer: P(club or face card) = P(club) + P(face card) – P(club and face) = 13/52 + 12/52 – 3/52 = 22/52"
+    "objectID": "assignments/hw3/hw3_key.html#question-2-mode-of-religion",
+    "href": "assignments/hw3/hw3_key.html#question-2-mode-of-religion",
+    "title": "Weekly Assignment #3",
+    "section": "Question 2: Mode of Religion",
+    "text": "Question 2: Mode of Religion\nFind the mode (most common value) of the relig variable. What is the modal religion in the dataset? (Hint: Use will prob have to use a function from the slice() family to answer this question.)\n\n# Your code here\nattain %&gt;%\n  count(relig) %&gt;%\n  slice_max(n, n = 1) %&gt;%\n  pull(relig) # \"protesta\"\n\n[1] \"protesta\"\n\n\nInsert your answer here: protesta"
   },
   {
-    "objectID": "assignments/hw4/hw4_key.html#question-3-cal-football-conditional-probability",
-    "href": "assignments/hw4/hw4_key.html#question-3-cal-football-conditional-probability",
-    "title": "Weekly Assignment #4",
-    "section": "Question 3: Cal Football Conditional Probability",
-    "text": "Question 3: Cal Football Conditional Probability\nThe Cal football team has beat Stanford and won their bowl game in 40% of their seasons. If they beat Stanford in 67% (2/3rds) of their seasons, then what is the probability that they will win a bowl game, given that they beat Stanford in a season?\nYour answer: P(win bowl game | beat Stanford) = P(win bowl game & beat Stanford)/P(beat Stanford) = (2/5)/(2/3) = 3/5"
+    "objectID": "assignments/hw3/hw3_key.html#question-3-summarizing-number-of-siblings",
+    "href": "assignments/hw3/hw3_key.html#question-3-summarizing-number-of-siblings",
+    "title": "Weekly Assignment #3",
+    "section": "Question 3: Summarizing Number of Siblings",
+    "text": "Question 3: Summarizing Number of Siblings\nUsing the sibs variable (number of siblings), calculate the following summary statistics. Be sure to handle missing values appropriately.\na) What is the median number of siblings?\n\n# Your code here\nattain %&gt;% summarize(median_sibs = median(sibs, na.rm = TRUE))\n\n# A tibble: 1 × 1\n  median_sibs\n        &lt;dbl&gt;\n1           3\n\n# modern tidyverse code \n#attain |&gt; reframe(median_sibs = median(sibs, na.rm = TRUE))\n\nInsert your answer here: 3\nb) What is the mean number of siblings?\n\n# Your code here\nattain %&gt;% summarise(mean_sibs = mean(sibs, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  mean_sibs\n      &lt;dbl&gt;\n1      3.72\n\n\nInsert your answer here: 3.72\nc) What are the 10th, 25th, 75th, and 90th percentiles for number of siblings?\n\n# Your code here\nattain %&gt;%\n  summarise(\n    q10 = quantile(sibs, 0.10, na.rm = TRUE),\n    q25 = quantile(sibs, 0.25, na.rm = TRUE),\n    q75 = quantile(sibs, 0.75, na.rm = TRUE),\n    q90 = quantile(sibs, 0.90, na.rm = TRUE)\n  )\n\n# A tibble: 1 × 4\n    q10   q25   q75   q90\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1     2     5     8\n\n\nInsert your answer here: 10th: 1, 25th: 2, 75th: 5, 90th: 8\nd) What are the variance and standard deviation of the number of siblings?\n\n# Your code here\n attain %&gt;%\n  filter(!is.na(sibs)) %&gt;%\n  summarise(\n    variance = var(sibs),\n    std_dev = sd(sibs)\n  )\n\n# A tibble: 1 × 2\n  variance std_dev\n     &lt;dbl&gt;   &lt;dbl&gt;\n1     9.78    3.13\n\n\nInsert your answer here: variance: 9.78, std_deviation 3.13"
   },
   {
-    "objectID": "assignments/hw4/hw4_key.html#question-4-high-blood-sugar-blood-test",
-    "href": "assignments/hw4/hw4_key.html#question-4-high-blood-sugar-blood-test",
-    "title": "Weekly Assignment #4",
-    "section": "Question 4: High Blood Sugar Blood Test",
-    "text": "Question 4: High Blood Sugar Blood Test\nRefer to the following figure showing blood test results for High Blood Sugar:\n\n\n\n\nHigh Blood Sugar\nNo High Blood Sugar\nTotal\n\n\n\n\nPositive Blood Test\n48\n1,307\n1,355\n\n\nNegative Blood Test\n6\n3,921\n3,927\n\n\nTotal\n54\n5,228\n5,282\n\n\n\na) What is the probability that an individual in this sample does not have High Blood Sugar, given that they have a negative blood test for High Blood Sugar?\nYour answer: P(doesn’t have High Blood Sugar|negative test) = 3921/3927 = 0.9984721%\nb) What is the probability that an individual in this sample does have High Blood Sugar, given that they have a positive blood test for High Blood Sugar?\nYour answer: P(does have High Blood Sugar|positive test) = 48/1355"
+    "objectID": "assignments/hw3/hw3_key.html#question-4-associations-between-variables",
+    "href": "assignments/hw3/hw3_key.html#question-4-associations-between-variables",
+    "title": "Weekly Assignment #3",
+    "section": "Question 4: Associations Between Variables",
+    "text": "Question 4: Associations Between Variables\nFor this question, we’re going to calculate the covariance and correlation coefficient between years of education (educ) and 1991 income (income91).\na) Calculate covariance.\n\n# Your code here\nattain %&gt;%\n  summarize(covariance = cov(educ, income91, use = \"complete.obs\")) \n\n# A tibble: 1 × 1\n  covariance\n       &lt;dbl&gt;\n1     31806.\n\n\nInsert your answer here: 31806\nb) Calculate and interpret the correlation coefficient. What does it tell you about the relationship between education and income? Be sure to deal appropriately with missing observations. (Note that you can do this by (1) either create a subset that includes only respondents with non-missing information for educ and income91 or (2) specifying a particular parameter in the cor argument.**\n\nattain %&gt;%\n  summarize(correlation = cor(educ, income91, use = \"complete.obs\"))\n\n# A tibble: 1 × 1\n  correlation\n        &lt;dbl&gt;\n1       0.393\n\n\nInsert your answer here: 0.393 It is a moderately strong relationship.\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
   },
   {
-    "objectID": "assignments/hw4/hw4_key.html#question-5-urn-with-replacement",
-    "href": "assignments/hw4/hw4_key.html#question-5-urn-with-replacement",
-    "title": "Weekly Assignment #4",
-    "section": "Question 5: Urn with Replacement",
-    "text": "Question 5: Urn with Replacement\nI have an urn that contains 7 red marbles and 3 blue marbles. I choose one marble without looking into the urn (i.e., randomly), put it back, and then choose another marble randomly.\na) What is the sample space S of possible outcomes for the first marble and the second marble?\nYour answer here: {RR, RB, BR, BB}\nb) What is the probability associated with each outcome? (Hint: are the two draws independent from one another?)\n*Your answer:\n\nP(RR) = 49/100\nP(RB) = 21/100\nP(BR) = 21/100\nP(BB) = 9/100\n\nc) Using part b), what is the probability that I drew no red marbles? One red marble? Two red marbles?\nYour answers:\n\nP(no red marbles) = 0.09\nP(one red marble) = 0.42\nP(two red marbles) = 0.49"
+    "objectID": "assignments/paper/01_proposal.html",
+    "href": "assignments/paper/01_proposal.html",
+    "title": "Paper Proposal Example",
+    "section": "",
+    "text": "Does parental education influence their children’s educational attainment, and does this relationship differ by gender? Specifically: Is father’s or mother’s education a stronger predictor, and does this vary for sons versus daughters?"
   },
   {
-    "objectID": "assignments/hw4/hw4_key.html#question-6-urn-without-replacement",
-    "href": "assignments/hw4/hw4_key.html#question-6-urn-without-replacement",
-    "title": "Weekly Assignment #4",
-    "section": "Question 6: Urn without Replacement",
-    "text": "Question 6: Urn without Replacement\nAfter a while, I decide to return to the urn, which still contains 7 red marbles and 3 blue marbles. This time, I take one marble without looking into the urn (i.e., randomly), note its color, and then, without putting it back, take another marble without looking into the urn.\na) The sample space is the same as in the previous question—but now, what is the probability associated with each outcome? (Hint: are the two draws independent from one another?)\n*Your answer: - P(RR) = (7/10)*(6/9) - P(RB) = (7/10)*(3/9) - P(BR) = (3/10)*(7/9) - P(BB) = (3/10)*(2/9)\nb) Using part a), what is the probability that I drew no red marbles? One red marble? Two red marbles?\nYour answers:\n\nP(no red marbles) = 6/90\nP(one red marble) = 42/90\nP(two red marbles) = 42/90\n\n\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors (or you’ve indicated hand calculations)\nYou’ve shown your work for all probability calculations\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
+    "objectID": "assignments/paper/01_proposal.html#research-question",
+    "href": "assignments/paper/01_proposal.html#research-question",
+    "title": "Paper Proposal Example",
+    "section": "",
+    "text": "Does parental education influence their children’s educational attainment, and does this relationship differ by gender? Specifically: Is father’s or mother’s education a stronger predictor, and does this vary for sons versus daughters?"
+  },
+  {
+    "objectID": "assignments/paper/01_proposal.html#why-it-matters",
+    "href": "assignments/paper/01_proposal.html#why-it-matters",
+    "title": "Paper Proposal Example",
+    "section": "Why It Matters",
+    "text": "Why It Matters\nUnderstanding the determinants of educational attainment is central to research on social stratification and intergenerational mobility. Education is a primary mechanism through which socioeconomic status is transmitted across generations. If parental education strongly predicts children’s education, this suggests that educational opportunities remain unequal and that family background continues to shape life chances.\nExamining whether the influence of parental education differs by gender has important implications for theories of gender socialization. Some theories suggest children are more influenced by the same-gender parent, while others argue that fathers’ status has historically been more consequential regardless of child gender. Disentangling these patterns can inform debates about intergenerational transmission and policies to promote educational equity."
+  },
+  {
+    "objectID": "assignments/paper/01_proposal.html#hypotheses",
+    "href": "assignments/paper/01_proposal.html#hypotheses",
+    "title": "Paper Proposal Example",
+    "section": "Hypotheses",
+    "text": "Hypotheses\nHypothesis 1 (Patriarchal Model): Father’s education will be a stronger predictor of children’s educational attainment than mother’s education for both sons and daughters, reflecting traditional stratification patterns where the male breadwinner’s status determined family standing.\nHypothesis 2 (Gender-Matching Model): Parental influence will be gender-matched—father’s education predicts more strongly for sons, mother’s education for daughters—consistent with socialization theory suggesting children model same-gender parents.\nIf neither hypothesis is supported, this would suggest contemporary families operate more egalitarianly than either model predicts."
+  },
+  {
+    "objectID": "assignments/paper/01_proposal.html#data-source",
+    "href": "assignments/paper/01_proposal.html#data-source",
+    "title": "Paper Proposal Example",
+    "section": "Data Source",
+    "text": "Data Source\nI will use the General Social Survey (GSS), a nationally representative survey of U.S. adults conducted by NORC since 1972. The “attain” subset contains respondents’ educational attainment, parents’ education levels, and demographic characteristics. The GSS is ideal because it includes both mother’s and father’s education alongside the respondent’s own attainment."
+  },
+  {
+    "objectID": "assignments/paper/01_proposal.html#key-variables",
+    "href": "assignments/paper/01_proposal.html#key-variables",
+    "title": "Paper Proposal Example",
+    "section": "Key Variables",
+    "text": "Key Variables\n\nDependent: Respondent’s years of education (educ)\nIndependent: Father’s education (paeduc); Mother’s education (maeduc)\nModerating: Respondent’s sex (sex)\nControls: Age (age) and race (race)"
   },
   {
     "objectID": "assignments/hw2/hw2.html",
@@ -1652,46 +1624,130 @@
     "text": "Question 6: Height Comparisons Between Men and Women\nSuppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.\na) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n(pnorm(70,70,3) - pnorm(68,70,3)) - (pnorm(70,64,3) - pnorm(68,64,3)) \n\n[1] 0.1790464\n\n\nYour answer here: 0.179\nb) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n(pnorm(70,70,3) - pnorm(68,70,3)) / (pnorm(70,64,3) - pnorm(68,64,3))\n\n[1] 3.615301\n\n\nYour answer here: 3.615\n\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve shown your work for hand calculations\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
   },
   {
-    "objectID": "assignments/hw3/hw3_key.html",
-    "href": "assignments/hw3/hw3_key.html",
+    "objectID": "assignments/hw4/hw4_key.html",
+    "href": "assignments/hw4/hw4_key.html",
+    "title": "Weekly Assignment #4",
+    "section": "",
+    "text": "Submission Instructions\n\n\n\n\nDownload this hw4.qmd file from bCourse.\nSave the file in your assignments folder.\nFollow the instructions below to complete the assignment. Show your work for all calculations!\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file.\nSubmit the hw4.qmd file to bCourse before the deadline.\nMake sure your name appears in the “author” field in the YAML header above."
+  },
+  {
+    "objectID": "assignments/hw4/hw4_key.html#setup",
+    "href": "assignments/hw4/hw4_key.html#setup",
+    "title": "Weekly Assignment #4",
+    "section": "Setup",
+    "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- shouldn't need for this assignment\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\nlibrary(here)"
+  },
+  {
+    "objectID": "assignments/hw4/hw4_key.html#question-1-tossing-three-coins",
+    "href": "assignments/hw4/hw4_key.html#question-1-tossing-three-coins",
+    "title": "Weekly Assignment #4",
+    "section": "Question 1: Tossing Three Coins",
+    "text": "Question 1: Tossing Three Coins\nI toss three fair coins, which land heads or tails with equal probability.\na) What is the sample space S of possible outcomes?\nYour answer here (you can list all outcomes or use R to generate them): {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\nb) What is probability that I get two out of three heads? Three out of three heads? At least one head? (hint: remember that P(at least one head) = 1 – P(no heads)!)\nYour answers:\n\nP(two heads) = 3/8\nP(three heads) = 1/8\nP(at least one head) = `7/8"
+  },
+  {
+    "objectID": "assignments/hw4/hw4_key.html#question-2-drawing-from-a-deck",
+    "href": "assignments/hw4/hw4_key.html#question-2-drawing-from-a-deck",
+    "title": "Weekly Assignment #4",
+    "section": "Question 2: Drawing from a Deck",
+    "text": "Question 2: Drawing from a Deck\nI draw one card from a deck. What is the probability that I selected a club or a face card (jack, queen, or king)? (Hint: use the addition rule!)\nYour answer: P(club or face card) = P(club) + P(face card) – P(club and face) = 13/52 + 12/52 – 3/52 = 22/52"
+  },
+  {
+    "objectID": "assignments/hw4/hw4_key.html#question-3-cal-football-conditional-probability",
+    "href": "assignments/hw4/hw4_key.html#question-3-cal-football-conditional-probability",
+    "title": "Weekly Assignment #4",
+    "section": "Question 3: Cal Football Conditional Probability",
+    "text": "Question 3: Cal Football Conditional Probability\nThe Cal football team has beat Stanford and won their bowl game in 40% of their seasons. If they beat Stanford in 67% (2/3rds) of their seasons, then what is the probability that they will win a bowl game, given that they beat Stanford in a season?\nYour answer: P(win bowl game | beat Stanford) = P(win bowl game & beat Stanford)/P(beat Stanford) = (2/5)/(2/3) = 3/5"
+  },
+  {
+    "objectID": "assignments/hw4/hw4_key.html#question-4-high-blood-sugar-blood-test",
+    "href": "assignments/hw4/hw4_key.html#question-4-high-blood-sugar-blood-test",
+    "title": "Weekly Assignment #4",
+    "section": "Question 4: High Blood Sugar Blood Test",
+    "text": "Question 4: High Blood Sugar Blood Test\nRefer to the following figure showing blood test results for High Blood Sugar:\n\n\n\n\nHigh Blood Sugar\nNo High Blood Sugar\nTotal\n\n\n\n\nPositive Blood Test\n48\n1,307\n1,355\n\n\nNegative Blood Test\n6\n3,921\n3,927\n\n\nTotal\n54\n5,228\n5,282\n\n\n\na) What is the probability that an individual in this sample does not have High Blood Sugar, given that they have a negative blood test for High Blood Sugar?\nYour answer: P(doesn’t have High Blood Sugar|negative test) = 3921/3927 = 0.9984721%\nb) What is the probability that an individual in this sample does have High Blood Sugar, given that they have a positive blood test for High Blood Sugar?\nYour answer: P(does have High Blood Sugar|positive test) = 48/1355"
+  },
+  {
+    "objectID": "assignments/hw4/hw4_key.html#question-5-urn-with-replacement",
+    "href": "assignments/hw4/hw4_key.html#question-5-urn-with-replacement",
+    "title": "Weekly Assignment #4",
+    "section": "Question 5: Urn with Replacement",
+    "text": "Question 5: Urn with Replacement\nI have an urn that contains 7 red marbles and 3 blue marbles. I choose one marble without looking into the urn (i.e., randomly), put it back, and then choose another marble randomly.\na) What is the sample space S of possible outcomes for the first marble and the second marble?\nYour answer here: {RR, RB, BR, BB}\nb) What is the probability associated with each outcome? (Hint: are the two draws independent from one another?)\n*Your answer:\n\nP(RR) = 49/100\nP(RB) = 21/100\nP(BR) = 21/100\nP(BB) = 9/100\n\nc) Using part b), what is the probability that I drew no red marbles? One red marble? Two red marbles?\nYour answers:\n\nP(no red marbles) = 0.09\nP(one red marble) = 0.42\nP(two red marbles) = 0.49"
+  },
+  {
+    "objectID": "assignments/hw4/hw4_key.html#question-6-urn-without-replacement",
+    "href": "assignments/hw4/hw4_key.html#question-6-urn-without-replacement",
+    "title": "Weekly Assignment #4",
+    "section": "Question 6: Urn without Replacement",
+    "text": "Question 6: Urn without Replacement\nAfter a while, I decide to return to the urn, which still contains 7 red marbles and 3 blue marbles. This time, I take one marble without looking into the urn (i.e., randomly), note its color, and then, without putting it back, take another marble without looking into the urn.\na) The sample space is the same as in the previous question—but now, what is the probability associated with each outcome? (Hint: are the two draws independent from one another?)\n*Your answer: - P(RR) = (7/10)*(6/9) - P(RB) = (7/10)*(3/9) - P(BR) = (3/10)*(7/9) - P(BB) = (3/10)*(2/9)\nb) Using part a), what is the probability that I drew no red marbles? One red marble? Two red marbles?\nYour answers:\n\nP(no red marbles) = 6/90\nP(one red marble) = 42/90\nP(two red marbles) = 42/90\n\n\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors (or you’ve indicated hand calculations)\nYou’ve shown your work for all probability calculations\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
+  },
+  {
+    "objectID": "assignments/hw3/hw3.html",
+    "href": "assignments/hw3/hw3.html",
     "title": "Weekly Assignment #3",
     "section": "",
     "text": "Submission Instructions\n\n\n\n\nDownload this hw3.qmd fiel and the attain.csv data file from bCourse.\nSave both files on your computer. Make sure to save attain.csv in your data folder and hw3.qmd in your assignments folder.\nFollow the instructions below to complete the assignment. A sample code chunk has been provided but you might need more.\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it’s working).\nSubmit the hw3.qmd file to bCourse before the deadline\nMake sure your name appears in the “author” field in the YAML header above"
   },
   {
-    "objectID": "assignments/hw3/hw3_key.html#setup",
-    "href": "assignments/hw3/hw3_key.html#setup",
+    "objectID": "assignments/hw3/hw3.html#instructions",
+    "href": "assignments/hw3/hw3.html#instructions",
     "title": "Weekly Assignment #3",
-    "section": "Setup",
-    "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- shouldn't need for this assignment\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.3\n\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# load data\n# ---------\n# Your code here\nattain &lt;- read_csv(here(\"data/attain.csv\")) \n\nNew names:\nRows: 2992 Columns: 44\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s... dbl\n(20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\nattain |&gt; glimpse()\n\nRows: 2,992\nColumns: 44\n$ ...1     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …"
+    "section": "Instructions",
+    "text": "Instructions\nUsing a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting. Y\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- only install new libraries if needed\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(here)\n\nWarning: package 'here' was built under R version 4.3.3\n\n\nhere() starts at /Users/Dora/git/teaching/soc106\n\n# add more libraries here if you need them!"
   },
   {
-    "objectID": "assignments/hw3/hw3_key.html#question-1-analyzing-marital-status-and-education",
-    "href": "assignments/hw3/hw3_key.html#question-1-analyzing-marital-status-and-education",
+    "objectID": "assignments/hw3/hw3.html#research-question",
+    "href": "assignments/hw3/hw3.html#research-question",
     "title": "Weekly Assignment #3",
-    "section": "Question 1: Analyzing Marital Status and Education",
-    "text": "Question 1: Analyzing Marital Status and Education\na) Create a subset of the data (call it subset1) that includes only respondents with non-missing information for both degree (degree) and marital status (martial). Be sure to glimpse it.\n\n# Your code here\nsubset1 &lt;- attain %&gt;%\n  filter(!is.na(degree) & !is.na(marital)) |&gt; \n  glimpse()\n\nRows: 2,981\nColumns: 44\n$ ...1     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …\n\n\nb) Using subset1, create a frequency table (call it table_marital) for marital status (marital). Then calculate the relative frequencies (proportions) for each marital status category. What proportion of respondents are married?\n\n# Your code here\ntable_marital &lt;- \n  subset1 %&gt;%\n  count(marital) %&gt;%\n  mutate(rel_freq = n / sum(n))\n\ntable_marital\n\n# A tibble: 5 × 3\n  marital      n rel_freq\n  &lt;chr&gt;    &lt;int&gt;    &lt;dbl&gt;\n1 divorced   444   0.149 \n2 married   1538   0.516 \n3 never ma   612   0.205 \n4 separate   101   0.0339\n5 widowed    286   0.0959\n\n\nInsert your answer here: 51.6%\nc) Still using subset1, create a frequency table for education level (degree). Then calculate the relative frequencies (proportions) for each education category. What proportion of respondents have a high school education?\n\n# Your code here\ntable_degree &lt;- \n  subset1 %&gt;%\n  count(degree) %&gt;%\n  mutate(rel_freq = n / sum(n))\n\ntable_degree\n\n# A tibble: 5 × 3\n  degree       n rel_freq\n  &lt;chr&gt;    &lt;int&gt;    &lt;dbl&gt;\n1 bachelor   496   0.166 \n2 graduate   216   0.0725\n3 high sch  1586   0.532 \n4 junior c   176   0.0590\n5 lt high    507   0.170 \n\n\nInsert your answer here: 53.2%\nc) Among respondents with a bachelor’s degree and using the full attain dataset, create a frequency table for marital status. Calculate the marginal (relative) frequencies. What proportion of bachelor’s degree holders (bachelor) are married?\n\n# Your code here\ntable_marital_bachelor &lt;- \n  attain %&gt;%\n  filter(degree == \"bachelor\", !is.na(marital)) %&gt;%\n  count(marital) %&gt;%\n  mutate(marg_freq = n / sum(n))\n\ntable_marital_bachelor\n\n# A tibble: 5 × 3\n  marital      n marg_freq\n  &lt;chr&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 divorced    79    0.159 \n2 married    287    0.579 \n3 never ma   104    0.210 \n4 separate     7    0.0141\n5 widowed     19    0.0383\n\n\nInsert your answer here: 57.9%\nd) Among respondents with less than high school education (lt high) in the full attain datset, create a frequency table for marital status and calculate the marginal frequencies. What proportion of respondents that have never married (never ma)?\n\n# Your code here\ntable_marital_lths &lt;- \n  attain %&gt;%\n  filter(degree == \"lt high\", !is.na(marital)) %&gt;%\n  count(marital) %&gt;%\n  mutate(marg_freq = n / sum(n))\n\ntable_marital_lths\n\n# A tibble: 5 × 3\n  marital      n marg_freq\n  &lt;chr&gt;    &lt;int&gt;     &lt;dbl&gt;\n1 divorced    71    0.140 \n2 married    212    0.418 \n3 never ma    99    0.195 \n4 separate    21    0.0414\n5 widowed    104    0.205 \n\n\nInsert your answer here: 19.5%\ne) Using the two tables crated in part c) and d), what is the difference in the proportion married between bachelor’s degree holders (bachelor) and those with less than high school education? (lt high)\n\n# Calculate difference in proportion married\ntable_marital_bachelor %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq) -\n  table_marital_lths %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq)\n\n[1] 0.1604831\n\n\nInsert your answer here: 16.0%\nf) Now, calculate the relative risk of being married for bachelor’s degree holders compared to those with less than high school education. Interpret this value.\n\n# Your code here\nrelative_risk_bach_lths &lt;- \n  (table_marital_bachelor %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq)) /\n  (table_marital_lths %&gt;% filter(marital == \"married\") %&gt;% pull(marg_freq))\n\nrelative_risk_bach_lths  # 1.383797\n\n[1] 1.383797\n\n\nInsert your answer here: 1.383797%"
+    "section": "Research question",
+    "text": "Research question\nWhat is your research question that you want to answer with this plot? (Remember a research question should end with a “?”)\nInsert your answer here"
   },
   {
-    "objectID": "assignments/hw3/hw3_key.html#question-2-mode-of-religion",
-    "href": "assignments/hw3/hw3_key.html#question-2-mode-of-religion",
+    "objectID": "assignments/hw3/hw3.html#prediction-and-brief-justification",
+    "href": "assignments/hw3/hw3.html#prediction-and-brief-justification",
     "title": "Weekly Assignment #3",
-    "section": "Question 2: Mode of Religion",
-    "text": "Question 2: Mode of Religion\nFind the mode (most common value) of the relig variable. What is the modal religion in the dataset? (Hint: Use will prob have to use a function from the slice() family to answer this question.)\n\n# Your code here\nattain %&gt;%\n  count(relig) %&gt;%\n  slice_max(n, n = 1) %&gt;%\n  pull(relig) # \"protesta\"\n\n[1] \"protesta\"\n\n\nInsert your answer here: protesta"
+    "section": "Prediction and brief justification",
+    "text": "Prediction and brief justification\nState what you expect to find and why. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.\nInsert your answer here"
   },
   {
-    "objectID": "assignments/hw3/hw3_key.html#question-3-summarizing-number-of-siblings",
-    "href": "assignments/hw3/hw3_key.html#question-3-summarizing-number-of-siblings",
+    "objectID": "assignments/hw3/hw3.html#data",
+    "href": "assignments/hw3/hw3.html#data",
     "title": "Weekly Assignment #3",
-    "section": "Question 3: Summarizing Number of Siblings",
-    "text": "Question 3: Summarizing Number of Siblings\nUsing the sibs variable (number of siblings), calculate the following summary statistics. Be sure to handle missing values appropriately.\na) What is the median number of siblings?\n\n# Your code here\nattain %&gt;% summarize(median_sibs = median(sibs, na.rm = TRUE))\n\n# A tibble: 1 × 1\n  median_sibs\n        &lt;dbl&gt;\n1           3\n\n# modern tidyverse code \n#attain |&gt; reframe(median_sibs = median(sibs, na.rm = TRUE))\n\nInsert your answer here: 3\nb) What is the mean number of siblings?\n\n# Your code here\nattain %&gt;% summarise(mean_sibs = mean(sibs, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  mean_sibs\n      &lt;dbl&gt;\n1      3.72\n\n\nInsert your answer here: 3.72\nc) What are the 10th, 25th, 75th, and 90th percentiles for number of siblings?\n\n# Your code here\nattain %&gt;%\n  summarise(\n    q10 = quantile(sibs, 0.10, na.rm = TRUE),\n    q25 = quantile(sibs, 0.25, na.rm = TRUE),\n    q75 = quantile(sibs, 0.75, na.rm = TRUE),\n    q90 = quantile(sibs, 0.90, na.rm = TRUE)\n  )\n\n# A tibble: 1 × 4\n    q10   q25   q75   q90\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1     2     5     8\n\n\nInsert your answer here: 10th: 1, 25th: 2, 75th: 5, 90th: 8\nd) What are the variance and standard deviation of the number of siblings?\n\n# Your code here\n attain %&gt;%\n  filter(!is.na(sibs)) %&gt;%\n  summarise(\n    variance = var(sibs),\n    std_dev = sd(sibs)\n  )\n\n# A tibble: 1 × 2\n  variance std_dev\n     &lt;dbl&gt;   &lt;dbl&gt;\n1     9.78    3.13\n\n\nInsert your answer here: variance: 9.78, std_deviation 3.13"
+    "section": "Data",
+    "text": "Data\nDescribe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.\nInsert your answer here"
   },
   {
-    "objectID": "assignments/hw3/hw3_key.html#question-4-associations-between-variables",
-    "href": "assignments/hw3/hw3_key.html#question-4-associations-between-variables",
+    "objectID": "assignments/hw3/hw3.html#analytic-strategy",
+    "href": "assignments/hw3/hw3.html#analytic-strategy",
     "title": "Weekly Assignment #3",
-    "section": "Question 4: Associations Between Variables",
-    "text": "Question 4: Associations Between Variables\nFor this question, we’re going to calculate the covariance and correlation coefficient between years of education (educ) and 1991 income (income91).\na) Calculate covariance.\n\n# Your code here\nattain %&gt;%\n  summarize(covariance = cov(educ, income91, use = \"complete.obs\")) \n\n# A tibble: 1 × 1\n  covariance\n       &lt;dbl&gt;\n1     31806.\n\n\nInsert your answer here: 31806\nb) Calculate and interpret the correlation coefficient. What does it tell you about the relationship between education and income? Be sure to deal appropriately with missing observations. (Note that you can do this by (1) either create a subset that includes only respondents with non-missing information for educ and income91 or (2) specifying a particular parameter in the cor argument.**\n\nattain %&gt;%\n  summarize(correlation = cor(educ, income91, use = \"complete.obs\"))\n\n# A tibble: 1 × 1\n  correlation\n        &lt;dbl&gt;\n1       0.393\n\n\nInsert your answer here: 0.393 It is a moderately strong relationship.\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
+    "section": "Analytic strategy",
+    "text": "Analytic strategy\nDescribe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.\nInsert your answer here"
+  },
+  {
+    "objectID": "assignments/hw3/hw3.html#code",
+    "href": "assignments/hw3/hw3.html#code",
+    "title": "Weekly Assignment #3",
+    "section": "Code",
+    "text": "Code\nBuild your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.\n\n# Your code here"
+  },
+  {
+    "objectID": "assignments/hw3/hw3.html#results",
+    "href": "assignments/hw3/hw3.html#results",
+    "title": "Weekly Assignment #3",
+    "section": "Results",
+    "text": "Results\nPresent the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.\nInsert your answer here"
+  },
+  {
+    "objectID": "assignments/hw3/hw3.html#discussion-of-results",
+    "href": "assignments/hw3/hw3.html#discussion-of-results",
+    "title": "Weekly Assignment #3",
+    "section": "Discussion of results",
+    "text": "Discussion of results\nHere’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.\nInsert your answer here"
+  },
+  {
+    "objectID": "assignments/hw3/hw3.html#limitations-and-alternative-explanations",
+    "href": "assignments/hw3/hw3.html#limitations-and-alternative-explanations",
+    "title": "Weekly Assignment #3",
+    "section": "Limitations and alternative explanations",
+    "text": "Limitations and alternative explanations\nThis is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.\nInsert your answer here\n\n\n\n\n\n\nBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)\nYou’re submitting the hw1.qmd file to bCourse"
   },
   {
     "objectID": "assignments/hw6/hw6_key.html",
@@ -2436,11 +2492,53 @@
     "text": "Housekeeping\nWeekly assignments\n\nDue on Thursdays nights (except for hw1)\nGenerally, if a couple of things not quite right → still full credit. If more than a couple → half credit\nEach assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped\nBut, multiple assignments not turned in will negatively affect your grade!\n\nHW #1: due Tuesday, February 10, 11:59 PM – Extended deadline - any questions?"
   },
   {
+    "objectID": "slides/week3.html#learning-goals",
+    "href": "slides/week3.html#learning-goals",
+    "title": "Week 3",
+    "section": "Learning goals",
+    "text": "Learning goals\n\nIdentify and distinguish between different variable types (ratio, interval, ordinal, nominal)\nCreate and customize appropriate figures for different data types using ggplot2\nEvaluate which visualization methods best communicates specific data patterns\nStart thinking about where to get data for final paper"
+  },
+  {
     "objectID": "slides/week3.html#agenda",
     "href": "slides/week3.html#agenda",
     "title": "Week 3",
     "section": "Agenda",
     "text": "Agenda\n\nGetting data to use in future weekly assignments and your final paper\nVisualizing data using ggplot\nWeekly assignments example"
+  },
+  {
+    "objectID": "slides/week3.html#what-type-of-data",
+    "href": "slides/week3.html#what-type-of-data",
+    "title": "Week 3",
+    "section": "What type of data?",
+    "text": "What type of data?\nWe want data that will help us say something about sociological theories / social processes\nThis encompasses a wide variety of data!\n\nOur observations can be individuals, groups/organizations, countries\nWe will want to focus on topics that sociologists care about\nBut, fortunately for you, we care about almost everything!\n\nNot sure if your data source/topic is appropriate?\nFeel free to ask!"
+  },
+  {
+    "objectID": "slides/week3.html#getting-data-online-repositories",
+    "href": "slides/week3.html#getting-data-online-repositories",
+    "title": "Week 3",
+    "section": "Getting data: online repositories",
+    "text": "Getting data: online repositories\nOnline repositories contain multiple datasets, and you can generally search for datasets related to your topic of interest\nFeatures:\n\nSome repositories need a UC Berkeley login\nSome repositories allow you to do some data analysis on the webpage without accessing the raw data\nFor this class: we will want to download the raw data and work with it in R (importing it from .csv or from another data type if necessary)"
+  },
+  {
+    "objectID": "slides/week3.html#data-repositories",
+    "href": "slides/week3.html#data-repositories",
+    "title": "Week 3",
+    "section": "Data repositories",
+    "text": "Data repositories\n\n\n\nRepository\nFocus\nURL\n\n\n\n\nSDA Berkeley\nOpinion data (GSS, ANES, racial attitudes)\nsda.berkeley.edu\n\n\nICPSR\nComprehensive social science\nicpsr.umich.edu\n\n\nARDA\nReligion, health, public opinion\nthearda.com\n\n\nIPUMS\nCensus, CPS, health, time use\nipums.org\n\n\nRoper Center\nPublic opinion polls\nropercenter.cornell.edu\n\n\nCEIC\nEconomic data\nceicdata.com\n\n\nGoogle Dataset Search\nGeneral search tool\ndatasetsearch.research.google.com"
+  },
+  {
+    "objectID": "slides/week3.html#government-data",
+    "href": "slides/week3.html#government-data",
+    "title": "Week 3",
+    "section": "Government data",
+    "text": "Government data\n\n\n\nLevel\nFocus\nURL\n\n\n\n\nFederal\nHealth, education, climate, agriculture\ndata.gov\n\n\nCalifornia\nState demographics, economy, environment\ndata.ca.gov\n\n\nSan Francisco\nCity services, transportation, housing\ndatasf.org\n\n\nBerkeley\nLocal permits, public works, demographics\ndata.cityofberkeley.info"
+  },
+  {
+    "objectID": "slides/week3.html#questions",
+    "href": "slides/week3.html#questions",
+    "title": "Week 3",
+    "section": "Questions?",
+    "text": "Questions?"
   },
   {
     "objectID": "slides/week3.html#visualizing-data",
@@ -2457,32 +2555,11 @@
     "text": "Review: levels of measurement\nFour common levels of measurement we use in data analysis.\n\n\n\n\n\n\n\n\n\nLevel\nKey Property\nExamples\nType\n\n\n\n\nRatio\nTrue zero point\nAge, income, years of education\nContinuous\n\n\nInterval\nEqual distances, no true zero\nIQ, SAT scores, SES\nContinuous\n\n\nOrdinal\nOrdered categories\nLetter grades, liberal-conservative\nCategorical\n\n\nNominal\nUnordered categories\nGender, religion, political party\nCategorical\n\n\n\nWhy this matters: How we visualize a variable depends on its level of measurement"
   },
   {
-    "objectID": "slides/week3.html#review-levels-of-measurement-1",
-    "href": "slides/week3.html#review-levels-of-measurement-1",
-    "title": "Week 3",
-    "section": "Review: levels of measurement",
-    "text": "Review: levels of measurement\n\n\n\n\n\n\n\n\nLevel\nKey Property\nExamples\n\n\n\n\nRatio\nTrue zero point\nAge, income, years of education\n\n\nInterval\nEqual distances, no true zero\nTest scores (IQ, SAT), SES\n\n\nOrdinal\nOrdered categories\nLetter grades, liberal-conservative\n\n\nNominal\nUnordered categories\nGender, religion, political party"
-  },
-  {
-    "objectID": "slides/week3.html#review-levels-of-measurement-2",
-    "href": "slides/week3.html#review-levels-of-measurement-2",
-    "title": "Week 3",
-    "section": "Review: levels of measurement",
-    "text": "Review: levels of measurement\nSimplified classification:\nWe can think of nominal and ordinal variables as categorical, and interval and ratio variables as continuous.\nWhy this matters for visualization:\nHow we visualize a variable (or the relationship between two variables) will depend on their levels of measurement"
-  },
-  {
     "objectID": "slides/week3.html#basics-of-a-ggplot-plot",
     "href": "slides/week3.html#basics-of-a-ggplot-plot",
     "title": "Week 3",
     "section": "Basics of a ggplot plot",
     "text": "Basics of a ggplot plot\nggplot follows the grammar of graphics. Every plot builds up from three components: data, mapping, and layers. Let’s look at an example:\n\n1. Data2. Mapping3. Add a Layer4. Add another layer\n\n\nStart with your dataframe and ggplot(). This creates an empty canvas.\n\n\nggplot(data = mpg)\n\n\n\n\n\n\n\n\n\n\n\nAdd aes() to connect columns to visual properties (x, y, color). Now we have axes.\n\n\nggplot(mpg, aes(x = cty, y = hwy))\n\n\n\n\n\n\n\n\n\n\n\nAdd a geom_point() to display the data as points. Use + to add layers.\n\n\nggplot(mpg, aes(cty, hwy)) +\n  geom_point() \n\n\n\n\n\n\n\n\n\n\n\nAdd a geom_smooth() to run a regression line through the points\n\n\nggplot(mpg, aes(cty, hwy)) +\n  geom_point() +\n  geom_smooth(formula = y ~ x, method = \"lm\")"
-  },
-  {
-    "objectID": "slides/week3.html#putting-it-all-together",
-    "href": "slides/week3.html#putting-it-all-together",
-    "title": "Week 3",
-    "section": "Putting it all together!",
-    "text": "Putting it all together!\nLet’s put it all together and see what it looks like!\n\n\nggplot(mpg, aes(cty, hwy)) +\n  geom_point() +\n  geom_smooth(formula = y ~ x, method = \"lm\")"
   },
   {
     "objectID": "slides/week3.html#visualizing-variables",
@@ -2527,18 +2604,18 @@
     "text": "Boxplot: geom_boxplot()\nThe boxplot compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all “outlying” points individually.\n\nWhat is a boxplot?geom_boxplot()\n\n\nMost useful to see the entire distribution of a variable, by another categorical one\n\nMost useful looking at 2 vars\nWe can do this using the geom_boxplot() function\n\n\n\nIn this case, we are looking at the distribution of income by sex.\n\n\nattain |&gt; \nggplot(aes(x = sex, y = rincom91)) + \ngeom_boxplot() + \n  labs(\n    title = \"Income by sex\",\n    x = \"Sex\",\n    y = \"Income\"\n  ) + \n  theme_minimal()"
   },
   {
-    "objectID": "slides/week3.html#questions",
-    "href": "slides/week3.html#questions",
+    "objectID": "slides/week3.html#questions-1",
+    "href": "slides/week3.html#questions-1",
     "title": "Week 3",
     "section": "Questions?",
     "text": "Questions?"
   },
   {
-    "objectID": "slides/week3.html#weekly-assignments",
-    "href": "slides/week3.html#weekly-assignments",
+    "objectID": "slides/week3.html#weekly-assignment-example",
+    "href": "slides/week3.html#weekly-assignment-example",
     "title": "Week 3",
-    "section": "Weekly Assignments",
-    "text": "Weekly Assignments\nYou’ll be provided a hw#.qmd each week that you’ll use as a template to complete you homework assignment. It will be available in bCourses.\n\nFiles → Weekly Assignments\n\nSome weeks you’ll just answer specific quetions, but in weeks that require you to use your own data, you’ll approach the assignment like a research paper, which you can use to bulid into the final paper.\nLet’s look at an example to better understand what I’m asking."
+    "section": "Weekly Assignment Example",
+    "text": "Weekly Assignment Example\nYou’ll be provided a hw#.qmd each week that you’ll use as a template to complete your homework assignment. It will be available in bCourses under the “Assignments” folder for that week\nSome weeks you’ll just answer specific questions, but in weeks that require you to use your own data, you’ll approach the assignment like a research paper, which you can use to build into the final paper.\nLet’s look at an example to better understand what I’m asking."
   },
   {
     "objectID": "slides/week3.html#weekly-assignment-2",
@@ -2548,81 +2625,11 @@
     "text": "Weekly Assignment #2\nAssignment:\nUsing a dataset of your choice, choose a research question and construct a plot that helps answer it.\nHW #2: due Thursday, February 12, 11:59 PM\n\nany questions?"
   },
   {
-    "objectID": "slides/week3.html#what-type-of-data",
-    "href": "slides/week3.html#what-type-of-data",
+    "objectID": "slides/week3.html#paper-proposal-5",
+    "href": "slides/week3.html#paper-proposal-5",
     "title": "Week 3",
-    "section": "What type of data?",
-    "text": "What type of data?\nWe want data that will help us say something about sociological theories / social processes\nThis encompasses a wide variety of data!\n\nOur observations can be individuals, groups/organizations, countries\nWe will want to focus on topics that sociologists care about\nBut, fortunately for you, we care about almost everything!\n\nNot sure if your data source/topic is appropriate?\nFeel free to ask!"
-  },
-  {
-    "objectID": "slides/week3.html#getting-data-online-repositories",
-    "href": "slides/week3.html#getting-data-online-repositories",
-    "title": "Week 3",
-    "section": "Getting data: online repositories",
-    "text": "Getting data: online repositories\nOnline repositories contain multiple datasets, and you can generally search for datasets related to your topic of interest\nFeatures:\n\nSome repositories need a UC Berkeley login\nSome repositories allow you to do some data analysis on the webpage without accessing the raw data\nFor this class: we will want to download the raw data and work with it in R (importing it from .csv or from another data type if necessary)"
-  },
-  {
-    "objectID": "slides/week3.html#survey-documentation-and-analysis",
-    "href": "slides/week3.html#survey-documentation-and-analysis",
-    "title": "Week 3",
-    "section": "Survey Documentation and Analysis",
-    "text": "Survey Documentation and Analysis\nOpinion data\n\nGeneral Social Survey\nAmerican National Election Studies\nStudies on racial attitudes and prejudice\nSurveys on household finance and health\n\nhttps://sda.berkeley.edu/archive.htm"
-  },
-  {
-    "objectID": "slides/week3.html#inter-university-consortium-for-political-and-social-research-icpsr",
-    "href": "slides/week3.html#inter-university-consortium-for-political-and-social-research-icpsr",
-    "title": "Week 3",
-    "section": "Inter-university Consortium for Political and Social Research (ICPSR)",
-    "text": "Inter-university Consortium for Political and Social Research (ICPSR)\nComprehensive social science data repository\nhttps://www.icpsr.umich.edu/sites/icpsr/find-data"
-  },
-  {
-    "objectID": "slides/week3.html#association-of-religion-data-archives",
-    "href": "slides/week3.html#association-of-religion-data-archives",
-    "title": "Week 3",
-    "section": "Association of Religion Data Archives",
-    "text": "Association of Religion Data Archives\nInternational and US data\n\nMostly on religion\nSome on health/public opinion\n\nhttps://thearda.com/menu-selection-landing-page?topmenu=Data%20Archive&submenu=Browse%20The%20Archive"
-  },
-  {
-    "objectID": "slides/week3.html#integrated-public-use-microdata-series-ipums",
-    "href": "slides/week3.html#integrated-public-use-microdata-series-ipums",
-    "title": "Week 3",
-    "section": "Integrated Public Use Microdata Series (IPUMS)",
-    "text": "Integrated Public Use Microdata Series (IPUMS)\nMultiple data sources:\n\nCensus data (US and international)\nCurrent Population Survey (collects monthly information about the US labor force)\nUS and global health data\nUS time use data\nCan pull directly using tidycensus() library\n\nhttps://www.ipums.org"
-  },
-  {
-    "objectID": "slides/week3.html#roper-center-for-public-opinion-research",
-    "href": "slides/week3.html#roper-center-for-public-opinion-research",
-    "title": "Week 3",
-    "section": "Roper Center for Public Opinion Research",
-    "text": "Roper Center for Public Opinion Research\nPublic opinion polls\nThousands of public opinion polls dating back to the early 20th century\nhttps://ropercenter.cornell.edu/"
-  },
-  {
-    "objectID": "slides/week3.html#ceic-data",
-    "href": "slides/week3.html#ceic-data",
-    "title": "Week 3",
-    "section": "CEIC data",
-    "text": "CEIC data\nEconomic data\n\nMacro- and micro-economic data\n\nhttps://www.ceicdata.com/en"
-  },
-  {
-    "objectID": "slides/week3.html#google-dataset-search",
-    "href": "slides/week3.html#google-dataset-search",
-    "title": "Week 3",
-    "section": "Google Dataset Search",
-    "text": "Google Dataset Search\nComprehensive search tool\nA newer resource that could be another good source of data\nhttps://datasetsearch.research.google.com/"
-  },
-  {
-    "objectID": "slides/week3.html#u.s.-government-data",
-    "href": "slides/week3.html#u.s.-government-data",
-    "title": "Week 3",
-    "section": "U.S. Government Data",
-    "text": "U.S. Government Data\nMultiple levels of government:\n\nFederal: https://www.data.gov/\nState (California): https://data.ca.gov/\nLocal (San Francisco): https://datasf.org/\nLocal (Berkeley): https://data.cityofberkeley.info/"
-  },
-  {
-    "objectID": "slides/week3.html#questions-1",
-    "href": "slides/week3.html#questions-1",
-    "title": "Week 3",
-    "section": "Questions?",
-    "text": "Questions?"
+    "section": "Paper Proposal (5%)",
+    "text": "Paper Proposal (5%)\nA two-page double-spaced proposal for your final paper is due on bCourses by Thursday, February 26 at 11:59 PM.\nYour proposal should include:\n\nResearch question - What are you trying to answer?\nWhy it matters - Why should we care about this question?\nHypotheses - What do you think the answer is, and why?\nData source - What dataset will you use?\nKey variables - Identify your independent and dependent variables\n\nNote: You do not need to discuss statistical techniques at this point."
   },
   {
     "objectID": "slides/week6.html#housekeeping",
@@ -3157,108 +3164,17 @@
     "text": "Research Paper Proposal\nYou don’t have to write about what statistical analysis you will use, but you should end with a sentence that talks generally about the relationship you expect to see between your independent and dependent variables\nExample:\n\n“I expect that people who report higher family incomes will be more likely to agree with the survey question that the government should reduce taxes.”\n\nNote: Your proposal can (and prob should) use the data/topic that you’ve been working with in weekly assignments so far."
   },
   {
-    "objectID": "slides/week3.html#learning-goals",
-    "href": "slides/week3.html#learning-goals",
-    "title": "Week 3",
-    "section": "Learning goals",
-    "text": "Learning goals\n\nIdentify and distinguish between different variable types (ratio, interval, ordinal, nominal)\nCreate and customize appropriate figures for different data types using ggplot2\nEvaluate which visualization methods best communicates specific data patterns\nStart thinking about where to get data for final paper"
-  },
-  {
-    "objectID": "slides/week3.html",
-    "href": "slides/week3.html",
-    "title": "Week 3",
+    "objectID": "assignments/index.html#assignment-examples",
+    "href": "assignments/index.html#assignment-examples",
+    "title": "Sociology 106",
     "section": "",
-    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nWarning: package 'here' was built under R version 4.3.3\n\n\nhere() starts at /Users/Dora/git/teaching/soc106\nNew names:Rows: 2992 Columns: 44── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (24): wrkstat, marital, degree, sex, race, partfull, region, xnorcsiz, s...\ndbl (20): ...1, id, hrs1, prestg80, agewed, papres80, mapres80, sibs, childs...\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+    "text": "Weekly assignment example"
   },
   {
-    "objectID": "slides/week3.html#weekly-assignment-example",
-    "href": "slides/week3.html#weekly-assignment-example",
-    "title": "Week 3",
-    "section": "Weekly Assignment Example",
-    "text": "Weekly Assignment Example\nYou’ll be provided a hw#.qmd each week that you’ll use as a template to complete your homework assignment. It will be available in bCourses under the “Assignments” folder for that week\nSome weeks you’ll just answer specific questions, but in weeks that require you to use your own data, you’ll approach the assignment like a research paper, which you can use to build into the final paper.\nLet’s look at an example to better understand what I’m asking."
-  },
-  {
-    "objectID": "slides/week2.html",
-    "href": "slides/week2.html",
-    "title": "Week 2",
-    "section": "",
-    "text": "Office hours this week\n\nTuesdays, 11:30 AM-1:00 PM, 444 Social Science Buliding\nTuesdays, 4:00 PM-4:30 PM, 444 Social Science Buliding\n\nSign up at https://www.wejoinin.com/kaseyzapatka@berkeley.edu\n\nIf you can’t make either, e-mail me and we’ll find a time\n\nHW #1: due Thursday, February 5 by 11:59 PM"
-  },
-  {
-    "objectID": "slides/week2.html#footnotes",
-    "href": "slides/week2.html#footnotes",
-    "title": "Week 2",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThe older version of the pipe operator %&gt;% also works interchangeably.↩︎"
-  },
-  {
-    "objectID": "slides/week3.html#data-repositories",
-    "href": "slides/week3.html#data-repositories",
-    "title": "Week 3",
-    "section": "Data repositories",
-    "text": "Data repositories\n\n\n\nRepository\nFocus\nURL\n\n\n\n\nSDA Berkeley\nOpinion data (GSS, ANES, racial attitudes)\nsda.berkeley.edu\n\n\nICPSR\nComprehensive social science\nicpsr.umich.edu\n\n\nARDA\nReligion, health, public opinion\nthearda.com\n\n\nIPUMS\nCensus, CPS, health, time use\nipums.org\n\n\nRoper Center\nPublic opinion polls\nropercenter.cornell.edu\n\n\nCEIC\nEconomic data\nceicdata.com\n\n\nGoogle Dataset Search\nGeneral search tool\ndatasetsearch.research.google.com"
-  },
-  {
-    "objectID": "slides/week3.html#government-data",
-    "href": "slides/week3.html#government-data",
-    "title": "Week 3",
-    "section": "Government data",
-    "text": "Government data\n\n\n\nLevel\nFocus\nURL\n\n\n\n\nFederal\nHealth, education, climate, agriculture\ndata.gov\n\n\nCalifornia\nState demographics, economy, environment\ndata.ca.gov\n\n\nSan Francisco\nCity services, transportation, housing\ndatasf.org\n\n\nBerkeley\nLocal permits, public works, demographics\ndata.cityofberkeley.info"
-  },
-  {
-    "objectID": "slides/week3.html#bar-chartsgeom_bar",
-    "href": "slides/week3.html#bar-chartsgeom_bar",
-    "title": "Week 3",
-    "section": "Bar charts:geom_bar()",
-    "text": "Bar charts:geom_bar()\nFor categorical (nominal or ordinal) variables, we can visualize their distribution in a dataset using a bar chart.\n\nWhat is a bar chart?geom_bar()\n\n\n\nA graph of a frequency table\nHeight of bars indicates the relative frequency of values in our dataset\nX axis: a series of categories\nY axis: absolute frequency of values\nWe can do this using the geom_bar() function\n\n\n\nFrequency of marital status in attain:\n\n\nggplot(data = attain, aes(x = marital)) +\n  geom_bar(fill = \"#0d467cff\") +\n  labs(\n    title = \"Marital Status Distribution\",\n    x = \"Marital Status\",\n    y = \"Count\"\n  ) + \n  theme_minimal()"
-  },
-  {
-    "objectID": "slides/week3.html#paper-proposal-5",
-    "href": "slides/week3.html#paper-proposal-5",
-    "title": "Week 3",
-    "section": "Paper Proposal (5%)",
-    "text": "Paper Proposal (5%)\nA two-page double-spaced proposal for your final paper is due on bCourses by Thursday, February 26 at 11:59 PM.\nYour proposal should include:\n\nResearch question - What are you trying to answer?\nWhy it matters - Why should we care about this question?\nHypotheses - What do you think the answer is, and why?\nData source - What dataset will you use?\nKey variables - Identify your independent and dependent variables\n\nNote: You do not need to discuss statistical techniques at this point."
-  },
-  {
-    "objectID": "assignments/paper_proposal_example.html",
-    "href": "assignments/paper_proposal_example.html",
-    "title": "Paper Proposal Example",
-    "section": "",
-    "text": "Does parental education influence their children’s educational attainment, and does this relationship differ by gender? Specifically: Is father’s or mother’s education a stronger predictor, and does this vary for sons versus daughters?"
-  },
-  {
-    "objectID": "assignments/paper_proposal_example.html#research-question",
-    "href": "assignments/paper_proposal_example.html#research-question",
-    "title": "Paper Proposal Example",
-    "section": "",
-    "text": "Does parental education influence their children’s educational attainment, and does this relationship differ by gender? Specifically: Is father’s or mother’s education a stronger predictor, and does this vary for sons versus daughters?"
-  },
-  {
-    "objectID": "assignments/paper_proposal_example.html#why-it-matters",
-    "href": "assignments/paper_proposal_example.html#why-it-matters",
-    "title": "Paper Proposal Example",
-    "section": "Why It Matters",
-    "text": "Why It Matters\nUnderstanding the determinants of educational attainment is central to research on social stratification and intergenerational mobility. Education is a primary mechanism through which socioeconomic status is transmitted across generations. If parental education strongly predicts children’s education, this suggests that educational opportunities remain unequal and that family background continues to shape life chances.\nExamining whether the influence of parental education differs by gender has important implications for theories of gender socialization. Some theories suggest children are more influenced by the same-gender parent, while others argue that fathers’ status has historically been more consequential regardless of child gender. Disentangling these patterns can inform debates about intergenerational transmission and policies to promote educational equity."
-  },
-  {
-    "objectID": "assignments/paper_proposal_example.html#hypotheses",
-    "href": "assignments/paper_proposal_example.html#hypotheses",
-    "title": "Paper Proposal Example",
-    "section": "Hypotheses",
-    "text": "Hypotheses\nHypothesis 1 (Patriarchal Model): Father’s education will be a stronger predictor of children’s educational attainment than mother’s education for both sons and daughters, reflecting traditional stratification patterns where the male breadwinner’s status determined family standing.\nHypothesis 2 (Gender-Matching Model): Parental influence will be gender-matched—father’s education predicts more strongly for sons, mother’s education for daughters—consistent with socialization theory suggesting children model same-gender parents.\nIf neither hypothesis is supported, this would suggest contemporary families operate more egalitarianly than either model predicts."
-  },
-  {
-    "objectID": "assignments/paper_proposal_example.html#data-source",
-    "href": "assignments/paper_proposal_example.html#data-source",
-    "title": "Paper Proposal Example",
-    "section": "Data Source",
-    "text": "Data Source\nI will use the General Social Survey (GSS), a nationally representative survey of U.S. adults conducted by NORC since 1972. The “attain” subset contains respondents’ educational attainment, parents’ education levels, and demographic characteristics. The GSS is ideal because it includes both mother’s and father’s education alongside the respondent’s own attainment."
-  },
-  {
-    "objectID": "assignments/paper_proposal_example.html#key-variables",
-    "href": "assignments/paper_proposal_example.html#key-variables",
-    "title": "Paper Proposal Example",
-    "section": "Key Variables",
-    "text": "Key Variables\n\nDependent: Respondent’s years of education (educ)\nIndependent: Father’s education (paeduc); Mother’s education (maeduc)\nModerating: Respondent’s sex (sex)\nControls: Age (age) and race (race)"
+    "objectID": "assignments/index.html#paper-proposal-examples",
+    "href": "assignments/index.html#paper-proposal-examples",
+    "title": "Sociology 106",
+    "section": "Paper proposal examples",
+    "text": "Paper proposal examples\n\n01-Paper proposal example"
   }
 ]
