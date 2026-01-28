@@ -629,7 +629,7 @@ For this week only, I will provide a dataset for you to use on your homework ass
 
 **Turn in your assignment on bCourses**
 
--   [**HW #1:** due Thursday, February 5, 11:59 PM](https://bcourses.berkeley.edu/courses/1551992/assignments/9023060)
+-   [**HW #1:** due Tuesday, February 10, 11:59 PM](https://bcourses.berkeley.edu/courses/1551992/assignments/9023060)
 -   Turn in **BOTH** `hw1.qmd` and `hw1.html` files
 -   Write code and text response intermittenly in file
 

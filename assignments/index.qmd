@@ -1,0 +1,8 @@
+---
+title: "Assignments"
+---
+
+## Slides
+
+- [Weekly assignment example](hw0.html)
+- [Paper proposal](paper/01_proposal.html)

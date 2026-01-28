@@ -1,7 +1,7 @@
 ---
 title: "Weekly Assignment #1"
 author: "Your Name Here"  # Replace with your name
-date: "02/05/2026"
+date: "02/10/2026"
 format:
   html:
     toc: true
@@ -17,7 +17,7 @@ format:
 2.  Save the `hw1.qmd` file in the assignments folder.
 3.  Complete all questions by writing your code in the provided code chunks. Replace `# Your code here` lines with your actual code.
 4.  Click the "Render" button at the top of Positron to generate an HTML file.
-5.  Submit **BOTH** the .qmd file AND the .html file to bCourse before the deadline on February 5, 2026
+5.  Submit **BOTH** the .qmd file AND the .html file to bCourse before the deadline on February 10, 2026
 6.  Make sure your name appears in the "author" field in the YAML header above.
 7. Make sure your document renders without errors before submitting.
 :::
@@ -77,7 +77,7 @@ Load the data file `attain.csv` into R using the `read_csv` function. Be sure to
 
 ## Question 2
 
-Create a new object called `ages` from the `attain` dataset by selecting the column name called `age` using the  appropriate tidyverse function and glimpsing the object. What is the type of variable in it? (e.g., numeric, character, boolean). Specifically, what is this called?
+Create a new object called `ages` from the `attain` dataset by selecting the column name called `age` using the  appropriate tidyverse function and glimpsing the object. What is the type of variable in it? (e.g., numeric, character, boolean). 
 
 ```{r}
 
@@ -93,7 +93,7 @@ Create a new object called `ages` from the `attain` dataset by selecting the col
 
 ## Question 3
 
-Now create a new object from the the original `attain` dataset (column name = `marital`), call it `marital_status`, and view the object using the `print` function. What is the type of variable in this column vector?
+Now create a new object from the the original `attain` dataset (column name = `marital`), call it `marital_status`, and view the object using the `glimpse` function. What is the type of variable in this column vector?
 
 ```{r}
 
@@ -109,7 +109,7 @@ Now create a new object from the the original `attain` dataset (column name = `m
 
 ## Question 4
 
-Suppose we want to only look at a smaller dataset that contains the respondent's age, sex, race, marital status, and age at marriage (column names `age`, `sex`, `race`, `marital`, `agewed`, respectively). Create a subset of the original `attain` dataset (call it `subset1`) using the appropriate tidyverse function. Make sure to glimpse it so we can see what it looks like.
+Suppose we want to only look at a smaller dataset that contains the respondent's age, sex, race, marital status, and age at marriage (column names `age`, `sex`, `race`, `marital`, `agewed`, respectively). Create a subset of the original `attain` dataset (call it `subset1`) using the appropriate tidyverse functions. Make sure to glimpse it so we can see what it looks like.
 
 ```{r}
 
@@ -137,7 +137,7 @@ Now suppose we want a smaller dataset that only contains the first 1000 observat
 
 ## Question 6
 
-Now, suppose we are really concerned about unemployment within our sample (column name `unemp`). But, we notice that many respondents have missing unemployment statuses (i.e., `unemp` is equal to `NA`). Let's create a subset that consists of all respondents who do not have missing unemployment information. (*Hint: to find observations that are not missing, use the `!` (not) logical operator and the `is.na` function.*)
+Now, suppose we are really concerned about unemployment within our sample (column name `unemp`). But, we notice that many respondents have missing unemployment statuses (i.e., `unemp` is equal to `NA`). Let's create a subset that consists of all respondents who do not have missing unemployment information. (*Hint: to find observations that are not missing, combine the `!` (not) logical operator and the `is.na` function.*)
 
 ```{r}
 
@@ -186,7 +186,7 @@ Now suppose we want to investigate the relationship between unemployment status 
 
 ## Question 9
 
-Create a new variable in the dataset that measures the number of years since the birth of the respondent's first child, using the variables `age` and `agekdbrn`. Call the new dataset `attain_kids`. Use the appropriate tidyverse function to do this (*Hint: Create a new variable and call it `years_since_kid`. You'll have to do some subtration here!*)
+Create a new variable in the dataset that measures the number of years since the birth of the respondent's first child, using the variables `age` and `agekdbrn`. Call the new dataset `attain_kids`. Use the appropriate tidyverse function to do this (*Hint: Create a new variable and call the new variable `years_since_kid`. You'll have to do some subtration here!*)
 
 ```{r}
 
@@ -198,7 +198,7 @@ Create a new variable in the dataset that measures the number of years since the
 
 ## Question 10
 
-Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the `attain` dataset again, let's' first rename the variable--call it "to_drop"--and then drop it from the dataset (*Hint: You can use a negative sign before the variable to select everything but that one.*). How can you tell for sure that this worked (*Hint: think about how many columns you should have.*)
+Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the `attain` dataset again, let's' first rename the variable--call it "to_drop"--and then drop it from the dataset (*Hint: Youe can use a negative sign before the variable to select everything but that one.*). 
 
 ```{r}
 
@@ -206,7 +206,7 @@ Finally, there is a left over variable in this dataset from the original .csv fi
 
 ```
 
-**How can you tell this worked?**
+**How can you tell for sure that this worked(*Hint: think about how many rows you should have.*)?**
 
 *Your response here*
 
