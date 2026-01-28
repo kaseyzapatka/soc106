@@ -208,28 +208,137 @@
 <h2>Housekeeping</h2>
 <p><strong>Weekly assignments</strong></p>
 <ul>
-<li>Due on Thursdays nights</li>
+<li>Due on Thursdays nights (<em>except for hw1</em>)</li>
 <li>Generally, if a couple of things not quite right → still full credit. If more than a couple → half credit</li>
 <li>Each assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped</li>
 <li>But, multiple assignments not turned in will negatively affect your grade!</li>
 </ul>
-<p><strong>HW #1:</strong> due Thursday, February 5, 11:59 PM - any questions?</p>
+<p><strong>HW #1:</strong> due Tuesday, February 10, 11:59 PM – <em>Extended deadline</em> - any questions?</p>
+</section>
+<section id="learning-goals" class="slide level2 smaller">
+<h2>Learning goals</h2>
+<ol type="1">
+<li>Identify and distinguish between different variable types (ratio, interval, ordinal, nominal)</li>
+<li>Create and customize appropriate figures for different data types using ggplot2</li>
+<li>Evaluate which visualization methods best communicates specific data patterns</li>
+<li>Start thinking about where to get data for final paper</li>
+</ol>
 </section>
 <section id="agenda" class="slide level2 smaller">
 <h2>Agenda</h2>
 <ul>
-<li>Visualizing data
-<ul>
-<li>Bar charts</li>
-<li>Histograms</li>
-<li>Line charts</li>
-<li>Scatterplots</li>
-<li>Box plots</li>
-</ul></li>
-<li>Weekly assignments formatting</li>
-<li>Questions about Quarto</li>
 <li>Getting data to use in future weekly assignments and your final paper</li>
+<li>Visualizing data using ggplot</li>
+<li>Weekly assignments example</li>
 </ul>
+</section>
+<section id="what-type-of-data" class="slide level2 smaller">
+<h2>What type of data?</h2>
+<p><strong>We want data that will help us say something about sociological theories / social processes</strong></p>
+<p>This encompasses a wide variety of data!</p>
+<ul>
+<li>Our observations can be individuals, groups/organizations, countries</li>
+<li>We will want to focus on topics that sociologists care about</li>
+<li>But, fortunately for you, we care about almost everything!</li>
+</ul>
+<p><strong>Not sure if your data source/topic is appropriate?</strong></p>
+<p>Feel free to ask!</p>
+</section>
+<section id="getting-data-online-repositories" class="slide level2 smaller">
+<h2>Getting data: online repositories</h2>
+<p>Online repositories contain multiple datasets, and you can generally search for datasets related to your topic of interest</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Some repositories need a UC Berkeley login</li>
+<li>Some repositories allow you to do some data analysis on the webpage without accessing the raw data</li>
+<li><strong>For this class</strong>: we will want to download the raw data and work with it in R (importing it from .csv or from another data type if necessary)</li>
+</ul>
+</section>
+<section id="data-repositories" class="slide level2 smaller scrollable">
+<h2>Data repositories</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Repository</th>
+<th>Focus</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>SDA Berkeley</strong></td>
+<td>Opinion data (GSS, ANES, racial attitudes)</td>
+<td><a href="https://sda.berkeley.edu/archive.htm">sda.berkeley.edu</a></td>
+</tr>
+<tr class="even">
+<td><strong>ICPSR</strong></td>
+<td>Comprehensive social science</td>
+<td><a href="https://www.icpsr.umich.edu/sites/icpsr/find-data">icpsr.umich.edu</a></td>
+</tr>
+<tr class="odd">
+<td><strong>ARDA</strong></td>
+<td>Religion, health, public opinion</td>
+<td><a href="https://thearda.com">thearda.com</a></td>
+</tr>
+<tr class="even">
+<td><strong>IPUMS</strong></td>
+<td>Census, CPS, health, time use</td>
+<td><a href="https://www.ipums.org">ipums.org</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Roper Center</strong></td>
+<td>Public opinion polls</td>
+<td><a href="https://ropercenter.cornell.edu/">ropercenter.cornell.edu</a></td>
+</tr>
+<tr class="even">
+<td><strong>CEIC</strong></td>
+<td>Economic data</td>
+<td><a href="https://www.ceicdata.com/en">ceicdata.com</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Google Dataset Search</strong></td>
+<td>General search tool</td>
+<td><a href="https://datasetsearch.research.google.com/">datasetsearch.research.google.com</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="government-data" class="slide level2 smaller">
+<h2>Government data</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Focus</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Federal</strong></td>
+<td>Health, education, climate, agriculture</td>
+<td><a href="https://www.data.gov/">data.gov</a></td>
+</tr>
+<tr class="even">
+<td><strong>California</strong></td>
+<td>State demographics, economy, environment</td>
+<td><a href="https://data.ca.gov/">data.ca.gov</a></td>
+</tr>
+<tr class="odd">
+<td><strong>San Francisco</strong></td>
+<td>City services, transportation, housing</td>
+<td><a href="https://datasf.org/">datasf.org</a></td>
+</tr>
+<tr class="even">
+<td><strong>Berkeley</strong></td>
+<td>Local permits, public works, demographics</td>
+<td><a href="https://data.cityofberkeley.info/">data.cityofberkeley.info</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions?</h2>
 </section>
 <section id="visualizing-data" class="slide level2 smaller">
 <h2>Visualizing data</h2>
@@ -243,27 +352,20 @@
 </section>
 <section id="review-levels-of-measurement" class="slide level2 smaller">
 <h2>Review: levels of measurement</h2>
-<p><strong>Four types of variables:</strong></p>
-<ul>
-<li><strong>Nominal variables</strong>: values (or attributes) are unordered categories</li>
-<li><strong>Ordinal variables</strong>: values have an ordering, but we can’t measure distance between them</li>
-<li><strong>Interval variables</strong>: values have an ordering, and we can measure distance between them</li>
-<li><strong>Ratio variables</strong>: interval variables with a true ‘zero point’</li>
-</ul>
-</section>
-<section id="review-levels-of-measurement-1" class="slide level2 smaller">
-<h2>Review: levels of measurement</h2>
+<p>Four common levels of measurement we use in data analysis.</p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 45%">
-<col style="width: 32%">
+<col style="width: 18%">
+<col style="width: 37%">
+<col style="width: 27%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Level</th>
 <th>Key Property</th>
 <th>Examples</th>
+<th>Type</th>
 </tr>
 </thead>
 <tbody>
@@ -271,70 +373,41 @@
 <td><strong>Ratio</strong></td>
 <td>True zero point</td>
 <td>Age, income, years of education</td>
+<td>Continuous</td>
 </tr>
 <tr class="even">
 <td><strong>Interval</strong></td>
 <td>Equal distances, no true zero</td>
-<td>Test scores (IQ, SAT), SES</td>
+<td>IQ, SAT scores, SES</td>
+<td>Continuous</td>
 </tr>
 <tr class="odd">
 <td><strong>Ordinal</strong></td>
 <td>Ordered categories</td>
 <td>Letter grades, liberal-conservative</td>
+<td>Categorical</td>
 </tr>
 <tr class="even">
 <td><strong>Nominal</strong></td>
 <td>Unordered categories</td>
 <td>Gender, religion, political party</td>
+<td>Categorical</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="review-levels-of-measurement-2" class="slide level2 smaller">
-<h2>Review: levels of measurement</h2>
-<p><strong>Simplified classification:</strong></p>
-<p>We can think of nominal and ordinal variables as <strong>categorical</strong>, and interval and ratio variables as <strong>continuous</strong>.</p>
-<p><strong>Why this matters for visualization:</strong></p>
-<p>How we visualize a variable (or the relationship between two variables) will depend on their levels of measurement</p>
+<p><strong>Why this matters:</strong> How we visualize a variable depends on its level of measurement</p>
 </section>
 <section id="basics-of-a-ggplot-plot" class="slide level2 smaller">
 <h2>Basics of a <code>ggplot</code> plot</h2>
-<p><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html"><code>ggplot</code></a> follows the grammar of graphics, which needs <strong>data</strong>, a <strong>mapping</strong>, and a <strong>layer</strong> to make a figure</p>
+<p><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html"><code>ggplot</code></a> follows the grammar of graphics. Every plot builds up from three components: <strong>data</strong>, <strong>mapping</strong>, and <strong>layers</strong>. Let’s look at an example:</p>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">data</a></li><li><a href="#tabset-1-2">mapping</a></li><li><a href="#tabset-1-3">layer</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1. Data</a></li><li><a href="#tabset-1-2">2. Mapping</a></li><li><a href="#tabset-1-3">3. Add a Layer</a></li><li><a href="#tabset-1-4">4. Add another layer</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<p>To begin you need data, preferably a dataframe and the <code>ggplot()</code> function to signal you will make a plot.</p>
-<p><code>data</code> is always the first argument, but I like to pipe it in using <code>|&gt;</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-1-2">
-<p>the <code>mapping</code> is a ‘dictionary’ to translate data to the graphics system and uses <code>aes()</code>. Here <code>cty</code> is mapped to the x-axis and <code>hwy</code> is mapped to the y-axis</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-1-3">
-<p>There are 3 basic types of layers, but the most important by far is a <code>geometry</code>, which determines how data are displayed, such as points, lines, or rectangles.</p>
-<p><code>geom_point()</code> makes a scatterplot while <code>geom_smooth()</code> overlays a regression line.</p>
-<p>The <code>+</code> allows you to add new layers</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
-<span id="cb3-2"><a></a>  <span class="co"># to create a scatterplot</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a></a>  <span class="co"># to fit and overlay a loess trendline</span></span>
-<span id="cb3-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="putting-it-all-together" class="slide level2 smaller">
-<h2>Putting it all together!</h2>
-<p>Let’s put it all together and see what it looks like!</p>
+<p>Start with your dataframe and <code>ggplot()</code>. This creates an empty canvas.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
-<span id="cb4-2"><a></a>  <span class="co"># to create a scatterplot</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a></a>  <span class="co"># to fit and overlay a loess trendline</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -344,9 +417,61 @@
 </div>
 </div>
 </div></div>
+</div>
+<div id="tabset-1-2">
+<p>Add <code>aes()</code> to connect columns to visual properties (x, y, color). Now we have axes.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-1-3">
+<p>Add a <code>geom_point()</code> to display the data as points. Use <code>+</code> to add layers.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-1-4">
+<p>Add a <code>geom_smooth()</code> to run a regression line through the points</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
 </section>
 <section id="visualizing-variables" class="slide level2 smaller">
 <h2>Visualizing variables</h2>
+<p>Which data visualization should you use with which combinations of variables?</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -369,12 +494,17 @@
 <tr class="odd">
 <td><strong>2</strong></td>
 <td>Continuous by Continuous</td>
-<td>Line chart</td>
+<td>Line chart (over time)</td>
 </tr>
 <tr class="even">
 <td><strong>2</strong></td>
 <td>Continuous by Continuous</td>
 <td>Scatterplot</td>
+</tr>
+<tr class="odd">
+<td><strong>2</strong></td>
+<td>Continuous by Categorical</td>
+<td>Boxplot</td>
 </tr>
 </tbody>
 </table>
@@ -401,8 +531,8 @@
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> marital)) <span class="sc">+</span></span>
 <span id="cb5-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"#0d467cff"</span>) <span class="sc">+</span></span>
 <span id="cb5-3"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-4"><a></a>    <span class="at">title =</span> <span class="st">"Education Distribution"</span>,</span>
-<span id="cb5-5"><a></a>    <span class="at">x =</span> <span class="st">"Education Level"</span>,</span>
+<span id="cb5-4"><a></a>    <span class="at">title =</span> <span class="st">"Marital Status Distribution"</span>,</span>
+<span id="cb5-5"><a></a>    <span class="at">x =</span> <span class="st">"Marital Status"</span>,</span>
 <span id="cb5-6"><a></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
 <span id="cb5-7"><a></a>  ) <span class="sc">+</span> </span>
 <span id="cb5-8"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -410,7 +540,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -449,7 +579,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -460,7 +590,7 @@
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
-<span id="cb7-2"><a></a>  <span class="co"># here we specify 20</span></span>
+<span id="cb7-2"><a></a>  <span class="co"># set bins to 100</span></span>
 <span id="cb7-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>, <span class="at">fill =</span> <span class="st">"#7B2C2F"</span>) <span class="sc">+</span></span>
 <span id="cb7-4"><a></a>  <span class="fu">labs</span>(</span>
 <span id="cb7-5"><a></a>    <span class="at">title =</span> <span class="st">"Age Distribution"</span>,</span>
@@ -472,7 +602,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -483,7 +613,7 @@
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="co"># here we specify 20</span></span>
+<span id="cb8-2"><a></a>  <span class="co"># set binwidth to 50</span></span>
 <span id="cb8-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">50</span>, <span class="at">fill =</span> <span class="st">"#4CBB17"</span>) <span class="sc">+</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">labs</span>(</span>
 <span id="cb8-5"><a></a>    <span class="at">title =</span> <span class="st">"Age Distribution"</span>,</span>
@@ -495,7 +625,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -508,7 +638,7 @@
 <h2>Line chart: geom_line()</h2>
 <p>A <strong>line chart</strong> is similar to a bar graph but the tops of the bars are represented by points joined by lines.</p>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">What is a line chart</a></li><li><a href="#tabset-4-2"><code>geom_line()</code></a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">What is a line chart?</a></li><li><a href="#tabset-4-2"><code>geom_line()</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
 <ul>
@@ -535,7 +665,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -548,7 +678,7 @@
 <h2>Scatterplot: geom_point()</h2>
 <p>A <strong>scatterplot</strong> is a two-dimensional rectangular plot for visualizing the relationship between two continuous variables.</p>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">What is a scatterplot chart?</a></li><li><a href="#tabset-5-2"><code>geom_point()</code></a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">What is a scatterplot?</a></li><li><a href="#tabset-5-2"><code>geom_point()</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
 <ul>
@@ -558,7 +688,7 @@
 </ul>
 </div>
 <div id="tabset-5-2">
-<p>Let’s look at the relationship between age an individual was married and the age of when their child was born.</p>
+<p>Let’s look at the relationship between the age at which an individual was married and the age when their child was born.</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>attain <span class="sc">|&gt;</span> </span>
@@ -574,7 +704,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -587,61 +717,33 @@
 <h2>Boxplot: geom_boxplot()</h2>
 <p>The <strong>boxplot</strong> compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all “outlying” points individually.</p>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">What is boxplot?</a></li><li><a href="#tabset-6-2"><code>geom_boxplot()</code> 1 var</a></li><li><a href="#tabset-6-3"><code>geom_boxplot()</code> 2 vars</a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">What is a boxplot?</a></li><li><a href="#tabset-6-2"><code>geom_boxplot()</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
 <p>Most useful to see the entire distribution of a variable, by another categorical one</p>
 <ul>
-<li>Most useful looking at 2 vars, but can do one</li>
-<li>If you want 1, specify just one axis</li>
+<li>Most useful looking at 2 vars</li>
 <li>We can do this using the <code>geom_boxplot()</code> function</li>
 </ul>
 </div>
 <div id="tabset-6-2">
-<p>We can look we are looking at the distribution of income by sex.</p>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>attain <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> rincom91)) <span class="sc">+</span> </span>
-<span id="cb11-3"><a></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb11-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-5"><a></a>    <span class="at">title =</span> <span class="st">"Income distribution"</span>,</span>
-<span id="cb11-6"><a></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb11-7"><a></a>    <span class="at">y =</span> <span class="st">"Income"</span></span>
-<span id="cb11-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb11-9"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb11-10"><a></a>    <span class="fu">theme</span>(</span>
-<span id="cb11-11"><a></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb11-12"><a></a>    <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb11-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div></div>
-</div>
-<div id="tabset-6-3">
 <p>In this case, we are looking at the distribution of income by sex.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>attain <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> rincom91)) <span class="sc">+</span> </span>
-<span id="cb12-3"><a></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb12-4"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-5"><a></a>    <span class="at">title =</span> <span class="st">"Income by sex"</span>,</span>
-<span id="cb12-6"><a></a>    <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
-<span id="cb12-7"><a></a>    <span class="at">y =</span> <span class="st">"Income"</span></span>
-<span id="cb12-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb12-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>attain <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> rincom91)) <span class="sc">+</span> </span>
+<span id="cb11-3"><a></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb11-4"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-5"><a></a>    <span class="at">title =</span> <span class="st">"Income by sex"</span>,</span>
+<span id="cb11-6"><a></a>    <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
+<span id="cb11-7"><a></a>    <span class="at">y =</span> <span class="st">"Income"</span></span>
+<span id="cb11-8"><a></a>  ) <span class="sc">+</span> </span>
+<span id="cb11-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -650,16 +752,13 @@
 </div>
 </div>
 </section>
-<section id="questions" class="slide level2">
+<section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
 </section>
-<section id="weekly-assignments" class="slide level2 smaller">
-<h2>Weekly Assignments</h2>
-<p>You’ll be provided a <code>hw#.qmd</code> each week that you’ll use as a template to complete you homework assignment. It will be available in bCourses.</p>
-<ul>
-<li>Files → Weekly Assignments</li>
-</ul>
-<p>Some weeks you’ll just answer specific quetions, but in weeks that require you to use your own data, you’ll approach the assignment like a research paper, which you can use to bulid into the final paper.</p>
+<section id="weekly-assignment-example" class="slide level2 smaller">
+<h2>Weekly Assignment Example</h2>
+<p>You’ll be provided a <code>hw#.qmd</code> each week that you’ll use as a template to complete your homework assignment. It will be available in bCourses under the “Assignments” folder for that week</p>
+<p>Some weeks you’ll just answer specific questions, but in weeks that require you to use your own data, you’ll approach the assignment like a research paper, which you can use to build into the final paper.</p>
 <p>Let’s look at an example to better understand what I’m asking.</p>
 </section>
 <section id="weekly-assignment-2" class="slide level2 smaller">
@@ -671,97 +770,18 @@
 <li>any questions?</li>
 </ul>
 </section>
-<section id="what-type-of-data" class="slide level2 smaller">
-<h2>What type of data?</h2>
-<p><strong>We want data that will help us say something about sociological theories / social processes</strong></p>
-<p>This encompasses a wide variety of data!</p>
-<ul>
-<li>Our observations can be individuals, groups/organizations, countries</li>
-<li>We will want to focus on topics that sociologists care about</li>
-<li>But, fortunately for you, we care about almost everything!</li>
-</ul>
-<p><strong>Not sure if your data source/topic is appropriate?</strong></p>
-<p>Feel free to ask!</p>
-</section>
-<section id="getting-data-online-repositories" class="slide level2 smaller">
-<h2>Getting data: online repositories</h2>
-<p>Online repositories contain multiple datasets, and you can generally search for datasets related to your topic of interest</p>
-<p><strong>Features:</strong></p>
-<ul>
-<li>Some repositories need a UC Berkeley login</li>
-<li>Some repositories allow you to do some data analysis on the webpage without accessing the raw data</li>
-<li><strong>For this class</strong>: we will want to download the raw data and work with it in R (importing it from .csv or from another data type if necessary)</li>
-</ul>
-</section>
-<section id="survey-documentation-and-analysis" class="slide level2 smaller">
-<h2>Survey Documentation and Analysis</h2>
-<p><strong>Opinion data</strong></p>
-<ul>
-<li>General Social Survey</li>
-<li>American National Election Studies</li>
-<li>Studies on racial attitudes and prejudice</li>
-<li>Surveys on household finance and health</li>
-</ul>
-<p><a href="https://sda.berkeley.edu/archive.htm" class="uri">https://sda.berkeley.edu/archive.htm</a></p>
-</section>
-<section id="inter-university-consortium-for-political-and-social-research-icpsr" class="slide level2 smaller">
-<h2>Inter-university Consortium for Political and Social Research (ICPSR)</h2>
-<p><strong>Comprehensive social science data repository</strong></p>
-<p><a href="https://www.icpsr.umich.edu/sites/icpsr/find-data" class="uri">https://www.icpsr.umich.edu/sites/icpsr/find-data</a></p>
-</section>
-<section id="association-of-religion-data-archives" class="slide level2 smaller">
-<h2>Association of Religion Data Archives</h2>
-<p><strong>International and US data</strong></p>
-<ul>
-<li>Mostly on religion</li>
-<li>Some on health/public opinion</li>
-</ul>
-<p><a href="http://thearda.com/Archive/browse.asp" class="uri">http://thearda.com/Archive/browse.asp</a></p>
-</section>
-<section id="integrated-public-use-microdata-series-ipums" class="slide level2 smaller">
-<h2>Integrated Public Use Microdata Series (IPUMS)</h2>
-<p><strong>Multiple data sources:</strong></p>
-<ul>
-<li>Census data (US and international)</li>
-<li>Current Population Survey (collects monthly information about the US labor force)</li>
-<li>US and global health data</li>
-<li>US time use data</li>
-<li>Can pull directly using <code>tidycensus()</code> library</li>
-</ul>
-<p><a href="https://www.ipums.org" class="uri">https://www.ipums.org</a></p>
-</section>
-<section id="roper-center-for-public-opinion-research" class="slide level2">
-<h2>Roper Center for Public Opinion Research</h2>
-<p><strong>Public opinion polls</strong></p>
-<p>Thousands of public opinion polls dating back to the early 20th century</p>
-<p><a href="https://ropercenter.cornell.edu/" class="uri">https://ropercenter.cornell.edu/</a></p>
-</section>
-<section id="ceic-data" class="slide level2">
-<h2>CEIC data</h2>
-<p><strong>Economic data</strong></p>
-<ul>
-<li>Macro- and micro-economic data</li>
-</ul>
-<p><a href="https://www.ceicdata.com/en" class="uri">https://www.ceicdata.com/en</a></p>
-</section>
-<section id="google-dataset-search" class="slide level2">
-<h2>Google Dataset Search</h2>
-<p><strong>Comprehensive search tool</strong></p>
-<p>A newer resource that could be another good source of data</p>
-<p><a href="https://datasetsearch.research.google.com/" class="uri">https://datasetsearch.research.google.com/</a></p>
-</section>
-<section id="u.s.-government-data" class="slide level2 smaller">
-<h2>U.S. government data</h2>
-<p><strong>Multiple levels of government:</strong></p>
-<ul>
-<li><strong>Federal</strong>: <a href="https://www.data.gov/" class="uri">https://www.data.gov/</a></li>
-<li><strong>State (California)</strong>: <a href="https://data.ca.gov/" class="uri">https://data.ca.gov/</a></li>
-<li><strong>Local (San Francisco)</strong>: <a href="https://datasf.org/" class="uri">https://datasf.org/</a></li>
-<li><strong>Local (Berkeley)</strong>: <a href="https://data.cityofberkeley.info/" class="uri">https://data.cityofberkeley.info/</a></li>
-</ul>
-</section>
-<section id="questions-1" class="slide level2">
-<h2>Questions?</h2>
+<section id="paper-proposal-5" class="slide level2 smaller">
+<h2>Paper Proposal (5%)</h2>
+<p>A <strong>two-page double-spaced proposal</strong> for your final paper is due on bCourses by <strong>Thursday, February 26 at 11:59 PM</strong>.</p>
+<p><strong>Your proposal should include:</strong></p>
+<ol type="1">
+<li><strong>Research question</strong> - What are you trying to answer?</li>
+<li><strong>Why it matters</strong> - Why should we care about this question?</li>
+<li><strong>Hypotheses</strong> - What do you think the answer is, and why?</li>
+<li><strong>Data source</strong> - What dataset will you use?</li>
+<li><strong>Key variables</strong> - Identify your independent and dependent variables</li>
+</ol>
+<p><em>Note: You do not need to discuss statistical techniques at this point.</em></p>
 
 
 </section>

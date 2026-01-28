@@ -35,26 +35,73 @@ attain <- read_csv(here("data/attain.csv"))
 
 **Weekly assignments**
 
--   Due on Thursdays nights
+-   Due on Thursdays nights (_except for hw1_)
 -   Generally, if a couple of things not quite right → still full credit. If more than a couple → half credit
 -   Each assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped
 -   But, multiple assignments not turned in will negatively affect your grade!
 
-**HW #1:** due Thursday, February 5, 11:59 PM
+**HW #1:** due Tuesday, February 10, 11:59 PM -- _Extended deadline_
  - any questions?
 
+## Learning goals {.smaller}
+
+1. Identify and distinguish between different variable types (ratio, interval, ordinal, nominal)
+2. Create and customize appropriate figures for different data types using ggplot2
+3. Evaluate which visualization methods best communicates specific data patterns
+4. Start thinking about where to get data for final paper
 
 ## Agenda {.smaller}
 
-- Visualizing data
-    - Bar charts
-    - Histograms
-    - Line charts
-    - Scatterplots
-    - Box plots
-- Weekly assignments formatting 
-- Questions about Quarto
 - Getting data to use in future weekly assignments and your final paper
+- Visualizing data using ggplot
+- Weekly assignments example 
+
+## What type of data? {.smaller}
+
+**We want data that will help us say something about sociological theories / social processes**
+
+This encompasses a wide variety of data!
+
+-   Our observations can be individuals, groups/organizations, countries
+-   We will want to focus on topics that sociologists care about
+-   But, fortunately for you, we care about almost everything!
+
+**Not sure if your data source/topic is appropriate?**
+
+Feel free to ask!
+
+## Getting data: online repositories {.smaller}
+
+Online repositories contain multiple datasets, and you can generally search for datasets related to your topic of interest
+
+**Features:**
+
+-   Some repositories need a UC Berkeley login
+-   Some repositories allow you to do some data analysis on the webpage without accessing the raw data
+-   **For this class**: we will want to download the raw data and work with it in R (importing it from .csv or from another data type if necessary)
+
+## Data repositories {.smaller .scrollable}
+
+| Repository | Focus | URL |
+|------------|-------|-----|
+| **SDA Berkeley** | Opinion data (GSS, ANES, racial attitudes) | [sda.berkeley.edu](https://sda.berkeley.edu/archive.htm) |
+| **ICPSR** | Comprehensive social science | [icpsr.umich.edu](https://www.icpsr.umich.edu/sites/icpsr/find-data) |
+| **ARDA** | Religion, health, public opinion | [thearda.com](https://thearda.com) |
+| **IPUMS** | Census, CPS, health, time use | [ipums.org](https://www.ipums.org) |
+| **Roper Center** | Public opinion polls | [ropercenter.cornell.edu](https://ropercenter.cornell.edu/) |
+| **CEIC** | Economic data | [ceicdata.com](https://www.ceicdata.com/en) |
+| **Google Dataset Search** | General search tool | [datasetsearch.research.google.com](https://datasetsearch.research.google.com/) |
+
+## Government data {.smaller}
+
+| Level | Focus | URL |
+|-------|-------|-----|
+| **Federal** | Health, education, climate, agriculture | [data.gov](https://www.data.gov/) |
+| **California** | State demographics, economy, environment | [data.ca.gov](https://data.ca.gov/) |
+| **San Francisco** | City services, transportation, housing | [datasf.org](https://datasf.org/) |
+| **Berkeley** | Local permits, public works, demographics | [data.cityofberkeley.info](https://data.cityofberkeley.info/) |
+
+## Questions?
 
 ## Visualizing data {.smaller}
 
@@ -68,105 +115,86 @@ An easy way to take a close look at the data is to visualize it with a figure:
 
 ## Review: levels of measurement {.smaller}
 
-**Four types of variables:**
+Four common levels of measurement we use in data analysis.
 
--   **Nominal variables**: values (or attributes) are unordered categories
--   **Ordinal variables**: values have an ordering, but we can't measure distance between them
--   **Interval variables**: values have an ordering, and we can measure distance between them
--   **Ratio variables**: interval variables with a true 'zero point'
+| Level | Key Property | Examples | Type |
+|-------|--------------|----------|------|
+| **Ratio** | True zero point | Age, income, years of education | Continuous |
+| **Interval** | Equal distances, no true zero | IQ, SAT scores, SES | Continuous |
+| **Ordinal** | Ordered categories | Letter grades, liberal-conservative | Categorical |
+| **Nominal** | Unordered categories | Gender, religion, political party | Categorical |
 
-## Review: levels of measurement {.smaller}
+**Why this matters:** How we visualize a variable depends on its level of measurement
 
-| Level | Key Property | Examples |
-|-------|--------------|----------|
-| **Ratio** | True zero point | Age, income, years of education |
-| **Interval** | Equal distances, no true zero | Test scores (IQ, SAT), SES |
-| **Ordinal** | Ordered categories | Letter grades, liberal-conservative |
-| **Nominal** | Unordered categories | Gender, religion, political party |
-
-## Review: levels of measurement {.smaller}
-
-**Simplified classification:**
-
-We can think of nominal and ordinal variables as **categorical**, and interval and ratio variables as **continuous**.
-
-**Why this matters for visualization:**
-
-How we visualize a variable (or the relationship between two variables) will depend on their levels of measurement
 
 ## Basics of a `ggplot` plot {.smaller}
 
-[`ggplot`](https://ggplot2.tidyverse.org/articles/ggplot2.html) follows the grammar of graphics, which needs **data**, a **mapping**, and a **layer** to make a figure
-
-
+[`ggplot`](https://ggplot2.tidyverse.org/articles/ggplot2.html) follows the grammar of graphics. Every plot builds up from three components: **data**, **mapping**, and **layers**. Let's look at an example:
 
 ::: panel-tabset
 
-## data
+### 1. Data
 
-To begin you need data, preferably a dataframe and the `ggplot()` function to signal you will make a plot. 
+Start with your dataframe and `ggplot()`. This creates an empty canvas.
 
-`data` is always the first argument, but I like to pipe it in using ` |> `
+```{r}
+#| echo: true
+#| output-location: column
 
-```{.r}
 ggplot(data = mpg)
-
 ```
 
-## mapping
+### 2. Mapping
 
-the `mapping` is a ‘dictionary’ to translate data to the graphics system and uses `aes()`. Here `cty` is mapped to the x-axis and `hwy` is mapped to the y-axis
+Add `aes()` to connect columns to visual properties (x, y, color). Now we have axes.
 
-```{.r}
-ggplot(mpg, mapping = aes(x = cty, y = hwy))
+```{r}
+#| echo: true
+#| output-location: column
 
+ggplot(mpg, aes(x = cty, y = hwy))
 ```
 
-## layer 
+### 3. Add a Layer
 
-There are 3 basic types of layers, but the most important by far is a `geometry`, which determines how data are displayed, such as points, lines, or rectangles. 
-
-`geom_point()` makes a scatterplot while `geom_smooth()` overlays a regression line. 
-
-The `+` allows you to add new layers
-
-```{.r}
-ggplot(mpg, aes(cty, hwy)) +
-  # to create a scatterplot
-  geom_point() +
-  # to fit and overlay a loess trendline
-  geom_smooth(formula = y ~ x, method = "lm")
-
-```
-::: 
-
-
-## Putting it all together!{.smaller}
-
-
-Let's put it all together and see what it looks like!
-
+Add a `geom_point()` to display the data as points. Use `+` to add layers.
 
 ```{r}
 #| echo: true
 #| output-location: column
 
 ggplot(mpg, aes(cty, hwy)) +
-  # to create a scatterplot
-  geom_point() +
-  # to fit and overlay a loess trendline
-  geom_smooth(formula = y ~ x, method = "lm")
+  geom_point() 
 ```
 
 
+### 4. Add another layer
+
+Add a `geom_smooth()` to run a regression line through the points
+
+```{r}
+#| echo: true
+#| output-location: column
+
+ggplot(mpg, aes(cty, hwy)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "lm")
+```
+
+:::
+
+
 ## Visualizing variables{.smaller}
+
+Which data visualization should you use with which combinations of variables?
 
 | # of Variables | Variable Type | Visualization |
 |-----------|------|---------------|
 | **1** | Categorical | Bar chart |
 | **1** | Continuous | Histogram, Density plot, Box plot |
-| **2** | Continuous by Continuous | Line chart |
+| **2** | Continuous by Continuous | Line chart (over time) |
 | **2** | Continuous by Continuous | Scatterplot |
+| **2** | Continuous by Categorical | Boxplot |
 
 
 ## Bar charts: geom_bar(){.smaller}
@@ -196,8 +224,8 @@ Frequency of marital status in attain:
 ggplot(data = attain, aes(x = marital)) +
   geom_bar(fill = "#0d467cff") +
   labs(
-    title = "Education Distribution",
-    x = "Education Level",
+    title = "Marital Status Distribution",
+    x = "Marital Status",
     y = "Count"
   ) + 
   theme_minimal()
@@ -249,7 +277,7 @@ You can override `geom_histogram()`'s default by specifying the number of `bins(
 #| output-location: column
 
 ggplot(data = attain, aes(x = age)) +
-  # here we specify 20
+  # set bins to 100
   geom_histogram(bins = 100, fill = "#7B2C2F") +
   labs(
     title = "Age Distribution",
@@ -270,7 +298,7 @@ Alternatively, you can make the bins wider to include more observations. Here, w
 #| output-location: column
 
 ggplot(data = attain, aes(x = age)) +
-  # here we specify 20
+  # set binwidth to 50
   geom_histogram(binwidth = 50, fill = "#4CBB17") +
   labs(
     title = "Age Distribution",
@@ -289,7 +317,7 @@ A **line chart** is similar to a bar graph but the tops of the bars are represen
 
 ::: {.panel-tabset}
 
-### What is a line chart
+### What is a line chart?
 
 - X and Y variables are ordered in some way (ordinal, interval, ratio)
 - Useful when you want to show change in a `Y` variable over your `X` variable
@@ -326,7 +354,7 @@ A **scatterplot** is a two-dimensional rectangular plot for visualizing the rela
 
 ::: {.panel-tabset}
 
-### What is a scatterplot chart?
+### What is a scatterplot?
 
 - **X-axis**: values of one continuous variable
 - **Y-axis**: values of another continuous variable
@@ -335,7 +363,7 @@ A **scatterplot** is a two-dimensional rectangular plot for visualizing the rela
 
 ### `geom_point()`
 
-Let's look at the relationship between age an individual was married and the age of when their child was born. 
+Let's look at the relationship between the age at which an individual was married and the age when their child was born. 
 
 ```{r}
 #| echo: true
@@ -362,40 +390,14 @@ The **boxplot** compactly displays the distribution of a continuous variable. It
 
 ::: {.panel-tabset}
 
-### What is boxplot?
+### What is a boxplot?
 
 Most useful to see the entire distribution of a variable, by another categorical one
 
-- Most useful looking at 2 vars, but can do one
-- If you want 1, specify just one axis 
+- Most useful looking at 2 vars
 - We can do this using the `geom_boxplot()` function
 
-
-### `geom_boxplot()` 1 var
-
-We can look we are looking at the distribution of income by sex.
-
-```{r}
-#| echo: true
-#| output-location: column
-
-attain |> 
-ggplot(aes(y = rincom91)) + 
-geom_boxplot() + 
-  labs(
-    title = "Income distribution",
-    x = "",
-    y = "Income"
-  ) + 
-  theme_minimal() + 
-    theme(
-    axis.text.x = element_blank(),
-    axis.ticks.x = element_blank()
-  )
-
-```
-
-### `geom_boxplot()` 2 vars
+### `geom_boxplot()` 
 
 In this case, we are looking at the distribution of income by sex.
 
@@ -418,13 +420,11 @@ geom_boxplot() +
 
 ## Questions?
 
-## Weekly Assignments {.smaller}
+## Weekly Assignment Example {.smaller}
 
-You'll be provided a `hw#.qmd` each week that you'll use as a template to complete you homework assignment. It will be available in bCourses.
+You'll be provided a `hw#.qmd` each week that you'll use as a template to complete your homework assignment. It will be available in bCourses under the "Assignments" folder for that week
 
--   Files → Weekly Assignments
-
-Some weeks you'll just answer specific quetions, but in weeks that require you to use your own data, you'll approach the assignment like a research paper, which you can use to bulid into the final paper. 
+Some weeks you'll just answer specific questions, but in weeks that require you to use your own data, you'll approach the assignment like a research paper, which you can use to build into the final paper. 
 
 Let's look at an example to better understand what I'm asking.
 
@@ -436,102 +436,19 @@ Let's look at an example to better understand what I'm asking.
 Using a dataset of your choice, choose a research question and construct a plot that helps answer it.
 
 **HW #2:** due Thursday, February 12, 11:59 PM
- 
+
  - any questions?
 
-## What type of data? {.smaller}
+## Paper Proposal (5%) {.smaller}
 
-**We want data that will help us say something about sociological theories / social processes**
+A **two-page double-spaced proposal** for your final paper is due on bCourses by **Thursday, February 26 at 11:59 PM**.
 
-This encompasses a wide variety of data!
+**Your proposal should include:**
 
--   Our observations can be individuals, groups/organizations, countries
--   We will want to focus on topics that sociologists care about
--   But, fortunately for you, we care about almost everything!
+1. **Research question** - What are you trying to answer?
+2. **Why it matters** - Why should we care about this question?
+3. **Hypotheses** - What do you think the answer is, and why?
+4. **Data source** - What dataset will you use?
+5. **Key variables** - Identify your independent and dependent variables
 
-**Not sure if your data source/topic is appropriate?**
-
-Feel free to ask!
-
-## Getting data: online repositories {.smaller}
-
-Online repositories contain multiple datasets, and you can generally search for datasets related to your topic of interest
-
-**Features:**
-
--   Some repositories need a UC Berkeley login
--   Some repositories allow you to do some data analysis on the webpage without accessing the raw data
--   **For this class**: we will want to download the raw data and work with it in R (importing it from .csv or from another data type if necessary)
-
-## Survey Documentation and Analysis {.smaller}
-
-**Opinion data**
-
--   General Social Survey
--   American National Election Studies
--   Studies on racial attitudes and prejudice
--   Surveys on household finance and health
-
-<https://sda.berkeley.edu/archive.htm>
-
-## Inter-university Consortium for Political and Social Research (ICPSR) {.smaller}
-
-**Comprehensive social science data repository**
-
-<https://www.icpsr.umich.edu/sites/icpsr/find-data>
-
-## Association of Religion Data Archives {.smaller}
-
-**International and US data**
-
--   Mostly on religion
--   Some on health/public opinion
-
-<http://thearda.com/Archive/browse.asp>
-
-## Integrated Public Use Microdata Series (IPUMS) {.smaller}
-
-**Multiple data sources:**
-
--   Census data (US and international)
--   Current Population Survey (collects monthly information about the US labor force)
--   US and global health data
--   US time use data
--   Can pull directly using `tidycensus()` library
-
-<https://www.ipums.org>
-
-## Roper Center for Public Opinion Research
-
-**Public opinion polls**
-
-Thousands of public opinion polls dating back to the early 20th century
-
-<https://ropercenter.cornell.edu/>
-
-## CEIC data
-
-**Economic data**
-
--   Macro- and micro-economic data
-
-<https://www.ceicdata.com/en>
-
-## Google Dataset Search
-
-**Comprehensive search tool**
-
-A newer resource that could be another good source of data
-
-<https://datasetsearch.research.google.com/>
-
-## U.S. government data {.smaller}
-
-**Multiple levels of government:**
-
--   **Federal**: <https://www.data.gov/>
--   **State (California)**: <https://data.ca.gov/>
--   **Local (San Francisco)**: <https://datasf.org/>
--   **Local (Berkeley)**: <https://data.cityofberkeley.info/>
-
-## Questions?
+*Note: You do not need to discuss statistical techniques at this point.*

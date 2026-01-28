@@ -1,0 +1,11 @@
+---
+title: " "
+---
+
+## Assignment examples
+
+- [Weekly assignment example](hw0.html)
+
+## Paper proposal examples
+
+- [01-Paper proposal example](paper/01_proposal.html)

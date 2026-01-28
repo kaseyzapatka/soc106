@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Karl Marx">
-<meta name="dcterms.date" content="2026-02-05">
+<meta name="dcterms.date" content="2026-02-10">
 
 <title>Weekly Assignment #1 – Sociology 106</title>
 <style>
@@ -3881,6 +3881,10 @@ color: #f8f9fa !important;
 <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../assignments/index.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
@@ -3936,7 +3940,7 @@ color: #f8f9fa !important;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 5, 2026</p>
+      <p class="date">February 10, 2026</p>
     </div>
   </div>
   
@@ -3963,7 +3967,7 @@ Submission Instructions
 <li>Save the <code>hw1.qmd</code> file in the assignments folder.</li>
 <li>Complete all questions by writing your code in the provided code chunks. Replace <code># Your code here</code> lines with your actual code.</li>
 <li>Click the “Render” button at the top of Positron to generate an HTML file.</li>
-<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline on February 5, 2026</li>
+<li>Submit <strong>BOTH</strong> the .qmd file AND the .html file to bCourse before the deadline on February 10, 2026</li>
 <li>Make sure your name appears in the “author” field in the YAML header above.</li>
 <li>Make sure your document renders without errors before submitting.</li>
 </ol>
@@ -4079,7 +4083,7 @@ $ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 187
 </section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<p>Create a new object called <code>ages</code> from the <code>attain</code> dataset by selecting the column name called <code>age</code> using the appropriate tidyverse function and glimpsing the object. What is the type of variable in it? (e.g., numeric, character, boolean). Specifically, what is this called?</p>
+<p>Create a new object called <code>ages</code> from the <code>attain</code> dataset by selecting the column name called <code>age</code> using the appropriate tidyverse function and glimpsing the object. What is the type of variable in it? (e.g., numeric, character, boolean).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">select</span>(age)  <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4095,25 +4099,14 @@ $ age &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 25
 </section>
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
-<p>Now create a new object from the the original <code>attain</code> dataset (column name = <code>marital</code>), call it <code>marital_status</code>, and view the object using the <code>print</code> function. What is the type of variable in this column vector?</p>
+<p>Now create a new object from the the original <code>attain</code> dataset (column name = <code>marital</code>), call it <code>marital_status</code>, and view the object using the <code>glimpse</code> function. What is the type of variable in this column vector?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>marital_status <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">select</span>(marital) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>marital_status <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">select</span>(marital) <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,992 × 1
-   marital 
-   &lt;chr&gt;   
- 1 divorced
- 2 married 
- 3 married 
- 4 married 
- 5 never ma
- 6 never ma
- 7 widowed 
- 8 never ma
- 9 widowed 
-10 divorced
-# ℹ 2,982 more rows</code></pre>
+<pre><code>Rows: 2,992
+Columns: 1
+$ marital &lt;chr&gt; &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;never ma&quot;, &quot;neve…</code></pre>
 </div>
 </div>
 <p><strong>What is the type of variable?</strong></p>
@@ -4122,7 +4115,7 @@ $ age &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 25
 </section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
-<p>Suppose we want to only look at a smaller dataset that contains the respondent’s age, sex, race, marital status, and age at marriage (column names <code>age</code>, <code>sex</code>, <code>race</code>, <code>marital</code>, <code>agewed</code>, respectively). Create a subset of the original <code>attain</code> dataset (call it <code>subset1</code>) using the appropriate tidyverse function. Make sure to glimpse it so we can see what it looks like.</p>
+<p>Suppose we want to only look at a smaller dataset that contains the respondent’s age, sex, race, marital status, and age at marriage (column names <code>age</code>, <code>sex</code>, <code>race</code>, <code>marital</code>, <code>agewed</code>, respectively). Create a subset of the original <code>attain</code> dataset (call it <code>subset1</code>) using the appropriate tidyverse functions. Make sure to glimpse it so we can see what it looks like.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>subset1 <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
@@ -4203,7 +4196,7 @@ $ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 187
 </section>
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
-<p>Now, suppose we are really concerned about unemployment within our sample (column name <code>unemp</code>). But, we notice that many respondents have missing unemployment statuses (i.e., <code>unemp</code> is equal to <code>NA</code>). Let’s create a subset that consists of all respondents who do not have missing unemployment information. (<em>Hint: to find observations that are not missing, use the <code>!</code> (not) logical operator and the <code>is.na</code> function.</em>)</p>
+<p>Now, suppose we are really concerned about unemployment within our sample (column name <code>unemp</code>). But, we notice that many respondents have missing unemployment statuses (i.e., <code>unemp</code> is equal to <code>NA</code>). Let’s create a subset that consists of all respondents who do not have missing unemployment information. (<em>Hint: to find observations that are not missing, combine the <code>!</code> (not) logical operator and the <code>is.na</code> function.</em>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to check how many respondents are in your subset!</span></span>
@@ -4386,7 +4379,7 @@ $ rincom91 &lt;dbl&gt; NA, 11250, 18750, 45000, 32500, 100000, 45000, 67500, NA,
 </section>
 <section id="question-9" class="level2">
 <h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
-<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (<em>Hint: Create a new variable and call it <code>years_since_kid</code>. You’ll have to do some subtration here!</em>)</p>
+<p>Create a new variable in the dataset that measures the number of years since the birth of the respondent’s first child, using the variables <code>age</code> and <code>agekdbrn</code>. Call the new dataset <code>attain_kids</code>. Use the appropriate tidyverse function to do this (<em>Hint: Create a new variable and call the new variable <code>years_since_kid</code>. You’ll have to do some subtration here!</em>)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>attain_kids <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
@@ -4446,7 +4439,7 @@ $ years_since_kid &lt;dbl&gt; 12, NA, NA, 36, NA, NA, 23, 2, 24, 28, NA, NA, 26,
 </section>
 <section id="question-10" class="level2">
 <h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
-<p>Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the <code>attain</code> dataset again, let’s’ first rename the variable–call it “to_drop”–and then drop it from the dataset (<em>Hint: Youe can use a negative sign before the variable to select everything but that one.</em>). How can you tell for sure that this worked (<em>Hint: think about how many rows you should have.</em>)</p>
+<p>Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the <code>attain</code> dataset again, let’s’ first rename the variable–call it “to_drop”–and then drop it from the dataset (<em>Hint: Youe can use a negative sign before the variable to select everything but that one.</em>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>attain_breadwinner <span class="ot">&lt;-</span> attain <span class="sc">%&gt;%</span></span>
@@ -4501,7 +4494,7 @@ $ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 2750
 $ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …</code></pre>
 </div>
 </div>
-<p><strong>How many respondents are in this subset?</strong></p>
+<p><strong>How can you tell for sure that this worked(<em>Hint: think about how many rows you should have.</em>)?</strong></p>
 <p><em>should be 43 columns instead of 44</em></p>
 <hr>
 <div class="callout callout-style-default callout-tip callout-titled">
