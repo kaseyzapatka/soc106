@@ -43,6 +43,8 @@ attain <- read_csv(here("data/attain.csv"))
 **HW #1:** due Tuesday, February 10, 11:59 PM -- _Extended deadline_
  - any questions?
 
+**HW #2:** due Thursday, February 12, 11:59 PM
+
 ## Learning goals {.smaller}
 
 1. Identify and distinguish between different variable types (ratio, interval, ordinal, nominal)
@@ -52,9 +54,19 @@ attain <- read_csv(here("data/attain.csv"))
 
 ## Agenda {.smaller}
 
+- Finish lab from last week 
 - Getting data to use in future weekly assignments and your final paper
 - Visualizing data using ggplot
 - Weekly assignments example 
+- Begin paper proposal discussion
+
+## Finish Lab #1 {.smaller}
+
+Let's jump back in to Lab #1: 
+
+- Open soc106/labs/lab1.qmd
+- Decide if you want to use `Source` or `Visual` to interact with the script
+
 
 ## What type of data? {.smaller}
 
