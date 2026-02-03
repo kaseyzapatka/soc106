@@ -1323,11 +1323,18 @@
     "text": "Weekly assignment example"
   },
   {
-    "objectID": "assignments/index.html#slides",
-    "href": "assignments/index.html#slides",
-    "title": "Assignments",
+    "objectID": "assignments/index.html#assignment-examples",
+    "href": "assignments/index.html#assignment-examples",
+    "title": "Sociology 106",
     "section": "",
-    "text": "Weekly assignment example\nPaper proposal"
+    "text": "Weekly assignment example"
+  },
+  {
+    "objectID": "assignments/index.html#paper-proposal-examples",
+    "href": "assignments/index.html#paper-proposal-examples",
+    "title": "Sociology 106",
+    "section": "Paper proposal examples",
+    "text": "Paper proposal examples\n\n01-Paper proposal example"
   },
   {
     "objectID": "assignments/hw3/hw3_key.html",
@@ -2489,7 +2496,7 @@
     "href": "slides/week3.html#housekeeping",
     "title": "Week 3",
     "section": "Housekeeping",
-    "text": "Housekeeping\nWeekly assignments\n\nDue on Thursdays nights (except for hw1)\nGenerally, if a couple of things not quite right → still full credit. If more than a couple → half credit\nEach assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped\nBut, multiple assignments not turned in will negatively affect your grade!\n\nHW #1: due Tuesday, February 10, 11:59 PM – Extended deadline - any questions?"
+    "text": "Housekeeping\nWeekly assignments\n\nDue on Thursdays nights (except for hw1)\nGenerally, if a couple of things not quite right → still full credit. If more than a couple → half credit\nEach assignment is only 3% of your grade, and lowest grade over the course of the semester is dropped\nBut, multiple assignments not turned in will negatively affect your grade!\n\nHW #1: due Tuesday, February 10, 11:59 PM – Extended deadline - any questions?\nHW #2: due Thursday, February 12, 11:59 PM"
   },
   {
     "objectID": "slides/week3.html#learning-goals",
@@ -2503,7 +2510,14 @@
     "href": "slides/week3.html#agenda",
     "title": "Week 3",
     "section": "Agenda",
-    "text": "Agenda\n\nGetting data to use in future weekly assignments and your final paper\nVisualizing data using ggplot\nWeekly assignments example"
+    "text": "Agenda\n\nFinish lab from last week\nGetting data to use in future weekly assignments and your final paper\nVisualizing data using ggplot\nWeekly assignments example\nBegin paper proposal discussion"
+  },
+  {
+    "objectID": "slides/week3.html#finish-lab-1",
+    "href": "slides/week3.html#finish-lab-1",
+    "title": "Week 3",
+    "section": "Finish Lab #1",
+    "text": "Finish Lab #1\nLet’s jump back in to Lab #1:\n\nOpen soc106/labs/lab1.qmd\nDecide if you want to use Source or Visual to interact with the script"
   },
   {
     "objectID": "slides/week3.html#what-type-of-data",
@@ -3162,19 +3176,5 @@
     "title": "Week 5",
     "section": "Research Paper Proposal",
     "text": "Research Paper Proposal\nYou don’t have to write about what statistical analysis you will use, but you should end with a sentence that talks generally about the relationship you expect to see between your independent and dependent variables\nExample:\n\n“I expect that people who report higher family incomes will be more likely to agree with the survey question that the government should reduce taxes.”\n\nNote: Your proposal can (and prob should) use the data/topic that you’ve been working with in weekly assignments so far."
-  },
-  {
-    "objectID": "assignments/index.html#assignment-examples",
-    "href": "assignments/index.html#assignment-examples",
-    "title": "Sociology 106",
-    "section": "",
-    "text": "Weekly assignment example"
-  },
-  {
-    "objectID": "assignments/index.html#paper-proposal-examples",
-    "href": "assignments/index.html#paper-proposal-examples",
-    "title": "Sociology 106",
-    "section": "Paper proposal examples",
-    "text": "Paper proposal examples\n\n01-Paper proposal example"
   }
 ]
