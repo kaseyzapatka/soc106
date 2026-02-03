@@ -438,7 +438,7 @@ You'll be provided a `hw#.qmd` each week that you'll use as a template to comple
 
 Some weeks you'll just answer specific questions, but in weeks that require you to use your own data, you'll approach the assignment like a research paper, which you can use to build into the final paper. 
 
-Let's look at an example to better understand what I'm asking.
+Let's [look at an example](https://www.kaseyzapatka.com/soc106/assignments/hw0.html) to better understand what I'm asking.
 
 
 ## Weekly Assignment #2 {.smaller}
@@ -453,7 +453,7 @@ Using a dataset of your choice, choose a research question and construct a plot 
 
 ## Paper Proposal (5%) {.smaller}
 
-A **two-page double-spaced proposal** for your final paper is due on bCourses by **Thursday, February 26 at 11:59 PM**.
+A **two-page double-spaced proposal** for your final paper is due on bCourses by **Thursday, February 26 at 11:59 PM**. Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html). 
 
 **Your proposal should include:**
 
