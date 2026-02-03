@@ -303,15 +303,15 @@ ggplot(data = attain, aes(x = age)) +
 
 ### `binwidth()`
 
-Alternatively, you can make the bins wider to include more observations. Here, we set the `binwidth = 50`, which makes the bins span 50 units. 
+Alternatively, you can make the bins wider to include more observations. Here, we set the `binwidth = 10`, which makes the bins span 10 units. 
 
 ``` {r}
 #| echo: true
 #| output-location: column
 
 ggplot(data = attain, aes(x = age)) +
-  # set binwidth to 50
-  geom_histogram(binwidth = 50, fill = "#4CBB17") +
+  # set binwidth to 10
+  geom_histogram(binwidth = 10, fill = "#4CBB17") +
   labs(
     title = "Age Distribution",
     x = "Age",
@@ -332,7 +332,7 @@ A **line chart** is similar to a bar graph but the tops of the bars are represen
 ### What is a line chart?
 
 - X and Y variables are ordered in some way (ordinal, interval, ratio)
-- Useful when you want to show change in a `Y` variable over your `X` variable
+- Most useful to show change in a `Y` variable over your `X` variable
 - May not work well with missing values
 - We can do this using the `geom_line()` function
 
@@ -398,7 +398,7 @@ geom_point() +
 
 ## Boxplot: geom_boxplot(){.smaller}
 
-The **boxplot** compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all "outlying" points individually.
+The **boxplot** compactly displays the distribution of a continuous variable, usually by a categorical one. It visualises five summary statistics (the median, 25th and 75th percentile form the box), and all "outlying" points individually.
 
 ::: {.panel-tabset}
 

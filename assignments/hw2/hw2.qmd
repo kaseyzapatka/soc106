@@ -23,7 +23,7 @@ editor: visual
 
 ## Instructions
 
-Using a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting. Y
+Using a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting.
 
 ```{r}
 # Clear environment
@@ -64,8 +64,7 @@ library(here)
 
 ## Analytic strategy
 
-**Describe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.**
-
+**Describe the type of plot you are going to use to analyze the data, including the names of plot and the general R commands. Why are yo using this type of plot instead of another? A few sentences is fine.**
 *Insert your answer here*
 
 ## Code
@@ -80,19 +79,19 @@ library(here)
 
 ## Results
 
-**Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.**
+**Present the results of the analysis here. What did you learn from the figure? This is not the place for extended commentary, just the basic results of your analysis (e.g., X cateogry has a lot of observations, there seems to be a relationship between X and Y). Should only be a few sentences.**
 
 *Insert your answer here*
 
 ## Discussion of results
 
-**Here’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.**
+**Here’s where you talk about how your predictions went and what the findings mean about the answer to your research question. (e.g., Were you wrong, were you right? Why might that have been?) One to three sentences will do.**
 
 *Insert your answer here*
 
 ## Limitations and alternative explanations
 
-**This is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.**
+**This is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. What else might you need to better address this question? Two to three sentences is fine.**
 
 *Insert your answer here*
 
@@ -103,5 +102,5 @@ library(here)
 -   [ ] All code chunks run without errors
 -   [ ] You've answered all written response questions
 -   [ ] You've clicked "Render" and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)
--   [ ] You're submitting the `hw1.qmd` file to bCourse
+-   [ ] You're submitting both `hw2.qmd` and `hw2.html` files to bCourse
 :::

@@ -620,12 +620,12 @@
 </div></div>
 </div>
 <div id="tabset-3-4">
-<p>Alternatively, you can make the bins wider to include more observations. Here, we set the <code>binwidth = 50</code>, which makes the bins span 50 units.</p>
+<p>Alternatively, you can make the bins wider to include more observations. Here, we set the <code>binwidth = 10</code>, which makes the bins span 10 units.</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="co"># set binwidth to 50</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">50</span>, <span class="at">fill =</span> <span class="st">"#4CBB17"</span>) <span class="sc">+</span></span>
+<span id="cb8-2"><a></a>  <span class="co"># set binwidth to 10</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"#4CBB17"</span>) <span class="sc">+</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">labs</span>(</span>
 <span id="cb8-5"><a></a>    <span class="at">title =</span> <span class="st">"Age Distribution"</span>,</span>
 <span id="cb8-6"><a></a>    <span class="at">x =</span> <span class="st">"Age"</span>,</span>
@@ -654,7 +654,7 @@
 <div id="tabset-4-1">
 <ul>
 <li>X and Y variables are ordered in some way (ordinal, interval, ratio)</li>
-<li>Useful when you want to show change in a <code>Y</code> variable over your <code>X</code> variable</li>
+<li>Most useful to show change in a <code>Y</code> variable over your <code>X</code> variable</li>
 <li>May not work well with missing values</li>
 <li>We can do this using the <code>geom_line()</code> function</li>
 </ul>
@@ -726,7 +726,7 @@
 </section>
 <section id="boxplot-geom_boxplot" class="slide level2 smaller">
 <h2>Boxplot: geom_boxplot()</h2>
-<p>The <strong>boxplot</strong> compactly displays the distribution of a continuous variable. It visualises five summary statistics (the median, two hinges and two whiskers), and all “outlying” points individually.</p>
+<p>The <strong>boxplot</strong> compactly displays the distribution of a continuous variable, usually by a categorical one. It visualises five summary statistics (the median, 25th and 75th percentile form the box), and all “outlying” points individually.</p>
 <div class="panel-tabset">
 <ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">What is a boxplot?</a></li><li><a href="#tabset-6-2"><code>geom_boxplot()</code></a></li></ul>
 <div class="tab-content">
