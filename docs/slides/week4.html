@@ -206,7 +206,9 @@
 </section>
 <section id="housekeeping" class="slide level2 smaller">
 <h2>Housekeeping</h2>
-<p>[[<strong>ADD IT IN LATER</strong>]]</p>
+<p><strong>HW #1:</strong> due tonight (Tuesday, February 10) by 11:59 PM – <em>Extended deadline</em> - any questions?</p>
+<p><strong>HW #2:</strong> due Thursday, February 12, 11:59 PM - Ideal to use your final project data</p>
+<p><strong>Paper Proposal (5%):</strong> due Thursday, February 26, 11:59 PM - A <strong>two-page double-spaced proposal</strong> for your final paper. - Here’s <a href="https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html">an example</a> of what I expect.</p>
 </section>
 <section id="questions" class="slide level2">
 <h2>Questions?</h2>
@@ -231,8 +233,34 @@
 </ul></li>
 </ul>
 </section>
-<section id="relative-frequencies" class="slide level2 smaller">
-<h2>Relative frequencies</h2>
+<section id="what-is-a-good-research-question" class="slide level2 smaller">
+<h2>What is a good research question?</h2>
+<ol type="1">
+<li class="fragment"><strong>Specifies a relationship</strong> between two or more variables
+<ul>
+<li class="fragment">Not just “What is X?” but “How does X relate to Y?”</li>
+</ul></li>
+<li class="fragment"><strong>Is answerable with data</strong> — can be investigated empirically</li>
+<li class="fragment"><strong>Has sociological significance</strong> — connects to broader theory or social patterns</li>
+<li class="fragment"><strong>Is clearly scoped</strong> — specific enough to study, not so narrow it’s trivial</li>
+</ol>
+<p><strong>Examples from sociology:</strong></p>
+<ul>
+<li>“Is there an association between educational attainment and income in the U.S.?”</li>
+<li>“Do marriage rates differ across racial groups, and how has this changed over time?”</li>
+<li>“Is religious affiliation associated with political ideology?”</li>
+</ul>
+<blockquote>
+<p>A good research question guides everything else: your data, your variables, and your choice of summary statistics or measures of association.</p>
+</blockquote>
+</section>
+<section>
+<section id="frequencies" class="title-slide slide level1 center">
+<h1>Frequencies</h1>
+
+</section>
+<section id="frequencies-relative-frequencies" class="slide level2 smaller">
+<h2>Frequencies: relative frequencies</h2>
 <p><strong>Relative frequency</strong> (aka proportion): the frequency of observations for a given variable, divided by the total number of observations.</p>
 <ul>
 <li>This is similar to a probability, though statisticians generally talk about probabilities existing “in the world” and relative frequencies existing “within the data”</li>
@@ -247,8 +275,8 @@
 <li><span class="math inline">\(p_{X=i,Y=j} = \frac{n_{X=i,Y=j}}{n_{total}}\)</span></li>
 </ul>
 </section>
-<section id="marginal-frequencies" class="slide level2 smaller">
-<h2>Marginal frequencies</h2>
+<section id="frequencies-marginal-frequencies" class="slide level2 smaller">
+<h2>Frequencies: marginal frequencies</h2>
 <p>The <strong>marginal (or conditional) proportion</strong> is the relative frequency of observations taking a certain value for a given variable (i.e., X), conditional on the observations taking a certain value for another variable (i.e., Y)</p>
 <p><strong>Notation:</strong></p>
 <ul>
@@ -256,8 +284,8 @@
 <li><p>Sometimes <span class="math inline">\(p_{X=i|Y=j}\)</span> is shortened to <span class="math inline">\(p_{ij}\)</span></p></li>
 </ul>
 </section>
-<section id="marginal-frequency-example" class="slide level2 smaller">
-<h2>Marginal frequency example</h2>
+<section id="frequencies-examples" class="slide level2 smaller">
+<h2>Frequencies: Examples</h2>
 <p>The table below is reconstructed from a published study:</p>
 <table class="caption-top">
 <thead>
@@ -286,7 +314,7 @@
 </tbody>
 </table>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">18th Century</a></li><li><a href="#tabset-1-2">19th Century</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">18th Century (marginal freq)</a></li><li><a href="#tabset-1-2">19th Century (marginal freq)</a></li><li><a href="#tabset-1-3">Relative freq</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <p>Marginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 18th century:</p>
@@ -296,46 +324,18 @@
 <p>Marginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 19th century:</p>
 <p><span class="math display">\[21/103 = 20.3\%\]</span></p>
 </div>
+<div id="tabset-1-3">
+<p>We can also recover the overall relative frequency from the same table — the number of all founders in the publishing trades, divided by all foundings:</p>
+<p><span class="math display">\[(109 + 21)/(162 + 103) = 130/265 = 49.1\%\]</span></p>
+</div>
 </div>
 </div>
 
 <aside><div>
 <p>Source: Haveman, Habinek, and Goodman. 2012. “How Entrepreneurship Evolves: The Founders of New Magazines in America, 1741-1860.” <em>Administrative Science Quarterly</em>. 57(4):553-584.</p>
 </div></aside></section>
-<section id="back-to-relative-frequencies" class="slide level2 smaller">
-<h2>Back to relative frequencies…</h2>
-<p>We could use the table, which provides marginal frequencies, to calculate the relative frequency of magazine founders’ occupations being in the publishing trade:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>18th Century</th>
-<th>19th Century</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Publishing Trade</strong></td>
-<td>109</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td><strong>Other Occupations</strong></td>
-<td>53</td>
-<td>82</td>
-</tr>
-<tr class="odd">
-<td><strong>Total</strong></td>
-<td>162</td>
-<td>103</td>
-</tr>
-</tbody>
-</table>
-<p>The number of all magazine foundings whose founders were in the publishing trades, divided by all magazine foundings:</p>
-<p><span class="math display">\[(109 + 21)/(162 + 103) = 130/265 = 49.1\%\]</span></p>
-</section>
-<section id="using-relative-marginal-frequencies" class="slide level2 smaller">
-<h2>Using relative &amp; marginal frequencies</h2>
+<section id="frequencies-when-to-use" class="slide level2 smaller">
+<h2>Frequencies: when to use</h2>
 <p>Relative frequencies are <strong>more useful if both variables are categorical</strong>, not continuous</p>
 <ul>
 <li>If the variable is continuous, there may not be very many observations that have a certain value for a given variable</li>
@@ -343,11 +343,11 @@
 </ul>
 <p>Same for marginal frequencies: more useful if both variables are categorical, not continuous</p>
 </section>
-<section id="calculating-frequencies-in-r" class="slide level2 smaller">
-<h2>Calculating frequencies in R</h2>
+<section id="frequencies-calculating-in-r" class="slide level2 smaller">
+<h2>Frequencies: calculating in R</h2>
 <p>Now, let’s use <code>R</code> to calculate relative and marginal frequencies</p>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Relative freq</a></li><li><a href="#tabset-2-2">Marginal freq (option 1)</a></li><li><a href="#tabset-2-3">Marginal freq (option 2)</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Relative freq</a></li><li><a href="#tabset-2-2">Marginal freq (one group)</a></li><li><a href="#tabset-2-3">Marginal freq (two groups)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <p>Relative frequency formula : <span class="math inline">\(p_{X=i} = \frac{n_{X=i}}{n_{total}}\)</span></p>
@@ -356,7 +356,7 @@
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>attain <span class="sc">|&gt;</span> </span>
 <span id="cb1-2"><a></a>  <span class="co"># count absolute frequencies</span></span>
 <span id="cb1-3"><a></a>  <span class="fu">count</span>(marital) <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a></a>  <span class="co"># create a proprotion  </span></span>
+<span id="cb1-4"><a></a>  <span class="co"># create a proportion</span></span>
 <span id="cb1-5"><a></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
@@ -373,7 +373,7 @@
 </div></div>
 </div>
 <div id="tabset-2-2">
-<p>Marginal frequency formula : <span class="math inline">\(p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}\)</span></p>
+<p>Marginal frequency for males. Formula : <span class="math inline">\(p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}\)</span></p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>attain <span class="sc">|&gt;</span> </span>
@@ -397,7 +397,7 @@
 </div></div>
 </div>
 <div id="tabset-2-3">
-<p>Marginal frequency formula : <span class="math inline">\(p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}\)</span></p>
+<p>Marginal frequencies for both male and female. Formula : <span class="math inline">\(p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}\)</span></p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>attain <span class="sc">|&gt;</span> </span>
@@ -429,76 +429,134 @@
 </section>
 <section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
+</section></section>
+<section>
+<section id="central-tendency-dispersion" class="title-slide slide level1 center">
+<h1>Central Tendency &amp; Dispersion</h1>
+
 </section>
-<section id="measures-of-central-tendency" class="slide level2 smaller">
-<h2>Measures of central tendency</h2>
+<section id="central-tendency-definitions" class="slide level2 smaller">
+<h2>Central tendency: definitions</h2>
 <p><strong>Mode</strong>: the value of a variable that occurs most often in the data set</p>
-<p><strong>Median</strong>: the middle data value, if the data are ordered by increasing value</p>
-<p><strong>Mean</strong> (aka average): the sum of all values in the data set, divided</p>
-</section>
-<section id="measures-of-central-tendency-1" class="slide level2 smaller">
-<h2>Measures of central tendency</h2>
-<p><strong>Mode</strong>: the value of a variable that occurs most often in the data set</p>
-<p>Example data of number of people 10 members of a high school class sent text messages to Monday: <code>5, 2, 10, 4, 3, 2, 6, 15, 3, and 2</code>.</p>
-<p>The mode of this variable in this data set is <strong>2</strong>, because it occurs more often (3 times) than any other value</p>
-</section>
-<section id="measures-of-central-tendency-2" class="slide level2 smaller">
-<h2>Measures of central tendency</h2>
 <p><strong>Median</strong>: the middle data value, if the data are ordered by increasing value</p>
 <ul>
 <li>If there are an even number of observations, the median is the midpoint between the two middle values</li>
 </ul>
-</section>
-<section id="measures-of-central-tendency-3" class="slide level2 smaller">
-<h2>Measures of central tendency</h2>
-<p>Same example: (<code>5, 2, 10, 4, 3, 2, 6, 15, 3, 2</code>)</p>
-<ul>
-<li><p>First, order the data: (<code>2, 2, 2, 3, 3, 4, 5, 6, 10, 15</code>)</p></li>
-<li><p>Second, find the middle observation(s): (<code>2, 2, 2, 3, 3, 4, 5, 6, 10, 15</code>)</p></li>
-</ul>
-<p>Since we have two middle observations, find the midpoint: <strong>3.5</strong></p>
-</section>
-<section id="measures-of-central-tendency-4" class="slide level2 smaller">
-<h2>Measures of central tendency</h2>
 <p><strong>(Arithmetic) mean</strong> (aka average): the sum of all values in the data set, divided by the number of observations in the data set</p>
-<p><strong>Notation:</strong></p>
 <p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i\]</span></p>
-<p>Example: (<code>5, 2, 10, 4, 3, 2, 6, 15, 3, 2</code>)</p>
-<p>Mean = <code>(5+2+10+4+3+2+6+15+3+2)/10</code> = <strong>5.2</strong></p>
 </section>
-<section id="measures-of-central-tendency-5" class="slide level2 smaller">
-<h2>Measures of central tendency</h2>
-<p>Example: (<code>5, 2, 10, 4, 3, 2, 6, 15, 3, 2</code>)</p>
-<p><strong>Summary:</strong></p>
+<section id="central-tendency-worked-example" class="slide level2 smaller">
+<h2>Central tendency: worked example</h2>
+<p>Example data of number of people 10 members of a high school class sent text messages to on Monday: <code>5, 2, 10, 4, 3, 2, 6, 15, 3, 2</code></p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Mode</a></li><li><a href="#tabset-3-2">Median</a></li><li><a href="#tabset-3-3">Mean</a></li><li><a href="#tabset-3-4">Summary</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>The value that occurs most often:</p>
+<p><code>5, 2, 10, 4, 3, 2, 6, 15, 3, 2</code> — <strong>2</strong> appears 3 times, more than any other value</p>
+<p><strong>Mode = 2</strong></p>
+</div>
+<div id="tabset-3-2">
+<p>Order the data, then find the middle value(s):</p>
+<p>(<code>2, 2, 2, 3,</code> <strong>3, 4,</strong> <code>5, 6, 10, 15</code>)</p>
+<p>Two middle observations — find the midpoint: <span class="math inline">\((3 + 4)/2\)</span> = <strong>3.5</strong></p>
+<p><strong>Median = 3.5</strong></p>
+</div>
+<div id="tabset-3-3">
+<p>Sum all values and divide by <span class="math inline">\(n\)</span>:</p>
+<p><code>(5+2+10+4+3+2+6+15+3+2) / 10</code> = <strong>5.2</strong></p>
+<p><strong>Mean = 5.2</strong></p>
+</div>
+<div id="tabset-3-4">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mode</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>Median</td>
+<td>3.5</td>
+</tr>
+<tr class="odd">
+<td>Mean</td>
+<td>5.2</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that mode (2) &lt; median (3.5) &lt; mean (5.2) — this is a sign of <strong>right skew</strong>, produced by the outliers 10 and 15</p>
+</div>
+</div>
+</div>
+</section>
+<section id="central-tendency-skewness" class="slide level2 smaller">
+<h2>Central tendency: skewness</h2>
+<p>Relationship between mean, median, and mode tells us about the <strong>skew</strong> of a distribution:</p>
 <ul>
-<li>Mode = 2</li>
-<li>Median = 3.5</li>
-<li>Mean = 5.2</li>
+<li><strong>Symmetric</strong>: Mean ≈ Median ≈ Mode.</li>
 </ul>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Left-skewed</a></li><li><a href="#tabset-4-2">Right-skewed</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<ul>
+<li><strong>Left-skewed</strong> (negative skew): the tail extends to the left. Mean &lt; Median &lt; Mode.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The mean is pulled toward the long left tail, so it is <strong>less than</strong> the median.</p>
+</div>
+<div id="tabset-4-2">
+<ul>
+<li><strong>Right-skewed</strong> (positive skew): the tail extends to the right. Mean &gt; Median &gt; Mode.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The mean is pulled toward the long right tail, so it is <strong>greater than</strong> the median.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="a-visual-example" class="slide level2">
-<h2>A visual example</h2>
+<section id="central-tendency-summary" class="slide level2 smaller">
+<h2>Central tendency: summary</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
-<p><br></p>
-<p>Here’s a visual example of how mode, mean, and median can work</p>
-</div><div class="column" style="width:60%;">
-<p><img data-src="images/week4/histogram.png"></p>
-</div></div>
-</section>
-<section id="comparing-measures" class="slide level2 smaller">
-<h2>Comparing measures</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
+<div class="column" style="width:55%;">
 <ul>
 <li><strong>Mode</strong> can be used on variables of <em>any level of measurement</em>
 <ul>
-<li>Less useful for continuous variables, since values are not sufficiently granular (e.g.&nbsp;yearly earnings)</li>
+<li>Less useful for continuous variables (e.g.&nbsp;yearly earnings)</li>
+<li>Generally the least useful; we usually prefer median or mean</li>
 </ul></li>
-<li><strong>Median</strong> <em>cannot be used on nominal variables</em>, because it requires you to order observations</li>
-<li><strong>Mean</strong> <em>cannot be used on nominal OR ordinal variables</em>, because it requires that we can say something about the distance between values</li>
+<li><strong>Median</strong> <em>cannot be used on nominal variables</em> (requires ordering)
+<ul>
+<li>Robust to outliers: median (3.5) does not depend on outliers 10 and 15</li>
+</ul></li>
+<li><strong>Mean</strong> <em>cannot be used on nominal OR ordinal variables</em> (requires meaningful distances)
+<ul>
+<li>Takes into account the full distribution, but sensitive to outliers: mean (5.2) is pulled up by 10 and 15</li>
+</ul></li>
 </ul>
-</div><div class="column" style="width:40%;">
+</div><div class="column" style="width:45%;">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -531,26 +589,13 @@
 </table>
 </div></div>
 </section>
-<section id="which-should-we-preder" class="slide level2 smaller">
-<h2>Which should we preder?</h2>
-<p>Same example: <code>(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)</code>.</p>
-<p><strong>Mode</strong> is generally the least useful; in most cases we will prefer to use the median or mean</p>
-<p><strong>Median</strong> provides less information about the distribution of the variable, but is robust to outliers</p>
-<ul>
-<li>The median (3.5) does not depend on the values of the outliers 10 and 15</li>
-</ul>
-<p><strong>Mean</strong> takes into account the distribution of the variable, but is less robust to outliers</p>
-<ul>
-<li>The mean (5.2) is strongly affected by the values of the outliers 10 and 15</li>
-</ul>
-</section>
-<section id="measures-of-central-tendency-in-r" class="slide level2 smaller">
-<h2>Measures of central tendency in R</h2>
+<section id="central-tendency-calculating-in-r" class="slide level2 smaller">
+<h2>Central tendency: calculating in R</h2>
 <p>These measures are simple to calculate in <code>R</code>. Let’s take a look:</p>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Mean</a></li><li><a href="#tabset-3-2">Meidan</a></li><li><a href="#tabset-3-3">Mode</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Mean</a></li><li><a href="#tabset-5-2">Median</a></li><li><a href="#tabset-5-3">Mode</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-5-1">
 <p>To calculate the mean respondent income in our sample, we can use the <code>summarize()</code> or <code>summarise()</code> function. Be sure to remove missing using <code>na.rm = TRUE</code>, which can affect the calculation.</p>
 <div class="cell columns column-output-location">
 <div class="column">
@@ -567,32 +612,32 @@
 </div>
 </div></div>
 </div>
-<div id="tabset-3-2">
-<p>We can do the same with for the median using the <code>median()</code> function:</p>
+<div id="tabset-5-2">
+<p>We can do the same for the median using the <code>median()</code> function:</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Median</span></span>
 <span id="cb9-2"><a></a>attain <span class="sc">|&gt;</span> </span>
-<span id="cb9-3"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">median</span>(rincom91, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a></a>  <span class="fu">summarise</span>(<span class="at">median =</span> <span class="fu">median</span>(rincom91, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb9-4"><a></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
-   mean
-  &lt;dbl&gt;
-1 21250</code></pre>
+  median
+   &lt;dbl&gt;
+1  21250</code></pre>
 </div>
 </div></div>
 </div>
-<div id="tabset-3-3">
-<p>For the mode, we’ll simply want to count the number of obs (using <code>count()</code>) and take the largest number. We can do following to see the most common martial status, which is unsurprising “married”.</p>
+<div id="tabset-5-3">
+<p>For the mode, we’ll simply want to count the number of obs (using <code>count()</code>) and take the largest number. We can do the following to see the most common marital status, which is unsurprisingly “married”.</p>
 
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>attain <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">count</span>(marital) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>attain <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">count</span>(marital) <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a></a>  <span class="fu">glimpse</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb11-4"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb11-5"><a></a>  <span class="fu">pull</span>(marital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
@@ -614,8 +659,8 @@ $ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1</code></pre>
 <section id="questions-2" class="slide level2">
 <h2>Questions?</h2>
 </section>
-<section id="measures-of-dispersion" class="slide level2 smaller">
-<h2>Measures of dispersion</h2>
+<section id="dispersion-overview" class="slide level2 smaller">
+<h2>Dispersion: overview</h2>
 <ul>
 <li><p><strong>Percentiles</strong>: the <span class="math inline">\(k\)</span>th percentile of the variable is the value that has the property that at least <span class="math inline">\(k\)</span> percent of the data are less than or equal to it</p></li>
 <li><p><strong>Deviation from the mean</strong>: the difference between a data value and the sample mean</p></li>
@@ -623,45 +668,64 @@ $ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1</code></pre>
 <li><p><strong>Sample standard deviation</strong>: the square root of the sample variance</p></li>
 </ul>
 </section>
-<section id="measures-of-dispersion-1" class="slide level2 smaller">
-<h2>Measures of dispersion</h2>
+<section id="dispersion-percentiles" class="slide level2 smaller">
+<h2>Dispersion: percentiles</h2>
 <p><strong>Percentiles</strong>: the <span class="math inline">\(k\)</span>th percentile of the variable is the value that has the property that at least k percent of the data are less than or equal to it</p>
 <p><strong>Calculating the <span class="math inline">\(k\)</span>th percentile:</strong></p>
 <ol type="1">
-<li>Order the data from smallest to largest: <span class="math inline">\((x_1, ..., x_n)\)</span></li>
-<li>Calculate the index <span class="math inline">\(i = \frac{k \times n_{total}}{100}\)</span></li>
-<li>If index is a whole number, the percentile is an average of the ith and the (<span class="math inline">\(i\)</span>+1)th values in the ordered data</li>
-<li>If index is not a whole number, round up to whole number, and the percentile is the <span class="math inline">\(i\)</span>th number</li>
+<li class="fragment">Order the data from smallest to largest: <span class="math inline">\((x_1, ..., x_n)\)</span></li>
+<li class="fragment">Calculate the index <span class="math inline">\(i = \frac{k \times n_{total}}{100}\)</span></li>
+<li class="fragment">If index is a whole number, the percentile is an average of the ith and the (<span class="math inline">\(i\)</span>+1)th values in the ordered data</li>
+<li class="fragment">If index is not a whole number, round up to whole number, and the percentile is the <span class="math inline">\(i\)</span>th number</li>
 </ol>
 </section>
-<section id="measures-of-dispersion-2" class="slide level2 smaller">
-<h2>Measures of dispersion</h2>
-<p><strong>Example</strong>: calculating the 30th and 45th percentile of the dataset of # texts per day: <code>(5, 2, 10, 4, 3, 2, 6, 15, 3, 2)</code></p>
-<p>First, order the data: <strong>(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)</strong></p>
-<p>Second, calculate the indexes:</p>
-<ul>
-<li>30th: <span class="math inline">\(30 \times 10/100 = 3\)</span></li>
-<li>45th: <span class="math inline">\(45 \times 10/100 = 4.5\)</span></li>
-</ul>
-<p>For the <strong>30th percentile</strong>: the index 3 is a whole number, so we take the average of the 3rd and 4th values in the ordered dataset: <span class="math inline">\((2 + 3)/2 = 2.5\)</span></p>
-<p>For the <strong>45th percentile</strong>: the index 4.5 is not a whole number, so we round up to 5 and take the 5th value in the ordered dataset: <strong>3</strong></p>
+<section id="dispersion-percentile-example" class="slide level2 smaller">
+<h2>Dispersion: percentile example</h2>
+<p><strong>Example</strong>: calculating the 30th and 45th percentile of: <code>(5, 2, 10, 4, 3, 2, 6, 15, 3, 2)</code></p>
+<p><strong>Step 1</strong> — Order the data: <strong>(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)</strong></p>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">30th percentile</a></li><li><a href="#tabset-6-2">45th percentile</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p><strong>Step 2</strong> — Calculate the index: <span class="math inline">\(30 \times 10/100 = 3\)</span></p>
+<p><strong>Step 3</strong> — Index is a whole number, so average the 3rd and 4th values:</p>
+<p><span class="math display">\[(2 + 3)/2 = \mathbf{2.5}\]</span></p>
+</div>
+<div id="tabset-6-2">
+<p><strong>Step 2</strong> — Calculate the index: <span class="math inline">\(45 \times 10/100 = 4.5\)</span></p>
+<p><strong>Step 3</strong> — Index is not a whole number, so round up to 5 and take the 5th value:</p>
+<p><span class="math display">\[\mathbf{3}\]</span></p>
+</div>
+</div>
+</div>
 </section>
-<section id="measures-of-dispersion-3" class="slide level2 smaller">
-<h2>Measures of dispersion</h2>
-<p><strong>Deviation from the mean</strong>: the difference between a data value and the sample mean</p>
-<p>For observation <span class="math inline">\(i\)</span>, the value of the ith deviation is: <span class="math inline">\(x_i - \bar{x}\)</span></p>
-<p>We often use the squared deviations from the mean to calculate the dispersion of the data:</p>
+<section id="dispersion-variance-and-std.-deviation" class="slide level2 smaller">
+<h2>Dispersion: variance and std. deviation</h2>
+<p><strong>Deviation from the mean</strong>: for observation <span class="math inline">\(i\)</span>, the deviation is <span class="math inline">\(x_i - \bar{x}\)</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <p><strong>Sample variance</strong>: the average* squared deviations</p>
 <p><span class="math display">\[s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
-<p>*Note that these “averages” are divided by n-1, not n.</p>
-</section>
-<section id="measures-of-dispersion-4" class="slide level2 smaller">
-<h2>Measures of dispersion</h2>
-<p><strong>Sample standard deviation</strong>: the square root of the sample variance</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Sample standard deviation</strong>: the square root of the variance</p>
 <p><span class="math display">\[s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}\]</span></p>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>These “averages” are divided by <span class="math inline">\(n-1\)</span>, not <span class="math inline">\(n\)</span>.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="measures-of-dispersion-5" class="slide level2 smaller">
-<h2>Measures of dispersion</h2>
+<section id="dispersion-why-square-deviations" class="slide level2 smaller">
+<h2>Dispersion: why square deviations?</h2>
 <p><strong>Why do we square the deviations?</strong></p>
 <ul>
 <li>Ensures that the deviations will always be positive
@@ -675,68 +739,57 @@ $ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1</code></pre>
 </ul>
 <p><strong>Unsatisfying answer</strong>: most of the statistical tools we will learn in the rest of the course are based on the standard deviation and variance, and these are the most commonly used measures of dispersion</p>
 </section>
-<section id="comparing-measures-of-dispersion" class="slide level2 smaller">
-<h2>Comparing measures of dispersion</h2>
-<p>The tradeoff between percentiles and standard deviations / variances is similar to the tradeoff between medians and means</p>
+<section id="dispersion-comparing-measures" class="slide level2 smaller">
+<h2>Dispersion: comparing measures</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>The tradeoff is similar to medians vs.&nbsp;means:</p>
 <ul>
-<li><strong>Percentiles</strong> only provide information about the distribution of the variable at one point, but are fairly robust to outliers
+<li><strong>Percentiles</strong>: information at one point in the distribution, but robust to outliers
 <ul>
-<li>Like the median, which is the same as the 50th percentile</li>
+<li>Like the median, which is the 50th percentile</li>
 </ul></li>
-<li>The standard deviation / variance uses information about the entire distribution of the variable, but is not as robust to outliers</li>
+<li><strong>Variance / SD</strong>: uses the entire distribution, but sensitive to outliers</li>
 </ul>
-</section>
-<section id="dispersion-and-levels-of-measurement" class="slide level2 smaller">
-<h2>Dispersion and levels of measurement</h2>
-<p>So, which levels of measurement can use percentiles and variance/standard deviation?</p>
-<p><br></p>
-<table class="caption-top" style="width:100%;">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 14%">
-<col style="width: 35%">
-</colgroup>
+</div><div class="column" style="width:45%;">
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Statistic</th>
 <th>Nominal</th>
 <th>Ordinal</th>
 <th>Continuous</th>
-<th>Why</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Percentiles</td>
-<td>❌ No</td>
-<td>✅ Yes</td>
-<td>✅ Yes</td>
-<td>Percentiles require at least ordered data</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
 </tr>
 <tr class="even">
-<td>Variance / Std Dev</td>
-<td>❌ No</td>
-<td>❌ No</td>
-<td>✅ Yes</td>
-<td>Requires meaningful distances between values</td>
+<td>Variance / SD</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
+</div></div>
 </section>
-<section id="measures-of-dispersion-in-r" class="slide level2 smaller">
-<h2>Measures of dispersion in R</h2>
-<p>How do we use R to calculate measures of dispersion? Let’s look at variosu measures of dispersion of respondent’s income in our <code>attain</code> dataset?</p>
+<section id="dispersion-calculating-in-r" class="slide level2 smaller">
+<h2>Dispersion: calculating in R</h2>
+<p>How do we use R to calculate measures of dispersion? Let’s look at various measures of dispersion of respondents’ income in our <code>attain</code> dataset.</p>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Percentiles</a></li><li><a href="#tabset-4-2">Variance</a></li><li><a href="#tabset-4-3">Standard Deviation</a></li><li><a href="#tabset-4-4">All at once</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Percentiles</a></li><li><a href="#tabset-7-2">Variance</a></li><li><a href="#tabset-7-3">Standard Deviation</a></li><li><a href="#tabset-7-4">All at once</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-7-1">
 <p>This will return the values at those specific <strong>percentiles</strong>–25th, 50th, and 75th. So, a respondent with an income of $32,500 is in the 75th percentile of the sample.</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Percentiles</span></span>
-<span id="cb14-2"><a></a>attain <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a></a>attain <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a></a>  <span class="fu">summarise</span>(</span>
 <span id="cb14-4"><a></a>    <span class="at">p25 =</span> <span class="fu">quantile</span>(rincom91, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb14-5"><a></a>    <span class="at">p50 =</span> <span class="fu">quantile</span>(rincom91, <span class="fl">0.50</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
@@ -753,12 +806,12 @@ $ p75 &lt;dbl&gt; 32500</code></pre>
 </div>
 </div></div>
 </div>
-<div id="tabset-4-2">
+<div id="tabset-7-2">
 <p>This will return the measure of <strong>variance</strong> in our sample for this specific income variable.</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># Variance</span></span>
-<span id="cb16-2"><a></a>attain <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a></a>attain <span class="sc">|&gt;</span></span>
 <span id="cb16-3"><a></a>  <span class="fu">summarise</span>(<span class="at">variance =</span> <span class="fu">var</span>(rincom91, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb16-4"><a></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
@@ -769,12 +822,12 @@ $ variance &lt;dbl&gt; 432600678</code></pre>
 </div>
 </div></div>
 </div>
-<div id="tabset-4-3">
+<div id="tabset-7-3">
 <p>This will return the <strong>standard deviation (std_dev)</strong> of variance in our sample for this specific income variable.</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># Standard deviation</span></span>
-<span id="cb18-2"><a></a>attain <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a></a>attain <span class="sc">|&gt;</span></span>
 <span id="cb18-3"><a></a>  <span class="fu">summarise</span>(<span class="at">std_dev =</span> <span class="fu">sd</span>(rincom91, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb18-4"><a></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
@@ -785,14 +838,14 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 </div>
 </div></div>
 </div>
-<div id="tabset-4-4">
+<div id="tabset-7-4">
 <p>we can calculate all of these measures simultaneously. We can also calculate <code>sd</code> manually if we’d like.</p>
 <p><br></p>
 <p>Here I use the <code>gt</code> package to make the table output a bit nicer. <a href="https://gt.rstudio.com">Check out the documentation</a>!</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Verify sd equals sqrt(var)</span></span>
-<span id="cb20-2"><a></a>attain <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a></a>attain <span class="sc">|&gt;</span></span>
 <span id="cb20-3"><a></a>  <span class="fu">summarise</span>(</span>
 <span id="cb20-4"><a></a>    <span class="at">variance =</span> <span class="fu">var</span>(rincom91, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb20-5"><a></a>    <span class="at">std_dev  =</span> <span class="fu">sd</span>(rincom91, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
@@ -802,23 +855,23 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 <span id="cb20-9"><a></a>  gt<span class="sc">::</span><span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
-<div id="efveengnir" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#efveengnir table {
+<div id="pxvtfqnjcu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pxvtfqnjcu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#efveengnir thead, #efveengnir tbody, #efveengnir tfoot, #efveengnir tr, #efveengnir td, #efveengnir th {
+#pxvtfqnjcu thead, #pxvtfqnjcu tbody, #pxvtfqnjcu tfoot, #pxvtfqnjcu tr, #pxvtfqnjcu td, #pxvtfqnjcu th {
   border-style: none;
 }
 
-#efveengnir p {
+#pxvtfqnjcu p {
   margin: 0;
   padding: 0;
 }
 
-#efveengnir .gt_table {
+#pxvtfqnjcu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -844,12 +897,12 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#efveengnir .gt_caption {
+#pxvtfqnjcu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#efveengnir .gt_title {
+#pxvtfqnjcu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -861,7 +914,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-bottom-width: 0;
 }
 
-#efveengnir .gt_subtitle {
+#pxvtfqnjcu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -873,7 +926,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-top-width: 0;
 }
 
-#efveengnir .gt_heading {
+#pxvtfqnjcu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -885,13 +938,13 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#efveengnir .gt_bottom_border {
+#pxvtfqnjcu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#efveengnir .gt_col_headings {
+#pxvtfqnjcu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -906,7 +959,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#efveengnir .gt_col_heading {
+#pxvtfqnjcu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -926,7 +979,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   overflow-x: hidden;
 }
 
-#efveengnir .gt_column_spanner_outer {
+#pxvtfqnjcu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -938,15 +991,15 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   padding-right: 4px;
 }
 
-#efveengnir .gt_column_spanner_outer:first-child {
+#pxvtfqnjcu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#efveengnir .gt_column_spanner_outer:last-child {
+#pxvtfqnjcu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#efveengnir .gt_column_spanner {
+#pxvtfqnjcu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -958,11 +1011,11 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   width: 100%;
 }
 
-#efveengnir .gt_spanner_row {
+#pxvtfqnjcu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#efveengnir .gt_group_heading {
+#pxvtfqnjcu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -988,7 +1041,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   text-align: left;
 }
 
-#efveengnir .gt_empty_group_heading {
+#pxvtfqnjcu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1003,15 +1056,15 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   vertical-align: middle;
 }
 
-#efveengnir .gt_from_md > :first-child {
+#pxvtfqnjcu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#efveengnir .gt_from_md > :last-child {
+#pxvtfqnjcu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#efveengnir .gt_row {
+#pxvtfqnjcu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1030,7 +1083,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   overflow-x: hidden;
 }
 
-#efveengnir .gt_stub {
+#pxvtfqnjcu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1043,7 +1096,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   padding-right: 5px;
 }
 
-#efveengnir .gt_stub_row_group {
+#pxvtfqnjcu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1057,15 +1110,15 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   vertical-align: top;
 }
 
-#efveengnir .gt_row_group_first td {
+#pxvtfqnjcu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#efveengnir .gt_row_group_first th {
+#pxvtfqnjcu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#efveengnir .gt_summary_row {
+#pxvtfqnjcu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1075,16 +1128,16 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   padding-right: 5px;
 }
 
-#efveengnir .gt_first_summary_row {
+#pxvtfqnjcu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#efveengnir .gt_first_summary_row.thick {
+#pxvtfqnjcu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#efveengnir .gt_last_summary_row {
+#pxvtfqnjcu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1094,7 +1147,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#efveengnir .gt_grand_summary_row {
+#pxvtfqnjcu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1104,7 +1157,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   padding-right: 5px;
 }
 
-#efveengnir .gt_first_grand_summary_row {
+#pxvtfqnjcu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1114,7 +1167,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#efveengnir .gt_last_grand_summary_row_top {
+#pxvtfqnjcu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1124,11 +1177,11 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#efveengnir .gt_striped {
+#pxvtfqnjcu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#efveengnir .gt_table_body {
+#pxvtfqnjcu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1137,7 +1190,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#efveengnir .gt_footnotes {
+#pxvtfqnjcu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1151,7 +1204,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#efveengnir .gt_footnote {
+#pxvtfqnjcu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1160,7 +1213,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   padding-right: 5px;
 }
 
-#efveengnir .gt_sourcenotes {
+#pxvtfqnjcu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1174,7 +1227,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#efveengnir .gt_sourcenote {
+#pxvtfqnjcu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1182,63 +1235,63 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
   padding-right: 5px;
 }
 
-#efveengnir .gt_left {
+#pxvtfqnjcu .gt_left {
   text-align: left;
 }
 
-#efveengnir .gt_center {
+#pxvtfqnjcu .gt_center {
   text-align: center;
 }
 
-#efveengnir .gt_right {
+#pxvtfqnjcu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#efveengnir .gt_font_normal {
+#pxvtfqnjcu .gt_font_normal {
   font-weight: normal;
 }
 
-#efveengnir .gt_font_bold {
+#pxvtfqnjcu .gt_font_bold {
   font-weight: bold;
 }
 
-#efveengnir .gt_font_italic {
+#pxvtfqnjcu .gt_font_italic {
   font-style: italic;
 }
 
-#efveengnir .gt_super {
+#pxvtfqnjcu .gt_super {
   font-size: 65%;
 }
 
-#efveengnir .gt_footnote_marks {
+#pxvtfqnjcu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#efveengnir .gt_asterisk {
+#pxvtfqnjcu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#efveengnir .gt_indent_1 {
+#pxvtfqnjcu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#efveengnir .gt_indent_2 {
+#pxvtfqnjcu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#efveengnir .gt_indent_3 {
+#pxvtfqnjcu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#efveengnir .gt_indent_4 {
+#pxvtfqnjcu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#efveengnir .gt_indent_5 {
+#pxvtfqnjcu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1269,30 +1322,47 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 </section>
 <section id="questions-3" class="slide level2">
 <h2>Questions?</h2>
+</section></section>
+<section>
+<section id="association" class="title-slide slide level1 center">
+<h1>Association</h1>
+
 </section>
-<section id="measures-of-association" class="slide level2 smaller">
-<h2>Measures of association</h2>
-<p><strong>Differences in proportions</strong>: the difference in marginal proportions for the same outcome variable (<span class="math inline">\(x_i\)</span>) across different categories of a variable y</p>
-<p>Formula: <span class="math inline">\(p_{x_i | y_j} - p_{x_i | y_k}\)</span></p>
+<section id="association-comparing-proportions" class="slide level2 smaller">
+<h2>Association: comparing proportions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Difference in proportions</strong></p>
+<p><span class="math inline">\(p_{x_i | y_j} - p_{x_i | y_k}\)</span></p>
 <ul>
-<li>In words: “The difference in the proportion of <span class="math inline">\(x_i\)</span> between group <span class="math inline">\(j\)</span> and group <span class="math inline">\(k\)</span>”</li>
-<li>The differences in proportions are expressed in terms of percentage points</li>
+<li>The difference in the proportion of <span class="math inline">\(x_i\)</span> between group <span class="math inline">\(j\)</span> and group <span class="math inline">\(k\)</span></li>
+<li>Expressed in <strong>percentage points</strong></li>
 <li>Easy to use, but occasionally misleading</li>
 </ul>
-<blockquote>
-<p>Also, remember there is big difference in “percentage point increase” and “percent increase”</p>
-</blockquote>
-</section>
-<section id="measures-of-association-1" class="slide level2 smaller">
-<h2>Measures of association</h2>
-<p><strong>Relative risk ratio</strong>: ratio of marginal proportions for the same outcome variable (x = i) across different categories of a variable y</p>
-<p>Formula: <span class="math inline">\(p_{x_i | y_j} / p_{x_i | y_k}\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Relative risk ratio</strong></p>
+<p><span class="math inline">\(p_{x_i | y_j} / p_{x_i | y_k}\)</span></p>
 <ul>
-<li>Scales the proportions against each other (which can be generally less misleading than simple differences)</li>
+<li>Ratio of proportions across groups</li>
+<li>Scales proportions against each other (generally less misleading)</li>
 </ul>
+</div></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>There is a big difference between “percentage point increase” and “percent increase.”</p>
+</div>
+</div>
+</div>
 </section>
-<section id="comparing-proportions-example" class="slide level2 smaller">
-<h2>Comparing proportions: example</h2>
+<section id="association-proportions-example" class="slide level2 smaller">
+<h2>Association: proportions example</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -1320,9 +1390,9 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 </tbody>
 </table>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Difference in proportions</a></li><li><a href="#tabset-5-2">Relative risk ratios</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Difference in proportions</a></li><li><a href="#tabset-8-2">Relative risk ratios</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-8-1">
 <p><strong>Difference in proportions</strong> of a magazine founder being in the publishing trade (x) in the 18th as compared to the 19th century (y):</p>
 <p><span class="math display">\[109/162 - 21/103 = 67.3\% - 20.3\% = 47 \text{ percentage points}\]</span></p>
 <p>This is an absolute difference—it tells you the raw gap between the two proportions.</p>
@@ -1330,7 +1400,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 <p>“Magazine founders in the 18th century were 47 percentage points more likely to be in the publishing trade than those in the 19th century.”</p>
 </blockquote>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-8-2">
 <p><strong>Relative risk ratio</strong> of a magazine founder being in the publishing trade (x) in the 18th as compared to the 19th century (y):</p>
 <p><span class="math display">\[(109/162)/(21/103) = 67.3\%/20.3\% = 3.32\]</span></p>
 <p>This is a relative difference—how many times larger one proportion is than another.</p>
@@ -1341,60 +1411,142 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 </div>
 </div>
 </section>
-<section id="comparing-proportions-example-1" class="slide level2 smaller">
-<h2>Comparing proportions: example</h2>
-<p><strong>Which One to Use?</strong></p>
-<ul>
-<li><p><strong>Absolute difference</strong> (47 pp): Better for understanding practical/real-world impact. Nearly half of 18th century founders were publishers vs.&nbsp;only a fifth in the 19th century—that’s a massive shift in the composition of magazine founders.</p></li>
-<li><p><strong>Relative risk</strong> (3.32x): Better for understanding the strength of the association. Being an 18th century founder makes you over 3 times as likely to be a publisher.</p></li>
-</ul>
+<section id="association-which-measure-to-use" class="slide level2 smaller">
+<h2>Association: which measure to use?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Absolute difference</strong> (47 pp)</p>
+<p>Better for practical/real-world impact.</p>
+<blockquote>
+<p>Nearly 1/2 of 18th century founders were publishers vs.&nbsp;only 1/5 in the 19th century.</p>
+</blockquote>
+</div><div class="column" style="width:50%;">
+<p><strong>Relative risk</strong> (3.32x)</p>
+<p>Better for the strength of the association.</p>
+<blockquote>
+<p>18th century founders were over 3 times as likely to be a publisher.</p>
+</blockquote>
+</div></div>
 </section>
-<section id="comparing-variables-across-the-distribution" class="slide level2 smaller">
-<h2>Comparing variables across the distribution</h2>
+<section id="association-covariance" class="slide level2 smaller">
+<h2>Association: covariance</h2>
+<p><strong>Covariance</strong> measures how two variables vary together. A <em>positive</em> means they move in the same direction; a <em>negative</em> means they move in opposite directions.</p>
 <p><strong>The covariance</strong> for <span class="math inline">\(n\)</span> observations on two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is equal to:</p>
 <p><span class="math display">\[cov(x,y) = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})\]</span></p>
-<p>Covariance measures whether <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> tend to move together or not</p>
-<p>Note that the term <span class="math inline">\((x_i - \bar{x})(y_i - \bar{y})\)</span> is positive for observation <span class="math inline">\(i\)</span> if <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> are both below or both above the means of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and negative if not</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>The term <span class="math inline">\((x_i - \bar{x})(y_i - \bar{y})\)</span> is:</p>
+<ul>
+<li><strong>Positive</strong> when <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> are both above or both below their means</li>
+<li><strong>Negative</strong> when one is above and the other below</li>
+</ul>
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 </section>
-<section id="comparing-variables-across-the-distribution-1" class="slide level2 smaller">
-<h2>Comparing variables across the distribution</h2>
+<section id="association-correlation" class="slide level2 smaller">
+<h2>Association: correlation</h2>
+<p><strong>Correlation</strong> is a standardized measure of the linear association between two variables. Like covariance, it captures the direction of the relationship, but it also allows us to compare the <strong>strength</strong> across different variable pairs.</p>
 <p><strong>The correlation coefficient</strong> <span class="math inline">\(r\)</span> for <span class="math inline">\(n\)</span> observations on two variables x and y with sample standard deviations <span class="math inline">\(s_x\)</span> and <span class="math inline">\(s_y\)</span> is equal to:</p>
 <p><span class="math display">\[r_{xy} = \frac{cov(x,y)}{s_x \times s_y}\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Covariance vs.&nbsp;correlation:</strong> Covariance tells you the <em>direction</em> of a relationship but its magnitude depends on the scale of the variables (dollars, years, etc.). Correlation <strong>standardizes</strong> covariance by dividing by the standard deviations, producing a unit-free measure that always falls between -1 and 1.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="correlation-coefficient-properties" class="slide level2 smaller">
-<h2>Correlation coefficient properties</h2>
+<section id="association-correlation-properties" class="slide level2 smaller">
+<h2>Association: correlation properties</h2>
 <ul>
-<li><span class="math inline">\(r_{xy}\)</span> is always between -1 and 1</li>
-<li><span class="math inline">\(r_{xy}\)</span> equals 1 if all observations fall along a straight line that has a positive slope (that is, as x increases, y increases in direct proportion)</li>
-<li><span class="math inline">\(r_{xy}\)</span> equals -1 if all observations fall along a straight line that has a negative slope (that is, as x increases, y decreases in direct proportion)</li>
-<li><span class="math inline">\(r_{xy}\)</span> does not depend on the scale of either <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
+<li class="fragment"><span class="math inline">\(r_{xy}\)</span> is always between -1 and 1</li>
+<li class="fragment"><span class="math inline">\(r_{xy}\)</span> equals 1 if all observations fall along a straight line that has a positive slope (that is, as x increases, y increases in direct proportion)</li>
+<li class="fragment"><span class="math inline">\(r_{xy}\)</span> equals -1 if all observations fall along a straight line that has a negative slope (that is, as x increases, y decreases in direct proportion)</li>
+<li class="fragment"><span class="math inline">\(r_{xy}\)</span> does not depend on the scale of either <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
 </ul>
 </section>
-<section id="correlation-coefficient-properties-1" class="slide level2 smaller">
-<h2>Correlation coefficient properties</h2>
-<p><strong>If <span class="math inline">\(r_{xy}\)</span> equals 0, this does not imply that there is no relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></strong></p>
-<p>It only implies that there is no linear relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></p>
-<p><strong>Always use a scatterplot to check!</strong></p>
+<section id="association-correlation-examples" class="slide level2 smaller">
+<h2>Association: correlation examples</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(r = 0\)</span> does <strong>not</strong> imply no relationship — only no <strong>linear</strong> relationship. Always use a scatterplot to check!</p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">None (r = 0)</a></li><li><a href="#tabset-9-2">Weak (r = 0.3)</a></li><li><a href="#tabset-9-3">Moderate (r = 0.5)</a></li><li><a href="#tabset-9-4">Strong (r = 0.8)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-3">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="correlation-examples" class="slide level2">
-<h2>Correlation examples</h2>
-<p>Here are some examples of different correlation strengths might look like in terms of data</p>
-
-<img data-src="images/week4/correlation_examples.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="other-correlation-coefficients" class="slide level2 smaller">
-<h2>Other correlation coefficients</h2>
-<p><span class="math inline">\(r_{xy}\)</span> (also known as Pearson’s correlation coefficient) can only be computed for two continuous variables</p>
-<p>Other measures with similar properties are available for ordinal variables:</p>
-<ul>
-<li><strong>Polychoric correlation</strong>: two ordinal variables</li>
-<li><strong>Polyserial correlation</strong>: one ordinal variable and one continuous variable</li>
-</ul>
-<blockquote>
-<p>We won’t cover these more in class becuase I find them to be rarely used in practice</p>
-</blockquote>
-</section>
-<section id="which-measures-of-association-to-use" class="slide level2 smaller">
-<h2>Which measures of association to use?</h2>
+<section id="association-which-measure-for-which-data" class="slide level2 smaller">
+<h2>Association: which measure for which data?</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 25%">
@@ -1420,8 +1572,8 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 <tr class="even">
 <td><strong>Ordinal</strong></td>
 <td></td>
-<td>Polychoric correlation</td>
-<td>Difference in means between groups; polyserial correlation</td>
+<td></td>
+<td>Difference in means between groups</td>
 </tr>
 <tr class="odd">
 <td><strong>Continuous</strong></td>
@@ -1432,33 +1584,105 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 </tbody>
 </table>
 </section>
-<section id="measures-of-association-in-r" class="slide level2 smaller">
-<h2>Measures of association in R</h2>
+<section id="association-calculating-in-r" class="slide level2 smaller scrollable">
+<h2>Association: calculating in R</h2>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Proportions</a></li><li><a href="#tabset-6-2">Covariance</a></li><li><a href="#tabset-6-3">Correlation</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Proportions</a></li><li><a href="#tabset-10-2">Covariance</a></li><li><a href="#tabset-10-3">Correlation</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
-<p><strong>Difference in proportions, relative risk ratio:</strong></p>
-<p>Use the results of the marginal frequency tables</p>
-</div>
-<div id="tabset-6-2">
+<div id="tabset-10-1">
+<p><strong>Step 1: Build marginal frequency tables</strong></p>
+<p>Let’s build a marginal freq table for bachelor’s degree and less than college</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Covariance</span></span>
-<span id="cb21-2"><a></a>attain <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">summarize</span>(<span class="at">covariance =</span> <span class="fu">cov</span>(rincom91, income91, <span class="at">use =</span> <span class="st">"complete.obs"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb21-4"><a></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># Marginal freq for bachelor's degree holders</span></span>
+<span id="cb21-2"><a></a>bach <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a></a>  <span class="fu">filter</span>(degree <span class="sc">==</span> <span class="st">"bachelor"</span>, <span class="sc">!</span><span class="fu">is.na</span>(marital)) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a></a>  <span class="fu">count</span>(marital) <span class="sc">|&gt;</span></span>
+<span id="cb21-5"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb21-6"><a></a>bach</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  marital      n   prop
+  &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt;
+1 divorced    79 0.159 
+2 married    287 0.579 
+3 never ma   104 0.210 
+4 separate     7 0.0141
+5 widowed     19 0.0383</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Marginal freq for less than high school</span></span>
+<span id="cb23-2"><a></a>lths <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">filter</span>(degree <span class="sc">==</span> <span class="st">"lt high"</span>, <span class="sc">!</span><span class="fu">is.na</span>(marital)) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a></a>  <span class="fu">count</span>(marital) <span class="sc">|&gt;</span></span>
+<span id="cb23-5"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb23-6"><a></a>lths</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  marital      n   prop
+  &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt;
+1 divorced    71 0.140 
+2 married    212 0.418 
+3 never ma    99 0.195 
+4 separate    21 0.0414
+5 widowed    104 0.205 </code></pre>
+</div>
+</div>
+<p><strong>Step 2: Difference in proportions</strong> (married)</p>
+<p>Now let’s take the difference in those proportions of those that are married. How do we interpret this?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>bach <span class="sc">|&gt;</span> <span class="fu">filter</span>(marital <span class="sc">==</span> <span class="st">"married"</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(prop) <span class="sc">-</span></span>
+<span id="cb25-2"><a></a>  lths <span class="sc">|&gt;</span> <span class="fu">filter</span>(marital <span class="sc">==</span> <span class="st">"married"</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(prop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1604831</code></pre>
+</div>
+</div>
+<details>
+<summary>
+<strong>Click to reveal interpretation</strong>
+</summary>
+Bachelor’s degree holders are 16 percentage points more likely to be married than those with less than a high school education.
+</details>
+<p><strong>Step 3: Relative risk ratio</strong> (married)</p>
+<p>Finally let’s calculate the relative risk ratio of those that are married. How do we interpret this?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>bach <span class="sc">|&gt;</span> <span class="fu">filter</span>(marital <span class="sc">==</span> <span class="st">"married"</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(prop) <span class="sc">/</span></span>
+<span id="cb27-2"><a></a>  lths <span class="sc">|&gt;</span> <span class="fu">filter</span>(marital <span class="sc">==</span> <span class="st">"married"</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(prop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.383797</code></pre>
+</div>
+</div>
+<details>
+<summary>
+<strong>Click to reveal interpretation</strong>
+</summary>
+Bachelor’s degree holders are about 1.38 times as likely to be married compared to those with less than a high school education.
+</details>
+</div>
+<div id="tabset-10-2">
+<p>Let’s calulate the covariance of a respondent’s income and their household income. How do we interpret this?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co"># Covariance</span></span>
+<span id="cb29-2"><a></a>attain <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a></a>  <span class="fu">summarize</span>(<span class="at">covariance =</span> <span class="fu">cov</span>(rincom91, income91, <span class="at">use =</span> <span class="st">"complete.obs"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1
 Columns: 1
 $ covariance &lt;dbl&gt; 376447249</code></pre>
 </div>
 </div>
+<details>
+<summary>
+<strong>Click to reveal interpretation</strong>
+</summary>
+The positive covariance indicates that respondent income and household income <strong>tend to move in the same direction</strong> — when one is above its mean, the other tends to be as well. However, the magnitude (31,806) is hard to interpret on its own because it depends on the scale of both variables (dollars).
+</details>
 </div>
-<div id="tabset-6-3">
+<div id="tabset-10-3">
+<p>Now let’s calulate the correlation. How do we interpret this?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Correlation coefficient</span></span>
-<span id="cb23-2"><a></a>attain <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(rincom91, income91, <span class="at">use =</span> <span class="st">"complete.obs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="co"># Correlation coefficient</span></span>
+<span id="cb31-2"><a></a>attain <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a></a>  <span class="fu">summarize</span>(<span class="at">correlation =</span> <span class="fu">cor</span>(rincom91, income91, <span class="at">use =</span> <span class="st">"complete.obs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   correlation
@@ -1466,6 +1690,12 @@ $ covariance &lt;dbl&gt; 376447249</code></pre>
 1       0.671</code></pre>
 </div>
 </div>
+<details>
+<summary>
+<strong>Click to reveal interpretation</strong>
+</summary>
+The <strong>correlation of 0.68 indicates a moderately strong, positive</strong> linear relationship between respondent income and household income. Unlike covariance, this value is standardized (between -1 and 1), making it easier to judge the strength of the association.
+</details>
 </div>
 </div>
 </div>
@@ -1475,18 +1705,37 @@ $ covariance &lt;dbl&gt; 376447249</code></pre>
 </section>
 <section id="weekly-assignment-3" class="slide level2 smaller">
 <h2>Weekly Assignment #3</h2>
-<p><strong>Two-part assignment:</strong></p>
-<ol type="1">
-<li><p>Practice summarizing variables from attain.csv (from the first homework assignment): see Word document on bCourses</p></li>
-<li><p>Answer a research question relating to the association between two variables in a data set of your choosing, using a proper measure of association for the levels of measurement of the variables. Write up your results according to the “Weekly Assignment Stata Analysis” template.</p></li>
-</ol>
-<p><strong>HW #3:</strong> due Thursday</p>
+<p>You’ll answer some questions based on lecture today. You will not need your own data for this but will use the <code>attain</code> data.</p>
+<p><strong>HW #3:</strong> due Thursday, February 19 at 11:59 PM</p>
 <ul>
 <li>any questions?</li>
 </ul>
-
-
 </section>
+<section id="in-class-lab" class="slide level2 smaller">
+<h2>In-class Lab</h2>
+<p>Let’s practice using the summary statistics we learned today:</p>
+<ol type="1">
+<li>Download <code>lab2.qmd</code> from bCourse under “assignments” &gt; “Lab #2”</li>
+<li>Place <code>lab2.qmd</code> in your <code>labs</code> folder. Your folder structure should now look like this:</li>
+</ol>
+<pre><code>soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+├── assignments/
+│   └── hw1.qmd
+│   └── hw2.qmd
+│   └── hw3.qmd
+└── labs/
+    └── lab1.qmd
+    └── lab2.qmd</code></pre>
+<ol start="3" type="1">
+<li>Use the <code>Explorer</code> button on the left to find and open <code>lab2.qmd</code></li>
+<li>Let’s work through it together!</li>
+</ol>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
