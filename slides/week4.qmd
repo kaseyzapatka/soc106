@@ -58,9 +58,7 @@ attain <- read_csv(here("data/attain.csv"))
   - Comparing proportions: difference in proportions, relative risk ratio
   - Comparing distributions: covariance and correlation
 
-## What makes a good research question? {.smaller}
-
-A strong social science research question has several key components:
+## What is a good research question? {.smaller}
 
 1. **Specifies a relationship** between two or more variables
     - Not just "What is X?" but "How does X relate to Y?"
@@ -682,37 +680,78 @@ What do different correlation strengths look like? Note: $r = 0$ does **not** im
 
 ```{r}
 #| echo: false
-#| fig-align: center
-#| fig-width: 10
-#| fig-height: 3
 
 set.seed(106)
 n <- 200
 
-# Generate correlated data
 gen_corr <- function(r, n = 200) {
   x <- rnorm(n)
   y <- r * x + sqrt(1 - r^2) * rnorm(n)
-  tibble(x = x, y = y, correlation = paste0("r = ", r))
+  tibble(x = x, y = y)
 }
 
-corr_data <- bind_rows(
-  gen_corr(0, n),
-  gen_corr(0.3, n),
-  gen_corr(0.5, n),
-  gen_corr(0.8, n)
-) |>
-  mutate(correlation = factor(correlation,
-    levels = c("r = 0", "r = 0.3", "r = 0.5", "r = 0.8")))
+corr_none     <- gen_corr(0, n)
+corr_weak     <- gen_corr(0.3, n)
+corr_moderate <- gen_corr(0.5, n)
+corr_strong   <- gen_corr(0.8, n)
 
-ggplot(corr_data, aes(x, y)) +
-  geom_point(alpha = 0.4, size = 1, color = "steelblue") +
-  geom_smooth(method = "lm", se = FALSE, color = "red", linewidth = 0.8) +
-  facet_wrap(~correlation, nrow = 1) +
-  labs(x = NULL, y = NULL) +
-  theme_minimal() +
-  theme(strip.text = element_text(size = 12, face = "bold"))
+plot_corr <- function(data, r_label) {
+  ggplot(data, aes(x, y)) +
+    geom_point(alpha = 0.4, size = 1.5, color = "steelblue") +
+    geom_smooth(method = "lm", se = FALSE, color = "red", linewidth = 0.8) +
+    labs(x = NULL, y = NULL, title = r_label) +
+    theme_minimal() +
+    theme(plot.title = element_text(size = 14, face = "bold"))
+}
 ```
+
+::: {.panel-tabset}
+
+### None (r = 0)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_none, "r = 0")
+```
+
+### Weak (r = 0.3)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_weak, "r = 0.3")
+```
+
+### Moderate (r = 0.5)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_moderate, "r = 0.5")
+```
+
+### Strong (r = 0.8)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_strong, "r = 0.8")
+```
+
+:::
 
 
 ## Which measures of association to use? {.smaller}
@@ -776,8 +815,8 @@ attain |>
 
 Let's practice using the summary statistics we learned today:
 
-1. Download `lab4.qmd` from bCourse under "assignments" > "Lab #4"
-2. Place `lab4.qmd` in your `labs` folder. Your folder structure should now look like this:
+1. Download `lab2.qmd` from bCourse under "assignments" > "Lab #2"
+2. Place `lab2.qmd` in your `labs` folder. Your folder structure should now look like this:
 
 ```
 soc106/
@@ -787,8 +826,8 @@ soc106/
 ├── assignments/
 │   └── hw3.qmd
 └── labs/
-    └── lab4.qmd
+    └── lab2.qmd
 ```
 
-3. Use the `Explorer` button on the left to find and open `lab4.qmd`
+3. Use the `Explorer` button on the left to find and open `lab2.qmd`
 4. Let's work through it together!
