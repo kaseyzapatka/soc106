@@ -18,12 +18,12 @@ format:
 4.  Click the "Render" button at the top of Positron to generate an HTML file.
 5.  Submit **BOTH** the .qmd file AND the .html file to bCourse before the deadline on February 10, 2026
 6.  Make sure your name appears in the "author" field in the YAML header above.
-7. Make sure your document renders without errors before submitting.
+7.  Make sure your document renders without errors before submitting.
 :::
 
 Once you add `hw1.qmd`, your folder structure should look like this:
 
-```
+```         
 soc106/
 ├── _quarto.yml
 ├── assignments/
@@ -35,7 +35,7 @@ soc106/
     └── lab1.qmd
 ```
 
-## Setup 
+## Setup
 
 Run this code to set up your environment. If you need to install any libraries, make sure to do that in the console.
 
@@ -77,7 +77,7 @@ attain |> glimpse()
 
 ## Question 2
 
-Create a new object called `ages` from the `attain` dataset by selecting the column name called `age` using the  appropriate tidyverse function and glimpsing the object. What is the type of variable in it? (e.g., numeric, character, boolean). 
+Create a new object called `ages` from the `attain` dataset by selecting the column name called `age` using the appropriate tidyverse function and glimpsing the object. What is the type of variable in it? (e.g., numeric, character, boolean).
 
 ```{r}
 
@@ -145,7 +145,7 @@ subset2 <- attain %>%
 
 ## Question 6
 
-Now, suppose we are really concerned about unemployment within our sample (column name `unemp`). But, we notice that many respondents have missing unemployment statuses (i.e., `unemp` is equal to `NA`). Let's create a subset that consists of all respondents who do not have missing unemployment information. (*Hint: to find observations that are not missing, combine the `!` (not) logical operator and the `is.na` function.*) 
+Now, suppose we are really concerned about unemployment within our sample (column name `unemp`). But, we notice that many respondents have missing unemployment statuses (i.e., `unemp` is equal to `NA`). Let's create a subset that consists of all respondents who do not have missing unemployment information. (*Hint: to find observations that are not missing, combine the `!` (not) logical operator and the `is.na` function.*)
 
 ```{r}
 
@@ -164,7 +164,7 @@ subset3 <- attain %>%
 
 ## Question 7
 
-Repeat Question 6 (call it `subset4`), but this time creating a subset of respondents who all have information about their father's education (column name `paeduc`). 
+Repeat Question 6 (call it `subset4`), but this time creating a subset of respondents who all have information about their father's education (column name `paeduc`).
 
 ```{r}
 
@@ -216,7 +216,7 @@ attain_kids <- attain %>%
 
 ## Question 10
 
-Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the `attain` dataset again, let's' first rename the variable--call it "to_drop"--and then drop it from the dataset (*Hint: Youe can use a negative sign before the variable to select everything but that one.*). 
+Finally, there is a left over variable in this dataset from the original .csv file that we want to drop. Using the `attain` dataset again, let's' first rename the variable--call it "to_drop"--and then drop it from the dataset (*Hint: Youe can use a negative sign before the variable to select everything but that one.*).
 
 ```{r}
 
