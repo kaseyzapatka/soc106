@@ -104,30 +104,21 @@ Marginal frequency of magazine founders' occupations being in the publishing tra
 $$109/162 = 67.3\%$$
 
 ### 19th Century
-Marginal frequency of magazine founders' occupations being in the publishing trade, conditional on the magazine being founded in the 19th century: 
+Marginal frequency of magazine founders' occupations being in the publishing trade, conditional on the magazine being founded in the 19th century:
 
 $$21/103 = 20.3\%$$
 
-::: 
+### Overall relative freq
+
+We can also recover the overall relative frequency from the same table — the number of all founders in the publishing trades, divided by all foundings:
+
+$$(109 + 21)/(162 + 103) = 130/265 = 49.1\%$$
+
+:::
 
 ::: aside
 Source: Haveman, Habinek, and Goodman. 2012. "How Entrepreneurship Evolves: The Founders of New Magazines in America, 1741-1860." *Administrative Science Quarterly*. 57(4):553-584.
 :::
-
-
-## Back to relative frequencies… {.smaller}
-
-We could use the table, which provides marginal frequencies, to calculate the relative frequency of magazine founders' occupations being in the publishing trade:
-
-|  | 18th Century | 19th Century |
-|---|---|---|
-| **Publishing Trade** | 109 | 21 |
-| **Other Occupations** | 53 | 82 |
-| **Total** | 162 | 103 |
-
-The number of all magazine foundings whose founders were in the publishing trades, divided by all magazine foundings:
-
-$$(109 + 21)/(162 + 103) = 130/265 = 49.1\%$$
 
 ## Using relative & marginal frequencies {.smaller}
 
@@ -206,84 +197,102 @@ attain |>
 
 **Median**: the middle data value, if the data are ordered by increasing value
 
-**Mean** (aka average): the sum of all values in the data set, divided 
-
-## Measures of central tendency {.smaller}
-
-**Mode**: the value of a variable that occurs most often in the data set
-
-Example data of number of people 10 members of a high school class sent text messages to Monday: `5, 2, 10, 4, 3, 2, 6, 15, 3, and 2`.
-
-The mode of this variable in this data set is **2**, because it occurs more often (3 times) than any other value
-
-## Measures of central tendency {.smaller}
-
-**Median**: the middle data value, if the data are ordered by increasing value
-
 - If there are an even number of observations, the median is the midpoint between the two middle values
-
-## Measures of central tendency {.smaller}
-
-Same example: (`5, 2, 10, 4, 3, 2, 6, 15, 3, 2`)
-
-- First, order the data: (`2, 2, 2, 3, 3, 4, 5, 6, 10, 15`)
-
-- Second, find the middle observation(s):  (`2, 2, 2, 3, 3, 4, 5, 6, 10, 15`)
-
-Since we have two middle observations, find the midpoint: **3.5**
-
-## Measures of central tendency {.smaller}
 
 **(Arithmetic) mean** (aka average): the sum of all values in the data set, divided by the number of observations in the data set
 
-**Notation:**
-
 $$\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i$$
 
-Example: (`5, 2, 10, 4, 3, 2, 6, 15, 3, 2`)
 
-Mean = `(5+2+10+4+3+2+6+15+3+2)/10` = **5.2**
+## Central tendency: worked example {.smaller}
 
-## Measures of central tendency {.smaller}
+Example data of number of people 10 members of a high school class sent text messages to on Monday: `5, 2, 10, 4, 3, 2, 6, 15, 3, 2`
 
-Example: (`5, 2, 10, 4, 3, 2, 6, 15, 3, 2`)
+**Mode**: **2** — it occurs 3 times, more than any other value
 
-**Summary:**
+**Median**: order the data: (`2, 2, 2, 3,` **3, 4,** `5, 6, 10, 15`). Two middle observations, so find the midpoint: **3.5**
 
-- Mode = 2
-- Median = 3.5
-- Mean = 5.2
+**Mean**: `(5+2+10+4+3+2+6+15+3+2)/10` = **5.2**
 
-## A visual example 
+Notice that mode (2) < median (3.5) < mean (5.2) — this is a sign of right skew, which the outliers 10 and 15 produce
 
-::::: columns
-::: {.column width="40%"}
+## Skewness and central tendency {.smaller}
 
-<br>
+Relationship between mean, median, and mode tells us about the **skew** of a distribution:
 
-Here's a visual example of how mode, mean, and median can work
+- **Symmetric**: Mean ≈ Median ≈ Mode.
+
+::: {.panel-tabset}
+
+### Left-skewed
+
+- **Left-skewed** (negative skew): the tail extends to the left. Mean < Median < Mode.
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 3.5
+
+set.seed(106)
+left_data <- tibble(x = -rexp(2000, rate = 0.3) + max(rexp(2000, rate = 0.3)))
+
+ggplot(left_data, aes(x)) +
+  geom_histogram(bins = 40, fill = "steelblue", color = "white", alpha = 0.8) +
+  geom_vline(aes(xintercept = mean(x)), color = "red", linewidth = 1, linetype = "solid") +
+  geom_vline(aes(xintercept = median(x)), color = "orange", linewidth = 1, linetype = "dashed") +
+  annotate("text", x = mean(left_data$x) - 0.3, y = Inf, label = "Mean", color = "red", vjust = 2, hjust = 1) +
+  annotate("text", x = median(left_data$x) + 0.3, y = Inf, label = "Median", color = "orange", vjust = 3.5, hjust = 0) +
+  labs(x = NULL, y = "Count", title = "Left-Skewed Distribution") +
+  theme_minimal()
+```
+
+The mean is pulled toward the long left tail, so it is **less than** the median.
+
+### Right-skewed
+
+- **Right-skewed** (positive skew): the tail extends to the right. Mean > Median > Mode.
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 3.5
+
+set.seed(106)
+right_data <- tibble(x = rexp(2000, rate = 0.3))
+
+ggplot(right_data, aes(x)) +
+  geom_histogram(bins = 40, fill = "steelblue", color = "white", alpha = 0.8) +
+  geom_vline(aes(xintercept = mean(x)), color = "red", linewidth = 1, linetype = "solid") +
+  geom_vline(aes(xintercept = median(x)), color = "orange", linewidth = 1, linetype = "dashed") +
+  annotate("text", x = mean(right_data$x) + 0.3, y = Inf, label = "Mean", color = "red", vjust = 2, hjust = 0) +
+  annotate("text", x = median(right_data$x) - 0.3, y = Inf, label = "Median", color = "orange", vjust = 3.5, hjust = 1) +
+  labs(x = NULL, y = "Count", title = "Right-Skewed Distribution") +
+  theme_minimal()
+```
+
+The mean is pulled toward the long right tail, so it is **greater than** the median.
 
 :::
-
-::: {.column width="60%"}
-![](images/week4/histogram.png){width="100%,fig-align=\"center\""}
-:::
-:::::
 
 
 ## Comparing measures {.smaller}
 
 ::::: columns
-::: {.column width="60%"}
+::: {.column width="55%"}
 
 - **Mode** can be used on variables of *any level of measurement*
-  - Less useful for continuous variables, since values are not sufficiently granular (e.g. yearly earnings)
-- **Median** *cannot be used on nominal variables*, because it requires you to order  observations
-- **Mean** *cannot be used on nominal OR ordinal variables*, because it requires that we can say something about the distance between values
+  - Less useful for continuous variables (e.g. yearly earnings)
+  - Generally the least useful; we usually prefer median or mean
+- **Median** *cannot be used on nominal variables* (requires ordering)
+  - Robust to outliers: median (3.5) does not depend on outliers 10 and 15
+- **Mean** *cannot be used on nominal OR ordinal variables* (requires meaningful distances)
+  - Takes into account the full distribution, but sensitive to outliers: mean (5.2) is pulled up by 10 and 15
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="45%"}
 | Measurement | Mode | Median | Mean |
 |---|---|---|---|
 | **Nominal** | Yes | No | No |
@@ -292,21 +301,6 @@ Here's a visual example of how mode, mean, and median can work
 
 :::
 :::::
-
-
-## Which should we prefer? {.smaller}
-
-Same example: `(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)`. 
-
-**Mode** is generally the least useful; in most cases we will prefer to use the median or mean
-
-**Median** provides less information about the distribution of the variable, but is robust to outliers
-
-- The median (3.5) does not depend on the values of the outliers 10 and 15
-
-**Mean** takes into account the distribution of the variable, but is less robust to outliers
-
-- The mean (5.2) is strongly affected by the values of the outliers 10 and 15
 
 ## Measures of central tendency in R {.smaller}
 
@@ -330,7 +324,7 @@ attain |>
 ```
 
 
-### Meidan
+### Median
 
 We can do the same with for the median using the `median()` function: 
 
@@ -340,7 +334,7 @@ We can do the same with for the median using the `median()` function:
 
 # Median
 attain |> 
-  summarise(mean = median(rincom91, na.rm = TRUE)) |> 
+  summarise(median = median(rincom91, na.rm = TRUE)) |>
   print()
 
 ```
@@ -640,17 +634,6 @@ Here are some examples of different correlation strengths might look like in ter
 
 ![](images/week4/correlation_examples.png){width="100%" fig-align="center"}
 
-
-## Other correlation coefficients {.smaller}
-
-$r_{xy}$ (also known as Pearson's correlation coefficient) can only be computed for two continuous variables
-
-Other measures with similar properties are available for ordinal variables:
-
-- **Polychoric correlation**: two ordinal variables
-- **Polyserial correlation**: one ordinal variable and one continuous variable
-
-> We won't cover these more in class becuase I find them to be rarely used in practice
 
 ## Which measures of association to use? {.smaller}
 
