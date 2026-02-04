@@ -13,9 +13,7 @@ format:
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
 
-```{r}
 
-```
 ```{r}
 #| echo: false
 #| results: false
@@ -34,7 +32,16 @@ attain <- read_csv(here("data/attain.csv"))
 
 ## Housekeeping {.smaller}
 
-[[**ADD IT IN LATER**]]
+**HW #1:** due tonight (Tuesday, February 10) by  11:59 PM -- _Extended deadline_
+  - any questions?
+
+**HW #2:** due Thursday, February 12, 11:59 PM
+  - Ideal to use your final project data
+
+**Paper Proposal (5%):** due Thursday, February 26, 11:59 PM
+  - A **two-page double-spaced proposal** for your final paper. 
+  - Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html) of what I expect.
+
 
 ## Questions?
 
@@ -51,7 +58,29 @@ attain <- read_csv(here("data/attain.csv"))
   - Comparing proportions: difference in proportions, relative risk ratio
   - Comparing distributions: covariance and correlation
 
-## Relative frequencies {.smaller}
+## What is a good research question? {.smaller}
+
+::: {.incremental}
+
+1. **Specifies a relationship** between two or more variables
+    - Not just "What is X?" but "How does X relate to Y?"
+2. **Is answerable with data** — can be investigated empirically
+3. **Has sociological significance** — connects to broader theory or social patterns
+4. **Is clearly scoped** — specific enough to study, not so narrow it's trivial
+
+:::
+
+**Examples from sociology:**
+
+- "Is there an association between educational attainment and income in the U.S.?"
+- "Do marriage rates differ across racial groups, and how has this changed over time?"
+- "Is religious affiliation associated with political ideology?"
+
+> A good research question guides everything else: your data, your variables, and your choice of summary statistics or measures of association.
+
+# Frequencies
+
+## Frequencies: relative frequencies {.smaller}
 
 **Relative frequency** (aka proportion): the frequency of observations for a given variable, divided by the total number of observations.
 
@@ -64,21 +93,19 @@ attain <- read_csv(here("data/attain.csv"))
 
 **Relative frequency in the case of two variables:**
 
-
 - $p_{X=i,Y=j} = \frac{n_{X=i,Y=j}}{n_{total}}$
 
-## Marginal frequencies {.smaller}
+## Frequencies: marginal frequencies {.smaller}
 
 The **marginal (or conditional) proportion** is the relative frequency of observations taking a certain value for a given variable (i.e., X), conditional on the observations taking a certain value for another variable (i.e., Y)
 
 **Notation:**
 
-
 - $p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}$
 
 - Sometimes $p_{X=i|Y=j}$ is shortened to $p_{ij}$
 
-## Marginal frequency example {.smaller}
+## Frequencies: Examples {.smaller}
 
 The table below is reconstructed from a published study:
 
@@ -91,38 +118,29 @@ The table below is reconstructed from a published study:
 
 ::: {.panel-tabset}
 
-### 18th Century
+### 18th Century (marginal freq)
 Marginal frequency of magazine founders' occupations being in the publishing trade, conditional on the magazine being founded in the 18th century: 
 
 $$109/162 = 67.3\%$$
 
-### 19th Century
-Marginal frequency of magazine founders' occupations being in the publishing trade, conditional on the magazine being founded in the 19th century: 
+### 19th Century (marginal freq)
+Marginal frequency of magazine founders' occupations being in the publishing trade, conditional on the magazine being founded in the 19th century:
 
 $$21/103 = 20.3\%$$
 
-::: 
+### Relative freq
+
+We can also recover the overall relative frequency from the same table — the number of all founders in the publishing trades, divided by all foundings:
+
+$$(109 + 21)/(162 + 103) = 130/265 = 49.1\%$$
+
+:::
 
 ::: aside
 Source: Haveman, Habinek, and Goodman. 2012. "How Entrepreneurship Evolves: The Founders of New Magazines in America, 1741-1860." *Administrative Science Quarterly*. 57(4):553-584.
 :::
 
-
-## Back to relative frequencies… {.smaller}
-
-We could use the table, which provides marginal frequencies, to calculate the relative frequency of magazine founders' occupations being in the publishing trade:
-
-|  | 18th Century | 19th Century |
-|---|---|---|
-| **Publishing Trade** | 109 | 21 |
-| **Other Occupations** | 53 | 82 |
-| **Total** | 162 | 103 |
-
-The number of all magazine foundings whose founders were in the publishing trades, divided by all magazine foundings:
-
-$$(109 + 21)/(162 + 103) = 130/265 = 49.1\%$$
-
-## Using relative & marginal frequencies {.smaller}
+## Frequencies: when to use {.smaller}
 
 Relative frequencies are **more useful if both variables are categorical**, not continuous
 
@@ -131,7 +149,7 @@ Relative frequencies are **more useful if both variables are categorical**, not 
 
 Same for marginal frequencies: more useful if both variables are categorical, not continuous
 
-## Calculating frequencies in R {.smaller}
+## Frequencies: calculating in R {.smaller}
 
 Now, let's use `R` to calculate relative and marginal frequencies
  
@@ -141,8 +159,6 @@ Now, let's use `R` to calculate relative and marginal frequencies
 
 Relative frequency formula : $p_{X=i} = \frac{n_{X=i}}{n_{total}}$
 
-
-
 ```{r}
 #| echo: true
 #| output-location: column
@@ -150,15 +166,15 @@ Relative frequency formula : $p_{X=i} = \frac{n_{X=i}}{n_{total}}$
 attain |> 
   # count absolute frequencies
   count(marital) |> 
-  # create a proprotion  
+  # create a proportion
   mutate(proportion = n / sum(n))
 
 ```
 
-### Marginal freq (option 1)
+### Marginal freq (one group)
 
+Marginal frequency for males. Formula :  $p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}$
 
-Marginal frequency formula :  $p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}$
 
 
 ```{r}
@@ -175,9 +191,9 @@ attain |>
 
 ```
 
-### Marginal freq (option 2)
+### Marginal freq (two groups)
 
-Marginal frequency formula :  $p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}$
+Marginal frequencies for both male and female. Formula :  $p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}$
 
 ```{r}
 #| echo: true
@@ -193,90 +209,142 @@ attain |>
 ## Questions?
 
 
-## Measures of central tendency {.smaller}
+# Central Tendency & Dispersion
+
+## Central tendency: definitions {.smaller}
 
 **Mode**: the value of a variable that occurs most often in the data set
 
 **Median**: the middle data value, if the data are ordered by increasing value
 
-**Mean** (aka average): the sum of all values in the data set, divided 
-
-## Measures of central tendency {.smaller}
-
-**Mode**: the value of a variable that occurs most often in the data set
-
-Example data of number of people 10 members of a high school class sent text messages to Monday: `5, 2, 10, 4, 3, 2, 6, 15, 3, and 2`.
-
-The mode of this variable in this data set is **2**, because it occurs more often (3 times) than any other value
-
-## Measures of central tendency {.smaller}
-
-**Median**: the middle data value, if the data are ordered by increasing value
-
-- If there are an even number of observations, the median is the midpoint between the two middle values
-
-## Measures of central tendency {.smaller}
-
-Same example: (`5, 2, 10, 4, 3, 2, 6, 15, 3, 2`)
-
-- First, order the data: (`2, 2, 2, 3, 3, 4, 5, 6, 10, 15`)
-
-- Second, find the middle observation(s):  (`2, 2, 2, 3, 3, 4, 5, 6, 10, 15`)
-
-Since we have two middle observations, find the midpoint: **3.5**
-
-## Measures of central tendency {.smaller}
+  - If there are an even number of observations, the median is the midpoint between the two middle values
 
 **(Arithmetic) mean** (aka average): the sum of all values in the data set, divided by the number of observations in the data set
 
-**Notation:**
-
 $$\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i$$
 
-Example: (`5, 2, 10, 4, 3, 2, 6, 15, 3, 2`)
 
-Mean = `(5+2+10+4+3+2+6+15+3+2)/10` = **5.2**
+## Central tendency: worked example {.smaller}
 
-## Measures of central tendency {.smaller}
+Example data of number of people 10 members of a high school class sent text messages to on Monday: `5, 2, 10, 4, 3, 2, 6, 15, 3, 2`
 
-Example: (`5, 2, 10, 4, 3, 2, 6, 15, 3, 2`)
+::: {.panel-tabset}
 
-**Summary:**
+### Mode
 
-- Mode = 2
-- Median = 3.5
-- Mean = 5.2
+The value that occurs most often:
 
-## A visual example 
+`5, 2, 10, 4, 3, 2, 6, 15, 3, 2` — **2** appears 3 times, more than any other value
 
-::::: columns
-::: {.column width="40%"}
+**Mode = 2**
 
-<br>
+### Median
 
-Here's a visual example of how mode, mean, and median can work
+Order the data, then find the middle value(s):
+
+(`2, 2, 2, 3,` **3, 4,** `5, 6, 10, 15`)
+
+Two middle observations — find the midpoint: $(3 + 4)/2$ = **3.5**
+
+**Median = 3.5**
+
+### Mean
+
+Sum all values and divide by $n$:
+
+`(5+2+10+4+3+2+6+15+3+2) / 10` = **5.2**
+
+**Mean = 5.2**
+
+### Summary
+
+| Measure | Value |
+|---------|-------|
+| Mode    | 2     |
+| Median  | 3.5   |
+| Mean    | 5.2   |
+
+Notice that mode (2) < median (3.5) < mean (5.2) — this is a sign of **right skew**, produced by the outliers 10 and 15
 
 :::
 
-::: {.column width="60%"}
-![](images/week4/histogram.png){width="100%,fig-align=\"center\""}
+## Central tendency: skewness {.smaller}
+
+Relationship between mean, median, and mode tells us about the **skew** of a distribution:
+
+- **Symmetric**: Mean ≈ Median ≈ Mode.
+
+::: {.panel-tabset}
+
+### Left-skewed
+
+- **Left-skewed** (negative skew): the tail extends to the left. Mean < Median < Mode.
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 3.5
+
+set.seed(106)
+left_data <- tibble(x = -rexp(2000, rate = 0.3) + max(rexp(2000, rate = 0.3)))
+
+ggplot(left_data, aes(x)) +
+  geom_histogram(bins = 40, fill = "steelblue", color = "white", alpha = 0.8) +
+  geom_vline(aes(xintercept = mean(x)), color = "red", linewidth = 1, linetype = "solid") +
+  geom_vline(aes(xintercept = median(x)), color = "orange", linewidth = 1, linetype = "dashed") +
+  annotate("text", x = mean(left_data$x) - 0.3, y = Inf, label = "Mean", color = "red", vjust = 2, hjust = 1) +
+  annotate("text", x = median(left_data$x) + 0.3, y = Inf, label = "Median", color = "orange", vjust = 3.5, hjust = 0) +
+  labs(x = NULL, y = "Count", title = "Left-Skewed Distribution") +
+  theme_minimal()
+```
+
+The mean is pulled toward the long left tail, so it is **less than** the median.
+
+### Right-skewed
+
+- **Right-skewed** (positive skew): the tail extends to the right. Mean > Median > Mode.
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 3.5
+
+set.seed(106)
+right_data <- tibble(x = rexp(2000, rate = 0.3))
+
+ggplot(right_data, aes(x)) +
+  geom_histogram(bins = 40, fill = "steelblue", color = "white", alpha = 0.8) +
+  geom_vline(aes(xintercept = mean(x)), color = "red", linewidth = 1, linetype = "solid") +
+  geom_vline(aes(xintercept = median(x)), color = "orange", linewidth = 1, linetype = "dashed") +
+  annotate("text", x = mean(right_data$x) + 0.3, y = Inf, label = "Mean", color = "red", vjust = 2, hjust = 0) +
+  annotate("text", x = median(right_data$x) - 0.3, y = Inf, label = "Median", color = "orange", vjust = 3.5, hjust = 1) +
+  labs(x = NULL, y = "Count", title = "Right-Skewed Distribution") +
+  theme_minimal()
+```
+
+The mean is pulled toward the long right tail, so it is **greater than** the median.
+
 :::
-:::::
 
 
-## Comparing measures {.smaller}
+## Central tendency: summary {.smaller}
 
 ::::: columns
-::: {.column width="60%"}
+::: {.column width="55%"}
 
 - **Mode** can be used on variables of *any level of measurement*
-  - Less useful for continuous variables, since values are not sufficiently granular (e.g. yearly earnings)
-- **Median** *cannot be used on nominal variables*, because it requires you to order  observations
-- **Mean** *cannot be used on nominal OR ordinal variables*, because it requires that we can say something about the distance between values
+  - Less useful for continuous variables (e.g. yearly earnings)
+  - Generally the least useful; we usually prefer median or mean
+- **Median** *cannot be used on nominal variables* (requires ordering)
+  - Robust to outliers: median (3.5) does not depend on outliers 10 and 15
+- **Mean** *cannot be used on nominal OR ordinal variables* (requires meaningful distances)
+  - Takes into account the full distribution, but sensitive to outliers: mean (5.2) is pulled up by 10 and 15
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="45%"}
 | Measurement | Mode | Median | Mean |
 |---|---|---|---|
 | **Nominal** | Yes | No | No |
@@ -286,22 +354,7 @@ Here's a visual example of how mode, mean, and median can work
 :::
 :::::
 
-
-## Which should we preder? {.smaller}
-
-Same example: `(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)`. 
-
-**Mode** is generally the least useful; in most cases we will prefer to use the median or mean
-
-**Median** provides less information about the distribution of the variable, but is robust to outliers
-
-- The median (3.5) does not depend on the values of the outliers 10 and 15
-
-**Mean** takes into account the distribution of the variable, but is less robust to outliers
-
-- The mean (5.2) is strongly affected by the values of the outliers 10 and 15
-
-## Measures of central tendency in R {.smaller}
+## Central tendency: calculating in R {.smaller}
 
 These measures are simple to calculate in `R`. Let's take a look: 
 
@@ -323,9 +376,9 @@ attain |>
 ```
 
 
-### Meidan
+### Median
 
-We can do the same with for the median using the `median()` function: 
+We can do the same for the median using the `median()` function:
 
 ```{r}
 #| echo: true
@@ -333,14 +386,14 @@ We can do the same with for the median using the `median()` function:
 
 # Median
 attain |> 
-  summarise(mean = median(rincom91, na.rm = TRUE)) |> 
+  summarise(median = median(rincom91, na.rm = TRUE)) |>
   print()
 
 ```
 
 ### Mode
 
-For the mode, we'll simply want to count the number of obs (using `count()`) and take the largest number. We can do following to see the most common martial status, which is unsurprising "married".
+For the mode, we'll simply want to count the number of obs (using `count()`) and take the largest number. We can do the following to see the most common marital status, which is unsurprisingly "married".
 
 ::: aside
 Notice the extra `glimpse()` call here to see what's happening under the hood
@@ -350,10 +403,10 @@ Notice the extra `glimpse()` call here to see what's happening under the hood
 #| echo: true
 #| output-location: column
 
-attain %>%
-  count(marital) %>%
+attain |>
+  count(marital) |>
   glimpse() |> 
-  slice_max(n, n = 1, with_ties = FALSE) %>%
+  slice_max(n, n = 1, with_ties = FALSE) |>
   pull(marital)
 
 ```
@@ -362,7 +415,7 @@ attain %>%
 
 ## Questions?
 
-## Measures of dispersion {.smaller}
+## Dispersion: overview {.smaller}
 
 - **Percentiles**: the $k$th percentile of the variable is the value that has the property that at least $k$ percent of the data are less than or equal to it
 
@@ -373,53 +426,74 @@ attain %>%
 - **Sample standard deviation**: the square root of the sample variance
 
 
-## Measures of dispersion {.smaller}
+## Dispersion: percentiles {.smaller}
 
 **Percentiles**: the $k$th percentile of the variable is the value that has the property that at least k percent of the data are less than or equal to it
 
 **Calculating the $k$th percentile:**
+
+::: {.incremental}
 
 1. Order the data from smallest to largest: $(x_1, ..., x_n)$
 2. Calculate the index $i = \frac{k \times n_{total}}{100}$
 3. If index is a whole number, the percentile is an average of the ith and the ($i$+1)th values in the ordered data
 4. If index is not a whole number, round up to whole number, and the percentile is the $i$th number
 
-## Measures of dispersion {.smaller}
+:::
 
-**Example**: calculating the 30th and 45th percentile of the dataset of # texts per day: `(5, 2, 10, 4, 3, 2, 6, 15, 3, 2)`
+## Dispersion: percentile example {.smaller}
 
-First, order the data: **(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)**
+**Example**: calculating the 30th and 45th percentile of: `(5, 2, 10, 4, 3, 2, 6, 15, 3, 2)`
 
-Second, calculate the indexes:
+**Step 1** — Order the data: **(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)**
 
-- 30th: $30 \times 10/100 = 3$
-- 45th: $45 \times 10/100 = 4.5$
+::: {.panel-tabset}
 
-For the **30th percentile**: the index 3 is a whole number, so we take the average of the 3rd and 4th values in the ordered dataset: $(2 + 3)/2 = 2.5$
+### 30th percentile
 
-For the **45th percentile**: the index 4.5 is not a whole number, so we round up to 5 and take the 5th value in the ordered dataset: **3**
+**Step 2** — Calculate the index: $30 \times 10/100 = 3$
 
-## Measures of dispersion {.smaller}
+**Step 3** — Index is a whole number, so average the 3rd and 4th values:
 
-**Deviation from the mean**: the difference between a data value and the sample mean
+$$(2 + 3)/2 = \mathbf{2.5}$$
 
-For observation $i$, the value of the ith deviation is: $x_i - \bar{x}$
+### 45th percentile
 
-We often use the squared deviations from the mean to calculate the dispersion of the data:
+**Step 2** — Calculate the index: $45 \times 10/100 = 4.5$
+
+**Step 3** — Index is not a whole number, so round up to 5 and take the 5th value:
+
+$$\mathbf{3}$$
+
+:::
+
+## Dispersion: variance and std. deviation {.smaller}
+
+**Deviation from the mean**: for observation $i$, the deviation is $x_i - \bar{x}$
+
+::::: columns
+::: {.column width="50%"}
 
 **Sample variance**: the average* squared deviations
 
 $$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
 
-*Note that these "averages" are divided by n-1, not n.
+:::
 
-## Measures of dispersion {.smaller}
+::: {.column width="50%"}
 
-**Sample standard deviation**: the square root of the sample variance
+**Sample standard deviation**: the square root of the variance
 
 $$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}$$
 
-## Measures of dispersion {.smaller}
+:::
+:::::
+
+::: {.callout-note}
+These "averages" are divided by $n-1$, not $n$.
+:::
+
+## Dispersion: why square deviations? {.smaller}
 
 **Why do we square the deviations?**
 
@@ -430,30 +504,33 @@ $$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}$$
 
 **Unsatisfying answer**: most of the statistical tools we will learn in the rest of the course are based on the standard deviation and variance, and these are the most commonly used measures of dispersion
 
-## Comparing measures of dispersion {.smaller}
+## Dispersion: comparing measures {.smaller}
 
-The tradeoff between percentiles and standard deviations / variances is similar to the tradeoff between medians and means
+::::: columns
+::: {.column width="55%"}
 
-- **Percentiles** only provide information about the distribution of the variable at one point, but are fairly robust to outliers
-  - Like the median, which is the same as the 50th percentile
-- The standard deviation / variance uses information about the entire distribution of the variable, but is not as robust to outliers
+The tradeoff is similar to medians vs. means:
+
+- **Percentiles**: information at one point in the distribution, but robust to outliers
+  - Like the median, which is the 50th percentile
+- **Variance / SD**: uses the entire distribution, but sensitive to outliers
+
+:::
+
+::: {.column width="45%"}
+
+| Statistic      | Nominal | Ordinal | Continuous |
+|----------------|---------|---------|------------|
+| Percentiles    | No      | Yes     | Yes        |
+| Variance / SD  | No      | No      | Yes        |
+
+:::
+:::::
 
 
-## Dispersion and levels of measurement {.smaller}
+## Dispersion: calculating in R {.smaller}
 
-So, which levels of measurement can use percentiles and variance/standard deviation?
-
-<br>
-
-| Statistic          | Nominal | Ordinal | Continuous | Why                      |
-|--------------------|---------|---------|-----------|---------------------------|
-| Percentiles        | ❌ No    | ✅ Yes  | ✅ Yes    | Percentiles require at least ordered data |
-| Variance / Std Dev | ❌ No    | ❌ No   | ✅ Yes    | Requires meaningful distances between values |
-
-
-## Measures of dispersion in R {.smaller}
-
-How do we use R to calculate measures of dispersion? Let's look at variosu measures of dispersion of respondent's income in our `attain` dataset?
+How do we use R to calculate measures of dispersion? Let's look at various measures of dispersion of respondents' income in our `attain` dataset.
 
 ::: {.panel-tabset}
 
@@ -466,7 +543,7 @@ This will return the values at those specific **percentiles**--25th, 50th, and 7
 #| output-location: column
 
 # Percentiles
-attain %>%
+attain |>
   summarise(
     p25 = quantile(rincom91, 0.25, na.rm = TRUE),
     p50 = quantile(rincom91, 0.50, na.rm = TRUE),
@@ -485,7 +562,7 @@ This will return the measure of **variance** in our sample for this specific inc
 #| output-location: column
 
 # Variance
-attain %>%
+attain |>
   summarise(variance = var(rincom91, na.rm = TRUE)) |> 
   glimpse()
 
@@ -500,7 +577,7 @@ This will return the **standard deviation (std_dev)** of variance in our sample 
 #| output-location: column
 
 # Standard deviation
-attain %>%
+attain |>
   summarise(std_dev = sd(rincom91, na.rm = TRUE)) |> 
   glimpse()
 
@@ -519,7 +596,7 @@ Here I use the `gt` package to make the table output a bit nicer. [Check out the
 #| output-location: column
 
 # Verify sd equals sqrt(var)
-attain %>%
+attain |>
   summarise(
     variance = var(rincom91, na.rm = TRUE),
     std_dev  = sd(rincom91, na.rm = TRUE),
@@ -534,27 +611,40 @@ attain %>%
 
 ## Questions?
 
-## Measures of association {.smaller}
+# Association
 
-**Differences in proportions**: the difference in marginal proportions for the same outcome variable ($x_i$) across different categories of a variable y
+## Association: comparing proportions {.smaller}
 
-Formula: $p_{x_i | y_j} - p_{x_i | y_k}$
+::::: columns
+::: {.column width="50%"}
 
-- In words: "The difference in the proportion of $x_i$ between group $j$ and group $k$"
-- The differences in proportions are expressed in terms of percentage points
+**Difference in proportions**
+
+$p_{x_i | y_j} - p_{x_i | y_k}$
+
+- The difference in the proportion of $x_i$ between group $j$ and group $k$
+- Expressed in **percentage points**
 - Easy to use, but occasionally misleading
 
-> Also, remember there is big difference in "percentage point increase" and "percent increase"
+:::
 
-## Measures of association {.smaller}
+::: {.column width="50%"}
 
-**Relative risk ratio**: ratio of marginal proportions for the same outcome variable (x = i) across different categories of a variable y
+**Relative risk ratio**
 
-Formula: $p_{x_i | y_j} / p_{x_i | y_k}$
+$p_{x_i | y_j} / p_{x_i | y_k}$
 
-- Scales the proportions against each other (which can be generally less misleading than simple differences)
+- Ratio of proportions across groups
+- Scales proportions against each other (generally less misleading)
 
-## Comparing proportions: example {.smaller}
+:::
+:::::
+
+::: {.callout-tip}
+There is a big difference between "percentage point increase" and "percent increase."
+:::
+
+## Association: proportions example {.smaller}
 
 |  | 18th Century | 19th Century |
 |---|---|---|
@@ -587,117 +677,337 @@ This is a relative difference—how many times larger one proportion is than ano
 
 ::: 
 
-## Comparing proportions: example {.smaller}
+## Association: which measure to use? {.smaller}
 
+::::: columns
+::: {.column width="50%"}
 
-**Which One to Use?**
+**Absolute difference** (47 pp)
 
-- **Absolute difference** (47 pp): Better for understanding practical/real-world impact. Nearly half of 18th century founders were publishers vs. only a fifth in the 19th century—that's a massive shift in the composition of magazine founders.
+Better for practical/real-world impact.
 
-- **Relative risk** (3.32x): Better for understanding the strength of the association. Being an 18th century founder makes you over 3 times as likely to be a publisher.
+> Nearly 1/2 of 18th century founders were publishers vs. only 1/5 in the 19th century.
 
-## Comparing variables across the distribution {.smaller}
+:::
+
+::: {.column width="50%"}
+
+**Relative risk** (3.32x)
+
+Better for the strength of the association.
+
+> 18th century founders were over 3 times as likely to be a publisher.
+
+:::
+:::::
+
+## Association: covariance {.smaller}
+
+**Covariance** measures how two variables vary together. A _positive_ means they move in the same direction; a _negative_ means they move in opposite directions.
 
 **The covariance** for $n$ observations on two variables $x$ and $y$ is equal to:
 
 $$cov(x,y) = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})$$
 
-Covariance measures whether $x$ and $y$ tend to move together or not
+::::: columns
+::: {.column width="45%"}
 
-Note that the term $(x_i - \bar{x})(y_i - \bar{y})$ is positive for observation $i$ if $x_i$ and $y_i$ are both below or both above the means of $x$ and $y$, and negative if not
+The term $(x_i - \bar{x})(y_i - \bar{y})$ is:
 
-## Comparing variables across the distribution {.smaller}
+- **Positive** when $x_i$ and $y_i$ are both above or both below their means
+- **Negative** when one is above and the other below
+
+:::
+
+::: {.column width="55%"}
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+set.seed(106)
+cov_data <- tibble(
+  x = rnorm(80, mean = 50, sd = 10),
+  y = 0.6 * x + rnorm(80, mean = 20, sd = 8)
+)
+
+x_mean <- mean(cov_data$x)
+y_mean <- mean(cov_data$y)
+
+ggplot(cov_data, aes(x, y)) +
+  annotate("rect", xmin = -Inf, xmax = x_mean, ymin = y_mean, ymax = Inf,
+           fill = "tomato", alpha = 0.1) +
+  annotate("rect", xmin = x_mean, xmax = Inf, ymin = -Inf, ymax = y_mean,
+           fill = "tomato", alpha = 0.1) +
+  annotate("rect", xmin = -Inf, xmax = x_mean, ymin = -Inf, ymax = y_mean,
+           fill = "steelblue", alpha = 0.1) +
+  annotate("rect", xmin = x_mean, xmax = Inf, ymin = y_mean, ymax = Inf,
+           fill = "steelblue", alpha = 0.1) +
+  geom_vline(xintercept = x_mean, linetype = "dashed", color = "grey40") +
+  geom_hline(yintercept = y_mean, linetype = "dashed", color = "grey40") +
+  geom_point(alpha = 0.6, size = 2, color = "black") +
+  annotate("text", x = max(cov_data$x), y = max(cov_data$y),
+           label = "(+)(+) = +", color = "steelblue", fontface = "bold",
+           hjust = 1, vjust = 1, size = 4) +
+  annotate("text", x = min(cov_data$x), y = min(cov_data$y),
+           label = "(-)(-)  = +", color = "steelblue", fontface = "bold",
+           hjust = 0, vjust = 0, size = 4) +
+  annotate("text", x = max(cov_data$x), y = min(cov_data$y),
+           label = "(+)(-) = -", color = "tomato", fontface = "bold",
+           hjust = 1, vjust = 0, size = 4) +
+  annotate("text", x = min(cov_data$x), y = max(cov_data$y),
+           label = "(-)(+) = -", color = "tomato", fontface = "bold",
+           hjust = 0, vjust = 1, size = 4) +
+  labs(x = "x", y = "y") +
+  theme_minimal()
+```
+
+:::
+:::::
+
+## Association: correlation {.smaller}
+
+**Correlation** is a standardized measure of the linear association between two variables. Like covariance, it captures the direction of the relationship, but it also allows us to compare the **strength** across different variable pairs.
 
 **The correlation coefficient** $r$ for $n$ observations on two variables x and y with sample standard deviations $s_x$ and $s_y$ is equal to:
 
 $$r_{xy} = \frac{cov(x,y)}{s_x \times s_y}$$
 
-## Correlation coefficient properties  {.smaller}
+::: {.callout-note}
+**Covariance vs. correlation:** Covariance tells you the *direction* of a relationship but its magnitude depends on the scale of the variables (dollars, years, etc.). Correlation **standardizes** covariance by dividing by the standard deviations, producing a unit-free measure that always falls between -1 and 1.
+:::
+
+## Association: correlation properties  {.smaller}
+
+::: {.incremental}
 
 - $r_{xy}$ is always between -1 and 1
 - $r_{xy}$ equals 1 if all observations fall along a straight line that has a positive slope (that is, as x increases, y increases in direct proportion)
 - $r_{xy}$ equals -1 if all observations fall along a straight line that has a negative slope (that is, as x increases, y decreases in direct proportion)
 - $r_{xy}$ does not depend on the scale of either $x$ and $y$
 
-## Correlation coefficient properties  {.smaller}
+:::
 
-**If $r_{xy}$ equals 0, this does not imply that there is no relationship between $x$ and $y$**
+## Association: correlation examples {.smaller}
 
-It only implies that there is no linear relationship between $x$ and $y$
+::: {.callout-warning}
+$r = 0$ does **not** imply no relationship — only no **linear** relationship. Always use a scatterplot to check!
+:::
 
-**Always use a scatterplot to check!**
+```{r}
+#| echo: false
 
-## Correlation examples 
+set.seed(106)
+n <- 200
 
-Here are some examples of different correlation strengths might look like in terms of data
+gen_corr <- function(r, n = 200) {
+  x <- rnorm(n)
+  y <- r * x + sqrt(1 - r^2) * rnorm(n)
+  tibble(x = x, y = y)
+}
 
-![](images/week4/correlation_examples.png){width="100%" fig-align="center"}
+corr_none     <- gen_corr(0, n)
+corr_weak     <- gen_corr(0.3, n)
+corr_moderate <- gen_corr(0.5, n)
+corr_strong   <- gen_corr(0.8, n)
+
+plot_corr <- function(data, r_label) {
+  ggplot(data, aes(x, y)) +
+    geom_point(alpha = 0.4, size = 1.5, color = "steelblue") +
+    geom_smooth(method = "lm", se = FALSE, color = "red", linewidth = 0.8) +
+    labs(x = NULL, y = NULL, title = r_label) +
+    theme_minimal() +
+    theme(plot.title = element_text(size = 14, face = "bold"))
+}
+```
+
+::: {.panel-tabset}
+
+### None (r = 0)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_none, "r = 0")
+```
+
+### Weak (r = 0.3)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_weak, "r = 0.3")
+```
+
+### Moderate (r = 0.5)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_moderate, "r = 0.5")
+```
+
+### Strong (r = 0.8)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 4
+
+plot_corr(corr_strong, "r = 0.8")
+```
+
+:::
 
 
-## Other correlation coefficients {.smaller}
-
-$r_{xy}$ (also known as Pearson's correlation coefficient) can only be computed for two continuous variables
-
-Other measures with similar properties are available for ordinal variables:
-
-- **Polychoric correlation**: two ordinal variables
-- **Polyserial correlation**: one ordinal variable and one continuous variable
-
-> We won't cover these more in class becuase I find them to be rarely used in practice
-
-## Which measures of association to use? {.smaller}
+## Association: which measure for which data? {.smaller}
 
 |  | **Nominal** | **Ordinal** | **Continuous** |
 |---|---|---|---|
 | **Nominal** | Difference in proportions; relative risk ratio | Difference in proportions; relative risk ratio | Difference in means between groups |
-| **Ordinal** |  | Polychoric correlation | Difference in means between groups; polyserial correlation |
+| **Ordinal** |  |  | Difference in means between groups |
 | **Continuous** |  |  | Covariance, (Pearson's) correlation coefficient |
 
-## Measures of association in R {.smaller}
+## Association: calculating in R {.smaller .scrollable}
 
 ::: {.panel-tabset}
 
 ### Proportions
 
-**Difference in proportions, relative risk ratio:**
+**Step 1: Build marginal frequency tables**
 
-Use the results of the marginal frequency tables
+Let's build a marginal freq table for bachelor's degree and less than college
+
+```{r}
+#| echo: true
+
+# Marginal freq for bachelor's degree holders
+bach <- attain |>
+  filter(degree == "bachelor", !is.na(marital)) |>
+  count(marital) |>
+  mutate(prop = n / sum(n))
+bach
+
+# Marginal freq for less than high school
+lths <- attain |>
+  filter(degree == "lt high", !is.na(marital)) |>
+  count(marital) |>
+  mutate(prop = n / sum(n))
+lths
+```
+
+**Step 2: Difference in proportions** (married)
+
+Now let's take the difference in those proportions of those that are married. How do we interpret this?
+
+```{r}
+#| echo: true
+
+bach |> filter(marital == "married") |> pull(prop) -
+  lths |> filter(marital == "married") |> pull(prop)
+```
+
+<details>
+<summary>**Click to reveal interpretation**</summary>
+Bachelor's degree holders are 16 percentage points more likely to be married than those with less than a high school education.
+</details>
+
+**Step 3: Relative risk ratio** (married)
+
+Finally let's calculate the relative risk ratio of those that are married. How do we interpret this?
+
+```{r}
+#| echo: true
+
+bach |> filter(marital == "married") |> pull(prop) /
+  lths |> filter(marital == "married") |> pull(prop)
+```
+
+<details>
+<summary>**Click to reveal interpretation**</summary>
+Bachelor's degree holders are about 1.38 times as likely to be married compared to those with less than a high school education.
+</details>
 
 ### Covariance 
+
+Let's calulate the covariance of a respondent's income and their household income. How do we interpret this?
 
 ```{r}
 #| echo: true
 
 # Covariance
-attain %>% 
-  summarize(covariance = cov(rincom91, income91, use = "complete.obs")) |> 
+attain |>
+  summarize(covariance = cov(rincom91, income91, use = "complete.obs")) |>
   glimpse()
 
 ```
 
+<details>
+<summary>**Click to reveal interpretation**</summary>
+The positive covariance indicates that respondent income and household income **tend to move in the same direction** — when one is above its mean, the other tends to be as well. However, the magnitude (31,806) is hard to interpret on its own because it depends on the scale of both variables (dollars).
+</details>
 
 ### Correlation
+
+Now let's calulate the correlation. How do we interpret this?
 
 ```{r}
 #| echo: true
 
 # Correlation coefficient
-attain %>%
+attain |>
   summarize(correlation = cor(rincom91, income91, use = "complete.obs"))
 
 ```
+
+<details>
+<summary>**Click to reveal interpretation**</summary>
+The **correlation of 0.68 indicates a moderately strong, positive** linear relationship between respondent income and household income. Unlike covariance, this value is standardized (between -1 and 1), making it easier to judge the strength of the association.
+</details>
 :::
 
 ## Questions?
 
 ## Weekly Assignment #3 {.smaller}
 
-**Two-part assignment:**
+You'll answer some questions based on lecture today. You will not need your own data for this but will use the `attain` data. 
 
-1. Practice summarizing variables from attain.csv (from the first homework assignment): see Word document on bCourses
+**HW #3:** due Thursday, February 19 at 11:59 PM
 
-2. Answer a research question relating to the association between two variables in a data set of your choosing, using a proper measure of association for the levels of measurement of the variables. Write up your results according to the "Weekly Assignment Stata Analysis" template.
+  - any questions?
 
-**HW #3:** due Thursday
- 
- - any questions?
+## In-class Lab {.smaller}
+
+Let's practice using the summary statistics we learned today:
+
+1. Download `lab2.qmd` from bCourse under "assignments" > "Lab #2"
+2. Place `lab2.qmd` in your `labs` folder. Your folder structure should now look like this:
+
+```
+soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+├── assignments/
+│   └── hw1.qmd
+│   └── hw2.qmd
+│   └── hw3.qmd
+└── labs/
+    └── lab1.qmd
+    └── lab2.qmd
+```
+
+3. Use the `Explorer` button on the left to find and open `lab2.qmd`
+4. Let's work through it together!

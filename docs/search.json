@@ -81,7 +81,7 @@
     "href": "slides/week4.html#housekeeping",
     "title": "Week 4",
     "section": "Housekeeping",
-    "text": "Housekeeping\n[[ADD IT IN LATER]]"
+    "text": "Housekeeping\nHW #1: due tonight (Tuesday, February 10) by 11:59 PM – Extended deadline - any questions?\nHW #2: due Thursday, February 12, 11:59 PM - Ideal to use your final project data\nPaper Proposal (5%): due Thursday, February 26, 11:59 PM - A two-page double-spaced proposal for your final paper. - Here’s an example of what I expect."
   },
   {
     "objectID": "slides/week4.html#questions",
@@ -116,7 +116,7 @@
     "href": "slides/week4.html#marginal-frequency-example",
     "title": "Week 4",
     "section": "Marginal frequency example",
-    "text": "Marginal frequency example\nThe table below is reconstructed from a published study:\n\n\n\n\n18th Century\n19th Century\n\n\n\n\nPublishing Trade\n109\n21\n\n\nOther Occupations\n53\n82\n\n\nTotal\n162\n103\n\n\n\n\n18th Century19th Century\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 18th century:\n\\[109/162 = 67.3\\%\\]\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 19th century:\n\\[21/103 = 20.3\\%\\]\n\n\n\n\n\nSource: Haveman, Habinek, and Goodman. 2012. “How Entrepreneurship Evolves: The Founders of New Magazines in America, 1741-1860.” Administrative Science Quarterly. 57(4):553-584."
+    "text": "Marginal frequency example\nThe table below is reconstructed from a published study:\n\n\n\n\n18th Century\n19th Century\n\n\n\n\nPublishing Trade\n109\n21\n\n\nOther Occupations\n53\n82\n\n\nTotal\n162\n103\n\n\n\n\n18th Century19th CenturyOverall relative freq\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 18th century:\n\\[109/162 = 67.3\\%\\]\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 19th century:\n\\[21/103 = 20.3\\%\\]\n\n\nWe can also recover the overall relative frequency from the same table — the number of all founders in the publishing trades, divided by all foundings:\n\\[(109 + 21)/(162 + 103) = 130/265 = 49.1\\%\\]\n\n\n\n\n\nSource: Haveman, Habinek, and Goodman. 2012. “How Entrepreneurship Evolves: The Founders of New Magazines in America, 1741-1860.” Administrative Science Quarterly. 57(4):553-584."
   },
   {
     "objectID": "slides/week4.html#back-to-relative-frequencies",
@@ -137,7 +137,7 @@
     "href": "slides/week4.html#calculating-frequencies-in-r",
     "title": "Week 4",
     "section": "Calculating frequencies in R",
-    "text": "Calculating frequencies in R\nNow, let’s use R to calculate relative and marginal frequencies\n\nRelative freqMarginal freq (option 1)Marginal freq (option 2)\n\n\nRelative frequency formula : \\(p_{X=i} = \\frac{n_{X=i}}{n_{total}}\\)\n\n\nattain |&gt; \n  # count absolute frequencies\n  count(marital) |&gt; \n  # create a proprotion  \n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 6 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   446   0.149   \n2 married   1541   0.515   \n3 never ma   614   0.205   \n4 separate   102   0.0341  \n5 widowed    288   0.0963  \n6 &lt;NA&gt;         1   0.000334\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  # Table of absolute freq for var1, \n  # for given value for var2\n  filter(sex == \"male\") |&gt; \n  count(marital) |&gt; \n  # Use that table to create relative freq\n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 5 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   165     0.128 \n2 married    730     0.566 \n3 never ma   312     0.242 \n4 separate    34     0.0264\n5 widowed     49     0.0380\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  group_by(sex, marital) |&gt; \n  summarize(n = n(), .groups = \"drop_last\") |&gt; \n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 11 × 4\n# Groups:   sex [2]\n   sex    marital      n proportion\n   &lt;chr&gt;  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n 1 female divorced   281   0.165   \n 2 female married    811   0.476   \n 3 female never ma   302   0.177   \n 4 female separate    68   0.0400  \n 5 female widowed    239   0.140   \n 6 female &lt;NA&gt;         1   0.000588\n 7 male   divorced   165   0.128   \n 8 male   married    730   0.566   \n 9 male   never ma   312   0.242   \n10 male   separate    34   0.0264  \n11 male   widowed     49   0.0380"
+    "text": "Calculating frequencies in R\nNow, let’s use R to calculate relative and marginal frequencies\n\nRelative freqMarginal freq (option 1)Marginal freq (option 2)\n\n\nRelative frequency formula : \\(p_{X=i} = \\frac{n_{X=i}}{n_{total}}\\)\n\n\nattain |&gt; \n  # count absolute frequencies\n  count(marital) |&gt; \n  # create a proportion\n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 6 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   446   0.149   \n2 married   1541   0.515   \n3 never ma   614   0.205   \n4 separate   102   0.0341  \n5 widowed    288   0.0963  \n6 &lt;NA&gt;         1   0.000334\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  # Table of absolute freq for var1, \n  # for given value for var2\n  filter(sex == \"male\") |&gt; \n  count(marital) |&gt; \n  # Use that table to create relative freq\n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 5 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   165     0.128 \n2 married    730     0.566 \n3 never ma   312     0.242 \n4 separate    34     0.0264\n5 widowed     49     0.0380\n\n\n\n\nMarginal frequency formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  group_by(sex, marital) |&gt; \n  summarize(n = n(), .groups = \"drop_last\") |&gt; \n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 11 × 4\n# Groups:   sex [2]\n   sex    marital      n proportion\n   &lt;chr&gt;  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n 1 female divorced   281   0.165   \n 2 female married    811   0.476   \n 3 female never ma   302   0.177   \n 4 female separate    68   0.0400  \n 5 female widowed    239   0.140   \n 6 female &lt;NA&gt;         1   0.000588\n 7 male   divorced   165   0.128   \n 8 male   married    730   0.566   \n 9 male   never ma   312   0.242   \n10 male   separate    34   0.0264  \n11 male   widowed     49   0.0380"
   },
   {
     "objectID": "slides/week4.html#questions-1",
@@ -151,7 +151,7 @@
     "href": "slides/week4.html#measures-of-central-tendency",
     "title": "Week 4",
     "section": "Measures of central tendency",
-    "text": "Measures of central tendency\nMode: the value of a variable that occurs most often in the data set\nMedian: the middle data value, if the data are ordered by increasing value\nMean (aka average): the sum of all values in the data set, divided"
+    "text": "Measures of central tendency\nMode: the value of a variable that occurs most often in the data set\nMedian: the middle data value, if the data are ordered by increasing value\n\nIf there are an even number of observations, the median is the midpoint between the two middle values\n\n(Arithmetic) mean (aka average): the sum of all values in the data set, divided by the number of observations in the data set\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n}x_i\\]"
   },
   {
     "objectID": "slides/week4.html#measures-of-central-tendency-1",
@@ -200,7 +200,7 @@
     "href": "slides/week4.html#comparing-measures",
     "title": "Week 4",
     "section": "Comparing measures",
-    "text": "Comparing measures\n\n\n\nMode can be used on variables of any level of measurement\n\nLess useful for continuous variables, since values are not sufficiently granular (e.g. yearly earnings)\n\nMedian cannot be used on nominal variables, because it requires you to order observations\nMean cannot be used on nominal OR ordinal variables, because it requires that we can say something about the distance between values\n\n\n\n\n\nMeasurement\nMode\nMedian\nMean\n\n\n\n\nNominal\nYes\nNo\nNo\n\n\nOrdinal\nYes\nYes\nNo\n\n\nContinuous\nYes\nYes\nYes"
+    "text": "Comparing measures\n\n\n\nMode can be used on variables of any level of measurement\n\nLess useful for continuous variables (e.g. yearly earnings)\nGenerally the least useful; we usually prefer median or mean\n\nMedian cannot be used on nominal variables (requires ordering)\n\nRobust to outliers: median (3.5) does not depend on outliers 10 and 15\n\nMean cannot be used on nominal OR ordinal variables (requires meaningful distances)\n\nTakes into account the full distribution, but sensitive to outliers: mean (5.2) is pulled up by 10 and 15\n\n\n\n\n\n\nMeasurement\nMode\nMedian\nMean\n\n\n\n\nNominal\nYes\nNo\nNo\n\n\nOrdinal\nYes\nYes\nNo\n\n\nContinuous\nYes\nYes\nYes"
   },
   {
     "objectID": "slides/week4.html#which-should-we-preder",
@@ -214,7 +214,7 @@
     "href": "slides/week4.html#measures-of-central-tendency-in-r",
     "title": "Week 4",
     "section": "Measures of central tendency in R",
-    "text": "Measures of central tendency in R\nThese measures are simple to calculate in R. Let’s take a look:\n\nMeanMeidanMode\n\n\nTo calculate the mean respondent income in our sample, we can use the summarize() or summarise() function. Be sure to remove missing using na.rm = TRUE, which can affect the calculation.\n\n\n# Mean\nattain |&gt; \n  summarise(mean = mean(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n\n# A tibble: 1 × 1\n    mean\n   &lt;dbl&gt;\n1 25852.\n\n\n\n\nWe can do the same with for the median using the median() function:\n\n\n# Median\nattain |&gt; \n  summarise(mean = median(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n\n# A tibble: 1 × 1\n   mean\n  &lt;dbl&gt;\n1 21250\n\n\n\n\nFor the mode, we’ll simply want to count the number of obs (using count()) and take the largest number. We can do following to see the most common martial status, which is unsurprising “married”.\n\n\n\nattain %&gt;%\n  count(marital) %&gt;%\n  glimpse() |&gt; \n  slice_max(n, n = 1, with_ties = FALSE) %&gt;%\n  pull(marital)\n\n\nRows: 6\nColumns: 2\n$ marital &lt;chr&gt; \"divorced\", \"married\", \"never ma\", \"separate\", \"widowed\", NA\n$ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1\n\n\n[1] \"married\"\n\n\n\n\n\n\nNotice the extra glimpse() call here to see what’s happening under the hood"
+    "text": "Measures of central tendency in R\nThese measures are simple to calculate in R. Let’s take a look:\n\nMeanMedianMode\n\n\nTo calculate the mean respondent income in our sample, we can use the summarize() or summarise() function. Be sure to remove missing using na.rm = TRUE, which can affect the calculation.\n\n\n# Mean\nattain |&gt; \n  summarise(mean = mean(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n\n# A tibble: 1 × 1\n    mean\n   &lt;dbl&gt;\n1 25852.\n\n\n\n\nWe can do the same for the median using the median() function:\n\n\n# Median\nattain |&gt; \n  summarise(median = median(rincom91, na.rm = TRUE)) |&gt;\n  print()\n\n\n# A tibble: 1 × 1\n  median\n   &lt;dbl&gt;\n1  21250\n\n\n\n\nFor the mode, we’ll simply want to count the number of obs (using count()) and take the largest number. We can do the following to see the most common marital status, which is unsurprisingly “married”.\n\n\n\nattain |&gt;\n  count(marital) |&gt;\n  glimpse() |&gt; \n  slice_max(n, n = 1, with_ties = FALSE) |&gt;\n  pull(marital)\n\n\nRows: 6\nColumns: 2\n$ marital &lt;chr&gt; \"divorced\", \"married\", \"never ma\", \"separate\", \"widowed\", NA\n$ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1\n\n\n[1] \"married\"\n\n\n\n\n\n\nNotice the extra glimpse() call here to see what’s happening under the hood"
   },
   {
     "objectID": "slides/week4.html#questions-2",
@@ -242,21 +242,21 @@
     "href": "slides/week4.html#measures-of-dispersion-2",
     "title": "Week 4",
     "section": "Measures of dispersion",
-    "text": "Measures of dispersion\nExample: calculating the 30th and 45th percentile of the dataset of # texts per day: (5, 2, 10, 4, 3, 2, 6, 15, 3, 2)\nFirst, order the data: (2, 2, 2, 3, 3, 4, 5, 6, 10, 15)\nSecond, calculate the indexes:\n\n30th: \\(30 \\times 10/100 = 3\\)\n45th: \\(45 \\times 10/100 = 4.5\\)\n\nFor the 30th percentile: the index 3 is a whole number, so we take the average of the 3rd and 4th values in the ordered dataset: \\((2 + 3)/2 = 2.5\\)\nFor the 45th percentile: the index 4.5 is not a whole number, so we round up to 5 and take the 5th value in the ordered dataset: 3"
+    "text": "Measures of dispersion\nDeviation from the mean: the difference between a data value and the sample mean\nFor observation \\(i\\), the value of the ith deviation is: \\(x_i - \\bar{x}\\)\nWe often use the squared deviations from the mean to calculate the dispersion of the data:\nSample variance: the average* squared deviations\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\]\n*Note that these “averages” are divided by n-1, not n."
   },
   {
     "objectID": "slides/week4.html#measures-of-dispersion-3",
     "href": "slides/week4.html#measures-of-dispersion-3",
     "title": "Week 4",
     "section": "Measures of dispersion",
-    "text": "Measures of dispersion\nDeviation from the mean: the difference between a data value and the sample mean\nFor observation \\(i\\), the value of the ith deviation is: \\(x_i - \\bar{x}\\)\nWe often use the squared deviations from the mean to calculate the dispersion of the data:\nSample variance: the average* squared deviations\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\]\n*Note that these “averages” are divided by n-1, not n."
+    "text": "Measures of dispersion\nSample standard deviation: the square root of the sample variance\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\]"
   },
   {
     "objectID": "slides/week4.html#measures-of-dispersion-4",
     "href": "slides/week4.html#measures-of-dispersion-4",
     "title": "Week 4",
     "section": "Measures of dispersion",
-    "text": "Measures of dispersion\nSample standard deviation: the square root of the sample variance\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\]"
+    "text": "Measures of dispersion\nWhy do we square the deviations?\n\nEnsures that the deviations will always be positive\n\nBut, using the absolute value could do the same\n\nGives greater weight to outliers\n\nThis has good and bad properties\n\n\nUnsatisfying answer: most of the statistical tools we will learn in the rest of the course are based on the standard deviation and variance, and these are the most commonly used measures of dispersion"
   },
   {
     "objectID": "slides/week4.html#measures-of-dispersion-5",
@@ -284,7 +284,7 @@
     "href": "slides/week4.html#measures-of-dispersion-in-r",
     "title": "Week 4",
     "section": "Measures of dispersion in R",
-    "text": "Measures of dispersion in R\nHow do we use R to calculate measures of dispersion? Let’s look at variosu measures of dispersion of respondent’s income in our attain dataset?\n\nPercentilesVarianceStandard DeviationAll at once\n\n\nThis will return the values at those specific percentiles–25th, 50th, and 75th. So, a respondent with an income of $32,500 is in the 75th percentile of the sample.\n\n\n# Percentiles\nattain %&gt;%\n  summarise(\n    p25 = quantile(rincom91, 0.25, na.rm = TRUE),\n    p50 = quantile(rincom91, 0.50, na.rm = TRUE),\n    p75 = quantile(rincom91, 0.75, na.rm = TRUE)\n  ) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 3\n$ p25 &lt;dbl&gt; 11250\n$ p50 &lt;dbl&gt; 21250\n$ p75 &lt;dbl&gt; 32500\n\n\n\n\nThis will return the measure of variance in our sample for this specific income variable.\n\n\n# Variance\nattain %&gt;%\n  summarise(variance = var(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ variance &lt;dbl&gt; 432600678\n\n\n\n\nThis will return the standard deviation (std_dev) of variance in our sample for this specific income variable.\n\n\n# Standard deviation\nattain %&gt;%\n  summarise(std_dev = sd(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ std_dev &lt;dbl&gt; 20799.05\n\n\n\n\nwe can calculate all of these measures simultaneously. We can also calculate sd manually if we’d like.\n\nHere I use the gt package to make the table output a bit nicer. Check out the documentation!\n\n\n# Verify sd equals sqrt(var)\nattain %&gt;%\n  summarise(\n    variance = var(rincom91, na.rm = TRUE),\n    std_dev  = sd(rincom91, na.rm = TRUE),\n    sqrt_var = sqrt(var(rincom91, na.rm = TRUE))\n  ) |&gt; \n  # use `gt` for nicer table formatting!\n  gt::gt()\n\n\n\n\n\n\n\n\nvariance\nstd_dev\nsqrt_var\n\n\n\n\n432600678\n20799.05\n20799.05"
+    "text": "Measures of dispersion in R\nHow do we use R to calculate measures of dispersion? Let’s look at various measures of dispersion of respondents’ income in our attain dataset.\n\nPercentilesVarianceStandard DeviationAll at once\n\n\nThis will return the values at those specific percentiles–25th, 50th, and 75th. So, a respondent with an income of $32,500 is in the 75th percentile of the sample.\n\n\n# Percentiles\nattain |&gt;\n  summarise(\n    p25 = quantile(rincom91, 0.25, na.rm = TRUE),\n    p50 = quantile(rincom91, 0.50, na.rm = TRUE),\n    p75 = quantile(rincom91, 0.75, na.rm = TRUE)\n  ) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 3\n$ p25 &lt;dbl&gt; 11250\n$ p50 &lt;dbl&gt; 21250\n$ p75 &lt;dbl&gt; 32500\n\n\n\n\nThis will return the measure of variance in our sample for this specific income variable.\n\n\n# Variance\nattain |&gt;\n  summarise(variance = var(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ variance &lt;dbl&gt; 432600678\n\n\n\n\nThis will return the standard deviation (std_dev) of variance in our sample for this specific income variable.\n\n\n# Standard deviation\nattain |&gt;\n  summarise(std_dev = sd(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ std_dev &lt;dbl&gt; 20799.05\n\n\n\n\nwe can calculate all of these measures simultaneously. We can also calculate sd manually if we’d like.\n\nHere I use the gt package to make the table output a bit nicer. Check out the documentation!\n\n\n# Verify sd equals sqrt(var)\nattain |&gt;\n  summarise(\n    variance = var(rincom91, na.rm = TRUE),\n    std_dev  = sd(rincom91, na.rm = TRUE),\n    sqrt_var = sqrt(var(rincom91, na.rm = TRUE))\n  ) |&gt; \n  # use `gt` for nicer table formatting!\n  gt::gt()\n\n\n\n\n\n\n\n\nvariance\nstd_dev\nsqrt_var\n\n\n\n\n432600678\n20799.05\n20799.05"
   },
   {
     "objectID": "slides/week4.html#questions-3",
@@ -298,7 +298,7 @@
     "href": "slides/week4.html#measures-of-association",
     "title": "Week 4",
     "section": "Measures of association",
-    "text": "Measures of association\nDifferences in proportions: the difference in marginal proportions for the same outcome variable (\\(x_i\\)) across different categories of a variable y\nFormula: \\(p_{x_i | y_j} - p_{x_i | y_k}\\)\n\nIn words: “The difference in the proportion of \\(x_i\\) between group \\(j\\) and group \\(k\\)”\nThe differences in proportions are expressed in terms of percentage points\nEasy to use, but occasionally misleading\n\n\nAlso, remember there is big difference in “percentage point increase” and “percent increase”"
+    "text": "Measures of association\nDifferences in proportions: the difference in marginal proportions for the same outcome variable (\\(x_i\\)) across different categories of a variable y\nFormula: \\(p_{x_i | y_j} - p_{x_i | y_k}\\)\n\nIn words: “The difference in the proportion of \\(x_i\\) between group \\(j\\) and group \\(k\\)”\nThe differences in proportions are expressed in terms of percentage points\nEasy to use, but occasionally misleading\n\n\nAlso, remember there is a big difference between “percentage point increase” and “percent increase”"
   },
   {
     "objectID": "slides/week4.html#measures-of-association-1",
@@ -354,7 +354,7 @@
     "href": "slides/week4.html#correlation-examples",
     "title": "Week 4",
     "section": "Correlation examples",
-    "text": "Correlation examples\nHere are some examples of different correlation strengths might look like in terms of data"
+    "text": "Correlation examples\nWhat do different correlation strengths look like? Note: \\(r = 0\\) does not imply no relationship — only no linear relationship. Always use a scatterplot to check!\n\nNone (r = 0)Weak (r = 0.3)Moderate (r = 0.5)Strong (r = 0.8)"
   },
   {
     "objectID": "slides/week4.html#other-correlation-coefficients",
@@ -368,14 +368,14 @@
     "href": "slides/week4.html#which-measures-of-association-to-use",
     "title": "Week 4",
     "section": "Which measures of association to use?",
-    "text": "Which measures of association to use?\n\n\n\n\n\n\n\n\n\n\nNominal\nOrdinal\nContinuous\n\n\n\n\nNominal\nDifference in proportions; relative risk ratio\nDifference in proportions; relative risk ratio\nDifference in means between groups\n\n\nOrdinal\n\nPolychoric correlation\nDifference in means between groups; polyserial correlation\n\n\nContinuous\n\n\nCovariance, (Pearson’s) correlation coefficient"
+    "text": "Which measures of association to use?\n\n\n\n\n\n\n\n\n\n\nNominal\nOrdinal\nContinuous\n\n\n\n\nNominal\nDifference in proportions; relative risk ratio\nDifference in proportions; relative risk ratio\nDifference in means between groups\n\n\nOrdinal\n\n\nDifference in means between groups\n\n\nContinuous\n\n\nCovariance, (Pearson’s) correlation coefficient"
   },
   {
     "objectID": "slides/week4.html#measures-of-association-in-r",
     "href": "slides/week4.html#measures-of-association-in-r",
     "title": "Week 4",
     "section": "Measures of association in R",
-    "text": "Measures of association in R\n\nProportionsCovarianceCorrelation\n\n\nDifference in proportions, relative risk ratio:\nUse the results of the marginal frequency tables\n\n\n\n# Covariance\nattain %&gt;% \n  summarize(covariance = cov(rincom91, income91, use = \"complete.obs\")) |&gt; \n  glimpse()\n\nRows: 1\nColumns: 1\n$ covariance &lt;dbl&gt; 376447249\n\n\n\n\n\n# Correlation coefficient\nattain %&gt;%\n  summarize(correlation = cor(rincom91, income91, use = \"complete.obs\"))\n\n# A tibble: 1 × 1\n  correlation\n        &lt;dbl&gt;\n1       0.671"
+    "text": "Measures of association in R\n\nProportionsCovarianceCorrelation\n\n\nDifference in proportions, relative risk ratio:\nUse the results of the marginal frequency tables\n\n\n\n# Covariance\nattain |&gt; \n  summarize(covariance = cov(rincom91, income91, use = \"complete.obs\")) |&gt; \n  glimpse()\n\nRows: 1\nColumns: 1\n$ covariance &lt;dbl&gt; 376447249\n\n\n\n\n\n# Correlation coefficient\nattain |&gt;\n  summarize(correlation = cor(rincom91, income91, use = \"complete.obs\"))\n\n# A tibble: 1 × 1\n  correlation\n        &lt;dbl&gt;\n1       0.671"
   },
   {
     "objectID": "slides/week4.html#questions-4",
@@ -389,7 +389,7 @@
     "href": "slides/week4.html#weekly-assignment-3",
     "title": "Week 4",
     "section": "Weekly Assignment #3",
-    "text": "Weekly Assignment #3\nTwo-part assignment:\n\nPractice summarizing variables from attain.csv (from the first homework assignment): see Word document on bCourses\nAnswer a research question relating to the association between two variables in a data set of your choosing, using a proper measure of association for the levels of measurement of the variables. Write up your results according to the “Weekly Assignment Stata Analysis” template.\n\nHW #3: due Thursday\n\nany questions?"
+    "text": "Weekly Assignment #3\nYou’ll answer some questions based on lecture today. You will not need your own data for this but will use the attain data.\nHW #3: due Thursday, February 19 at 11:59 PM\n\nany questions?"
   },
   {
     "objectID": "slides/week7.html#housekeeping",
@@ -3176,5 +3176,271 @@
     "title": "Week 5",
     "section": "Research Paper Proposal",
     "text": "Research Paper Proposal\nYou don’t have to write about what statistical analysis you will use, but you should end with a sentence that talks generally about the relationship you expect to see between your independent and dependent variables\nExample:\n\n“I expect that people who report higher family incomes will be more likely to agree with the survey question that the government should reduce taxes.”\n\nNote: Your proposal can (and prob should) use the data/topic that you’ve been working with in weekly assignments so far."
+  },
+  {
+    "objectID": "slides/week4.html#which-should-we-prefer",
+    "href": "slides/week4.html#which-should-we-prefer",
+    "title": "Week 4",
+    "section": "Which should we prefer?",
+    "text": "Which should we prefer?\nSame example: (2, 2, 2, 3, 3, 4, 5, 6, 10, 15).\nMode is generally the least useful; in most cases we will prefer to use the median or mean\nMedian provides less information about the distribution of the variable, but is robust to outliers\n\nThe median (3.5) does not depend on the values of the outliers 10 and 15\n\nMean takes into account the distribution of the variable, but is less robust to outliers\n\nThe mean (5.2) is strongly affected by the values of the outliers 10 and 15"
+  },
+  {
+    "objectID": "slides/week4.html#central-tendency-worked-example",
+    "href": "slides/week4.html#central-tendency-worked-example",
+    "title": "Week 4",
+    "section": "Central tendency: worked example",
+    "text": "Central tendency: worked example\nExample data of number of people 10 members of a high school class sent text messages to on Monday: 5, 2, 10, 4, 3, 2, 6, 15, 3, 2\n\nModeMedianMeanSummary\n\n\nThe value that occurs most often:\n5, 2, 10, 4, 3, 2, 6, 15, 3, 2 — 2 appears 3 times, more than any other value\nMode = 2\n\n\nOrder the data, then find the middle value(s):\n(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)\nTwo middle observations — find the midpoint: \\((3 + 4)/2\\) = 3.5\nMedian = 3.5\n\n\nSum all values and divide by \\(n\\):\n(5+2+10+4+3+2+6+15+3+2) / 10 = 5.2\nMean = 5.2\n\n\n\n\n\nMeasure\nValue\n\n\n\n\nMode\n2\n\n\nMedian\n3.5\n\n\nMean\n5.2\n\n\n\nNotice that mode (2) &lt; median (3.5) &lt; mean (5.2) — this is a sign of right skew, produced by the outliers 10 and 15"
+  },
+  {
+    "objectID": "slides/week4.html#skewness-and-central-tendency",
+    "href": "slides/week4.html#skewness-and-central-tendency",
+    "title": "Week 4",
+    "section": "Skewness and central tendency",
+    "text": "Skewness and central tendency\nRelationship between mean, median, and mode tells us about the skew of a distribution:\n\nSymmetric: Mean ≈ Median ≈ Mode.\n\n\nLeft-skewedRight-skewed\n\n\n\nLeft-skewed (negative skew): the tail extends to the left. Mean &lt; Median &lt; Mode.\n\n\n\n\n\n\n\n\n\n\nThe mean is pulled toward the long left tail, so it is less than the median.\n\n\n\nRight-skewed (positive skew): the tail extends to the right. Mean &gt; Median &gt; Mode.\n\n\n\n\n\n\n\n\n\n\nThe mean is pulled toward the long right tail, so it is greater than the median."
+  },
+  {
+    "objectID": "slides/week4.html#percentile-example",
+    "href": "slides/week4.html#percentile-example",
+    "title": "Week 4",
+    "section": "Percentile example",
+    "text": "Percentile example\nExample: calculating the 30th and 45th percentile of: (5, 2, 10, 4, 3, 2, 6, 15, 3, 2)\nStep 1 — Order the data: (2, 2, 2, 3, 3, 4, 5, 6, 10, 15)\n\n30th percentile45th percentile\n\n\nStep 2 — Calculate the index: \\(30 \\times 10/100 = 3\\)\nStep 3 — Index is a whole number, so average the 3rd and 4th values:\n\\[(2 + 3)/2 = \\mathbf{2.5}\\]\n\n\nStep 2 — Calculate the index: \\(45 \\times 10/100 = 4.5\\)\nStep 3 — Index is not a whole number, so round up to 5 and take the 5th value:\n\\[\\mathbf{3}\\]"
+  },
+  {
+    "objectID": "slides/week4.html#what-makes-a-good-research-question",
+    "href": "slides/week4.html#what-makes-a-good-research-question",
+    "title": "Week 4",
+    "section": "What makes a good research question?",
+    "text": "What makes a good research question?\nA strong social science research question has several key components:\n\nSpecifies a relationship between two or more variables\n\nNot just “What is X?” but “How does X relate to Y?”\n\nIs answerable with data — can be investigated empirically\nHas sociological significance — connects to broader theory or social patterns\nIs clearly scoped — specific enough to study, not so narrow it’s trivial\n\nExamples from sociology:\n\n“Is there an association between educational attainment and income in the U.S.?”\n“Do marriage rates differ across racial groups, and how has this changed over time?”\n“Is religious affiliation associated with political ideology?”\n\n\nA good research question guides everything else: your data, your variables, and your choice of summary statistics or measures of association."
+  },
+  {
+    "objectID": "slides/week4.html#in-class-lab",
+    "href": "slides/week4.html#in-class-lab",
+    "title": "Week 4",
+    "section": "In-class Lab",
+    "text": "In-class Lab\nLet’s practice using the summary statistics we learned today:\n\nDownload lab2.qmd from bCourse under “assignments” &gt; “Lab #2”\nPlace lab2.qmd in your labs folder. Your folder structure should now look like this:\n\nsoc106/\n├── _quarto.yml\n├── data/\n│   └── attain.csv\n├── assignments/\n│   └── hw1.qmd\n│   └── hw2.qmd\n│   └── hw3.qmd\n└── labs/\n    └── lab1.qmd\n    └── lab2.qmd\n\nUse the Explorer button on the left to find and open lab2.qmd\nLet’s work through it together!"
+  },
+  {
+    "objectID": "slides/week4.html#what-is-a-good-research-question",
+    "href": "slides/week4.html#what-is-a-good-research-question",
+    "title": "Week 4",
+    "section": "What is a good research question?",
+    "text": "What is a good research question?\n\nSpecifies a relationship between two or more variables\n\nNot just “What is X?” but “How does X relate to Y?”\n\nIs answerable with data — can be investigated empirically\nHas sociological significance — connects to broader theory or social patterns\nIs clearly scoped — specific enough to study, not so narrow it’s trivial\n\nExamples from sociology:\n\n“Is there an association between educational attainment and income in the U.S.?”\n“Do marriage rates differ across racial groups, and how has this changed over time?”\n“Is religious affiliation associated with political ideology?”\n\n\nA good research question guides everything else: your data, your variables, and your choice of summary statistics or measures of association."
+  },
+  {
+    "objectID": "slides/week4.html#frequencies-relative-frequencies",
+    "href": "slides/week4.html#frequencies-relative-frequencies",
+    "title": "Week 4",
+    "section": "Frequencies: relative frequencies",
+    "text": "Frequencies: relative frequencies\nRelative frequency (aka proportion): the frequency of observations for a given variable, divided by the total number of observations.\n\nThis is similar to a probability, though statisticians generally talk about probabilities existing “in the world” and relative frequencies existing “within the data”\n\nNotation:\n\n\\(p_{X=i} = \\frac{n_{X=i}}{n_{total}}\\)\nSometimes \\(p_{X=i}\\) is shortened to \\(p_i\\)\n\nRelative frequency in the case of two variables:\n\n\\(p_{X=i,Y=j} = \\frac{n_{X=i,Y=j}}{n_{total}}\\)"
+  },
+  {
+    "objectID": "slides/week4.html#frequencies-marginal-frequencies",
+    "href": "slides/week4.html#frequencies-marginal-frequencies",
+    "title": "Week 4",
+    "section": "Frequencies: marginal frequencies",
+    "text": "Frequencies: marginal frequencies\nThe marginal (or conditional) proportion is the relative frequency of observations taking a certain value for a given variable (i.e., X), conditional on the observations taking a certain value for another variable (i.e., Y)\nNotation:\n\n\\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\nSometimes \\(p_{X=i|Y=j}\\) is shortened to \\(p_{ij}\\)"
+  },
+  {
+    "objectID": "slides/week4.html#frequencies-marginal-frequency-example",
+    "href": "slides/week4.html#frequencies-marginal-frequency-example",
+    "title": "Week 4",
+    "section": "Frequencies: marginal frequency example",
+    "text": "Frequencies: marginal frequency example\nThe table below is reconstructed from a published study:\n\n\n\n\n18th Century\n19th Century\n\n\n\n\nPublishing Trade\n109\n21\n\n\nOther Occupations\n53\n82\n\n\nTotal\n162\n103\n\n\n\n\n18th Century19th CenturyOverall relative freq\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 18th century:\n\\[109/162 = 67.3\\%\\]\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 19th century:\n\\[21/103 = 20.3\\%\\]\n\n\nWe can also recover the overall relative frequency from the same table — the number of all founders in the publishing trades, divided by all foundings:\n\\[(109 + 21)/(162 + 103) = 130/265 = 49.1\\%\\]\n\n\n\n\n\nSource: Haveman, Habinek, and Goodman. 2012. “How Entrepreneurship Evolves: The Founders of New Magazines in America, 1741-1860.” Administrative Science Quarterly. 57(4):553-584."
+  },
+  {
+    "objectID": "slides/week4.html#frequencies-when-to-use",
+    "href": "slides/week4.html#frequencies-when-to-use",
+    "title": "Week 4",
+    "section": "Frequencies: when to use",
+    "text": "Frequencies: when to use\nRelative frequencies are more useful if both variables are categorical, not continuous\n\nIf the variable is continuous, there may not be very many observations that have a certain value for a given variable\nExample: yearly earnings (in dollars)—it would not be very informative to find the relative frequency of individuals with yearly earnings of $27,475\n\nSame for marginal frequencies: more useful if both variables are categorical, not continuous"
+  },
+  {
+    "objectID": "slides/week4.html#frequencies-calculating-in-r",
+    "href": "slides/week4.html#frequencies-calculating-in-r",
+    "title": "Week 4",
+    "section": "Frequencies: calculating in R",
+    "text": "Frequencies: calculating in R\nNow, let’s use R to calculate relative and marginal frequencies\n\nRelative freqMarginal freq (one group)Marginal freq (two groups)\n\n\nRelative frequency formula : \\(p_{X=i} = \\frac{n_{X=i}}{n_{total}}\\)\n\n\nattain |&gt; \n  # count absolute frequencies\n  count(marital) |&gt; \n  # create a proportion\n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 6 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   446   0.149   \n2 married   1541   0.515   \n3 never ma   614   0.205   \n4 separate   102   0.0341  \n5 widowed    288   0.0963  \n6 &lt;NA&gt;         1   0.000334\n\n\n\n\nMarginal frequency for males. Formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  # Table of absolute freq for var1, \n  # for given value for var2\n  filter(sex == \"male\") |&gt; \n  count(marital) |&gt; \n  # Use that table to create relative freq\n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 5 × 3\n  marital      n proportion\n  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n1 divorced   165     0.128 \n2 married    730     0.566 \n3 never ma   312     0.242 \n4 separate    34     0.0264\n5 widowed     49     0.0380\n\n\n\n\nMarginal frequencies for both male and female. Formula : \\(p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\,Y=j}}{n_{Y=j}}\\)\n\n\nattain |&gt; \n  group_by(sex, marital) |&gt; \n  summarize(n = n(), .groups = \"drop_last\") |&gt; \n  mutate(proportion = n / sum(n))\n\n\n# A tibble: 11 × 4\n# Groups:   sex [2]\n   sex    marital      n proportion\n   &lt;chr&gt;  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;\n 1 female divorced   281   0.165   \n 2 female married    811   0.476   \n 3 female never ma   302   0.177   \n 4 female separate    68   0.0400  \n 5 female widowed    239   0.140   \n 6 female &lt;NA&gt;         1   0.000588\n 7 male   divorced   165   0.128   \n 8 male   married    730   0.566   \n 9 male   never ma   312   0.242   \n10 male   separate    34   0.0264  \n11 male   widowed     49   0.0380"
+  },
+  {
+    "objectID": "slides/week4.html#central-tendency-definitions",
+    "href": "slides/week4.html#central-tendency-definitions",
+    "title": "Week 4",
+    "section": "Central tendency: definitions",
+    "text": "Central tendency: definitions\nMode: the value of a variable that occurs most often in the data set\nMedian: the middle data value, if the data are ordered by increasing value\n\nIf there are an even number of observations, the median is the midpoint between the two middle values\n\n(Arithmetic) mean (aka average): the sum of all values in the data set, divided by the number of observations in the data set\n\\[\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n}x_i\\]"
+  },
+  {
+    "objectID": "slides/week4.html#central-tendency-skewness",
+    "href": "slides/week4.html#central-tendency-skewness",
+    "title": "Week 4",
+    "section": "Central tendency: skewness",
+    "text": "Central tendency: skewness\nRelationship between mean, median, and mode tells us about the skew of a distribution:\n\nSymmetric: Mean ≈ Median ≈ Mode.\n\n\nLeft-skewedRight-skewed\n\n\n\nLeft-skewed (negative skew): the tail extends to the left. Mean &lt; Median &lt; Mode.\n\n\n\n\n\n\n\n\n\n\nThe mean is pulled toward the long left tail, so it is less than the median.\n\n\n\nRight-skewed (positive skew): the tail extends to the right. Mean &gt; Median &gt; Mode.\n\n\n\n\n\n\n\n\n\n\nThe mean is pulled toward the long right tail, so it is greater than the median."
+  },
+  {
+    "objectID": "slides/week4.html#central-tendency-comparing-measures",
+    "href": "slides/week4.html#central-tendency-comparing-measures",
+    "title": "Week 4",
+    "section": "Central tendency: comparing measures",
+    "text": "Central tendency: comparing measures\n\n\n\nMode can be used on variables of any level of measurement\n\nLess useful for continuous variables (e.g. yearly earnings)\nGenerally the least useful; we usually prefer median or mean\n\nMedian cannot be used on nominal variables (requires ordering)\n\nRobust to outliers: median (3.5) does not depend on outliers 10 and 15\n\nMean cannot be used on nominal OR ordinal variables (requires meaningful distances)\n\nTakes into account the full distribution, but sensitive to outliers: mean (5.2) is pulled up by 10 and 15\n\n\n\n\n\n\nMeasurement\nMode\nMedian\nMean\n\n\n\n\nNominal\nYes\nNo\nNo\n\n\nOrdinal\nYes\nYes\nNo\n\n\nContinuous\nYes\nYes\nYes"
+  },
+  {
+    "objectID": "slides/week4.html#central-tendency-calculating-in-r",
+    "href": "slides/week4.html#central-tendency-calculating-in-r",
+    "title": "Week 4",
+    "section": "Central tendency: calculating in R",
+    "text": "Central tendency: calculating in R\nThese measures are simple to calculate in R. Let’s take a look:\n\nMeanMedianMode\n\n\nTo calculate the mean respondent income in our sample, we can use the summarize() or summarise() function. Be sure to remove missing using na.rm = TRUE, which can affect the calculation.\n\n\n# Mean\nattain |&gt; \n  summarise(mean = mean(rincom91, na.rm = TRUE)) |&gt; \n  print()\n\n\n# A tibble: 1 × 1\n    mean\n   &lt;dbl&gt;\n1 25852.\n\n\n\n\nWe can do the same for the median using the median() function:\n\n\n# Median\nattain |&gt; \n  summarise(median = median(rincom91, na.rm = TRUE)) |&gt;\n  print()\n\n\n# A tibble: 1 × 1\n  median\n   &lt;dbl&gt;\n1  21250\n\n\n\n\nFor the mode, we’ll simply want to count the number of obs (using count()) and take the largest number. We can do the following to see the most common marital status, which is unsurprisingly “married”.\n\n\n\nattain |&gt;\n  count(marital) |&gt;\n  glimpse() |&gt; \n  slice_max(n, n = 1, with_ties = FALSE) |&gt;\n  pull(marital)\n\n\nRows: 6\nColumns: 2\n$ marital &lt;chr&gt; \"divorced\", \"married\", \"never ma\", \"separate\", \"widowed\", NA\n$ n       &lt;int&gt; 446, 1541, 614, 102, 288, 1\n\n\n[1] \"married\"\n\n\n\n\n\n\nNotice the extra glimpse() call here to see what’s happening under the hood"
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-overview",
+    "href": "slides/week4.html#dispersion-overview",
+    "title": "Week 4",
+    "section": "Dispersion: overview",
+    "text": "Dispersion: overview\n\nPercentiles: the \\(k\\)th percentile of the variable is the value that has the property that at least \\(k\\) percent of the data are less than or equal to it\nDeviation from the mean: the difference between a data value and the sample mean\nSample variance: the average squared deviations\nSample standard deviation: the square root of the sample variance"
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-percentiles",
+    "href": "slides/week4.html#dispersion-percentiles",
+    "title": "Week 4",
+    "section": "Dispersion: percentiles",
+    "text": "Dispersion: percentiles\nPercentiles: the \\(k\\)th percentile of the variable is the value that has the property that at least k percent of the data are less than or equal to it\nCalculating the \\(k\\)th percentile:\n\nOrder the data from smallest to largest: \\((x_1, ..., x_n)\\)\nCalculate the index \\(i = \\frac{k \\times n_{total}}{100}\\)\nIf index is a whole number, the percentile is an average of the ith and the (\\(i\\)+1)th values in the ordered data\nIf index is not a whole number, round up to whole number, and the percentile is the \\(i\\)th number"
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-percentile-example",
+    "href": "slides/week4.html#dispersion-percentile-example",
+    "title": "Week 4",
+    "section": "Dispersion: percentile example",
+    "text": "Dispersion: percentile example\nExample: calculating the 30th and 45th percentile of: (5, 2, 10, 4, 3, 2, 6, 15, 3, 2)\nStep 1 — Order the data: (2, 2, 2, 3, 3, 4, 5, 6, 10, 15)\n\n30th percentile45th percentile\n\n\nStep 2 — Calculate the index: \\(30 \\times 10/100 = 3\\)\nStep 3 — Index is a whole number, so average the 3rd and 4th values:\n\\[(2 + 3)/2 = \\mathbf{2.5}\\]\n\n\nStep 2 — Calculate the index: \\(45 \\times 10/100 = 4.5\\)\nStep 3 — Index is not a whole number, so round up to 5 and take the 5th value:\n\\[\\mathbf{3}\\]"
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-variance-and-standard-deviation",
+    "href": "slides/week4.html#dispersion-variance-and-standard-deviation",
+    "title": "Week 4",
+    "section": "Dispersion: variance and standard deviation",
+    "text": "Dispersion: variance and standard deviation\nDeviation from the mean: for observation \\(i\\), the deviation is \\(x_i - \\bar{x}\\)\n\n\nSample variance: the average* squared deviations\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\]\n\nSample standard deviation: the square root of the variance\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\]\n\n\n\n\n\n\n\nNote\n\n\nThese “averages” are divided by \\(n-1\\), not \\(n\\)."
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-why-square-deviations",
+    "href": "slides/week4.html#dispersion-why-square-deviations",
+    "title": "Week 4",
+    "section": "Dispersion: why square deviations?",
+    "text": "Dispersion: why square deviations?\nWhy do we square the deviations?\n\nEnsures that the deviations will always be positive\n\nBut, using the absolute value could do the same\n\nGives greater weight to outliers\n\nThis has good and bad properties\n\n\nUnsatisfying answer: most of the statistical tools we will learn in the rest of the course are based on the standard deviation and variance, and these are the most commonly used measures of dispersion"
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-comparing-measures",
+    "href": "slides/week4.html#dispersion-comparing-measures",
+    "title": "Week 4",
+    "section": "Dispersion: comparing measures",
+    "text": "Dispersion: comparing measures\n\n\nThe tradeoff is similar to medians vs. means:\n\nPercentiles: information at one point in the distribution, but robust to outliers\n\nLike the median, which is the 50th percentile\n\nVariance / SD: uses the entire distribution, but sensitive to outliers\n\n\n\n\n\nStatistic\nNominal\nOrdinal\nContinuous\n\n\n\n\nPercentiles\nNo\nYes\nYes\n\n\nVariance / SD\nNo\nNo\nYes"
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-calculating-in-r",
+    "href": "slides/week4.html#dispersion-calculating-in-r",
+    "title": "Week 4",
+    "section": "Dispersion: calculating in R",
+    "text": "Dispersion: calculating in R\nHow do we use R to calculate measures of dispersion? Let’s look at various measures of dispersion of respondents’ income in our attain dataset.\n\nPercentilesVarianceStandard DeviationAll at once\n\n\nThis will return the values at those specific percentiles–25th, 50th, and 75th. So, a respondent with an income of $32,500 is in the 75th percentile of the sample.\n\n\n# Percentiles\nattain |&gt;\n  summarise(\n    p25 = quantile(rincom91, 0.25, na.rm = TRUE),\n    p50 = quantile(rincom91, 0.50, na.rm = TRUE),\n    p75 = quantile(rincom91, 0.75, na.rm = TRUE)\n  ) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 3\n$ p25 &lt;dbl&gt; 11250\n$ p50 &lt;dbl&gt; 21250\n$ p75 &lt;dbl&gt; 32500\n\n\n\n\nThis will return the measure of variance in our sample for this specific income variable.\n\n\n# Variance\nattain |&gt;\n  summarise(variance = var(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ variance &lt;dbl&gt; 432600678\n\n\n\n\nThis will return the standard deviation (std_dev) of variance in our sample for this specific income variable.\n\n\n# Standard deviation\nattain |&gt;\n  summarise(std_dev = sd(rincom91, na.rm = TRUE)) |&gt; \n  glimpse()\n\n\nRows: 1\nColumns: 1\n$ std_dev &lt;dbl&gt; 20799.05\n\n\n\n\nwe can calculate all of these measures simultaneously. We can also calculate sd manually if we’d like.\n\nHere I use the gt package to make the table output a bit nicer. Check out the documentation!\n\n\n# Verify sd equals sqrt(var)\nattain |&gt;\n  summarise(\n    variance = var(rincom91, na.rm = TRUE),\n    std_dev  = sd(rincom91, na.rm = TRUE),\n    sqrt_var = sqrt(var(rincom91, na.rm = TRUE))\n  ) |&gt; \n  # use `gt` for nicer table formatting!\n  gt::gt()\n\n\n\n\n\n\n\n\nvariance\nstd_dev\nsqrt_var\n\n\n\n\n432600678\n20799.05\n20799.05"
+  },
+  {
+    "objectID": "slides/week4.html#association-comparing-proportions",
+    "href": "slides/week4.html#association-comparing-proportions",
+    "title": "Week 4",
+    "section": "Association: comparing proportions",
+    "text": "Association: comparing proportions\n\n\nDifference in proportions\n\\(p_{x_i | y_j} - p_{x_i | y_k}\\)\n\nThe difference in the proportion of \\(x_i\\) between group \\(j\\) and group \\(k\\)\nExpressed in percentage points\nEasy to use, but occasionally misleading\n\n\nRelative risk ratio\n\\(p_{x_i | y_j} / p_{x_i | y_k}\\)\n\nRatio of proportions across groups\nScales proportions against each other (generally less misleading)\n\n\n\n\n\n\n\n\nTip\n\n\nThere is a big difference between “percentage point increase” and “percent increase.”"
+  },
+  {
+    "objectID": "slides/week4.html#association-proportions-example",
+    "href": "slides/week4.html#association-proportions-example",
+    "title": "Week 4",
+    "section": "Association: proportions example",
+    "text": "Association: proportions example\n\n\n\n\n18th Century\n19th Century\n\n\n\n\nPublishing Trade\n109\n21\n\n\nOther Occupations\n53\n82\n\n\nTotal\n162\n103\n\n\n\n\nDifference in proportionsRelative risk ratios\n\n\nDifference in proportions of a magazine founder being in the publishing trade (x) in the 18th as compared to the 19th century (y):\n\\[109/162 - 21/103 = 67.3\\% - 20.3\\% = 47 \\text{ percentage points}\\]\nThis is an absolute difference—it tells you the raw gap between the two proportions.\n\n“Magazine founders in the 18th century were 47 percentage points more likely to be in the publishing trade than those in the 19th century.”\n\n\n\nRelative risk ratio of a magazine founder being in the publishing trade (x) in the 18th as compared to the 19th century (y):\n\\[(109/162)/(21/103) = 67.3\\%/20.3\\% = 3.32\\]\nThis is a relative difference—how many times larger one proportion is than another.\n\n“Magazine founders in the 18th century were 3.32 times as likely (or 232% more likely) to be in the publishing trade compared to those in the 19th century.”"
+  },
+  {
+    "objectID": "slides/week4.html#association-which-measure-to-use",
+    "href": "slides/week4.html#association-which-measure-to-use",
+    "title": "Week 4",
+    "section": "Association: which measure to use?",
+    "text": "Association: which measure to use?\n\n\nAbsolute difference (47 pp)\nBetter for practical/real-world impact.\n\nNearly 1/2 of 18th century founders were publishers vs. only 1/5 in the 19th century.\n\n\nRelative risk (3.32x)\nBetter for the strength of the association.\n\n18th century founders were over 3 times as likely to be a publisher."
+  },
+  {
+    "objectID": "slides/week4.html#association-covariance",
+    "href": "slides/week4.html#association-covariance",
+    "title": "Week 4",
+    "section": "Association: covariance",
+    "text": "Association: covariance\nCovariance measures how two variables vary together. A positive means they move in the same direction; a negative means they move in opposite directions.\nThe covariance for \\(n\\) observations on two variables \\(x\\) and \\(y\\) is equal to:\n\\[cov(x,y) = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})(y_i - \\bar{y})\\]\n\n\nThe term \\((x_i - \\bar{x})(y_i - \\bar{y})\\) is:\n\nPositive when \\(x_i\\) and \\(y_i\\) are both above or both below their means\nNegative when one is above and the other below"
+  },
+  {
+    "objectID": "slides/week4.html#association-correlation",
+    "href": "slides/week4.html#association-correlation",
+    "title": "Week 4",
+    "section": "Association: correlation",
+    "text": "Association: correlation\nCorrelation is a standardized measure of the linear association between two variables. Like covariance, it captures the direction of the relationship, but it also allows us to compare the strength across different variable pairs.\nThe correlation coefficient \\(r\\) for \\(n\\) observations on two variables x and y with sample standard deviations \\(s_x\\) and \\(s_y\\) is equal to:\n\\[r_{xy} = \\frac{cov(x,y)}{s_x \\times s_y}\\]\n\n\n\n\n\n\nNote\n\n\nCovariance vs. correlation: Covariance tells you the direction of a relationship but its magnitude depends on the scale of the variables (dollars, years, etc.). Correlation standardizes covariance by dividing by the standard deviations, producing a unit-free measure that always falls between -1 and 1."
+  },
+  {
+    "objectID": "slides/week4.html#association-correlation-properties",
+    "href": "slides/week4.html#association-correlation-properties",
+    "title": "Week 4",
+    "section": "Association: correlation properties",
+    "text": "Association: correlation properties\n\n\\(r_{xy}\\) is always between -1 and 1\n\\(r_{xy}\\) equals 1 if all observations fall along a straight line that has a positive slope (that is, as x increases, y increases in direct proportion)\n\\(r_{xy}\\) equals -1 if all observations fall along a straight line that has a negative slope (that is, as x increases, y decreases in direct proportion)\n\\(r_{xy}\\) does not depend on the scale of either \\(x\\) and \\(y\\)"
+  },
+  {
+    "objectID": "slides/week4.html#association-correlation-examples",
+    "href": "slides/week4.html#association-correlation-examples",
+    "title": "Week 4",
+    "section": "Association: correlation examples",
+    "text": "Association: correlation examples\n\n\n\n\n\n\nWarning\n\n\n\\(r = 0\\) does not imply no relationship — only no linear relationship. Always use a scatterplot to check!\n\n\n\n\nNone (r = 0)Weak (r = 0.3)Moderate (r = 0.5)Strong (r = 0.8)"
+  },
+  {
+    "objectID": "slides/week4.html#association-which-measure-for-which-data",
+    "href": "slides/week4.html#association-which-measure-for-which-data",
+    "title": "Week 4",
+    "section": "Association: which measure for which data?",
+    "text": "Association: which measure for which data?\n\n\n\n\n\n\n\n\n\n\nNominal\nOrdinal\nContinuous\n\n\n\n\nNominal\nDifference in proportions; relative risk ratio\nDifference in proportions; relative risk ratio\nDifference in means between groups\n\n\nOrdinal\n\n\nDifference in means between groups\n\n\nContinuous\n\n\nCovariance, (Pearson’s) correlation coefficient"
+  },
+  {
+    "objectID": "slides/week4.html#association-calculating-in-r",
+    "href": "slides/week4.html#association-calculating-in-r",
+    "title": "Week 4",
+    "section": "Association: calculating in R",
+    "text": "Association: calculating in R\n\nProportionsCovarianceCorrelation\n\n\nStep 1: Build marginal frequency tables\nLet’s build a marginal freq table for bachelor’s degree and less than college\n\n# Marginal freq for bachelor's degree holders\nbach &lt;- attain |&gt;\n  filter(degree == \"bachelor\", !is.na(marital)) |&gt;\n  count(marital) |&gt;\n  mutate(prop = n / sum(n))\nbach\n\n# A tibble: 5 × 3\n  marital      n   prop\n  &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt;\n1 divorced    79 0.159 \n2 married    287 0.579 \n3 never ma   104 0.210 \n4 separate     7 0.0141\n5 widowed     19 0.0383\n\n# Marginal freq for less than high school\nlths &lt;- attain |&gt;\n  filter(degree == \"lt high\", !is.na(marital)) |&gt;\n  count(marital) |&gt;\n  mutate(prop = n / sum(n))\nlths\n\n# A tibble: 5 × 3\n  marital      n   prop\n  &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt;\n1 divorced    71 0.140 \n2 married    212 0.418 \n3 never ma    99 0.195 \n4 separate    21 0.0414\n5 widowed    104 0.205 \n\n\nStep 2: Difference in proportions (married)\nNow let’s take the difference in those proportions of those that are married. How do we interpret this?\n\nbach |&gt; filter(marital == \"married\") |&gt; pull(prop) -\n  lths |&gt; filter(marital == \"married\") |&gt; pull(prop)\n\n[1] 0.1604831\n\n\n\n\nClick to reveal interpretation\n\nBachelor’s degree holders are 16 percentage points more likely to be married than those with less than a high school education.\n\nStep 3: Relative risk ratio (married)\nFinally let’s calculate the relative risk ratio of those that are married. How do we interpret this?\n\nbach |&gt; filter(marital == \"married\") |&gt; pull(prop) /\n  lths |&gt; filter(marital == \"married\") |&gt; pull(prop)\n\n[1] 1.383797\n\n\n\n\nClick to reveal interpretation\n\nBachelor’s degree holders are about 1.38 times as likely to be married compared to those with less than a high school education.\n\n\n\nLet’s calulate the covariance of a respondent’s income and their household income. How do we interpret this?\n\n# Covariance\nattain |&gt;\n  summarize(covariance = cov(rincom91, income91, use = \"complete.obs\")) |&gt;\n  glimpse()\n\nRows: 1\nColumns: 1\n$ covariance &lt;dbl&gt; 376447249\n\n\n\n\nClick to reveal interpretation\n\nThe positive covariance indicates that respondent income and household income tend to move in the same direction — when one is above its mean, the other tends to be as well. However, the magnitude (31,806) is hard to interpret on its own because it depends on the scale of both variables (dollars).\n\n\n\nNow let’s calulate the correlation. How do we interpret this?\n\n# Correlation coefficient\nattain |&gt;\n  summarize(correlation = cor(rincom91, income91, use = \"complete.obs\"))\n\n# A tibble: 1 × 1\n  correlation\n        &lt;dbl&gt;\n1       0.671\n\n\n\n\nClick to reveal interpretation\n\nThe correlation of 0.68 indicates a moderately strong, positive linear relationship between respondent income and household income. Unlike covariance, this value is standardized (between -1 and 1), making it easier to judge the strength of the association."
+  },
+  {
+    "objectID": "slides/week4.html#frequencies-examples",
+    "href": "slides/week4.html#frequencies-examples",
+    "title": "Week 4",
+    "section": "Frequencies: Examples",
+    "text": "Frequencies: Examples\nThe table below is reconstructed from a published study:\n\n\n\n\n18th Century\n19th Century\n\n\n\n\nPublishing Trade\n109\n21\n\n\nOther Occupations\n53\n82\n\n\nTotal\n162\n103\n\n\n\n\n18th Century (marginal freq)19th Century (marginal freq)Relative freq\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 18th century:\n\\[109/162 = 67.3\\%\\]\n\n\nMarginal frequency of magazine founders’ occupations being in the publishing trade, conditional on the magazine being founded in the 19th century:\n\\[21/103 = 20.3\\%\\]\n\n\nWe can also recover the overall relative frequency from the same table — the number of all founders in the publishing trades, divided by all foundings:\n\\[(109 + 21)/(162 + 103) = 130/265 = 49.1\\%\\]\n\n\n\n\n\nSource: Haveman, Habinek, and Goodman. 2012. “How Entrepreneurship Evolves: The Founders of New Magazines in America, 1741-1860.” Administrative Science Quarterly. 57(4):553-584."
+  },
+  {
+    "objectID": "slides/week4.html#central-tendency-comparison",
+    "href": "slides/week4.html#central-tendency-comparison",
+    "title": "Week 4",
+    "section": "Central tendency: comparison",
+    "text": "Central tendency: comparison\n\n\n\nMode can be used on variables of any level of measurement\n\nLess useful for continuous variables (e.g. yearly earnings)\nGenerally the least useful; we usually prefer median or mean\n\nMedian cannot be used on nominal variables (requires ordering)\n\nRobust to outliers: median (3.5) does not depend on outliers 10 and 15\n\nMean cannot be used on nominal OR ordinal variables (requires meaningful distances)\n\nTakes into account the full distribution, but sensitive to outliers: mean (5.2) is pulled up by 10 and 15\n\n\n\n\n\n\nMeasurement\nMode\nMedian\nMean\n\n\n\n\nNominal\nYes\nNo\nNo\n\n\nOrdinal\nYes\nYes\nNo\n\n\nContinuous\nYes\nYes\nYes"
+  },
+  {
+    "objectID": "slides/week4.html#central-tendency-summary",
+    "href": "slides/week4.html#central-tendency-summary",
+    "title": "Week 4",
+    "section": "Central tendency: summary",
+    "text": "Central tendency: summary\n\n\n\nMode can be used on variables of any level of measurement\n\nLess useful for continuous variables (e.g. yearly earnings)\nGenerally the least useful; we usually prefer median or mean\n\nMedian cannot be used on nominal variables (requires ordering)\n\nRobust to outliers: median (3.5) does not depend on outliers 10 and 15\n\nMean cannot be used on nominal OR ordinal variables (requires meaningful distances)\n\nTakes into account the full distribution, but sensitive to outliers: mean (5.2) is pulled up by 10 and 15\n\n\n\n\n\n\nMeasurement\nMode\nMedian\nMean\n\n\n\n\nNominal\nYes\nNo\nNo\n\n\nOrdinal\nYes\nYes\nNo\n\n\nContinuous\nYes\nYes\nYes"
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-variance-standard-deviation",
+    "href": "slides/week4.html#dispersion-variance-standard-deviation",
+    "title": "Week 4",
+    "section": "Dispersion: variance & standard deviation",
+    "text": "Dispersion: variance & standard deviation\nDeviation from the mean: for observation \\(i\\), the deviation is \\(x_i - \\bar{x}\\)\n\n\nSample variance: the average* squared deviations\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\]\n\nSample standard deviation: the square root of the variance\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\]\n\n\n\n\n\n\n\nNote\n\n\nThese “averages” are divided by \\(n-1\\), not \\(n\\)."
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-variance-and-std-deviation",
+    "href": "slides/week4.html#dispersion-variance-and-std-deviation",
+    "title": "Week 4",
+    "section": "Dispersion: variance and std deviation",
+    "text": "Dispersion: variance and std deviation\nDeviation from the mean: for observation \\(i\\), the deviation is \\(x_i - \\bar{x}\\)\n\n\nSample variance: the average* squared deviations\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\]\n\nSample standard deviation: the square root of the variance\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\]\n\n\n\n\n\n\n\nNote\n\n\nThese “averages” are divided by \\(n-1\\), not \\(n\\)."
+  },
+  {
+    "objectID": "slides/week4.html#dispersion-variance-and-std.-deviation",
+    "href": "slides/week4.html#dispersion-variance-and-std.-deviation",
+    "title": "Week 4",
+    "section": "Dispersion: variance and std. deviation",
+    "text": "Dispersion: variance and std. deviation\nDeviation from the mean: for observation \\(i\\), the deviation is \\(x_i - \\bar{x}\\)\n\n\nSample variance: the average* squared deviations\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\]\n\nSample standard deviation: the square root of the variance\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\]\n\n\n\n\n\n\n\nNote\n\n\nThese “averages” are divided by \\(n-1\\), not \\(n\\)."
   }
 ]

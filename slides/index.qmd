@@ -7,7 +7,7 @@ title: "Lecture Slides"
 - [Week 1: Introduction](week1.html)
 - [Week 2: Statistical computing in R](week2.html)
 - [Week 3: Visualizing distributions](week3.html)
-- Week 4: Summarizing distributions
+- [Week 4: Summarizing distributions](week4.html)
 - Week 5: Basics of probability theory
 - Week 6: Probability models of distributions
 - Week 7: Sampling distributions

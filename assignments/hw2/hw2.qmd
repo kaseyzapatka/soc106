@@ -17,9 +17,25 @@ editor: visual
 2.  Save both files on your computer. Make sure to save your data in your data folder and `hw2.qmd` in your assignments folder.
 3.  Follow the instructions below to complete the assignment. A sample code chunk has been provided but you might need more.
 4.  When you are done, click the "Render" button at the top of Positron to generate an .html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it's working).
-5.  Submit the `hw2.qmd` file to bCourse before the deadline
+5.  Submit both `hw2.qmd` and `hw2.html` files to bCourse before the deadline
 6.  Make sure your name appears in the "author" field in the YAML header above
 :::
+
+You're folder structure should look something like this after you upload `hw2.qmd`:
+
+```         
+soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+│   └── [[your_data]].csv
+├── assignments/
+│   └── hw0.qmd
+│   └── hw1.qmd
+│   └── hw2.qmd
+└── labs/
+    └── lab1.qmd
+```
 
 ## Instructions
 
@@ -41,6 +57,16 @@ library(here)
 # add more libraries here if you need them!
 
 
+```
+
+You'll want to import your data. I've commented out some code that you can use to get started, but you'll need to update it to make it work with your data. If your data is in the format of `.csv` then you can use `read_csv` to load it. If not, check out [this reference website](https://libguides.chapman.edu/R/import).
+
+```{r}
+
+# Load data
+#data <- read_csv(here("data", "[[your_data]].csv"))
+
+# Your code here
 
 ```
 
@@ -64,12 +90,13 @@ library(here)
 
 ## Analytic strategy
 
-**Describe the type of plot you are going to use to analyze the data, including the names of plot and the general R commands. Why are yo using this type of plot instead of another? A few sentences is fine.**
+**Describe the type of plot you are going to use to analyze the data, including the names of plot and the general R commands. Why are you using this type of plot instead of another? A few sentences is fine.**
+
 *Insert your answer here*
 
 ## Code
 
-**Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.**
+**Build your plot here. If you need to add more code chunks, feel free to add more (using the drop down menu from Insert in Visual mode or "Insert Code Cell" option in Souce mode), but you can probably do it all in one code chunk.**
 
 ```{r}
 
@@ -79,7 +106,7 @@ library(here)
 
 ## Results
 
-**Present the results of the analysis here. What did you learn from the figure? This is not the place for extended commentary, just the basic results of your analysis (e.g., X cateogry has a lot of observations, there seems to be a relationship between X and Y). Should only be a few sentences.**
+**Present the results of the analysis here. What did you learn from the figure? This is not the place for extended commentary, just the basic results of your analysis (e.g., X category has a lot of observations, there seems to be a relationship between X and Y). Should only be a few sentences.**
 
 *Insert your answer here*
 
@@ -101,6 +128,6 @@ library(here)
 -   [ ] Your name is in the author field at the top of this document
 -   [ ] All code chunks run without errors
 -   [ ] You've answered all written response questions
--   [ ] You've clicked "Render" and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)
+-   [ ] You've clicked "Render" and successfully generated an .html file
 -   [ ] You're submitting both `hw2.qmd` and `hw2.html` files to bCourse
 :::
