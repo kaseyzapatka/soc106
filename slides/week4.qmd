@@ -33,7 +33,7 @@ attain <- read_csv(here("data/attain.csv"))
 ## Housekeeping {.smaller}
 
 **HW #1:** due tonight (Tuesday, February 10) by  11:59 PM -- _Extended deadline_
- - any questions?
+  - any questions?
 
 **HW #2:** due Thursday, February 12, 11:59 PM
   - Ideal to use your final project data
@@ -58,6 +58,24 @@ attain <- read_csv(here("data/attain.csv"))
   - Comparing proportions: difference in proportions, relative risk ratio
   - Comparing distributions: covariance and correlation
 
+## What makes a good research question? {.smaller}
+
+A strong social science research question has several key components:
+
+1. **Specifies a relationship** between two or more variables
+    - Not just "What is X?" but "How does X relate to Y?"
+2. **Is answerable with data** — can be investigated empirically
+3. **Has sociological significance** — connects to broader theory or social patterns
+4. **Is clearly scoped** — specific enough to study, not so narrow it's trivial
+
+**Examples from sociology:**
+
+- "Is there an association between educational attainment and income in the U.S.?"
+- "Do marriage rates differ across racial groups, and how has this changed over time?"
+- "Is religious affiliation associated with political ideology?"
+
+> A good research question guides everything else: your data, your variables, and your choice of summary statistics or measures of association.
+
 ## Relative frequencies {.smaller}
 
 **Relative frequency** (aka proportion): the frequency of observations for a given variable, divided by the total number of observations.
@@ -71,7 +89,6 @@ attain <- read_csv(here("data/attain.csv"))
 
 **Relative frequency in the case of two variables:**
 
-
 - $p_{X=i,Y=j} = \frac{n_{X=i,Y=j}}{n_{total}}$
 
 ## Marginal frequencies {.smaller}
@@ -79,7 +96,6 @@ attain <- read_csv(here("data/attain.csv"))
 The **marginal (or conditional) proportion** is the relative frequency of observations taking a certain value for a given variable (i.e., X), conditional on the observations taking a certain value for another variable (i.e., Y)
 
 **Notation:**
-
 
 - $p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}$
 
@@ -139,8 +155,6 @@ Now, let's use `R` to calculate relative and marginal frequencies
 
 Relative frequency formula : $p_{X=i} = \frac{n_{X=i}}{n_{total}}$
 
-
-
 ```{r}
 #| echo: true
 #| output-location: column
@@ -148,13 +162,12 @@ Relative frequency formula : $p_{X=i} = \frac{n_{X=i}}{n_{total}}$
 attain |> 
   # count absolute frequencies
   count(marital) |> 
-  # create a proprotion  
+  # create a proportion
   mutate(proportion = n / sum(n))
 
 ```
 
 ### Marginal freq (option 1)
-
 
 Marginal frequency formula :  $p_{X=i \mid Y=j} = \frac{n_{X=i,\,Y=j}}{n_{Y=j}}$
 
@@ -197,7 +210,7 @@ attain |>
 
 **Median**: the middle data value, if the data are ordered by increasing value
 
-- If there are an even number of observations, the median is the midpoint between the two middle values
+  - If there are an even number of observations, the median is the midpoint between the two middle values
 
 **(Arithmetic) mean** (aka average): the sum of all values in the data set, divided by the number of observations in the data set
 
@@ -208,13 +221,45 @@ $$\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i$$
 
 Example data of number of people 10 members of a high school class sent text messages to on Monday: `5, 2, 10, 4, 3, 2, 6, 15, 3, 2`
 
-**Mode**: **2** — it occurs 3 times, more than any other value
+::: {.panel-tabset}
 
-**Median**: order the data: (`2, 2, 2, 3,` **3, 4,** `5, 6, 10, 15`). Two middle observations, so find the midpoint: **3.5**
+### Mode
 
-**Mean**: `(5+2+10+4+3+2+6+15+3+2)/10` = **5.2**
+The value that occurs most often:
 
-Notice that mode (2) < median (3.5) < mean (5.2) — this is a sign of right skew, which the outliers 10 and 15 produce
+`5, 2, 10, 4, 3, 2, 6, 15, 3, 2` — **2** appears 3 times, more than any other value
+
+**Mode = 2**
+
+### Median
+
+Order the data, then find the middle value(s):
+
+(`2, 2, 2, 3,` **3, 4,** `5, 6, 10, 15`)
+
+Two middle observations — find the midpoint: $(3 + 4)/2$ = **3.5**
+
+**Median = 3.5**
+
+### Mean
+
+Sum all values and divide by $n$:
+
+`(5+2+10+4+3+2+6+15+3+2) / 10` = **5.2**
+
+**Mean = 5.2**
+
+### Summary
+
+| Measure | Value |
+|---------|-------|
+| Mode    | 2     |
+| Median  | 3.5   |
+| Mean    | 5.2   |
+
+Notice that mode (2) < median (3.5) < mean (5.2) — this is a sign of **right skew**, produced by the outliers 10 and 15
+
+:::
 
 ## Skewness and central tendency {.smaller}
 
@@ -326,7 +371,7 @@ attain |>
 
 ### Median
 
-We can do the same with for the median using the `median()` function: 
+We can do the same for the median using the `median()` function:
 
 ```{r}
 #| echo: true
@@ -341,7 +386,7 @@ attain |>
 
 ### Mode
 
-For the mode, we'll simply want to count the number of obs (using `count()`) and take the largest number. We can do following to see the most common martial status, which is unsurprising "married".
+For the mode, we'll simply want to count the number of obs (using `count()`) and take the largest number. We can do the following to see the most common marital status, which is unsurprisingly "married".
 
 ::: aside
 Notice the extra `glimpse()` call here to see what's happening under the hood
@@ -351,10 +396,10 @@ Notice the extra `glimpse()` call here to see what's happening under the hood
 #| echo: true
 #| output-location: column
 
-attain %>%
-  count(marital) %>%
+attain |>
+  count(marital) |>
   glimpse() |> 
-  slice_max(n, n = 1, with_ties = FALSE) %>%
+  slice_max(n, n = 1, with_ties = FALSE) |>
   pull(marital)
 
 ```
@@ -385,20 +430,31 @@ attain %>%
 3. If index is a whole number, the percentile is an average of the ith and the ($i$+1)th values in the ordered data
 4. If index is not a whole number, round up to whole number, and the percentile is the $i$th number
 
-## Measures of dispersion {.smaller}
+## Percentile example {.smaller}
 
-**Example**: calculating the 30th and 45th percentile of the dataset of # texts per day: `(5, 2, 10, 4, 3, 2, 6, 15, 3, 2)`
+**Example**: calculating the 30th and 45th percentile of: `(5, 2, 10, 4, 3, 2, 6, 15, 3, 2)`
 
-First, order the data: **(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)**
+**Step 1** — Order the data: **(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)**
 
-Second, calculate the indexes:
+::: {.panel-tabset}
 
-- 30th: $30 \times 10/100 = 3$
-- 45th: $45 \times 10/100 = 4.5$
+### 30th percentile
 
-For the **30th percentile**: the index 3 is a whole number, so we take the average of the 3rd and 4th values in the ordered dataset: $(2 + 3)/2 = 2.5$
+**Step 2** — Calculate the index: $30 \times 10/100 = 3$
 
-For the **45th percentile**: the index 4.5 is not a whole number, so we round up to 5 and take the 5th value in the ordered dataset: **3**
+**Step 3** — Index is a whole number, so average the 3rd and 4th values:
+
+$$(2 + 3)/2 = \mathbf{2.5}$$
+
+### 45th percentile
+
+**Step 2** — Calculate the index: $45 \times 10/100 = 4.5$
+
+**Step 3** — Index is not a whole number, so round up to 5 and take the 5th value:
+
+$$\mathbf{3}$$
+
+:::
 
 ## Measures of dispersion {.smaller}
 
@@ -454,7 +510,7 @@ So, which levels of measurement can use percentiles and variance/standard deviat
 
 ## Measures of dispersion in R {.smaller}
 
-How do we use R to calculate measures of dispersion? Let's look at variosu measures of dispersion of respondent's income in our `attain` dataset?
+How do we use R to calculate measures of dispersion? Let's look at various measures of dispersion of respondents' income in our `attain` dataset.
 
 ::: {.panel-tabset}
 
@@ -467,7 +523,7 @@ This will return the values at those specific **percentiles**--25th, 50th, and 7
 #| output-location: column
 
 # Percentiles
-attain %>%
+attain |>
   summarise(
     p25 = quantile(rincom91, 0.25, na.rm = TRUE),
     p50 = quantile(rincom91, 0.50, na.rm = TRUE),
@@ -486,7 +542,7 @@ This will return the measure of **variance** in our sample for this specific inc
 #| output-location: column
 
 # Variance
-attain %>%
+attain |>
   summarise(variance = var(rincom91, na.rm = TRUE)) |> 
   glimpse()
 
@@ -501,7 +557,7 @@ This will return the **standard deviation (std_dev)** of variance in our sample 
 #| output-location: column
 
 # Standard deviation
-attain %>%
+attain |>
   summarise(std_dev = sd(rincom91, na.rm = TRUE)) |> 
   glimpse()
 
@@ -520,7 +576,7 @@ Here I use the `gt` package to make the table output a bit nicer. [Check out the
 #| output-location: column
 
 # Verify sd equals sqrt(var)
-attain %>%
+attain |>
   summarise(
     variance = var(rincom91, na.rm = TRUE),
     std_dev  = sd(rincom91, na.rm = TRUE),
@@ -545,7 +601,7 @@ Formula: $p_{x_i | y_j} - p_{x_i | y_k}$
 - The differences in proportions are expressed in terms of percentage points
 - Easy to use, but occasionally misleading
 
-> Also, remember there is big difference in "percentage point increase" and "percent increase"
+> Also, remember there is a big difference between "percentage point increase" and "percent increase"
 
 ## Measures of association {.smaller}
 
@@ -620,19 +676,43 @@ $$r_{xy} = \frac{cov(x,y)}{s_x \times s_y}$$
 - $r_{xy}$ equals -1 if all observations fall along a straight line that has a negative slope (that is, as x increases, y decreases in direct proportion)
 - $r_{xy}$ does not depend on the scale of either $x$ and $y$
 
-## Correlation coefficient properties  {.smaller}
+## Correlation examples {.smaller}
 
-**If $r_{xy}$ equals 0, this does not imply that there is no relationship between $x$ and $y$**
+What do different correlation strengths look like? Note: $r = 0$ does **not** imply no relationship — only no **linear** relationship. Always use a scatterplot to check!
 
-It only implies that there is no linear relationship between $x$ and $y$
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 3
 
-**Always use a scatterplot to check!**
+set.seed(106)
+n <- 200
 
-## Correlation examples 
+# Generate correlated data
+gen_corr <- function(r, n = 200) {
+  x <- rnorm(n)
+  y <- r * x + sqrt(1 - r^2) * rnorm(n)
+  tibble(x = x, y = y, correlation = paste0("r = ", r))
+}
 
-Here are some examples of different correlation strengths might look like in terms of data
+corr_data <- bind_rows(
+  gen_corr(0, n),
+  gen_corr(0.3, n),
+  gen_corr(0.5, n),
+  gen_corr(0.8, n)
+) |>
+  mutate(correlation = factor(correlation,
+    levels = c("r = 0", "r = 0.3", "r = 0.5", "r = 0.8")))
 
-![](images/week4/correlation_examples.png){width="100%" fig-align="center"}
+ggplot(corr_data, aes(x, y)) +
+  geom_point(alpha = 0.4, size = 1, color = "steelblue") +
+  geom_smooth(method = "lm", se = FALSE, color = "red", linewidth = 0.8) +
+  facet_wrap(~correlation, nrow = 1) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal() +
+  theme(strip.text = element_text(size = 12, face = "bold"))
+```
 
 
 ## Which measures of association to use? {.smaller}
@@ -640,7 +720,7 @@ Here are some examples of different correlation strengths might look like in ter
 |  | **Nominal** | **Ordinal** | **Continuous** |
 |---|---|---|---|
 | **Nominal** | Difference in proportions; relative risk ratio | Difference in proportions; relative risk ratio | Difference in means between groups |
-| **Ordinal** |  | Polychoric correlation | Difference in means between groups; polyserial correlation |
+| **Ordinal** |  |  | Difference in means between groups |
 | **Continuous** |  |  | Covariance, (Pearson's) correlation coefficient |
 
 ## Measures of association in R {.smaller}
@@ -659,7 +739,7 @@ Use the results of the marginal frequency tables
 #| echo: true
 
 # Covariance
-attain %>% 
+attain |> 
   summarize(covariance = cov(rincom91, income91, use = "complete.obs")) |> 
   glimpse()
 
@@ -672,7 +752,7 @@ attain %>%
 #| echo: true
 
 # Correlation coefficient
-attain %>%
+attain |>
   summarize(correlation = cor(rincom91, income91, use = "complete.obs"))
 
 ```
@@ -689,5 +769,26 @@ attain %>%
 2. Answer a research question relating to the association between two variables in a data set of your choosing, using a proper measure of association for the levels of measurement of the variables. Write up your results according to the "Weekly Assignment Stata Analysis" template.
 
 **HW #3:** due Thursday
- 
- - any questions?
+
+  - any questions?
+
+## In-class Lab {.smaller}
+
+Let's practice using the summary statistics we learned today:
+
+1. Download `lab4.qmd` from bCourse under "assignments" > "Lab #4"
+2. Place `lab4.qmd` in your `labs` folder. Your folder structure should now look like this:
+
+```
+soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+├── assignments/
+│   └── hw3.qmd
+└── labs/
+    └── lab4.qmd
+```
+
+3. Use the `Explorer` button on the left to find and open `lab4.qmd`
+4. Let's work through it together!
