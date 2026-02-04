@@ -64,12 +64,13 @@ library(here)
 
 ## Analytic strategy
 
-**Describe the type of plot you are going to use to analyze the data, including the names of plot and the general R commands. Why are yo using this type of plot instead of another? A few sentences is fine.**
+**Describe the type of plot you are going to use to analyze the data, including the names of plot and the general R commands. Why are you using this type of plot instead of another? A few sentences is fine.**
+
 *Insert your answer here*
 
 ## Code
 
-**Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.**
+**Build your plot here. If you need to add more code chunks, feel free to add more (using the drop down menu from Insert in Visual mode or "Insert Code Cell" option in Souce mode), but you can probably do it all in one code chunk.**
 
 ```{r}
 
@@ -79,7 +80,7 @@ library(here)
 
 ## Results
 
-**Present the results of the analysis here. What did you learn from the figure? This is not the place for extended commentary, just the basic results of your analysis (e.g., X cateogry has a lot of observations, there seems to be a relationship between X and Y). Should only be a few sentences.**
+**Present the results of the analysis here. What did you learn from the figure? This is not the place for extended commentary, just the basic results of your analysis (e.g., X category has a lot of observations, there seems to be a relationship between X and Y). Should only be a few sentences.**
 
 *Insert your answer here*
 
@@ -101,6 +102,6 @@ library(here)
 -   [ ] Your name is in the author field at the top of this document
 -   [ ] All code chunks run without errors
 -   [ ] You've answered all written response questions
--   [ ] You've clicked "Render" and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)
+-   [ ] You've clicked "Render" and successfully generated an .html file
 -   [ ] You're submitting both `hw2.qmd` and `hw2.html` files to bCourse
 :::
