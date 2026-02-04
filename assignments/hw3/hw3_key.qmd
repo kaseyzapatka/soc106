@@ -13,7 +13,7 @@ editor: visual
 ::: callout-important
 ## Submission Instructions
 
-1.  Download this `hw3.qmd` fiel and the `attain.csv` data file from bCourse.
+1.  Download this `hw3.qmd` file and the `attain.csv` data file from bCourse.
 2.  Save both files on your computer. Make sure to save `attain.csv` in your data folder and `hw3.qmd` in your assignments folder.
 3.  Follow the instructions below to complete the assignment. A sample code chunk has been provided but you might need more.
 4.  When you are done, click the "Render" button at the top of Positron to generate an .html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it's working).
@@ -96,7 +96,7 @@ table_degree
 
 *Insert your answer here: `53.2%`*
 
-**c) Among respondents with a bachelor's degree and using the full `attain` dataset, create a frequency table for marital status. Calculate the marginal (relative) frequencies. What proportion of bachelor's degree holders (`bachelor`) are married?**
+**d) Among respondents with a bachelor's degree and using the full `attain` dataset, create a frequency table for marital status. Calculate the marginal (relative) frequencies. What proportion of bachelor's degree holders (`bachelor`) are married?**
 
 ```{r}
 
@@ -113,7 +113,7 @@ table_marital_bachelor
 
 *Insert your answer here: `57.9%`*
 
-**d) Among respondents with less than high school education (`lt high`) in the full `attain` datset, create a frequency table for marital status and calculate the marginal frequencies. What proportion of respondents that have never married (`never ma`)?**
+**e) Among respondents with less than high school education (`lt high`) in the full `attain` datset, create a frequency table for marital status and calculate the marginal frequencies. What proportion of respondents that have never married (`never ma`)?**
 
 ```{r}
 
@@ -130,7 +130,7 @@ table_marital_lths
 
 *Insert your answer here: `19.5%`*
 
-**e) Using the two tables crated in part c) and d), what is the difference in the proportion married between bachelor's degree holders (`bachelor`) and those with less than high school education? (`lt high`)**
+**f) Using the two tables created in parts d) and e), what is the difference in the proportion married between bachelor's degree holders (`bachelor`) and those with less than high school education? (`lt high`)**
 
 ```{r}
 
@@ -143,7 +143,7 @@ table_marital_bachelor %>% filter(marital == "married") %>% pull(marg_freq) -
 
 *Insert your answer here: `16.0%`*
 
-**f) Now, calculate the relative risk of being married for bachelor's degree holders compared to those with less than high school education. Interpret this value.**
+**g) Now, calculate the relative risk of being married for bachelor's degree holders compared to those with less than high school education. Interpret this value.**
 
 ```{r}
 
@@ -272,5 +272,5 @@ attain %>%
 -   [ ] All code chunks run without errors
 -   [ ] You've answered all written response questions
 -   [ ] You've clicked "Render" and successfully generated an HTML file
--   [ ] You're submitting the .qmd file to bCourse
+-   [ ] You're submitting both `hw3.qmd` and `hw3.html` files to bCourse
 :::

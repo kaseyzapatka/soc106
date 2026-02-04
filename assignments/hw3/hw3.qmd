@@ -2,7 +2,7 @@
 title: "Weekly Assignment #3"
 author: "Your Name Here"  # Replace with your name
 date: "02/19/2026"
-format: 
+format:
   html:
     toc: true
     code-fold: false
@@ -13,7 +13,7 @@ editor: visual
 ::: callout-important
 ## Submission Instructions
 
-1.  Download this `hw3.qmd` fiel and the `attain.csv` data file from bCourse.
+1.  Download this `hw3.qmd` file and the `attain.csv` data file from bCourse.
 2.  Save both files on your computer. Make sure to save `attain.csv` in your data folder and `hw3.qmd` in your assignments folder.
 3.  Follow the instructions below to complete the assignment. A sample code chunk has been provided but you might need more.
 4.  When you are done, click the "Render" button at the top of Positron to generate an .html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it's working).
@@ -21,16 +21,18 @@ editor: visual
 6.  Make sure your name appears in the "author" field in the YAML header above
 :::
 
-## Instructions
+# Instructions
 
-Using a dataset of your choice, choose a research question and construct a plot that helps answer it. Make sure to answer the questions below and that your document renders without errors before submitting. Y
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. Make sure your document renders without errors before submitting.
+
+## Setup
 
 ```{r}
 # Clear environment
 # ---------
 rm(list = ls())
 
-# install libraries -- only install new libraries if needed
+# install libraries -- shouldn't need for this assignment
 # ---------
 # install.packages("tidyverse")
 
@@ -38,39 +40,16 @@ rm(list = ls())
 # ---------
 library(tidyverse)
 library(here)
-# add more libraries here if you need them!
 
-
-
+# load data
+# ---------
+attain <- read_csv(here("data/attain.csv"))
+attain |> glimpse()
 ```
 
-## Research question
+## Question 1: Analyzing Marital Status and Education
 
-**What is your research question that you want to answer with this plot? (Remember a research question should end with a "?")**
-
-*Insert your answer here*
-
-## Prediction and brief justification
-
-**State what you expect to find and why. The justification can be based on theory or previous research. Even better (where possible) is to set up competing predictions based on competing theoretical premises: e.g., “If Marx is right, we should find P; but if Weber is right, then we should find Q.**
-
-*Insert your answer here*
-
-## Data
-
-**Describe the data in one or two sentences. Then state in one or two sentences why you’re using this data instead of different data.**
-
-*Insert your answer here*
-
-## Analytic strategy
-
-**Describe the exact procedure you are going to use to analyze the data, including the names of distributions and specific R commands. This can be a short as two or three sentences and no longer than 1/3 of a page in any case.**
-
-*Insert your answer here*
-
-## Code
-
-**Build your plot here. If you need to add more code chunks, feel free to add more, but you can probably do it all in one code chunk.**
+**a) Create a subset of the data (call it `subset1`) that includes only respondents with non-missing information for both degree (`degree`) and marital status (`marital`). Be sure to glimpse it.**
 
 ```{r}
 
@@ -78,21 +57,145 @@ library(here)
 
 ```
 
-## Results
+**b) Using `subset1`, create a frequency table (call it `table_marital`) for marital status (`marital`). Then calculate the relative frequencies (proportions) for each marital status category. What proportion of respondents are married?**
 
-**Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Should only be a few sentences.**
+```{r}
 
-*Insert your answer here*
+# Your code here
 
-## Discussion of results
-
-**Here’s where you talk about how your predictions went and what the findings mean about the answer to your research question. One to three sentences will do.**
+```
 
 *Insert your answer here*
 
-## Limitations and alternative explanations
+**c) Still using `subset1,` create a frequency table for education level (`degree`). Then calculate the relative frequencies (proportions) for each education category. What proportion of respondents have a high school education?**
 
-**This is where you talk about what you might have done differently or better or what other people should do next time. All research is flawed in dozens of ways, so for this assignment please talk about one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.**
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**d) Among respondents with a bachelor's degree and using the full `attain` dataset, create a frequency table for marital status. Calculate the marginal (relative) frequencies. What proportion of bachelor's degree holders (`bachelor`) are married?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**e) Among respondents with less than high school education (`lt high`) in the full `attain` dataset, create a frequency table for marital status and calculate the marginal frequencies. What proportion of respondents that have never married (`never ma`)?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**f) Using the two tables created in parts d) and e), what is the difference in the proportion married between bachelor's degree holders (`bachelor`) and those with less than high school education (`lt high`)?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**g) Now, calculate the relative risk of being married for bachelor's degree holders compared to those with less than high school education. Interpret this value.**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+------------------------------------------------------------------------
+
+## Question 2: Mode of Religion
+
+**Find the mode (most common value) of the `relig` variable. What is the modal religion in the dataset? (Hint: You will probably have to use a function from the `slice()` family to answer this question.)**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+## Question 3: Summarizing Number of Siblings
+
+**Using the `sibs` variable (number of siblings), calculate the following summary statistics. Be sure to handle missing values appropriately.**
+
+**a) What is the median number of siblings?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**b) What is the mean number of siblings?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**c) What are the 10th, 25th, 75th, and 90th percentiles for number of siblings?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**d) What are the variance and standard deviation of the number of siblings?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+## Question 4: Associations Between Variables
+
+**For this question, we're going to calculate the covariance and correlation coefficient between years of education (`educ`) and 1991 income (`income91`).**
+
+**a) Calculate the covariance between education and income.**
+
+```{r}
+
+# Your code here
+
+```
+
+*Insert your answer here*
+
+**b) Calculate and interpret the correlation coefficient. What does it tell you about the relationship between education and income? Be sure to deal appropriately with missing observations. (Note that you can do this by (1) either creating a subset that includes only respondents with non-missing information for `educ` and `income91` or (2) specifying a particular parameter in the `cor` argument.)**
+
+```{r}
+
+# Your code here
+
+```
 
 *Insert your answer here*
 
@@ -102,6 +205,6 @@ library(here)
 -   [ ] Your name is in the author field at the top of this document
 -   [ ] All code chunks run without errors
 -   [ ] You've answered all written response questions
--   [ ] You've clicked "Render" and successfully generated an html file (note that it might not necessarily save, as long as it renders it is working)
--   [ ] You're submitting the `hw1.qmd` file to bCourse
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting both `hw3.qmd` and `hw3.html` files to bCourse
 :::
