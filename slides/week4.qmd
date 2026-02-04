@@ -13,9 +13,7 @@ format:
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
 
-```{r}
 
-```
 ```{r}
 #| echo: false
 #| results: false
@@ -34,7 +32,16 @@ attain <- read_csv(here("data/attain.csv"))
 
 ## Housekeeping {.smaller}
 
-[[**ADD IT IN LATER**]]
+**HW #1:** due tonight (Tuesday, February 10) by  11:59 PM -- _Extended deadline_
+ - any questions?
+
+**HW #2:** due Thursday, February 12, 11:59 PM
+  - Ideal to use your final project data
+
+**Paper Proposal (5%):** due Thursday, February 26, 11:59 PM
+  - A **two-page double-spaced proposal** for your final paper. 
+  - Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html) of what I expect.
+
 
 ## Questions?
 
@@ -287,7 +294,7 @@ Here's a visual example of how mode, mean, and median can work
 :::::
 
 
-## Which should we preder? {.smaller}
+## Which should we prefer? {.smaller}
 
 Same example: `(2, 2, 2, 3, 3, 4, 5, 6, 10, 15)`. 
 
