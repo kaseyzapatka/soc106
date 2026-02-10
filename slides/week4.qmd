@@ -42,6 +42,7 @@ attain <- read_csv(here("data/attain.csv"))
   - A **two-page double-spaced proposal** for your final paper. 
   - Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html) of what I expect.
 
+**Academic Integrity Asignment** due Friday, May 8, 11:59 PM
 
 ## Questions?
 
