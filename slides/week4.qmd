@@ -663,7 +663,7 @@ $$109/162 - 21/103 = 67.3\% - 20.3\% = 47 \text{ percentage points}$$
 
 This is an absolute difference—it tells you the raw gap between the two proportions.
 
-> "Magazine founders in the 18th century were 47 percentage points more likely to be in the publishing trade than those in the 19th century." 
+> "67.3% of 18th century founders were in publishing compared to 20.3% in the 19th century—a difference of 47 percentage points."
 
 ### Relative risk ratios
 
