@@ -792,12 +792,10 @@ $$r_{xy} = \frac{cov(x,y)}{s_x \times s_y}$$
 
 ## Association: correlation examples {.smaller}
 
-::: {.callout-warning}
-$r = 0$ does **not** imply no relationship — only no **linear** relationship. Always use a scatterplot to check!
-:::
-
 ```{r}
 #| echo: false
+
+library(patchwork)
 
 set.seed(106)
 n <- 200
@@ -808,15 +806,27 @@ gen_corr <- function(r, n = 200) {
   tibble(x = x, y = y)
 }
 
-corr_none     <- gen_corr(0, n)
-corr_weak     <- gen_corr(0.3, n)
-corr_moderate <- gen_corr(0.5, n)
-corr_strong   <- gen_corr(0.8, n)
+corr_none         <- gen_corr(0, n)
+corr_weak         <- gen_corr(0.3, n)
+corr_moderate     <- gen_corr(0.5, n)
+corr_strong       <- gen_corr(0.8, n)
+corr_weak_neg     <- gen_corr(-0.3, n)
+corr_moderate_neg <- gen_corr(-0.5, n)
+corr_strong_neg   <- gen_corr(-0.8, n)
 
 plot_corr <- function(data, r_label) {
   ggplot(data, aes(x, y)) +
     geom_point(alpha = 0.4, size = 1.5, color = "steelblue") +
     geom_smooth(method = "lm", se = FALSE, color = "red", linewidth = 0.8) +
+    labs(x = NULL, y = NULL, title = r_label) +
+    theme_minimal() +
+    theme(plot.title = element_text(size = 14, face = "bold"))
+}
+
+plot_corr_neg <- function(data, r_label) {
+  ggplot(data, aes(x, y)) +
+    geom_point(alpha = 0.4, size = 1.5, color = "red") +
+    geom_smooth(method = "lm", se = FALSE, color = "steelblue", linewidth = 0.8) +
     labs(x = NULL, y = NULL, title = r_label) +
     theme_minimal() +
     theme(plot.title = element_text(size = 14, face = "bold"))
@@ -836,37 +846,58 @@ plot_corr <- function(data, r_label) {
 plot_corr(corr_none, "r = 0")
 ```
 
-### Weak (r = 0.3)
+### Weak (|r| = 0.3)
+
+Weak: |r| = 0.10 to 0.39
 
 ```{r}
 #| echo: false
 #| fig-align: center
-#| fig-width: 5
+#| fig-width: 8
 #| fig-height: 4
 
-plot_corr(corr_weak, "r = 0.3")
+plot_corr_neg(corr_weak_neg, "r = -0.3") +
+  ggtitle(expression(atop("Negative", "r = -0.3"))) +
+  theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5)) |
+  plot_corr(corr_weak, "r = 0.3") +
+  ggtitle(expression(atop("Positive", "r = 0.3"))) +
+  theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5))
 ```
 
-### Moderate (r = 0.5)
+### Moderate (|r| = 0.5)
+
+Moderate: |r| = 0.40 to 0.69
 
 ```{r}
 #| echo: false
 #| fig-align: center
-#| fig-width: 5
+#| fig-width: 8
 #| fig-height: 4
 
-plot_corr(corr_moderate, "r = 0.5")
+plot_corr_neg(corr_moderate_neg, "r = -0.5") +
+  ggtitle(expression(atop("Negative", "r = -0.5"))) +
+  theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5)) |
+  plot_corr(corr_moderate, "r = 0.5") +
+  ggtitle(expression(atop("Positive", "r = 0.5"))) +
+  theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5))
 ```
 
-### Strong (r = 0.8)
+### Strong (|r| = 0.8)
+
+Strong: |r| ≥ 0.70
 
 ```{r}
 #| echo: false
 #| fig-align: center
-#| fig-width: 5
+#| fig-width: 8
 #| fig-height: 4
 
-plot_corr(corr_strong, "r = 0.8")
+plot_corr_neg(corr_strong_neg, "r = -0.8") +
+  ggtitle(expression(atop("Negative", "r = -0.8"))) +
+  theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5)) |
+  plot_corr(corr_strong, "r = 0.8") +
+  ggtitle(expression(atop("Positive", "r = 0.8"))) +
+  theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5))
 ```
 
 :::
@@ -921,7 +952,7 @@ bach |> filter(marital == "married") |> pull(prop) -
 
 <details>
 <summary>**Click to reveal interpretation**</summary>
-Bachelor's degree holders are 16 percentage points more likely to be married than those with less than a high school education.
+58% of bachelor's degree holders are married compared to 42% of those with less than a high school education—a difference of 16 percentage points.
 </details>
 
 **Step 3: Relative risk ratio** (married)
@@ -956,7 +987,7 @@ attain |>
 
 <details>
 <summary>**Click to reveal interpretation**</summary>
-The positive covariance indicates that respondent income and household income **tend to move in the same direction** — when one is above its mean, the other tends to be as well. However, the magnitude (31,806) is hard to interpret on its own because it depends on the scale of both variables (dollars).
+The positive covariance indicates that respondent income and household income **tend to move in the same direction** — when one is above its mean, the other tends to be as well. However, the magnitude (376,447,249) is hard to interpret on its own because it depends on the scale of both variables (dollars).
 </details>
 
 ### Correlation
@@ -974,7 +1005,7 @@ attain |>
 
 <details>
 <summary>**Click to reveal interpretation**</summary>
-The **correlation of 0.68 indicates a moderately strong, positive** linear relationship between respondent income and household income. Unlike covariance, this value is standardized (between -1 and 1), making it easier to judge the strength of the association.
+The **correlation of 0.67 indicates a moderately strong, positive** linear relationship between respondent income and household income. Unlike covariance, this value is standardized (between -1 and 1), making it easier to judge the strength of the association.
 </details>
 :::
 
