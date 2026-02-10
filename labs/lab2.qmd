@@ -20,6 +20,8 @@ soc106/
 ├── data/
 │   └── attain.csv
 ├── assignments/
+│   └── hw1.qmd
+│   └── hw2.qmd
 │   └── hw3.qmd
 └── labs/
     ├── lab1.qmd
