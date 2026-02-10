@@ -13,11 +13,11 @@ editor: visual
 ::: callout-important
 ## Submission Instructions
 
-1.  Download this `hw3.qmd` file and the `attain.csv` data file from bCourse.
+1.  Download this `hw3.qmd` file. You should already have the `attain.csv` data file on your computer from previous assignments and labs.
 2.  Save both files on your computer. Make sure to save `attain.csv` in your data folder and `hw3.qmd` in your assignments folder.
 3.  Follow the instructions below to complete the assignment. A sample code chunk has been provided but you might need more.
-4.  When you are done, click the "Render" button at the top of Positron to generate an .html file (Note that it might not necessarily save the .html file, but if you can preview it, that means it's working).
-5.  Submit the `hw3.qmd` file to bCourse before the deadline
+4. When you are done, click the "Render" button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it's working.
+5.  Submit both the `hw3.qmd` and the `hw3.html` files to bCourse before the deadline
 6.  Make sure your name appears in the "author" field in the YAML header above
 :::
 
