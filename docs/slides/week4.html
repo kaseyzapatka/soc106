@@ -1482,21 +1482,8 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 </section>
 <section id="association-correlation-examples" class="slide level2 smaller">
 <h2>Association: correlation examples</h2>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(r = 0\)</span> does <strong>not</strong> imply no relationship — only no <strong>linear</strong> relationship. Always use a scatterplot to check!</p>
-</div>
-</div>
-</div>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">None (r = 0)</a></li><li><a href="#tabset-9-2">Weak (r = 0.3)</a></li><li><a href="#tabset-9-3">Moderate (r = 0.5)</a></li><li><a href="#tabset-9-4">Strong (r = 0.8)</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">None (r = 0)</a></li><li><a href="#tabset-9-2">Weak (|r| = 0.3)</a></li><li><a href="#tabset-9-3">Moderate (|r| = 0.5)</a></li><li><a href="#tabset-9-4">Strong (|r| = 0.8)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1">
 <div class="cell" data-layout-align="center">
@@ -1510,33 +1497,36 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 </div>
 </div>
 <div id="tabset-9-2">
+<p>Weak: |r| = 0.10 to 0.39</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-9-3">
+<p>Moderate: |r| = 0.40 to 0.69</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-9-4">
+<p>Strong: |r| ≥ 0.70</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1639,7 +1629,7 @@ $ std_dev &lt;dbl&gt; 20799.05</code></pre>
 <summary>
 <strong>Click to reveal interpretation</strong>
 </summary>
-Bachelor’s degree holders are 16 percentage points more likely to be married than those with less than a high school education.
+58% of bachelor’s degree holders are married compared to 42% of those with less than a high school education—a difference of 16 percentage points.
 </details>
 <p><strong>Step 3: Relative risk ratio</strong> (married)</p>
 <p>Finally let’s calculate the relative risk ratio of those that are married. How do we interpret this?</p>
@@ -1674,7 +1664,7 @@ $ covariance &lt;dbl&gt; 376447249</code></pre>
 <summary>
 <strong>Click to reveal interpretation</strong>
 </summary>
-The positive covariance indicates that respondent income and household income <strong>tend to move in the same direction</strong> — when one is above its mean, the other tends to be as well. However, the magnitude (31,806) is hard to interpret on its own because it depends on the scale of both variables (dollars).
+The positive covariance indicates that respondent income and household income <strong>tend to move in the same direction</strong> — when one is above its mean, the other tends to be as well. However, the magnitude (376,447,249) is hard to interpret on its own because it depends on the scale of both variables (dollars).
 </details>
 </div>
 <div id="tabset-10-3">
@@ -1694,7 +1684,7 @@ The positive covariance indicates that respondent income and household income <s
 <summary>
 <strong>Click to reveal interpretation</strong>
 </summary>
-The <strong>correlation of 0.68 indicates a moderately strong, positive</strong> linear relationship between respondent income and household income. Unlike covariance, this value is standardized (between -1 and 1), making it easier to judge the strength of the association.
+The <strong>correlation of 0.67 indicates a moderately strong, positive</strong> linear relationship between respondent income and household income. Unlike covariance, this value is standardized (between -1 and 1), making it easier to judge the strength of the association.
 </details>
 </div>
 </div>
