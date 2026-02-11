@@ -109,9 +109,7 @@ If tosses are independent, then we can say that the probability of tossing "head
 
 - We can calculate probabilities by observing many trials of a random phenomenon
 
-- The sample proportion of the number of times the outcome occurred is the **probability**
-
-- This is an **estimate** of the actual probability, but a reasonably good one as we observe more and more trials
+- The sample proportion of the number of times the outcome occurred is the **probability**^[This is an estimate that improves as we observe more trials]
 
 **Theoretical approach**
 
@@ -121,7 +119,8 @@ If tosses are independent, then we can say that the probability of tossing "head
 
 **Probability models** are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:
 
-1. **Sample space (S)**: This is a set, or list, of all possible outcomes of a random process. An event is a subset of the sample space
+1. **Sample space (S)**: the set of all possible outcomes of a random process
+   - An **event** is a subset of the sample space
 
 2. **A probability for each possible event** in the sample space S
 
@@ -281,9 +280,7 @@ $$S = [0, \infty)$$
 
 We use **density curves** to represent probabilities across the continuous sample space, and compute probabilities for intervals as the **area under the curve**
 
-**Example**: Uniform density curve over $S = [0,1]$
-
-Uniform density curves represent when all outcomes in a continuous sample space are equally likely
+**Example**: Uniform density curve over $S = [0,1]$ (all outcomes equally likely)
 
 The shaded portion represents:
 
@@ -413,9 +410,7 @@ $$P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$$
 
 ## Conditional Probabilities: Connection to Marginal Frequencies {.smaller}
 
-Note that this is equivalent to the **marginal frequency**, which we discussed last week
-
-This shows how probability theory connects to the descriptive statistics we've already learned
+Note that conditional probability is equivalent to the **marginal frequency** from last week — probability theory connects directly to descriptive statistics
 
 ![](images/week5/conditional_freq.png){width="100%,fig-align=\"center\""}
 

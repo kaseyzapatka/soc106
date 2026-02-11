@@ -2993,7 +2993,7 @@
     "href": "slides/week5.html#calculating-probabilities",
     "title": "Week 5",
     "section": "Calculating Probabilities",
-    "text": "Calculating Probabilities\nEmpirical approach\n\nWe can calculate probabilities by observing many trials of a random phenomenon\nThe sample proportion of the number of times the outcome occurred is the probability\nThis is an estimate of the actual probability, but a reasonably good one as we observe more and more trials\n\nTheoretical approach\n\nWe can also calculate theoretical probabilities based on assumptions about the random phenomena (i.e., all die rolls equally likely)"
+    "text": "Calculating Probabilities\nEmpirical approach\n\nWe can calculate probabilities by observing many trials of a random phenomenon\nThe sample proportion of the number of times the outcome occurred is the probability1\n\nTheoretical approach\n\nWe can also calculate theoretical probabilities based on assumptions about the random phenomena (i.e., all die rolls equally likely)\n\nThis is an estimate that improves as we observe more trials"
   },
   {
     "objectID": "slides/week5.html#probability-models",
@@ -3070,7 +3070,7 @@
     "href": "slides/week5.html#probabilities-in-continuous-sample-spaces",
     "title": "Week 5",
     "section": "Probabilities in Continuous Sample Spaces",
-    "text": "Probabilities in Continuous Sample Spaces\n\n\nWe use density curves to represent probabilities across the continuous sample space, and compute probabilities for intervals as the area under the curve\nExample: Uniform density curve over \\(S = [0,1]\\)\nUniform density curves represent when all outcomes in a continuous sample space are equally likely\nThe shaded portion represents:\n\\(P(0.3 \\leq x \\leq 0.7) = (0.7 - 0.3) \\times 1 = 0.4\\)\n\n\n\n\nUniform density curve with shaded region between 0.3 and 0.7"
+    "text": "Probabilities in Continuous Sample Spaces\n\n\nWe use density curves to represent probabilities across the continuous sample space, and compute probabilities for intervals as the area under the curve\nExample: Uniform density curve over \\(S = [0,1]\\) (all outcomes equally likely)\nThe shaded portion represents:\n\\(P(0.3 \\leq x \\leq 0.7) = (0.7 - 0.3) \\times 1 = 0.4\\)\n\n\n\n\nUniform density curve with shaded region between 0.3 and 0.7"
   },
   {
     "objectID": "slides/week5.html#properties-of-density-curves",
@@ -3126,7 +3126,7 @@
     "href": "slides/week5.html#conditional-probabilities-connection-to-marginal-frequencies",
     "title": "Week 5",
     "section": "Conditional Probabilities: Connection to Marginal Frequencies",
-    "text": "Conditional Probabilities: Connection to Marginal Frequencies\nNote that this is equivalent to the marginal frequency, which we discussed last week\nThis shows how probability theory connects to the descriptive statistics we’ve already learned"
+    "text": "Conditional Probabilities: Connection to Marginal Frequencies\nNote that conditional probability is equivalent to the marginal frequency from last week — probability theory connects directly to descriptive statistics"
   },
   {
     "objectID": "slides/week5.html#multiplication-rule",
@@ -3518,7 +3518,7 @@
     "href": "slides/week5.html#probability-models-1",
     "title": "Week 5",
     "section": "Probability Models",
-    "text": "Probability Models\nProbability models are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:\n\nSample space (S): This is a set, or list, of all possible outcomes of a random process. An event is a subset of the sample space\nA probability for each possible event in the sample space S"
+    "text": "Probability Models\nProbability models are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:\n\nSample space (S): the set of all possible outcomes of a random process\n\nAn event is a subset of the sample space\n\nA probability for each possible event in the sample space S"
   },
   {
     "objectID": "slides/week5.html#complement-shortcut-at-least-one",
