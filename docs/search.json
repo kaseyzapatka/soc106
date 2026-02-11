@@ -2958,21 +2958,21 @@
     "href": "slides/week5.html#course-overview",
     "title": "Week 5",
     "section": "Course Overview",
-    "text": "Course Overview\nWhere we’ve been:\nFirst, we learned about how to find data from the “real world” and describe it (both graphically and using summary statistics like the mean & variance)\nWhere we’re going:\nNow, we will turn to what we can infer about the “real world”, given the data that we have\nBut first, we’ll momentarily take a step back from the actual data to think about the processes that generated the data\nThe models that we will create to understand these processes will allow us to make powerful inferences about the “real world” from the data"
+    "text": "Course Overview\nWhere we’ve been: Finding data and describing it (graphs, summary statistics)\nWhere we’re going: Inferring things about the “real world” from data\nThis week: We step back from actual data to think about the processes that generated the data — probability models that will power our inferences"
   },
   {
     "objectID": "slides/week5.html#agenda",
     "href": "slides/week5.html#agenda",
     "title": "Week 5",
     "section": "Agenda",
-    "text": "Agenda\nBasics of Probability\n\nProbability models\nSample spaces\nDensity curves\nRules of probability\nProbabilities of multiple events\n\nUnions and intersections\nConditional probabilities\nBayes’ theorem"
+    "text": "Agenda\nBasics of Probability\n\nProbability models\nSample spaces\nDensity curves\nRules of probability\nProbabilities of multiple events"
   },
   {
     "objectID": "slides/week5.html#randomness-and-probability",
     "href": "slides/week5.html#randomness-and-probability",
     "title": "Week 5",
     "section": "Randomness and Probability",
-    "text": "Randomness and Probability\nWe will consider a phenomenon to be random if individual outcomes are uncertain but there is, nonetheless, a regular distribution of outcomes in a large number of repetitions. Think of there being some level of randomness involved\nSome examples:\n\nRolling a dice: all outcomes are equally likely\nPlaying the lottery: winning is unlikely and rare\nTaking a standardized test: not all outcomes are equally likely for a given test-taker, but a test-taker will usually not get the same score every time they take a test"
+    "text": "Randomness and Probability\nA phenomenon is random if individual outcomes are uncertain but there is a regular distribution of outcomes over many repetitions\n\nExamples: rolling a die, playing the lottery, taking a standardized test\n\nThe probability of an outcome is the proportion of times it would occur in a very large number of independent repetitions\n\\[P(A) = \\frac{\\text{number of repetitions where A occurs}}{\\text{total number of repetitions}}\\]\nRepetitions are independent if the result of one does not influence the result of others"
   },
   {
     "objectID": "slides/week5.html#randomness-and-probability-1",
@@ -3007,7 +3007,7 @@
     "href": "slides/week5.html#properties-of-probability-models",
     "title": "Week 5",
     "section": "Properties of Probability Models",
-    "text": "Properties of Probability Models\nThree fundamental properties:\n\nRange: Probabilities for any given event range from 0 (can’t happen) to 1 (happens every time)\n\nFormally, for any event A: \\(0 \\leq P(A) \\leq 1\\)\nSo, the range of probability must be between 0 and 1\n\nExhaustiveness: \\(P(S) = 1\\). That is, the sample space is exhaustive of all possibilities\n\n\nIn other words, there cannot be any limits on the probability of an occurance\n\n\nComplement rule: The probability of an event not occurring is 1 minus the probability that it does occur\n\n\\(P(\\text{not } A) = 1 - P(A)\\)\n\\(P(\\text{not } A)\\) is called the complement of A"
+    "text": "Properties of Probability Models\nThree fundamental properties:\n\n\nRange: Probabilities for any given event range from 0 (can’t happen) to 1 (happens every time)\n\nFormally, for any event A: \\(0 \\leq P(A) \\leq 1\\)\nSo, the range of probability must be between 0 and 1\n\n\n\n\n\nExhaustiveness: \\(P(S) = 1\\). That is, the sample space is exhaustive of all possibilities\n\n\nIn other words, there cannot be any limits on the probability of an occurance\n\n\n\n\nComplement rule: The probability of an event not occurring is 1 minus the probability that it does occur\n\n\\(P(\\text{not } A) = 1 - P(A)\\)\n\\(P(\\text{not } A)\\) is called the complement of A"
   },
   {
     "objectID": "slides/week5.html#probability-models-example",
@@ -3021,7 +3021,7 @@
     "href": "slides/week5.html#compound-events",
     "title": "Week 5",
     "section": "Compound Events",
-    "text": "Compound Events\nPretty simple, right? But this becomes more useful when we want to predict compound events that are the result of multiple trials\nWe can figure out the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome\nExample: What’s the probability of getting two heads in two coin flips?\n\nWe need to consider all possible outcomes and their probabilities"
+    "text": "Compound Events\nThis is simple enought – but becomes more useful when we want to predict compound events that are the result of multiple trials\nCalculate the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome\nExample: What’s the probability of getting two heads in two coin flips?\n\nWe need to consider all possible outcomes and their probabilities"
   },
   {
     "objectID": "slides/week5.html#example-1-order-matters",
@@ -3084,7 +3084,7 @@
     "href": "slides/week5.html#density-curve-examples",
     "title": "Week 5",
     "section": "Density Curve Examples",
-    "text": "Density Curve Examples\n\n\nDensity curves come in all shapes and sizes:\n\nSome are well-known mathematically; others aren’t\nSome are described by simple equations; others aren’t\n\nCommon types we’ll encounter:\n\nUniform distribution (equal probability across range)\nNormal distribution (bell curve)\nExponential distribution\nAnd many others…\n\n\n\n\n\nSample of various types of density curves"
+    "text": "Density Curve Examples\n\n\nDensity curves come in all shapes and sizes:\n\nSome are well-known mathematically; others aren’t\nSome are described by simple equations; others aren’t\n\nCommon types we’ll encounter:\n\nUniform distribution (equal probability across range)\nNormal distribution (bell curve)\nExponential distribution\n\nWe’ll use density curves extensively when we study the normal distribution in coming weeks\n\n\n\n\nSample of various types of density curves"
   },
   {
     "objectID": "slides/week5.html#questions-1",
@@ -3140,7 +3140,7 @@
     "href": "slides/week5.html#independent-events",
     "title": "Week 5",
     "section": "Independent Events",
-    "text": "Independent Events\nIf two events are independent, the probability that one event occurs is not affected by whether the other event occurs\nThis implies:\n\n\\(P(B|A) = P(B)\\)\n\\(P(A|B) = P(A)\\)\n\\(P(A \\text{ and } B) = P(A) \\times P(B)\\)\n\nExample: Coin flips are independent - knowing the first flip doesn’t tell you anything about the second flip"
+    "text": "Independent Events\nIf two events are independent, the probability that one event occurs is not affected by whether the other event occurs\n\nThis implies:\n\n\\(P(B|A) = P(B)\\)\n\\(P(A|B) = P(A)\\)\n\\(P(A \\text{ and } B) = P(A) \\times P(B)\\)\n\n\n\nExample: Coin flips are independent - knowing the first flip doesn’t tell you anything about the second flip"
   },
   {
     "objectID": "slides/week5.html#questions-2",
@@ -3442,5 +3442,96 @@
     "title": "Week 4",
     "section": "Dispersion: variance and std. deviation",
     "text": "Dispersion: variance and std. deviation\nDeviation from the mean: for observation \\(i\\), the deviation is \\(x_i - \\bar{x}\\)\n\n\nSample variance: the average* squared deviations\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\]\n\nSample standard deviation: the square root of the variance\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n}(x_i - \\bar{x})^2}\\]\n\n\n\n\n\n\n\nNote\n\n\nThese “averages” are divided by \\(n-1\\), not \\(n\\)."
+  },
+  {
+    "objectID": "slides/week5.html#housekeeping",
+    "href": "slides/week5.html#housekeeping",
+    "title": "Week 5",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nHW #1: feedback?\nHW #2: feedback?\nHW #3: due Thursday, February 19 at 11:59 PM - Ideal to use your final project data\nPaper Proposal (5%): due Thursday, February 26, 11:59 PM - A two-page double-spaced proposal for your final paper. - Here’s an example of what I expect.\nAcademic Integrity Asignment due Friday, May 8, 11:59 PM"
+  },
+  {
+    "objectID": "slides/week5.html#paper-proposal-5",
+    "href": "slides/week5.html#paper-proposal-5",
+    "title": "Week 5",
+    "section": "Paper Proposal (5%)",
+    "text": "Paper Proposal (5%)\nA two-page double-spaced proposal for your final paper is due on bCourses by Thursday, February 26 at 11:59 PM. Here’s an example.\nYour proposal should include:\n\nResearch question - What are you trying to answer?\nWhy it matters - Why should we care about this question?\nHypotheses - What do you think the answer is, and why?\nData source - What dataset will you use?\nKey variables - Identify your independent and dependent variables\n\nNote: You do not need to discuss statistical techniques at this point."
+  },
+  {
+    "objectID": "slides/week5.html#weekly-assignment-4",
+    "href": "slides/week5.html#weekly-assignment-4",
+    "title": "Week 5",
+    "section": "Weekly Assignment #4",
+    "text": "Weekly Assignment #4\nYou’ll answer some questions based on lecture today. You will not need a dataset.\nHW #4: due Thursday, February 26 at 11:59 PM"
+  },
+  {
+    "objectID": "slides/week5.html#the-complement-shortcut-at-least-one",
+    "href": "slides/week5.html#the-complement-shortcut-at-least-one",
+    "title": "Week 5",
+    "section": "The Complement Shortcut: “At Least One”",
+    "text": "The Complement Shortcut: “At Least One”\nThe complement rule is especially useful for “at least one” problems\nExample: What is the probability of getting at least one head in 3 coin flips?\nWe could list every outcome with at least one head… but it’s easier to use the complement:\n\\[P(\\text{at least one head}) = 1 - P(\\text{no heads})\\]\n\\[= 1 - P(TTT) = 1 - \\frac{1}{8} = \\frac{7}{8}\\]\nWhy this works: “at least one head” and “no heads” are complements — one of them must happen, so their probabilities sum to 1\n\nWhenever you see “at least one,” think complement!"
+  },
+  {
+    "objectID": "slides/week5.html#addition-rule-worked-example",
+    "href": "slides/week5.html#addition-rule-worked-example",
+    "title": "Week 5",
+    "section": "Addition Rule: Worked Example",
+    "text": "Addition Rule: Worked Example\nExample: I draw one card from a standard deck. What is the probability that I draw a club or a face card?\n\n\\(P(\\text{club}) = 13/52\\) (13 clubs in the deck)\n\\(P(\\text{face card}) = 12/52\\) (4 jacks + 4 queens + 4 kings)\n\\(P(\\text{club and face card}) = 3/52\\) (jack, queen, king of clubs)\n\n\nApplying the addition rule:\n\\[P(\\text{club or face card}) = \\frac{13}{52} + \\frac{12}{52} - \\frac{3}{52} = \\frac{22}{52} \\approx 0.42\\]\nWe subtract \\(3/52\\) because the jack, queen, and king of clubs are both clubs and face cards — without subtracting, we’d count them twice!"
+  },
+  {
+    "objectID": "slides/week5.html#independence-and-sampling",
+    "href": "slides/week5.html#independence-and-sampling",
+    "title": "Week 5",
+    "section": "Independence and Sampling",
+    "text": "Independence and Sampling\nA common way to determine independence: how are you sampling?\n\nWith replacement: Put the item back before drawing again → draws are independent (probabilities don’t change)\nWithout replacement: Keep the item out → draws are dependent (probabilities change after each draw)\n\nExample: An urn has 7 red and 3 blue marbles\n\nWith replacement: \\(P(\\text{Red 2nd draw}) = 7/10\\) regardless of 1st draw\nWithout replacement: \\(P(\\text{Red 2nd} | \\text{Red 1st}) = 6/9\\), but \\(P(\\text{Red 2nd} | \\text{Blue 1st}) = 7/9\\)"
+  },
+  {
+    "objectID": "slides/week5.html#multiplication-rule-worked-example",
+    "href": "slides/week5.html#multiplication-rule-worked-example",
+    "title": "Week 5",
+    "section": "Multiplication Rule: Worked Example",
+    "text": "Multiplication Rule: Worked Example\nWith replacement (independent draws):\n\\[P(RR) = P(R) \\times P(R) = \\frac{7}{10} \\times \\frac{7}{10} = \\frac{49}{100}\\]\n\nWithout replacement (dependent draws):\n\\[P(RR) = P(R_1) \\times P(R_2 | R_1) = \\frac{7}{10} \\times \\frac{6}{9} = \\frac{42}{90}\\]\n\n\nNotice the difference: without replacement, getting a red marble first changes the probability of getting a red marble second"
+  },
+  {
+    "objectID": "slides/week5.html#discrete-vs.-continuous-sample-spaces",
+    "href": "slides/week5.html#discrete-vs.-continuous-sample-spaces",
+    "title": "Week 5",
+    "section": "Discrete vs. Continuous Sample Spaces",
+    "text": "Discrete vs. Continuous Sample Spaces\nDiscrete sample spaces deal with data that can only take on certain values, known in advance (that is, categorical data)\n\nExample: Throwing a single die → \\(S = \\{1, 2, 3, 4, 5, 6\\}\\), each with probability \\(1/6\\)\nThese are straightforward because we can list all possible outcomes\n\n\nContinuous sample spaces contain an infinite number of outcomes. They are typically intervals of possible, continuously distributed outcomes\n\nExample: Picking a random real number between 0 and 1 → \\(S = [0,1]\\)\n\n\n\nQuestion: How do we assign probabilities to outcomes in an infinite sample space?"
+  },
+  {
+    "objectID": "slides/week5.html#union-of-events-and-the-addition-rule",
+    "href": "slides/week5.html#union-of-events-and-the-addition-rule",
+    "title": "Week 5",
+    "section": "Union of Events and the Addition Rule",
+    "text": "Union of Events and the Addition Rule\nThe union of A and B (“A or B”) consists of outcomes that are in A, or in B, or in both A and B. Notation: \\(A \\cup B\\)\n\n\nAddition ruleSpecial case: Disjoint events\n\n\nFor the union of two events,\n\\[P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)\\]\nWe subtract \\(P(A \\text{ and } B)\\) to avoid double-counting outcomes in both events\n\n\nIf the events are disjoint (mutually exclusive), then \\(P(A \\text{ and } B) = 0\\)\n\\[P(A \\text{ or } B) = P(A) + P(B)\\]\nDisjoint events have no overlap, so there’s nothing to subtract"
+  },
+  {
+    "objectID": "slides/week5.html#intersection-and-conditional-probabilities",
+    "href": "slides/week5.html#intersection-and-conditional-probabilities",
+    "title": "Week 5",
+    "section": "Intersection and Conditional Probabilities",
+    "text": "Intersection and Conditional Probabilities\n\n\nThe intersection of A and B (\\(A \\cap B\\)) consists of outcomes that are in both A and B — the overlap between two events\nThe conditional probability of event A, given that event B has occurred, is:\n\\[P(A|B) = \\frac{P(A \\text{ and } B)}{P(B)}\\]\n\n\\(P(A|B)\\) is read as “the probability of A, given B”\nInterpretation: Of all the times that B occurs, \\(P(A|B)\\) is the proportion of times that A also occurs"
+  },
+  {
+    "objectID": "slides/week5.html#probability-models-1",
+    "href": "slides/week5.html#probability-models-1",
+    "title": "Week 5",
+    "section": "Probability Models",
+    "text": "Probability Models\nProbability models are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:\n\nSample space (S): This is a set, or list, of all possible outcomes of a random process. An event is a subset of the sample space\nA probability for each possible event in the sample space S"
+  },
+  {
+    "objectID": "slides/week5.html#complement-shortcut-at-least-one",
+    "href": "slides/week5.html#complement-shortcut-at-least-one",
+    "title": "Week 5",
+    "section": "Complement Shortcut: “At Least One”",
+    "text": "Complement Shortcut: “At Least One”\nThe complement rule is especially useful for “at least one” problems\nExample: What is the probability of getting at least one head in 3 coin flips?\nWe could list every outcome with at least one head… but it’s easier to use the complement:\n\n\\[P(\\text{at least one head}) = 1 - P(\\text{no heads})\\]\n\\[= 1 - P(TTT) = 1 - \\frac{1}{8} = \\frac{7}{8}\\]\n\n\nWhy this works: “at least one head” and “no heads” are complements — one of them must happen, so their probabilities sum to 1\n\nWhenever you see “at least one,” think complement!"
+  },
+  {
+    "objectID": "slides/week5.html#density-curves-properties-and-types",
+    "href": "slides/week5.html#density-curves-properties-and-types",
+    "title": "Week 5",
+    "section": "Density Curves: Properties and Types",
+    "text": "Density Curves: Properties and Types\nProperties:\n\nP(single point) = 0 — only intervals have non-zero probability\nTotal area under the curve = 1\nDensity curves are always non-negative\n\nCommon types we’ll encounter (we’ll use these extensively when we study the normal distribution):"
   }
 ]
