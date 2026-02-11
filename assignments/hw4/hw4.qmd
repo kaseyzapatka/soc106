@@ -3,7 +3,7 @@ title: "Weekly Assignment #4"
 author: "Your Name Here"  # Replace with your name
 date: 02/26/2026
 date-format: long
-format: 
+format:
   html:
     toc: true
     code-fold: false
@@ -17,7 +17,7 @@ editor: visual
 1.  Download this `hw4.qmd` file from bCourse.
 2.  Save the file in your assignments folder.
 3.  Follow the instructions below to complete the assignment. Show your work for all calculations!
-4. When you are done, click the "Render" button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it's working.
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it's working.
 5.  Submit both the `hw4.qmd` and the `hw4.html` files to bCourse before the deadline
 6.  Make sure your name appears in the "author" field in the YAML header above
 :::
@@ -55,15 +55,15 @@ library(here)
 
 **a) What is the sample space S of possible outcomes?**
 
-*Your answer here (you can list all outcomes or use R to generate them): `{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}`*
+*Your answer here (you can list all outcomes or use R to generate them):*
 
 **b) What is probability that I get two out of three heads? Three out of three heads? At least one head? (hint: remember that P(at least one head) = 1 – P(no heads)!)**
 
 *Your answers:*
 
--   P(two heads) = `3/8`
--   P(three heads) = `1/8`
--   P(at least one head) = `7/8`
+-   P(two heads) =
+-   P(three heads) =
+-   P(at least one head) =
 
 ------------------------------------------------------------------------
 
@@ -71,7 +71,7 @@ library(here)
 
 I draw one card from a deck. What is the probability that I selected a club or a face card (jack, queen, or king)? (Hint: use the addition rule!)
 
-*Your answer: `P(club or face card) = P(club) + P(face card) – P(club and face) = 13/52 + 12/52 – 3/52 = 22/52`*
+*Your answer:*
 
 ------------------------------------------------------------------------
 
@@ -79,7 +79,7 @@ I draw one card from a deck. What is the probability that I selected a club or a
 
 The Cal football team has beat Stanford and won their bowl game in 40% of their seasons. If they beat Stanford in 67% (2/3rds) of their seasons, then what is the probability that they will win a bowl game, given that they beat Stanford in a season?
 
-*Your answer: `P(win bowl game | beat Stanford) = P(win bowl game & beat Stanford)/P(beat Stanford) = (2/5)/(2/3) = 3/5`*
+*Your answer:*
 
 ------------------------------------------------------------------------
 
@@ -95,11 +95,11 @@ Refer to the following figure showing blood test results for High Blood Sugar:
 
 **a) What is the probability that an individual in this sample does not have High Blood Sugar, given that they have a negative blood test for High Blood Sugar?**
 
-*Your answer: `P(doesn’t have High Blood Sugar|negative test) = 3921/3927 = 0.9984721`*
+*Your answer:*
 
 **b) What is the probability that an individual in this sample does have High Blood Sugar, given that they have a positive blood test for High Blood Sugar?**
 
-*Your answer: `P(does have High Blood Sugar|positive test) = 48/1355`*
+*Your answer:*
 
 ------------------------------------------------------------------------
 
@@ -109,24 +109,24 @@ Refer to the following figure showing blood test results for High Blood Sugar:
 
 **a) What is the sample space S of possible outcomes for the first marble and the second marble?**
 
-*Your answer here: `{RR, RB, BR, BB}`*
+*Your answer here:*
 
 **b) What is the probability associated with each outcome? (Hint: are the two draws independent from one another?)**
 
-*Your answer:
+*Your answer:*
 
--   P(RR) = `49/100`
--   P(RB) = `21/100`
--   P(BR) = `21/100`
--   P(BB) = `9/100`
+-   P(RR) =
+-   P(RB) =
+-   P(BR) =
+-   P(BB) =
 
 **c) Using part b), what is the probability that I drew no red marbles? One red marble? Two red marbles?**
 
 *Your answers:*
 
--   P(no red marbles) = `0.09`
--   P(one red marble) = `0.42`
--   P(two red marbles) = `0.49`
+-   P(no red marbles) =
+-   P(one red marble) =
+-   P(two red marbles) =
 
 ------------------------------------------------------------------------
 
@@ -136,15 +136,20 @@ Refer to the following figure showing blood test results for High Blood Sugar:
 
 **a) The sample space is the same as in the previous question—but now, what is the probability associated with each outcome? (Hint: are the two draws independent from one another?)**
 
-*Your answer: - P(RR) = `(7/10)*(6/9)` - P(RB) = `(7/10)*(3/9)` - P(BR) = `(3/10)*(7/9)` - P(BB) = `(3/10)*(2/9)`*
+*Your answer:*
+
+-   P(RR) =
+-   P(RB) =
+-   P(BR) =
+-   P(BB) =
 
 **b) Using part a), what is the probability that I drew no red marbles? One red marble? Two red marbles?**
 
 *Your answers:*
 
--   P(no red marbles) = `6/90`
--   P(one red marble) = `42/90`
--   P(two red marbles) = `42/90`
+-   P(no red marbles) =
+-   P(one red marble) =
+-   P(two red marbles) =
 
 ------------------------------------------------------------------------
 
