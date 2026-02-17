@@ -31,14 +31,14 @@ attain <- read_csv(here("data/attain.csv"))
 
 ## Housekeeping {.smaller}
 
-**HW #1:** feedback?
-
-**HW #2:** feedback?
+**HW #1:** Great job everyone ! Lots of great coding 
+ 
+**HW #2:** Really great job finding data, asking questions, and responding to prompts. Make sure to check rendering and answer all of the questions. 
 
 **HW #3:** due Thursday, February 19 at 11:59 PM
-  - Ideal to use your final project data
 
 **Paper Proposal (5%):** due Thursday, February 26, 11:59 PM
+  
   - A **two-page double-spaced proposal** for your final paper. 
   - Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html) of what I expect.
 
@@ -73,7 +73,7 @@ To make inferences, we first need to model the **processes that generate data**
 
 A phenomenon is **random** if individual outcomes are uncertain but there is a regular distribution of outcomes over many repetitions
 
-- **Examples**: rolling a die, playing the lottery, taking a standardized test
+- **Examples**: rolling a die, playing the lottery, a coin toss
 
 The **probability** of an outcome is the proportion of times it would occur in a very large number of independent repetitions
 
@@ -109,7 +109,7 @@ If tosses are independent, then we can say that the probability of tossing "head
 
 - We can calculate probabilities by observing many trials of a random phenomenon
 
-- The sample proportion of the number of times the outcome occurred is the **probability**^[This is an estimate that improves as we observe more trials]
+- Then calclute the **probability**^[This is an estimate that improves as we observe more trials] by taking a sample proportion of the number of times the outcome occurred
 
 **Theoretical approach**
 
@@ -120,9 +120,11 @@ If tosses are independent, then we can say that the probability of tossing "head
 **Probability models** are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:
 
 1. **Sample space (S)**: the set of all possible outcomes of a random process
-   - An **event** is a subset of the sample space
+   - Ex: Sample space for a six-sided die is `1, 2, 3, 4, 5, 6`
+   - An **event** is a subset of the sample space (e.g., rollling an even number)
 
 2. **A probability for each possible event** in the sample space S
+    - Ex: rolling an even number `3/6` or `1/2`
 
 ## Properties of Probability Models {.smaller}
 
@@ -140,7 +142,7 @@ If tosses are independent, then we can say that the probability of tossing "head
 :::
 
 ::: {.fragment}
-3. **Complement rule**: The probability of an event not occurring is 1 minus the probability that it does occur
+3. **Complement rule**: The probability of an event not occurring is 1 minus the probability that it does occur:
    - $P(\text{not } A) = 1 - P(A)$
    - $P(\text{not } A)$ is called the **complement** of A
 :::
@@ -175,7 +177,7 @@ Every probability model starts by defining **what outcomes are possible**
 
 ## Compound Events {.smaller}
 
-This is simple enought -- but becomes more useful when we want to predict **compound events** that are the result of multiple trials
+Understanding sample space becomes most useful when we want to predict **compound events** that are the result of multiple trials
 
 Calculate the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome
 
@@ -198,6 +200,20 @@ $$S = \{HHH, HHM, HMH, HMM, MHH, MHM, MMH, MMM\}$$
   - HMH = Hit, Miss, Hit
   - These are different sequences!
 
+## Example 2: Order doesn't matter {.smaller}
+
+Now we only care about **how many baskets are made**, not the order
+
+**Sample space:**
+
+$$S = \{0, 1, 2, 3\}$$
+
+- Each value represents the **number of hits**
+- Total outcomes: **4**
+- 🔑 **Order doesn't matter**
+  - HMH and MHH both → 2 baskets
+  - We collapse multiple sequences into single counts
+
 ## Complement Shortcut: "At Least One" {.smaller}
 
 The complement rule is especially useful for **"at least one"** problems
@@ -218,19 +234,6 @@ $$= 1 - P(TTT) = 1 - \frac{1}{8} = \frac{7}{8}$$
 > Whenever you see "at least one," think complement!
 :::
 
-## Example 2: Order doesn't matter {.smaller}
-
-Now we only care about **how many baskets are made**, not the order
-
-**Sample space:**
-
-$$S = \{0, 1, 2, 3\}$$
-
-- Each value represents the **number of hits**
-- Total outcomes: **4**
-- 🔑 **Order doesn't matter**
-  - HMH and MHH both → 2 baskets
-  - We collapse multiple sequences into single counts
 
 ## Example 3: Continuous outcomes {.smaller}
 
@@ -246,15 +249,33 @@ $$S = [0, \infty)$$
   - Can't list all outcomes individually
   - Must use intervals and density curves
 
-## Comparing Sample Space Types {.smaller}
+## Back to the Two Coin Flips Example {.smaller}
 
-| Scenario | Type of Sample Space | Order Matters? | Number of Outcomes |
-|----------|---------------------|----------------|-------------------|
-| Free throw sequences | Discrete | ✅ Yes | 8 |
-| Number of baskets | Discrete | ❌ No | 4 |
-| Weight gain | Continuous | ❌ No | Infinite (∞) |
+**Question:** What's the probability of getting two heads in two coin flips?
 
-**Key takeaway:** The same physical situation (free throws) can have different sample spaces depending on what question we're asking!
+::: {.fragment}
+For two fair flips, the sample space is:
+
+$$S = \{HH, HT, TH, TT\}$$
+:::
+
+::: {.fragment}
+Each outcome is equally likely, so each has probability $1/4$
+:::
+
+::: {.fragment}
+Let event $A = \{\text{two heads}\} = \{HH\}$
+:::
+
+::: {.fragment}
+$$P(A) = P(HH) = \frac{1}{4}$$
+:::
+
+::: {.fragment}
+Equivalent multiplication view (independent flips):
+
+$$P(HH) = P(H)\times P(H) = \frac{1}{2}\times\frac{1}{2} = \frac{1}{4}$$
+:::
 
 ## Discrete vs. Continuous Sample Spaces {.smaller}
 
@@ -338,7 +359,6 @@ p3 <- ggplot(data.frame(x = seq(0, 6, 0.01)), aes(x)) +
 p1 + p2 + p3
 ```
 
-## Questions?
 
 # Rules of Probability
 
@@ -454,6 +474,9 @@ A common way to determine independence: **how are you sampling?**
 - Without replacement: $P(\text{Red 2nd} | \text{Red 1st}) = 6/9$, but $P(\text{Red 2nd} | \text{Blue 1st}) = 7/9$
 
 ## Multiplication Rule: Worked Example {.smaller}
+
+
+> Example: An urn has 7 red and 3 blue marbles
 
 **With replacement** (independent draws):
 

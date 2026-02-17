@@ -140,10 +140,14 @@
 </section>
 <section id="housekeeping" class="slide level2 smaller">
 <h2>Housekeeping</h2>
-<p><strong>HW #1:</strong> feedback?</p>
-<p><strong>HW #2:</strong> feedback?</p>
-<p><strong>HW #3:</strong> due Thursday, February 19 at 11:59 PM - Ideal to use your final project data</p>
-<p><strong>Paper Proposal (5%):</strong> due Thursday, February 26, 11:59 PM - A <strong>two-page double-spaced proposal</strong> for your final paper. - Here’s <a href="https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html">an example</a> of what I expect.</p>
+<p><strong>HW #1:</strong> Great job everyone ! Lots of great coding</p>
+<p><strong>HW #2:</strong> Really great job finding data, asking questions, and responding to prompts. Make sure to check rendering and answer all of the questions.</p>
+<p><strong>HW #3:</strong> due Thursday, February 19 at 11:59 PM</p>
+<p><strong>Paper Proposal (5%):</strong> due Thursday, February 26, 11:59 PM</p>
+<ul>
+<li>A <strong>two-page double-spaced proposal</strong> for your final paper.</li>
+<li>Here’s <a href="https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html">an example</a> of what I expect.</li>
+</ul>
 <p><strong>Academic Integrity Asignment</strong> due Friday, May 8, 11:59 PM</p>
 </section>
 <section id="questions" class="slide level2">
@@ -175,7 +179,7 @@
 <h2>Randomness and Probability</h2>
 <p>A phenomenon is <strong>random</strong> if individual outcomes are uncertain but there is a regular distribution of outcomes over many repetitions</p>
 <ul>
-<li><strong>Examples</strong>: rolling a die, playing the lottery, taking a standardized test</li>
+<li><strong>Examples</strong>: rolling a die, playing the lottery, a coin toss</li>
 </ul>
 <p>The <strong>probability</strong> of an outcome is the proportion of times it would occur in a very large number of independent repetitions</p>
 <p><span class="math display">\[P(A) = \frac{\text{number of repetitions where A occurs}}{\text{total number of repetitions}}\]</span></p>
@@ -199,7 +203,7 @@
 <p><strong>Empirical approach</strong></p>
 <ul>
 <li><p>We can calculate probabilities by observing many trials of a random phenomenon</p></li>
-<li><p>The sample proportion of the number of times the outcome occurred is the <strong>probability</strong><sup>1</sup></p></li>
+<li><p>Then calclute the <strong>probability</strong><sup>1</sup> by taking a sample proportion of the number of times the outcome occurred</p></li>
 </ul>
 <p><strong>Theoretical approach</strong></p>
 <ul>
@@ -212,9 +216,13 @@
 <ol type="1">
 <li><strong>Sample space (S)</strong>: the set of all possible outcomes of a random process
 <ul>
-<li>An <strong>event</strong> is a subset of the sample space</li>
+<li>Ex: Sample space for a six-sided die is <code>1, 2, 3, 4, 5, 6</code></li>
+<li>An <strong>event</strong> is a subset of the sample space (e.g., rollling an even number)</li>
 </ul></li>
-<li><strong>A probability for each possible event</strong> in the sample space S</li>
+<li><strong>A probability for each possible event</strong> in the sample space S
+<ul>
+<li>Ex: rolling an even number <code>3/6</code> or <code>1/2</code></li>
+</ul></li>
 </ol>
 </section>
 <section id="properties-of-probability-models" class="slide level2 smaller">
@@ -239,7 +247,7 @@
 </div>
 <div class="fragment">
 <ol start="3" type="1">
-<li><strong>Complement rule</strong>: The probability of an event not occurring is 1 minus the probability that it does occur
+<li><strong>Complement rule</strong>: The probability of an event not occurring is 1 minus the probability that it does occur:
 <ul>
 <li><span class="math inline">\(P(\text{not } A) = 1 - P(A)\)</span></li>
 <li><span class="math inline">\(P(\text{not } A)\)</span> is called the <strong>complement</strong> of A</li>
@@ -282,7 +290,7 @@
 </section>
 <section id="compound-events" class="slide level2 smaller">
 <h2>Compound Events</h2>
-<p>This is simple enought – but becomes more useful when we want to predict <strong>compound events</strong> that are the result of multiple trials</p>
+<p>Understanding sample space becomes most useful when we want to predict <strong>compound events</strong> that are the result of multiple trials</p>
 <p>Calculate the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome</p>
 <p><strong>Example</strong>: What’s the probability of getting two heads in two coin flips?</p>
 <blockquote>
@@ -305,6 +313,21 @@
 </ul></li>
 </ul>
 </section>
+<section id="example-2-order-doesnt-matter" class="slide level2 smaller">
+<h2>Example 2: Order doesn’t matter</h2>
+<p>Now we only care about <strong>how many baskets are made</strong>, not the order</p>
+<p><strong>Sample space:</strong></p>
+<p><span class="math display">\[S = \{0, 1, 2, 3\}\]</span></p>
+<ul>
+<li>Each value represents the <strong>number of hits</strong></li>
+<li>Total outcomes: <strong>4</strong></li>
+<li>🔑 <strong>Order doesn’t matter</strong>
+<ul>
+<li>HMH and MHH both → 2 baskets</li>
+<li>We collapse multiple sequences into single counts</li>
+</ul></li>
+</ul>
+</section>
 <section id="complement-shortcut-at-least-one" class="slide level2 smaller">
 <h2>Complement Shortcut: “At Least One”</h2>
 <p>The complement rule is especially useful for <strong>“at least one”</strong> problems</p>
@@ -321,21 +344,6 @@
 </blockquote>
 </div>
 </section>
-<section id="example-2-order-doesnt-matter" class="slide level2 smaller">
-<h2>Example 2: Order doesn’t matter</h2>
-<p>Now we only care about <strong>how many baskets are made</strong>, not the order</p>
-<p><strong>Sample space:</strong></p>
-<p><span class="math display">\[S = \{0, 1, 2, 3\}\]</span></p>
-<ul>
-<li>Each value represents the <strong>number of hits</strong></li>
-<li>Total outcomes: <strong>4</strong></li>
-<li>🔑 <strong>Order doesn’t matter</strong>
-<ul>
-<li>HMH and MHH both → 2 baskets</li>
-<li>We collapse multiple sequences into single counts</li>
-</ul></li>
-</ul>
-</section>
 <section id="example-3-continuous-outcomes" class="slide level2 smaller">
 <h2>Example 3: Continuous outcomes</h2>
 <p>A nutrition researcher feeds a new diet to a lab rat and measures weight gain (grams)</p>
@@ -351,45 +359,26 @@
 </ul></li>
 </ul>
 </section>
-<section id="comparing-sample-space-types" class="slide level2 smaller">
-<h2>Comparing Sample Space Types</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 31%">
-<col style="width: 24%">
-<col style="width: 28%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Scenario</th>
-<th>Type of Sample Space</th>
-<th>Order Matters?</th>
-<th>Number of Outcomes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Free throw sequences</td>
-<td>Discrete</td>
-<td>✅ Yes</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>Number of baskets</td>
-<td>Discrete</td>
-<td>❌ No</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td>Weight gain</td>
-<td>Continuous</td>
-<td>❌ No</td>
-<td>Infinite (∞)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Key takeaway:</strong> The same physical situation (free throws) can have different sample spaces depending on what question we’re asking!</p>
+<section id="back-to-the-two-coin-flips-example" class="slide level2 smaller">
+<h2>Back to the Two Coin Flips Example</h2>
+<p><strong>Question:</strong> What’s the probability of getting two heads in two coin flips?</p>
+<div class="fragment">
+<p>For two fair flips, the sample space is:</p>
+<p><span class="math display">\[S = \{HH, HT, TH, TT\}\]</span></p>
+</div>
+<div class="fragment">
+<p>Each outcome is equally likely, so each has probability <span class="math inline">\(1/4\)</span></p>
+</div>
+<div class="fragment">
+<p>Let event <span class="math inline">\(A = \{\text{two heads}\} = \{HH\}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[P(A) = P(HH) = \frac{1}{4}\]</span></p>
+</div>
+<div class="fragment">
+<p>Equivalent multiplication view (independent flips):</p>
+<p><span class="math display">\[P(HH) = P(H)\times P(H) = \frac{1}{2}\times\frac{1}{2} = \frac{1}{4}\]</span></p>
+</div>
 </section>
 <section id="discrete-vs.-continuous-sample-spaces" class="slide level2 smaller">
 <h2>Discrete vs.&nbsp;Continuous Sample Spaces</h2>
@@ -435,10 +424,7 @@
 </ul>
 <p><strong>Common types we’ll encounter</strong> (we’ll use these extensively when we study the <strong>normal distribution</strong>):</p>
 
-<img data-src="week5_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="questions-1" class="slide level2">
-<h2>Questions?</h2>
-</section></section>
+<img data-src="week5_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
 <section>
 <section id="rules-of-probability" class="title-slide slide level1 center">
 <h1>Rules of Probability</h1>
@@ -535,6 +521,9 @@
 </section>
 <section id="multiplication-rule-worked-example" class="slide level2 smaller">
 <h2>Multiplication Rule: Worked Example</h2>
+<blockquote>
+<p>Example: An urn has 7 red and 3 blue marbles</p>
+</blockquote>
 <p><strong>With replacement</strong> (independent draws):</p>
 <p><span class="math display">\[P(RR) = P(R) \times P(R) = \frac{7}{10} \times \frac{7}{10} = \frac{49}{100}\]</span></p>
 <div class="fragment">
@@ -545,7 +534,7 @@
 <p>Notice the difference: without replacement, getting a red marble first changes the probability of getting a red marble second</p>
 </div>
 </section>
-<section id="questions-2" class="slide level2">
+<section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
 </section>
 <section id="next-week-probability-distributions" class="slide level2 smaller">

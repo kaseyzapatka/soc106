@@ -2972,7 +2972,7 @@
     "href": "slides/week5.html#randomness-and-probability",
     "title": "Week 5",
     "section": "Randomness and Probability",
-    "text": "Randomness and Probability\nA phenomenon is random if individual outcomes are uncertain but there is a regular distribution of outcomes over many repetitions\n\nExamples: rolling a die, playing the lottery, taking a standardized test\n\nThe probability of an outcome is the proportion of times it would occur in a very large number of independent repetitions\n\\[P(A) = \\frac{\\text{number of repetitions where A occurs}}{\\text{total number of repetitions}}\\]\nRepetitions are independent if the result of one does not influence the result of others"
+    "text": "Randomness and Probability\nA phenomenon is random if individual outcomes are uncertain but there is a regular distribution of outcomes over many repetitions\n\nExamples: rolling a die, playing the lottery, a coin toss\n\nThe probability of an outcome is the proportion of times it would occur in a very large number of independent repetitions\n\\[P(A) = \\frac{\\text{number of repetitions where A occurs}}{\\text{total number of repetitions}}\\]\nRepetitions are independent if the result of one does not influence the result of others"
   },
   {
     "objectID": "slides/week5.html#randomness-and-probability-1",
@@ -2993,7 +2993,7 @@
     "href": "slides/week5.html#calculating-probabilities",
     "title": "Week 5",
     "section": "Calculating Probabilities",
-    "text": "Calculating Probabilities\nEmpirical approach\n\nWe can calculate probabilities by observing many trials of a random phenomenon\nThe sample proportion of the number of times the outcome occurred is the probability1\n\nTheoretical approach\n\nWe can also calculate theoretical probabilities based on assumptions about the random phenomena (i.e., all die rolls equally likely)\n\nThis is an estimate that improves as we observe more trials"
+    "text": "Calculating Probabilities\nEmpirical approach\n\nWe can calculate probabilities by observing many trials of a random phenomenon\nThen calclute the probability1 by taking a sample proportion of the number of times the outcome occurred\n\nTheoretical approach\n\nWe can also calculate theoretical probabilities based on assumptions about the random phenomena (i.e., all die rolls equally likely)\n\nThis is an estimate that improves as we observe more trials"
   },
   {
     "objectID": "slides/week5.html#probability-models",
@@ -3007,7 +3007,7 @@
     "href": "slides/week5.html#properties-of-probability-models",
     "title": "Week 5",
     "section": "Properties of Probability Models",
-    "text": "Properties of Probability Models\nThree fundamental properties:\n\n\nRange: Probabilities for any given event range from 0 (can’t happen) to 1 (happens every time)\n\nFormally, for any event A: \\(0 \\leq P(A) \\leq 1\\)\nSo, the range of probability must be between 0 and 1\n\n\n\n\n\nExhaustiveness: \\(P(S) = 1\\). That is, the sample space is exhaustive of all possibilities\n\n\nIn other words, there cannot be any limits on the probability of an occurance\n\n\n\n\nComplement rule: The probability of an event not occurring is 1 minus the probability that it does occur\n\n\\(P(\\text{not } A) = 1 - P(A)\\)\n\\(P(\\text{not } A)\\) is called the complement of A"
+    "text": "Properties of Probability Models\nThree fundamental properties:\n\n\nRange: Probabilities for any given event range from 0 (can’t happen) to 1 (happens every time)\n\nFormally, for any event A: \\(0 \\leq P(A) \\leq 1\\)\nSo, the range of probability must be between 0 and 1\n\n\n\n\n\nExhaustiveness: \\(P(S) = 1\\). That is, the sample space is exhaustive of all possibilities\n\n\nIn other words, there cannot be any limits on the probability of an occurance\n\n\n\n\nComplement rule: The probability of an event not occurring is 1 minus the probability that it does occur:\n\n\\(P(\\text{not } A) = 1 - P(A)\\)\n\\(P(\\text{not } A)\\) is called the complement of A"
   },
   {
     "objectID": "slides/week5.html#probability-models-example",
@@ -3021,7 +3021,7 @@
     "href": "slides/week5.html#compound-events",
     "title": "Week 5",
     "section": "Compound Events",
-    "text": "Compound Events\nThis is simple enought – but becomes more useful when we want to predict compound events that are the result of multiple trials\nCalculate the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome\nExample: What’s the probability of getting two heads in two coin flips?\n\nWe need to consider all possible outcomes and their probabilities"
+    "text": "Compound Events\nUnderstanding sample space becomes most useful when we want to predict compound events that are the result of multiple trials\nCalculate the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome\nExample: What’s the probability of getting two heads in two coin flips?\n\nWe need to consider all possible outcomes and their probabilities"
   },
   {
     "objectID": "slides/week5.html#example-1-order-matters",
@@ -3448,7 +3448,7 @@
     "href": "slides/week5.html#housekeeping",
     "title": "Week 5",
     "section": "Housekeeping",
-    "text": "Housekeeping\nHW #1: feedback?\nHW #2: feedback?\nHW #3: due Thursday, February 19 at 11:59 PM - Ideal to use your final project data\nPaper Proposal (5%): due Thursday, February 26, 11:59 PM - A two-page double-spaced proposal for your final paper. - Here’s an example of what I expect.\nAcademic Integrity Asignment due Friday, May 8, 11:59 PM"
+    "text": "Housekeeping\nHW #1: Great job everyone ! Lots of great coding\nHW #2: Really great job finding data, asking questions, and responding to prompts. Make sure to check rendering and answer all of the questions.\nHW #3: due Thursday, February 19 at 11:59 PM\nPaper Proposal (5%): due Thursday, February 26, 11:59 PM\n\nA two-page double-spaced proposal for your final paper.\nHere’s an example of what I expect.\n\nAcademic Integrity Asignment due Friday, May 8, 11:59 PM"
   },
   {
     "objectID": "slides/week5.html#paper-proposal-5",
@@ -3490,7 +3490,7 @@
     "href": "slides/week5.html#multiplication-rule-worked-example",
     "title": "Week 5",
     "section": "Multiplication Rule: Worked Example",
-    "text": "Multiplication Rule: Worked Example\nWith replacement (independent draws):\n\\[P(RR) = P(R) \\times P(R) = \\frac{7}{10} \\times \\frac{7}{10} = \\frac{49}{100}\\]\n\nWithout replacement (dependent draws):\n\\[P(RR) = P(R_1) \\times P(R_2 | R_1) = \\frac{7}{10} \\times \\frac{6}{9} = \\frac{42}{90}\\]\n\n\nNotice the difference: without replacement, getting a red marble first changes the probability of getting a red marble second"
+    "text": "Multiplication Rule: Worked Example\n\nExample: An urn has 7 red and 3 blue marbles\n\nWith replacement (independent draws):\n\\[P(RR) = P(R) \\times P(R) = \\frac{7}{10} \\times \\frac{7}{10} = \\frac{49}{100}\\]\n\nWithout replacement (dependent draws):\n\\[P(RR) = P(R_1) \\times P(R_2 | R_1) = \\frac{7}{10} \\times \\frac{6}{9} = \\frac{42}{90}\\]\n\n\nNotice the difference: without replacement, getting a red marble first changes the probability of getting a red marble second"
   },
   {
     "objectID": "slides/week5.html#discrete-vs.-continuous-sample-spaces",
@@ -3518,7 +3518,7 @@
     "href": "slides/week5.html#probability-models-1",
     "title": "Week 5",
     "section": "Probability Models",
-    "text": "Probability Models\nProbability models are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:\n\nSample space (S): the set of all possible outcomes of a random process\n\nAn event is a subset of the sample space\n\nA probability for each possible event in the sample space S"
+    "text": "Probability Models\nProbability models are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:\n\nSample space (S): the set of all possible outcomes of a random process\n\nEx: Sample space for a six-sided die is 1, 2, 3, 4, 5, 6\nAn event is a subset of the sample space (e.g., rollling an even number)\n\nA probability for each possible event in the sample space S\n\nEx: rolling an even number 3/6 or 1/2"
   },
   {
     "objectID": "slides/week5.html#complement-shortcut-at-least-one",
@@ -3645,5 +3645,19 @@
     "title": "Weekly Assignment #3",
     "section": "Question 4: Associations Between Variables",
     "text": "Question 4: Associations Between Variables\nFor this question, we’re going to calculate the covariance and correlation coefficient between years of education (educ) and 1991 income (income91).\na) Calculate the covariance between education and income.\n\n# Your code here\n\nInsert your answer here\nb) Calculate and interpret the correlation coefficient. What does it tell you about the relationship between education and income? Be sure to deal appropriately with missing observations. (Note that you can do this by (1) either creating a subset that includes only respondents with non-missing information for educ and income91 or (2) specifying a particular parameter in the cor argument.)\n\n# Your code here\n\nInsert your answer here\n\n\n\n\n\n\nTipBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting both hw3.qmd and hw3.html files to bCourse"
+  },
+  {
+    "objectID": "slides/week5.html#compound-event-check-two-coin-flips",
+    "href": "slides/week5.html#compound-event-check-two-coin-flips",
+    "title": "Week 5",
+    "section": "Compound Event Check: Two Coin Flips",
+    "text": "Compound Event Check: Two Coin Flips\nQuestion: What’s the probability of getting two heads in two coin flips?\nFor two fair flips, the sample space is:\n\\[S = \\{HH, HT, TH, TT\\}\\]\nEach outcome is equally likely, so each has probability \\(1/4\\)\nLet event \\(A = \\{\\text{two heads}\\} = \\{HH\\}\\)\n\\[P(A) = P(HH) = \\frac{1}{4}\\]\nEquivalent multiplication view (independent flips):\n\\[P(HH) = P(H)\\times P(H) = \\frac{1}{2}\\times\\frac{1}{2} = \\frac{1}{4}\\]"
+  },
+  {
+    "objectID": "slides/week5.html#back-to-the-two-coin-flips-example",
+    "href": "slides/week5.html#back-to-the-two-coin-flips-example",
+    "title": "Week 5",
+    "section": "Back to the Two Coin Flips Example",
+    "text": "Back to the Two Coin Flips Example\nQuestion: What’s the probability of getting two heads in two coin flips?\n\nFor two fair flips, the sample space is:\n\\[S = \\{HH, HT, TH, TT\\}\\]\n\n\nEach outcome is equally likely, so each has probability \\(1/4\\)\n\n\nLet event \\(A = \\{\\text{two heads}\\} = \\{HH\\}\\)\n\n\n\\[P(A) = P(HH) = \\frac{1}{4}\\]\n\n\nEquivalent multiplication view (independent flips):\n\\[P(HH) = P(H)\\times P(H) = \\frac{1}{2}\\times\\frac{1}{2} = \\frac{1}{4}\\]"
   }
 ]
