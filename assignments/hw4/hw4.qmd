@@ -51,7 +51,7 @@ library(here)
 
 ## Question 1: Tossing Three Coins
 
-**I toss three fair coins, which land heads or tails with equal probability.**
+**I toss a fair coin three times, which land heads or tails with equal probability.**
 
 **a) What is the sample space S of possible outcomes?**
 
@@ -67,9 +67,9 @@ library(here)
 
 ------------------------------------------------------------------------
 
-## Question 2: Drawing from a Deck
+## Question 2: Drawing from a Deck of Playing Cards
 
-I draw one card from a deck. What is the probability that I selected a club or a face card (jack, queen, or king)? (Hint: use the addition rule!)
+I draw one card from a deck of playing cards with 52 cards. What is the probability that I selected a club or a face card (jack, queen, or king)? (Hint: use the addition rule!)
 
 *Your answer:*
 
@@ -111,7 +111,7 @@ Refer to the following figure showing blood test results for High Blood Sugar:
 
 *Your answer here:*
 
-**b) What is the probability associated with each outcome? (Hint: are the two draws independent from one another?)**
+**b) What is the probability associated with each possible outcome you describe in Part A? (Hint: are the two draws independent from one another?)**
 
 *Your answer:*
 

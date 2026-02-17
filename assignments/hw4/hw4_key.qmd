@@ -17,7 +17,7 @@ editor: visual
 1.  Download this `hw4.qmd` file from bCourse.
 2.  Save the file in your assignments folder.
 3.  Follow the instructions below to complete the assignment. Show your work for all calculations!
-4. When you are done, click the "Render" button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it's working.
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it's working.
 5.  Submit both the `hw4.qmd` and the `hw4.html` files to bCourse before the deadline
 6.  Make sure your name appears in the "author" field in the YAML header above
 :::
@@ -51,7 +51,7 @@ library(here)
 
 ## Question 1: Tossing Three Coins
 
-**I toss three fair coins, which land heads or tails with equal probability.**
+**I toss a fair coin three times, which land heads or tails with equal probability.**
 
 **a) What is the sample space S of possible outcomes?**
 
@@ -67,9 +67,9 @@ library(here)
 
 ------------------------------------------------------------------------
 
-## Question 2: Drawing from a Deck
+## Question 2: Drawing from a Deck of Playing Cards
 
-I draw one card from a deck. What is the probability that I selected a club or a face card (jack, queen, or king)? (Hint: use the addition rule!)
+I draw one card from a deck of playing cards with 52 cards. What is the probability that I selected a club or a face card (jack, queen, or king)? (Hint: use the addition rule!)
 
 *Your answer: `P(club or face card) = P(club) + P(face card) – P(club and face) = 13/52 + 12/52 – 3/52 = 22/52`*
 
@@ -111,9 +111,9 @@ Refer to the following figure showing blood test results for High Blood Sugar:
 
 *Your answer here: `{RR, RB, BR, BB}`*
 
-**b) What is the probability associated with each outcome? (Hint: are the two draws independent from one another?)**
+**b) What is the probability associated with each possible outcome you describe in Part A? (Hint: are the two draws independent from one another?)**
 
-*Your answer:
+\*Your answer:
 
 -   P(RR) = `49/100`
 -   P(RB) = `21/100`
@@ -136,7 +136,12 @@ Refer to the following figure showing blood test results for High Blood Sugar:
 
 **a) The sample space is the same as in the previous question—but now, what is the probability associated with each outcome? (Hint: are the two draws independent from one another?)**
 
-*Your answer: - P(RR) = `(7/10)*(6/9)` - P(RB) = `(7/10)*(3/9)` - P(BR) = `(3/10)*(7/9)` - P(BB) = `(3/10)*(2/9)`*
+*Your answer:*
+
+-   P(RR) = `(7/10)*(6/9)`
+-   P(RB) = `(7/10)*(3/9)`
+-   P(BR) = `(3/10)*(7/9)`
+-   P(BB) = `(3/10)*(2/9)`
 
 **b) Using part a), what is the probability that I drew no red marbles? One red marble? Two red marbles?**
 
