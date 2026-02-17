@@ -3511,7 +3511,7 @@
     "href": "slides/week5.html#intersection-and-conditional-probabilities",
     "title": "Week 5",
     "section": "Intersection and Conditional Probabilities",
-    "text": "Intersection and Conditional Probabilities\n\n\nThe intersection of A and B (\\(A \\cap B\\)) consists of outcomes that are in both A and B — the overlap between two events\nThe conditional probability of event A, given that event B has occurred, is:\n\\[P(A|B) = \\frac{P(A \\text{ and } B)}{P(B)}\\]\n\n\\(P(A|B)\\) is read as “the probability of A, given B”\nInterpretation: Of all the times that B occurs, \\(P(A|B)\\) is the proportion of times that A also occurs"
+    "text": "Intersection and Conditional Probabilities\n\n\nThe intersection of A and B (\\(A \\cap B\\)) consists of outcomes that are in both A and B — the overlap between two events\nThe conditional probability of event A, given that event B has occurred, is:\n\\[P(A|B) = \\frac{P(A \\text{ and } B)}{P(B)}\\]\n\n\\(P(A|B)\\) is read as “the probability of A, given B”"
   },
   {
     "objectID": "slides/week5.html#probability-models-1",
@@ -3659,5 +3659,33 @@
     "title": "Week 5",
     "section": "Back to the Two Coin Flips Example",
     "text": "Back to the Two Coin Flips Example\nQuestion: What’s the probability of getting two heads in two coin flips?\n\nFor two fair flips, the sample space is:\n\\[S = \\{HH, HT, TH, TT\\}\\]\n\n\nEach outcome is equally likely, so each has probability \\(1/4\\)\n\n\nLet event \\(A = \\{\\text{two heads}\\} = \\{HH\\}\\)\n\n\n\\[P(A) = P(HH) = \\frac{1}{4}\\]\n\n\nEquivalent multiplication view (independent flips):\n\\[P(HH) = P(H)\\times P(H) = \\frac{1}{2}\\times\\frac{1}{2} = \\frac{1}{4}\\]"
+  },
+  {
+    "objectID": "slides/week5.html#addition-rule-use-for-a-or-b",
+    "href": "slides/week5.html#addition-rule-use-for-a-or-b",
+    "title": "Week 5",
+    "section": "Addition Rule: Use for “A or B”",
+    "text": "Addition Rule: Use for “A or B”\nThe union of A and B (“A or B”) consists of outcomes that are in A, or in B, or in both A and B. Notation: \\(A \\cup B\\)\n\n\nUse when question says “or”Special case: Disjoint events\n\n\nFor the union of two events,\n\\[P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)\\]\nWe subtract \\(P(A \\text{ and } B)\\) to avoid double-counting outcomes in both events\nNotice: even in an “or” problem, we still need the overlap term \\(P(A \\text{ and } B)\\)\n\n\nIf the events are disjoint (mutually exclusive), then \\(P(A \\text{ and } B) = 0\\)\n\\[P(A \\text{ or } B) = P(A) + P(B)\\]\nDisjoint events have no overlap, so there’s nothing to subtract"
+  },
+  {
+    "objectID": "slides/week5.html#multiplication-rule-use-for-a-and-b",
+    "href": "slides/week5.html#multiplication-rule-use-for-a-and-b",
+    "title": "Week 5",
+    "section": "Multiplication Rule: Use for “A and B”",
+    "text": "Multiplication Rule: Use for “A and B”\nUse this rule when the question asks for the probability that both events happen.\nFor the intersection of two events:\n\\[P(A \\text{ and } B) = P(A) \\times P(B|A)\\]\nAlternatively: \\(P(A \\text{ and } B) = P(B) \\times P(A|B)\\)\nIt doesn’t matter which event we choose first!"
+  },
+  {
+    "objectID": "slides/week5.html#addition-rule-union-of-a-or-b",
+    "href": "slides/week5.html#addition-rule-union-of-a-or-b",
+    "title": "Week 5",
+    "section": "Addition Rule: Union of “A or B”",
+    "text": "Addition Rule: Union of “A or B”\nThe union of A and B (“A or B”) consists of outcomes that are in A, or in B, or in both A and B. Notation: \\(A \\cup B\\)\n\n\nUse when question says “or”Special case: Disjoint events\n\n\nFor the union of two events,\n\\[P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)\\]\nWe subtract \\(P(A \\text{ and } B)\\) to avoid double-counting outcomes in both events\nNotice: even in an “or” problem, we still need the overlap term \\(P(A \\text{ and } B)\\)\n\n\nIf the events are disjoint (mutually exclusive), then \\(P(A \\text{ and } B) = 0\\)\n\\[P(A \\text{ or } B) = P(A) + P(B)\\]\nDisjoint events have no overlap, so there’s nothing to subtract"
+  },
+  {
+    "objectID": "slides/week5.html#multiplication-rule-intersection-of-a-and-b",
+    "href": "slides/week5.html#multiplication-rule-intersection-of-a-and-b",
+    "title": "Week 5",
+    "section": "Multiplication Rule: Intersection of “A and B”",
+    "text": "Multiplication Rule: Intersection of “A and B”\nUse this rule when the question asks for the probability that both events happen.\nFor the intersection of two events:\n\\[P(A \\text{ and } B) = P(A) \\times P(B|A)\\]\nAlternatively: \\(P(A \\text{ and } B) = P(B) \\times P(A|B)\\)\nIt doesn’t matter which event we choose first!"
   }
 ]

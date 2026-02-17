@@ -429,18 +429,23 @@
 <section id="rules-of-probability" class="title-slide slide level1 center">
 <h1>Rules of Probability</h1>
 <p>Now that we know what outcomes are possible, we need <strong>rules for calculating</strong> the probability of combined events</p>
+<ul>
+<li>Use the <strong>Addition Rule</strong> when the question asks for <strong>“A or B”</strong></li>
+<li>Use the <strong>Multiplication Rule</strong> when the question asks for <strong>“A and B”</strong></li>
+</ul>
 </section>
-<section id="union-of-events-and-the-addition-rule" class="slide level2 smaller">
-<h2>Union of Events and the Addition Rule</h2>
+<section id="addition-rule-union-of-a-or-b" class="slide level2 smaller">
+<h2>Addition Rule: Union of “A or B”</h2>
 <p>The <strong>union</strong> of A and B (“A or B”) consists of outcomes that are in A, or in B, or in both A and B. <strong>Notation</strong>: <span class="math inline">\(A \cup B\)</span></p>
 
 <img data-src="images/week5/addition.png" class="r-stretch"><div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Addition rule</a></li><li><a href="#tabset-1-2">Special case: Disjoint events</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Use when question says “or”</a></li><li><a href="#tabset-1-2">Special case: Disjoint events</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <p>For the union of two events,</p>
 <p><span class="math display">\[P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)\]</span></p>
 <p>We subtract <span class="math inline">\(P(A \text{ and } B)\)</span> to avoid double-counting outcomes in both events</p>
+<p>Notice: even in an “or” problem, we still need the overlap term <span class="math inline">\(P(A \text{ and } B)\)</span></p>
 </div>
 <div id="tabset-1-2">
 <p>If the events are <strong>disjoint</strong> (mutually exclusive), then <span class="math inline">\(P(A \text{ and } B) = 0\)</span></p>
@@ -473,19 +478,14 @@
 <p><span class="math display">\[P(A|B) = \frac{P(A \text{ and } B)}{P(B)}\]</span></p>
 <ul>
 <li><span class="math inline">\(P(A|B)\)</span> is read as “the probability of A, given B”</li>
-<li><strong>Interpretation:</strong> Of all the times that B occurs, <span class="math inline">\(P(A|B)\)</span> is the proportion of times that A also occurs</li>
 </ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="images/week5/intersection.png"></p>
 </div></div>
 </section>
-<section id="conditional-probabilities-connection-to-marginal-frequencies" class="slide level2 smaller">
-<h2>Conditional Probabilities: Connection to Marginal Frequencies</h2>
-<p>Note that conditional probability is equivalent to the <strong>marginal frequency</strong> from last week — probability theory connects directly to descriptive statistics</p>
-
-<img data-src="images/week5/conditional_freq.png" class="r-stretch"></section>
-<section id="multiplication-rule" class="slide level2 smaller">
-<h2>Multiplication Rule</h2>
+<section id="multiplication-rule-intersection-of-a-and-b" class="slide level2 smaller">
+<h2>Multiplication Rule: Intersection of “A and B”</h2>
+<p>Use this rule when the question asks for the probability that <strong>both</strong> events happen.</p>
 <p>For the intersection of two events:</p>
 <p><span class="math display">\[P(A \text{ and } B) = P(A) \times P(B|A)\]</span></p>
 <p>Alternatively: <span class="math inline">\(P(A \text{ and } B) = P(B) \times P(A|B)\)</span></p>

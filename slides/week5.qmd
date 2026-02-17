@@ -364,7 +364,10 @@ p1 + p2 + p3
 
 Now that we know what outcomes are possible, we need **rules for calculating** the probability of combined events
 
-## Union of Events and the Addition Rule {.smaller}
+- Use the **Addition Rule** when the question asks for **"A or B"**
+- Use the **Multiplication Rule** when the question asks for **"A and B"**
+
+## Addition Rule: Union of "A or B" {.smaller}
 
 The **union** of A and B ("A or B") consists of outcomes that are in A, or in B, or in both A and B. **Notation**: $A \cup B$
 
@@ -372,13 +375,15 @@ The **union** of A and B ("A or B") consists of outcomes that are in A, or in B,
 
 ::: {.panel-tabset}
 
-### Addition rule
+### Use when question says "or"
 
 For the union of two events,
 
 $$P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)$$
 
 We subtract $P(A \text{ and } B)$ to avoid double-counting outcomes in both events
+
+Notice: even in an "or" problem, we still need the overlap term $P(A \text{ and } B)$
 
 ### Special case: Disjoint events
 
@@ -418,7 +423,6 @@ The **conditional probability** of event A, given that event B has occurred, is:
 $$P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$$
 
 - $P(A|B)$ is read as "the probability of A, given B"
-- **Interpretation:** Of all the times that B occurs, $P(A|B)$ is the proportion of times that A also occurs
 
 :::
 ::: {.column width="40%"}
@@ -428,14 +432,9 @@ $$P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$$
 :::
 :::::
 
-## Conditional Probabilities: Connection to Marginal Frequencies {.smaller}
+## Multiplication Rule: Intersection of "A and B" {.smaller}
 
-Note that conditional probability is equivalent to the **marginal frequency** from last week — probability theory connects directly to descriptive statistics
-
-![](images/week5/conditional_freq.png){width="100%,fig-align=\"center\""}
-
-
-## Multiplication Rule {.smaller}
+Use this rule when the question asks for the probability that **both** events happen.
 
 For the intersection of two events:
 
