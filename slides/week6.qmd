@@ -4,9 +4,9 @@ subtitle: "Sociology 106: Quantitative Sociological Methods"
 date: 02/24/2026
 date-format: long
 format:
-  revealjs: 
+  revealjs:
     slide-number: true
-    chalkboard: 
+    chalkboard:
       buttons: false
     preview-links: auto
     css: slides.css
@@ -23,6 +23,7 @@ format:
 # load tidyverse
 library(tidyverse)
 library(here)
+library(patchwork)
 ```
 
 ## Housekeeping {.smaller}
@@ -30,533 +31,823 @@ library(here)
 
 [[**ADD IT IN LATER**]]
 
+## Where We Are in the Course {.smaller}
+
+- **Last week (Week 5):** basics of probability theory
+- **This week (Week 6):** probability models of distributions
+- **Next week (Week 7):** sampling distributions
+- **Then (Weeks 8-9):** confidence intervals and hypothesis tests
+
+**Main idea:** Today is the bridge from probability language to inferential statistics.
+
 ## Agenda {.smaller}
 
+- Random variables and probability distributions
+- Discrete models:
+  - **Bernoulli (Binary):** one yes/no outcome
+  - **Binomial:** number of successes across repeated Bernoulli trials
+- Continuous models:
+  - **Normal:** a continuous model that often approximates Binomial outcomes when samples are large
+- Implementation in R: `dbinom()`, `pbinom()`, `pnorm()`, `qnorm()`
 
-- Random variables
-- Probability models of distributions
+## Our Running Example for Today {.smaller}
 
-**Discrete distributions:**
+Imagine we're conducting a survey about voter turnout. Each person either voted (1) or didn't vote (0).
 
-- **Binary distribution: **modeling whether an outcome occurs or not in one trial
-- **Binomial distribution:** modeling how many occurrences we get of a binary outcome in multiple trials
+From prior research — like census records or previous surveys — we know that about **60% of eligible voters** in this population actually vote. So we'll set the probability of voting at $\pi = 0.6$.
 
-**Continuous distributions:**
+Today we'll ask **three questions** about this scenario, and each one leads to a different probability distribution:
 
-- **Normal distribution:** can be seen as an extension of the Bernoulli distribution to the continuous case
+| Question | Distribution | Sample size |
+|---|---|---|
+| Did *this one person* vote? | **Bernoulli** | 1 person |
+| Out of 10 people surveyed, how many voted? | **Binomial** | 10 people |
+| Out of 100 people surveyed, roughly how many voted? | **Normal** (approximation) | 100 people |
 
-## Key takeaways {.smaller}
+## The Ladder: A Preview {.smaller}
 
-- **Random variables** → how we mathematically represent uncertainty
-- **Probability distributions** → how likely each possible value is
-- **Binary (Bernoulli) distribution** → the simplest possible case
-- **Binomial distribution** → sums of binary variables
-- **Normal distribution** → what binomial distributions approach when samples get large
+These three distributions are connected — each is the same voting question at a different scale:
 
-> A **binary probability distribution** describes the **randomness** of a single yes/no outcome using one parameter, $π$; summing many such binary outcomes produces a **binomial distribution**, which in turn approaches a **normal distribution** as the number of trials grows large.
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-height: 3.5
 
-## Random Variables {.smaller}
+# Panel 1: Bernoulli (1 person)
+p1 <- tibble(x = c("0", "1"), prob = c(0.4, 0.6)) |>
+  ggplot(aes(x, prob)) +
+  geom_col(fill = "#4E79A7", width = 0.5) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  labs(x = "X", y = "Probability",
+       title = "1 person",
+       subtitle = "Bernoulli(0.6)") +
+  theme_minimal(base_size = 11)
 
-Inferential statistics assume that the numerical values which a variable takes are the result of some **random phenomenon**
+# Panel 2: Binomial (10 people)
+p2 <- tibble(k = 0:10, prob = dbinom(0:10, 10, 0.6)) |>
+  ggplot(aes(k, prob)) +
+  geom_col(fill = "#4E79A7", width = 0.6) +
+  labs(x = "Y (number of voters)", y = "Probability",
+       title = "10 people",
+       subtitle = "Binomial(10, 0.6)") +
+  theme_minimal(base_size = 11)
 
-A **random variable** is: 
+# Panel 3: Normal approximation (100 people)
+mu <- 100 * 0.6; sigma <- sqrt(100 * 0.6 * 0.4)
+p3 <- ggplot(tibble(x = c(40, 80)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.4) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 1, color = "#4E79A7") +
+  labs(x = "Y (number of voters)", y = "Density",
+       title = "100 people",
+       subtitle = "Normal(60, 4.9)") +
+  theme_minimal(base_size = 11)
 
-> a numerical measurement whose value is not known in advance because it depends on randomness
+p1 + p2 + p3
+```
 
-- **Rolling a die**: the outcome is random
-- **The height of a random individual** in a population will depend on who we randomly select
-- **Even your height** can be considered to be the result of randomness, once we condition on information we know about you (i.e., sex, age, ethnicity, parental height) that helps explain their height
+**Same event, different scale:** one person → a small sample → a large sample. We'll build up to this step by step.
 
-## Random Variables: Definition {.smaller}
+## Quick Review: Random Variables and Distributions {.smaller}
 
-A **random variable** is a numerical measurement of a random phenomenon
+Last week we talked about sample spaces and probability. Now we connect those ideas to data:
 
-**Notation:**
+A **random variable** assigns a number to each outcome of a random process
 
-- **Capital letter $X$:** the random variable
-- **Lowercase letter $x$:** a realized value
+  - For example, we code "voted" as 1 and "didn't vote" as 0
+
+A **probability distribution** tells us how likely each value is
+
+  - For discrete outcomes: a probability for each possible value (a **PMF**)
+  - For continuous outcomes: probabilities come from areas under a curve (a **PDF**)
+
+## R Functions for Distributions {.smaller}
+
+R uses a consistent naming pattern for working with probability distributions. Once you learn the prefixes, you can apply them to **any** distribution:
+
+| Prefix | What it does | Question it answers | Example |
+|-|---|---|---|
+| **`d`** | **d**ensity / probability at a point | "Probability of **exactly** this value?" | `dbinom(6, size = 10, prob = 0.6)` |
+| **`p`** | cumulative **p**robability | "Probability of **at most** this value?" | `pbinom(6, size = 10, prob = 0.6)` |
+| **`q`** | **q**uantile (inverse of `p`) | "What value has this **percentile**?" | `qnorm(0.95, mean = 60, sd = 4.9)` |
 
 
-**Example**: Rolling a die
+## R Functions for Distributions {.smaller}
 
-- $X$ = “outcome of a die roll”
-- All the possible values for $x$ are the same as the values in $X$'s sample space S: `{1, 2, 3, 4, 5, 6}`
-- but $x$=4 since “this roll came out as a 4”
+The suffix tells you the distribution: `binom` for Binomial, `norm` for Normal.
 
-## Probability Distributions {.smaller}
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-height: 3
 
-A **probability distribution** answers:
+par(mfrow = c(1, 3), mar = c(4, 3, 3, 1))
 
-> If I repeated this random process many times, how often would I see each possible value?
+# d: probability at a point
+barplot(dbinom(0:10, 10, 0.6), names.arg = 0:10, col = ifelse(0:10 == 6, "#E15759", "#4E79A7"),
+        main = "d = exactly this value", xlab = "k", ylab = "", cex.main = 1.1, border = NA)
 
-**Remember**: Probability models consist of:
+# p: cumulative probability
+barplot(dbinom(0:10, 10, 0.6), names.arg = 0:10, col = ifelse(0:10 <= 6, "#4E79A7", "gray80"),
+        main = "p = at most this value", xlab = "k", ylab = "", cex.main = 1.1, border = NA)
 
-- The sample space of all possible outcomes
-- A probability associated with each outcome
+# q: quantile (inverse)
+x <- seq(40, 80, length = 200)
+plot(x, dnorm(x, 60, 4.9), type = "l", col = "#4E79A7", lwd = 2,
+     main = "q = find the cutoff", xlab = "value", ylab = "", cex.main = 1.1)
+cutoff <- qnorm(0.95, 60, 4.9)
+polygon(c(x[x <= cutoff], cutoff), c(dnorm(x[x <= cutoff], 60, 4.9), 0),
+        col = adjustcolor("#4E79A7", 0.3), border = NA)
+abline(v = cutoff, col = "#E15759", lwd = 2, lty = 2)
 
-**Example**: For rolling a six-sided die: the probability distribution of the random variable $X$ is defined by:
-$$P(X = x) = \frac{1}{6} \text{ for x} \in S:  \{1, 2, 3, 4, 5, 6\}$$
+par(mfrow = c(1, 1))
+```
 
-which fully describes the randomness of the die.
+We'll use each of these as we go. Keep this pattern in mind!
 
-## Discrete Probability Distributions {.smaller}
+# Did This Person Vote? The Bernoulli Model
 
-In some cases, we can describe a probability distribution by listing all possible values a random variable can have, as well as the probabilities associated with each value
+The simplest probability distribution: one trial, two outcomes
 
-- This is generally the case with **categorical** (also known as **discrete**) probability distributions
-
-However, just as we described a sample distribution in terms of summary statistics, we can also describe a probability distribution in terms of **parameters**
-
-## Binary Probability Distributions {.smaller}
-
-Let's strip things down to the simplest possible random variable: 
-
-Perhaps the most basic *family* of discrete probability distributions is the **binary** (or **Bernoulli**) distribution, which models whether an outcome occurs or not in one trial
-
-A **binary random variable** $X$ is equal to:
-
-$$X \in \{0, 1\}$$
-
+## The Bernoulli Model {.smaller}
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="42%"}
 
-**Interpretation:**
+In our survey, each person's response is either 0 (didn't vote) or 1 (voted). Since we know from prior research that 60% of this population votes:
 
-- 1 if the outcome occurs
-- 0 if the outcome does not occur
+- P(voted) = P(X = 1) = **0.6**
+- P(didn't vote) = P(X = 0) = **0.4**
+
+**In general**, for any binary outcome with probability $\pi$:
+
+$$P(X=1)=\pi, \quad P(X=0)=1-\pi$$
+
+This is the **Bernoulli model**. The parameter $\pi$ is just the probability that the event occurs.
 
 :::
-::: {.column width="50%"}
+::: {.column width="58%"}
 
-**Examples:**
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 5.5
 
-- Eviction occurred (1) or not (0)
-- Voted (1) or didn’t vote (0)
-- Policy passed (1) or failed (0)
+tibble(x = c(0, 1), prob = c(0.4, 0.6)) |>
+  ggplot(aes(x = factor(x), y = prob)) +
+  geom_col(fill = "#4E79A7", width = 0.5) +
+  geom_text(aes(label = prob), vjust = -0.5, size = 7) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  labs(
+    x = "X (0 = did not vote, 1 = voted)",
+    y = "Probability",
+    title = expression("Bernoulli PMF: " * pi * " = 0.6")
+  ) +
+  theme_minimal(base_size = 16)
+```
 
 :::
 :::::
 
-::: aside
-This is why these are also called indicator variables.
+## Bernoulli Mean and Variance {.smaller}
+
+Just as we computed summary statistics from data in Weeks 3–4, probability models have their own summary measures. These tell us what to **expect** before we collect data:
+
+::: {.panel-tabset}
+
+### Mean (expected value)
+
+The long-run average of this random variable is just the probability itself:
+
+$$E[X] = \pi = 0.6$$
+
+If we survey many people one at a time, the average of all their 0/1 responses will be close to **0.6** — the proportion who voted.
+
+This is why estimating a proportion *is* estimating a mean.
+
+### Variance and SD
+
+How much do individual outcomes vary around that average?
+
+$$\text{Var}(X) = \pi(1-\pi) = 0.6 \times 0.4 = 0.24$$
+
+$$\text{SD}(X) = \sqrt{\pi(1-\pi)} = \sqrt{0.24} \approx 0.49$$
+
+- Variance is **largest** at $\pi = 0.5$ (maximum uncertainty — a coin flip)
+- Variance is **smallest** near $\pi = 0$ or $\pi = 1$ (outcome almost certain)
+
 :::
 
-## Binary Probability Distributions {.smaller}
+## Bernoulli: Sample Statistics vs. Model Parameters {.smaller}
 
-The probability distribution of a binary random variable:
+| | From data (what we compute) | From the model (what we assume) | Voting example |
+|---|---|---|---|
+| **Center** | Sample proportion: $\hat{p}$ | $E[X]=\pi$ | $\hat{p}$ vs. $\pi = 0.6$ |
+| **Spread** | Sample variance: $s^2$ | $\pi(1-\pi)$ | $s^2$ vs. $0.6 \times 0.4 = 0.24$ |
 
-$$P(X = 1) = \pi$$
-$$P(X = 0) = 1 - \pi$$
+We compute $\hat{p}$ from our data (the fraction of respondents who said they voted). The model says the true probability is $\pi = 0.6$.
 
-**In plain language:** There are only two possible outcomes, so we only need one number to describe the entire distribution.
+**The goal of statistical inference:** use the sample statistic ($\hat{p}$) to learn about the model parameter ($\pi$).
 
-$$π= \text{probability the event occurs}$$
+# How Many Voters in a Sample? The Binomial Model
 
-if $P(X = 1) = \pi$,  then automatically $P(X = 0) = 1 - \pi$ since probabilities sum to 1
+Moving from one person to many: what happens when we add up Bernoulli outcomes?
 
-
-## Binary Probability Distributions {.smaller}
-
-**This is powerful** because this single parameter $\pi$:
-
-- Completely defines the distribution
-- Can vary from 0 to 1
-- Represents the underlying data-generating process
-
-Different values of $\pi$ → different worlds.
-
-**Key insight**: Parameters are why we can refer to a **family** of binary probability distributions that share the same structure but can vary through having different parameter values
-
-## Means of Random Variables {.smaller}
-
-So why does $\pi$ matter?
-
-- We can summarize information about the probability distribution using **parameters**
-- The mean is the expected value over many repetitions.
-
-**For binary $X$:**
-
-$$\mu = 0 \cdot P(X=0) + 1 \cdot P(X=1) = \pi$$
-
-**This is a HUGE result:** For a binary variable, the mean equals the probability of success.
-
-**This is why:**
-
-* Sample means of 0/1 variables are proportions
-* Estimating probabilities = estimating means
-* Linear probability models even exist
-
-**Key insight:** This connects probability directly to statistics.
-
-## Variance and Uncertainty {.smaller}
-
-Recall that **variance**
- 
->  measures how much randomness there is 
-
-We calculate the variance by:
-
-1. Summing (across all data points) each point's squared deviation from the mean
-2. Dividing this sum by the number of observations in the data set, minus one
-
-For a binary variable:
-
-$$\text{Var}(X) = \pi(1-\pi)$$
+## From Bernoulli to Binomial {.smaller}
 
 ::::: columns
-::: {.column width="50%"}
-**Key intuition:**
+::: {.column width="42%"}
 
-* Max variance at $\pi = 0.5$
-* No variance at $\pi = 0$ or $\pi = 1$
+Now suppose we survey **10 people**. Each person independently voted with probability 0.6.
+
+**What's the probability that exactly 6 of the 10 voted?** Or 4? Or 8?
+
+We're adding up 10 independent Bernoulli outcomes. The total, $Y$, follows a **Binomial distribution**:
+
+$$Y \sim \text{Binomial}(n=10, \; \pi=0.6)$$
+
+The chart shows the probability of **every possible outcome** from 0 to 10 voters. The tallest bar (k = 6) is the single most likely result.
 
 :::
-::: {.column width="50%"}
+::: {.column width="58%"}
 
-**So:**
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 5.5
 
-* Perfect certainty → no randomness
-* Most uncertainty → coin flip
+tibble(k = 0:10, prob = dbinom(0:10, size = 10, prob = 0.6)) |>
+  mutate(highlight = ifelse(k == 6, "k = 6", "other")) |>
+  ggplot(aes(x = factor(k), y = prob, fill = highlight)) +
+  geom_col(width = 0.6) +
+  geom_text(aes(label = round(prob, 3)), vjust = -0.3, size = 3.5) +
+  scale_fill_manual(values = c("k = 6" = "#E15759", "other" = "#4E79A7")) +
+  scale_y_continuous(limits = c(0, 0.30)) +
+  labs(
+    x = "k (number of voters out of 10)",
+    y = "P(Y = k)",
+    title = "Binomial PMF: B(10, 0.6)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
+```
 
 :::
 :::::
 
+## Binomial Assumptions {.smaller}
 
-## Standard Deviation: Random Variables vs. Data {.smaller}
+The Binomial model requires four things to be true. Here's what each means for our voting example:
 
-For **random variables**, we calculate the variance similarly, except we **weight** each value's squared deviation from the mean by the probability of that value occurring, instead of standardizing over the number of values
+1. **Fixed number of trials:** we survey exactly $n = 10$ people
+2. **Binary outcomes:** each person either voted or didn't
+3. **Independence:** one person's vote doesn't affect another's
+4. **Same probability:** each person has the same $\pi = 0.6$ chance of having voted
 
-**Formulas:**
+In real social data, **independence is the assumption most likely to fail** — people in the same household, neighborhood, or social network influence each other.
 
-$$\text{Var}(X) = \sum P(X = x) \times (x - \mu)^2$$
+## Computing a Binomial Probability {.smaller}
 
-$$\sigma(X) = \sqrt{\text{Var}(X)}$$
+**Question:** What's the probability that exactly 6 of our 10 people voted?
 
-## Standard Deviation: Binary Random Variable {.smaller}
+We need two ingredients:
 
-**Example**: Binary random variable X
+- The probability of any **one specific sequence** with 6 voters and 4 non-voters: $0.6^6 \times 0.4^4$
+- The **number of ways** to arrange 6 voters among 10 people: $\binom{10}{6} = 210$
 
-$$\text{Var}(X) = P(X = 0) \times (0-\pi)^2 + P(X = 1) \times (1-\pi)^2$$
+Putting it together:
 
-$$\text{Var}(X) = (1-\pi) \times \pi^2 + \pi \times (1-\pi)^2$$
+$$P(Y=6) = \underbrace{210}_{\text{arrangements}} \times \underbrace{0.6^6 \times 0.4^4}_{\text{probability of each}} = 0.2508$$
 
-$$\text{Var}(X) = (1-\pi) \times \pi \times (\pi + 1 - \pi)$$
+In R, `dbinom()` does this calculation for us:
 
-$$\text{Var}(X) = (1-\pi) \times \pi$$
+```r
+dbinom(6, size = 10, prob = 0.6)
+#        ^       ^          ^
+#        k       n          π
+# "probability of exactly 6 successes in 10 trials with π = 0.6"
+```
 
-$$\rightarrow \sigma(X) = \sqrt{(1-\pi) \times \pi}$$
+## Binomial Mean and Standard Deviation {.smaller}
 
-## Binary Probability Distributions: Summary {.smaller}
+For our sample of 10 people with $\pi = 0.6$:
 
-So, for a binary random variable X, where $P(X = 1) = \pi$ and $P(X = 0) = 1 - \pi$, we can calculate both:
+**Expected number of voters:**
 
-- **Mean**: $\mu = \pi$
-- **Standard deviation**: $\sigma = \sqrt{(1-\pi) \times \pi}$
+$$E[Y]=n\pi = 10 \times 0.6 = 6 \text{ voters}$$
 
-Both are functions of the parameter $\pi$
+**Standard deviation** (how much the count varies from sample to sample):
 
-**Notation**: We may write $X \sim \text{Binary}(\pi)$ (or $X \sim \text{Bernoulli}(\pi)$), which can be read as:
+$$\text{SD}(Y)=\sqrt{n\pi(1-\pi)} = \sqrt{10 \times 0.6 \times 0.4} \approx 1.55$$
 
-> "X is a random variable with a Binary (Bernoulli) probability distribution and mean $\pi$"
+We'd expect about **6 voters, give or take about 1.5**. In most samples, we'd see somewhere between 4 and 8 voters.
 
-## Binary Probability Distribution: Visualization {.smaller}
+## Cumulative Probabilities: "At Most" Questions {.smaller}
 
-We can graph the **probability density function**, which shows $P(X = x)$ across the sample space:
+Often we want to know the probability of getting **at most** some number of successes. This is a **cumulative probability**: $P(Y \le k)$.
 
-![](images/week6/bernouli_prob.png){width="100%,fig-align=\"center\""}
-
-
-## Questions?
-
-## Binomial Probability Distribution {.smaller}
-
-The **binomial probability distribution** measures the distribution of the sum of n binary random variables, all with probability $\pi$
-
-**Alternatively**: The distribution of n independent trials where 'success' occurs with probability $\pi$
-
-**Notation**: If Y is a binomial random variable, we write $Y \sim B(n, \pi)$
-
-**Question**: What are the possible values of Y?
-
-## Binomial Probability Distribution: Possible Values {.smaller}
-
-The binomial probability distribution measures the distribution of the sum of n binary random variables, all with probability $\pi$
-
-**Alternatively**: The distribution of n **independent** trials where 'success' occurs with probability $\pi$
-
-**Notation**: If Y is a binomial random variable, we write $Y \sim B(n, \pi)$
-
-**Answer**: Y can equal any whole number between:
-
-- 0 (all binary random variables equal 0) to
-- n (all equal 1)
-
-## Binomial Probability Distribution: Formula {.smaller}
-
-**What are the probabilities of each value of Y?**
-
-We can construct a general formula for $P(Y = k)$:
-
-**Step 1**: Consider one sequence of n trials with k successes
-
-- The k successes occur with probability $\pi^k$
-- Similarly, the n-k failures occur with probability $(1-\pi)^{n-k}$
-- Because each trial is independent, we multiply: $\pi^k \times (1-\pi)^{n-k}$
-
-**Step 2**: Account for all possible sequences
-
-- The k successes can occur anywhere among the n trials
-- Number of ways = $\binom{n}{k} = \frac{n!}{k!(n-k)!}$, where $n! = 1 \times 2 \times 3 \times ... \times n$
-
-## Binomial Probability Distribution: Formula {.smaller}
-
-**Thus, we have:**
-
-$$P(Y = k) = \binom{n}{k} \times \pi^k \times (1-\pi)^{n-k}$$
-
-where $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
-
-## Binomial Probability Distribution: Example {.smaller}
-
-**Example**: I shoot 5 three-pointers and I have a 30% chance of making each one. What is the probability I make exactly 2 three-pointers?
-
-$Y \sim B(5, 0.3)$ (n = 5 trials with $\pi = 0.3$)
-
-$$P(Y = 2) = \binom{5}{2} \times 0.3^2 \times (1-0.3)^{5-2}$$
-
-$$= \frac{5!}{2! \times 3!} \times 0.3^2 \times 0.7^3$$
-
-$$= \frac{1 \times 2 \times 3 \times 4 \times 5}{(1 \times 2) \times (1 \times 2 \times 3)} \times 0.3^2 \times 0.7^3$$
-
-$$= 0.3087$$
-
-**In R**: `dbinom(2, size = 5, prob = 0.3)`
-
-## Binomial Distribution: Mean and Standard Deviation {.smaller}
-
-We can do more math (not shown) to find that, for $Y \sim B(n, \pi)$:
-
-**Mean:**
-
-$$\mu = \pi \times n$$
-
-The mean is equal to the probability of one trial succeeding, times the total number of trials
-
-**Standard deviation:**
-
-$$\sigma = \sqrt{\pi \times n \times (1-\pi)}$$
-
-## PDF Shifts with $π$ {.smaller}
-
-The **probability density function (pdf)** of a binomial random variable shifts with $\pi$...
-
-![Shows how distribution shape changes with different values of π](images/week6/pdf_shifts.png){width="100%,fig-align=\"center\""}
-
-## Binomial Distribution: Cumulative Probabilities {.smaller}
-
-We can also answer questions like:
-
-> "After n free throws made with probability π, what is the probability that I have made less than k free throws?"
-
-In notation: If $Y \sim B(n, \pi)$, what is $P(Y \leq k)$?
-
-**The challenge**: Centuries ago, if n and k were large, this would have been really difficult to answer!
-
-**Example**: Say $Y \sim B(100, 0.5)$, and we want to know $P(Y \leq 65)$
-
-This would require summing: $P(Y = 0) + P(Y = 1) + ... + P(Y = 65)$
-
-**Today, in R**: 
+**Example:** What's the probability that at most 4 of our 10 people voted?
 
 ```{r}
 #| echo: true
 
-pbinom(65, size = 100, prob = 0.5)
-
+# P(Y ≤ 4) for Y ~ Binomial(10, 0.6)
+pbinom(4, size = 10, prob = 0.6)
 ```
 
+`dbinom()` gives the probability at **exactly one value** ($P(Y=k)$), while `pbinom()` **adds up all the bars** from 0 to $k$ to give $P(Y \le k)$.
 
-## Questions?
+**What about "at least" questions?** Use the complement: $P(Y \ge k) = 1 - P(Y \le k-1)$
 
+```{r}
+#| echo: true
 
-## Binomial Approaches Normal {.smaller}
+# P(at least 7 voted) = 1 - P(at most 6 voted)
+1 - pbinom(6, size = 10, prob = 0.6)
+```
 
-The **key takeaway** if that as $n$ gets larger, the probability distribution function of a binomial random variable approaches a smooth curve:
+## Binomial: Sample Statistics vs. Model Parameters {.smaller}
 
-<br> 
+| | From data (what we compute) | From the model (what we assume) | Voting example ($n = 10$) |
+|---|---|---|---|
+| **Center** | Sample count of voters | $E[Y] = n\pi$ | observed count vs. $10 \times 0.6 = 6$ |
+| **Spread** | Sample SD of counts | $\text{SD}(Y) = \sqrt{n\pi(1-\pi)}$ | sample SD vs. $\approx 1.55$ |
 
+If we repeated our survey of 10 people many times, the average number of voters across all surveys would be close to **6**, and the counts would typically range from about **4 to 8**.
 
-![](images/week6/pdf_to_normal.png){width="100%" fig-align="center"}
+# What About Larger Samples? The Normal Approximation
 
-## From Bernoulli → Binomial {.smaller}
+As sample size grows, the Binomial starts to look like a smooth bell curve
 
-**The important statistical leap:** What if I repeat this binary process many times?
+## Why Binomial Starts Looking Normal {.smaller}
 
-**Let:**
+What if we surveyed **100 people** instead of 10? As $n$ grows, the Binomial distribution becomes **smoother** and starts to resemble a bell-shaped curve:
 
-* Each trial be Bernoulli($\pi$)
-* $Y$ = sum of $n$ binary variables
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 4.5
 
-**Then:**
+set.seed(106)
 
-$$Y \sim \text{Binomial}(n, \pi)$$
+tibble(
+  n = c(1, 10, 50, 100)
+) |>
+  mutate(
+    n_label = paste0("n = ", n),
+    n_label = factor(n_label, levels = paste0("n = ", c(1, 10, 50, 100))),
+    draws = map(n, ~ rbinom(5000, size = .x, prob = 0.6))
+  ) |>
+  unnest(draws) |>
+  ggplot(aes(x = draws, y = after_stat(density))) +
+  geom_histogram(binwidth = 1, color = "white", fill = "#4E79A7") +
+  facet_wrap(~ n_label, scales = "free") +
+  labs(
+    x = "Number of voters",
+    y = "Density",
+    title = "Binomial(n, 0.6): from one person to 100"
+  ) +
+  theme_minimal(base_size = 14)
+```
 
-**Interpretation:**
+This is an early step toward **central limit thinking**: sums of many random components often look approximately Normal.
 
-* $Y$ = number of successes
-* Possible values: $0, 1, \ldots, n$
+## The Normal Distribution {.smaller}
 
-**This is literally just:** adding up 0s and 1s
+::::: columns
+::: {.column width="45%"}
 
-## From Bernoulli → Binomial {.smaller}
+For $n = 100$ voters with $\pi = 0.6$, the Binomial has:
 
-As n gets larger, the probability distribution function of a binomial random variable approaches a smooth curve:
+- Mean: $100 \times 0.6 = 60$ voters
+- SD: $\sqrt{100 \times 0.6 \times 0.4} \approx 4.9$ voters
 
-**(According to our textbook)**: The search for ways to approximate the binomial distribution at large values of $n$ led to the discovery of **normal distributions**
+**What does SD = 4.9 mean?** In most surveys of 100 people, the number of voters will be **within about 5 of 60** — typically between 55 and 65.
 
-**Normal distributions** are a family of continuous probability distributions that are able to closely model the distribution of many natural phenomena
+Instead of computing exact Binomial probabilities across 101 values, we approximate with a **Normal distribution**: $N(60, 4.9)$.
 
-## Why Binomial Leads to Normal {.smaller}
+:::
+::: {.column width="55%"}
 
-As $n$ gets large:
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-height: 5
 
-- The binomial distribution becomes smooth
-- It starts to look continuous
-- It approaches a normal distribution
+mu <- 100 * 0.6
+sigma <- sqrt(100 * 0.6 * 0.4)
 
-This is an early encounter with the **Central Limit Theorem**:
+ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 1, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.3) +
+  geom_vline(xintercept = mu, linetype = "dashed", color = "gray40") +
+  annotate("text", x = mu, y = -0.003, label = "60", size = 5) +
+  annotate("segment", x = mu, xend = mu + sigma, y = 0.06, yend = 0.06,
+           arrow = arrow(length = unit(0.15, "cm"), ends = "both"), color = "#E15759") +
+  annotate("text", x = mu + sigma/2, y = 0.065, label = expression(SD %~~% 4.9),
+           size = 4, color = "#E15759") +
+  labs(
+    x = "Number of voters (Y)",
+    y = "Density",
+    title = "Normal(60, 4.9) - approximation to Binomial(100, 0.6)"
+  ) +
+  theme_minimal(base_size = 14)
+```
 
-> Sums of many small random variables tend to look Normal.
+:::
+:::::
 
-**So historically:**
+For continuous models, probabilities come from **areas under the curve**.
 
-- People struggled to compute binomial probabilities
-- Normal distributions were discovered as approximations
-- Today, normals explain many natural phenomena
+## Key Properties of Normal Distributions {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+
+1. Symmetric around the mean
+2. Mean, median, and mode coincide
+3. **68-95-99.7 rule:**
+   - within 1 SD ($\pm 4.9$): about 68% of samples → **55 to 65 voters**
+   - within 2 SD ($\pm 9.8$): about 95% of samples → **50 to 70 voters**
+   - within 3 SD ($\pm 14.7$): about 99.7% of samples → **45 to 75 voters**
+
+This rule gives us a quick way to judge whether an observed result is "typical" or "unusual."
+
+:::
+::: {.column width="50%"}
+
+![](images/week6/standard_normal.png){width="100%" fig-align="center"}
+
+:::
+:::::
+
+## Standardization and Z-Scores {.smaller}
+
+::::: columns
+::: {.column width="45%"}
+
+A **z-score** tells you how many standard deviations a value is from the mean:
+
+$$z = \frac{\text{observed} - \text{mean}}{\text{SD}}$$
+
+**Example:** We observed **70 voters** out of 100. How unusual is that?
+
+$$z = \frac{70 - 60}{4.9} \approx 2.04$$
+
+That's about **2 SDs above the mean**. By the 68-95-99.7 rule, only about **2.5%** of samples would show 70+ voters.
+
+:::
+::: {.column width="55%"}
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-height: 5
+
+mu <- 60; sigma <- 4.9
+
+ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.2) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 1, color = "#4E79A7") +
+  geom_vline(xintercept = 60, linetype = "dashed", color = "gray50") +
+  geom_vline(xintercept = 70, linetype = "solid", color = "#E15759", linewidth = 1) +
+  annotate("text", x = 60, y = 0.085, label = "Expected: 60", size = 4, hjust = 1.1) +
+  annotate("text", x = 70, y = 0.085, label = "Observed: 70", size = 4,
+           color = "#E15759", hjust = -0.1) +
+  annotate("text", x = 65, y = 0.05, label = expression(z %~~% 2.04), size = 5, fontface = "bold") +
+  labs(
+    x = "Number of voters",
+    y = "Density",
+    title = "How unusual is 70 voters out of 100?"
+  ) +
+  theme_minimal(base_size = 14)
+```
+
+:::
+:::::
+
+## Computing Normal Probabilities in R {.smaller}
+
+::: {.panel-tabset}
+
+### Between two values
+
+What's the probability of observing **between 55 and 65** voters?
+
+::::: columns
+::: {.column width="45%"}
+
+```{r}
+#| echo: true
+pnorm(65, mean = 60, sd = 4.9) -
+  pnorm(55, mean = 60, sd = 4.9)
+```
+
+**In general:** $P(a \le Y \le b) = P(Y \le b) - P(Y \le a)$
+
+:::
+::: {.column width="55%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+mu <- 60; sigma <- 4.9
+ggplot(tibble(x = c(40, 80)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), geom = "area", xlim = c(55, 65), fill = "#4E79A7", alpha = 0.4) +
+  annotate("text", x = 60, y = 0.04, label = "84.5%", size = 5, fontface = "bold") +
+  labs(x = "Number of voters", y = NULL, title = expression(P(55 <= Y) <= 65)) +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
+
+### At most k
+
+What's the probability of observing **at most 50** voters?
+
+::::: columns
+::: {.column width="45%"}
+
+```{r}
+#| echo: true
+pnorm(50, mean = 60, sd = 4.9)
+```
+
+This is $P(Y \le 50)$ — the area to the **left** of 50.
+
+:::
+::: {.column width="55%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+ggplot(tibble(x = c(40, 80)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), geom = "area", xlim = c(40, 50), fill = "#4E79A7", alpha = 0.4) +
+  annotate("text", x = 47, y = 0.02, label = "2.1%", size = 5, fontface = "bold") +
+  labs(x = "Number of voters", y = NULL, title = expression(P(Y <= 50))) +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
+
+### More than k
+
+What's the probability of observing **more than 70** voters?
+
+::::: columns
+::: {.column width="45%"}
+
+```{r}
+#| echo: true
+1 - pnorm(70, mean = 60, sd = 4.9)
+```
+
+We use $1 - P(Y \le 70)$ because `pnorm()` gives the area to the **left**.
+
+:::
+::: {.column width="55%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+ggplot(tibble(x = c(40, 80)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), geom = "area", xlim = c(70, 80), fill = "#E15759", alpha = 0.4) +
+  annotate("text", x = 73, y = 0.015, label = "2.0%", size = 5, fontface = "bold", color = "#E15759") +
+  labs(x = "Number of voters", y = NULL, title = "P(Y > 70)") +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
+
+### Percentile cutoff
+
+Below what count do **95%** of samples fall?
+
+::::: columns
+::: {.column width="45%"}
+
+```{r}
+#| echo: true
+qnorm(0.95, mean = 60, sd = 4.9)
+```
+
+`qnorm()` is the **inverse** of `pnorm()` — it goes from probability to value.
+
+:::
+::: {.column width="55%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+cutoff <- qnorm(0.95, mean = mu, sd = sigma)
+ggplot(tibble(x = c(40, 80)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma), geom = "area", xlim = c(40, cutoff), fill = "#4E79A7", alpha = 0.3) +
+  geom_vline(xintercept = cutoff, linetype = "dashed", color = "#E15759", linewidth = 1) +
+  annotate("text", x = cutoff + 1, y = 0.05, label = round(cutoff, 1), size = 5, color = "#E15759", hjust = 0) +
+  annotate("text", x = 55, y = 0.04, label = "95%", size = 5, fontface = "bold") +
+  labs(x = "Number of voters", y = NULL, title = "95th percentile") +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
+
+:::
+
+## Practice: Z-Scores and Normal Probabilities {.smaller .scrollable}
+
+These examples are similar to what you'll see on HW #5. Let's work through them together.
+
+::: {.panel-tabset}
+
+### Z-score by hand
+
+**Andre's height is 75 inches.** Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.
+
+::: {.fragment}
+$$z = \frac{75 - 69}{3} = 2.0$$
+
+Andre is **2 standard deviations above the mean**. By the 68-95-99.7 rule, he is taller than about 97.5% of the population.
+:::
+
+### pnorm(): area to the left
+
+**Vehicle speeds on I-5** are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?
+
+::: {.fragment}
+```{r}
+#| echo: true
+pnorm(65, mean = 71, sd = 8)
+```
+
+Only about **23%** of vehicles are going at or below 65 mph.
+:::
+
+### 1 - pnorm(): area to the right
+
+**SAT scores** are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?
+
+::: {.fragment}
+```{r}
+#| echo: true
+1 - pnorm(820, mean = 1026, sd = 209)
+```
+
+About **84%** of students score above 820.
+:::
+
+### pnorm() - pnorm(): between values
+
+Using the same SAT distribution, what proportion score **between 720 and 820** (partial qualifiers)?
+
+::: {.fragment}
+```{r}
+#| echo: true
+pnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)
+```
+
+About **9%** of students fall in this range.
+:::
+
+### qnorm(): find the cutoff
+
+**Vehicle speeds** again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?
+
+::: {.fragment}
+```{r}
+#| echo: true
+qnorm(0.90, mean = 71, sd = 8)
+```
+
+The new speed limit should be about **81 mph** — 90% of vehicles travel at or below this speed.
+:::
+
+### Comparing two distributions
+
+**Women's heights** are Normal(64, 3) and **men's heights** are Normal(70, 3). What's the probability of being between 68 and 70 inches tall for each group?
+
+::: {.fragment}
+```{r}
+#| echo: true
+# P(68 ≤ height ≤ 70) for each group
+p_men   <- pnorm(70, mean = 70, sd = 3) - pnorm(68, mean = 70, sd = 3)
+p_women <- pnorm(70, mean = 64, sd = 3) - pnorm(68, mean = 64, sd = 3)
+
+p_men - p_women   # difference in proportions
+p_men / p_women   # relative risk ratio
+```
+
+Same R functions, just applied to **two different distributions** — then we compare the results.
+:::
+
+:::
+
+## R Translation Guide {.smaller}
+
+| Statistical question | R function |
+|---|---|
+| Exact Binomial probability $P(Y=k)$ | `dbinom(k, size = n, prob = pi)` |
+| Cumulative Binomial probability $P(Y\le k)$ | `pbinom(k, size = n, prob = pi)` |
+| Normal cumulative probability $P(Y\le x)$ | `pnorm(x, mean = mu, sd = sigma)` |
+| Normal percentile / quantile | `qnorm(q, mean = mu, sd = sigma)` |
+
+## Normal: Sample Statistics vs. Model Parameters {.smaller}
+
+| | From data (what we compute) | From the model (what we assume) | Voting example ($n = 100$) |
+|---|---|---|---|
+| **Center** | Sample count of voters | $\mu = n\pi$ | observed count vs. $100 \times 0.6 = 60$ |
+| **Spread** | Sample SD | $\sigma = \sqrt{n\pi(1-\pi)}$ | sample SD vs. $\approx 4.9$ |
+
+If we repeated our survey of 100 people many times, the counts would center around **60** and mostly fall **between about 50 and 70** (within 2 SDs).
 
 ## Connecting It All Together {.smaller}
 
-**One-sentence summary:**
+> A Bernoulli model describes one yes/no outcome with parameter $\pi$; summing many Bernoulli outcomes gives a Binomial model, and as trials grow large, that Binomial model is often well approximated by a Normal distribution.
 
-A binary probability distribution describes the randomness of a single yes/no outcome using one parameter, $\pi$; summing many such binary outcomes produces a binomial distribution, which in turn approaches a normal distribution as the number of trials grows large.
+This connects:
 
-**This connects:**
+- Individual randomness (Bernoulli) — **1 person**
+- Repeated processes (Binomial) — **10 people**
+- Continuous approximation and inference tools (Normal) — **100 people**
 
-- Individual randomness (Bernoulli)
-- Repeated processes (Binomial)
-- Continuous phenomena (Normal)
+## The Ladder, Visually {.smaller}
 
-## Normal Distributions {.smaller}
+One trial → many trials → smooth approximation, all with $\pi = 0.6$:
 
-Normal distributions are defined by parameters for the **mean** ($\mu$) and the **standard deviation** ($\sigma$)
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-height: 4
 
-**The formula for the probability density function is:**
+# Panel 1: Bernoulli (1 person)
+p1 <- tibble(x = c("0", "1"), prob = c(0.4, 0.6)) |>
+  ggplot(aes(x, prob)) +
+  geom_col(fill = "#4E79A7", width = 0.5) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  labs(x = "X", y = "Probability",
+       title = "1 person",
+       subtitle = "Bernoulli(0.6)") +
+  theme_minimal(base_size = 12)
 
-$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
+# Panel 2: Binomial (10 people)
+p2 <- tibble(k = 0:10, prob = dbinom(0:10, 10, 0.6)) |>
+  ggplot(aes(k, prob)) +
+  geom_col(fill = "#4E79A7", width = 0.6) +
+  labs(x = "Y (number of voters)", y = "Probability",
+       title = "10 people",
+       subtitle = "Binomial(10, 0.6)") +
+  theme_minimal(base_size = 12)
 
-where:
+# Panel 3: Normal approximation (100 people)
+mu <- 60; sigma <- sqrt(100 * 0.6 * 0.4)
+p3 <- ggplot(tibble(x = c(40, 80)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.4) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 1, color = "#4E79A7") +
+  labs(x = "Y (number of voters)", y = "Density",
+       title = "100 people",
+       subtitle = "Normal(60, 4.9)") +
+  theme_minimal(base_size = 12)
 
-- $\pi = 3.14159...$ (pi)
-- $e = 2.71828...$ (the base of the natural logarithm)
-
-**Notation**: We write $X \sim N(\mu, \sigma)$
-
-That is, X is a normally distributed random variable with mean $\mu$ and standard deviation $\sigma$
-
-## PDF of the Normal Distribution {.smaller}
-
-![Classic bell curve showing symmetric distribution around mean μ](images/week6/pdf_of_normal.png){width="100%" fig-align="center"}
-
-## Properties of the Normal Distribution {.smaller}
-
-**Key properties:**
-
-1. The normal distribution is **symmetric** around its mean
-
-2. The **mean, median, and mode** of the normal distribution are the same
-
-3. The **percentiles** of the distribution of a given random variable $X \sim N(\mu, \sigma)$ are known, such that:
-   - X will be within 1σ of μ roughly **68%** of the time
-   - X will be within 2σ of μ roughly **95%** of the time
-   - X will be within 3σ of μ roughly **99.7%** of the time
-
-## The 68-95-99.7 Rule {.smaller}
-
-![Classic bell curve showing symmetric distribution around mean $μ$](images/week6/standard_normal.png){width="100%" fig-align="center"}
-
-*Shows the percentage of data within 1, 2, and 3 standard deviations*
-
-## The Standard Normal Distribution {.smaller}
-
-Because all normal distributions share the same properties, we can **standardize** any normal distribution $N(\mu, \sigma)$ into the **standard normal distribution**, $N(0, 1)$
-
-**How to standardize:**
-
-We do so by:
-
-1. First subtracting $\mu$
-2. Then dividing by $\sigma$
-
-$$Z = \frac{X - \mu}{\sigma}$$
-
-## Z-Scores {.smaller}
-
-For any given value of x in $X \sim N(\mu, \sigma)$, we can calculate the **z-score**, which is the number of standard deviations that a value x is away from $\mu$
-
-**Formula:**
-
-$$z = \frac{x - \mu}{\sigma}$$
-
-**Interpretation:**
-
-- If $x < \mu$, z is **negative**
-- If $x > \mu$, z is **positive**
-
-## Continuous Probability Distribution {.smaller}
-
-**Question**: How do we assign probabilities to outcomes in an infinite sample space when we think the probability distribution is normal?
-
-**Answer**: We compute probabilities for **intervals** under the normal density curve:
-
-![Shows area under curve representing probability](images/week6/probabilities_on_normal.png){width="100%" fig-align="center"}
-
-
-## Calculating Probabilities in R {.smaller}
-
-**In R**: If $X \sim N(\mu, \sigma)$, we can:
-
-**Calculate** $P(X \leq x)$ **as:**
-
-```r
-pnorm(x, mean = μ, sd = σ)
+p1 + p2 + p3
 ```
 
-**Calculate the area under the normal density curve** of X in the interval $[x_1, x_2]$ as:
+**Same event, three levels of analysis.** This is the logic that powers the rest of the course.
 
-$$P(X \leq x_2) - P(X \leq x_1) = P(x_1 \leq X \leq x_2)$$
+## Key Takeaways {.smaller}
 
-**In R:**
+- **Random variables** represent uncertainty numerically
+- **Probability distributions** assign probabilities to possible values
+- **Bernoulli** models one binary trial → mean is $\pi$
+- **Binomial** models the sum of many Bernoulli trials → mean is $n\pi$
+- **Normal** approximates the Binomial when $n$ is large
+- **Statistical inference** uses sample statistics to learn about model parameters
 
-```r
-pnorm(x2, μ, σ) - pnorm(x1, μ, σ)
-```
+> One trial (Bernoulli) → many trials (Binomial) → smooth large-sample pattern (Normal)
 
-## Finding Percentiles in R {.smaller}
+## Why This Matters for the Rest of the Semester {.smaller}
 
-We can also calculate what the value is at a given percentile q of X as:
+- **Next week (Week 7):** sampling distributions build directly on this Binomial-to-Normal logic
+- **Weeks 8-9:** confidence intervals and hypothesis tests rely on Normal-based approximations
+- **Later regression units:** model interpretation and uncertainty quantification use the same distributional thinking
 
-```r
-qnorm(q, mean = μ, sd = σ)
-```
-
-**Note**: q should be entered in decimal form (i.e., between 0 and 1, not between 0 and 100)
-
-**Example**: To find the 95th percentile:
-
-```r
-qnorm(0.95, mean = μ, sd = σ)
-```
+Today is not isolated content. It is core infrastructure for the rest of SOC 106.
 
 ## Questions?
 
@@ -569,9 +860,3 @@ qnorm(0.95, mean = μ, sd = σ)
 **Important**: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses
 
 **Rest of class**: Work on HW in groups
-
-**Groups:**
-
-- Group 1: *ADD*
-- Group 2: *ADD*
-- Group 3: *ADD*

@@ -9,5 +9,6 @@
 
 # files
 project_overview*
+*.txt
 
 **/*.quarto_ipynb

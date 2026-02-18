@@ -1,0 +1,164 @@
+---
+title: "Lab 3: Probability Models and Z-Scores in R"
+author: "Your Name Here"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+---
+
+## Setup Instructions
+
+1. Download `lab3.qmd` from bCourse under "labs" > "Lab #3"
+2. Place `lab3.qmd` in your `labs` folder. Your folder structure should now look like this:
+
+```
+soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+├── assignments/
+│   └── hw1.qmd
+│   └── hw2.qmd
+│   └── hw3.qmd
+│   └── hw4.qmd
+│   └── hw5.qmd
+└── labs/
+    ├── lab1.qmd
+    ├── lab2.qmd
+    └── lab3.qmd
+```
+
+3. Use the `Explorer` button on the left to find and open `lab3.qmd`
+4. Let's work through it together!
+
+------------------------------------------------------------------------
+
+## Load Libraries
+
+```{r}
+#| message: false
+#| warning: false
+
+# load libraries
+library(tidyverse)
+```
+
+------------------------------------------------------------------------
+
+## Function Quick Guide
+
+| Type of question | Distribution | R function |
+|---|---|---|
+| Probability of one 0/1 trial | Bernoulli | `dbinom(k, size = 1, prob = pi)` |
+| Exact count in n trials | Binomial | `dbinom(k, size = n, prob = pi)` |
+| At most / cumulative count | Binomial | `pbinom(k, size = n, prob = pi)` |
+| Normal cumulative probability | Normal | `pnorm(x, mean = mu, sd = sigma)` |
+| Normal percentile cutoff | Normal | `qnorm(q, mean = mu, sd = sigma)` |
+| Standardize a value | Normal | `(x - mu) / sigma` |
+
+------------------------------------------------------------------------
+
+## Question 1: Bernoulli (One Trial)
+
+Suppose a randomly sampled person has a 0.6 probability of voting.
+
+1. Define `pi <- 0.6`.
+2. Compute the probability the person voted and the probability they did not vote.
+3. Use `rbinom()` to simulate 500 single-person outcomes (`size = 1`) and compute the sample mean.
+4. Compare your sample mean to the theoretical mean of a Bernoulli variable.
+
+```{r}
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
+## Question 2: Binomial Exact and Cumulative Probabilities
+
+A player makes free throws with probability 0.75 and takes 8 shots.
+
+1. Compute the probability of making exactly 5 shots.
+2. Compute the probability of making at least 7 shots.
+3. Compute the probability of making between 4 and 6 shots (inclusive).
+
+Use both `dbinom()` and `pbinom()` where possible.
+
+```{r}
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
+## Question 3: Binomial Mean, SD, and Passing Probability
+
+A student takes a 50-question exam and has an independent 0.8 chance of getting each question correct.
+
+1. Calculate the expected number correct and the standard deviation using formulas.
+2. Use R to compute the probability the student passes if passing is at least 35 correct.
+3. Simulate 10,000 exams with `rbinom()` and compare the simulated mean to your theoretical mean.
+
+```{r}
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
+## Question 4: Normal Model and Z-Scores (Vehicle Speeds)
+
+Assume speeds are approximately normal with mean 71 mph and standard deviation 8 mph.
+
+1. Compute the z-score for 65 mph and 80 mph.
+2. Compute `P(speed <= 65)`.
+3. Compute `P(speed > 80)`.
+4. Find the speed cutoff where only 10% of vehicles are faster.
+
+```{r}
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
+## Question 5: More Z-Score Practice (Heights)
+
+Assume adult heights are approximately normal with mean 69 inches and standard deviation 3 inches.
+
+1. Compute the z-score for a person who is 75 inches tall.
+2. Use `pnorm()` to estimate the percentile for 75 inches.
+3. Find the 95th percentile height using `qnorm()`.
+4. In one sentence: based on your results, is 75 inches above the 95th percentile?
+
+```{r}
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
+## Wrap-Up
+
+In this lab, you practiced:
+
+- Choosing the right model for the question (Bernoulli, Binomial, Normal)
+- Calculating exact and cumulative probabilities in R
+- Connecting formulas to simulation
+- Calculating and interpreting z-scores
+- Finding normal probabilities and percentile cutoffs
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Leave
+
+- [ ] You ran all code chunks without errors
+- [ ] You used both `dbinom()` and `pbinom()` at least once
+- [ ] You calculated multiple z-scores by hand in code
+- [ ] You used both `pnorm()` and `qnorm()`
+- [ ] Your document renders to HTML
+:::

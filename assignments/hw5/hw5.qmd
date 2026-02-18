@@ -57,47 +57,36 @@ library(here)
 
 *Show your work here (you can use LaTeX math notation or just write it out):*
 
-$P(X=5)=\binom{8}{5}(0.75)^5(0.25)^3=0.2076416$
-
 ```{r}
 
 # You can verify your hand calculation with R code if you'd like
-dbinom(5, size = 8, prob = 0.75)
 
 ```
 
-*Your final answer: `0.2076416`*
+*Your final answer:*
 
 **b) By hand: what is the probability that she will make at least seven free throws?**
 
 *Show your work here:*
 
-$P(X\ge7)=P(X=7)+P(X=8)=\binom{8}{7}(0.75)^7(0.25)^1+\binom{8}{8}(0.75)^8(0.25)^0=0.3670807$
-
 ```{r}
 
 # You can verify your hand calculation with R code if you'd like
-dbinom(7, size = 8, prob = 0.75) + dbinom(8, size = 8, prob = 0.75)
-# OR
-1 - pbinom(6, size = 8, prob = 0.75)
 
 ```
 
-*Your final answer: `0.3670807`*
+*Your final answer:*
 
 **c) In R: what is the probability that she will make between four and six free throws?**
 
 ```{r}
 
 # Your code here
-dbinom(4, size = 8, prob = .75) + dbinom(5, size = 8, prob = .75) + dbinom(6, size = 8, prob = .75) # .6056213
-# OR
-pbinom(6, size = 8, prob = .75) - pbinom(3, size = 8, prob = .75) # .6056213
 
 
 ```
 
-*Your answer here: `0.6056213`*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -112,26 +101,20 @@ pbinom(6, size = 8, prob = .75) - pbinom(3, size = 8, prob = .75) # .6056213
 ```{r}
 
 # Your code here
-# mean 
-50*.8 # 40
-
-# SD
-sqrt(50*.8*.2) # 2.828...
 
 ```
 
-*Your answer here: `mean: 40, SD: 2.828`*
+*Your answer here:*
 
 **b) A student needs to get 70% of questions correct to pass the exam. What is the probability that he will pass the exam? (use R to answer)**
 
 ```{r}
 
 # Your code here
-1 - pbinom(34, 50, .8) 
 
 ```
 
-*Your answer here: `0.9691966`*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -146,15 +129,14 @@ sqrt(50*.8*.2) # 2.828...
 ```{r}
 
 # Your code here
-(75-69)/3 # 2
 
 ```
 
-*Your answer here: 2*
+*Your answer here:*
 
 **b) Just from the z-score, can you tell whether Andre's height is above the 95th percentile of height? Why or why not? How about the 97th percentile of height? Why or why not?**
 
-*Your answer here: `Yes. Andre's z-score is 2, which places him about 2 standard deviations above the mean. In a normal distribution, z = 2 corresponds to about the 97.7th percentile (pnorm(2) ≈ 0.977). So his height is above both the 95th percentile and the 97th percentile.`*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -167,38 +149,35 @@ sqrt(50*.8*.2) # 2.828...
 ```{r}
 
 # Your code here
-pnorm(65, 71, 8) 
 
 
 ```
 
-*Your answer here: `0.2266274`*
+*Your answer here:*
 
 **b) What proportion of the vehicles would be going less than or equal to 50 mph?**
 
 ```{r}
 
 # Your code here
-pnorm(50, 71, 8) 
 
 ```
 
-*Your answer here: `0.00433`*
+*Your answer here:*
 
 **c) A new speed limit will be initiated such that approximately 10% of vehicles will be over the speed limit. What is the new speed limit based on this criterion?**
 
 ```{r}
 
 # Your code here
-qnorm(.9, 71, 8) 
 
 ```
 
-*Your answer here: `81.25241`*
+*Your answer here:*
 
 **d) In what way do you think the actual distribution of speeds differs from a normal distribution?**
 
-*Your answer here: `Real speed distributions are often not perfectly symmetric: speeds cannot go below 0, may have a right tail from speeders, and can have bunching near the posted speed limit because of enforcement and driver behavior.`*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -211,22 +190,20 @@ qnorm(.9, 71, 8)
 ```{r}
 
 # Your code here
-1 - pnorm(820, 1026, 209) 
 
 ```
 
-*Your answer here: `0.837`*
+*Your answer here:*
 
 **b) The NCAA defines a "partial qualifier" eligible to practice and receive an athletic scholarship, but not to compete, as a combined SAT score over 720 but less than or equal to 820. What proportion of all students who take the SAT would be partial qualifiers?**
 
 ```{r}
 
 # Your code here
-pnorm(820, 1026, 209) - pnorm(720, 1026, 209) 
 
 ```
 
-*Your answer here: `0.09057`*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -239,22 +216,20 @@ pnorm(820, 1026, 209) - pnorm(720, 1026, 209)
 ```{r}
 
 # Your code here
-(pnorm(70,70,3) - pnorm(68,70,3)) - (pnorm(70,64,3) - pnorm(68,64,3)) 
 
 ```
 
-*Your answer here: `0.179`*
+*Your answer here:*
 
 **b) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?**
 
 ```{r}
 
 # Your code here
-(pnorm(70,70,3) - pnorm(68,70,3)) / (pnorm(70,64,3) - pnorm(68,64,3))
 
 ```
 
-*Your answer here: `3.615`*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
