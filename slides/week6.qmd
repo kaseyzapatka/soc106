@@ -122,15 +122,18 @@ A **probability distribution** tells us how likely each value is
   - For discrete outcomes: a probability for each possible value (a **PMF**)
   - For continuous outcomes: probabilities come from areas under a curve (a **PDF**)
 
-## R Functions for Distributions: The `d`/`p`/`q` Pattern {.smaller}
+## R Functions for Distributions {.smaller}
 
 R uses a consistent naming pattern for working with probability distributions. Once you learn the prefixes, you can apply them to **any** distribution:
 
 | Prefix | What it does | Question it answers | Example |
-|---|---|---|---|
-| **`d`** | **d**ensity / probability at a point | "What's the probability of **exactly** this value?" | `dbinom(6, size=10, prob=0.6)` |
-| **`p`** | cumulative **p**robability | "What's the probability of getting **at most** this value?" | `pbinom(6, size=10, prob=0.6)` |
-| **`q`** | **q**uantile (inverse of `p`) | "What value has this **percentile**?" | `qnorm(0.95, mean=60, sd=4.9)` |
+|-|---|---|---|
+| **`d`** | **d**ensity / probability at a point | "Probability of **exactly** this value?" | `dbinom(6, size = 10, prob = 0.6)` |
+| **`p`** | cumulative **p**robability | "Probability of **at most** this value?" | `pbinom(6, size = 10, prob = 0.6)` |
+| **`q`** | **q**uantile (inverse of `p`) | "What value has this **percentile**?" | `qnorm(0.95, mean = 60, sd = 4.9)` |
+
+
+## R Functions for Distributions {.smaller}
 
 The suffix tells you the distribution: `binom` for Binomial, `norm` for Normal.
 
@@ -356,6 +359,15 @@ pbinom(4, size = 10, prob = 0.6)
 ```
 
 `dbinom()` gives the probability at **exactly one value** ($P(Y=k)$), while `pbinom()` **adds up all the bars** from 0 to $k$ to give $P(Y \le k)$.
+
+**What about "at least" questions?** Use the complement: $P(Y \ge k) = 1 - P(Y \le k-1)$
+
+```{r}
+#| echo: true
+
+# P(at least 7 voted) = 1 - P(at most 6 voted)
+1 - pbinom(6, size = 10, prob = 0.6)
+```
 
 ## Binomial: Sample Statistics vs. Model Parameters {.smaller}
 
@@ -657,7 +669,7 @@ ggplot(tibble(x = c(40, 80)), aes(x)) +
 
 :::
 
-## Practice: Z-Scores and Normal Probabilities {.smaller}
+## Practice: Z-Scores and Normal Probabilities {.smaller .scrollable}
 
 These examples are similar to what you'll see on HW #5. Let's work through them together.
 
@@ -723,6 +735,24 @@ qnorm(0.90, mean = 71, sd = 8)
 ```
 
 The new speed limit should be about **81 mph** — 90% of vehicles travel at or below this speed.
+:::
+
+### Comparing two distributions
+
+**Women's heights** are Normal(64, 3) and **men's heights** are Normal(70, 3). What's the probability of being between 68 and 70 inches tall for each group?
+
+::: {.fragment}
+```{r}
+#| echo: true
+# P(68 ≤ height ≤ 70) for each group
+p_men   <- pnorm(70, mean = 70, sd = 3) - pnorm(68, mean = 70, sd = 3)
+p_women <- pnorm(70, mean = 64, sd = 3) - pnorm(68, mean = 64, sd = 3)
+
+p_men - p_women   # difference in proportions
+p_men / p_women   # relative risk ratio
+```
+
+Same R functions, just applied to **two different distributions** — then we compare the results.
 :::
 
 :::
@@ -830,9 +860,3 @@ Today is not isolated content. It is core infrastructure for the rest of SOC 106
 **Important**: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses
 
 **Rest of class**: Work on HW in groups
-
-**Groups:**
-
-- Group 1: *ADD*
-- Group 2: *ADD*
-- Group 3: *ADD*
