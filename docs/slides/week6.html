@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="dcterms.date" content="2026-02-24">
   <title>Sociology 106 – Week 6</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="slides.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -208,439 +208,712 @@
 <h2>Housekeeping</h2>
 <p>[[<strong>ADD IT IN LATER</strong>]]</p>
 </section>
+<section id="where-we-are-in-the-course" class="slide level2 smaller">
+<h2>Where We Are in the Course</h2>
+<ul>
+<li><strong>Last week (Week 5):</strong> basics of probability theory</li>
+<li><strong>This week (Week 6):</strong> probability models of distributions</li>
+<li><strong>Next week (Week 7):</strong> sampling distributions</li>
+<li><strong>Then (Weeks 8-9):</strong> confidence intervals and hypothesis tests</li>
+</ul>
+<p><strong>Main idea:</strong> Today is the bridge from probability language to inferential statistics.</p>
+</section>
 <section id="agenda" class="slide level2 smaller">
 <h2>Agenda</h2>
 <ul>
-<li>Random variables</li>
-<li>Probability models of distributions</li>
-</ul>
-<p><strong>Discrete distributions:</strong></p>
+<li>Random variables and probability distributions</li>
+<li>Discrete models:
 <ul>
-<li><strong>Binary distribution: </strong>modeling whether an outcome occurs or not in one trial</li>
-<li><strong>Binomial distribution:</strong> modeling how many occurrences we get of a binary outcome in multiple trials</li>
-</ul>
-<p><strong>Continuous distributions:</strong></p>
+<li><strong>Bernoulli (Binary):</strong> one yes/no outcome</li>
+<li><strong>Binomial:</strong> number of successes across repeated Bernoulli trials</li>
+</ul></li>
+<li>Continuous models:
 <ul>
-<li><strong>Normal distribution:</strong> can be seen as an extension of the Bernoulli distribution to the continuous case</li>
+<li><strong>Normal:</strong> a continuous model that often approximates Binomial outcomes when samples are large</li>
+</ul></li>
+<li>Implementation in R: <code>dbinom()</code>, <code>pbinom()</code>, <code>pnorm()</code>, <code>qnorm()</code></li>
 </ul>
 </section>
-<section id="key-takeaways" class="slide level2 smaller">
-<h2>Key takeaways</h2>
-<ul>
-<li><strong>Random variables</strong> → how we mathematically represent uncertainty</li>
-<li><strong>Probability distributions</strong> → how likely each possible value is</li>
-<li><strong>Binary (Bernoulli) distribution</strong> → the simplest possible case</li>
-<li><strong>Binomial distribution</strong> → sums of binary variables</li>
-<li><strong>Normal distribution</strong> → what binomial distributions approach when samples get large</li>
-</ul>
-<blockquote>
-<p>A <strong>binary probability distribution</strong> describes the <strong>randomness</strong> of a single yes/no outcome using one parameter, <span class="math inline">\(π\)</span>; summing many such binary outcomes produces a <strong>binomial distribution</strong>, which in turn approaches a <strong>normal distribution</strong> as the number of trials grows large.</p>
-</blockquote>
+<section id="our-running-example-for-today" class="slide level2 smaller">
+<h2>Our Running Example for Today</h2>
+<p>Imagine we’re conducting a survey about voter turnout. Each person either voted (1) or didn’t vote (0).</p>
+<p>From prior research — like census records or previous surveys — we know that about <strong>60% of eligible voters</strong> in this population actually vote. So we’ll set the probability of voting at <span class="math inline">\(\pi = 0.6\)</span>.</p>
+<p>Today we’ll ask <strong>three questions</strong> about this scenario, and each one leads to a different probability distribution:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Distribution</th>
+<th>Sample size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Did <em>this one person</em> vote?</td>
+<td><strong>Bernoulli</strong></td>
+<td>1 person</td>
+</tr>
+<tr class="even">
+<td>Out of 10 people surveyed, how many voted?</td>
+<td><strong>Binomial</strong></td>
+<td>10 people</td>
+</tr>
+<tr class="odd">
+<td>Out of 100 people surveyed, roughly how many voted?</td>
+<td><strong>Normal</strong> (approximation)</td>
+<td>100 people</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="random-variables" class="slide level2 smaller">
-<h2>Random Variables</h2>
-<p>Inferential statistics assume that the numerical values which a variable takes are the result of some <strong>random phenomenon</strong></p>
-<p>A <strong>random variable</strong> is:</p>
-<blockquote>
-<p>a numerical measurement whose value is not known in advance because it depends on randomness</p>
-</blockquote>
-<ul>
-<li><strong>Rolling a die</strong>: the outcome is random</li>
-<li><strong>The height of a random individual</strong> in a population will depend on who we randomly select</li>
-<li><strong>Even your height</strong> can be considered to be the result of randomness, once we condition on information we know about you (i.e., sex, age, ethnicity, parental height) that helps explain their height</li>
-</ul>
-</section>
-<section id="random-variables-definition" class="slide level2 smaller">
-<h2>Random Variables: Definition</h2>
-<p>A <strong>random variable</strong> is a numerical measurement of a random phenomenon</p>
-<p><strong>Notation:</strong></p>
-<ul>
-<li><strong>Capital letter <span class="math inline">\(X\)</span>:</strong> the random variable</li>
-<li><strong>Lowercase letter <span class="math inline">\(x\)</span>:</strong> a realized value</li>
-</ul>
-<p><strong>Example</strong>: Rolling a die</p>
-<ul>
-<li><span class="math inline">\(X\)</span> = “outcome of a die roll”</li>
-<li>All the possible values for <span class="math inline">\(x\)</span> are the same as the values in <span class="math inline">\(X\)</span>’s sample space S: <code>{1, 2, 3, 4, 5, 6}</code></li>
-<li>but <span class="math inline">\(x\)</span>=4 since “this roll came out as a 4”</li>
-</ul>
-</section>
-<section id="probability-distributions" class="slide level2 smaller">
-<h2>Probability Distributions</h2>
-<p>A <strong>probability distribution</strong> answers:</p>
-<blockquote>
-<p>If I repeated this random process many times, how often would I see each possible value?</p>
-</blockquote>
-<p><strong>Remember</strong>: Probability models consist of:</p>
-<ul>
-<li>The sample space of all possible outcomes</li>
-<li>A probability associated with each outcome</li>
-</ul>
-<p><strong>Example</strong>: For rolling a six-sided die: the probability distribution of the random variable <span class="math inline">\(X\)</span> is defined by: <span class="math display">\[P(X = x) = \frac{1}{6} \text{ for x} \in S:  \{1, 2, 3, 4, 5, 6\}\]</span></p>
-<p>which fully describes the randomness of the die.</p>
-</section>
-<section id="discrete-probability-distributions" class="slide level2 smaller">
-<h2>Discrete Probability Distributions</h2>
-<p>In some cases, we can describe a probability distribution by listing all possible values a random variable can have, as well as the probabilities associated with each value</p>
-<ul>
-<li>This is generally the case with <strong>categorical</strong> (also known as <strong>discrete</strong>) probability distributions</li>
-</ul>
-<p>However, just as we described a sample distribution in terms of summary statistics, we can also describe a probability distribution in terms of <strong>parameters</strong></p>
-</section>
-<section id="binary-probability-distributions" class="slide level2 smaller">
-<h2>Binary Probability Distributions</h2>
-<p>Let’s strip things down to the simplest possible random variable:</p>
-<p>Perhaps the most basic <em>family</em> of discrete probability distributions is the <strong>binary</strong> (or <strong>Bernoulli</strong>) distribution, which models whether an outcome occurs or not in one trial</p>
-<p>A <strong>binary random variable</strong> <span class="math inline">\(X\)</span> is equal to:</p>
-<p><span class="math display">\[X \in \{0, 1\}\]</span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Interpretation:</strong></p>
-<ul>
-<li>1 if the outcome occurs</li>
-<li>0 if the outcome does not occur</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Examples:</strong></p>
-<ul>
-<li>Eviction occurred (1) or not (0)</li>
-<li>Voted (1) or didn’t vote (0)</li>
-<li>Policy passed (1) or failed (0)</li>
-</ul>
-</div></div>
+<section id="the-ladder-a-preview" class="slide level2 smaller">
+<h2>The Ladder: A Preview</h2>
+<p>These three distributions are connected — each is the same voting question at a different scale:</p>
 
-<aside><div>
-<p>This is why these are also called indicator variables.</p>
-</div></aside></section>
-<section id="binary-probability-distributions-1" class="slide level2 smaller">
-<h2>Binary Probability Distributions</h2>
-<p>The probability distribution of a binary random variable:</p>
-<p><span class="math display">\[P(X = 1) = \pi\]</span> <span class="math display">\[P(X = 0) = 1 - \pi\]</span></p>
-<p><strong>In plain language:</strong> There are only two possible outcomes, so we only need one number to describe the entire distribution.</p>
-<p><span class="math display">\[π= \text{probability the event occurs}\]</span></p>
-<p>if <span class="math inline">\(P(X = 1) = \pi\)</span>, then automatically <span class="math inline">\(P(X = 0) = 1 - \pi\)</span> since probabilities sum to 1</p>
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><strong>Same event, different scale:</strong> one person → a small sample → a large sample. We’ll build up to this step by step.</p>
 </section>
-<section id="binary-probability-distributions-2" class="slide level2 smaller">
-<h2>Binary Probability Distributions</h2>
-<p><strong>This is powerful</strong> because this single parameter <span class="math inline">\(\pi\)</span>:</p>
+<section id="quick-review-random-variables-and-distributions" class="slide level2 smaller">
+<h2>Quick Review: Random Variables and Distributions</h2>
+<p>Last week we talked about sample spaces and probability. Now we connect those ideas to data:</p>
+<p>A <strong>random variable</strong> assigns a number to each outcome of a random process</p>
 <ul>
-<li>Completely defines the distribution</li>
-<li>Can vary from 0 to 1</li>
-<li>Represents the underlying data-generating process</li>
+<li>For example, we code “voted” as 1 and “didn’t vote” as 0</li>
 </ul>
-<p>Different values of <span class="math inline">\(\pi\)</span> → different worlds.</p>
-<p><strong>Key insight</strong>: Parameters are why we can refer to a <strong>family</strong> of binary probability distributions that share the same structure but can vary through having different parameter values</p>
+<p>A <strong>probability distribution</strong> tells us how likely each value is</p>
+<ul>
+<li>For discrete outcomes: a probability for each possible value (a <strong>PMF</strong>)</li>
+<li>For continuous outcomes: probabilities come from areas under a curve (a <strong>PDF</strong>)</li>
+</ul>
 </section>
-<section id="means-of-random-variables" class="slide level2 smaller">
-<h2>Means of Random Variables</h2>
-<p>So why does <span class="math inline">\(\pi\)</span> matter?</p>
-<ul>
-<li>We can summarize information about the probability distribution using <strong>parameters</strong></li>
-<li>The mean is the expected value over many repetitions.</li>
-</ul>
-<p><strong>For binary <span class="math inline">\(X\)</span>:</strong></p>
-<p><span class="math display">\[\mu = 0 \cdot P(X=0) + 1 \cdot P(X=1) = \pi\]</span></p>
-<p><strong>This is a HUGE result:</strong> For a binary variable, the mean equals the probability of success.</p>
-<p><strong>This is why:</strong></p>
-<ul>
-<li>Sample means of 0/1 variables are proportions</li>
-<li>Estimating probabilities = estimating means</li>
-<li>Linear probability models even exist</li>
-</ul>
-<p><strong>Key insight:</strong> This connects probability directly to statistics.</p>
+<section id="r-functions-for-distributions" class="slide level2 smaller">
+<h2>R Functions for Distributions</h2>
+<p>R uses a consistent naming pattern for working with probability distributions. Once you learn the prefixes, you can apply them to <strong>any</strong> distribution:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prefix</th>
+<th>What it does</th>
+<th>Question it answers</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>d</code></strong></td>
+<td><strong>d</strong>ensity / probability at a point</td>
+<td>“Probability of <strong>exactly</strong> this value?”</td>
+<td><code>dbinom(6, size = 10, prob = 0.6)</code></td>
+</tr>
+<tr class="even">
+<td><strong><code>p</code></strong></td>
+<td>cumulative <strong>p</strong>robability</td>
+<td>“Probability of <strong>at most</strong> this value?”</td>
+<td><code>pbinom(6, size = 10, prob = 0.6)</code></td>
+</tr>
+<tr class="odd">
+<td><strong><code>q</code></strong></td>
+<td><strong>q</strong>uantile (inverse of <code>p</code>)</td>
+<td>“What value has this <strong>percentile</strong>?”</td>
+<td><code>qnorm(0.95, mean = 60, sd = 4.9)</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="variance-and-uncertainty" class="slide level2 smaller">
-<h2>Variance and Uncertainty</h2>
-<p>Recall that <strong>variance</strong></p>
-<blockquote>
-<p>measures how much randomness there is</p>
-</blockquote>
-<p>We calculate the variance by:</p>
+<section id="r-functions-for-distributions-1" class="slide level2 smaller">
+<h2>R Functions for Distributions</h2>
+<p>The suffix tells you the distribution: <code>binom</code> for Binomial, <code>norm</code> for Normal.</p>
+
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>We’ll use each of these as we go. Keep this pattern in mind!</p>
+</section>
+<section>
+<section id="did-this-person-vote-the-bernoulli-model" class="title-slide slide level1 center">
+<h1>Did This Person Vote? The Bernoulli Model</h1>
+<p>The simplest probability distribution: one trial, two outcomes</p>
+</section>
+<section id="the-bernoulli-model" class="slide level2 smaller">
+<h2>The Bernoulli Model</h2>
+<div class="columns">
+<div class="column" style="width:42%;">
+<p>In our survey, each person’s response is either 0 (didn’t vote) or 1 (voted). Since we know from prior research that 60% of this population votes:</p>
+<ul>
+<li>P(voted) = P(X = 1) = <strong>0.6</strong></li>
+<li>P(didn’t vote) = P(X = 0) = <strong>0.4</strong></li>
+</ul>
+<p><strong>In general</strong>, for any binary outcome with probability <span class="math inline">\(\pi\)</span>:</p>
+<p><span class="math display">\[P(X=1)=\pi, \quad P(X=0)=1-\pi\]</span></p>
+<p>This is the <strong>Bernoulli model</strong>. The parameter <span class="math inline">\(\pi\)</span> is just the probability that the event occurs.</p>
+</div><div class="column" style="width:58%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="bernoulli-mean-and-variance" class="slide level2 smaller">
+<h2>Bernoulli Mean and Variance</h2>
+<p>Just as we computed summary statistics from data in Weeks 3–4, probability models have their own summary measures. These tell us what to <strong>expect</strong> before we collect data:</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Mean (expected value)</a></li><li><a href="#tabset-1-2">Variance and SD</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>The long-run average of this random variable is just the probability itself:</p>
+<p><span class="math display">\[E[X] = \pi = 0.6\]</span></p>
+<p>If we survey many people one at a time, the average of all their 0/1 responses will be close to <strong>0.6</strong> — the proportion who voted.</p>
+<p>This is why estimating a proportion <em>is</em> estimating a mean.</p>
+</div>
+<div id="tabset-1-2">
+<p>How much do individual outcomes vary around that average?</p>
+<p><span class="math display">\[\text{Var}(X) = \pi(1-\pi) = 0.6 \times 0.4 = 0.24\]</span></p>
+<p><span class="math display">\[\text{SD}(X) = \sqrt{\pi(1-\pi)} = \sqrt{0.24} \approx 0.49\]</span></p>
+<ul>
+<li>Variance is <strong>largest</strong> at <span class="math inline">\(\pi = 0.5\)</span> (maximum uncertainty — a coin flip)</li>
+<li>Variance is <strong>smallest</strong> near <span class="math inline">\(\pi = 0\)</span> or <span class="math inline">\(\pi = 1\)</span> (outcome almost certain)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="bernoulli-sample-statistics-vs.-model-parameters" class="slide level2 smaller">
+<h2>Bernoulli: Sample Statistics vs.&nbsp;Model Parameters</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>From data (what we compute)</th>
+<th>From the model (what we assume)</th>
+<th>Voting example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Center</strong></td>
+<td>Sample proportion: <span class="math inline">\(\hat{p}\)</span></td>
+<td><span class="math inline">\(E[X]=\pi\)</span></td>
+<td><span class="math inline">\(\hat{p}\)</span> vs.&nbsp;<span class="math inline">\(\pi = 0.6\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Spread</strong></td>
+<td>Sample variance: <span class="math inline">\(s^2\)</span></td>
+<td><span class="math inline">\(\pi(1-\pi)\)</span></td>
+<td><span class="math inline">\(s^2\)</span> vs.&nbsp;<span class="math inline">\(0.6 \times 0.4 = 0.24\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We compute <span class="math inline">\(\hat{p}\)</span> from our data (the fraction of respondents who said they voted). The model says the true probability is <span class="math inline">\(\pi = 0.6\)</span>.</p>
+<p><strong>The goal of statistical inference:</strong> use the sample statistic (<span class="math inline">\(\hat{p}\)</span>) to learn about the model parameter (<span class="math inline">\(\pi\)</span>).</p>
+</section></section>
+<section>
+<section id="how-many-voters-in-a-sample-the-binomial-model" class="title-slide slide level1 center">
+<h1>How Many Voters in a Sample? The Binomial Model</h1>
+<p>Moving from one person to many: what happens when we add up Bernoulli outcomes?</p>
+</section>
+<section id="from-bernoulli-to-binomial" class="slide level2 smaller">
+<h2>From Bernoulli to Binomial</h2>
+<div class="columns">
+<div class="column" style="width:42%;">
+<p>Now suppose we survey <strong>10 people</strong>. Each person independently voted with probability 0.6.</p>
+<p><strong>What’s the probability that exactly 6 of the 10 voted?</strong> Or 4? Or 8?</p>
+<p>We’re adding up 10 independent Bernoulli outcomes. The total, <span class="math inline">\(Y\)</span>, follows a <strong>Binomial distribution</strong>:</p>
+<p><span class="math display">\[Y \sim \text{Binomial}(n=10, \; \pi=0.6)\]</span></p>
+<p>The chart shows the probability of <strong>every possible outcome</strong> from 0 to 10 voters. The tallest bar (k = 6) is the single most likely result.</p>
+</div><div class="column" style="width:58%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="binomial-assumptions" class="slide level2 smaller">
+<h2>Binomial Assumptions</h2>
+<p>The Binomial model requires four things to be true. Here’s what each means for our voting example:</p>
 <ol type="1">
-<li>Summing (across all data points) each point’s squared deviation from the mean</li>
-<li>Dividing this sum by the number of observations in the data set, minus one</li>
+<li><strong>Fixed number of trials:</strong> we survey exactly <span class="math inline">\(n = 10\)</span> people</li>
+<li><strong>Binary outcomes:</strong> each person either voted or didn’t</li>
+<li><strong>Independence:</strong> one person’s vote doesn’t affect another’s</li>
+<li><strong>Same probability:</strong> each person has the same <span class="math inline">\(\pi = 0.6\)</span> chance of having voted</li>
 </ol>
-<p>For a binary variable:</p>
-<p><span class="math display">\[\text{Var}(X) = \pi(1-\pi)\]</span></p>
+<p>In real social data, <strong>independence is the assumption most likely to fail</strong> — people in the same household, neighborhood, or social network influence each other.</p>
+</section>
+<section id="computing-a-binomial-probability" class="slide level2 smaller">
+<h2>Computing a Binomial Probability</h2>
+<p><strong>Question:</strong> What’s the probability that exactly 6 of our 10 people voted?</p>
+<p>We need two ingredients:</p>
+<ul>
+<li>The probability of any <strong>one specific sequence</strong> with 6 voters and 4 non-voters: <span class="math inline">\(0.6^6 \times 0.4^4\)</span></li>
+<li>The <strong>number of ways</strong> to arrange 6 voters among 10 people: <span class="math inline">\(\binom{10}{6} = 210\)</span></li>
+</ul>
+<p>Putting it together:</p>
+<p><span class="math display">\[P(Y=6) = \underbrace{210}_{\text{arrangements}} \times \underbrace{0.6^6 \times 0.4^4}_{\text{probability of each}} = 0.2508\]</span></p>
+<p>In R, <code>dbinom()</code> does this calculation for us:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">dbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>)</span>
+<span id="cb1-2"><a></a><span class="co">#        ^       ^          ^</span></span>
+<span id="cb1-3"><a></a><span class="co">#        k       n          π</span></span>
+<span id="cb1-4"><a></a><span class="co"># "probability of exactly 6 successes in 10 trials with π = 0.6"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="binomial-mean-and-standard-deviation" class="slide level2 smaller">
+<h2>Binomial Mean and Standard Deviation</h2>
+<p>For our sample of 10 people with <span class="math inline">\(\pi = 0.6\)</span>:</p>
+<p><strong>Expected number of voters:</strong></p>
+<p><span class="math display">\[E[Y]=n\pi = 10 \times 0.6 = 6 \text{ voters}\]</span></p>
+<p><strong>Standard deviation</strong> (how much the count varies from sample to sample):</p>
+<p><span class="math display">\[\text{SD}(Y)=\sqrt{n\pi(1-\pi)} = \sqrt{10 \times 0.6 \times 0.4} \approx 1.55\]</span></p>
+<p>We’d expect about <strong>6 voters, give or take about 1.5</strong>. In most samples, we’d see somewhere between 4 and 8 voters.</p>
+</section>
+<section id="cumulative-probabilities-at-most-questions" class="slide level2 smaller">
+<h2>Cumulative Probabilities: “At Most” Questions</h2>
+<p>Often we want to know the probability of getting <strong>at most</strong> some number of successes. This is a <strong>cumulative probability</strong>: <span class="math inline">\(P(Y \le k)\)</span>.</p>
+<p><strong>Example:</strong> What’s the probability that at most 4 of our 10 people voted?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># P(Y ≤ 4) for Y ~ Binomial(10, 0.6)</span></span>
+<span id="cb2-2"><a></a><span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1662386</code></pre>
+</div>
+</div>
+<p><code>dbinom()</code> gives the probability at <strong>exactly one value</strong> (<span class="math inline">\(P(Y=k)\)</span>), while <code>pbinom()</code> <strong>adds up all the bars</strong> from 0 to <span class="math inline">\(k\)</span> to give <span class="math inline">\(P(Y \le k)\)</span>.</p>
+<p><strong>What about “at least” questions?</strong> Use the complement: <span class="math inline">\(P(Y \ge k) = 1 - P(Y \le k-1)\)</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># P(at least 7 voted) = 1 - P(at most 6 voted)</span></span>
+<span id="cb4-2"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3822806</code></pre>
+</div>
+</div>
+</section>
+<section id="binomial-sample-statistics-vs.-model-parameters" class="slide level2 smaller">
+<h2>Binomial: Sample Statistics vs.&nbsp;Model Parameters</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>From data (what we compute)</th>
+<th>From the model (what we assume)</th>
+<th>Voting example (<span class="math inline">\(n = 10\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Center</strong></td>
+<td>Sample count of voters</td>
+<td><span class="math inline">\(E[Y] = n\pi\)</span></td>
+<td>observed count vs.&nbsp;<span class="math inline">\(10 \times 0.6 = 6\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Spread</strong></td>
+<td>Sample SD of counts</td>
+<td><span class="math inline">\(\text{SD}(Y) = \sqrt{n\pi(1-\pi)}\)</span></td>
+<td>sample SD vs.&nbsp;<span class="math inline">\(\approx 1.55\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>If we repeated our survey of 10 people many times, the average number of voters across all surveys would be close to <strong>6</strong>, and the counts would typically range from about <strong>4 to 8</strong>.</p>
+</section></section>
+<section>
+<section id="what-about-larger-samples-the-normal-approximation" class="title-slide slide level1 center">
+<h1>What About Larger Samples? The Normal Approximation</h1>
+<p>As sample size grows, the Binomial starts to look like a smooth bell curve</p>
+</section>
+<section id="why-binomial-starts-looking-normal" class="slide level2 smaller">
+<h2>Why Binomial Starts Looking Normal</h2>
+<p>What if we surveyed <strong>100 people</strong> instead of 10? As <span class="math inline">\(n\)</span> grows, the Binomial distribution becomes <strong>smoother</strong> and starts to resemble a bell-shaped curve:</p>
+
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><p>This is an early step toward <strong>central limit thinking</strong>: sums of many random components often look approximately Normal.</p>
+</section>
+<section id="the-normal-distribution" class="slide level2 smaller">
+<h2>The Normal Distribution</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>For <span class="math inline">\(n = 100\)</span> voters with <span class="math inline">\(\pi = 0.6\)</span>, the Binomial has:</p>
+<ul>
+<li>Mean: <span class="math inline">\(100 \times 0.6 = 60\)</span> voters</li>
+<li>SD: <span class="math inline">\(\sqrt{100 \times 0.6 \times 0.4} \approx 4.9\)</span> voters</li>
+</ul>
+<p><strong>What does SD = 4.9 mean?</strong> In most surveys of 100 people, the number of voters will be <strong>within about 5 of 60</strong> — typically between 55 and 65.</p>
+<p>Instead of computing exact Binomial probabilities across 101 values, we approximate with a <strong>Normal distribution</strong>: <span class="math inline">\(N(60, 4.9)\)</span>.</p>
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<p>For continuous models, probabilities come from <strong>areas under the curve</strong>.</p>
+</section>
+<section id="key-properties-of-normal-distributions" class="slide level2 smaller">
+<h2>Key Properties of Normal Distributions</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Key intuition:</strong></p>
+<ol type="1">
+<li>Symmetric around the mean</li>
+<li>Mean, median, and mode coincide</li>
+<li><strong>68-95-99.7 rule:</strong>
 <ul>
-<li>Max variance at <span class="math inline">\(\pi = 0.5\)</span></li>
-<li>No variance at <span class="math inline">\(\pi = 0\)</span> or <span class="math inline">\(\pi = 1\)</span></li>
-</ul>
+<li>within 1 SD (<span class="math inline">\(\pm 4.9\)</span>): about 68% of samples → <strong>55 to 65 voters</strong></li>
+<li>within 2 SD (<span class="math inline">\(\pm 9.8\)</span>): about 95% of samples → <strong>50 to 70 voters</strong></li>
+<li>within 3 SD (<span class="math inline">\(\pm 14.7\)</span>): about 99.7% of samples → <strong>45 to 75 voters</strong></li>
+</ul></li>
+</ol>
+<p>This rule gives us a quick way to judge whether an observed result is “typical” or “unusual.”</p>
 </div><div class="column" style="width:50%;">
-<p><strong>So:</strong></p>
-<ul>
-<li>Perfect certainty → no randomness</li>
-<li>Most uncertainty → coin flip</li>
-</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/week6/standard_normal.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
 </div></div>
 </section>
-<section id="standard-deviation-random-variables-vs.-data" class="slide level2 smaller">
-<h2>Standard Deviation: Random Variables vs.&nbsp;Data</h2>
-<p>For <strong>random variables</strong>, we calculate the variance similarly, except we <strong>weight</strong> each value’s squared deviation from the mean by the probability of that value occurring, instead of standardizing over the number of values</p>
-<p><strong>Formulas:</strong></p>
-<p><span class="math display">\[\text{Var}(X) = \sum P(X = x) \times (x - \mu)^2\]</span></p>
-<p><span class="math display">\[\sigma(X) = \sqrt{\text{Var}(X)}\]</span></p>
+<section id="standardization-and-z-scores" class="slide level2 smaller">
+<h2>Standardization and Z-Scores</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>A <strong>z-score</strong> tells you how many standard deviations a value is from the mean:</p>
+<p><span class="math display">\[z = \frac{\text{observed} - \text{mean}}{\text{SD}}\]</span></p>
+<p><strong>Example:</strong> We observed <strong>70 voters</strong> out of 100. How unusual is that?</p>
+<p><span class="math display">\[z = \frac{70 - 60}{4.9} \approx 2.04\]</span></p>
+<p>That’s about <strong>2 SDs above the mean</strong>. By the 68-95-99.7 rule, only about <strong>2.5%</strong> of samples would show 70+ voters.</p>
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 </section>
-<section id="standard-deviation-binary-random-variable" class="slide level2 smaller">
-<h2>Standard Deviation: Binary Random Variable</h2>
-<p><strong>Example</strong>: Binary random variable X</p>
-<p><span class="math display">\[\text{Var}(X) = P(X = 0) \times (0-\pi)^2 + P(X = 1) \times (1-\pi)^2\]</span></p>
-<p><span class="math display">\[\text{Var}(X) = (1-\pi) \times \pi^2 + \pi \times (1-\pi)^2\]</span></p>
-<p><span class="math display">\[\text{Var}(X) = (1-\pi) \times \pi \times (\pi + 1 - \pi)\]</span></p>
-<p><span class="math display">\[\text{Var}(X) = (1-\pi) \times \pi\]</span></p>
-<p><span class="math display">\[\rightarrow \sigma(X) = \sqrt{(1-\pi) \times \pi}\]</span></p>
-</section>
-<section id="binary-probability-distributions-summary" class="slide level2 smaller">
-<h2>Binary Probability Distributions: Summary</h2>
-<p>So, for a binary random variable X, where <span class="math inline">\(P(X = 1) = \pi\)</span> and <span class="math inline">\(P(X = 0) = 1 - \pi\)</span>, we can calculate both:</p>
-<ul>
-<li><strong>Mean</strong>: <span class="math inline">\(\mu = \pi\)</span></li>
-<li><strong>Standard deviation</strong>: <span class="math inline">\(\sigma = \sqrt{(1-\pi) \times \pi}\)</span></li>
-</ul>
-<p>Both are functions of the parameter <span class="math inline">\(\pi\)</span></p>
-<p><strong>Notation</strong>: We may write <span class="math inline">\(X \sim \text{Binary}(\pi)\)</span> (or <span class="math inline">\(X \sim \text{Bernoulli}(\pi)\)</span>), which can be read as:</p>
-<blockquote>
-<p>“X is a random variable with a Binary (Bernoulli) probability distribution and mean <span class="math inline">\(\pi\)</span>”</p>
-</blockquote>
-</section>
-<section id="binary-probability-distribution-visualization" class="slide level2 smaller">
-<h2>Binary Probability Distribution: Visualization</h2>
-<p>We can graph the <strong>probability density function</strong>, which shows <span class="math inline">\(P(X = x)\)</span> across the sample space:</p>
-
-<img data-src="images/week6/bernouli_prob.png" class="r-stretch"></section>
-<section id="questions" class="slide level2">
-<h2>Questions?</h2>
-</section>
-<section id="binomial-probability-distribution" class="slide level2 smaller">
-<h2>Binomial Probability Distribution</h2>
-<p>The <strong>binomial probability distribution</strong> measures the distribution of the sum of n binary random variables, all with probability <span class="math inline">\(\pi\)</span></p>
-<p><strong>Alternatively</strong>: The distribution of n independent trials where ‘success’ occurs with probability <span class="math inline">\(\pi\)</span></p>
-<p><strong>Notation</strong>: If Y is a binomial random variable, we write <span class="math inline">\(Y \sim B(n, \pi)\)</span></p>
-<p><strong>Question</strong>: What are the possible values of Y?</p>
-</section>
-<section id="binomial-probability-distribution-possible-values" class="slide level2 smaller">
-<h2>Binomial Probability Distribution: Possible Values</h2>
-<p>The binomial probability distribution measures the distribution of the sum of n binary random variables, all with probability <span class="math inline">\(\pi\)</span></p>
-<p><strong>Alternatively</strong>: The distribution of n <strong>independent</strong> trials where ‘success’ occurs with probability <span class="math inline">\(\pi\)</span></p>
-<p><strong>Notation</strong>: If Y is a binomial random variable, we write <span class="math inline">\(Y \sim B(n, \pi)\)</span></p>
-<p><strong>Answer</strong>: Y can equal any whole number between:</p>
-<ul>
-<li>0 (all binary random variables equal 0) to</li>
-<li>n (all equal 1)</li>
-</ul>
-</section>
-<section id="binomial-probability-distribution-formula" class="slide level2 smaller">
-<h2>Binomial Probability Distribution: Formula</h2>
-<p><strong>What are the probabilities of each value of Y?</strong></p>
-<p>We can construct a general formula for <span class="math inline">\(P(Y = k)\)</span>:</p>
-<p><strong>Step 1</strong>: Consider one sequence of n trials with k successes</p>
-<ul>
-<li>The k successes occur with probability <span class="math inline">\(\pi^k\)</span></li>
-<li>Similarly, the n-k failures occur with probability <span class="math inline">\((1-\pi)^{n-k}\)</span></li>
-<li>Because each trial is independent, we multiply: <span class="math inline">\(\pi^k \times (1-\pi)^{n-k}\)</span></li>
-</ul>
-<p><strong>Step 2</strong>: Account for all possible sequences</p>
-<ul>
-<li>The k successes can occur anywhere among the n trials</li>
-<li>Number of ways = <span class="math inline">\(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)</span>, where <span class="math inline">\(n! = 1 \times 2 \times 3 \times ... \times n\)</span></li>
-</ul>
-</section>
-<section id="binomial-probability-distribution-formula-1" class="slide level2 smaller">
-<h2>Binomial Probability Distribution: Formula</h2>
-<p><strong>Thus, we have:</strong></p>
-<p><span class="math display">\[P(Y = k) = \binom{n}{k} \times \pi^k \times (1-\pi)^{n-k}\]</span></p>
-<p>where <span class="math inline">\(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)</span></p>
-</section>
-<section id="binomial-probability-distribution-example" class="slide level2 smaller">
-<h2>Binomial Probability Distribution: Example</h2>
-<p><strong>Example</strong>: I shoot 5 three-pointers and I have a 30% chance of making each one. What is the probability I make exactly 2 three-pointers?</p>
-<p><span class="math inline">\(Y \sim B(5, 0.3)\)</span> (n = 5 trials with <span class="math inline">\(\pi = 0.3\)</span>)</p>
-<p><span class="math display">\[P(Y = 2) = \binom{5}{2} \times 0.3^2 \times (1-0.3)^{5-2}\]</span></p>
-<p><span class="math display">\[= \frac{5!}{2! \times 3!} \times 0.3^2 \times 0.7^3\]</span></p>
-<p><span class="math display">\[= \frac{1 \times 2 \times 3 \times 4 \times 5}{(1 \times 2) \times (1 \times 2 \times 3)} \times 0.3^2 \times 0.7^3\]</span></p>
-<p><span class="math display">\[= 0.3087\]</span></p>
-<p><strong>In R</strong>: <code>dbinom(2, size = 5, prob = 0.3)</code></p>
-</section>
-<section id="binomial-distribution-mean-and-standard-deviation" class="slide level2 smaller">
-<h2>Binomial Distribution: Mean and Standard Deviation</h2>
-<p>We can do more math (not shown) to find that, for <span class="math inline">\(Y \sim B(n, \pi)\)</span>:</p>
-<p><strong>Mean:</strong></p>
-<p><span class="math display">\[\mu = \pi \times n\]</span></p>
-<p>The mean is equal to the probability of one trial succeeding, times the total number of trials</p>
-<p><strong>Standard deviation:</strong></p>
-<p><span class="math display">\[\sigma = \sqrt{\pi \times n \times (1-\pi)}\]</span></p>
-</section>
-<section id="pdf-shifts-with-π" class="slide level2 smaller">
-<h2>PDF Shifts with <span class="math inline">\(π\)</span></h2>
-<p>The <strong>probability density function (pdf)</strong> of a binomial random variable shifts with <span class="math inline">\(\pi\)</span>…</p>
-
-<img data-src="images/week6/pdf_shifts.png" class="r-stretch quarto-figure-center"><p class="caption">Shows how distribution shape changes with different values of π</p></section>
-<section id="binomial-distribution-cumulative-probabilities" class="slide level2 smaller">
-<h2>Binomial Distribution: Cumulative Probabilities</h2>
-<p>We can also answer questions like:</p>
-<blockquote>
-<p>“After n free throws made with probability π, what is the probability that I have made less than k free throws?”</p>
-</blockquote>
-<p>In notation: If <span class="math inline">\(Y \sim B(n, \pi)\)</span>, what is <span class="math inline">\(P(Y \leq k)\)</span>?</p>
-<p><strong>The challenge</strong>: Centuries ago, if n and k were large, this would have been really difficult to answer!</p>
-<p><strong>Example</strong>: Say <span class="math inline">\(Y \sim B(100, 0.5)\)</span>, and we want to know <span class="math inline">\(P(Y \leq 65)\)</span></p>
-<p>This would require summing: <span class="math inline">\(P(Y = 0) + P(Y = 1) + ... + P(Y = 65)\)</span></p>
-<p><strong>Today, in R</strong>:</p>
+<section id="computing-normal-probabilities-in-r" class="slide level2 smaller">
+<h2>Computing Normal Probabilities in R</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Between two values</a></li><li><a href="#tabset-2-2">At most k</a></li><li><a href="#tabset-2-3">More than k</a></li><li><a href="#tabset-2-4">Percentile cutoff</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>What’s the probability of observing <strong>between 55 and 65</strong> voters?</p>
+<div class="columns">
+<div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">pbinom</span>(<span class="dv">65</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">pnorm</span>(<span class="dv">65</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>) <span class="sc">-</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">55</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.999105</code></pre>
+<pre><code>[1] 0.6924651</code></pre>
+</div>
+</div>
+<p><strong>In general:</strong> <span class="math inline">\(P(a \le Y \le b) = P(Y \le b) - P(Y \le a)\)</span></p>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-2-2">
+<p>What’s the probability of observing <strong>at most 50</strong> voters?</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">pnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02063454</code></pre>
+</div>
+</div>
+<p>This is <span class="math inline">\(P(Y \le 50)\)</span> — the area to the <strong>left</strong> of 50.</p>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-2-3">
+<p>What’s the probability of observing <strong>more than 70</strong> voters?</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02063454</code></pre>
+</div>
+</div>
+<p>We use <span class="math inline">\(1 - P(Y \le 70)\)</span> because <code>pnorm()</code> gives the area to the <strong>left</strong>.</p>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div id="tabset-2-4">
+<p>Below what count do <strong>95%</strong> of samples fall?</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 68.05978</code></pre>
+</div>
+</div>
+<p><code>qnorm()</code> is the <strong>inverse</strong> of <code>pnorm()</code> — it goes from probability to value.</p>
+</div><div class="column" style="width:55%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-z-scores-and-normal-probabilities" class="slide level2 smaller scrollable">
+<h2>Practice: Z-Scores and Normal Probabilities</h2>
+<p>These examples are similar to what you’ll see on HW #5. Let’s work through them together.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Z-score by hand</a></li><li><a href="#tabset-3-2">pnorm(): area to the left</a></li><li><a href="#tabset-3-3">1 - pnorm(): area to the right</a></li><li><a href="#tabset-3-4">pnorm() - pnorm(): between values</a></li><li><a href="#tabset-3-5">qnorm(): find the cutoff</a></li><li><a href="#tabset-3-6">Comparing two distributions</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p><strong>Andre’s height is 75 inches.</strong> Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.</p>
+<div class="fragment">
+<p><span class="math display">\[z = \frac{75 - 69}{3} = 2.0\]</span></p>
+<p>Andre is <strong>2 standard deviations above the mean</strong>. By the 68-95-99.7 rule, he is taller than about 97.5% of the population.</p>
+</div>
+</div>
+<div id="tabset-3-2">
+<p><strong>Vehicle speeds on I-5</strong> are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?</p>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">pnorm</span>(<span class="dv">65</span>, <span class="at">mean =</span> <span class="dv">71</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2266274</code></pre>
+</div>
+</div>
+<p>Only about <strong>23%</strong> of vehicles are going at or below 65 mph.</p>
+</div>
+</div>
+<div id="tabset-3-3">
+<p><strong>SAT scores</strong> are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?</p>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">820</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8378466</code></pre>
+</div>
+</div>
+<p>About <strong>84%</strong> of students score above 820.</p>
+</div>
+</div>
+<div id="tabset-3-4">
+<p>Using the same SAT distribution, what proportion score <strong>between 720 and 820</strong> (partial qualifiers)?</p>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">pnorm</span>(<span class="dv">820</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">720</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.09057216</code></pre>
+</div>
+</div>
+<p>About <strong>9%</strong> of students fall in this range.</p>
+</div>
+</div>
+<div id="tabset-3-5">
+<p><strong>Vehicle speeds</strong> again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?</p>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.90</span>, <span class="at">mean =</span> <span class="dv">71</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 81.25241</code></pre>
+</div>
+</div>
+<p>The new speed limit should be about <strong>81 mph</strong> — 90% of vehicles travel at or below this speed.</p>
+</div>
+</div>
+<div id="tabset-3-6">
+<p><strong>Women’s heights</strong> are Normal(64, 3) and <strong>men’s heights</strong> are Normal(70, 3). What’s the probability of being between 68 and 70 inches tall for each group?</p>
+<div class="fragment">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># P(68 ≤ height ≤ 70) for each group</span></span>
+<span id="cb22-2"><a></a>p_men   <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">68</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb22-3"><a></a>p_women <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">64</span>, <span class="at">sd =</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">68</span>, <span class="at">mean =</span> <span class="dv">64</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb22-4"><a></a></span>
+<span id="cb22-5"><a></a>p_men <span class="sc">-</span> p_women   <span class="co"># difference in proportions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1790464</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>p_men <span class="sc">/</span> p_women   <span class="co"># relative risk ratio</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.615301</code></pre>
+</div>
+</div>
+<p>Same R functions, just applied to <strong>two different distributions</strong> — then we compare the results.</p>
+</div>
+</div>
 </div>
 </div>
 </section>
-<section id="questions-1" class="slide level2">
-<h2>Questions?</h2>
+<section id="r-translation-guide" class="slide level2 smaller">
+<h2>R Translation Guide</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Statistical question</th>
+<th>R function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exact Binomial probability <span class="math inline">\(P(Y=k)\)</span></td>
+<td><code>dbinom(k, size = n, prob = pi)</code></td>
+</tr>
+<tr class="even">
+<td>Cumulative Binomial probability <span class="math inline">\(P(Y\le k)\)</span></td>
+<td><code>pbinom(k, size = n, prob = pi)</code></td>
+</tr>
+<tr class="odd">
+<td>Normal cumulative probability <span class="math inline">\(P(Y\le x)\)</span></td>
+<td><code>pnorm(x, mean = mu, sd = sigma)</code></td>
+</tr>
+<tr class="even">
+<td>Normal percentile / quantile</td>
+<td><code>qnorm(q, mean = mu, sd = sigma)</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="binomial-approaches-normal" class="slide level2 smaller">
-<h2>Binomial Approaches Normal</h2>
-<p>The <strong>key takeaway</strong> if that as <span class="math inline">\(n\)</span> gets larger, the probability distribution function of a binomial random variable approaches a smooth curve:</p>
-<p><br></p>
-
-<img data-src="images/week6/pdf_to_normal.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="from-bernoulli-binomial" class="slide level2 smaller">
-<h2>From Bernoulli → Binomial</h2>
-<p><strong>The important statistical leap:</strong> What if I repeat this binary process many times?</p>
-<p><strong>Let:</strong></p>
-<ul>
-<li>Each trial be Bernoulli(<span class="math inline">\(\pi\)</span>)</li>
-<li><span class="math inline">\(Y\)</span> = sum of <span class="math inline">\(n\)</span> binary variables</li>
-</ul>
-<p><strong>Then:</strong></p>
-<p><span class="math display">\[Y \sim \text{Binomial}(n, \pi)\]</span></p>
-<p><strong>Interpretation:</strong></p>
-<ul>
-<li><span class="math inline">\(Y\)</span> = number of successes</li>
-<li>Possible values: <span class="math inline">\(0, 1, \ldots, n\)</span></li>
-</ul>
-<p><strong>This is literally just:</strong> adding up 0s and 1s</p>
-</section>
-<section id="from-bernoulli-binomial-1" class="slide level2 smaller">
-<h2>From Bernoulli → Binomial</h2>
-<p>As n gets larger, the probability distribution function of a binomial random variable approaches a smooth curve:</p>
-<p><strong>(According to our textbook)</strong>: The search for ways to approximate the binomial distribution at large values of <span class="math inline">\(n\)</span> led to the discovery of <strong>normal distributions</strong></p>
-<p><strong>Normal distributions</strong> are a family of continuous probability distributions that are able to closely model the distribution of many natural phenomena</p>
-</section>
-<section id="why-binomial-leads-to-normal" class="slide level2 smaller">
-<h2>Why Binomial Leads to Normal</h2>
-<p>As <span class="math inline">\(n\)</span> gets large:</p>
-<ul>
-<li>The binomial distribution becomes smooth</li>
-<li>It starts to look continuous</li>
-<li>It approaches a normal distribution</li>
-</ul>
-<p>This is an early encounter with the <strong>Central Limit Theorem</strong>:</p>
-<blockquote>
-<p>Sums of many small random variables tend to look Normal.</p>
-</blockquote>
-<p><strong>So historically:</strong></p>
-<ul>
-<li>People struggled to compute binomial probabilities</li>
-<li>Normal distributions were discovered as approximations</li>
-<li>Today, normals explain many natural phenomena</li>
-</ul>
+<section id="normal-sample-statistics-vs.-model-parameters" class="slide level2 smaller">
+<h2>Normal: Sample Statistics vs.&nbsp;Model Parameters</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>From data (what we compute)</th>
+<th>From the model (what we assume)</th>
+<th>Voting example (<span class="math inline">\(n = 100\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Center</strong></td>
+<td>Sample count of voters</td>
+<td><span class="math inline">\(\mu = n\pi\)</span></td>
+<td>observed count vs.&nbsp;<span class="math inline">\(100 \times 0.6 = 60\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Spread</strong></td>
+<td>Sample SD</td>
+<td><span class="math inline">\(\sigma = \sqrt{n\pi(1-\pi)}\)</span></td>
+<td>sample SD vs.&nbsp;<span class="math inline">\(\approx 4.9\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>If we repeated our survey of 100 people many times, the counts would center around <strong>60</strong> and mostly fall <strong>between about 50 and 70</strong> (within 2 SDs).</p>
 </section>
 <section id="connecting-it-all-together" class="slide level2 smaller">
 <h2>Connecting It All Together</h2>
-<p><strong>One-sentence summary:</strong></p>
-<p>A binary probability distribution describes the randomness of a single yes/no outcome using one parameter, <span class="math inline">\(\pi\)</span>; summing many such binary outcomes produces a binomial distribution, which in turn approaches a normal distribution as the number of trials grows large.</p>
-<p><strong>This connects:</strong></p>
+<blockquote>
+<p>A Bernoulli model describes one yes/no outcome with parameter <span class="math inline">\(\pi\)</span>; summing many Bernoulli outcomes gives a Binomial model, and as trials grow large, that Binomial model is often well approximated by a Normal distribution.</p>
+</blockquote>
+<p>This connects:</p>
 <ul>
-<li>Individual randomness (Bernoulli)</li>
-<li>Repeated processes (Binomial)</li>
-<li>Continuous phenomena (Normal)</li>
+<li>Individual randomness (Bernoulli) — <strong>1 person</strong></li>
+<li>Repeated processes (Binomial) — <strong>10 people</strong></li>
+<li>Continuous approximation and inference tools (Normal) — <strong>100 people</strong></li>
 </ul>
 </section>
-<section id="normal-distributions" class="slide level2 smaller">
-<h2>Normal Distributions</h2>
-<p>Normal distributions are defined by parameters for the <strong>mean</strong> (<span class="math inline">\(\mu\)</span>) and the <strong>standard deviation</strong> (<span class="math inline">\(\sigma\)</span>)</p>
-<p><strong>The formula for the probability density function is:</strong></p>
-<p><span class="math display">\[f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\]</span></p>
-<p>where:</p>
+<section id="the-ladder-visually" class="slide level2 smaller">
+<h2>The Ladder, Visually</h2>
+<p>One trial → many trials → smooth approximation, all with <span class="math inline">\(\pi = 0.6\)</span>:</p>
+
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><strong>Same event, three levels of analysis.</strong> This is the logic that powers the rest of the course.</p>
+</section>
+<section id="key-takeaways" class="slide level2 smaller">
+<h2>Key Takeaways</h2>
 <ul>
-<li><span class="math inline">\(\pi = 3.14159...\)</span> (pi)</li>
-<li><span class="math inline">\(e = 2.71828...\)</span> (the base of the natural logarithm)</li>
+<li><strong>Random variables</strong> represent uncertainty numerically</li>
+<li><strong>Probability distributions</strong> assign probabilities to possible values</li>
+<li><strong>Bernoulli</strong> models one binary trial → mean is <span class="math inline">\(\pi\)</span></li>
+<li><strong>Binomial</strong> models the sum of many Bernoulli trials → mean is <span class="math inline">\(n\pi\)</span></li>
+<li><strong>Normal</strong> approximates the Binomial when <span class="math inline">\(n\)</span> is large</li>
+<li><strong>Statistical inference</strong> uses sample statistics to learn about model parameters</li>
 </ul>
-<p><strong>Notation</strong>: We write <span class="math inline">\(X \sim N(\mu, \sigma)\)</span></p>
-<p>That is, X is a normally distributed random variable with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span></p>
+<blockquote>
+<p>One trial (Bernoulli) → many trials (Binomial) → smooth large-sample pattern (Normal)</p>
+</blockquote>
 </section>
-<section id="pdf-of-the-normal-distribution" class="slide level2 smaller">
-<h2>PDF of the Normal Distribution</h2>
-
-<img data-src="images/week6/pdf_of_normal.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Classic bell curve showing symmetric distribution around mean μ</p></section>
-<section id="properties-of-the-normal-distribution" class="slide level2 smaller">
-<h2>Properties of the Normal Distribution</h2>
-<p><strong>Key properties:</strong></p>
-<ol type="1">
-<li><p>The normal distribution is <strong>symmetric</strong> around its mean</p></li>
-<li><p>The <strong>mean, median, and mode</strong> of the normal distribution are the same</p></li>
-<li><p>The <strong>percentiles</strong> of the distribution of a given random variable <span class="math inline">\(X \sim N(\mu, \sigma)\)</span> are known, such that:</p>
+<section id="why-this-matters-for-the-rest-of-the-semester" class="slide level2 smaller">
+<h2>Why This Matters for the Rest of the Semester</h2>
 <ul>
-<li>X will be within 1σ of μ roughly <strong>68%</strong> of the time</li>
-<li>X will be within 2σ of μ roughly <strong>95%</strong> of the time</li>
-<li>X will be within 3σ of μ roughly <strong>99.7%</strong> of the time</li>
-</ul></li>
-</ol>
-</section>
-<section id="the-68-95-99.7-rule" class="slide level2 smaller">
-<h2>The 68-95-99.7 Rule</h2>
-
-<img data-src="images/week6/standard_normal.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Classic bell curve showing symmetric distribution around mean <span class="math inline">\(μ\)</span></p><p><em>Shows the percentage of data within 1, 2, and 3 standard deviations</em></p>
-</section>
-<section id="the-standard-normal-distribution" class="slide level2 smaller">
-<h2>The Standard Normal Distribution</h2>
-<p>Because all normal distributions share the same properties, we can <strong>standardize</strong> any normal distribution <span class="math inline">\(N(\mu, \sigma)\)</span> into the <strong>standard normal distribution</strong>, <span class="math inline">\(N(0, 1)\)</span></p>
-<p><strong>How to standardize:</strong></p>
-<p>We do so by:</p>
-<ol type="1">
-<li>First subtracting <span class="math inline">\(\mu\)</span></li>
-<li>Then dividing by <span class="math inline">\(\sigma\)</span></li>
-</ol>
-<p><span class="math display">\[Z = \frac{X - \mu}{\sigma}\]</span></p>
-</section>
-<section id="z-scores" class="slide level2 smaller">
-<h2>Z-Scores</h2>
-<p>For any given value of x in <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, we can calculate the <strong>z-score</strong>, which is the number of standard deviations that a value x is away from <span class="math inline">\(\mu\)</span></p>
-<p><strong>Formula:</strong></p>
-<p><span class="math display">\[z = \frac{x - \mu}{\sigma}\]</span></p>
-<p><strong>Interpretation:</strong></p>
-<ul>
-<li>If <span class="math inline">\(x &lt; \mu\)</span>, z is <strong>negative</strong></li>
-<li>If <span class="math inline">\(x &gt; \mu\)</span>, z is <strong>positive</strong></li>
+<li><strong>Next week (Week 7):</strong> sampling distributions build directly on this Binomial-to-Normal logic</li>
+<li><strong>Weeks 8-9:</strong> confidence intervals and hypothesis tests rely on Normal-based approximations</li>
+<li><strong>Later regression units:</strong> model interpretation and uncertainty quantification use the same distributional thinking</li>
 </ul>
+<p>Today is not isolated content. It is core infrastructure for the rest of SOC 106.</p>
 </section>
-<section id="continuous-probability-distribution" class="slide level2 smaller">
-<h2>Continuous Probability Distribution</h2>
-<p><strong>Question</strong>: How do we assign probabilities to outcomes in an infinite sample space when we think the probability distribution is normal?</p>
-<p><strong>Answer</strong>: We compute probabilities for <strong>intervals</strong> under the normal density curve:</p>
-
-<img data-src="images/week6/probabilities_on_normal.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Shows area under curve representing probability</p></section>
-<section id="calculating-probabilities-in-r" class="slide level2 smaller">
-<h2>Calculating Probabilities in R</h2>
-<p><strong>In R</strong>: If <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, we can:</p>
-<p><strong>Calculate</strong> <span class="math inline">\(P(X \leq x)\)</span> <strong>as:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">pnorm</span>(x, <span class="at">mean =</span> μ, <span class="at">sd =</span> σ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Calculate the area under the normal density curve</strong> of X in the interval <span class="math inline">\([x_1, x_2]\)</span> as:</p>
-<p><span class="math display">\[P(X \leq x_2) - P(X \leq x_1) = P(x_1 \leq X \leq x_2)\]</span></p>
-<p><strong>In R:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">pnorm</span>(x2, μ, σ) <span class="sc">-</span> <span class="fu">pnorm</span>(x1, μ, σ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="finding-percentiles-in-r" class="slide level2 smaller">
-<h2>Finding Percentiles in R</h2>
-<p>We can also calculate what the value is at a given percentile q of X as:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">qnorm</span>(q, <span class="at">mean =</span> μ, <span class="at">sd =</span> σ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Note</strong>: q should be entered in decimal form (i.e., between 0 and 1, not between 0 and 100)</p>
-<p><strong>Example</strong>: To find the 95th percentile:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> μ, <span class="at">sd =</span> σ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="questions-2" class="slide level2">
+<section id="questions" class="slide level2">
 <h2>Questions?</h2>
 </section>
 <section id="weekly-assignment-5" class="slide level2 smaller">
@@ -649,15 +922,9 @@
 <p><strong>Format</strong>: Similar to last week’s weekly assignment: mostly a problem set</p>
 <p><strong>Important</strong>: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses</p>
 <p><strong>Rest of class</strong>: Work on HW in groups</p>
-<p><strong>Groups:</strong></p>
-<ul>
-<li>Group 1: <em>ADD</em></li>
-<li>Group 2: <em>ADD</em></li>
-<li>Group 3: <em>ADD</em></li>
-</ul>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -849,7 +1116,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -961,13 +1228,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
