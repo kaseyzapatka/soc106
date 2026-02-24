@@ -312,6 +312,22 @@ The Binomial model requires four things to be true. Here's what each means for o
 
 In real social data, **independence is the assumption most likely to fail** — people in the same household, neighborhood, or social network influence each other.
 
+
+## Binomial Mean and Standard Deviation {.smaller}
+
+For our sample of 10 people with $\pi = 0.6$:
+
+**Expected number of voters:**
+
+$$E[Y]=n\pi = 10 \times 0.6 = 6 \text{ voters}$$
+
+**Standard deviation** (how much the count varies from sample to sample):
+
+$$\text{SD}(Y)=\sqrt{n\pi(1-\pi)} = \sqrt{10 \times 0.6 \times 0.4} \approx 1.55$$
+
+We'd expect about **6 voters, give or take about 1.5**. In most samples, we'd see somewhere between 4 and 8 voters.
+
+
 ## Computing a Binomial Probability {.smaller}
 
 **Question:** What's the probability that exactly 6 of our 10 people voted?
@@ -334,20 +350,6 @@ dbinom(6, size = 10, prob = 0.6)
 # "probability of exactly 6 successes in 10 trials with π = 0.6"
 ```
 
-## Binomial Mean and Standard Deviation {.smaller}
-
-For our sample of 10 people with $\pi = 0.6$:
-
-**Expected number of voters:**
-
-$$E[Y]=n\pi = 10 \times 0.6 = 6 \text{ voters}$$
-
-**Standard deviation** (how much the count varies from sample to sample):
-
-$$\text{SD}(Y)=\sqrt{n\pi(1-\pi)} = \sqrt{10 \times 0.6 \times 0.4} \approx 1.55$$
-
-We'd expect about **6 voters, give or take about 1.5**. In most samples, we'd see somewhere between 4 and 8 voters.
-
 ## Cumulative Probabilities: "At Most" Questions {.smaller}
 
 Often we want to know the probability of getting **at most** some number of successes. This is a **cumulative probability**: $P(Y \le k)$.
@@ -361,9 +363,8 @@ Often we want to know the probability of getting **at most** some number of succ
 pbinom(4, size = 10, prob = 0.6)
 ```
 
-`dbinom()` gives the probability at **exactly one value** ($P(Y=k)$), while `pbinom()` **adds up all the bars** from 0 to $k$ to give $P(Y \le k)$.
 
-**What about "at least" questions?** Use the complement: $P(Y \ge k) = 1 - P(Y \le k-1)$
+**What about "at least" 7 voters?** Use the complement: $P(Y \ge k) = 1 - P(Y \le k-1)$
 
 ```{r}
 #| echo: true
@@ -371,6 +372,11 @@ pbinom(4, size = 10, prob = 0.6)
 # P(at least 7 voted) = 1 - P(at most 6 voted)
 1 - pbinom(6, size = 10, prob = 0.6)
 ```
+
+
+::: {.aside}
+`dbinom()` gives the probability at **exactly one value** ($P(Y=k)$), while `pbinom()` **adds up all the bars** from 0 to $k$ to give $P(Y \le k)$.
+:::
 
 ## Practice: Binomial Probabilities {.smaller .scrollable}
 
@@ -621,6 +627,16 @@ This rule gives us a quick way to judge whether an observed result is "typical" 
 :::
 :::::
 
+
+## Normal: Sample Statistics vs. Model Parameters {.smaller}
+
+| | From data (what we compute) | From the model (what we assume) | Voting example ($n = 100$) |
+|---|---|---|---|
+| **Center** | Sample count of voters | $\mu = n\pi$ | observed count vs. $100 \times 0.6 = 60$ |
+| **Spread** | Sample SD | $\sigma = \sqrt{n\pi(1-\pi)}$ | sample SD vs. $\approx 4.9$ |
+
+If we repeated our survey of 100 people many times, the counts would center around **60** and mostly fall **between about 50 and 70** (within 2 SDs).
+
 ## Standardization and Z-Scores {.smaller}
 
 ::::: columns
@@ -809,7 +825,7 @@ These examples are similar to what you'll see on HW #5. Let's work through them 
 
 ::: {.panel-tabset}
 
-### Z-score by hand
+### Z-score
 
 **Andre's height is 75 inches.** Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.
 
@@ -849,7 +865,7 @@ ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
 :::::
 :::
 
-### pnorm(): area to the left
+### area to the left
 
 **Vehicle speeds on I-5** are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?
 
@@ -892,7 +908,7 @@ ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
 :::::
 :::
 
-### 1 - pnorm(): area to the right
+### area to the right
 
 **SAT scores** are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?
 
@@ -935,7 +951,7 @@ ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
 :::::
 :::
 
-### pnorm() - pnorm(): between values
+### between values
 
 Using the same SAT distribution, what proportion score **between 720 and 820** (partial qualifiers)?
 
@@ -981,7 +997,7 @@ ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
 :::::
 :::
 
-### qnorm(): find the cutoff
+### find the cutoff
 
 **Vehicle speeds** again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?
 
@@ -1040,15 +1056,6 @@ ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
 | Cumulative Binomial probability $P(Y\le k)$ | `pbinom(k, size = n, prob = pi)` |
 | Normal cumulative probability $P(Y\le x)$ | `pnorm(x, mean = mu, sd = sigma)` |
 | Normal percentile / quantile | `qnorm(q, mean = mu, sd = sigma)` |
-
-## Normal: Sample Statistics vs. Model Parameters {.smaller}
-
-| | From data (what we compute) | From the model (what we assume) | Voting example ($n = 100$) |
-|---|---|---|---|
-| **Center** | Sample count of voters | $\mu = n\pi$ | observed count vs. $100 \times 0.6 = 60$ |
-| **Spread** | Sample SD | $\sigma = \sqrt{n\pi(1-\pi)}$ | sample SD vs. $\approx 4.9$ |
-
-If we repeated our survey of 100 people many times, the counts would center around **60** and mostly fall **between about 50 and 70** (within 2 SDs).
 
 ## Connecting It All Together {.smaller}
 

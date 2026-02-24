@@ -471,6 +471,15 @@
 </ol>
 <p>In real social data, <strong>independence is the assumption most likely to fail</strong> — people in the same household, neighborhood, or social network influence each other.</p>
 </section>
+<section id="binomial-mean-and-standard-deviation" class="slide level2 smaller">
+<h2>Binomial Mean and Standard Deviation</h2>
+<p>For our sample of 10 people with <span class="math inline">\(\pi = 0.6\)</span>:</p>
+<p><strong>Expected number of voters:</strong></p>
+<p><span class="math display">\[E[Y]=n\pi = 10 \times 0.6 = 6 \text{ voters}\]</span></p>
+<p><strong>Standard deviation</strong> (how much the count varies from sample to sample):</p>
+<p><span class="math display">\[\text{SD}(Y)=\sqrt{n\pi(1-\pi)} = \sqrt{10 \times 0.6 \times 0.4} \approx 1.55\]</span></p>
+<p>We’d expect about <strong>6 voters, give or take about 1.5</strong>. In most samples, we’d see somewhere between 4 and 8 voters.</p>
+</section>
 <section id="computing-a-binomial-probability" class="slide level2 smaller">
 <h2>Computing a Binomial Probability</h2>
 <p><strong>Question:</strong> What’s the probability that exactly 6 of our 10 people voted?</p>
@@ -487,15 +496,6 @@
 <span id="cb1-3"><a></a><span class="co">#        k       n          π</span></span>
 <span id="cb1-4"><a></a><span class="co"># "probability of exactly 6 successes in 10 trials with π = 0.6"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="binomial-mean-and-standard-deviation" class="slide level2 smaller">
-<h2>Binomial Mean and Standard Deviation</h2>
-<p>For our sample of 10 people with <span class="math inline">\(\pi = 0.6\)</span>:</p>
-<p><strong>Expected number of voters:</strong></p>
-<p><span class="math display">\[E[Y]=n\pi = 10 \times 0.6 = 6 \text{ voters}\]</span></p>
-<p><strong>Standard deviation</strong> (how much the count varies from sample to sample):</p>
-<p><span class="math display">\[\text{SD}(Y)=\sqrt{n\pi(1-\pi)} = \sqrt{10 \times 0.6 \times 0.4} \approx 1.55\]</span></p>
-<p>We’d expect about <strong>6 voters, give or take about 1.5</strong>. In most samples, we’d see somewhere between 4 and 8 voters.</p>
-</section>
 <section id="cumulative-probabilities-at-most-questions" class="slide level2 smaller">
 <h2>Cumulative Probabilities: “At Most” Questions</h2>
 <p>Often we want to know the probability of getting <strong>at most</strong> some number of successes. This is a <strong>cumulative probability</strong>: <span class="math inline">\(P(Y \le k)\)</span>.</p>
@@ -507,8 +507,7 @@
 <pre><code>[1] 0.1662386</code></pre>
 </div>
 </div>
-<p><code>dbinom()</code> gives the probability at <strong>exactly one value</strong> (<span class="math inline">\(P(Y=k)\)</span>), while <code>pbinom()</code> <strong>adds up all the bars</strong> from 0 to <span class="math inline">\(k\)</span> to give <span class="math inline">\(P(Y \le k)\)</span>.</p>
-<p><strong>What about “at least” questions?</strong> Use the complement: <span class="math inline">\(P(Y \ge k) = 1 - P(Y \le k-1)\)</span></p>
+<p><strong>What about “at least” 7 voters?</strong> Use the complement: <span class="math inline">\(P(Y \ge k) = 1 - P(Y \le k-1)\)</span></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># P(at least 7 voted) = 1 - P(at most 6 voted)</span></span>
 <span id="cb4-2"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -516,7 +515,10 @@
 <pre><code>[1] 0.3822806</code></pre>
 </div>
 </div>
-</section>
+
+<aside><div>
+<p><code>dbinom()</code> gives the probability at <strong>exactly one value</strong> (<span class="math inline">\(P(Y=k)\)</span>), while <code>pbinom()</code> <strong>adds up all the bars</strong> from 0 to <span class="math inline">\(k\)</span> to give <span class="math inline">\(P(Y \le k)\)</span>.</p>
+</div></aside></section>
 <section id="practice-binomial-probabilities" class="slide level2 smaller scrollable">
 <h2>Practice: Binomial Probabilities</h2>
 <p>Let’s some scenarios that are similar to HW questions.</p>
@@ -700,6 +702,40 @@
 </div>
 </div></div>
 </section>
+<section id="normal-sample-statistics-vs.-model-parameters" class="slide level2 smaller">
+<h2>Normal: Sample Statistics vs.&nbsp;Model Parameters</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>From data (what we compute)</th>
+<th>From the model (what we assume)</th>
+<th>Voting example (<span class="math inline">\(n = 100\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Center</strong></td>
+<td>Sample count of voters</td>
+<td><span class="math inline">\(\mu = n\pi\)</span></td>
+<td>observed count vs.&nbsp;<span class="math inline">\(100 \times 0.6 = 60\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Spread</strong></td>
+<td>Sample SD</td>
+<td><span class="math inline">\(\sigma = \sqrt{n\pi(1-\pi)}\)</span></td>
+<td>sample SD vs.&nbsp;<span class="math inline">\(\approx 4.9\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>If we repeated our survey of 100 people many times, the counts would center around <strong>60</strong> and mostly fall <strong>between about 50 and 70</strong> (within 2 SDs).</p>
+</section>
 <section id="standardization-and-z-scores" class="slide level2 smaller">
 <h2>Standardization and Z-Scores</h2>
 <div class="columns">
@@ -826,7 +862,7 @@
 <h2>Practice: Z-Scores and Normal Probabilities</h2>
 <p>These examples are similar to what you’ll see on HW #5. Let’s work through them together.</p>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Z-score by hand</a></li><li><a href="#tabset-4-2">pnorm(): area to the left</a></li><li><a href="#tabset-4-3">1 - pnorm(): area to the right</a></li><li><a href="#tabset-4-4">pnorm() - pnorm(): between values</a></li><li><a href="#tabset-4-5">qnorm(): find the cutoff</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Z-score</a></li><li><a href="#tabset-4-2">area to the left</a></li><li><a href="#tabset-4-3">area to the right</a></li><li><a href="#tabset-4-4">between values</a></li><li><a href="#tabset-4-5">find the cutoff</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
 <p><strong>Andre’s height is 75 inches.</strong> Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.</p>
@@ -983,40 +1019,6 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="normal-sample-statistics-vs.-model-parameters" class="slide level2 smaller">
-<h2>Normal: Sample Statistics vs.&nbsp;Model Parameters</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>From data (what we compute)</th>
-<th>From the model (what we assume)</th>
-<th>Voting example (<span class="math inline">\(n = 100\)</span>)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Center</strong></td>
-<td>Sample count of voters</td>
-<td><span class="math inline">\(\mu = n\pi\)</span></td>
-<td>observed count vs.&nbsp;<span class="math inline">\(100 \times 0.6 = 60\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Spread</strong></td>
-<td>Sample SD</td>
-<td><span class="math inline">\(\sigma = \sqrt{n\pi(1-\pi)}\)</span></td>
-<td>sample SD vs.&nbsp;<span class="math inline">\(\approx 4.9\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>If we repeated our survey of 100 people many times, the counts would center around <strong>60</strong> and mostly fall <strong>between about 50 and 70</strong> (within 2 SDs).</p>
 </section>
 <section id="connecting-it-all-together" class="slide level2 smaller">
 <h2>Connecting It All Together</h2>
