@@ -1,5 +1,5 @@
 ---
-title: "Lab 3: Probability Models and Z-Scores in R"
+title: "Lab 3: Normal Distributions and Z-Scores in R"
 author: "Your Name Here"
 date: today
 format:
@@ -50,66 +50,17 @@ library(tidyverse)
 
 ## Function Quick Guide
 
-| Type of question | Distribution | R function |
-|---|---|---|
-| Probability of one 0/1 trial | Bernoulli | `dbinom(k, size = 1, prob = pi)` |
-| Exact count in n trials | Binomial | `dbinom(k, size = n, prob = pi)` |
-| At most / cumulative count | Binomial | `pbinom(k, size = n, prob = pi)` |
-| Normal cumulative probability | Normal | `pnorm(x, mean = mu, sd = sigma)` |
-| Normal percentile cutoff | Normal | `qnorm(q, mean = mu, sd = sigma)` |
-| Standardize a value | Normal | `(x - mu) / sigma` |
+| Type of question | R function |
+|---|---|
+| Cumulative probability P(X ≤ x) | `pnorm(x, mean = mu, sd = sigma)` |
+| Probability above P(X > x) | `1 - pnorm(x, mean = mu, sd = sigma)` |
+| Probability between P(a < X < b) | `pnorm(b, mean, sd) - pnorm(a, mean, sd)` |
+| Percentile cutoff | `qnorm(q, mean = mu, sd = sigma)` |
+| Standardize a value | `(x - mu) / sigma` |
 
 ------------------------------------------------------------------------
 
-## Question 1: Bernoulli (One Trial)
-
-Suppose a randomly sampled person has a 0.6 probability of voting.
-
-1. Define `pi <- 0.6`.
-2. Compute the probability the person voted and the probability they did not vote.
-3. Use `rbinom()` to simulate 500 single-person outcomes (`size = 1`) and compute the sample mean.
-4. Compare your sample mean to the theoretical mean of a Bernoulli variable.
-
-```{r}
-# Your code here
-
-```
-
-------------------------------------------------------------------------
-
-## Question 2: Binomial Exact and Cumulative Probabilities
-
-A player makes free throws with probability 0.75 and takes 8 shots.
-
-1. Compute the probability of making exactly 5 shots.
-2. Compute the probability of making at least 7 shots.
-3. Compute the probability of making between 4 and 6 shots (inclusive).
-
-Use both `dbinom()` and `pbinom()` where possible.
-
-```{r}
-# Your code here
-
-```
-
-------------------------------------------------------------------------
-
-## Question 3: Binomial Mean, SD, and Passing Probability
-
-A student takes a 50-question exam and has an independent 0.8 chance of getting each question correct.
-
-1. Calculate the expected number correct and the standard deviation using formulas.
-2. Use R to compute the probability the student passes if passing is at least 35 correct.
-3. Simulate 10,000 exams with `rbinom()` and compare the simulated mean to your theoretical mean.
-
-```{r}
-# Your code here
-
-```
-
-------------------------------------------------------------------------
-
-## Question 4: Normal Model and Z-Scores (Vehicle Speeds)
+## Question 1: Normal Model and Z-Scores (Vehicle Speeds)
 
 Assume speeds are approximately normal with mean 71 mph and standard deviation 8 mph.
 
@@ -125,7 +76,7 @@ Assume speeds are approximately normal with mean 71 mph and standard deviation 8
 
 ------------------------------------------------------------------------
 
-## Question 5: More Z-Score Practice (Heights)
+## Question 2: Z-Score Practice (Heights)
 
 Assume adult heights are approximately normal with mean 69 inches and standard deviation 3 inches.
 
@@ -141,15 +92,29 @@ Assume adult heights are approximately normal with mean 69 inches and standard d
 
 ------------------------------------------------------------------------
 
+## Question 3: Probabilities Above and Between
+
+Suppose SAT math scores are approximately normal with mean 520 and standard deviation 80.
+
+1. Use `pnorm()` to find the proportion of students who score **above 640**.
+2. Use `pnorm()` to find the proportion who score **between 440 and 640**.
+
+```{r}
+# Your code here
+
+```
+
+------------------------------------------------------------------------
+
 ## Wrap-Up
 
 In this lab, you practiced:
 
-- Choosing the right model for the question (Bernoulli, Binomial, Normal)
-- Calculating exact and cumulative probabilities in R
-- Connecting formulas to simulation
-- Calculating and interpreting z-scores
-- Finding normal probabilities and percentile cutoffs
+- Computing and interpreting z-scores
+- Using `pnorm()` to find cumulative normal probabilities
+- Using `1 - pnorm()` to find probabilities above a threshold
+- Using differences of `pnorm()` to find probabilities between two values
+- Using `qnorm()` to find percentile cutoffs
 
 ------------------------------------------------------------------------
 
@@ -157,8 +122,8 @@ In this lab, you practiced:
 ## Before You Leave
 
 - [ ] You ran all code chunks without errors
-- [ ] You used both `dbinom()` and `pbinom()` at least once
-- [ ] You calculated multiple z-scores by hand in code
-- [ ] You used both `pnorm()` and `qnorm()`
+- [ ] You calculated z-scores by hand in code
+- [ ] You used `pnorm()` for cumulative, above, and between probabilities
+- [ ] You used `qnorm()` to find a percentile cutoff
 - [ ] Your document renders to HTML
 :::
