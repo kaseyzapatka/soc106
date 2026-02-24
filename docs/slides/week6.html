@@ -517,6 +517,97 @@
 </div>
 </div>
 </section>
+<section id="practice-binomial-probabilities" class="slide level2 smaller scrollable">
+<h2>Practice: Binomial Probabilities</h2>
+<p>Let’s some scenarios that are similar to HW questions.</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">“At least” (Q1-style)</a></li><li><a href="#tabset-2-2">“Between” (Q1-style)</a></li><li><a href="#tabset-2-3">Passing threshold (Q2-style)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p><strong>Lisa makes free throws 75% of the time and shoots 8 free throws at practice.</strong> What is the probability she makes <strong>at least 7</strong>?</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(P(X \ge 7)\)</span> means <span class="math inline">\(X = 7\)</span> <strong>or</strong> <span class="math inline">\(X = 8\)</span>. Use the complement:</p>
+<p><span class="math display">\[P(X \ge 7) = 1 - P(X \le 6)\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.75</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3670807</code></pre>
+</div>
+</div>
+<p>About a <strong>37%</strong> chance she makes at least 7 of 8.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div id="tabset-2-2">
+<p><strong>Same scenario: Lisa, n = 8, π = 0.75.</strong> What is the probability she makes <strong>between 4 and 6</strong> free throws?</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(P(4 \le X \le 6)\)</span> — add up bars from 4 to 6. Equivalently:</p>
+<p><span class="math display">\[P(4 \le X \le 6) = P(X \le 6) - P(X \le 3)\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.75</span>) <span class="sc">-</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">pbinom</span>(<span class="dv">3</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="fl">0.75</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6056213</code></pre>
+</div>
+</div>
+<p>About a <strong>61%</strong> chance she makes between 4 and 6.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div id="tabset-2-3">
+<p><strong>Same scenario: Javier, n = 50, π = 0.80. He needs at least 35 correct (70%) to pass.</strong> What’s the probability he passes?</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>70% of 50 = <strong>35</strong>. “Pass” means <span class="math inline">\(X \ge 35\)</span>:</p>
+<p><span class="math display">\[P(X \ge 35) = 1 - P(X \le 34)\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">34</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.80</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9691966</code></pre>
+</div>
+</div>
+<p>About a <strong>97%</strong> chance Javier passes.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="binomial-sample-statistics-vs.-model-parameters" class="slide level2 smaller">
 <h2>Binomial: Sample Statistics vs.&nbsp;Model Parameters</h2>
 <table class="caption-top">
@@ -560,7 +651,7 @@
 <h2>Why Binomial Starts Looking Normal</h2>
 <p>What if we surveyed <strong>100 people</strong> instead of 10? As <span class="math inline">\(n\)</span> grows, the Binomial distribution becomes <strong>smoother</strong> and starts to resemble a bell-shaped curve:</p>
 
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><p>This is an early step toward <strong>central limit thinking</strong>: sums of many random components often look approximately Normal.</p>
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"><p>This is an early step toward <strong>central limit thinking</strong>: sums of many random components often look approximately Normal.</p>
 </section>
 <section id="the-normal-distribution" class="slide level2 smaller">
 <h2>The Normal Distribution</h2>
@@ -578,7 +669,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -623,7 +714,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -633,15 +724,15 @@
 <section id="computing-normal-probabilities-in-r" class="slide level2 smaller">
 <h2>Computing Normal Probabilities in R</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Between two values</a></li><li><a href="#tabset-2-2">At most</a></li><li><a href="#tabset-2-3">More than</a></li><li><a href="#tabset-2-4">Percentile cutoff</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Between two values</a></li><li><a href="#tabset-3-2">At most</a></li><li><a href="#tabset-3-3">More than</a></li><li><a href="#tabset-3-4">Percentile cutoff</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-3-1">
 <p>What’s the probability of observing <strong>between 55 and 65</strong> voters?</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">pnorm</span>(<span class="dv">65</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>) <span class="sc">-</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">55</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">pnorm</span>(<span class="dv">65</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>) <span class="sc">-</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">pnorm</span>(<span class="dv">55</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6924651</code></pre>
 </div>
@@ -652,19 +743,19 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-3-2">
 <p>What’s the probability of observing <strong>at most 50</strong> voters?</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">pnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">pnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02063454</code></pre>
 </div>
@@ -675,19 +766,19 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </div>
-<div id="tabset-2-3">
+<div id="tabset-3-3">
 <p>What’s the probability of observing <strong>more than 70</strong> voters?</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02063454</code></pre>
 </div>
@@ -698,19 +789,19 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </div>
-<div id="tabset-2-4">
+<div id="tabset-3-4">
 <p>Below what count do <strong>95%</strong> of samples fall?</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 68.05978</code></pre>
 </div>
@@ -721,7 +812,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -735,61 +826,126 @@
 <h2>Practice: Z-Scores and Normal Probabilities</h2>
 <p>These examples are similar to what you’ll see on HW #5. Let’s work through them together.</p>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Z-score by hand</a></li><li><a href="#tabset-3-2">pnorm(): area to the left</a></li><li><a href="#tabset-3-3">1 - pnorm(): area to the right</a></li><li><a href="#tabset-3-4">pnorm() - pnorm(): between values</a></li><li><a href="#tabset-3-5">qnorm(): find the cutoff</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Z-score by hand</a></li><li><a href="#tabset-4-2">pnorm(): area to the left</a></li><li><a href="#tabset-4-3">1 - pnorm(): area to the right</a></li><li><a href="#tabset-4-4">pnorm() - pnorm(): between values</a></li><li><a href="#tabset-4-5">qnorm(): find the cutoff</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-4-1">
 <p><strong>Andre’s height is 75 inches.</strong> Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.</p>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <p><span class="math display">\[z = \frac{75 - 69}{3} = 2.0\]</span></p>
-<p>Andre is <strong>2 standard deviations above the mean</strong>. By the 68-95-99.7 rule, he is taller than about 97.5% of the population.</p>
+<p>Andre is <strong>2 standard deviations above the mean</strong>. By the 68-95-99.7 rule, he is taller than about 97.5% of the population — only <strong>2.5%</strong> of people are taller.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</figure>
 </div>
 </div>
-<div id="tabset-3-2">
+</div>
+</div></div>
+</div>
+</div>
+<div id="tabset-4-2">
 <p><strong>Vehicle speeds on I-5</strong> are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?</p>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">pnorm</span>(<span class="dv">65</span>, <span class="at">mean =</span> <span class="dv">71</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">pnorm</span>(<span class="dv">65</span>, <span class="at">mean =</span> <span class="dv">71</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2266274</code></pre>
 </div>
 </div>
 <p>Only about <strong>23%</strong> of vehicles are going at or below 65 mph.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</figure>
 </div>
 </div>
-<div id="tabset-3-3">
+</div>
+</div></div>
+</div>
+</div>
+<div id="tabset-4-3">
 <p><strong>SAT scores</strong> are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?</p>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">820</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">820</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8378466</code></pre>
 </div>
 </div>
 <p>About <strong>84%</strong> of students score above 820.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
 </div>
 </div>
-<div id="tabset-3-4">
+</div>
+</div></div>
+</div>
+</div>
+<div id="tabset-4-4">
 <p>Using the same SAT distribution, what proportion score <strong>between 720 and 820</strong> (partial qualifiers)?</p>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">pnorm</span>(<span class="dv">820</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">720</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">pnorm</span>(<span class="dv">820</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">720</span>, <span class="at">mean =</span> <span class="dv">1026</span>, <span class="at">sd =</span> <span class="dv">209</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.09057216</code></pre>
 </div>
 </div>
 <p>About <strong>9%</strong> of students fall in this range.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
 </div>
 </div>
-<div id="tabset-3-5">
+</div>
+</div></div>
+</div>
+</div>
+<div id="tabset-4-5">
 <p><strong>Vehicle speeds</strong> again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?</p>
 <div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.90</span>, <span class="at">mean =</span> <span class="dv">71</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">qnorm</span>(<span class="fl">0.90</span>, <span class="at">mean =</span> <span class="dv">71</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 81.25241</code></pre>
 </div>
 </div>
 <p>The new speed limit should be about <strong>81 mph</strong> — 90% of vehicles travel at or below this speed.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week6_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 </div>
 </div>
 </div>
@@ -878,7 +1034,7 @@
 <h2>The Ladder, Visually</h2>
 <p>One trial → many trials → smooth approximation, all with <span class="math inline">\(\pi = 0.6\)</span>:</p>
 
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><strong>Same event, three levels of analysis.</strong> This is the logic that powers the rest of the course.</p>
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-34-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><strong>Same event, three levels of analysis.</strong> This is the logic that powers the rest of the course.</p>
 </section>
 <section id="key-takeaways" class="slide level2 smaller">
 <h2>Key Takeaways</h2>

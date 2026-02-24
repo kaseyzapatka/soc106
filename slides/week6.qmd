@@ -372,6 +372,137 @@ pbinom(4, size = 10, prob = 0.6)
 1 - pbinom(6, size = 10, prob = 0.6)
 ```
 
+## Practice: Binomial Probabilities {.smaller .scrollable}
+
+Let's some scenarios that are similar to HW questions.
+
+::: {.panel-tabset}
+
+### "At least" (Q1-style)
+
+**Lisa makes free throws 75% of the time and shoots 8 free throws at practice.** What is the probability she makes **at least 7**?
+
+::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
+$P(X \ge 7)$ means $X = 7$ **or** $X = 8$. Use the complement:
+
+$$P(X \ge 7) = 1 - P(X \le 6)$$
+
+```{r}
+#| echo: true
+1 - pbinom(6, size = 8, prob = 0.75)
+```
+
+About a **37%** chance she makes at least 7 of 8.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+tibble(k = 0:8, prob = dbinom(0:8, size = 8, prob = 0.75)) |>
+  mutate(highlight = ifelse(k >= 7, "at least 7", "other")) |>
+  ggplot(aes(x = factor(k), y = prob, fill = highlight)) +
+  geom_col(width = 0.6) +
+  geom_text(aes(label = round(prob, 3)), vjust = -0.3, size = 3) +
+  scale_fill_manual(values = c("at least 7" = "#E15759", "other" = "#4E79A7")) +
+  scale_y_continuous(limits = c(0, 0.35)) +
+  labs(x = "k (free throws made)", y = "P(X = k)",
+       title = "Binomial(8, 0.75): P(X \u2265 7)") +
+  theme_minimal(base_size = 12) + theme(legend.position = "none")
+```
+
+:::
+:::::
+:::
+
+### "Between" (Q1-style)
+
+**Same scenario: Lisa, n = 8, π = 0.75.** What is the probability she makes **between 4 and 6** free throws?
+
+::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
+$P(4 \le X \le 6)$ — add up bars from 4 to 6. Equivalently:
+
+$$P(4 \le X \le 6) = P(X \le 6) - P(X \le 3)$$
+
+```{r}
+#| echo: true
+pbinom(6, size = 8, prob = 0.75) -
+  pbinom(3, size = 8, prob = 0.75)
+```
+
+About a **61%** chance she makes between 4 and 6.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+tibble(k = 0:8, prob = dbinom(0:8, size = 8, prob = 0.75)) |>
+  mutate(highlight = ifelse(k >= 4 & k <= 6, "4 to 6", "other")) |>
+  ggplot(aes(x = factor(k), y = prob, fill = highlight)) +
+  geom_col(width = 0.6) +
+  geom_text(aes(label = round(prob, 3)), vjust = -0.3, size = 3) +
+  scale_fill_manual(values = c("4 to 6" = "#E15759", "other" = "#4E79A7")) +
+  scale_y_continuous(limits = c(0, 0.35)) +
+  labs(x = "k (free throws made)", y = "P(X = k)",
+       title = "Binomial(8, 0.75): P(4 \u2264 X \u2264 6)") +
+  theme_minimal(base_size = 12) + theme(legend.position = "none")
+```
+
+:::
+:::::
+:::
+
+### Passing threshold (Q2-style)
+
+**Same scenario: Javier, n = 50, π = 0.80. He needs at least 35 correct (70%) to pass.** What's the probability he passes?
+
+::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
+70% of 50 = **35**. "Pass" means $X \ge 35$:
+
+$$P(X \ge 35) = 1 - P(X \le 34)$$
+
+```{r}
+#| echo: true
+1 - pbinom(34, size = 50, prob = 0.80)
+```
+
+About a **97%** chance Javier passes.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+tibble(k = 30:50, prob = dbinom(30:50, size = 50, prob = 0.8)) |>
+  mutate(highlight = ifelse(k >= 35, "passing", "failing")) |>
+  ggplot(aes(x = factor(k), y = prob, fill = highlight)) +
+  geom_col(width = 0.7) +
+  scale_fill_manual(values = c("passing" = "#4E79A7", "failing" = "#E15759")) +
+  labs(x = "k (questions correct)", y = "P(Y = k)",
+       title = "Binomial(50, 0.80): P(Y \u2265 35)") +
+  theme_minimal(base_size = 11) +
+  theme(legend.position = "none", axis.text.x = element_text(size = 8))
+```
+
+:::
+:::::
+:::
+
+:::
+
 ## Binomial: Sample Statistics vs. Model Parameters {.smaller}
 
 | | From data<br>(what we compute) | From the model<br>(what we assume) | Voting example ($n = 10$) |
