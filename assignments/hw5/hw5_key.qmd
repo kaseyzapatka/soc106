@@ -53,39 +53,11 @@ library(here)
 
 **Lisa makes free throws 75% of the time, and shoots eight free throws at the end of practice.**
 
-**a) By hand: what is the probability that she will make exactly five free throws?**
+**a) In words, describe what you would need to calculate to find the probability that Lisa makes at least seven free throws. What are the values of n and π, and which outcomes do you need to add up?**
 
-*Show your work here (you can use LaTeX math notation or just write it out):*
+*Your answer here: `We need P(X ≥ 7) where X ~ Binomial(n = 8, π = 0.75). "At least seven" means either exactly 7 or exactly 8 made free throws, so we calculate P(X = 7) + P(X = 8) using the binomial formula (or dbinom()) with n = 8 and π = 0.75.`*
 
-$P(X=5)=\binom{8}{5}(0.75)^5(0.25)^3=0.2076416$
-
-```{r}
-
-# You can verify your hand calculation with R code if you'd like
-dbinom(5, size = 8, prob = 0.75)
-
-```
-
-*Your final answer: `0.2076416`*
-
-**b) By hand: what is the probability that she will make at least seven free throws?**
-
-*Show your work here:*
-
-$P(X\ge7)=P(X=7)+P(X=8)=\binom{8}{7}(0.75)^7(0.25)^1+\binom{8}{8}(0.75)^8(0.25)^0=0.3670807$
-
-```{r}
-
-# You can verify your hand calculation with R code if you'd like
-dbinom(7, size = 8, prob = 0.75) + dbinom(8, size = 8, prob = 0.75)
-# OR
-1 - pbinom(6, size = 8, prob = 0.75)
-
-```
-
-*Your final answer: `0.3670807`*
-
-**c) In R: what is the probability that she will make between four and six free throws?**
+**b) In R: what is the probability that she will make between four and six free throws?**
 
 ```{r}
 
@@ -196,10 +168,6 @@ qnorm(.9, 71, 8)
 
 *Your answer here: `81.25241`*
 
-**d) In what way do you think the actual distribution of speeds differs from a normal distribution?**
-
-*Your answer here: `Real speed distributions are often not perfectly symmetric: speeds cannot go below 0, may have a right tail from speeders, and can have bunching near the posted speed limit because of enforcement and driver behavior.`*
-
 ------------------------------------------------------------------------
 
 ## Question 5: NCAA SAT Requirements
@@ -227,36 +195,6 @@ pnorm(820, 1026, 209) - pnorm(720, 1026, 209)
 ```
 
 *Your answer here: `0.09057`*
-
-------------------------------------------------------------------------
-
-## Question 6: Height Comparisons Between Men and Women
-
-**Suppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.**
-
-**a) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?**
-
-```{r}
-
-# Your code here
-(pnorm(70,70,3) - pnorm(68,70,3)) - (pnorm(70,64,3) - pnorm(68,64,3)) 
-
-```
-
-*Your answer here: `0.179`*
-
-**b) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?**
-
-```{r}
-
-# Your code here
-(pnorm(70,70,3) - pnorm(68,70,3)) / (pnorm(70,64,3) - pnorm(68,64,3))
-
-```
-
-*Your answer here: `3.615`*
-
-------------------------------------------------------------------------
 
 ::: callout-tip
 ## Before You Submit
