@@ -1579,7 +1579,7 @@
     "href": "assignments/hw5/hw5_key.html",
     "title": "Weekly Assignment #5",
     "section": "",
-    "text": "ImportantSubmission Instructions\n\n\n\n\nDownload this hw5.qmd file from bCourse.\nSave the file in your assignments folder.\nFollow the instructions below to complete the assignment. Show your work for all calculations!\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file.\nSubmit the hw5.qmd file to bCourse before the deadline.\nMake sure your name appears in the “author” field in the YAML header above."
+    "text": "ImportantSubmission Instructions\n\n\n\n\nDownload this hw5.qmd file from bCourse.\nSave the file in your assignments folder.\nFollow the instructions below to complete the assignment. Show your work for all calculations!\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it’s working.\nSubmit both the hw5.qmd and the hw5.html files to bCourse before the deadline\nMake sure your name appears in the “author” field in the YAML header above"
   },
   {
     "objectID": "assignments/hw5/hw5_key.html#setup",
@@ -1593,28 +1593,28 @@
     "href": "assignments/hw5/hw5_key.html#question-1-free-throw-probability",
     "title": "Weekly Assignment #5",
     "section": "Question 1: Free Throw Probability",
-    "text": "Question 1: Free Throw Probability\nLisa makes free throws 75% of the time, and shoots eight free throws at the end of practice.\na) By hand: what is the probability that she will make exactly five free throws?\nShow your work here (you can use LaTeX math notation or just write it out):\n\n# You can verify your hand calculation with R code if you'd like\n\nYour final answer:\nb) By hand: what is the probability that she will make at least seven free throws?\nShow your work here:\n\n# You can verify your hand calculation with R code if you'd like\n\nYour final answer:\nc) In R: what is the probability that she will make between four and six free throws?\n\n# Your code here\ndbinom(4, size = 8, prob = .75) + dbinom(5, size = 8, prob = .75) + dbinom(6, size = 8, prob = .75) # .6056213\n\n[1] 0.6056213\n\n# OR\npbinom(6, size = 8, prob = .75) - pbinom(3, size = 8, prob = .75) # .6056213\n\n[1] 0.6056213\n\n\nYour answer here:"
+    "text": "Question 1: Free Throw Probability\nLisa makes free throws 75% of the time, and shoots eight free throws at the end of practice.\na) By hand: what is the probability that she will make exactly five free throws?\nShow your work here (you can use LaTeX math notation or just write it out):\n\\(P(X=5)=\\binom{8}{5}(0.75)^5(0.25)^3=0.2076416\\)\n\n# You can verify your hand calculation with R code if you'd like\ndbinom(5, size = 8, prob = 0.75)\n\n[1] 0.2076416\n\n\nYour final answer: 0.2076416\nb) By hand: what is the probability that she will make at least seven free throws?\nShow your work here:\n\\(P(X\\ge7)=P(X=7)+P(X=8)=\\binom{8}{7}(0.75)^7(0.25)^1+\\binom{8}{8}(0.75)^8(0.25)^0=0.3670807\\)\n\n# You can verify your hand calculation with R code if you'd like\ndbinom(7, size = 8, prob = 0.75) + dbinom(8, size = 8, prob = 0.75)\n\n[1] 0.3670807\n\n# OR\n1 - pbinom(6, size = 8, prob = 0.75)\n\n[1] 0.3670807\n\n\nYour final answer: 0.3670807\nc) In R: what is the probability that she will make between four and six free throws?\n\n# Your code here\ndbinom(4, size = 8, prob = .75) + dbinom(5, size = 8, prob = .75) + dbinom(6, size = 8, prob = .75) # .6056213\n\n[1] 0.6056213\n\n# OR\npbinom(6, size = 8, prob = .75) - pbinom(3, size = 8, prob = .75) # .6056213\n\n[1] 0.6056213\n\n\nYour answer here: 0.6056213"
   },
   {
     "objectID": "assignments/hw5/hw5_key.html#question-2-exam-performance",
     "href": "assignments/hw5/hw5_key.html#question-2-exam-performance",
     "title": "Weekly Assignment #5",
     "section": "Question 2: Exam Performance",
-    "text": "Question 2: Exam Performance\nJavier takes a 50 question exam. In practice exams, he has answered all exam questions correctly 80% of the time, and his likelihood of answering each question correctly is independent of one another.\na) What is the mean number of questions he will get correct on the exam? What is the standard deviation of the number of questions he will get correct?\nShow your work here:\n\n# Your code here\n# mean \n50*.8 # 40\n\n[1] 40\n\n# SD\nsqrt(50*.8*.2) # 2.828...\n\n[1] 2.828427\n\n\nYour answer here: mean: 40, SD: 2.828\nb) A student needs to get 70% of questions correct to pass the exam. What is the probability that he will pass the exam? (use R to answer)\n\n# Your code here\n1 - pbinom(34, 50, .8) \n\n[1] 0.9691966\n\n\nYour answer here: 0..969"
+    "text": "Question 2: Exam Performance\nJavier takes a 50 question exam. In practice exams, he has answered each question correctly 80% of the time, and his likelihood of answering one question correctly is independent of whether he answers any other question correctly.\na) What is the mean number of questions he will get correct on the exam? What is the standard deviation of the number of questions he will get correct?\nShow your work here:\n\n# Your code here\n# mean \n50*.8 # 40\n\n[1] 40\n\n# SD\nsqrt(50*.8*.2) # 2.828...\n\n[1] 2.828427\n\n\nYour answer here: mean: 40, SD: 2.828\nb) A student needs to get 70% of questions correct to pass the exam. What is the probability that he will pass the exam? (use R to answer)\n\n# Your code here\n1 - pbinom(34, 50, .8) \n\n[1] 0.9691966\n\n\nYour answer here: 0.9691966"
   },
   {
     "objectID": "assignments/hw5/hw5_key.html#question-3-height-and-z-scores",
     "href": "assignments/hw5/hw5_key.html#question-3-height-and-z-scores",
     "title": "Weekly Assignment #5",
     "section": "Question 3: Height and Z-scores",
-    "text": "Question 3: Height and Z-scores\nAndre is selected from a population where height is distributed normally with mean 69 inches and standard deviation 3 inches. The individual is measured with a height of 75 inches.\na) Calculate the z-score of Andre’s height.\nShow your work here:\n\n# Your code here\n(75-69)/3 # 2\n\n[1] 2\n\n\nYour answer here: 2\nb) Just from the z-score, can you tell whether Andre’s height is above the 95th percentile of height? Why or why not? How about the 97th percentile of height? Why or why not?\nYour answer here: We know that 95% of observations in a normal distribution are within two standard deviations of the mean--so, all of these observations are below Andre's height. We also know that the mean is symmetrical. So, among the remaining 5% of observations outside 2 SDs from the mean, 2.5% of observations are over 2 SD below (and below Andre's height), and 2.5% SD are over 2 SD above (and above Andre's height). This means that 97.5% of individuals are below Andre's height --&gt; Andre is at the 97.5th percentile. So, Andre's height is above the 95th and 97.5th percentile."
+    "text": "Question 3: Height and Z-scores\nAndre is selected from a population where height is distributed normally with mean 69 inches and standard deviation 3 inches. The individual is measured with a height of 75 inches.\na) Calculate the z-score of Andre’s height.\nShow your work here:\n\n# Your code here\n(75-69)/3 # 2\n\n[1] 2\n\n\nYour answer here: 2\nb) Just from the z-score, can you tell whether Andre’s height is above the 95th percentile of height? Why or why not? How about the 97th percentile of height? Why or why not?\nYour answer here: Yes. Andre's z-score is 2, which places him about 2 standard deviations above the mean. In a normal distribution, z = 2 corresponds to about the 97.7th percentile (pnorm(2) ≈ 0.977). So his height is above both the 95th percentile and the 97th percentile."
   },
   {
     "objectID": "assignments/hw5/hw5_key.html#question-4-vehicle-speeds-on-i-5",
     "href": "assignments/hw5/hw5_key.html#question-4-vehicle-speeds-on-i-5",
     "title": "Weekly Assignment #5",
     "section": "Question 4: Vehicle Speeds on I-5",
-    "text": "Question 4: Vehicle Speeds on I-5\nAssume the speed of vehicles along a stretch of I-5 has an approximately normal distribution with a mean of 71 mph and a standard deviation of 8 mph.\na) The current speed limit is 65 mph. What is the proportion of vehicles less than or equal to the speed limit?\n\n# Your code here\npnorm(65, 71, 8) \n\n[1] 0.2266274\n\n\nYour answer here: 0..2266\nb) What proportion of the vehicles would be going less than or equal to 50 mph?\n\n# Your code here\npnorm(50, 71, 8) \n\n[1] 0.004332448\n\n\nYour answer here: 0.00433\nc) A new speed limit will be initiated such that approximately 10% of vehicles will be over the speed limit. What is the new speed limit based on this criterion?\n\n# Your code here\nqnorm(.9, 71, 8) \n\n[1] 81.25241\n\n\nYour answer here: 81.25241\nd) In what way do you think the actual distribution of speeds differs from a normal distribution?\nYour answer here:"
+    "text": "Question 4: Vehicle Speeds on I-5\nAssume the speed of vehicles along a stretch of I-5 has an approximately normal distribution with a mean of 71 mph and a standard deviation of 8 mph.\na) The current speed limit is 65 mph. What is the proportion of vehicles less than or equal to the speed limit?\n\n# Your code here\npnorm(65, 71, 8) \n\n[1] 0.2266274\n\n\nYour answer here: 0.2266274\nb) What proportion of the vehicles would be going less than or equal to 50 mph?\n\n# Your code here\npnorm(50, 71, 8) \n\n[1] 0.004332448\n\n\nYour answer here: 0.00433\nc) A new speed limit will be initiated such that approximately 10% of vehicles will be over the speed limit. What is the new speed limit based on this criterion?\n\n# Your code here\nqnorm(.9, 71, 8) \n\n[1] 81.25241\n\n\nYour answer here: 81.25241\nd) In what way do you think the actual distribution of speeds differs from a normal distribution?\nYour answer here: Real speed distributions are often not perfectly symmetric: speeds cannot go below 0, may have a right tail from speeders, and can have bunching near the posted speed limit because of enforcement and driver behavior."
   },
   {
     "objectID": "assignments/hw5/hw5_key.html#question-5-ncaa-sat-requirements",
@@ -1628,7 +1628,7 @@
     "href": "assignments/hw5/hw5_key.html#question-6-height-comparisons-between-men-and-women",
     "title": "Weekly Assignment #5",
     "section": "Question 6: Height Comparisons Between Men and Women",
-    "text": "Question 6: Height Comparisons Between Men and Women\nSuppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.\na) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n(pnorm(70,70,3) - pnorm(68,70,3)) - (pnorm(70,64,3) - pnorm(68,64,3)) \n\n[1] 0.1790464\n\n\nYour answer here: 0.179\nb) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n(pnorm(70,70,3) - pnorm(68,70,3)) / (pnorm(70,64,3) - pnorm(68,64,3))\n\n[1] 3.615301\n\n\nYour answer here: 3.615\n\n\n\n\n\n\n\nTipBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve shown your work for hand calculations\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting the .qmd file to bCourse"
+    "text": "Question 6: Height Comparisons Between Men and Women\nSuppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.\na) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n(pnorm(70,70,3) - pnorm(68,70,3)) - (pnorm(70,64,3) - pnorm(68,64,3)) \n\n[1] 0.1790464\n\n\nYour answer here: 0.179\nb) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n(pnorm(70,70,3) - pnorm(68,70,3)) / (pnorm(70,64,3) - pnorm(68,64,3))\n\n[1] 3.615301\n\n\nYour answer here: 3.615\n\n\n\n\n\n\n\nTipBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors (or you’ve indicated hand calculations)\nYou’ve shown your work for all probability calculations\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting both hw5.qmd and hw5.html files to bCourse"
   },
   {
     "objectID": "assignments/hw4/hw4_key.html",
@@ -2650,7 +2650,7 @@
     "href": "slides/week6.html#housekeeping",
     "title": "Week 6",
     "section": "Housekeeping",
-    "text": "Housekeeping\n[[ADD IT IN LATER]]"
+    "text": "Housekeeping\nHW 3: Great job overall. Two main comments:\n\nMake sure you are removing missing in your marginal frequency calculations (Q1: filter(!is.na(degree), !is.na(marital)) |&gt;)\nMake sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)"
   },
   {
     "objectID": "slides/week6.html#agenda",
@@ -2937,7 +2937,7 @@
     "href": "slides/week6.html#weekly-assignment-5",
     "title": "Week 6",
     "section": "Weekly Assignment #5",
-    "text": "Weekly Assignment #5\nDue: Thursday, March 5 by 11:59 PM\nFormat: Similar to last week’s weekly assignment: mostly a problem set\nImportant: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses\nRest of class: Work on HW in groups"
+    "text": "Weekly Assignment #5\nDue: Thursday, March 5 by 11:59 PM\nFormat: Similar to last week’s weekly assignment: mostly a problem set\nImportant: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses"
   },
   {
     "objectID": "slides/week5.html#housekeeping-hw-3",
@@ -3973,7 +3973,7 @@
     "href": "slides/week6.html#quick-review-random-variables-and-distributions",
     "title": "Week 6",
     "section": "Quick Review: Random Variables and Distributions",
-    "text": "Quick Review: Random Variables and Distributions\nLast week we talked about sample spaces and probability. Now we connect those ideas to data:\nA random variable assigns a number to each outcome of a random process\n\nFor example, we code “voted” as 1 and “didn’t vote” as 0\n\nA probability distribution tells us how likely each value is\n\nFor discrete outcomes: a probability for each possible value (a PMF)\nFor continuous outcomes: probabilities come from areas under a curve (a PDF)"
+    "text": "Quick Review: Random Variables and Distributions\nLast week we talked about sample spaces and probability. Now we connect those ideas to data:\nA random variable assigns a number to each outcome of a random process\n\nFor example, we code “voted” as 1 and “didn’t vote” as 0\n\nA probability distribution tells us how likely each value is\n\nDiscrete outcomes: a probability for each possible value (a Probability Mass Function (PMF))\nContinuous outcomes: probabilities come from areas under a curve (a Probability Density Function (PDF))"
   },
   {
     "objectID": "slides/week6.html#the-bernoulli-model",
@@ -4008,7 +4008,7 @@
     "href": "slides/week6.html#computing-normal-probabilities-in-r",
     "title": "Week 6",
     "section": "Computing Normal Probabilities in R",
-    "text": "Computing Normal Probabilities in R\n\nBetween two valuesAt most kMore than kPercentile cutoff\n\n\nWhat’s the probability of observing between 55 and 65 voters?\n\n\n\npnorm(65, mean = 60, sd = 4.9) -\n  pnorm(55, mean = 60, sd = 4.9)\n\n[1] 0.6924651\n\n\nIn general: \\(P(a \\le Y \\le b) = P(Y \\le b) - P(Y \\le a)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing at most 50 voters?\n\n\n\npnorm(50, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nThis is \\(P(Y \\le 50)\\) — the area to the left of 50.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing more than 70 voters?\n\n\n\n1 - pnorm(70, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nWe use \\(1 - P(Y \\le 70)\\) because pnorm() gives the area to the left.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBelow what count do 95% of samples fall?\n\n\n\nqnorm(0.95, mean = 60, sd = 4.9)\n\n[1] 68.05978\n\n\nqnorm() is the inverse of pnorm() — it goes from probability to value."
+    "text": "Computing Normal Probabilities in R\n\nBetween two valuesAt mostMore thanPercentile cutoff\n\n\nWhat’s the probability of observing between 55 and 65 voters?\n\n\n\npnorm(65, mean = 60, sd = 4.9) -\n  pnorm(55, mean = 60, sd = 4.9)\n\n[1] 0.6924651\n\n\nIn general: \\(P(a \\le Y \\le b) = P(Y \\le b) - P(Y \\le a)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing at most 50 voters?\n\n\n\npnorm(50, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nThis is \\(P(Y \\le 50)\\) — the area to the left of 50.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing more than 70 voters?\n\n\n\n1 - pnorm(70, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nWe use \\(1 - P(Y \\le 70)\\) because pnorm() gives the area to the left.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBelow what count do 95% of samples fall?\n\n\n\nqnorm(0.95, mean = 60, sd = 4.9)\n\n[1] 68.05978\n\n\nqnorm() is the inverse of pnorm() — it goes from probability to value."
   },
   {
     "objectID": "slides/week6.html#the-ladder-a-preview",
@@ -4022,14 +4022,14 @@
     "href": "slides/week6.html#bernoulli-sample-statistics-vs.-model-parameters",
     "title": "Week 6",
     "section": "Bernoulli: Sample Statistics vs. Model Parameters",
-    "text": "Bernoulli: Sample Statistics vs. Model Parameters\n\n\n\n\n\n\n\n\n\n\nFrom data (what we compute)\nFrom the model (what we assume)\nVoting example\n\n\n\n\nCenter\nSample proportion: \\(\\hat{p}\\)\n\\(E[X]=\\pi\\)\n\\(\\hat{p}\\) vs. \\(\\pi = 0.6\\)\n\n\nSpread\nSample variance: \\(s^2\\)\n\\(\\pi(1-\\pi)\\)\n\\(s^2\\) vs. \\(0.6 \\times 0.4 = 0.24\\)\n\n\n\nWe compute \\(\\hat{p}\\) from our data (the fraction of respondents who said they voted). The model says the true probability is \\(\\pi = 0.6\\).\nThe goal of statistical inference: use the sample statistic (\\(\\hat{p}\\)) to learn about the model parameter (\\(\\pi\\))."
+    "text": "Bernoulli: Sample Statistics vs. Model Parameters\n\n\n\n\n\n\n\n\n\n\nFrom data(what we compute)\nFrom the model(what we assume)\nVoting example\n\n\n\n\nCenter\nSample proportion: \\(\\hat{p}\\)\n\\(E[X]=\\pi\\)\n\\(\\hat{p}\\) vs. \\(\\pi = 0.6\\)\n\n\nSpread\nSample variance: \\(s^2\\)\n\\(\\pi(1-\\pi)\\)\n\\(s^2\\) vs. \\(0.6 \\times 0.4 = 0.24\\)\n\n\n\nWe compute \\(\\hat{p}\\) from our data (the fraction of respondents who said they voted). The model says the true probability is \\(\\pi = 0.6\\).\nThe goal of statistical inference: use the sample statistic (\\(\\hat{p}\\)) to learn about the model parameter (\\(\\pi\\))."
   },
   {
     "objectID": "slides/week6.html#binomial-sample-statistics-vs.-model-parameters",
     "href": "slides/week6.html#binomial-sample-statistics-vs.-model-parameters",
     "title": "Week 6",
     "section": "Binomial: Sample Statistics vs. Model Parameters",
-    "text": "Binomial: Sample Statistics vs. Model Parameters\n\n\n\n\n\n\n\n\n\n\nFrom data (what we compute)\nFrom the model (what we assume)\nVoting example (\\(n = 10\\))\n\n\n\n\nCenter\nSample count of voters\n\\(E[Y] = n\\pi\\)\nobserved count vs. \\(10 \\times 0.6 = 6\\)\n\n\nSpread\nSample SD of counts\n\\(\\text{SD}(Y) = \\sqrt{n\\pi(1-\\pi)}\\)\nsample SD vs. \\(\\approx 1.55\\)\n\n\n\nIf we repeated our survey of 10 people many times, the average number of voters across all surveys would be close to 6, and the counts would typically range from about 4 to 8."
+    "text": "Binomial: Sample Statistics vs. Model Parameters\n\n\n\n\n\n\n\n\n\n\nFrom data(what we compute)\nFrom the model(what we assume)\nVoting example (\\(n = 10\\))\n\n\n\n\nCenter\nSample count of voters\n\\(E[Y] = n\\pi\\)\nobserved count vs. \\(10 \\times 0.6 = 6\\)\n\n\nSpread\nSample SD of counts\n\\(\\text{SD}(Y) = \\sqrt{n\\pi(1-\\pi)}\\)\nsample SD vs. \\(\\approx 1.55\\)\n\n\n\nIf we repeated our survey of 10 people many times, the average number of voters across all surveys would be close to 6, and the counts would typically range from about 4 to 8."
   },
   {
     "objectID": "slides/week6.html#normal-sample-statistics-vs.-model-parameters",
@@ -4043,7 +4043,7 @@
     "href": "slides/week6.html#practice-z-scores-and-normal-probabilities",
     "title": "Week 6",
     "section": "Practice: Z-Scores and Normal Probabilities",
-    "text": "Practice: Z-Scores and Normal Probabilities\nThese examples are similar to what you’ll see on HW #5. Let’s work through them together.\n\nZ-score by handpnorm(): area to the left1 - pnorm(): area to the rightpnorm() - pnorm(): between valuesqnorm(): find the cutoffComparing two distributions\n\n\nAndre’s height is 75 inches. Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.\n\n\\[z = \\frac{75 - 69}{3} = 2.0\\]\nAndre is 2 standard deviations above the mean. By the 68-95-99.7 rule, he is taller than about 97.5% of the population.\n\n\n\nVehicle speeds on I-5 are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?\n\n\npnorm(65, mean = 71, sd = 8)\n\n[1] 0.2266274\n\n\nOnly about 23% of vehicles are going at or below 65 mph.\n\n\n\nSAT scores are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?\n\n\n1 - pnorm(820, mean = 1026, sd = 209)\n\n[1] 0.8378466\n\n\nAbout 84% of students score above 820.\n\n\n\nUsing the same SAT distribution, what proportion score between 720 and 820 (partial qualifiers)?\n\n\npnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)\n\n[1] 0.09057216\n\n\nAbout 9% of students fall in this range.\n\n\n\nVehicle speeds again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?\n\n\nqnorm(0.90, mean = 71, sd = 8)\n\n[1] 81.25241\n\n\nThe new speed limit should be about 81 mph — 90% of vehicles travel at or below this speed.\n\n\n\nWomen’s heights are Normal(64, 3) and men’s heights are Normal(70, 3). What’s the probability of being between 68 and 70 inches tall for each group?\n\n\n# P(68 ≤ height ≤ 70) for each group\np_men   &lt;- pnorm(70, mean = 70, sd = 3) - pnorm(68, mean = 70, sd = 3)\np_women &lt;- pnorm(70, mean = 64, sd = 3) - pnorm(68, mean = 64, sd = 3)\n\np_men - p_women   # difference in proportions\n\n[1] 0.1790464\n\np_men / p_women   # relative risk ratio\n\n[1] 3.615301\n\n\nSame R functions, just applied to two different distributions — then we compare the results."
+    "text": "Practice: Z-Scores and Normal Probabilities\nThese examples are similar to what you’ll see on HW #5. Let’s work through them together.\n\nZ-score by handpnorm(): area to the left1 - pnorm(): area to the rightpnorm() - pnorm(): between valuesqnorm(): find the cutoff\n\n\nAndre’s height is 75 inches. Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.\n\n\\[z = \\frac{75 - 69}{3} = 2.0\\]\nAndre is 2 standard deviations above the mean. By the 68-95-99.7 rule, he is taller than about 97.5% of the population.\n\n\n\nVehicle speeds on I-5 are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?\n\n\npnorm(65, mean = 71, sd = 8)\n\n[1] 0.2266274\n\n\nOnly about 23% of vehicles are going at or below 65 mph.\n\n\n\nSAT scores are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?\n\n\n1 - pnorm(820, mean = 1026, sd = 209)\n\n[1] 0.8378466\n\n\nAbout 84% of students score above 820.\n\n\n\nUsing the same SAT distribution, what proportion score between 720 and 820 (partial qualifiers)?\n\n\npnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)\n\n[1] 0.09057216\n\n\nAbout 9% of students fall in this range.\n\n\n\nVehicle speeds again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?\n\n\nqnorm(0.90, mean = 71, sd = 8)\n\n[1] 81.25241\n\n\nThe new speed limit should be about 81 mph — 90% of vehicles travel at or below this speed."
   },
   {
     "objectID": "slides/week6.html#r-functions-for-distributions-the-dpq-pattern",
@@ -4057,7 +4057,7 @@
     "href": "slides/week6.html#r-functions-for-distributions",
     "title": "Week 6",
     "section": "R Functions for Distributions",
-    "text": "R Functions for Distributions\nR uses a consistent naming pattern for working with probability distributions. Once you learn the prefixes, you can apply them to any distribution:\n\n\n\n\n\n\n\n\n\nPrefix\nWhat it does\nQuestion it answers\nExample\n\n\n\n\nd\ndensity / probability at a point\n“Probability of exactly this value?”\ndbinom(6, size = 10, prob = 0.6)\n\n\np\ncumulative probability\n“Probability of at most this value?”\npbinom(6, size = 10, prob = 0.6)\n\n\nq\nquantile (inverse of p)\n“What value has this percentile?”\nqnorm(0.95, mean = 60, sd = 4.9)"
+    "text": "R Functions for Distributions\nR uses a consistent naming pattern for working with probability distributions. Once you learn the prefixes, you can apply them to any distribution:\n\n\n\n\n\n\n\n\n\nPrefix\nWhat it does\nQuestion it answers\nExample\n\n\n\n\nd\ndensity / probability at a point\n“Probability of exactly k successes?”\ndbinom(6, size = 10, prob = 0.6)\n\n\np (Binomial)\ncumulative count probability\n“Probability of at most k successes in n trials?”\npbinom(6, size = 10, prob = 0.6)\n\n\np (Normal)\ncumulative area probability\n“Proportion of values at or below x?”\npnorm(65, mean = 71, sd = 8)\n\n\nq\nquantile (inverse of p)\n“What value has this percentile?”\nqnorm(0.95, mean = 60, sd = 4.9)"
   },
   {
     "objectID": "slides/week6.html#r-functions-for-distributions-1",
@@ -4065,5 +4065,152 @@
     "title": "Week 6",
     "section": "R Functions for Distributions",
     "text": "R Functions for Distributions\nThe suffix tells you the distribution: binom for Binomial, norm for Normal.\n\nWe’ll use each of these as we go. Keep this pattern in mind!"
+  },
+  {
+    "objectID": "labs/lab3.html",
+    "href": "labs/lab3.html",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "",
+    "text": "Download lab3.qmd from bCourse under “labs” &gt; “Lab #3”\nPlace lab3.qmd in your labs folder. Your folder structure should now look like this:\n\nsoc106/\n├── _quarto.yml\n├── data/\n│   └── attain.csv\n├── assignments/\n│   └── hw1.qmd\n│   └── hw2.qmd\n│   └── hw3.qmd\n│   └── hw4.qmd\n│   └── hw5.qmd\n└── labs/\n    ├── lab1.qmd\n    ├── lab2.qmd\n    └── lab3.qmd\n\nUse the Explorer button on the left to find and open lab3.qmd\nLet’s work through it together!"
+  },
+  {
+    "objectID": "labs/lab3.html#setup-instructions",
+    "href": "labs/lab3.html#setup-instructions",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "",
+    "text": "Download lab3.qmd from bCourse under “labs” &gt; “Lab #3”\nPlace lab3.qmd in your labs folder. Your folder structure should now look like this:\n\nsoc106/\n├── _quarto.yml\n├── data/\n│   └── attain.csv\n├── assignments/\n│   └── hw1.qmd\n│   └── hw2.qmd\n│   └── hw3.qmd\n│   └── hw4.qmd\n│   └── hw5.qmd\n└── labs/\n    ├── lab1.qmd\n    ├── lab2.qmd\n    └── lab3.qmd\n\nUse the Explorer button on the left to find and open lab3.qmd\nLet’s work through it together!"
+  },
+  {
+    "objectID": "labs/lab3.html#load-libraries",
+    "href": "labs/lab3.html#load-libraries",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Load Libraries",
+    "text": "Load Libraries\n\n# load libraries\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "labs/lab3.html#function-quick-guide",
+    "href": "labs/lab3.html#function-quick-guide",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Function Quick Guide",
+    "text": "Function Quick Guide\n\n\n\n\n\n\n\n\nType of question\nDistribution\nR function\n\n\n\n\nProbability of one 0/1 trial\nBernoulli\ndbinom(k, size = 1, prob = pi)\n\n\nExact count in n trials\nBinomial\ndbinom(k, size = n, prob = pi)\n\n\nAt most / cumulative count\nBinomial\npbinom(k, size = n, prob = pi)\n\n\nNormal cumulative probability\nNormal\npnorm(x, mean = mu, sd = sigma)\n\n\nNormal percentile cutoff\nNormal\nqnorm(q, mean = mu, sd = sigma)\n\n\nStandardize a value\nNormal\n(x - mu) / sigma"
+  },
+  {
+    "objectID": "labs/lab3.html#question-1-bernoulli-one-trial",
+    "href": "labs/lab3.html#question-1-bernoulli-one-trial",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Question 1: Bernoulli (One Trial)",
+    "text": "Question 1: Bernoulli (One Trial)\nSuppose a randomly sampled person has a 0.6 probability of voting.\n\nDefine pi &lt;- 0.6.\nCompute the probability the person voted and the probability they did not vote.\nUse rbinom() to simulate 500 single-person outcomes (size = 1) and compute the sample mean.\nCompare your sample mean to the theoretical mean of a Bernoulli variable.\n\n\n# Your code here"
+  },
+  {
+    "objectID": "labs/lab3.html#question-2-binomial-exact-and-cumulative-probabilities",
+    "href": "labs/lab3.html#question-2-binomial-exact-and-cumulative-probabilities",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Question 2: Binomial Exact and Cumulative Probabilities",
+    "text": "Question 2: Binomial Exact and Cumulative Probabilities\nA player makes free throws with probability 0.75 and takes 8 shots.\n\nCompute the probability of making exactly 5 shots.\nCompute the probability of making at least 7 shots.\nCompute the probability of making between 4 and 6 shots (inclusive).\n\nUse both dbinom() and pbinom() where possible.\n\n# Your code here"
+  },
+  {
+    "objectID": "labs/lab3.html#question-3-binomial-mean-sd-and-passing-probability",
+    "href": "labs/lab3.html#question-3-binomial-mean-sd-and-passing-probability",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Question 3: Binomial Mean, SD, and Passing Probability",
+    "text": "Question 3: Binomial Mean, SD, and Passing Probability\nA student takes a 50-question exam and has an independent 0.8 chance of getting each question correct.\n\nCalculate the expected number correct and the standard deviation using formulas.\nUse R to compute the probability the student passes if passing is at least 35 correct.\nSimulate 10,000 exams with rbinom() and compare the simulated mean to your theoretical mean.\n\n\n# Your code here"
+  },
+  {
+    "objectID": "labs/lab3.html#question-4-normal-model-and-z-scores-vehicle-speeds",
+    "href": "labs/lab3.html#question-4-normal-model-and-z-scores-vehicle-speeds",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Question 4: Normal Model and Z-Scores (Vehicle Speeds)",
+    "text": "Question 4: Normal Model and Z-Scores (Vehicle Speeds)\nAssume speeds are approximately normal with mean 71 mph and standard deviation 8 mph.\n\nCompute the z-score for 65 mph and 80 mph.\nCompute P(speed &lt;= 65).\nCompute P(speed &gt; 80).\nFind the speed cutoff where only 10% of vehicles are faster.\n\n\n# Your code here"
+  },
+  {
+    "objectID": "labs/lab3.html#question-5-more-z-score-practice-heights",
+    "href": "labs/lab3.html#question-5-more-z-score-practice-heights",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Question 5: More Z-Score Practice (Heights)",
+    "text": "Question 5: More Z-Score Practice (Heights)\nAssume adult heights are approximately normal with mean 69 inches and standard deviation 3 inches.\n\nCompute the z-score for a person who is 75 inches tall.\nUse pnorm() to estimate the percentile for 75 inches.\nFind the 95th percentile height using qnorm().\nIn one sentence: based on your results, is 75 inches above the 95th percentile?\n\n\n# Your code here"
+  },
+  {
+    "objectID": "labs/lab3.html#wrap-up",
+    "href": "labs/lab3.html#wrap-up",
+    "title": "Lab 3: Probability Models and Z-Scores in R",
+    "section": "Wrap-Up",
+    "text": "Wrap-Up\nIn this lab, you practiced:\n\nChoosing the right model for the question (Bernoulli, Binomial, Normal)\nCalculating exact and cumulative probabilities in R\nConnecting formulas to simulation\nCalculating and interpreting z-scores\nFinding normal probabilities and percentile cutoffs\n\n\n\n\n\n\n\n\nTipBefore You Leave\n\n\n\n\nYou ran all code chunks without errors\nYou used both dbinom() and pbinom() at least once\nYou calculated multiple z-scores by hand in code\nYou used both pnorm() and qnorm()\nYour document renders to HTML"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html",
+    "href": "assignments/hw5/hw5.html",
+    "title": "Weekly Assignment #5",
+    "section": "",
+    "text": "ImportantSubmission Instructions\n\n\n\n\nDownload this hw5.qmd file from bCourse.\nSave the file in your assignments folder.\nFollow the instructions below to complete the assignment. Show your work for all calculations!\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it’s working.\nSubmit both the hw5.qmd and the hw5.html files to bCourse before the deadline\nMake sure your name appears in the “author” field in the YAML header above"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html#setup",
+    "href": "assignments/hw5/hw5.html#setup",
+    "title": "Weekly Assignment #5",
+    "section": "Setup",
+    "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# install libraries -- shouldn't need for this assignment\n# ---------\n# install.packages(\"tidyverse\")\n\n# load libraries\n# ---------\nlibrary(tidyverse)\nlibrary(here)"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html#question-1-free-throw-probability",
+    "href": "assignments/hw5/hw5.html#question-1-free-throw-probability",
+    "title": "Weekly Assignment #5",
+    "section": "Question 1: Free Throw Probability",
+    "text": "Question 1: Free Throw Probability\nLisa makes free throws 75% of the time, and shoots eight free throws at the end of practice.\na) By hand: what is the probability that she will make exactly five free throws?\nShow your work here (you can use LaTeX math notation or just write it out):\n\n# You can verify your hand calculation with R code if you'd like\n\nYour final answer:\nb) By hand: what is the probability that she will make at least seven free throws?\nShow your work here:\n\n# You can verify your hand calculation with R code if you'd like\n\nYour final answer:\nc) In R: what is the probability that she will make between four and six free throws?\n\n# Your code here\n\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html#question-2-exam-performance",
+    "href": "assignments/hw5/hw5.html#question-2-exam-performance",
+    "title": "Weekly Assignment #5",
+    "section": "Question 2: Exam Performance",
+    "text": "Question 2: Exam Performance\nJavier takes a 50 question exam. In practice exams, he has answered each question correctly 80% of the time, and his likelihood of answering one question correctly is independent of whether he answers any other question correctly.\na) What is the mean number of questions he will get correct on the exam? What is the standard deviation of the number of questions he will get correct?\nShow your work here:\n\n# Your code here\n\nYour answer here:\nb) A student needs to get 70% of questions correct to pass the exam. What is the probability that he will pass the exam? (use R to answer)\n\n# Your code here\n\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html#question-3-height-and-z-scores",
+    "href": "assignments/hw5/hw5.html#question-3-height-and-z-scores",
+    "title": "Weekly Assignment #5",
+    "section": "Question 3: Height and Z-scores",
+    "text": "Question 3: Height and Z-scores\nAndre is selected from a population where height is distributed normally with mean 69 inches and standard deviation 3 inches. The individual is measured with a height of 75 inches.\na) Calculate the z-score of Andre’s height.\nShow your work here:\n\n# Your code here\n\nYour answer here:\nb) Just from the z-score, can you tell whether Andre’s height is above the 95th percentile of height? Why or why not? How about the 97th percentile of height? Why or why not?\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html#question-4-vehicle-speeds-on-i-5",
+    "href": "assignments/hw5/hw5.html#question-4-vehicle-speeds-on-i-5",
+    "title": "Weekly Assignment #5",
+    "section": "Question 4: Vehicle Speeds on I-5",
+    "text": "Question 4: Vehicle Speeds on I-5\nAssume the speed of vehicles along a stretch of I-5 has an approximately normal distribution with a mean of 71 mph and a standard deviation of 8 mph.\na) The current speed limit is 65 mph. What is the proportion of vehicles less than or equal to the speed limit?\n\n# Your code here\n\nYour answer here:\nb) What proportion of the vehicles would be going less than or equal to 50 mph?\n\n# Your code here\n\nYour answer here:\nc) A new speed limit will be initiated such that approximately 10% of vehicles will be over the speed limit. What is the new speed limit based on this criterion?\n\n# Your code here\n\nYour answer here:\nd) In what way do you think the actual distribution of speeds differs from a normal distribution?\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html#question-5-ncaa-sat-requirements",
+    "href": "assignments/hw5/hw5.html#question-5-ncaa-sat-requirements",
+    "title": "Weekly Assignment #5",
+    "section": "Question 5: NCAA SAT Requirements",
+    "text": "Question 5: NCAA SAT Requirements\nThe NCAA requires Division I athletes to score over 820 on the combined math and verbal SAT exam to compete in their first college year. The SAT scores of 2003 were approximately normal with mean 1026 and standard deviation 209.\na) What proportion of all students would be NCAA qualifiers (SAT &gt; 820)?\n\n# Your code here\n\nYour answer here:\nb) The NCAA defines a “partial qualifier” eligible to practice and receive an athletic scholarship, but not to compete, as a combined SAT score over 720 but less than or equal to 820. What proportion of all students who take the SAT would be partial qualifiers?\n\n# Your code here\n\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw5/hw5.html#question-6-height-comparisons-between-men-and-women",
+    "href": "assignments/hw5/hw5.html#question-6-height-comparisons-between-men-and-women",
+    "title": "Weekly Assignment #5",
+    "section": "Question 6: Height Comparisons Between Men and Women",
+    "text": "Question 6: Height Comparisons Between Men and Women\nSuppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.\na) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n\nYour answer here:\nb) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?\n\n# Your code here\n\nYour answer here:\n\n\n\n\n\n\n\nTipBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors (or you’ve indicated hand calculations)\nYou’ve shown your work for all probability calculations\nYou’ve answered all written response questions\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting both hw5.qmd and hw5.html files to bCourse"
+  },
+  {
+    "objectID": "slides/week6.html#in-class-lab-3",
+    "href": "slides/week6.html#in-class-lab-3",
+    "title": "Week 6",
+    "section": "In-class Lab #3",
+    "text": "In-class Lab #3\nLet’s practice some of what we learned today:\n\nDownload lab3.qmd from bCourse under “assignments” &gt; “Lab #3”\nPlace lab3.qmd in your labs folder.\nUse the Explorer button on the left to find and open lab3.qmd\nLet’s work through it together!"
+  },
+  {
+    "objectID": "slides/week6.html#paper-proposal-5",
+    "href": "slides/week6.html#paper-proposal-5",
+    "title": "Week 6",
+    "section": "Paper Proposal (5%)",
+    "text": "Paper Proposal (5%)\nA two-page double-spaced proposal for your final paper is due on bCourses by Thursday, February 26 at 11:59 PM. Here’s an example.\nYour proposal should include:\n\nResearch question - What are you trying to answer?\nWhy it matters - Why should we care about this question?\nHypotheses - What do you think the answer is, and why?\nData source - What dataset will you use?\nKey variables - Identify your independent and dependent variables\n\nNote: You do not need to discuss statistical techniques at this point."
+  },
+  {
+    "objectID": "slides/week6.html#random-variables-and-distributions",
+    "href": "slides/week6.html#random-variables-and-distributions",
+    "title": "Week 6",
+    "section": "Random Variables and Distributions",
+    "text": "Random Variables and Distributions\nConnect sample spaces and probability to data:\nA random variable assigns a number to each outcome of a random process\n\nFor example, we code “voted” as 1 and “didn’t vote” as 0\n\nA probability distribution tells us how likely each value is\n\nDiscrete outcomes: a probability for each possible value (a Probability Mass Function (PMF))\nContinuous outcomes: probabilities come from areas under a curve (a Probability Density Function (PDF))"
   }
 ]

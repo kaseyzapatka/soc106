@@ -206,7 +206,11 @@
 </section>
 <section id="housekeeping" class="slide level2 smaller">
 <h2>Housekeeping</h2>
-<p>[[<strong>ADD IT IN LATER</strong>]]</p>
+<p><strong>HW 3:</strong> Great job overall. Two main comments:</p>
+<ul>
+<li>Make sure you are removing missing in your marginal frequency calculations (Q1: <code>filter(!is.na(degree), !is.na(marital)) |&gt;</code>)</li>
+<li>Make sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)</li>
+</ul>
 </section>
 <section id="where-we-are-in-the-course" class="slide level2 smaller">
 <h2>Where We Are in the Course</h2>
@@ -277,17 +281,17 @@
 
 <img data-src="week6_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><strong>Same event, different scale:</strong> one person → a small sample → a large sample. We’ll build up to this step by step.</p>
 </section>
-<section id="quick-review-random-variables-and-distributions" class="slide level2 smaller">
-<h2>Quick Review: Random Variables and Distributions</h2>
-<p>Last week we talked about sample spaces and probability. Now we connect those ideas to data:</p>
+<section id="random-variables-and-distributions" class="slide level2 smaller">
+<h2>Random Variables and Distributions</h2>
+<p>Connect sample spaces and probability to data:</p>
 <p>A <strong>random variable</strong> assigns a number to each outcome of a random process</p>
 <ul>
 <li>For example, we code “voted” as 1 and “didn’t vote” as 0</li>
 </ul>
 <p>A <strong>probability distribution</strong> tells us how likely each value is</p>
 <ul>
-<li>For discrete outcomes: a probability for each possible value (a <strong>PMF</strong>)</li>
-<li>For continuous outcomes: probabilities come from areas under a curve (a <strong>PDF</strong>)</li>
+<li>Discrete outcomes: a probability for each possible value (a <strong>Probability Mass Function (PMF)</strong>)</li>
+<li>Continuous outcomes: probabilities come from areas under a curve (a <strong>Probability Density Function (PDF)</strong>)</li>
 </ul>
 </section>
 <section id="r-functions-for-distributions" class="slide level2 smaller">
@@ -312,16 +316,22 @@
 <tr class="odd">
 <td><strong><code>d</code></strong></td>
 <td><strong>d</strong>ensity / probability at a point</td>
-<td>“Probability of <strong>exactly</strong> this value?”</td>
+<td>“Probability of <strong>exactly</strong> k successes?”</td>
 <td><code>dbinom(6, size = 10, prob = 0.6)</code></td>
 </tr>
 <tr class="even">
-<td><strong><code>p</code></strong></td>
-<td>cumulative <strong>p</strong>robability</td>
-<td>“Probability of <strong>at most</strong> this value?”</td>
+<td><strong><code>p</code></strong> (Binomial)</td>
+<td>cumulative count probability</td>
+<td>“Probability of <strong>at most</strong> k successes in n trials?”</td>
 <td><code>pbinom(6, size = 10, prob = 0.6)</code></td>
 </tr>
 <tr class="odd">
+<td><strong><code>p</code></strong> (Normal)</td>
+<td>cumulative area probability</td>
+<td>“Proportion of values <strong>at or below</strong> x?”</td>
+<td><code>pnorm(65, mean = 71, sd = 8)</code></td>
+</tr>
+<tr class="even">
 <td><strong><code>q</code></strong></td>
 <td><strong>q</strong>uantile (inverse of <code>p</code>)</td>
 <td>“What value has this <strong>percentile</strong>?”</td>
@@ -393,16 +403,16 @@
 <h2>Bernoulli: Sample Statistics vs.&nbsp;Model Parameters</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
 <th></th>
-<th>From data (what we compute)</th>
-<th>From the model (what we assume)</th>
+<th>From data<br>(what we compute)</th>
+<th>From the model<br>(what we assume)</th>
 <th>Voting example</th>
 </tr>
 </thead>
@@ -511,16 +521,16 @@
 <h2>Binomial: Sample Statistics vs.&nbsp;Model Parameters</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
 <th></th>
-<th>From data (what we compute)</th>
-<th>From the model (what we assume)</th>
+<th>From data<br>(what we compute)</th>
+<th>From the model<br>(what we assume)</th>
 <th>Voting example (<span class="math inline">\(n = 10\)</span>)</th>
 </tr>
 </thead>
@@ -623,7 +633,7 @@
 <section id="computing-normal-probabilities-in-r" class="slide level2 smaller">
 <h2>Computing Normal Probabilities in R</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Between two values</a></li><li><a href="#tabset-2-2">At most k</a></li><li><a href="#tabset-2-3">More than k</a></li><li><a href="#tabset-2-4">Percentile cutoff</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Between two values</a></li><li><a href="#tabset-2-2">At most</a></li><li><a href="#tabset-2-3">More than</a></li><li><a href="#tabset-2-4">Percentile cutoff</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <p>What’s the probability of observing <strong>between 55 and 65</strong> voters?</p>
@@ -725,7 +735,7 @@
 <h2>Practice: Z-Scores and Normal Probabilities</h2>
 <p>These examples are similar to what you’ll see on HW #5. Let’s work through them together.</p>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Z-score by hand</a></li><li><a href="#tabset-3-2">pnorm(): area to the left</a></li><li><a href="#tabset-3-3">1 - pnorm(): area to the right</a></li><li><a href="#tabset-3-4">pnorm() - pnorm(): between values</a></li><li><a href="#tabset-3-5">qnorm(): find the cutoff</a></li><li><a href="#tabset-3-6">Comparing two distributions</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Z-score by hand</a></li><li><a href="#tabset-3-2">pnorm(): area to the left</a></li><li><a href="#tabset-3-3">1 - pnorm(): area to the right</a></li><li><a href="#tabset-3-4">pnorm() - pnorm(): between values</a></li><li><a href="#tabset-3-5">qnorm(): find the cutoff</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
 <p><strong>Andre’s height is 75 inches.</strong> Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.</p>
@@ -780,26 +790,6 @@
 </div>
 </div>
 <p>The new speed limit should be about <strong>81 mph</strong> — 90% of vehicles travel at or below this speed.</p>
-</div>
-</div>
-<div id="tabset-3-6">
-<p><strong>Women’s heights</strong> are Normal(64, 3) and <strong>men’s heights</strong> are Normal(70, 3). What’s the probability of being between 68 and 70 inches tall for each group?</p>
-<div class="fragment">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="co"># P(68 ≤ height ≤ 70) for each group</span></span>
-<span id="cb22-2"><a></a>p_men   <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">68</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
-<span id="cb22-3"><a></a>p_women <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="at">mean =</span> <span class="dv">64</span>, <span class="at">sd =</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">68</span>, <span class="at">mean =</span> <span class="dv">64</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
-<span id="cb22-4"><a></a></span>
-<span id="cb22-5"><a></a>p_men <span class="sc">-</span> p_women   <span class="co"># difference in proportions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1790464</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>p_men <span class="sc">/</span> p_women   <span class="co"># relative risk ratio</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.615301</code></pre>
-</div>
-</div>
-<p>Same R functions, just applied to <strong>two different distributions</strong> — then we compare the results.</p>
 </div>
 </div>
 </div>
@@ -888,7 +878,7 @@
 <h2>The Ladder, Visually</h2>
 <p>One trial → many trials → smooth approximation, all with <span class="math inline">\(\pi = 0.6\)</span>:</p>
 
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><strong>Same event, three levels of analysis.</strong> This is the logic that powers the rest of the course.</p>
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><strong>Same event, three levels of analysis.</strong> This is the logic that powers the rest of the course.</p>
 </section>
 <section id="key-takeaways" class="slide level2 smaller">
 <h2>Key Takeaways</h2>
@@ -921,7 +911,29 @@
 <p><strong>Due</strong>: Thursday, March 5 by 11:59 PM</p>
 <p><strong>Format</strong>: Similar to last week’s weekly assignment: mostly a problem set</p>
 <p><strong>Important</strong>: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses</p>
-<p><strong>Rest of class</strong>: Work on HW in groups</p>
+</section>
+<section id="paper-proposal-5" class="slide level2 smaller">
+<h2>Paper Proposal (5%)</h2>
+<p>A <strong>two-page double-spaced proposal</strong> for your final paper is due on bCourses by <strong>Thursday, February 26 at 11:59 PM</strong>. Here’s <a href="https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html">an example</a>.</p>
+<p><strong>Your proposal should include:</strong></p>
+<ol type="1">
+<li><strong>Research question</strong> - What are you trying to answer?</li>
+<li><strong>Why it matters</strong> - Why should we care about this question?</li>
+<li><strong>Hypotheses</strong> - What do you think the answer is, and why?</li>
+<li><strong>Data source</strong> - What dataset will you use?</li>
+<li><strong>Key variables</strong> - Identify your independent and dependent variables</li>
+</ol>
+<p><em>Note: You do not need to discuss statistical techniques at this point.</em></p>
+</section>
+<section id="in-class-lab-3" class="slide level2 smaller">
+<h2>In-class Lab #3</h2>
+<p>Let’s practice some of what we learned today:</p>
+<ol type="1">
+<li>Download <code>lab3.qmd</code> from bCourse under “assignments” &gt; “Lab #3”</li>
+<li>Place <code>lab3.qmd</code> in your <code>labs</code> folder.</li>
+<li>Use the <code>Explorer</code> button on the left to find and open <code>lab3.qmd</code></li>
+<li>Let’s work through it together!</li>
+</ol>
 
 
 </section></section>

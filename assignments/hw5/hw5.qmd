@@ -53,31 +53,11 @@ library(here)
 
 **Lisa makes free throws 75% of the time, and shoots eight free throws at the end of practice.**
 
-**a) By hand: what is the probability that she will make exactly five free throws?**
+**a) In words, describe what you would need to calculate to find the probability that Lisa makes at least seven free throws. What are the values of n and π, and which outcomes do you need to add up?**
 
-*Show your work here (you can use LaTeX math notation or just write it out):*
+*Your answer here:*
 
-```{r}
-
-# You can verify your hand calculation with R code if you'd like
-
-```
-
-*Your final answer:*
-
-**b) By hand: what is the probability that she will make at least seven free throws?**
-
-*Show your work here:*
-
-```{r}
-
-# You can verify your hand calculation with R code if you'd like
-
-```
-
-*Your final answer:*
-
-**c) In R: what is the probability that she will make between four and six free throws?**
+**b) In R: what is the probability that she will make between four and six free throws?**
 
 ```{r}
 
@@ -175,10 +155,6 @@ library(here)
 
 *Your answer here:*
 
-**d) In what way do you think the actual distribution of speeds differs from a normal distribution?**
-
-*Your answer here:*
-
 ------------------------------------------------------------------------
 
 ## Question 5: NCAA SAT Requirements
@@ -204,34 +180,6 @@ library(here)
 ```
 
 *Your answer here:*
-
-------------------------------------------------------------------------
-
-## Question 6: Height Comparisons Between Men and Women
-
-**Suppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.**
-
-**a) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?**
-
-```{r}
-
-# Your code here
-
-```
-
-*Your answer here:*
-
-**b) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?**
-
-```{r}
-
-# Your code here
-
-```
-
-*Your answer here:*
-
-------------------------------------------------------------------------
 
 ::: callout-tip
 ## Before You Submit
