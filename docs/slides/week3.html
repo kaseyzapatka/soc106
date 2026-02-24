@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="dcterms.date" content="2026-02-03">
   <title>Sociology 106 – Week 3</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="slides.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -418,7 +418,7 @@
 <p>Start with your dataframe and <code>ggplot()</code>. This creates an empty canvas.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -433,7 +433,7 @@
 <p>Add <code>aes()</code> to connect columns to visual properties (x, y, color). Now we have axes.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> cty, <span class="at">y =</span> hwy))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -448,8 +448,8 @@
 <p>Add a <code>geom_point()</code> to display the data as points. Use <code>+</code> to add layers.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">geom_point</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -464,9 +464,9 @@
 <p>Add a <code>geom_smooth()</code> to run a regression line through the points</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span></span>
 <span id="cb4-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -539,14 +539,14 @@
 <p>Frequency of marital status in attain:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> marital)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> marital)) <span class="sc">+</span></span>
 <span id="cb5-2"><a></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"#0d467cff"</span>) <span class="sc">+</span></span>
 <span id="cb5-3"><a></a>  <span class="fu">labs</span>(</span>
 <span id="cb5-4"><a></a>    <span class="at">title =</span> <span class="st">"Marital Status Distribution"</span>,</span>
 <span id="cb5-5"><a></a>    <span class="at">x =</span> <span class="st">"Marital Status"</span>,</span>
 <span id="cb5-6"><a></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
 <span id="cb5-7"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb5-8"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -578,14 +578,14 @@
 <p>It defaults to 30.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
 <span id="cb6-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"#0d467cff"</span>) <span class="sc">+</span></span>
 <span id="cb6-3"><a></a>  <span class="fu">labs</span>(</span>
 <span id="cb6-4"><a></a>    <span class="at">title =</span> <span class="st">"Age Distribution"</span>,</span>
 <span id="cb6-5"><a></a>    <span class="at">x =</span> <span class="st">"Age"</span>,</span>
 <span id="cb6-6"><a></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
 <span id="cb6-7"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb6-8"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -600,7 +600,7 @@
 <p>You can override <code>geom_histogram()</code>’s default by specifying the number of <code>bins()</code>. Here we set it to <code>100</code>.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
 <span id="cb7-2"><a></a>  <span class="co"># set bins to 100</span></span>
 <span id="cb7-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>, <span class="at">fill =</span> <span class="st">"#7B2C2F"</span>) <span class="sc">+</span></span>
 <span id="cb7-4"><a></a>  <span class="fu">labs</span>(</span>
@@ -608,7 +608,7 @@
 <span id="cb7-6"><a></a>    <span class="at">x =</span> <span class="st">"Age"</span>,</span>
 <span id="cb7-7"><a></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
 <span id="cb7-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb7-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -623,7 +623,7 @@
 <p>Alternatively, you can make the bins wider to include more observations. Here, we set the <code>binwidth = 10</code>, which makes the bins span 10 units.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> attain, <span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
 <span id="cb8-2"><a></a>  <span class="co"># set binwidth to 10</span></span>
 <span id="cb8-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"#4CBB17"</span>) <span class="sc">+</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">labs</span>(</span>
@@ -631,7 +631,7 @@
 <span id="cb8-6"><a></a>    <span class="at">x =</span> <span class="st">"Age"</span>,</span>
 <span id="cb8-7"><a></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
 <span id="cb8-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb8-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -663,7 +663,7 @@
 <p>Here’s a look at unemployment rates over time. Note that if we have data where we have average values of <code>Y</code> for ordered values of <code>X</code>, we can also use line charts.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>economics <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>economics <span class="sc">|&gt;</span> </span>
 <span id="cb9-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> unemploy)) <span class="sc">+</span> </span>
 <span id="cb9-3"><a></a><span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb9-4"><a></a>  <span class="fu">labs</span>(</span>
@@ -671,7 +671,7 @@
 <span id="cb9-6"><a></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
 <span id="cb9-7"><a></a>    <span class="at">y =</span> <span class="st">"Unemployment count"</span></span>
 <span id="cb9-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb9-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -702,7 +702,7 @@
 <p>Let’s look at the relationship between the age at which an individual was married and the age when their child was born.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>attain <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>attain <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> agewed, <span class="at">y =</span> agekdbrn)) <span class="sc">+</span> </span>
 <span id="cb10-3"><a></a><span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb10-4"><a></a>  <span class="fu">labs</span>(</span>
@@ -710,7 +710,7 @@
 <span id="cb10-6"><a></a>    <span class="at">x =</span> <span class="st">"Age married"</span>,</span>
 <span id="cb10-7"><a></a>    <span class="at">y =</span> <span class="st">"Age child was born"</span></span>
 <span id="cb10-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb10-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -741,7 +741,7 @@
 <p>In this case, we are looking at the distribution of income by sex.</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>attain <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>attain <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> rincom91)) <span class="sc">+</span> </span>
 <span id="cb11-3"><a></a><span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
 <span id="cb11-4"><a></a>  <span class="fu">labs</span>(</span>
@@ -749,7 +749,7 @@
 <span id="cb11-6"><a></a>    <span class="at">x =</span> <span class="st">"Sex"</span>,</span>
 <span id="cb11-7"><a></a>    <span class="at">y =</span> <span class="st">"Income"</span></span>
 <span id="cb11-8"><a></a>  ) <span class="sc">+</span> </span>
-<span id="cb11-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-9"><a></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -987,7 +987,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1099,13 +1099,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
