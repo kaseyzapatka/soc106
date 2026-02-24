@@ -861,4 +861,26 @@ Today is not isolated content. It is core infrastructure for the rest of SOC 106
 
 **Important**: You will use a little bit of R, so please submit your assignment (and your code!) on bCourses
 
-**Rest of class**: Work on HW in groups
+
+## Paper Proposal (5%) {.smaller}
+
+A **two-page double-spaced proposal** for your final paper is due on bCourses by **Thursday, February 26 at 11:59 PM**. Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html). 
+
+**Your proposal should include:**
+
+1. **Research question** - What are you trying to answer?
+2. **Why it matters** - Why should we care about this question?
+3. **Hypotheses** - What do you think the answer is, and why?
+4. **Data source** - What dataset will you use?
+5. **Key variables** - Identify your independent and dependent variables
+
+*Note: You do not need to discuss statistical techniques at this point.*
+
+## In-class Lab #3 {.smaller}
+
+Let's practice some of what we learned today:
+
+1. Download `lab3.qmd` from bCourse under "assignments" > "Lab #3"
+2. Place `lab3.qmd` in your `labs` folder. 
+3. Use the `Explorer` button on the left to find and open `lab3.qmd`
+4. Let's work through it together!
