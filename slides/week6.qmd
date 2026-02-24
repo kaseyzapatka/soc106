@@ -683,9 +683,39 @@ These examples are similar to what you'll see on HW #5. Let's work through them 
 **Andre's height is 75 inches.** Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.
 
 ::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
 $$z = \frac{75 - 69}{3} = 2.0$$
 
-Andre is **2 standard deviations above the mean**. By the 68-95-99.7 rule, he is taller than about 97.5% of the population.
+Andre is **2 standard deviations above the mean**. By the 68-95-99.7 rule, he is taller than about 97.5% of the population — only **2.5%** of people are taller.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+mu <- 69; sigma <- 3
+ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.2) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", xlim = c(75, mu + 4*sigma),
+                fill = "#E15759", alpha = 0.5) +
+  geom_vline(xintercept = 75, linetype = "dashed", color = "#E15759", linewidth = 1) +
+  annotate("text", x = 78, y = 0.055, label = "2.5%", size = 5,
+           color = "#E15759", fontface = "bold") +
+  annotate("text", x = 74.5, y = 0.115, label = "75 in\n(z = 2.0)", size = 3.5,
+           color = "#E15759", hjust = 1) +
+  labs(x = "Height (inches)", y = NULL, title = "Normal(69, 3)") +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
 :::
 
 ### pnorm(): area to the left
@@ -693,12 +723,42 @@ Andre is **2 standard deviations above the mean**. By the 68-95-99.7 rule, he is
 **Vehicle speeds on I-5** are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?
 
 ::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 pnorm(65, mean = 71, sd = 8)
 ```
 
 Only about **23%** of vehicles are going at or below 65 mph.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+mu <- 71; sigma <- 8
+ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.2) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", xlim = c(mu - 4*sigma, 65),
+                fill = "#4E79A7", alpha = 0.5) +
+  geom_vline(xintercept = 65, linetype = "dashed", color = "#E15759", linewidth = 1) +
+  annotate("text", x = 52, y = 0.02, label = "23%", size = 5,
+           color = "#4E79A7", fontface = "bold") +
+  annotate("text", x = 66, y = 0.043, label = "65 mph", size = 3.5,
+           color = "#E15759", hjust = 0) +
+  labs(x = "Speed (mph)", y = NULL, title = expression(P(Y <= 65) == 0.227)) +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
 :::
 
 ### 1 - pnorm(): area to the right
@@ -706,12 +766,42 @@ Only about **23%** of vehicles are going at or below 65 mph.
 **SAT scores** are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?
 
 ::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 1 - pnorm(820, mean = 1026, sd = 209)
 ```
 
 About **84%** of students score above 820.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+mu <- 1026; sigma <- 209
+ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.2) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", xlim = c(820, mu + 4*sigma),
+                fill = "#4E79A7", alpha = 0.5) +
+  geom_vline(xintercept = 820, linetype = "dashed", color = "#E15759", linewidth = 1) +
+  annotate("text", x = 1150, y = 0.001, label = "84%", size = 5,
+           color = "#4E79A7", fontface = "bold") +
+  annotate("text", x = 850, y = 0.0017, label = "820", size = 3.5,
+           color = "#E15759", hjust = 0) +
+  labs(x = "SAT Score", y = NULL, title = "P(Y > 820) = 0.838") +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
 :::
 
 ### pnorm() - pnorm(): between values
@@ -719,12 +809,45 @@ About **84%** of students score above 820.
 Using the same SAT distribution, what proportion score **between 720 and 820** (partial qualifiers)?
 
 ::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 pnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)
 ```
 
 About **9%** of students fall in this range.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+mu <- 1026; sigma <- 209
+ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", fill = "#4E79A7", alpha = 0.2) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", xlim = c(720, 820),
+                fill = "#E15759", alpha = 0.5) +
+  geom_vline(xintercept = c(720, 820), linetype = "dashed",
+             color = "#E15759", linewidth = 0.8) +
+  annotate("text", x = 770, y = 0.001, label = "9%", size = 5,
+           color = "#E15759", fontface = "bold") +
+  annotate("text", x = 715, y = 0.0017, label = "720", size = 3.5,
+           color = "#E15759", hjust = 1) +
+  annotate("text", x = 825, y = 0.0017, label = "820", size = 3.5,
+           color = "#E15759", hjust = 0) +
+  labs(x = "SAT Score", y = NULL, title = "P(720 \u2264 Y \u2264 820) = 0.091") +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
 :::
 
 ### qnorm(): find the cutoff
@@ -732,12 +855,48 @@ About **9%** of students fall in this range.
 **Vehicle speeds** again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?
 
 ::: {.fragment}
+::::: columns
+::: {.column width="50%"}
+
 ```{r}
 #| echo: true
 qnorm(0.90, mean = 71, sd = 8)
 ```
 
 The new speed limit should be about **81 mph** — 90% of vehicles travel at or below this speed.
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+mu <- 71; sigma <- 8
+cutoff <- qnorm(0.90, mean = mu, sd = sigma)
+ggplot(tibble(x = c(mu - 4*sigma, mu + 4*sigma)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                linewidth = 0.8, color = "#4E79A7") +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", xlim = c(mu - 4*sigma, cutoff),
+                fill = "#4E79A7", alpha = 0.4) +
+  stat_function(fun = dnorm, args = list(mean = mu, sd = sigma),
+                geom = "area", xlim = c(cutoff, mu + 4*sigma),
+                fill = "#E15759", alpha = 0.4) +
+  geom_vline(xintercept = cutoff, linetype = "dashed",
+             color = "#E15759", linewidth = 1) +
+  annotate("text", x = 65, y = 0.025, label = "90%", size = 5,
+           color = "#4E79A7", fontface = "bold") +
+  annotate("text", x = 88, y = 0.012, label = "10%", size = 5,
+           color = "#E15759", fontface = "bold") +
+  annotate("text", x = cutoff + 0.5, y = 0.038,
+           label = paste0(round(cutoff, 1), " mph"),
+           size = 3.5, color = "#E15759", hjust = 0) +
+  labs(x = "Speed (mph)", y = NULL, title = "90th percentile cutoff") +
+  theme_minimal(base_size = 12) + theme(axis.text.y = element_blank())
+```
+
+:::
+:::::
 :::
 
 :::
