@@ -10,7 +10,7 @@ title: "Lecture Slides"
 - [Week 4: Summarizing distributions](week4.html)
 - [Week 5: Basics of probability theory](week5.html)
 - [Week 6: Probability models of distributions](week6.html)
-- Week 7: Sampling distributions
+- [Week 7: Sampling distributions](week7.html)
 - Week 8: Estimates and confidence intervals
 - Week 9: Hypothesis testing and power
 - Week 10: Spring Recess – no class

@@ -1,5 +1,5 @@
 ---
-title: "Weekly Assignment #6 — Key"
+title: "Weekly Assignment #6"
 author: "Your Name Here"  # Replace with your name
 date: 03/12/2026
 date-format: long
@@ -51,42 +51,37 @@ The University of California system reports that **22% of UC students** are firs
 
 **a) In 1–2 sentences each, describe what the *population distribution*, the *sample (data) distribution*, and the *sampling distribution* each refer to in this scenario. No calculations needed.**
 
-*Answer:*
+*Your answer here:*
 
--   **Population distribution**: the distribution of first-generation status among all UC students, where 22% are first-generation.
--   **Sample (data) distribution**: the distribution of first-generation status among the 80 fellowship recipients we actually observed (8 of 80, or 10%, were first-generation).
--   **Sampling distribution**: the distribution of $\hat{p}$ — the proportion of first-generation students — that we would observe if we repeatedly drew random samples of 80 recipients from the UC student population. It describes how much $\hat{p}$ would vary from sample to sample under random selection.
+-   **Population distribution**:
+-   **Sample (data) distribution**:
+-   **Sampling distribution**:
 
 **b) Under random selection, what proportion of the 80 fellowship recipients would we *expect* to be first-generation students? Calculate the standard error of the sampling distribution of** $\hat{p}$ for $n = 80$. Show your work.
 
 ```{r}
 
-# standard error
-sqrt(0.22 * 0.78 / 80)
+# Your code here
+
 
 ```
 
-*Answer: Under random selection, we would expect* $\pi = 0.22$ of recipients (about 17–18 of 80) to be first-generation. The standard error is:
-
-$$SE(\hat{p}) = \sqrt{\frac{0.22 \times 0.78}{80}} \approx 0.046$$
+*Your answer here:*
 
 **c) The observed proportion is** $\hat{p} = 8/80 = 0.10$. How many standard errors is this from what we would expect under random selection? Also calculate the probability of observing a proportion this low or lower under random selection.
 
 ```{r}
 
-# z-score
-(0.10 - 0.22) / sqrt(0.22 * 0.78 / 80)
+# Your code here
 
-# probability of observing p-hat this low or lower
-pnorm(0.10, mean = 0.22, sd = sqrt(0.22 * 0.78 / 80))
 
 ```
 
-*Answer: The observed proportion is about **2.6 standard errors below** the expected value of 0.22. Under random selection, we would see a proportion this low or lower only about **0.5%** of the time.*
+*Your answer here:*
 
 **d) Based on your calculation in (c), is the observed proportion consistent with random selection? What might this pattern suggest?**
 
-*Answer: No — the observed proportion is 2.6 SEs below what we would expect if selection were random, and it would arise by chance less than 1% of the time. This pattern suggests that first-generation students may be systematically underrepresented in fellowship selection, possibly due to lower application rates, a lack of mentorship in the application process, or bias in the selection committee.*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -96,15 +91,15 @@ A team of researchers wants to study the relationship between neighborhood pover
 
 **a) Briefly explain how a *cluster sampling* design would work for this study. What is one advantage of cluster sampling compared to simple random sampling?**
 
-*Answer: In cluster sampling, the researchers would first divide the country into clusters (counties), then randomly select a subset of those counties, and then randomly sample households within the selected counties. One advantage is cost and feasibility: it is much cheaper to survey households concentrated in a few counties than to send interviewers to a truly random nationwide sample of households.*
+*Your answer here:*
 
 **b) The researchers decide to over-sample counties where poverty rates exceed 30% — drawing larger samples within those counties — so they have enough data to make comparisons within high-poverty areas. What type of sampling design is this, and what is the purpose of over-sampling this group?**
 
-*Answer: This is **stratified random sampling**, where counties are divided into strata based on poverty rate. The purpose of over-sampling high-poverty counties is to ensure that there are enough respondents within that stratum to draw precise inferences about health outcomes in high-poverty areas. Without over-sampling, high-poverty counties (which are relatively rare) might produce too few observations to analyze reliably.*
+*Your answer here:*
 
 **c) After collecting the data, the researchers find that households in rural counties were about half as likely to respond to the survey as households in urban counties. What is the appropriate statistical fix for this problem, and how does it work?**
 
-*Answer: The appropriate fix is to apply **sampling weights**. Households that were less likely to respond (rural) receive higher weights so that they represent not just themselves but the similar rural households who did not respond. Weights are set inversely proportional to the probability of selection/response, making the weighted sample representative of the full population.*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -114,48 +109,33 @@ Jury selection is a constitutional right, and courts have found that systematic 
 
 **a) State the population parameter** $\pi$ and the sample statistic $\hat{p}$ for this scenario.
 
-*Answer: The population parameter is* $\pi = 0.28$ (the proportion of registered voters who are Latino). The sample statistic is $\hat{p} = 0.21$ (the proportion of jury summons that went to Latino residents).
+*Your answer here:*
 
 **b) Assuming jury summons are issued randomly, calculate the mean and standard error of the sampling distribution of** $\hat{p}$.
 
 ```{r}
 
-# mean of sampling distribution
-pi  <- 0.28
-n   <- 200
+# Your code here
 
-mu_phat <- pi
-mu_phat
-
-# standard error
-se_phat <- sqrt(pi * (1 - pi) / n)
-se_phat
 
 ```
 
-*Answer:*
-
-$$\mu_{\hat{p}} = 0.28 \qquad SE(\hat{p}) = \sqrt{\frac{0.28 \times 0.72}{200}} \approx 0.032$$
+*Your answer here:*
 
 **c) Calculate how many standard errors the observed proportion (**$\hat{p} = 0.21$) is from what we would expect under random selection. Then calculate the probability of observing a proportion this low or lower if jury summons were truly issued at random.
 
 ```{r}
 
-# z-score (how many SEs below the expected value?)
-p_hat_obs <- 0.21
-z <- (p_hat_obs - mu_phat) / se_phat
-z
+# Your code here
 
-# probability of observing p-hat this low or lower
-pnorm(p_hat_obs, mean = mu_phat, sd = se_phat)
 
 ```
 
-*Answer: The observed proportion is about **2.2 standard errors below** the expected value. Under random selection, the probability of observing* $\hat{p} \leq 0.21$ is approximately **1.4%** — a fairly rare outcome.
+*Your answer here:*
 
 **d) Interpret your results. Is this pattern consistent with random jury selection? What might explain the gap between the expected and observed proportions?**
 
-*Answer: A result this far from the expected value would occur only about 1–2% of the time if summons were truly random. This is strong evidence that Latino residents are being systematically underrepresented in this county's jury pool. Possible explanations include biased address lists used to generate summons (which may miss Latino neighborhoods), higher rates of disqualification among Latino residents (e.g., non-citizenship), or other administrative factors that produce non-random outcomes.*
+*Your answer here:*
 
 ------------------------------------------------------------------------
 
