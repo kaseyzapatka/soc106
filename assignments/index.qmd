@@ -9,3 +9,4 @@ title: " "
 ## Paper proposal examples
 
 - [01-Paper proposal example](paper/01_proposal.html)
+- [02-Bibliography example](paper/02_bibliography.html)

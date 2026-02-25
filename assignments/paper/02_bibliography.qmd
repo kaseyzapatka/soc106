@@ -1,0 +1,26 @@
+---
+title: "Annotated Bibliography Example"
+author: "Your Name Here"
+date: "02/26/2026"
+format:
+  html:
+    toc: false
+    embed-resources: true
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 12pt
+    linestretch: 1
+---
+
+## Research Question
+
+How have changes in family structure affected inequality (as measured by parental socioeconomic status) in the amount of total parental childcare time received by children?
+
+---
+
+**Citation**: McLanahan, Sara. 2004. "Diverging Destinies: How Children are Faring Under the Second Demographic Transition." *Demography*. 41(4):607-627.
+
+**Summarize the article:** In this article, Sara McLanahan argues that, in the last forty years, there has been increasing inequality in the resources available to children, such that children of highly-educated mothers have received more resources from their parents and children of less-educated mothers have received less resources from their parents. McLanahan highlights several factors that contribute to this growing disparity, including the rise of employment among highly-educated mothers, the rise in single motherhood among less-educated mothers, and the weakening of welfare programs to support poor and/or single mothers.
+
+**How this is related to my work:** This article is relevant for my topic because some of the factors McLanahan mentions may affect inequality in childcare time received by children. Although mothers perform more childcare than fathers, fathers do perform significant childcare. Therefore, if less-educated mothers are more likely to be single, then children of less-educated mothers should receive less childcare simply by virtue of there being fewer parents to perform childcare. However, this effect may be counteracted by highly-educated mothers working more, which may mean they have less time for childcare.
