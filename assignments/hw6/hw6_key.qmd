@@ -57,7 +57,7 @@ The University of California system reports that **22% of UC students** are firs
 -   **Sample (data) distribution**: the distribution of first-generation status among the 80 fellowship recipients we actually observed (8 of 80, or 10%, were first-generation).
 -   **Sampling distribution**: the distribution of $\hat{p}$ — the proportion of first-generation students — that we would observe if we repeatedly drew random samples of 80 recipients from the UC student population. It describes how much $\hat{p}$ would vary from sample to sample under random selection.
 
-**b) Under random selection, what proportion of the 80 fellowship recipients would we *expect* to be first-generation students? Calculate the standard error of the sampling distribution of $\hat{p}$ for $n = 80$. Show your work.**
+**b) Under random selection, what proportion of the 80 fellowship recipients would we *expect* to be first-generation students? Calculate the standard error of the sampling distribution of** $\hat{p}$ for $n = 80$. Show your work.
 
 ```{r}
 
@@ -66,11 +66,11 @@ sqrt(0.22 * 0.78 / 80)
 
 ```
 
-*Answer: Under random selection, we would expect $\pi = 0.22$ of recipients (about 17–18 of 80) to be first-generation. The standard error is:*
+*Answer: Under random selection, we would expect* $\pi = 0.22$ of recipients (about 17–18 of 80) to be first-generation. The standard error is:
 
 $$SE(\hat{p}) = \sqrt{\frac{0.22 \times 0.78}{80}} \approx 0.046$$
 
-**c) The observed proportion is $\hat{p} = 8/80 = 0.10$. How many standard errors is this from what we would expect under random selection?**
+**c) The observed proportion is** $\hat{p} = 8/80 = 0.10$. How many standard errors is this from what we would expect under random selection? Also calculate the probability of observing a proportion this low or lower under random selection.
 
 ```{r}
 
@@ -112,11 +112,11 @@ A team of researchers wants to study the relationship between neighborhood pover
 
 Jury selection is a constitutional right, and courts have found that systematic underrepresentation of racial groups violates the Equal Protection Clause. In a county in Texas, **28% of registered voters are Latino**. A civil rights organization examines records from the past year and finds that of **200 jury summons randomly issued**, only **42 went to Latino residents** ($\hat{p} = 42/200 = 0.21$).
 
-**a) State the population parameter $\pi$ and the sample statistic $\hat{p}$ for this scenario.**
+**a) State the population parameter** $\pi$ and the sample statistic $\hat{p}$ for this scenario.
 
-*Answer: The population parameter is $\pi = 0.28$ (the proportion of registered voters who are Latino). The sample statistic is $\hat{p} = 0.21$ (the proportion of jury summons that went to Latino residents).*
+*Answer: The population parameter is* $\pi = 0.28$ (the proportion of registered voters who are Latino). The sample statistic is $\hat{p} = 0.21$ (the proportion of jury summons that went to Latino residents).
 
-**b) Assuming jury summons are issued randomly, calculate the mean and standard error of the sampling distribution of $\hat{p}$.**
+**b) Assuming jury summons are issued randomly, calculate the mean and standard error of the sampling distribution of** $\hat{p}$.
 
 ```{r}
 
@@ -137,7 +137,7 @@ se_phat
 
 $$\mu_{\hat{p}} = 0.28 \qquad SE(\hat{p}) = \sqrt{\frac{0.28 \times 0.72}{200}} \approx 0.032$$
 
-**c) Calculate how many standard errors the observed proportion ($\hat{p} = 0.21$) is from what we would expect under random selection. Then calculate the probability of observing a proportion this low or lower if jury summons were truly issued at random.**
+**c) Calculate how many standard errors the observed proportion (**$\hat{p} = 0.21$) is from what we would expect under random selection. Then calculate the probability of observing a proportion this low or lower if jury summons were truly issued at random.
 
 ```{r}
 
@@ -151,90 +151,11 @@ pnorm(p_hat_obs, mean = mu_phat, sd = se_phat)
 
 ```
 
-*Answer: The observed proportion is about **2.2 standard errors below** the expected value. Under random selection, the probability of observing $\hat{p} \leq 0.21$ is approximately **1.4%** — a fairly rare outcome.*
+*Answer: The observed proportion is about **2.2 standard errors below** the expected value. Under random selection, the probability of observing* $\hat{p} \leq 0.21$ is approximately **1.4%** — a fairly rare outcome.
 
 **d) Interpret your results. Is this pattern consistent with random jury selection? What might explain the gap between the expected and observed proportions?**
 
 *Answer: A result this far from the expected value would occur only about 1–2% of the time if summons were truly random. This is strong evidence that Latino residents are being systematically underrepresented in this county's jury pool. Possible explanations include biased address lists used to generate summons (which may miss Latino neighborhoods), higher rates of disqualification among Latino residents (e.g., non-citizenship), or other administrative factors that produce non-random outcomes.*
-
-------------------------------------------------------------------------
-
-## Question 4: Standard Error and Sample Size
-
-The American Community Survey reports that average annual household income in the United States is approximately $\mu = \$75{,}000$, with a standard deviation of $\sigma = \$50{,}000$.
-
-**a) You are designing a study to estimate average household income in your city. Calculate the standard error of $\bar{x}$ for sample sizes of $n = 25$, $n = 100$, and $n = 400$. Show your work.**
-
-```{r}
-
-sigma <- 50000
-
-# SE for each sample size
-se_25  <- sigma / sqrt(25)
-se_100 <- sigma / sqrt(100)
-se_400 <- sigma / sqrt(400)
-
-se_25
-se_100
-se_400
-
-```
-
-*Answer:*
-
-$$SE(n=25) = \frac{50{,}000}{\sqrt{25}} = \$10{,}000 \qquad SE(n=100) = \frac{50{,}000}{\sqrt{100}} = \$5{,}000 \qquad SE(n=400) = \frac{50{,}000}{\sqrt{400}} = \$2{,}500$$
-
-**b) What happens to the standard error each time you quadruple the sample size (from $n = 25$ to $n = 100$, and from $n = 100$ to $n = 400$)? Generalize: if you want to cut the SE in half, by how much must you increase $n$?**
-
-*Answer: Each time the sample size quadruples, the standard error is cut in half ($10{,}000 \to \$5{,}000 \to \$2{,}500$). This follows from $SE = \sigma/\sqrt{n}$: multiplying $n$ by 4 multiplies $\sqrt{n}$ by 2, dividing the SE by 2. **To halve the SE, you must quadruple the sample size.** Precision is expensive — each additional halving of uncertainty requires four times as many observations.*
-
-**c) Suppose you collect a sample of 100 households in your city. What is the probability that your sample mean exceeds $\$85{,}000$?**
-
-```{r}
-
-# P(x-bar > 85000) with n = 100
-1 - pnorm(85000, mean = 75000, sd = se_100)
-
-```
-
-*Answer: The probability that the sample mean exceeds $\$85{,}000$ is approximately **2.3%**. Although extreme sample means are possible, with $n = 100$ our estimate is precise enough that being $\$10{,}000$ above the true mean is quite unlikely.*
-
-------------------------------------------------------------------------
-
-## Question 5: Central Limit Theorem — Student Loan Debt
-
-According to data from the Federal Reserve, the average student loan balance among borrowers is $\mu = \$37{,}500$ with a standard deviation of $\sigma = \$25{,}000$. Suppose a researcher takes a random sample of **64 student loan borrowers**.
-
-**a) By the Central Limit Theorem, what is the sampling distribution of the sample mean $\bar{x}$? State the distribution and its parameters, and explain why the CLT applies here.**
-
-*Answer: By the CLT, $\bar{x} \sim N\!\left(37{,}500,\; \frac{25{,}000}{\sqrt{64}}\right) = N(37{,}500,\; 3{,}125)$. The CLT applies because even though student loan debt is likely right-skewed in the population, the sample size $n = 64 > 30$ is large enough that the sampling distribution of $\bar{x}$ is approximately Normal regardless of the population shape.*
-
-**b) What is the probability that the sample mean is below $\$33{,}000$?**
-
-```{r}
-
-mu    <- 37500
-sigma <- 25000
-n     <- 64
-se    <- sigma / sqrt(n)
-
-# P(x-bar < 33000)
-pnorm(33000, mean = mu, sd = se)
-
-```
-
-*Answer: There is approximately a **7.6%** chance that a sample of 64 borrowers yields a mean below $\$33{,}000$.*
-
-**c) What is the probability that the sample mean is between $\$35{,}000$ and $\$40{,}000$?**
-
-```{r}
-
-# P(35000 < x-bar < 40000)
-pnorm(40000, mean = mu, sd = se) - pnorm(35000, mean = mu, sd = se)
-
-```
-
-*Answer: There is approximately a **57.5%** chance that the sample mean falls between $\$35{,}000$ and $\$40{,}000$ — a bit more likely than not, since this range spans from 0.8 SEs below to 0.8 SEs above the true mean.*
 
 ------------------------------------------------------------------------
 
