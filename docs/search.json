@@ -340,14 +340,14 @@
     "href": "slides/week7.html#agenda",
     "title": "Week 7",
     "section": "Agenda",
-    "text": "Agenda\n\nDiscuss research paper proposals\nDiscuss annotated bibliography due March 19\nSampling\nSampling distributions\nCentral limit theorem\nLab time to work on hw"
+    "text": "Agenda\nAdmin discussion:\n\nResearch paper proposals and annotated bibliography\n\nStatistical content — three parts:\n\nPart 1: Sampling — from populations to data\nPart 2: Sampling distributions — statistics vary from sample to sample\nPart 3: The Central Limit Theorem — the key that unlocks inference"
   },
   {
     "objectID": "slides/week7.html#research-paper-proposals",
     "href": "slides/week7.html#research-paper-proposals",
     "title": "Week 7",
     "section": "Research Paper Proposals",
-    "text": "Research Paper Proposals\nOverall, great job—super interesting topics!\nI tried to give feedback in two areas:\n\nResearch design: How to construct variables of interest, what units of analysis may be most appropriate for your research question, other issues you may want to think about going forward\nWhat has been written in the academic literature on your topic\n\nSome people have questions that have had a lot written about them: this is a good sign that your question is important!"
+    "text": "Research Paper Proposals\nOverall, great job—super interesting topics!\nI tried to give feedback in two areas:\n\nResearch design: How to construct variables of interest, what units of analysis may be most appropriate, other issues you may want to think about going forward\nWhat has been written in the academic literature on your topic — some topics have been studied a lot, which is a good sign that your question is important!\n\nIf your question seems already answered: try a different data source, or look for related unanswered questions in paper conclusions. Happy to discuss in office hours!"
   },
   {
     "objectID": "slides/week7.html#research-paper-proposals-1",
@@ -361,7 +361,7 @@
     "href": "slides/week7.html#annotated-bibliography",
     "title": "Week 7",
     "section": "Annotated Bibliography",
-    "text": "Annotated Bibliography\nDue March 19\nIdentify ten scholarly sources\nFor each source: Discuss in 1-2 paragraphs how the source relates to your research question\n\nGood sources:Bad sources:\n\n\n\nArticles in academic journals\nAcademic books\nBook chapters from edited volumes\nNon-political reports from research centers / government agencies\n\n\n\n\nBlogs, internet / newspaper articles\nWikipedia pages\nPolitical reports from research centers / govt"
+    "text": "Annotated Bibliography\nDue March 19\nIdentify ten scholarly sources related to your research question\nFor each source: in two short paragraphs:\n\nsummarize what the source is arguing\nexplain how it relates to your research question\n\n\nGood sources:Bad sources:\n\n\n\nArticles in academic journals\nAcademic books\nBook chapters from edited volumes\nNon-political reports from research centers / government agencies\n\n\n\n\nBlogs, internet / newspaper articles\nWikipedia pages\nPolitical reports from research centers / govt"
   },
   {
     "objectID": "slides/week7.html#what-to-include-for-each-source",
@@ -382,7 +382,7 @@
     "href": "slides/week7.html#how-to-read-academic-articles",
     "title": "Week 7",
     "section": "How to Read Academic Articles",
-    "text": "How to Read Academic Articles\nRead the abstract first:\n\nGeneral overview of the paper\nSets up research question, tells us data used to answer it, and result\n\nIf the paper seems relevant, then read/skim the introduction and conclusion:\n\nIntroduction: Slightly more detailed than the abstract, but similar format\nConclusion: Talks more deeply about result and how it relates to the research question. Discusses alternative explanations and the limitations of the study\n\nThe conclusion is a good place to find future research topics—what is important to know but hasn’t been done yet!"
+    "text": "How to Read Academic Articles\n\n\n\n\n\n\n\nSection\nWhat to look for\n\n\n\n\nAbstract\nOverview: research question, data, main result — read first\n\n\nIntroduction\nSlightly more detailed than abstract; same format\n\n\nConclusion\nResults, alternative explanations, limitations — and future research topics\n\n\nBackground / Lit review\nPrevious research; a good source of additional citations\n\n\nData section\nHow the sample was constructed; what data sources researchers use\n\n\nMethods\nDon’t worry about this too much yet!\n\n\n\n\n\nTip: Start with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant."
   },
   {
     "objectID": "slides/week7.html#how-to-read-academic-articles-continued",
@@ -417,35 +417,35 @@
     "href": "slides/week7.html#sampling-basic-concepts",
     "title": "Week 7",
     "section": "Sampling: Basic Concepts",
-    "text": "Sampling: Basic Concepts\n\n\nPopulation: The whole universe to which a study aspires to generalize\nParameter: A number describing some attribute of the population\n\nWe saw how parameters can describe probability distributions of populations\n\n\nSample: The part of the population we actually have data on\n\nHow well the sample represents the population depends on the sample design\n\nStatistic: A number describing some attribute of the sample"
+    "text": "Sampling: Basic Concepts\n\n\n\n\n\n\n\n\n\nPopulation\nSample\n\n\n\n\nConcept\nThe whole universe a study aspires to generalize to\nThe subset of the population we actually observe\n\n\nQuantity\nParameter — a number describing the population (usually unknown)\nStatistic — a number computed from the data\n\n\nExample\nTrue proportion of Philadelphia residents who are African American: \\(\\pi = 0.422\\)\nProportion of stopped drivers who were African American: \\(\\hat{p} = 0.79\\)\n\n\n\n The goal of statistical inference: use a sample statistic to learn about a population parameter — we’ve been building toward this all semester"
   },
   {
     "objectID": "slides/week7.html#sampling-from-a-population",
     "href": "slides/week7.html#sampling-from-a-population",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+    "text": "Sampling from a Population\nWe start with a population — every individual we want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997."
   },
   {
     "objectID": "slides/week7.html#sampling-from-a-population-1",
     "href": "slides/week7.html#sampling-from-a-population-1",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+    "text": "Sampling from a Population\nA sample is drawn from the population — the individuals we actually observe. The 262 drivers stopped by police are our sample, far smaller than the full population."
   },
   {
     "objectID": "slides/week7.html#sampling-from-a-population-2",
     "href": "slides/week7.html#sampling-from-a-population-2",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\n\nThe relationship between target population and a sample"
+    "text": "Sampling from a Population\nKey question: is our sample representative? Does it reflect the composition of the population? This depends entirely on the sampling design — random samples are representative; convenience samples often are not."
   },
   {
     "objectID": "slides/week7.html#sample-design",
     "href": "slides/week7.html#sample-design",
     "title": "Week 7",
     "section": "Sample Design",
-    "text": "Sample Design\nTo do inferential statistics, we need a representative sample—that is, we would like for each unit of the population to have an equal chance of being included in the sample\nWe also want samples that are large enough for precision, which increases with sample size\nImportant note: Precision is also inversely proportional to the diversity of the values, which implies that larger samples are necessary to draw inferences about small groups (race, educational, sexual orientation, etc.)"
+    "text": "Sample Design\nTo do inferential statistics, we need a representative sample — ideally, each unit of the population has an equal chance of being included\nWe also want samples that are large enough for precision, which increases with sample size\n\nImportant note: Precision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)"
   },
   {
     "objectID": "slides/week7.html#examples-of-sampling-designs",
@@ -522,7 +522,7 @@
     "href": "slides/week7.html#sampling-distribution-of-a-proportion",
     "title": "Week 7",
     "section": "Sampling Distribution of a Proportion",
-    "text": "Sampling Distribution of a Proportion\nLast week we learned about the binomial probability distribution, which is a distribution of the number of successes in n independent trials, each with probability \\(\\pi\\) of success\nWe learned the mean (\\(\\mu\\)) and the standard deviation (\\(\\sigma\\)) of \\(X \\sim B(n, \\pi)\\) was:\n\\[\\mu = \\pi \\times n\\] \\[\\sigma = \\sqrt{\\pi \\times n \\times (1-\\pi)}\\]"
+    "text": "Sampling Distribution of a Proportion\n\nThe bridge from Week 6What it tells usConnection to inference\n\n\nRecall: \\(X \\sim B(n, \\pi)\\) has mean \\(n\\pi\\) and SD \\(\\sqrt{n\\pi(1-\\pi)}\\)\nThe sample proportion \\(\\hat{p} = X/n\\) divides that count by \\(n\\). Its sampling distribution:\n\\[\\mu_{\\hat{p}} = \\frac{n\\pi}{n} = \\pi \\qquad SE(\\hat{p}) = \\frac{\\sqrt{n\\pi(1-\\pi)}}{n} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\]\nSame formula as last week’s Binomial SD — divided by \\(n\\).\n\n\n\\[\\mu_{\\hat{p}} = \\pi \\qquad \\text{(unbiased — centered on the true proportion)}\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\pi(1-\\pi)}{n}} \\qquad \\text{(shrinks as } n \\text{ grows)}\\]\nWe use standard error (SE) rather than standard deviation to signal that this is the spread of a sampling distribution, not of raw data.\n\n\nThe SE answers: on average, how far will our \\(\\hat{p}\\) fall from the true \\(\\pi\\)?\n\nSmall \\(n\\) → large SE → estimates can be far from the truth\nLarge \\(n\\) → small SE → estimates are reliably close to the truth\n\nThis is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20."
   },
   {
     "objectID": "slides/week7.html#from-binomial-to-sample-proportion",
@@ -564,14 +564,14 @@
     "href": "slides/week7.html#sampling-distribution-of-the-mean",
     "title": "Week 7",
     "section": "Sampling Distribution of the Mean",
-    "text": "Sampling Distribution of the Mean\nKey assumption about our sampling practices that makes this all work:\nThe most common sampling distribution that is used in practice is that of the mean\nFor a random sample of size n from a population having mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the sampling distribution of the sample mean \\(\\bar{x}\\) follows a normal distribution with the following parameters:\n\nThe mean of \\(\\bar{x}\\) is equal to the population mean \\(\\mu\\)\nThe standard error of \\(\\bar{x}\\) equals the population standard deviation, divided by the square root of the sample size: \\(\\frac{\\sigma}{\\sqrt{n}}\\)"
+    "text": "Sampling Distribution of the Mean\n\nThe FormulaWorked ExampleThe Visual\n\n\nFor a random sample of size \\(n\\) from a population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\):\n\\[\\mu_{\\bar{x}} = \\mu \\qquad \\text{(sample mean is unbiased)}\\]\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} \\qquad \\text{(precision increases with sample size)}\\]\nDoubling \\(n\\) cuts the SE by a factor of \\(\\sqrt{2}\\) — not 2. Precision is expensive!\n\n\nPizza sales: \\(\\mu = \\$900/\\text{day}\\), \\(\\sigma = \\$300\\), \\(n = 7\\) days\n\\[SE(\\bar{x}) = \\frac{\\$300}{\\sqrt{7}} \\approx \\$113\\]\nA 7-day average will typically be within \\(\\pm\\$226\\) (2 SEs) of the true mean. Sampling 28 days instead cuts the SE in half: \\(\\frac{\\$300}{\\sqrt{28}} \\approx \\$57\\).\n\n\nAs \\(n\\) grows, the sampling distribution narrows around the true mean \\(\\mu\\):"
   },
   {
     "objectID": "slides/week7.html#standard-error-and-sample-size",
     "href": "slides/week7.html#standard-error-and-sample-size",
     "title": "Week 7",
     "section": "Standard Error and Sample Size",
-    "text": "Standard Error and Sample Size\nAs the sample size n becomes larger, the standard error of the sample mean becomes smaller\nThis is why the precision of our estimates increase with larger sample sizes!\nExample: Sampling distribution of \\(\\bar{x}\\), where \\(X \\sim N(0,1)\\)\n\nShows how sampling distributions become tighter with larger \\(N\\)"
+    "text": "Standard Error and Sample Size\nAs \\(n\\) grows, the sampling distribution narrows — we get more precise estimates of \\(\\mu\\):\n\nShows how sampling distributions become tighter with larger \\(N\\)This is why larger samples are better — and why precision is a resource we can buy with sample size."
   },
   {
     "objectID": "slides/week7.html#worked-example-pizza-sales",
@@ -613,7 +613,7 @@
     "href": "slides/week7.html#how-large-a-sample",
     "title": "Week 7",
     "section": "How Large a Sample?",
-    "text": "How Large a Sample?\nThe sampling distribution of the sample mean takes more of a normal shape as the random sample size \\(n\\) increases\nGuidelines:\n\nThe more skewed the population distribution, the larger \\(n\\) must be before the shape of the sampling distribution is close to normal\nIf the population distribution is normal, the sampling distribution will be normal for all sample sizes\n\n\nIn practice: If \\(n &gt; 30\\), the sampling distribution will be close enough to normal for any distribution"
+    "text": "How Large a Sample?\nThe sampling distribution approaches normality faster for more symmetric populations:\n\nIf the population distribution is Normal, the sampling distribution is Normal for any \\(n\\)\nThe more skewed the population, the larger \\(n\\) must be\nIn practice: \\(n &gt; 30\\) is usually sufficient for most real-world distributions\n\n\nWhy this matters for your research: Most survey samples (GSS, IPUMS, etc.) have \\(n\\) in the hundreds or thousands — well above the threshold where CLT guarantees apply. This is what lets us do inference from survey data without knowing the full population distribution."
   },
   {
     "objectID": "slides/week7.html#example-rolling-dice",
@@ -1621,7 +1621,7 @@
     "href": "labs/lab1.html#using-mutate",
     "title": "Lab 1: Introduction to the Tidyverse",
     "section": "Using mutate()",
-    "text": "Using mutate()\nThe mutate() function creates new variables based on existing ones.\nSyntax: mutate(new_column_name = expression)\n\nLeft side of = is the name of your new column\nRight side is the calculation or transformation\nYou can use math operations: +, -, *, /\nYou can reference existing columns by name\n\n\n# Create a variable for years of education beyond high school\nattain |&gt;\n  mutate(college_years = educ - 12) |&gt;\n  select(educ, college_years) |&gt;\n  head(5)\n\n# A tibble: 5 × 2\n   educ college_years\n  &lt;dbl&gt;         &lt;dbl&gt;\n1    12             0\n2    12             0\n3    12             0\n4     8            -4\n5    13             1\n\n\nTry it yourself: Create a new variable that calculates how many years ago the respondent got married (hint: use age and agewed).\n\n# Your code here"
+    "text": "Using mutate()\nThe mutate() function creates new variables based on existing ones.\nSyntax: mutate(new_column_name = expression)\n\nLeft side of = is the name of your new column\nRight side is the calculation or transformation\nYou can use math operations: +, -, *, /\nYou can reference existing columns by name\n\n\nattain |&gt; \n  #select(id,marital, sex, race, educ, paeduc, maeduc, age, partyid, contains(\"inc\")) |&gt; \n   #partyid &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"other pa\", \"strong r\", \"independ\", NA\n  distinct(educ) |&gt; \n  glimpse()\n\nRows: 22\nColumns: 1\n$ educ &lt;dbl&gt; 12, 8, 13, 15, 9, 0, 19, 16, 18, 20, 17, 14, 11, 10, 7, 5, NA, 4,…\n\n\n\n# Create a variable for years of education beyond high school\nattain |&gt;\n  mutate(college_years = educ - 12) |&gt;\n  select(educ, college_years) |&gt;\n  head(5)\n\n# A tibble: 5 × 2\n   educ college_years\n  &lt;dbl&gt;         &lt;dbl&gt;\n1    12             0\n2    12             0\n3    12             0\n4     8            -4\n5    13             1\n\n\nTry it yourself: Create a new variable that calculates how many years ago the respondent got married (hint: use age and agewed).\n\n# Your code here"
   },
   {
     "objectID": "labs/lab1.html#using-rename",
@@ -3288,5 +3288,201 @@
     "title": "Sociology 106–Annotated Bibliography example",
     "section": "",
     "text": "Sociology 106–Annotated Bibliography example\nMy research question is: how have changes in family structure have affected inequality (as measured by parental socioeconomic status) in the amount of total parental childcare time received by children?\n\nCitation: McLanahan, Sara. 2004. “Diverging Destinies: How Children are Faring Under the Second Demographic Transition.” Demography. 41(4):607-627.\nSummarize the article: In this article, Sara McLanahan argues that, in the last forty years, there has been increasing inequality in the resources available to children, such that children of highly-educated mothers have received more resources from their parents and children of less-educated mothers have received less resources from their parents. McLanahan highlights several factors that contribute to this growing disparity, including the rise of employment among highly-educated mothers, the rise in single motherhood among less-educated mothers, and the weakening of welfare programs to support poor and/or single mothers.\nHow this is related to my work: This article is relevant for my topic because some of the factors McLanahan mentions may affect inequality in childcare time received by children. Although mothers perform more childcare than fathers, fathers do perform significant childcare. Therefore, if less-educated mothers are more likely to be single, then children of less-educated mothers should receive less childcare simply by virtue of there being fewer parents to perform childcare. However, this effect may be counteracted by highly-educated mothers working more, which may mean they have less time for childcare."
+  },
+  {
+    "objectID": "labs/lab4.html",
+    "href": "labs/lab4.html",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "",
+    "text": "In this lab you will build a cleaned, analysis-ready dataset from the raw attain.csv file — showing you the major steps you will use to clean the dataset that you will use for your final paper. This lab is not exhaustive, but should walk through a realistic data-cleaning workflow: selecting the variables you need, recoding categorical variables to have meaningful labels, creating new measures that you might want, and saving the result so you can load it in future scripts without repeating this work."
+  },
+  {
+    "objectID": "labs/lab4.html#overview",
+    "href": "labs/lab4.html#overview",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "",
+    "text": "In this lab you will build a cleaned, analysis-ready dataset from the raw attain.csv file — showing you the major steps you will use to clean the dataset that you will use for your final paper. This lab is not exhaustive, but should walk through a realistic data-cleaning workflow: selecting the variables you need, recoding categorical variables to have meaningful labels, creating new measures that you might want, and saving the result so you can load it in future scripts without repeating this work."
+  },
+  {
+    "objectID": "labs/lab4.html#setup-instructions",
+    "href": "labs/lab4.html#setup-instructions",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Setup Instructions",
+    "text": "Setup Instructions\n\nDownload lab4.qmd from bCourse under “Labs” &gt; “Lab #4”\nPlace it in your labs folder. Your folder structure should look something like this:\n\nsoc106/\n├── _quarto.yml\n├── data/\n│   └── attain.csv\n├── assignments/\n│   └── ...\n└── labs/\n    ├── lab1.qmd\n    ├── lab2.qmd\n    ├── lab3.qmd\n    └── lab4.qmd\n\nOpen lab4.qmd in Positron and let’s get to work!"
+  },
+  {
+    "objectID": "labs/lab4.html#load-libraries",
+    "href": "labs/lab4.html#load-libraries",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Load Libraries",
+    "text": "Load Libraries\nWe’ll use four packages today. If you haven’t installed janitor or skimr before, run the block below once in your console (not when rendering). The janitor() package is a great package that will automate some basic cleaning and standardizing of variable names. I love to use it to take funky variable names and force a standard variable naming scheme on them: snake_case.\n\n# Run once in the console if not already installed\n#install.packages(c(\"janitor\", \"skimr\"))\n\n\nlibrary(tidyverse)   # data manipulation and visualization\nlibrary(here)        # file path management — see https://here.r-lib.org/\nlibrary(janitor)     # data cleaning utilities — see https://sfirke.github.io/janitor/\nlibrary(skimr)       # quick summary statistics — see https://docs.ropensci.org/skimr/"
+  },
+  {
+    "objectID": "labs/lab4.html#read-and-inspect-the-data",
+    "href": "labs/lab4.html#read-and-inspect-the-data",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Read and Inspect the Data",
+    "text": "Read and Inspect the Data\nWe read the file using here(), which builds paths relative to the project root regardless of where this .qmd file lives — no more broken paths when you move a file. Immediately after reading, we pipe to clean_names() from janitor, which converts all column names to snake_case: no spaces, no special characters, consistent lowercase.\n\nattain &lt;- read_csv(here(\"data\", \"attain.csv\")) |&gt;\n    # converts column names to snake_case: lowercase, no spaces or special characters\n    clean_names() |&gt;\n    glimpse()\n\nRows: 2,992\nColumns: 44\n$ x1       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ wrkstat  &lt;chr&gt; \"keeping\", \"working\", \"working\", \"working\", \"working\", \"worki…\n$ hrs1     &lt;dbl&gt; NA, 40, 50, 32, 20, 20, 35, 45, 40, 40, 40, 65, 35, 38, 46, 4…\n$ prestg80 &lt;dbl&gt; 46, 22, 29, 42, 36, 43, 20, 44, 42, 46, 30, 75, 51, 50, 73, 4…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ agewed   &lt;dbl&gt; NA, 20, 28, NA, NA, NA, NA, NA, NA, NA, NA, NA, 29, 22, NA, N…\n$ papres80 &lt;dbl&gt; 41, NA, NA, NA, NA, NA, 20, 44, NA, 34, NA, 51, 40, 51, 75, 4…\n$ mapres80 &lt;dbl&gt; NA, 28, 36, NA, NA, 34, 28, 44, 23, NA, NA, NA, NA, NA, 60, 6…\n$ sibs     &lt;dbl&gt; 4, 4, 2, 6, 3, 3, 5, 8, 2, 5, NA, 1, 4, 1, 4, 2, 0, 0, 2, 2, …\n$ childs   &lt;dbl&gt; 2, 3, 2, 3, 0, 0, 4, 1, 6, 1, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ agekdbrn &lt;dbl&gt; 21, NA, 25, 23, NA, NA, 17, 23, 17, 17, NA, NA, 29, 32, NA, N…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ degree   &lt;chr&gt; \"high sch\", \"high sch\", \"lt high\", \"lt high\", \"high sch\", \"hi…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ weekswrk &lt;dbl&gt; 0, 52, 52, 44, 30, 52, 52, 52, 52, 52, 40, 52, 52, 52, 52, 45…\n$ partfull &lt;chr&gt; NA, \"full-tim\", \"full-tim\", \"full-tim\", \"part-tim\", \"part-tim…\n$ region   &lt;chr&gt; \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"middle a\", \"…\n$ xnorcsiz &lt;chr&gt; \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city gt\", \"city …\n$ srcbelt  &lt;chr&gt; \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"12 lrgst\", \"…\n$ size     &lt;dbl&gt; 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7323, 7…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ polviews &lt;chr&gt; \"slightly\", \"moderate\", \"slghtly\", \"slightly\", \"conserva\", \"l…\n$ relig    &lt;chr&gt; \"protesta\", \"catholic\", \"protesta\", \"catholic\", \"protesta\", \"…\n$ attend   &lt;chr&gt; \"sevrl ti\", \"every we\", \"more thn\", \"once a y\", \"once a y\", \"…\n$ satjob   &lt;chr&gt; \"mod. sat\", \"very sat\", \"very sat\", \"mod. sat\", \"mod. sat\", \"…\n$ class    &lt;chr&gt; \"working\", \"working\", \"working\", \"working\", \"lower cl\", \"work…\n$ satfin   &lt;chr&gt; \"more or\", \"more or\", \"more or\", \"not at a\", \"not at a\", \"not…\n$ finalter &lt;chr&gt; \"better\", \"stayed s\", \"stayed s\", \"worse\", \"worse\", \"worse\", …\n$ finrela  &lt;chr&gt; \"below av\", \"below av\", \"average\", \"average\", \"far belo\", \"be…\n$ wksub    &lt;chr&gt; NA, NA, \"no\", NA, \"yes\", \"yes\", \"yes\", NA, \"yes\", \"no\", NA, N…\n$ wksup    &lt;chr&gt; NA, NA, \"no\", NA, \"no\", \"no\", \"no\", NA, \"no\", \"no\", NA, NA, N…\n$ unemp    &lt;chr&gt; \"yes\", \"no\", NA, \"yes\", \"no\", NA, NA, \"no\", NA, \"yes\", \"yes\",…\n$ union    &lt;chr&gt; \"neither\", \"neither\", NA, \"neither\", \"neither\", NA, NA, \"neit…\n$ parsol   &lt;chr&gt; \"somewhat\", NA, NA, \"somewhat\", NA, NA, NA, \"much bet\", NA, \"…\n$ tvhours  &lt;dbl&gt; 2, 3, 1, 3, NA, 0, 10, 4, 2, NA, 2, 2, 2, NA, 1, 1, 0, 3, 3, …\n$ dwelown  &lt;chr&gt; \"pays ren\", \"pays ren\", \"pays ren\", \"own or i\", NA, \"pays ren…\n$ wordsum  &lt;dbl&gt; NA, NA, 6, 5, NA, 8, 5, 1, 5, NA, 5, 9, 9, NA, 7, 10, 3, 8, N…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …"
+  },
+  {
+    "objectID": "labs/lab4.html#select-variables",
+    "href": "labs/lab4.html#select-variables",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Select Variables",
+    "text": "Select Variables\nOne easy way to shrink a dataset is to keep only the columns relevant to the final project. You can use select(), which accepts bare column names, and the helper contains(\"inc\") picks up any column whose name includes “inc” — useful when a dataset has several income-related fields.\n\nattain_clean &lt;- attain |&gt;\n    # select only the key variables we want for our analysis\n    select(id, marital, sex, race, educ, paeduc, maeduc, age, partyid, contains(\"inc\")) |&gt;\n    glimpse()\n\nRows: 2,992\nColumns: 11\n$ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…\n$ marital  &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\", \"nev…\n$ sex      &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\", \"fema…\n$ race     &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"other\"…\n$ educ     &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16, …\n$ paeduc   &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16, …\n$ maeduc   &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18, 1…\n$ age      &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36, 2…\n$ partyid  &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d\", \"ot…\n$ income91 &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27500, 1…\n$ rincom91 &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 18750, …"
+  },
+  {
+    "objectID": "labs/lab4.html#recode-variables",
+    "href": "labs/lab4.html#recode-variables",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Recode Variables",
+    "text": "Recode Variables\n\nEducation\nThe raw educ variable measures years of formal schooling (0–20). See the GSS codebook for the full definition. We use case_when() inside mutate() to create a categorical version with meaningful labels. Any educ value that is NA does not satisfy any condition and remains NA in the new variable automatically.\n\nattain_clean &lt;- attain_clean |&gt;\n  mutate(\n    # recode educational attainment   \n    educ_cat = case_when(\n      educ %in% 0:8   ~ \"Less than High School\",   # 0–8 years\n      educ %in% 9:11  ~ \"Some High School\",        # 9–11 years\n      educ == 12      ~ \"High School Graduate\",    # 12 years\n      educ %in% 13:15 ~ \"Some College\",            # 13–15 years\n      educ == 16      ~ \"College Graduate\",        # 16 years (bachelor's)\n      educ &gt;= 17      ~ \"Graduate Degree\"          # 17–20 years (postgrad)\n    )\n  )\n\n# Verify — counts should cover all non-NA rows\nattain_clean |&gt; count(educ_cat)\n\n# A tibble: 7 × 2\n  educ_cat                  n\n  &lt;chr&gt;                 &lt;int&gt;\n1 College Graduate        433\n2 Graduate Degree         326\n3 High School Graduate    929\n4 Less than High School   198\n5 Some College            744\n6 Some High School        355\n7 &lt;NA&gt;                      7\n\n\n\n\nParty Identification\nThe raw partyid values are abbreviated strings. See the GSS codebook for definitions. Raw strings often carry invisible whitespace — in this dataset \"not str\" has a trailing space. We use str_trim() to strip it before comparing.\n\nNote: clean_names() only standardizes column names (e.g., My Variable → my_variable). It has no effect on the values inside the columns, which is why we still need str_trim() here to remove whitespace from the partyid values.\n\nThis version of partyid does not distinguish which party the “not strong” identifiers lean toward — it bundles both “Not strong Democrat” and “Not strong Republican” together — so we label them as \"Not Strong Party\".\n\nattain_clean &lt;- attain_clean |&gt;\n  mutate(\n    party = case_when(\n      str_trim(partyid) == \"strong d\"  ~ \"Strong Democrat\",   # str_trim() removes leading/trailing whitespace from values\n      str_trim(partyid) == \"not str\"   ~ \"Not Strong Party\",\n      str_trim(partyid) == \"ind,near\"  ~ \"Independent (Leaning)\",\n      str_trim(partyid) == \"independ\"  ~ \"Independent\",\n      str_trim(partyid) == \"strong r\"  ~ \"Strong Republican\",\n      str_trim(partyid) == \"other pa\"  ~ \"Other Party\"\n    )\n  )\n\nattain_clean |&gt; count(party)\n\n# A tibble: 7 × 2\n  party                     n\n  &lt;chr&gt;                 &lt;int&gt;\n1 Independent             369\n2 Independent (Leaning)   623\n3 Not Strong Party       1163\n4 Other Party              44\n5 Strong Democrat         423\n6 Strong Republican       321\n7 &lt;NA&gt;                     49\n\n\nA quick bar chart to visualize the distribution. We use fct_relevel() to fix the order left to right on the political spectrum, and filter() to drop NA and \"Other Party\" before plotting.\n\nattain_clean |&gt;\n  filter(!is.na(party), party != \"Other Party\") |&gt;\n  mutate(party = fct_relevel(\n    party,\n    \"Strong Democrat\",\n    \"Independent (Leaning)\",\n    \"Not Strong Party\",       # ambiguous: bundles weak D and weak R\n    \"Independent\",\n    \"Strong Republican\"\n  )) |&gt;\n  ggplot(aes(x = party, fill = party)) +\n  geom_bar() +\n  geom_text(\n    stat  = \"count\",\n    aes(label = after_stat(count)),\n    vjust = -0.5,   # nudge labels just above the top of each bar\n    size  = 3.5\n  ) +\n  scale_fill_manual(values = c(\n    \"Strong Democrat\"       = \"#1259A5\",\n    \"Independent (Leaning)\" = \"#8EB4DA\",\n    \"Not Strong Party\"      = \"#9E9E9E\",\n    \"Independent\"           = \"#E08C8C\",\n    \"Strong Republican\"     = \"#C02020\"\n  )) +\n  scale_y_continuous(breaks = seq(0, 1000, by = 200)) +\n  labs(\n    title = \"Party Identification\",\n    x     = NULL,\n    y     = \"Count\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position  = \"none\",\n    axis.text.x      = element_text(angle = 15, hjust = 1)\n  )"
+  },
+  {
+    "objectID": "labs/lab4.html#create-variables-rename-and-remove-missing",
+    "href": "labs/lab4.html#create-variables-rename-and-remove-missing",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Create Variables, Rename, and Remove Missing",
+    "text": "Create Variables, Rename, and Remove Missing\nThis block handles three cleanup tasks together:\n\ncollege_years — years of education beyond high school. For respondents with 12 or fewer years we assign 0; NA values in educ propagate as NA automatically because no condition is satisfied.\nRename marital to marital_status using rename().\nDrop missing on a targeted set of key analytical variables using drop_na(). Only pass the columns your analysis genuinely requires — don’t blindly drop every row that has any NA.\n\n\nattain_clean &lt;- attain_clean |&gt;\n  mutate(\n    college_years = case_when(\n      educ &gt; 12  ~ educ - 12,\n      educ &lt;= 12 ~ 0\n    )\n  ) |&gt;\n  rename(marital_status = marital) |&gt;\n  drop_na(educ, age, sex, race)    # remove rows missing on key variables\n\nattain_clean |&gt; glimpse()\n\nRows: 2,980\nColumns: 14\n$ id             &lt;dbl&gt; 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…\n$ marital_status &lt;chr&gt; \"divorced\", \"married\", \"married\", \"never ma\", \"never ma…\n$ sex            &lt;chr&gt; \"female\", \"male\", \"male\", \"female\", \"female\", \"female\",…\n$ race           &lt;chr&gt; \"black\", \"black\", \"white\", \"black\", \"black\", \"other\", \"…\n$ educ           &lt;dbl&gt; 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18, 16…\n$ paeduc         &lt;dbl&gt; 12, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19, 16…\n$ maeduc         &lt;dbl&gt; 10, 12, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14, 18,…\n$ age            &lt;dbl&gt; 33, 59, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56, 36,…\n$ partyid        &lt;chr&gt; \"strong d\", \"not str\", \"not str\", \"strong d\", \"other pa…\n$ income91       &lt;dbl&gt; 11250, NA, 18750, 13750, 45000, 23750, 11250, 27500, 18…\n$ rincom91       &lt;dbl&gt; NA, NA, 18750, NA, 11250, 23750, 11250, 18750, 18750, N…\n$ educ_cat       &lt;chr&gt; \"High School Graduate\", \"High School Graduate\", \"Less t…\n$ party          &lt;chr&gt; \"Strong Democrat\", \"Not Strong Party\", \"Not Strong Part…\n$ college_years  &lt;dbl&gt; 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 7, 4, 4, 6, 4, 6, 4, 0, 4…"
+  },
+  {
+    "objectID": "labs/lab4.html#taking-a-sample",
+    "href": "labs/lab4.html#taking-a-sample",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Taking a Sample",
+    "text": "Taking a Sample\nIf your dataset is very large, working with a random sample can speed up iteration during development. If your dataset is really large and it’s taking a long time to load on your computer, you can just use a smaller sample for this class. (Normally, I would not advise doing this, but it is fine for the course). slice_sample() lets you draw either a fixed number of rows or a proportion of the data. Always call set.seed() before sampling so your results are reproducible — anyone running the same code will get the same rows.\n\n# Approach 1: sample a fixed number of rows\nset.seed(42)\nattain_sample_n &lt;- attain_clean |&gt;\n  slice_sample(n = 500)\n\n# Approach 2: sample a proportion of rows (here 10%)\nset.seed(42)\nattain_sample_prop &lt;- attain_clean |&gt;\n  slice_sample(prop = 0.10)\n\n# Compare sizes\nnrow(attain_clean)\n\n[1] 2992\n\nnrow(attain_sample_n)\n\n[1] 500\n\nnrow(attain_sample_prop)\n\n[1] 299\n\n\nFor your final project, use the full attain_clean — sampling is just shown here as a technique for when datasets are too large to work with comfortably.\n\n\n\n\n\n\nWarningWatch what you write to disk\n\n\n\nNotice that attain_sample_prop contains only a fraction of the full dataset (in this case, roughly 298 rows). When you run write_csv() in the next section, R writes exactly the object you pass to it — it won’t warn you if you accidentally save a sample instead of the full cleaned data. Before saving, always double-check which object you are passing: attain_clean, attain_sample_n, or attain_sample_prop? Running code out of order can make this easy to get wrong."
+  },
+  {
+    "objectID": "labs/lab4.html#save-the-cleaned-data",
+    "href": "labs/lab4.html#save-the-cleaned-data",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Save the Cleaned Data",
+    "text": "Save the Cleaned Data\nWrite the cleaned dataset back to data/ under a new name so the raw file is never overwritten. This is a core principle of reproducible research: always keep the original data untouched.\nwrite_csv() from readr produces a clean, portable CSV with no row numbers.\n\nwrite_csv(attain_clean, here(\"data\", \"attain_clean.csv\"))\n\nFrom now on, any analysis script can start with read_csv(here(\"data\", \"attain_clean.csv\")) and skip all the cleaning steps above."
+  },
+  {
+    "objectID": "labs/lab4.html#data-summary-with-skimr",
+    "href": "labs/lab4.html#data-summary-with-skimr",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Data Summary with skimr",
+    "text": "Data Summary with skimr\nskim() gives a thorough snapshot of the cleaned dataset: counts, missing rates, distributions, and a mini-histogram for each variable. This is a good final check before moving on to analysis.\n\nskim(attain_clean)\n\n\nData summary\n\n\nName\nattain_clean\n\n\nNumber of rows\n2992\n\n\nNumber of columns\n14\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n6\n\n\nnumeric\n8\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nmarital_status\n1\n1.00\n7\n8\n0\n5\n0\n\n\nsex\n0\n1.00\n4\n6\n0\n2\n0\n\n\nrace\n0\n1.00\n5\n5\n0\n3\n0\n\n\npartyid\n49\n0.98\n7\n8\n0\n6\n0\n\n\neduc_cat\n7\n1.00\n12\n21\n0\n6\n0\n\n\nparty\n49\n0.98\n11\n21\n0\n6\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nid\n0\n1.00\n1496.50\n863.86\n1\n748.75\n1496.5\n2244.25\n2992\n▇▇▇▇▇\n\n\neduc\n7\n1.00\n13.16\n2.97\n0\n12.00\n13.0\n16.00\n20\n▁▁▇▇▂\n\n\npaeduc\n837\n0.72\n11.07\n4.20\n0\n8.00\n12.0\n14.00\n20\n▂▅▇▅▂\n\n\nmaeduc\n432\n0.86\n11.08\n3.46\n0\n9.00\n12.0\n12.00\n20\n▁▃▇▃▁\n\n\nage\n6\n1.00\n45.97\n17.05\n18\n32.25\n43.0\n57.00\n89\n▆▇▆▃▂\n\n\nincome91\n356\n0.88\n37596.55\n27456.35\n500\n16250.00\n32500.0\n55000.00\n100000\n▇▇▅▂▂\n\n\nrincom91\n1032\n0.66\n25852.17\n20799.05\n500\n11250.00\n21250.0\n32500.00\n100000\n▇▆▂▁▁\n\n\ncollege_years\n7\n1.00\n1.72\n2.17\n0\n0.00\n1.0\n4.00\n8\n▇▂▂▁▁"
+  },
+  {
+    "objectID": "labs/lab4.html#wrap-up",
+    "href": "labs/lab4.html#wrap-up",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Wrap-Up",
+    "text": "Wrap-Up\nIn this lab you built a reusable data cleaning pipeline. Key functions covered:\n\n\n\nTask\nFunction\n\n\n\n\nStandardize column names\nclean_names()\n\n\nSubset columns\nselect()\n\n\nRecode categoricals\ncase_when() inside mutate()\n\n\nStrip whitespace\nstr_trim()\n\n\nCreate derived variables\nmutate()\n\n\nRename columns\nrename()\n\n\nRandom sampling\nslice_sample()\n\n\nSave to disk\nwrite_csv()\n\n\nSummarize data\nskim()\n\n\n\n\n\n\n\n\n\n\nTipBefore You Leave\n\n\n\n\nYou can explain why we use here() instead of a hard-coded file path\nThe educ_cat and party counts look reasonable to you\nattain_clean.csv now exists in your data/ folder\nYou understand the difference between slice_sample(n = ...) and slice_sample(prop = ...)"
+  },
+  {
+    "objectID": "slides/week7.html#where-we-are-in-the-course",
+    "href": "slides/week7.html#where-we-are-in-the-course",
+    "title": "Week 7",
+    "section": "Where We Are in the Course",
+    "text": "Where We Are in the Course\n\nWeeks 5–6: rules of probability + probability models (Bernoulli, Binomial, Normal)\nThis week (Week 7): sampling distributions and the Central Limit Theorem\nNext week (Week 8): confidence intervals\nThen (Week 9): hypothesis testing\n\nMain idea: We’ve been building probability models of populations. Today we ask: what happens when we draw a sample—and then another, and another? The answer is what makes all of statistical inference possible."
+  },
+  {
+    "objectID": "slides/week7.html#types-of-sampling-designs",
+    "href": "slides/week7.html#types-of-sampling-designs",
+    "title": "Week 7",
+    "section": "Types of Sampling Designs",
+    "text": "Types of Sampling Designs\n\nSimple randomStratified randomCluster\n\n\nSimple random sample: Use a random number generator to select from a population list\n\n\n\n\n\n\n\nStratified random sample: Divide population into homogenous groups (strata), then randomly sample within each stratum\n\nGenerally improves precision\nCan over-sample smaller strata (e.g., minority groups) to make inferences within those groups\n\n\n\n\n\n\n\n\nCluster sampling:\n\nCreate subpopulations (clusters)\nRandomly select a sample of clusters\nRandomly select units within sampled clusters"
+  },
+  {
+    "objectID": "slides/week7.html#stratified-vs.-cluster-sampling",
+    "href": "slides/week7.html#stratified-vs.-cluster-sampling",
+    "title": "Week 7",
+    "section": "Stratified vs. Cluster Sampling",
+    "text": "Stratified vs. Cluster Sampling\nThese sound similar — the key difference: cluster sampling selects only some groups; stratified sampling samples from all strata."
+  },
+  {
+    "objectID": "slides/week7.html#representative-samples-sample-weights",
+    "href": "slides/week7.html#representative-samples-sample-weights",
+    "title": "Week 7",
+    "section": "Representative Samples & Sample Weights",
+    "text": "Representative Samples & Sample Weights\n\nThe ProblemSample WeightsGSS Example\n\n\nTrue random samples are almost never feasible — we rarely have a complete population list\nBut we often know the probability that each individual would be selected, based on demographics, geography, or other characteristics\n\n\nWeights are set inversely proportional to the probability of selection:\n\nIndividuals less likely to be sampled → higher weight\nIndividuals more likely to be sampled → lower weight\nResult: a weighted sample that mirrors the full population\n\n\n\nThe GSS uses cluster sampling. Within each selected household, only one adult is chosen:\n\nIndividuals in larger households are less likely to be selected → higher weights\nAdditional weights for oversampled Black respondents\nAdditional weights for non-responders on the first contact\n\nAlways check whether your dataset uses weights, and apply them in R"
+  },
+  {
+    "objectID": "slides/week7.html#what-is-a-sampling-distribution",
+    "href": "slides/week7.html#what-is-a-sampling-distribution",
+    "title": "Week 7",
+    "section": "What is a Sampling Distribution?",
+    "text": "What is a Sampling Distribution?\nA sampling distribution is the probability distribution of a sample statistic computed across many independent samples from the same population\nThree distributions you must keep straight:\n\n\n\n\n\n\n\n\nDistribution\nWhat it describes\nPhiladelphia example\n\n\n\n\nPopulation\nAll individuals in the population\n1.45M Philadelphia residents, 42.2% African American\n\n\nSample (data)\nThe individuals in our sample\n262 police stops in 1997\n\n\nSampling\nHow our statistic would vary across repeated samples\nDistribution of \\(\\hat{p}\\) across many random samples of 262\n\n\n\nKey insights:\n\nSampling distributions describe variability from study to study\nThey tell us how close a statistic is likely to fall to the true population parameter\nThey are not what we observe — they represent what we would observe across many hypothetical repetitions\nThey are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)"
+  },
+  {
+    "objectID": "slides/week7.html#racial-profiling-a-worked-example",
+    "href": "slides/week7.html#racial-profiling-a-worked-example",
+    "title": "Week 7",
+    "section": "Racial Profiling: A Worked Example",
+    "text": "Racial Profiling: A Worked Example\n\nThe SetupThe MathThe Verdict\n\n\nData from Philadelphia, 1997:\n\n262 police car stops were recorded\n207 of the stopped drivers were African American (\\(\\hat{p} = 207/262 = 0.79\\))\nPhiladelphia’s population at the time was 42.2% African American (\\(\\pi = 0.422\\))\n\nQuestion: If drivers were stopped at random, how likely is it that 79% of stopped drivers would be African American?\n\n\nAssume random stopping: \\(X \\sim B(262, 0.422)\\)\nThe sampling distribution of \\(\\hat{p}\\) under random stopping:\n\\[\\mu_{\\hat{p}} = 0.422\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{0.422 \\times 0.578}{262}} \\approx 0.030\\]\n\n\nObserved: \\(\\hat{p} = 0.79\\)\nDistance from expected:\n\\[z = \\frac{0.79 - 0.422}{0.030} \\approx 12 \\text{ standard errors above the mean}\\]\nUnder random stopping, \\(\\hat{p} = 0.79\\) is essentially impossible — it lies 12 SEs above what we’d expect. The sampling distribution reveals that this pattern cannot be explained by chance, but some other bias."
+  },
+  {
+    "objectID": "slides/week7.html#visualizing-the-sampling-distribution",
+    "href": "slides/week7.html#visualizing-the-sampling-distribution",
+    "title": "Week 7",
+    "section": "Visualizing the Sampling Distribution",
+    "text": "Visualizing the Sampling Distribution\nAs \\(N\\) increases, \\(\\hat{p}\\) becomes tighter and more bell-shaped — the Central Limit Theorem in action:"
+  },
+  {
+    "objectID": "slides/week7.html#the-central-limit-theorem",
+    "href": "slides/week7.html#the-central-limit-theorem",
+    "title": "Week 7",
+    "section": "The Central Limit Theorem",
+    "text": "The Central Limit Theorem\nThis is one of the most powerful theorems in all of statistics.\n\nIf repeated independent samples of size \\(N\\) are drawn from any population (regardless of its shape) having mean \\(\\mu\\) and standard deviation \\(\\sigma\\), then — as \\(N\\) becomes large — the sampling distribution of the sample mean approaches a Normal distribution:\n\\[\\bar{x} \\;\\sim\\; N\\!\\left(\\mu,\\; \\frac{\\sigma}{\\sqrt{N}}\\right)\\]\n\nWhy is this remarkable? The population can be skewed, bimodal, uniform — it doesn’t matter. As long as \\(N\\) is large enough, \\(\\bar{x}\\) is approximately Normal.\nThis is why the Normal distribution appears everywhere in statistics — and why the tools we build next all work."
+  },
+  {
+    "objectID": "slides/week7.html#clt-interactive-demo",
+    "href": "slides/week7.html#clt-interactive-demo",
+    "title": "Week 7",
+    "section": "CLT: Interactive Demo",
+    "text": "CLT: Interactive Demo"
+  },
+  {
+    "objectID": "slides/week7.html#rolling-dice-a-worked-example",
+    "href": "slides/week7.html#rolling-dice-a-worked-example",
+    "title": "Week 7",
+    "section": "Rolling Dice: A Worked Example",
+    "text": "Rolling Dice: A Worked Example\n\nSetupApplying the CLTSolution\n\n\nQuestion: What is the probability that the mean of 35 dice rolls is less than 3?\nStep 1: Parameters of a single die roll\nA fair die has outcomes 1–6, each with probability 1/6:\n\nMean: \\(\\mu = \\frac{1+2+3+4+5+6}{6} = 3.5\\)\nVariance: \\(\\sigma^2 = \\frac{(1-3.5)^2 + (2-3.5)^2 + \\cdots + (6-3.5)^2}{6} = \\frac{35}{12}\\), so \\(\\sigma = \\sqrt{35/12}\\)\n\n\n\nStep 2: Sampling distribution of \\(\\bar{x}\\) for \\(n = 35\\) rolls\nBy the CLT — same \\(\\frac{\\sigma}{\\sqrt{n}}\\) formula as the Binomial SE from Week 6, now applied to any population:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{\\sqrt{35/12}}{\\sqrt{35}} = \\frac{\\sqrt{35}}{\\sqrt{12} \\cdot \\sqrt{35}} = \\frac{1}{\\sqrt{12}} \\approx 0.289\\]\nSo \\(\\bar{x} \\sim N(3.5,\\; 0.289)\\)\n\n\nStep 3: Compute the probability in R\n\npnorm(3, mean = 3.5, sd = 1/sqrt(12))\n\n[1] 0.04163226\n\n\nThe probability is approximately 4.2% — rolling a mean below 3 across 35 dice is unusual but not impossible."
+  },
+  {
+    "objectID": "slides/week7.html#key-takeaways",
+    "href": "slides/week7.html#key-takeaways",
+    "title": "Week 7",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nPopulations have parameters; samples have statistics — and they’re different things\nA sampling distribution describes how a statistic varies across many hypothetical samples\nThe standard error (SE) measures this variability — it shrinks as \\(\\sqrt{n}\\) grows\nThe Central Limit Theorem guarantees that sample means are approximately Normal for large \\(n\\), regardless of the population shape\n\n\nSample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course."
+  },
+  {
+    "objectID": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
+    "href": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
+    "title": "Week 7",
+    "section": "Why This Matters for the Rest of the Course",
+    "text": "Why This Matters for the Rest of the Course\n\nNext week (Week 8): Confidence intervals use the SE and the Normal approximation to build a range of plausible parameter values\nWeek 9: Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors\nWeeks 11–13 (Regression): Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today\n\n\nThe CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand why every test we’ll do actually works."
+  },
+  {
+    "objectID": "slides/week7.html#weekly-assignment-6",
+    "href": "slides/week7.html#weekly-assignment-6",
+    "title": "Week 7",
+    "section": "Weekly Assignment #6",
+    "text": "Weekly Assignment #6\nDue: Thursday, March 12 by 11:59 PM\nFormat: Similar to previous weeks — a mix of word problems and R\nAnnotated bibliography reminder: Due March 19\n\nFinding 10 relevant papers takes time — start early!\nDon’t expect the first papers you find to be relevant to your project\nHappy to help during office hours"
+  },
+  {
+    "objectID": "slides/week7.html#in-class-lab-4",
+    "href": "slides/week7.html#in-class-lab-4",
+    "title": "Week 7",
+    "section": "In-class Lab #4",
+    "text": "In-class Lab #4\n\nDownload lab4.qmd from bCourses under “assignments” &gt; “Lab #4”\nPlace lab4.qmd in your labs folder\nUse the Explorer button on the left to find and open lab4.qmd\nLet’s work through it together!"
+  },
+  {
+    "objectID": "labs/lab4.html#create-variables-and-rename",
+    "href": "labs/lab4.html#create-variables-and-rename",
+    "title": "Lab 4: Data Cleaning for Final Projects",
+    "section": "Create Variables and Rename",
+    "text": "Create Variables and Rename\nThis block handles two final cleanup tasks:\n\ncollege_years — years of education beyond high school. For respondents with 12 or fewer years we assign 0; NA values in educ propagate as NA automatically because no condition is satisfied.\nRename marital to marital_status using rename().\n\n\nattain_clean &lt;- attain_clean |&gt;\n  mutate(\n    college_years = case_when(\n      educ &gt; 12  ~ educ - 12,   # years of schooling beyond a HS diploma\n      educ &lt;= 12 ~ 0            # HS diploma or less: set college years to 0\n    )) |&gt;\n  rename(marital_status = marital) |&gt;  # rename(new_name = old_name)\n  glimpse()\n\nRows: 2,992\nColumns: 14\n$ id             &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …\n$ marital_status &lt;chr&gt; \"divorced\", \"married\", \"married\", \"married\", \"never ma\"…\n$ sex            &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"female\",…\n$ race           &lt;chr&gt; \"black\", \"black\", \"black\", \"white\", \"black\", \"black\", \"…\n$ educ           &lt;dbl&gt; 12, 12, 12, 8, 13, 15, 9, 12, 12, 12, 0, 19, 16, 16, 18…\n$ paeduc         &lt;dbl&gt; 12, NA, NA, NA, NA, NA, 12, 8, NA, 6, NA, 14, 0, 12, 19…\n$ maeduc         &lt;dbl&gt; 10, 12, NA, 5, 12, 20, NA, 0, 11, 6, 20, 16, 0, 16, 14,…\n$ age            &lt;dbl&gt; 33, 59, NA, 59, 21, 22, 40, 25, 41, 45, 52, 31, 55, 56,…\n$ partyid        &lt;chr&gt; \"strong d\", \"not str\", \"ind,near\", \"not str\", \"strong d…\n$ income91       &lt;dbl&gt; 11250, NA, 16250, 18750, 13750, 45000, 23750, 11250, 27…\n$ rincom91       &lt;dbl&gt; NA, NA, 16250, 18750, NA, 11250, 23750, 11250, 18750, 1…\n$ educ_cat       &lt;chr&gt; \"High School Graduate\", \"High School Graduate\", \"High S…\n$ party          &lt;chr&gt; \"Strong Democrat\", \"Not Strong Party\", \"Independent (Le…\n$ college_years  &lt;dbl&gt; 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 7, 4, 4, 6, 4, 6, 4, 0…"
+  },
+  {
+    "objectID": "slides/week7.html#assignments",
+    "href": "slides/week7.html#assignments",
+    "title": "Week 7",
+    "section": "Assignments",
+    "text": "Assignments\nWeekly Assignment #6\n\nDue Thursday, March 12 by 11:59 PM\nFormat: mix of word problems and R (similar to previous weeks)\n\nAnnotated Bibliography\n\nDue Thursday, March 19\nFinding 10 relevant papers takes time — start early!\nDon’t expect the first papers you find to be relevant to your project\nHappy to help during office hours"
   }
 ]

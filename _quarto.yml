@@ -12,6 +12,8 @@ website:
         href: slides/index.qmd
       - text: "Assignments"
         href: assignments/index.qmd
+      - text: "Labs"
+        href: labs/index.qmd
       - text: "Syllabus"
         href: syllabus.qmd
 
