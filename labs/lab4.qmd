@@ -1,0 +1,286 @@
+---
+title: "Lab 4: Data Cleaning for Final Projects"
+author: "Your Name Here"
+date: today
+project:
+  type: website
+  execute-dir: project
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+---
+
+## Overview
+
+In this lab you will build a cleaned, analysis-ready dataset from the raw `attain.csv` file — showing you the major steps you will use to clean the dataset that you will use for your final paper. This lab is not exhaustive, but should walk through a realistic data-cleaning workflow: selecting the variables you need, recoding categorical variables to have meaningful labels, creating new measures that you might want, and saving the result so you can load it in future scripts without repeating this work.
+
+------------------------------------------------------------------------
+
+## Setup Instructions
+
+1.  Download `lab4.qmd` from bCourse under "Labs" \> "Lab #4"
+2.  Place it in your `labs` folder. Your folder structure should look something like this:
+
+```         
+soc106/
+├── _quarto.yml
+├── data/
+│   └── attain.csv
+├── assignments/
+│   └── ...
+└── labs/
+    ├── lab1.qmd
+    ├── lab2.qmd
+    ├── lab3.qmd
+    └── lab4.qmd
+```
+
+3.  Open `lab4.qmd` in Positron and let's get to work!
+
+------------------------------------------------------------------------
+
+## Load Libraries
+
+We'll use four packages today. If you haven't installed `janitor` or `skimr` before, run the block below once in your console (not when rendering). The [`janitor()`](https://sfirke.github.io/janitor/) package is a great package that will automate some basic cleaning and standardizing of variable names. I love to use it to take funky variable names and force a standard variable naming scheme on them: snake_case.
+
+```{r}
+#| eval: false
+
+# Run once in the console if not already installed
+#install.packages(c("janitor", "skimr"))
+```
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)   # data manipulation and visualization
+library(here)        # file path management — see https://here.r-lib.org/
+library(janitor)     # data cleaning utilities — see https://sfirke.github.io/janitor/
+library(skimr)       # quick summary statistics — see https://docs.ropensci.org/skimr/
+```
+
+------------------------------------------------------------------------
+
+## Read and Inspect the Data
+
+We read the file using `here()`, which builds paths relative to the project root regardless of where this `.qmd` file lives — no more broken paths when you move a file. Immediately after reading, we pipe to [`clean_names()`](https://sfirke.github.io/janitor/reference/clean_names.html) from janitor, which converts all column names to `snake_case`: no spaces, no special characters, consistent lowercase.
+
+```{r}
+#| message: false
+
+attain <- read_csv(here("data", "attain.csv")) |>
+    # converts column names to snake_case: lowercase, no spaces or special characters
+    clean_names() |>
+    glimpse()
+```
+
+------------------------------------------------------------------------
+
+## Select Variables
+
+One easy way to shrink a dataset is to keep only the columns relevant to the final project. You can use [`select()`](https://dplyr.tidyverse.org/reference/select.html), which accepts bare column names, and the helper `contains("inc")` picks up any column whose name includes "inc" — useful when a dataset has several income-related fields.
+
+```{r}
+attain_clean <- attain |>
+    # select only the key variables we want for our analysis
+    select(id, marital, sex, race, educ, paeduc, maeduc, age, partyid, contains("inc")) |>
+    glimpse()
+```
+
+------------------------------------------------------------------------
+
+## Recode Variables
+
+### Education
+
+The raw `educ` variable measures years of formal schooling (0–20). See the [GSS codebook](https://gssdataexplorer.norc.org/variables/55/vshow) for the full definition. We use [`case_when()`](https://dplyr.tidyverse.org/reference/case_when.html) inside [`mutate()`](https://dplyr.tidyverse.org/reference/mutate.html) to create a categorical version with meaningful labels. Any `educ` value that is `NA` does not satisfy any condition and remains `NA` in the new variable automatically.
+
+```{r}
+attain_clean <- attain_clean |>
+  mutate(
+    # recode educational attainment   
+    educ_cat = case_when(
+      educ %in% 0:8   ~ "Less than High School",   # 0–8 years
+      educ %in% 9:11  ~ "Some High School",        # 9–11 years
+      educ == 12      ~ "High School Graduate",    # 12 years
+      educ %in% 13:15 ~ "Some College",            # 13–15 years
+      educ == 16      ~ "College Graduate",        # 16 years (bachelor's)
+      educ >= 17      ~ "Graduate Degree"          # 17–20 years (postgrad)
+    )
+  )
+
+# Verify — counts should cover all non-NA rows
+attain_clean |> count(educ_cat)
+```
+
+### Party Identification
+
+The raw `partyid` values are abbreviated strings. See the [GSS codebook](https://gssdataexplorer.norc.org/variables/141/vshow) for definitions. Raw strings often carry invisible whitespace — in this dataset `"not str"` has a trailing space. We use [`str_trim()`](https://stringr.tidyverse.org/reference/str_trim.html) to strip it before comparing.
+
+> **Note:** `clean_names()` only standardizes column *names* (e.g., `My Variable` → `my_variable`). It has no effect on the *values* inside the columns, which is why we still need `str_trim()` here to remove whitespace from the `partyid` values.
+
+This version of `partyid` does not distinguish *which* party the "not strong" identifiers lean toward — it bundles both "Not strong Democrat" and "Not strong Republican" together — so we label them as `"Not Strong Party"`.
+
+```{r}
+attain_clean <- attain_clean |>
+  mutate(
+    party = case_when(
+      str_trim(partyid) == "strong d"  ~ "Strong Democrat",   # str_trim() removes leading/trailing whitespace from values
+      str_trim(partyid) == "not str"   ~ "Not Strong Party",
+      str_trim(partyid) == "ind,near"  ~ "Independent (Leaning)",
+      str_trim(partyid) == "independ"  ~ "Independent",
+      str_trim(partyid) == "strong r"  ~ "Strong Republican",
+      str_trim(partyid) == "other pa"  ~ "Other Party"
+    )
+  )
+
+attain_clean |> count(party)
+```
+
+A quick bar chart to visualize the distribution. We use [`fct_relevel()`](https://forcats.tidyverse.org/reference/fct_relevel.html) to fix the order left to right on the political spectrum, and `filter()` to drop `NA` and `"Other Party"` before plotting.
+
+```{r}
+attain_clean |>
+  filter(!is.na(party), party != "Other Party") |>
+  mutate(party = fct_relevel(
+    party,
+    "Strong Democrat",
+    "Independent (Leaning)",
+    "Not Strong Party",       # ambiguous: bundles weak D and weak R
+    "Independent",
+    "Strong Republican"
+  )) |>
+  ggplot(aes(x = party, fill = party)) +
+  geom_bar() +
+  geom_text(
+    stat  = "count",
+    aes(label = after_stat(count)),
+    vjust = -0.5,   # nudge labels just above the top of each bar
+    size  = 3.5
+  ) +
+  scale_fill_manual(values = c(
+    "Strong Democrat"       = "#1259A5",
+    "Independent (Leaning)" = "#8EB4DA",
+    "Not Strong Party"      = "#9E9E9E",
+    "Independent"           = "#E08C8C",
+    "Strong Republican"     = "#C02020"
+  )) +
+  scale_y_continuous(breaks = seq(0, 1000, by = 200)) +
+  labs(
+    title = "Party Identification",
+    x     = NULL,
+    y     = "Count"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position  = "none",
+    axis.text.x      = element_text(angle = 15, hjust = 1)
+  )
+```
+
+------------------------------------------------------------------------
+
+## Create Variables and Rename
+
+This block handles two final cleanup tasks:
+
+1.  **`college_years`** — years of education beyond high school. For respondents with 12 or fewer years we assign 0; `NA` values in `educ` propagate as `NA` automatically because no condition is satisfied.
+2.  **Rename** `marital` to `marital_status` using [`rename()`](https://dplyr.tidyverse.org/reference/rename.html).
+
+```{r}
+attain_clean <- attain_clean |>
+  mutate(
+    college_years = case_when(
+      educ > 12  ~ educ - 12,   # years of schooling beyond a HS diploma
+      educ <= 12 ~ 0            # HS diploma or less: set college years to 0
+    )) |>
+  rename(marital_status = marital) |>  # rename(new_name = old_name)
+  glimpse()
+```
+
+------------------------------------------------------------------------
+
+## Taking a Sample
+
+If your dataset is very large, working with a random sample can speed up iteration during development. If your dataset is really large and it's taking a long time to load on your computer, you can just use a smaller sample for this class. (Normally, I would not advise doing this, but it is fine for the course). [`slice_sample()`](https://dplyr.tidyverse.org/reference/slice.html) lets you draw either a fixed **number** of rows or a **proportion** of the data. Always call `set.seed()` before sampling so your results are reproducible — anyone running the same code will get the same rows.
+
+```{r}
+# Approach 1: sample a fixed number of rows
+set.seed(42)
+attain_sample_n <- attain_clean |>
+  slice_sample(n = 500)
+
+# Approach 2: sample a proportion of rows (here 10%)
+set.seed(42)
+attain_sample_prop <- attain_clean |>
+  slice_sample(prop = 0.10)
+
+# Compare sizes
+nrow(attain_clean)
+nrow(attain_sample_n)
+nrow(attain_sample_prop)
+```
+
+For your final project, use the full `attain_clean` — sampling is just shown here as a technique for when datasets are too large to work with comfortably.
+
+::: callout-warning
+## Watch what you write to disk
+
+Notice that `attain_sample_prop` contains only a fraction of the full dataset (in this case, roughly 298 rows). When you run `write_csv()` in the next section, R writes exactly the object you pass to it — it won't warn you if you accidentally save a sample instead of the full cleaned data. Before saving, always double-check which object you are passing: `attain_clean`, `attain_sample_n`, or `attain_sample_prop`? Running code out of order can make this easy to get wrong.
+:::
+
+------------------------------------------------------------------------
+
+## Save the Cleaned Data
+
+Write the cleaned dataset back to `data/` under a new name so the raw file is never overwritten. This is a core principle of reproducible research: always keep the original data untouched.
+
+[`write_csv()`](https://readr.tidyverse.org/reference/write_delim.html) from readr produces a clean, portable CSV with no row numbers.
+
+```{r}
+write_csv(attain_clean, here("data", "attain_clean.csv"))
+```
+
+From now on, any analysis script can start with `read_csv(here("data", "attain_clean.csv"))` and skip all the cleaning steps above.
+
+------------------------------------------------------------------------
+
+## Data Summary with [`skimr`](https://docs.ropensci.org/skimr/)
+
+[`skim()`](https://docs.ropensci.org/skimr/reference/skim.html) gives a thorough snapshot of the cleaned dataset: counts, missing rates, distributions, and a mini-histogram for each variable. This is a good final check before moving on to analysis.
+
+```{r}
+skim(attain_clean)
+```
+
+------------------------------------------------------------------------
+
+## Wrap-Up
+
+In this lab you built a reusable data cleaning pipeline. Key functions covered:
+
+| Task                     | Function                                     |
+|--------------------------|----------------------------------------------|
+| Standardize column names | `clean_names()`                              |
+| Subset columns           | `select()`                                   |
+| Recode categoricals      | `case_when()` inside `mutate()`              |
+| Strip whitespace         | `str_trim()`                                 |
+| Create derived variables | `mutate()`                                   |
+| Rename columns           | `rename()`                                   |
+| Random sampling          | `slice_sample()`                             |
+| Save to disk             | `write_csv()`                                |
+| Summarize data           | [`skim()`](https://docs.ropensci.org/skimr/) |
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Leave
+
+-   [ ] You can explain why we use `here()` instead of a hard-coded file path
+-   [ ] The `educ_cat` and `party` counts look reasonable to you
+-   [ ] `attain_clean.csv` now exists in your `data/` folder
+-   [ ] You understand the difference between `slice_sample(n = ...)` and `slice_sample(prop = ...)`
+:::

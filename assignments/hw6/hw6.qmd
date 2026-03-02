@@ -1,0 +1,150 @@
+---
+title: "Weekly Assignment #6"
+author: "Your Name Here"  # Replace with your name
+date: 03/12/2026
+date-format: long
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw6.qmd` file from bCourse.
+2.  Save the file in your assignments folder.
+3.  Follow the instructions below to complete the assignment. Show your work for all calculations where necessary!
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit the `hw6.qmd` file to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. For questions requiring hand calculations, show your work in the text sections. Make sure your document renders without errors before submitting.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+# ---------
+rm(list = ls())
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+```
+
+------------------------------------------------------------------------
+
+## Question 1: The Three Distributions
+
+The University of California system reports that **22% of UC students** are first-generation college students (meaning neither parent attended a four-year college). A researcher is studying whether first-generation students are proportionally represented among recipients of a competitive academic fellowship. Over the past two years, **8 out of 80** fellowship recipients were first-generation students.
+
+**a) In 1–2 sentences each, describe what the *population distribution*, the *sample (data) distribution*, and the *sampling distribution* each refer to in this scenario. No calculations needed.**
+
+*Your answer here:*
+
+-   **Population distribution**:
+-   **Sample (data) distribution**:
+-   **Sampling distribution**:
+
+**b) Under random selection, what proportion of the 80 fellowship recipients would we *expect* to be first-generation students? Calculate the standard error of the sampling distribution of** $\hat{p}$ for $n = 80$. Show your work.
+
+```{r}
+
+# Your code here
+
+
+```
+
+*Your answer here:*
+
+**c) The observed proportion is** $\hat{p} = 8/80 = 0.10$. How many standard errors is this from what we would expect under random selection? Also calculate the probability of observing a proportion this low or lower under random selection.
+
+```{r}
+
+# Your code here
+
+
+```
+
+*Your answer here:*
+
+**d) Based on your calculation in (c), is the observed proportion consistent with random selection? What might this pattern suggest?**
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+## Question 2: Sampling Designs
+
+A team of researchers wants to study the relationship between neighborhood poverty rates and health outcomes across the United States. They plan to survey households in a sample of U.S. counties.
+
+**a) Briefly explain how a *cluster sampling* design would work for this study. What is one advantage of cluster sampling compared to simple random sampling?**
+
+*Your answer here:*
+
+**b) The researchers decide to over-sample counties where poverty rates exceed 30% — drawing larger samples within those counties — so they have enough data to make comparisons within high-poverty areas. What type of sampling design is this, and what is the purpose of over-sampling this group?**
+
+*Your answer here:*
+
+**c) After collecting the data, the researchers find that households in rural counties were about half as likely to respond to the survey as households in urban counties. What is the appropriate statistical fix for this problem, and how does it work?**
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+## Question 3: Jury Selection and Racial Representation
+
+Jury selection is a constitutional right, and courts have found that systematic underrepresentation of racial groups violates the Equal Protection Clause. In a county in Texas, **28% of registered voters are Latino**. A civil rights organization examines records from the past year and finds that of **200 jury summons randomly issued**, only **42 went to Latino residents** ($\hat{p} = 42/200 = 0.21$).
+
+**a) State the population parameter** $\pi$ and the sample statistic $\hat{p}$ for this scenario.
+
+*Your answer here:*
+
+**b) Assuming jury summons are issued randomly, calculate the mean and standard error of the sampling distribution of** $\hat{p}$.
+
+```{r}
+
+# Your code here
+
+
+```
+
+*Your answer here:*
+
+**c) Calculate how many standard errors the observed proportion (**$\hat{p} = 0.21$) is from what we would expect under random selection. Then calculate the probability of observing a proportion this low or lower if jury summons were truly issued at random.
+
+```{r}
+
+# Your code here
+
+
+```
+
+*Your answer here:*
+
+**d) Interpret your results. Is this pattern consistent with random jury selection? What might explain the gap between the expected and observed proportions?**
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all written response questions and shown your work
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting the .qmd file to bCourse
+:::

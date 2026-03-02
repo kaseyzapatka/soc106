@@ -1,0 +1,114 @@
+---
+title: "Lab 3 Key: Normal Distributions and Z-Scores in R"
+author: "Solution Key"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+---
+
+## Load Libraries
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+```
+
+------------------------------------------------------------------------
+
+## Question 1: Normal Model and Z-Scores (Vehicle Speeds)
+
+**Assume speeds are approximately normal with mean 71 mph and standard deviation 8 mph.**
+
+**a) Compute the z-score for 65 mph and 80 mph.**
+
+```{r}
+(65 - 71) / 8
+(80 - 71) / 8
+```
+
+*Your answer: `z(65) = -0.75`, `z(80) = 1.125`*
+
+**b) Compute `P(speed <= 65)`.**
+
+```{r}
+pnorm(65, mean = 71, sd = 8)
+```
+
+*Your answer: `0.2266274`*
+
+**c) Compute `P(speed > 80)`.**
+
+```{r}
+1 - pnorm(80, mean = 71, sd = 8)
+```
+
+*Your answer: `0.1302945`*
+
+**d) Find the speed cutoff where only 10% of vehicles are faster.**
+
+```{r}
+qnorm(0.90, mean = 71, sd = 8)
+```
+
+*Your answer: `81.25241` mph*
+
+------------------------------------------------------------------------
+
+## Question 2: Z-Score Practice (Heights)
+
+**Assume adult heights are approximately normal with mean 69 inches and standard deviation 3 inches.**
+
+**a) Compute the z-score for a person who is 75 inches tall.**
+
+```{r}
+(75 - 69) / 3
+```
+
+*Your answer: `2`*
+
+**b) Use `pnorm()` to estimate the percentile for 75 inches.**
+
+```{r}
+pnorm(75, mean = 69, sd = 3)
+```
+
+*Your answer: `0.9772499` (about the 97.7th percentile)*
+
+**c) Find the 95th percentile height using `qnorm()`.**
+
+```{r}
+qnorm(0.95, mean = 69, sd = 3)
+```
+
+*Your answer: `73.93456` inches*
+
+**d) Is 75 inches above the 95th percentile?**
+
+*Your answer: Yes. `75 > 73.93456`, so it is above the 95th percentile.*
+
+------------------------------------------------------------------------
+
+## Question 3: Probabilities Above and Between
+
+**Suppose SAT math scores are approximately normal with mean 520 and standard deviation 80.**
+
+**a) Use `pnorm()` to find the proportion of students who score above 640.**
+
+```{r}
+1 - pnorm(640, mean = 520, sd = 80)
+```
+
+*Your answer: `0.0668072` (about 6.7% of students score above 640)*
+
+**b) Use `pnorm()` to find the proportion who score between 440 and 640.**
+
+```{r}
+pnorm(640, mean = 520, sd = 80) - pnorm(440, mean = 520, sd = 80)
+```
+
+*Your answer: `0.7745375` (about 77.5% of students score between 440 and 640)*

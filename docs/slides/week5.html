@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="dcterms.date" content="2026-02-17">
   <title>Sociology 106 – Week 5</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="slides.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -138,21 +138,26 @@
 
   <p class="date">February 17, 2026</p>
 </section>
-<section id="housekeeping-hw-3" class="slide level2 smaller">
-<h2>Housekeeping: HW #3</h2>
-<p>[[<strong>ADD IT IN LATER</strong>]]</p>
+<section id="housekeeping" class="slide level2 smaller">
+<h2>Housekeeping</h2>
+<p><strong>HW #1:</strong> Great job everyone ! Lots of great coding</p>
+<p><strong>HW #2:</strong> Really great job finding data, asking questions, and responding to prompts. Make sure to check rendering and answer all of the questions.</p>
+<p><strong>HW #3:</strong> due Thursday, February 19 at 11:59 PM</p>
+<p><strong>Paper Proposal (5%):</strong> due Thursday, February 26, 11:59 PM</p>
+<ul>
+<li>A <strong>two-page double-spaced proposal</strong> for your final paper.</li>
+<li>Here’s <a href="https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html">an example</a> of what I expect.</li>
+</ul>
+<p><strong>Academic Integrity Asignment</strong> due Friday, May 8, 11:59 PM</p>
 </section>
 <section id="questions" class="slide level2">
 <h2>Questions?</h2>
 </section>
 <section id="course-overview" class="slide level2 smaller">
 <h2>Course Overview</h2>
-<p><strong>Where we’ve been:</strong></p>
-<p>First, we learned about how to find data from the “real world” and describe it (both graphically and using summary statistics like the mean &amp; variance)</p>
-<p><strong>Where we’re going:</strong></p>
-<p>Now, we will turn to what we can <strong>infer</strong> about the “real world”, given the data that we have</p>
-<p>But first, we’ll momentarily take a step back from the actual data to think about the <strong>processes that generated the data</strong></p>
-<p>The models that we will create to understand these processes will allow us to make powerful inferences about the “real world” from the data</p>
+<p><strong>Where we’ve been:</strong> Finding data and <strong>describing</strong> it (graphs, summary statistics)</p>
+<p><strong>Where we’re going:</strong> <strong>Inferring</strong> things about the “real world” from data</p>
+<p><strong>This week:</strong> We step back from actual data to think about the <strong>processes that generated the data</strong> — probability models that will power our inferences</p>
 </section>
 <section id="agenda" class="slide level2 smaller">
 <h2>Agenda</h2>
@@ -162,32 +167,23 @@
 <li>Sample spaces</li>
 <li>Density curves</li>
 <li>Rules of probability</li>
-<li>Probabilities of multiple events
-<ul>
-<li>Unions and intersections</li>
-<li>Conditional probabilities</li>
-<li>Bayes’ theorem</li>
-</ul></li>
+<li>Probabilities of multiple events</li>
 </ul>
+</section>
+<section>
+<section id="probability-models" class="title-slide slide level1 center">
+<h1>Probability Models</h1>
+<p>To make inferences, we first need to model the <strong>processes that generate data</strong></p>
 </section>
 <section id="randomness-and-probability" class="slide level2 smaller">
 <h2>Randomness and Probability</h2>
-<p>We will consider a phenomenon to be <strong>random</strong> if individual outcomes are uncertain but there is, nonetheless, a regular distribution of outcomes in a large number of repetitions. Think of there being some level of randomness involved</p>
-<p><strong>Some examples:</strong></p>
+<p>A phenomenon is <strong>random</strong> if individual outcomes are uncertain but there is a regular distribution of outcomes over many repetitions</p>
 <ul>
-<li><strong>Rolling a dice</strong>: all outcomes are equally likely</li>
-<li><strong>Playing the lottery</strong>: winning is unlikely and rare</li>
-<li><strong>Taking a standardized test</strong>: not all outcomes are equally likely for a given test-taker, but a test-taker will usually not get the same score every time they take a test</li>
+<li><strong>Examples</strong>: rolling a die, playing the lottery, a coin toss</li>
 </ul>
-</section>
-<section id="randomness-and-probability-1" class="slide level2 smaller">
-<h2>Randomness and Probability</h2>
-<p>The <strong>probability</strong> of any outcome of a random phenomenon can be defined as the proportion of times the outcome would occur in a very large number of independent repetitions</p>
-<ul>
-<li>We denote the probability of an event A as <strong>P(A)</strong></li>
-<li><span class="math inline">\(P(A) = \frac{\text{number of repetitions where event A occurs}}{\text{total number of repetitions}}\)</span></li>
-</ul>
-<p>Repetitions are <strong>independent</strong> if the result of one repetition does not influence the result of other repetitions</p>
+<p>The <strong>probability</strong> of an outcome is the proportion of times it would occur in a very large number of independent repetitions</p>
+<p><span class="math display">\[P(A) = \frac{\text{number of repetitions where A occurs}}{\text{total number of repetitions}}\]</span></p>
+<p>Repetitions are <strong>independent</strong> if the result of one does not influence the result of others</p>
 </section>
 <section id="example-a-coin-toss" class="slide level2 smaller">
 <h2>Example: A Coin Toss</h2>
@@ -207,43 +203,57 @@
 <p><strong>Empirical approach</strong></p>
 <ul>
 <li><p>We can calculate probabilities by observing many trials of a random phenomenon</p></li>
-<li><p>The sample proportion of the number of times the outcome occurred is the <strong>probability</strong></p></li>
-<li><p>This is an <strong>estimate</strong> of the actual probability, but a reasonably good one as we observe more and more trials</p></li>
+<li><p>Then calclute the <strong>probability</strong><sup>1</sup> by taking a sample proportion of the number of times the outcome occurred</p></li>
 </ul>
 <p><strong>Theoretical approach</strong></p>
 <ul>
 <li>We can also calculate theoretical probabilities based on assumptions about the random phenomena (i.e., all die rolls equally likely)</li>
 </ul>
-</section>
-<section id="probability-models" class="slide level2 smaller">
+<aside><ol class="aside-footnotes"><li id="fn1"><p>This is an estimate that improves as we observe more trials</p></li></ol></aside></section>
+<section id="probability-models-1" class="slide level2 smaller">
 <h2>Probability Models</h2>
 <p><strong>Probability models</strong> are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:</p>
 <ol type="1">
-<li><p><strong>Sample space (S)</strong>: This is a set, or list, of all possible outcomes of a random process. An event is a subset of the sample space</p></li>
-<li><p><strong>A probability for each possible event</strong> in the sample space S</p></li>
+<li><strong>Sample space (S)</strong>: the set of all possible outcomes of a random process
+<ul>
+<li>Ex: Sample space for a six-sided die is <code>1, 2, 3, 4, 5, 6</code></li>
+<li>An <strong>event</strong> is a subset of the sample space (e.g., rollling an even number)</li>
+</ul></li>
+<li><strong>A probability for each possible event</strong> in the sample space S
+<ul>
+<li>Ex: rolling an even number <code>3/6</code> or <code>1/2</code></li>
+</ul></li>
 </ol>
 </section>
 <section id="properties-of-probability-models" class="slide level2 smaller">
 <h2>Properties of Probability Models</h2>
 <p><strong>Three fundamental properties:</strong></p>
+<div class="fragment">
 <ol type="1">
 <li><strong>Range</strong>: Probabilities for any given event range from 0 (can’t happen) to 1 (happens every time)
 <ul>
 <li>Formally, for any event A: <span class="math inline">\(0 \leq P(A) \leq 1\)</span></li>
 <li>So, the range of probability must be between 0 and 1</li>
 </ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
 <li><strong>Exhaustiveness</strong>: <span class="math inline">\(P(S) = 1\)</span>. That is, the sample space is exhaustive of all possibilities</li>
 </ol>
 <ul>
 <li>In other words, there cannot be any limits on the probability of an occurance</li>
 </ul>
+</div>
+<div class="fragment">
 <ol start="3" type="1">
-<li><strong>Complement rule</strong>: The probability of an event not occurring is 1 minus the probability that it does occur
+<li><strong>Complement rule</strong>: The probability of an event not occurring is 1 minus the probability that it does occur:
 <ul>
 <li><span class="math inline">\(P(\text{not } A) = 1 - P(A)\)</span></li>
 <li><span class="math inline">\(P(\text{not } A)\)</span> is called the <strong>complement</strong> of A</li>
 </ul></li>
 </ol>
+</div>
 </section>
 <section id="probability-models-example" class="slide level2 smaller">
 <h2>Probability Models: Example</h2>
@@ -272,11 +282,16 @@
 <li>Complement: <span class="math inline">\(P(\text{not Heads}) = P(\text{Tails}) = 1 - 0.5 = 0.5\)</span> ✓</li>
 </ol>
 </div>
+</section></section>
+<section>
+<section id="sample-spaces" class="title-slide slide level1 center">
+<h1>Sample Spaces</h1>
+<p>Every probability model starts by defining <strong>what outcomes are possible</strong></p>
 </section>
 <section id="compound-events" class="slide level2 smaller">
 <h2>Compound Events</h2>
-<p>Pretty simple, right? But this becomes more useful when we want to predict <strong>compound events</strong> that are the result of multiple trials</p>
-<p>We can figure out the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome</p>
+<p>Understanding sample space becomes most useful when we want to predict <strong>compound events</strong> that are the result of multiple trials</p>
+<p>Calculate the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome</p>
 <p><strong>Example</strong>: What’s the probability of getting two heads in two coin flips?</p>
 <blockquote>
 <p>We need to consider all possible outcomes and their probabilities</p>
@@ -313,6 +328,22 @@
 </ul></li>
 </ul>
 </section>
+<section id="complement-shortcut-at-least-one" class="slide level2 smaller">
+<h2>Complement Shortcut: “At Least One”</h2>
+<p>The complement rule is especially useful for <strong>“at least one”</strong> problems</p>
+<p><strong>Example</strong>: What is the probability of getting at least one head in 3 coin flips?</p>
+<p>We <em>could</em> list every outcome with at least one head… but it’s easier to use the complement:</p>
+<div class="fragment">
+<p><span class="math display">\[P(\text{at least one head}) = 1 - P(\text{no heads})\]</span></p>
+<p><span class="math display">\[= 1 - P(TTT) = 1 - \frac{1}{8} = \frac{7}{8}\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Why this works:</strong> “at least one head” and “no heads” are complements — one of them <em>must</em> happen, so their probabilities sum to 1</p>
+<blockquote>
+<p>Whenever you see “at least one,” think complement!</p>
+</blockquote>
+</div>
+</section>
 <section id="example-3-continuous-outcomes" class="slide level2 smaller">
 <h2>Example 3: Continuous outcomes</h2>
 <p>A nutrition researcher feeds a new diet to a lab rat and measures weight gain (grams)</p>
@@ -328,72 +359,50 @@
 </ul></li>
 </ul>
 </section>
-<section id="comparing-sample-space-types" class="slide level2 smaller">
-<h2>Comparing Sample Space Types</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 31%">
-<col style="width: 24%">
-<col style="width: 28%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Scenario</th>
-<th>Type of Sample Space</th>
-<th>Order Matters?</th>
-<th>Number of Outcomes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Free throw sequences</td>
-<td>Discrete</td>
-<td>✅ Yes</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>Number of baskets</td>
-<td>Discrete</td>
-<td>❌ No</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td>Weight gain</td>
-<td>Continuous</td>
-<td>❌ No</td>
-<td>Infinite (∞)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Key takeaway:</strong> The same physical situation (free throws) can have different sample spaces depending on what question we’re asking!</p>
+<section id="back-to-the-two-coin-flips-example" class="slide level2 smaller">
+<h2>Back to the Two Coin Flips Example</h2>
+<p><strong>Question:</strong> What’s the probability of getting two heads in two coin flips?</p>
+<div class="fragment">
+<p>For two fair flips, the sample space is:</p>
+<p><span class="math display">\[S = \{HH, HT, TH, TT\}\]</span></p>
+</div>
+<div class="fragment">
+<p>Each outcome is equally likely, so each has probability <span class="math inline">\(1/4\)</span></p>
+</div>
+<div class="fragment">
+<p>Let event <span class="math inline">\(A = \{\text{two heads}\} = \{HH\}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[P(A) = P(HH) = \frac{1}{4}\]</span></p>
+</div>
+<div class="fragment">
+<p>Equivalent multiplication view (independent flips):</p>
+<p><span class="math display">\[P(HH) = P(H)\times P(H) = \frac{1}{2}\times\frac{1}{2} = \frac{1}{4}\]</span></p>
+</div>
 </section>
-<section id="discrete-sample-spaces" class="slide level2 smaller">
-<h2>Discrete Sample Spaces</h2>
+<section id="discrete-vs.-continuous-sample-spaces" class="slide level2 smaller">
+<h2>Discrete vs.&nbsp;Continuous Sample Spaces</h2>
 <p><strong>Discrete sample spaces</strong> deal with data that can only take on certain values, known in advance (that is, categorical data)</p>
-<p><strong>Example</strong>: Throwing a single die</p>
 <ul>
-<li><span class="math inline">\(S = \{1, 2, 3, 4, 5, 6\}\)</span></li>
-<li>Probability of each event, assuming a fair die: <span class="math inline">\(1/6\)</span></li>
+<li><strong>Example</strong>: Throwing a single die → <span class="math inline">\(S = \{1, 2, 3, 4, 5, 6\}\)</span>, each with probability <span class="math inline">\(1/6\)</span></li>
+<li>These are straightforward because we can list all possible outcomes</li>
 </ul>
-<p>These are straightforward because we can list all possible outcomes</p>
-</section>
-<section id="continuous-sample-spaces" class="slide level2 smaller">
-<h2>Continuous Sample Spaces</h2>
-<p>On the other hand, <strong>continuous sample spaces</strong> contain an infinite number of outcomes. They are typically intervals of possible, continuously distributed outcomes.</p>
-<p><strong>Example</strong>: Picking a random real number between 0 and 1</p>
+<div class="fragment">
+<p><strong>Continuous sample spaces</strong> contain an infinite number of outcomes. They are typically intervals of possible, continuously distributed outcomes</p>
 <ul>
-<li><span class="math inline">\(S = [0,1]\)</span> (the interval containing all real numbers between 0 and 1)</li>
+<li><strong>Example</strong>: Picking a random real number between 0 and 1 → <span class="math inline">\(S = [0,1]\)</span></li>
 </ul>
+</div>
+<div class="fragment">
 <p><strong>Question</strong>: How do we assign probabilities to outcomes in an infinite sample space?</p>
+</div>
 </section>
 <section id="probabilities-in-continuous-sample-spaces" class="slide level2 smaller">
 <h2>Probabilities in Continuous Sample Spaces</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>We use <strong>density curves</strong> to represent probabilities across the continuous sample space, and compute probabilities for intervals as the <strong>area under the curve</strong></p>
-<p><strong>Example</strong>: Uniform density curve over <span class="math inline">\(S = [0,1]\)</span></p>
-<p>Uniform density curves represent when all outcomes in a continuous sample space are equally likely</p>
+<p><strong>Example</strong>: Uniform density curve over <span class="math inline">\(S = [0,1]\)</span> (all outcomes equally likely)</p>
 <p>The shaded portion represents:</p>
 <p><span class="math inline">\(P(0.3 \leq x \leq 0.7) = (0.7 - 0.3) \times 1 = 0.4\)</span></p>
 </div><div class="column" style="width:40%;">
@@ -405,112 +414,78 @@
 </div>
 </div></div>
 </section>
-<section id="properties-of-density-curves" class="slide level2 smaller">
-<h2>Properties of Density Curves</h2>
-<p><strong>Three key properties:</strong></p>
-<ol type="1">
-<li><strong>Single point probability</strong>: The probability of a single outcome under a density curve is zero
+<section id="density-curves-properties-and-types" class="slide level2 smaller">
+<h2>Density Curves: Properties and Types</h2>
+<p><strong>Properties:</strong></p>
 <ul>
-<li>Think: what is the probability that a random number between 0 and 1 is, say, π/4?</li>
-<li>Only intervals have non-zero probability</li>
-</ul></li>
-<li><strong>Total area</strong>: The total area under a density curve is equal to 1
-<ul>
-<li>This is the analogue of <span class="math inline">\(P(S) = 1\)</span></li>
-</ul></li>
-<li><strong>Non-negativity</strong>: Density curves are always positive</li>
-</ol>
-</section>
-<section id="density-curve-examples" class="slide level2 smaller">
-<h2>Density Curve Examples</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>Density curves come in all shapes and sizes:</p>
-<ul>
-<li>Some are well-known mathematically; others aren’t</li>
-<li>Some are described by simple equations; others aren’t</li>
+<li>P(single point) = 0 — only intervals have non-zero probability</li>
+<li>Total area under the curve = 1</li>
+<li>Density curves are always non-negative</li>
 </ul>
-<p><strong>Common types we’ll encounter:</strong></p>
-<ul>
-<li>Uniform distribution (equal probability across range)</li>
-<li>Normal distribution (bell curve)</li>
-<li>Exponential distribution</li>
-<li>And many others…</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/week5/density_curves.png"></p>
-<figcaption>Sample of various types of density curves</figcaption>
-</figure>
-</div>
-</div></div>
-</section>
-<section id="questions-1" class="slide level2">
-<h2>Questions?</h2>
-</section>
-<section id="compound-probabilities-multiple-events" class="slide level2 smaller">
-<h2>Compound Probabilities: Multiple Events!</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Union of events:</strong></p>
-<p>Let A and B be subsets of the sample space S (that is, A and B are events)</p>
-<p>The <strong>union</strong> of A and B (“A or B”) consists of outcomes that are in A, or in B, or in both A and B</p>
-<p><strong>Notation</strong>: <span class="math inline">\(A \cup B\)</span></p>
-</div><div class="column" style="width:40%;">
-<p><img data-src="images/week5/union.png"></p>
-</div></div>
+<p><strong>Common types we’ll encounter</strong> (we’ll use these extensively when we study the <strong>normal distribution</strong>):</p>
 
-<aside><div>
-<p>In words, whenever you see the <span class="math inline">\(\cup\)</span>, it means “the union between”. Or put more plainly “everything that’s in A, everything that’s in B, and anything they share.”</p>
-</div></aside></section>
-<section id="probability-of-the-union-of-two-events" class="slide level2 smaller">
-<h2>Probability of the Union of Two Events</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Addition rule</strong>: For the union of two events,</p>
-<p><span class="math display">\[P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)\]</span></p>
-</div><div class="column" style="width:40%;">
-<p><img data-src="images/week5/addition.png"></p>
-</div></div>
-<p><strong>Special case - Disjoint events:</strong></p>
-<p>If the events are <strong>disjoint</strong> (mutually exclusive), then <span class="math inline">\(P(A \text{ and } B) = 0\)</span></p>
-<p>Therefore: <span class="math inline">\(P(A \text{ or } B) = P(A) + P(B)\)</span></p>
+<img data-src="week5_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section></section>
+<section>
+<section id="rules-of-probability" class="title-slide slide level1 center">
+<h1>Rules of Probability</h1>
+<p>Now that we know what outcomes are possible, we need <strong>rules for calculating</strong> the probability of combined events</p>
+<ul>
+<li>Use the <strong>Addition Rule</strong> when the question asks for <strong>“A or B”</strong></li>
+<li>Use the <strong>Multiplication Rule</strong> when the question asks for <strong>“A and B”</strong></li>
+</ul>
 </section>
-<section id="intersection-of-two-events" class="slide level2 smaller">
-<h2>Intersection of Two Events</h2>
+<section id="addition-rule-union-of-a-or-b" class="slide level2 smaller">
+<h2>Addition Rule: Union of “A or B”</h2>
+<p>The <strong>union</strong> of A and B (“A or B”) consists of outcomes that are in A, or in B, or in both A and B. <strong>Notation</strong>: <span class="math inline">\(A \cup B\)</span></p>
+
+<img data-src="images/week5/addition.png" class="r-stretch"><div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Use when question says “or”</a></li><li><a href="#tabset-1-2">Special case: Disjoint events</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>For the union of two events,</p>
+<p><span class="math display">\[P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)\]</span></p>
+<p>We subtract <span class="math inline">\(P(A \text{ and } B)\)</span> to avoid double-counting outcomes in both events</p>
+<p>Notice: even in an “or” problem, we still need the overlap term <span class="math inline">\(P(A \text{ and } B)\)</span></p>
+</div>
+<div id="tabset-1-2">
+<p>If the events are <strong>disjoint</strong> (mutually exclusive), then <span class="math inline">\(P(A \text{ and } B) = 0\)</span></p>
+<p><span class="math display">\[P(A \text{ or } B) = P(A) + P(B)\]</span></p>
+<p>Disjoint events have no overlap, so there’s nothing to subtract</p>
+</div>
+</div>
+</div>
+</section>
+<section id="addition-rule-worked-example" class="slide level2 smaller">
+<h2>Addition Rule: Worked Example</h2>
+<p><strong>Example</strong>: I draw one card from a standard deck. What is the probability that I draw a club or a face card?</p>
+<ul>
+<li><span class="math inline">\(P(\text{club}) = 13/52\)</span> (13 clubs in the deck)</li>
+<li><span class="math inline">\(P(\text{face card}) = 12/52\)</span> (4 jacks + 4 queens + 4 kings)</li>
+<li><span class="math inline">\(P(\text{club and face card}) = 3/52\)</span> (jack, queen, king of clubs)</li>
+</ul>
+<div class="fragment">
+<p>Applying the addition rule:</p>
+<p><span class="math display">\[P(\text{club or face card}) = \frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} \approx 0.42\]</span></p>
+<p>We subtract <span class="math inline">\(3/52\)</span> because the jack, queen, and king of clubs are <strong>both</strong> clubs and face cards — without subtracting, we’d count them twice!</p>
+</div>
+</section>
+<section id="intersection-and-conditional-probabilities" class="slide level2 smaller">
+<h2>Intersection and Conditional Probabilities</h2>
 <div class="columns">
-<div class="column" style="width:60%;">
-<p>The <strong>intersection</strong> of A and B (“A and B”) consists of outcomes that are in both A and B</p>
-<p><strong>Notation</strong>: <span class="math inline">\(A \cap B\)</span></p>
-<p>This represents the overlap between two events</p>
+<div class="column" style="width:55%;">
+<p>The <strong>intersection</strong> of A and B (<span class="math inline">\(A \cap B\)</span>) consists of outcomes that are in both A and B — the overlap between two events</p>
+<p>The <strong>conditional probability</strong> of event A, given that event B has occurred, is:</p>
+<p><span class="math display">\[P(A|B) = \frac{P(A \text{ and } B)}{P(B)}\]</span></p>
+<ul>
+<li><span class="math inline">\(P(A|B)\)</span> is read as “the probability of A, given B”</li>
+</ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="images/week5/intersection.png"></p>
 </div></div>
-
-<aside><div>
-<p>In words, whenever you see the <span class="math inline">\(\cap\)</span>, it means “the intersection between”. Or put more plainly, “only the things that A and B have in common.”</p>
-</div></aside></section>
-<section id="conditional-probabilities" class="slide level2 smaller">
-<h2>Conditional Probabilities</h2>
-<p>For events A and B, the <strong>conditional probability</strong> of event A, given that event B has occurred, is:</p>
-<p><span class="math display">\[P(A|B) = \frac{P(A \text{ and } B)}{P(B)}\]</span></p>
-<p><strong>Reading the notation:</strong></p>
-<ul>
-<li><span class="math inline">\(P(A|B)\)</span> is read as “the probability of (event) A, given (event) B”</li>
-<li>The vertical slash represents the word “given” or “conditional on”</li>
-</ul>
-<p><strong>Interpretation:</strong></p>
-<p>Of all the times that B occurs, <span class="math inline">\(P(A|B)\)</span> is the proportion of times that A also occurs</p>
 </section>
-<section id="conditional-probabilities-connection-to-marginal-frequencies" class="slide level2 smaller">
-<h2>Conditional Probabilities: Connection to Marginal Frequencies</h2>
-<p>Note that this is equivalent to the <strong>marginal frequency</strong>, which we discussed last week</p>
-<p>This shows how probability theory connects to the descriptive statistics we’ve already learned</p>
-
-<img data-src="images/week5/conditional_freq.png" class="r-stretch"></section>
-<section id="multiplication-rule" class="slide level2 smaller">
-<h2>Multiplication Rule</h2>
+<section id="multiplication-rule-intersection-of-a-and-b" class="slide level2 smaller">
+<h2>Multiplication Rule: Intersection of “A and B”</h2>
+<p>Use this rule when the question asks for the probability that <strong>both</strong> events happen.</p>
 <p>For the intersection of two events:</p>
 <p><span class="math display">\[P(A \text{ and } B) = P(A) \times P(B|A)\]</span></p>
 <p>Alternatively: <span class="math inline">\(P(A \text{ and } B) = P(B) \times P(A|B)\)</span></p>
@@ -519,15 +494,47 @@
 <section id="independent-events" class="slide level2 smaller">
 <h2>Independent Events</h2>
 <p>If two events are <strong>independent</strong>, the probability that one event occurs is not affected by whether the other event occurs</p>
+<div class="fragment">
 <p><strong>This implies:</strong></p>
 <ul>
 <li><span class="math inline">\(P(B|A) = P(B)\)</span></li>
 <li><span class="math inline">\(P(A|B) = P(A)\)</span></li>
 <li><span class="math inline">\(P(A \text{ and } B) = P(A) \times P(B)\)</span></li>
 </ul>
+</div>
+<div class="fragment">
 <p><strong>Example</strong>: Coin flips are independent - knowing the first flip doesn’t tell you anything about the second flip</p>
+</div>
 </section>
-<section id="questions-2" class="slide level2">
+<section id="independence-and-sampling" class="slide level2 smaller">
+<h2>Independence and Sampling</h2>
+<p>A common way to determine independence: <strong>how are you sampling?</strong></p>
+<ul>
+<li><strong>With replacement</strong>: Put the item back before drawing again → draws are <strong>independent</strong> (probabilities don’t change)</li>
+<li><strong>Without replacement</strong>: Keep the item out → draws are <strong>dependent</strong> (probabilities change after each draw)</li>
+</ul>
+<p><strong>Example</strong>: An urn has 7 red and 3 blue marbles</p>
+<ul>
+<li>With replacement: <span class="math inline">\(P(\text{Red 2nd draw}) = 7/10\)</span> regardless of 1st draw</li>
+<li>Without replacement: <span class="math inline">\(P(\text{Red 2nd} | \text{Red 1st}) = 6/9\)</span>, but <span class="math inline">\(P(\text{Red 2nd} | \text{Blue 1st}) = 7/9\)</span></li>
+</ul>
+</section>
+<section id="multiplication-rule-worked-example" class="slide level2 smaller">
+<h2>Multiplication Rule: Worked Example</h2>
+<blockquote>
+<p>Example: An urn has 7 red and 3 blue marbles</p>
+</blockquote>
+<p><strong>With replacement</strong> (independent draws):</p>
+<p><span class="math display">\[P(RR) = P(R) \times P(R) = \frac{7}{10} \times \frac{7}{10} = \frac{49}{100}\]</span></p>
+<div class="fragment">
+<p><strong>Without replacement</strong> (dependent draws):</p>
+<p><span class="math display">\[P(RR) = P(R_1) \times P(R_2 | R_1) = \frac{7}{10} \times \frac{6}{9} = \frac{42}{90}\]</span></p>
+</div>
+<div class="fragment">
+<p>Notice the difference: without replacement, getting a red marble first changes the probability of getting a red marble second</p>
+</div>
+</section>
+<section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
 </section>
 <section id="next-week-probability-distributions" class="slide level2 smaller">
@@ -538,49 +545,27 @@
 </ul>
 <p>Then, we’ll look at probability models of the distributions of random variables</p>
 </section>
-<section id="homework" class="slide level2 smaller">
-<h2>Homework</h2>
-<p><strong>Assignment details:</strong></p>
-<ul>
-<li>No data analysis, or even anything in R</li>
-<li>A relatively shorter assignment than last week’s</li>
-<li>Rest of class: work on HW in groups</li>
-</ul>
-<p><strong>Groups:</strong></p>
-<ul>
-<li>Group 1: [<strong>ASSIGN</strong>]</li>
-<li>Group 2: [<strong>ASSIGN</strong>]</li>
-<li>Group 3: [<strong>ASSIGN</strong>]</li>
-</ul>
-<p><strong>Reminder</strong>: <span class="highlight">Research paper proposal is due next Thursday, February 26</span></p>
-<p>Shorter weekly assignment → good opportunity to work on your proposal!</p>
+<section id="weekly-assignment-4" class="slide level2 smaller">
+<h2>Weekly Assignment #4</h2>
+<p>You’ll answer some questions based on lecture today. You will not need a dataset.</p>
+<p><strong>HW #4:</strong> due Thursday, February 26 at 11:59 PM</p>
 </section>
-<section id="research-paper-proposal" class="slide level2 smaller">
-<h2>Research Paper Proposal</h2>
-<p><strong>Required components:</strong></p>
+<section id="paper-proposal-5" class="slide level2 smaller">
+<h2>Paper Proposal (5%)</h2>
+<p>A <strong>two-page double-spaced proposal</strong> for your final paper is due on bCourses by <strong>Thursday, February 26 at 11:59 PM</strong>. Here’s <a href="https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html">an example</a>.</p>
+<p><strong>Your proposal should include:</strong></p>
 <ol type="1">
-<li><p><strong>Research question</strong>, asked as a question (1 sentence)</p></li>
-<li><p><strong>Motivation</strong>: why do we care? (one paragraph)</p></li>
-<li><p><strong>Hypotheses</strong> about what the answer is, and why (one paragraph)</p></li>
-<li><p><strong>Data</strong> (1-2 paragraphs):</p>
-<ul>
-<li>Describe who collected the data, what the units of analysis are (i.e., people, cities, organizations, countries)</li>
-<li>What year the data is from, how many observations will be in your sample</li>
-<li>Specifically describe your main independent and dependent variables: what is their level of measurement? If nominal/ordinal, what are the categories? If continuous, what are the units?</li>
-</ul></li>
+<li><strong>Research question</strong> - What are you trying to answer?</li>
+<li><strong>Why it matters</strong> - Why should we care about this question?</li>
+<li><strong>Hypotheses</strong> - What do you think the answer is, and why?</li>
+<li><strong>Data source</strong> - What dataset will you use?</li>
+<li><strong>Key variables</strong> - Identify your independent and dependent variables</li>
 </ol>
-</section>
-<section id="research-paper-proposal-1" class="slide level2 smaller">
-<h2>Research Paper Proposal</h2>
-<p>You don’t have to write about what statistical analysis you will use, but you should end with a sentence that talks generally about the relationship you expect to see between your independent and dependent variables</p>
-<p><strong>Example:</strong></p>
-<blockquote>
-<p>“I expect that people who report higher family incomes will be more likely to agree with the survey question that the government should reduce taxes.”</p>
-</blockquote>
-<p><strong>Note</strong>: Your proposal can (and prob should) use the data/topic that you’ve been working with in weekly assignments so far.</p>
+<p><em>Note: You do not need to discuss statistical techniques at this point.</em></p>
 
 
-</section>
+</section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -772,7 +757,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -884,13 +869,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

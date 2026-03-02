@@ -17,9 +17,9 @@ editor: visual
 1.  Download this `hw5.qmd` file from bCourse.
 2.  Save the file in your assignments folder.
 3.  Follow the instructions below to complete the assignment. Show your work for all calculations!
-4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
-5.  Submit the `hw5.qmd` file to bCourse before the deadline.
-6.  Make sure your name appears in the "author" field in the YAML header above.
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file. If you can preview it on the left pane, that means it's working.
+5.  Submit both the `hw5.qmd` and the `hw5.html` files to bCourse before the deadline
+6.  Make sure your name appears in the "author" field in the YAML header above
 :::
 
 # Instructions
@@ -53,31 +53,11 @@ library(here)
 
 **Lisa makes free throws 75% of the time, and shoots eight free throws at the end of practice.**
 
-**a) By hand: what is the probability that she will make exactly five free throws?**
+**a) In words, describe what you would need to calculate to find the probability that Lisa makes at least seven free throws. What are the values of n and π, and which outcomes do you need to add up?**
 
-*Show your work here (you can use LaTeX math notation or just write it out):*
+*Your answer here: `We need P(X ≥ 7) where X ~ Binomial(n = 8, π = 0.75). "At least seven" means either exactly 7 or exactly 8 made free throws, so we calculate P(X = 7) + P(X = 8) using the binomial formula (or dbinom()) with n = 8 and π = 0.75.`*
 
-```{r}
-
-# You can verify your hand calculation with R code if you'd like
-
-```
-
-*Your final answer:*
-
-**b) By hand: what is the probability that she will make at least seven free throws?**
-
-*Show your work here:*
-
-```{r}
-
-# You can verify your hand calculation with R code if you'd like
-
-```
-
-*Your final answer:*
-
-**c) In R: what is the probability that she will make between four and six free throws?**
+**b) In R: what is the probability that she will make between four and six free throws?**
 
 ```{r}
 
@@ -89,13 +69,13 @@ pbinom(6, size = 8, prob = .75) - pbinom(3, size = 8, prob = .75) # .6056213
 
 ```
 
-*Your answer here:*
+*Your answer here: `0.6056213`*
 
 ------------------------------------------------------------------------
 
 ## Question 2: Exam Performance
 
-**Javier takes a 50 question exam. In practice exams, he has answered all exam questions correctly 80% of the time, and his likelihood of answering each question correctly is independent of one another.**
+**Javier takes a 50 question exam. In practice exams, he has answered each question correctly 80% of the time, and his likelihood of answering one question correctly is independent of whether he answers any other question correctly.**
 
 **a) What is the mean number of questions he will get correct on the exam? What is the standard deviation of the number of questions he will get correct?**
 
@@ -123,7 +103,7 @@ sqrt(50*.8*.2) # 2.828...
 
 ```
 
-*Your answer here: `0..969`*
+*Your answer here: `0.9691966`*
 
 ------------------------------------------------------------------------
 
@@ -146,7 +126,7 @@ sqrt(50*.8*.2) # 2.828...
 
 **b) Just from the z-score, can you tell whether Andre's height is above the 95th percentile of height? Why or why not? How about the 97th percentile of height? Why or why not?**
 
-*Your answer here: `We know that 95% of observations in a normal distribution are within two standard deviations of the mean--so, all of these observations are below Andre's height. We also know that the mean is symmetrical. So, among the remaining 5% of observations outside 2 SDs from the mean, 2.5% of observations are over 2 SD below (and below Andre's height), and 2.5% SD are over 2 SD above (and above Andre's height). This means that 97.5% of individuals are below Andre's height --> Andre is at the 97.5th percentile. So, Andre's height is above the 95th and 97.5th percentile`.*
+*Your answer here: `Yes. Andre's z-score is 2, which places him about 2 standard deviations above the mean. In a normal distribution, z = 2 corresponds to about the 97.7th percentile (pnorm(2) ≈ 0.977). So his height is above both the 95th percentile and the 97th percentile.`*
 
 ------------------------------------------------------------------------
 
@@ -164,7 +144,7 @@ pnorm(65, 71, 8)
 
 ```
 
-*Your answer here: `0..2266`*
+*Your answer here: `0.2266274`*
 
 **b) What proportion of the vehicles would be going less than or equal to 50 mph?**
 
@@ -187,10 +167,6 @@ qnorm(.9, 71, 8)
 ```
 
 *Your answer here: `81.25241`*
-
-**d) In what way do you think the actual distribution of speeds differs from a normal distribution?**
-
-*Your answer here:*
 
 ------------------------------------------------------------------------
 
@@ -220,43 +196,13 @@ pnorm(820, 1026, 209) - pnorm(720, 1026, 209)
 
 *Your answer here: `0.09057`*
 
-------------------------------------------------------------------------
-
-## Question 6: Height Comparisons Between Men and Women
-
-**Suppose that the height of women is distributed normally with mean 64 inches and standard deviation 3 inches, and that the height of men is distributed normally with mean 70 inches and standard deviation 3 inches.**
-
-**a) What is the difference in proportions of a man being between 68 and 70 inches tall, as compared to a woman?**
-
-```{r}
-
-# Your code here
-(pnorm(70,70,3) - pnorm(68,70,3)) - (pnorm(70,64,3) - pnorm(68,64,3)) 
-
-```
-
-*Your answer here: `0.179`*
-
-**b) What is the relative risk ratio of a man being between 68 and 70 inches tall, as compared to a woman?**
-
-```{r}
-
-# Your code here
-(pnorm(70,70,3) - pnorm(68,70,3)) / (pnorm(70,64,3) - pnorm(68,64,3))
-
-```
-
-*Your answer here: `3.615`*
-
-------------------------------------------------------------------------
-
 ::: callout-tip
 ## Before You Submit
 
 -   [ ] Your name is in the author field at the top of this document
--   [ ] All code chunks run without errors
--   [ ] You've shown your work for hand calculations
+-   [ ] All code chunks run without errors (or you've indicated hand calculations)
+-   [ ] You've shown your work for all probability calculations
 -   [ ] You've answered all written response questions
 -   [ ] You've clicked "Render" and successfully generated an HTML file
--   [ ] You're submitting the .qmd file to bCourse
+-   [ ] You're submitting both `hw5.qmd` and `hw5.html` files to bCourse
 :::

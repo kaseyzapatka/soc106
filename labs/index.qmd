@@ -1,0 +1,12 @@
+---
+title: "Labs"
+---
+
+## In-class labs
+
+These labs are to help students practice coding or concepts covered in lecture. 
+
+- [Lab 1](lab1.html)
+- [Lab 2](lab2.html)
+- [Lab 3](lab3.html)
+- [Lab 4](lab4.html)

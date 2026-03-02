@@ -1,0 +1,43 @@
+---
+title: "Paper Proposal Example"
+author: "Your Name Here"
+date: "02/26/2026"
+format:
+  html:
+    toc: false
+    embed-resources: true
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 12pt
+    linestretch: 2
+---
+
+## Research Question
+
+Does parental education influence their children's educational attainment, and does this relationship differ by gender? Specifically: Is father's or mother's education a stronger predictor, and does this vary for sons versus daughters?
+
+## Why It Matters
+
+Understanding the determinants of educational attainment is central to research on social stratification and intergenerational mobility. Education is a primary mechanism through which socioeconomic status is transmitted across generations. If parental education strongly predicts children's education, this suggests that educational opportunities remain unequal and that family background continues to shape life chances.
+
+Examining whether the influence of parental education differs by gender has important implications for theories of gender socialization. Some theories suggest children are more influenced by the same-gender parent, while others argue that fathers' status has historically been more consequential regardless of child gender. Disentangling these patterns can inform debates about intergenerational transmission and policies to promote educational equity.
+
+## Hypotheses
+
+**Hypothesis 1 (Patriarchal Model):** Father's education will be a stronger predictor of children's educational attainment than mother's education for both sons and daughters, reflecting traditional stratification patterns where the male breadwinner's status determined family standing.
+
+**Hypothesis 2 (Gender-Matching Model):** Parental influence will be gender-matched—father's education predicts more strongly for sons, mother's education for daughters—consistent with socialization theory suggesting children model same-gender parents.
+
+If neither hypothesis is supported, this would suggest contemporary families operate more egalitarianly than either model predicts.
+
+## Data Source
+
+I will use the General Social Survey (GSS), a nationally representative survey of U.S. adults conducted by NORC since 1972. The "attain" subset contains respondents' educational attainment, parents' education levels, and demographic characteristics. The GSS is ideal because it includes both mother's and father's education alongside the respondent's own attainment.
+
+## Key Variables
+
+- **Dependent:** Respondent's years of education (`educ`)
+- **Independent:** Father's education (`paeduc`); Mother's education (`maeduc`)
+- **Moderating:** Respondent's sex (`sex`)
+- **Controls:** Age (`age`) and race (`race`)

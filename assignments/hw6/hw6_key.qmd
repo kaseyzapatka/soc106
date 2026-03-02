@@ -1,9 +1,9 @@
 ---
-title: "Weekly Assignment #6"
+title: "Weekly Assignment #6 — Key"
 author: "Your Name Here"  # Replace with your name
 date: 03/12/2026
 date-format: long
-format: 
+format:
   html:
     toc: true
     code-fold: false
@@ -24,7 +24,7 @@ editor: visual
 
 # Instructions
 
-Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. Make sure your document renders without errors before submitting.
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. For questions requiring hand calculations, show your work in the text sections. Make sure your document renders without errors before submitting.
 
 ## Setup
 
@@ -37,10 +37,6 @@ Complete all questions below, writing your code in the code chunks provided. Rep
 # ---------
 rm(list = ls())
 
-# install libraries -- shouldn't need for this assignment
-# ---------
-# install.packages("tidyverse")
-
 # load libraries
 # ---------
 library(tidyverse)
@@ -49,157 +45,117 @@ library(here)
 
 ------------------------------------------------------------------------
 
-## Question 1: Sampling Distribution
+## Question 1: The Three Distributions
 
-**In a city, 70% of the people prefer Candidate A. Suppose 30 people from this city were sampled.**
+The University of California system reports that **22% of UC students** are first-generation college students (meaning neither parent attended a four-year college). A researcher is studying whether first-generation students are proportionally represented among recipients of a competitive academic fellowship. Over the past two years, **8 out of 80** fellowship recipients were first-generation students.
 
-**a) What is the mean of the sampling distribution of p?**
+**a) In 1–2 sentences each, describe what the *population distribution*, the *sample (data) distribution*, and the *sampling distribution* each refer to in this scenario. No calculations needed.**
 
-*Your answer here: `mean = .7`*
+*Answer:*
 
-**b) What is the standard error of p?**
+-   **Population distribution**: the distribution of first-generation status among all UC students, where 22% are first-generation.
+-   **Sample (data) distribution**: the distribution of first-generation status among the 80 fellowship recipients we actually observed (8 of 80, or 10%, were first-generation).
+-   **Sampling distribution**: the distribution of $\hat{p}$ — the proportion of first-generation students — that we would observe if we repeatedly drew random samples of 80 recipients from the UC student population. It describes how much $\hat{p}$ would vary from sample to sample under random selection.
 
-```{r}
-
-# Your code here
-sqrt(.7*.3/30) 
-
-```
-
-*Your answer here: `0.0836`*
-
-**c) What is the probability that 80% or more of this sample will prefer Candidate A?**
+**b) Under random selection, what proportion of the 80 fellowship recipients would we *expect* to be first-generation students? Calculate the standard error of the sampling distribution of** $\hat{p}$ for $n = 80$. Show your work.
 
 ```{r}
 
-# Your code here
-1 - pnorm(.8,.7,.0836666) 
-
-# I also accepted using the binomial distribution here, which gives a slightly different answer. In larger sample sizes, these answers would be almost identical:
-1 - pbinom(23,30,.7)
+# standard error
+sqrt(0.22 * 0.78 / 80)
 
 ```
 
-*Your answer here: `0.116 or 0.159`*
+*Answer: Under random selection, we would expect* $\pi = 0.22$ of recipients (about 17–18 of 80) to be first-generation. The standard error is:
+
+$$SE(\hat{p}) = \sqrt{\frac{0.22 \times 0.78}{80}} \approx 0.046$$
+
+**c) The observed proportion is** $\hat{p} = 8/80 = 0.10$. How many standard errors is this from what we would expect under random selection? Also calculate the probability of observing a proportion this low or lower under random selection.
+
+```{r}
+
+# z-score
+(0.10 - 0.22) / sqrt(0.22 * 0.78 / 80)
+
+# probability of observing p-hat this low or lower
+pnorm(0.10, mean = 0.22, sd = sqrt(0.22 * 0.78 / 80))
+
+```
+
+*Answer: The observed proportion is about **2.6 standard errors below** the expected value of 0.22. Under random selection, we would see a proportion this low or lower only about **0.5%** of the time.*
+
+**d) Based on your calculation in (c), is the observed proportion consistent with random selection? What might this pattern suggest?**
+
+*Answer: No — the observed proportion is 2.6 SEs below what we would expect if selection were random, and it would arise by chance less than 1% of the time. This pattern suggests that first-generation students may be systematically underrepresented in fellowship selection, possibly due to lower application rates, a lack of mentorship in the application process, or bias in the selection committee.*
 
 ------------------------------------------------------------------------
 
-## Question 2: Sample Size and Sampling Distribution
+## Question 2: Sampling Designs
 
-**In the population, the mean SAT score is 1000. Would you be more likely (or equally likely) to get a sample mean of 1200 if you randomly sampled 10 students or if you randomly sampled 30 students? Explain.**
+A team of researchers wants to study the relationship between neighborhood poverty rates and health outcomes across the United States. They plan to survey households in a sample of U.S. counties.
 
-*Your answer here: `You are more likely to get a mean of around 1,200 in a smaller sample because there is more variance in a smaller sample`*
+**a) Briefly explain how a *cluster sampling* design would work for this study. What is one advantage of cluster sampling compared to simple random sampling?**
 
-------------------------------------------------------------------------
+*Answer: In cluster sampling, the researchers would first divide the country into clusters (counties), then randomly select a subset of those counties, and then randomly sample households within the selected counties. One advantage is cost and feasibility: it is much cheaper to survey households concentrated in a few counties than to send interviewers to a truly random nationwide sample of households.*
 
-## Question 3: Normal Distribution and Sample Means
+**b) The researchers decide to over-sample counties where poverty rates exceed 30% — drawing larger samples within those counties — so they have enough data to make comparisons within high-poverty areas. What type of sampling design is this, and what is the purpose of over-sampling this group?**
 
-**Given a test that is normally distributed with a mean of 100 and a standard deviation of 12, find:**
+*Answer: This is **stratified random sampling**, where counties are divided into strata based on poverty rate. The purpose of over-sampling high-poverty counties is to ensure that there are enough respondents within that stratum to draw precise inferences about health outcomes in high-poverty areas. Without over-sampling, high-poverty counties (which are relatively rare) might produce too few observations to analyze reliably.*
 
-**a) The probability that a single score drawn at random will be greater than 110**
+**c) After collecting the data, the researchers find that households in rural counties were about half as likely to respond to the survey as households in urban counties. What is the appropriate statistical fix for this problem, and how does it work?**
 
-```{r}
-
-# Your code here
-1 - pnorm(110,100,12) 
-
-```
-
-*Your answer here: `0..2023284`*
-
-**b) The probability that a sample of 25 scores will have a mean greater than 105**
-
-```{r}
-
-# Your code here
-1 - pnorm(105,100,12/5)
-
-```
-
-*Your answer here: `0..0186`*
-
-**c) The probability that a sample of 64 scores will have a mean greater than 105**
-
-```{r}
-
-# Your code here
-1 - pnorm(105,100,12/8) 
-
-```
-
-*Your answer here: `0.000429`*
-
-**d) The probability that the mean of a sample of 16 scores will be either less than 95 or greater than 105**
-
-```{r}
-
-# Your code here
-pnorm(95,100,12/4) + (1 - pnorm(105,100,12/4))
-
-```
-
-*Your answer here: `0.0956`*
+*Answer: The appropriate fix is to apply **sampling weights**. Households that were less likely to respond (rural) receive higher weights so that they represent not just themselves but the similar rural households who did not respond. Weights are set inversely proportional to the probability of selection/response, making the weighted sample representative of the full population.*
 
 ------------------------------------------------------------------------
 
-## Question 4: Comparing Two Schools
+## Question 3: Jury Selection and Racial Representation
 
-**The mean GPA for students in School A is 3.0; the mean GPA for students in School B is 2.8. The standard deviation in both schools is 0.25. The GPAs of both schools are normally distributed. If 9 students are randomly sampled from each school, what is the probability that:**
+Jury selection is a constitutional right, and courts have found that systematic underrepresentation of racial groups violates the Equal Protection Clause. In a county in Texas, **28% of registered voters are Latino**. A civil rights organization examines records from the past year and finds that of **200 jury summons randomly issued**, only **42 went to Latino residents** ($\hat{p} = 42/200 = 0.21$).
 
-**a) The sample mean for School B will be greater than the sample mean for School A?**
+**a) State the population parameter** $\pi$ and the sample statistic $\hat{p}$ for this scenario.
 
-```{r}
+*Answer: The population parameter is* $\pi = 0.28$ (the proportion of registered voters who are Latino). The sample statistic is $\hat{p} = 0.21$ (the proportion of jury summons that went to Latino residents).
 
-# Your code here
-pnorm(0, .2, sqrt(.25^2/9 + .25^2/9)) 
-
-```
-
-*Your answer here: `0.0448`*
-
-**b) The sample mean for School A will exceed that of School B by 0.5 or more?**
+**b) Assuming jury summons are issued randomly, calculate the mean and standard error of the sampling distribution of** $\hat{p}$.
 
 ```{r}
 
-# Your code here
-1 - pnorm(.5, .2, sqrt(.25^2/9 + .25^2/9)) 
+# mean of sampling distribution
+pi  <- 0.28
+n   <- 200
+
+mu_phat <- pi
+mu_phat
+
+# standard error
+se_phat <- sqrt(pi * (1 - pi) / n)
+se_phat
 
 ```
 
-*Your answer here: `0.00545`*
+*Answer:*
 
-------------------------------------------------------------------------
+$$\mu_{\hat{p}} = 0.28 \qquad SE(\hat{p}) = \sqrt{\frac{0.28 \times 0.72}{200}} \approx 0.032$$
 
-## Question 5: Freight Elevator Problem
-
-**A large freight elevator can transport a maximum of 7600 pounds. Suppose a load of cargo containing 39 boxes must be transported via the elevator. Experience has shown that the weight of boxes of this type of cargo follows a distribution with mean µ = 200 pounds and standard deviation σ = 15 pounds. Based on this information, what is the probability that all 39 boxes can be safely loaded onto the freight elevator and transported?**
+**c) Calculate how many standard errors the observed proportion (**$\hat{p} = 0.21$) is from what we would expect under random selection. Then calculate the probability of observing a proportion this low or lower if jury summons were truly issued at random.
 
 ```{r}
 
-# Your code here
-pnorm(7600/39, 200, 15/sqrt(39)) 
+# z-score (how many SEs below the expected value?)
+p_hat_obs <- 0.21
+z <- (p_hat_obs - mu_phat) / se_phat
+z
 
-
-```
-
-*Your answer here: `To safely transport a sample of 39 boxes, their sampling mean must be below 7600/39. The probability of this is 0.01637879`*
-
-------------------------------------------------------------------------
-
-## Question 6: Wine Inventory Management
-
-Suppose the number of bottles of wine a restaurant sells each week is normally distributed with mean 500 bottles and standard deviation of 100 bottles. The restaurant starts with 800 bottles, and has a scheduled delivery at the beginning of each week of 450 bottles.
-
-**a) Find the probability that, after 10 weeks, the supply of wine will be below 200 bottles.**
-
-```{r}
-
-# Your code here
-1 - pnorm(510,500,100/sqrt(10)) 
+# probability of observing p-hat this low or lower
+pnorm(p_hat_obs, mean = mu_phat, sd = se_phat)
 
 ```
 
-*Your answer here: `After 10 weeks, the restaurant will have an input of 800 + 450*10 = 5300 bottles of wine. If the restaurant is below 200 bottles of wine after 10 weeks, then the average weekly output must be greater than 5100/10 = 510. The probability of this is 0.3759148.`*
+*Answer: The observed proportion is about **2.2 standard errors below** the expected value. Under random selection, the probability of observing* $\hat{p} \leq 0.21$ is approximately **1.4%** — a fairly rare outcome.
+
+**d) Interpret your results. Is this pattern consistent with random jury selection? What might explain the gap between the expected and observed proportions?**
+
+*Answer: A result this far from the expected value would occur only about 1–2% of the time if summons were truly random. This is strong evidence that Latino residents are being systematically underrepresented in this county's jury pool. Possible explanations include biased address lists used to generate summons (which may miss Latino neighborhoods), higher rates of disqualification among Latino residents (e.g., non-citizenship), or other administrative factors that produce non-random outcomes.*
 
 ------------------------------------------------------------------------
 

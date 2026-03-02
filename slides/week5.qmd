@@ -28,25 +28,32 @@ library(here)
 attain <- read_csv(here("data/attain.csv")) 
 ```
 
-## Housekeeping: HW #3 {.smaller}
 
-[[**ADD IT IN LATER**]]
+## Housekeeping {.smaller}
+
+**HW #1:** Great job everyone ! Lots of great coding 
+ 
+**HW #2:** Really great job finding data, asking questions, and responding to prompts. Make sure to check rendering and answer all of the questions. 
+
+**HW #3:** due Thursday, February 19 at 11:59 PM
+
+**Paper Proposal (5%):** due Thursday, February 26, 11:59 PM
+  
+  - A **two-page double-spaced proposal** for your final paper. 
+  - Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html) of what I expect.
+
+**Academic Integrity Asignment** due Friday, May 8, 11:59 PM
+
 
 ## Questions?
 
 ## Course Overview {.smaller}
 
-**Where we've been:**
+**Where we've been:** Finding data and **describing** it (graphs, summary statistics)
 
-First, we learned about how to find data from the "real world" and describe it (both graphically and using summary statistics like the mean & variance)
+**Where we're going:** **Inferring** things about the "real world" from data
 
-**Where we're going:**
-
-Now, we will turn to what we can **infer** about the "real world", given the data that we have
-
-But first, we'll momentarily take a step back from the actual data to think about the **processes that generated the data**
-
-The models that we will create to understand these processes will allow us to make powerful inferences about the "real world" from the data
+**This week:** We step back from actual data to think about the **processes that generated the data** — probability models that will power our inferences
 
 ## Agenda {.smaller}
 
@@ -57,28 +64,22 @@ The models that we will create to understand these processes will allow us to ma
 - Density curves
 - Rules of probability
 - Probabilities of multiple events
-  - Unions and intersections
-  - Conditional probabilities
-  - Bayes' theorem
+
+# Probability Models
+
+To make inferences, we first need to model the **processes that generate data**
 
 ## Randomness and Probability {.smaller}
 
-We will consider a phenomenon to be **random** if individual outcomes are uncertain but there is, nonetheless, a regular distribution of outcomes in a large number of repetitions. Think of there being some level of randomness involved
+A phenomenon is **random** if individual outcomes are uncertain but there is a regular distribution of outcomes over many repetitions
 
-**Some examples:**
+- **Examples**: rolling a die, playing the lottery, a coin toss
 
-- **Rolling a dice**: all outcomes are equally likely
-- **Playing the lottery**: winning is unlikely and rare
-- **Taking a standardized test**: not all outcomes are equally likely for a given test-taker, but a test-taker will usually not get the same score every time they take a test
+The **probability** of an outcome is the proportion of times it would occur in a very large number of independent repetitions
 
-## Randomness and Probability {.smaller}
+$$P(A) = \frac{\text{number of repetitions where A occurs}}{\text{total number of repetitions}}$$
 
-The **probability** of any outcome of a random phenomenon can be defined as the proportion of times the outcome would occur in a very large number of independent repetitions
-
-- We denote the probability of an event A as **P(A)**
-- $P(A) = \frac{\text{number of repetitions where event A occurs}}{\text{total number of repetitions}}$
-
-Repetitions are **independent** if the result of one repetition does not influence the result of other repetitions
+Repetitions are **independent** if the result of one does not influence the result of others
 
 ## Example: A Coin Toss {.smaller}
 
@@ -108,9 +109,7 @@ If tosses are independent, then we can say that the probability of tossing "head
 
 - We can calculate probabilities by observing many trials of a random phenomenon
 
-- The sample proportion of the number of times the outcome occurred is the **probability**
-
-- This is an **estimate** of the actual probability, but a reasonably good one as we observe more and more trials
+- Then calclute the **probability**^[This is an estimate that improves as we observe more trials] by taking a sample proportion of the number of times the outcome occurred
 
 **Theoretical approach**
 
@@ -120,24 +119,33 @@ If tosses are independent, then we can say that the probability of tossing "head
 
 **Probability models** are theoretical models that mathematically describe the outcome of random processes. They consist of two parts:
 
-1. **Sample space (S)**: This is a set, or list, of all possible outcomes of a random process. An event is a subset of the sample space
+1. **Sample space (S)**: the set of all possible outcomes of a random process
+   - Ex: Sample space for a six-sided die is `1, 2, 3, 4, 5, 6`
+   - An **event** is a subset of the sample space (e.g., rollling an even number)
 
 2. **A probability for each possible event** in the sample space S
+    - Ex: rolling an even number `3/6` or `1/2`
 
 ## Properties of Probability Models {.smaller}
 
 **Three fundamental properties:**
 
+::: {.fragment}
 1. **Range**: Probabilities for any given event range from 0 (can't happen) to 1 (happens every time)
    - Formally, for any event A: $0 \leq P(A) \leq 1$
    - So, the range of probability must be between 0 and 1
+:::
 
+::: {.fragment}
 2. **Exhaustiveness**: $P(S) = 1$. That is, the sample space is exhaustive of all possibilities
   - In other words, there cannot be any limits on the probability of an occurance
+:::
 
-3. **Complement rule**: The probability of an event not occurring is 1 minus the probability that it does occur
+::: {.fragment}
+3. **Complement rule**: The probability of an event not occurring is 1 minus the probability that it does occur:
    - $P(\text{not } A) = 1 - P(A)$
    - $P(\text{not } A)$ is called the **complement** of A
+:::
 
 ## Probability Models: Example {.smaller}
 
@@ -163,16 +171,19 @@ If tosses are independent, then we can say that the probability of tossing "head
 3. Complement: $P(\text{not Heads}) = P(\text{Tails}) = 1 - 0.5 = 0.5$ ✓
 :::
 
+# Sample Spaces
+
+Every probability model starts by defining **what outcomes are possible**
+
 ## Compound Events {.smaller}
 
-Pretty simple, right? But this becomes more useful when we want to predict **compound events** that are the result of multiple trials
+Understanding sample space becomes most useful when we want to predict **compound events** that are the result of multiple trials
 
-We can figure out the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome
+Calculate the probability of compound events by enumerating all possible outcomes and assigning a probability to each outcome
 
 **Example**: What's the probability of getting two heads in two coin flips?
 
 > We need to consider all possible outcomes and their probabilities
-
 
 ## Example 1: Order matters {.smaller}
 
@@ -189,7 +200,6 @@ $$S = \{HHH, HHM, HMH, HMM, MHH, MHM, MMH, MMM\}$$
   - HMH = Hit, Miss, Hit
   - These are different sequences!
 
-
 ## Example 2: Order doesn't matter {.smaller}
 
 Now we only care about **how many baskets are made**, not the order
@@ -203,6 +213,27 @@ $$S = \{0, 1, 2, 3\}$$
 - 🔑 **Order doesn't matter**
   - HMH and MHH both → 2 baskets
   - We collapse multiple sequences into single counts
+
+## Complement Shortcut: "At Least One" {.smaller}
+
+The complement rule is especially useful for **"at least one"** problems
+
+**Example**: What is the probability of getting at least one head in 3 coin flips?
+
+We *could* list every outcome with at least one head... but it's easier to use the complement:
+
+::: {.fragment}
+$$P(\text{at least one head}) = 1 - P(\text{no heads})$$
+
+$$= 1 - P(TTT) = 1 - \frac{1}{8} = \frac{7}{8}$$
+:::
+
+::: {.fragment}
+**Why this works:** "at least one head" and "no heads" are complements — one of them *must* happen, so their probabilities sum to 1
+
+> Whenever you see "at least one," think complement!
+:::
+
 
 ## Example 3: Continuous outcomes {.smaller}
 
@@ -218,36 +249,50 @@ $$S = [0, \infty)$$
   - Can't list all outcomes individually
   - Must use intervals and density curves
 
-## Comparing Sample Space Types {.smaller}
+## Back to the Two Coin Flips Example {.smaller}
 
-| Scenario | Type of Sample Space | Order Matters? | Number of Outcomes |
-|----------|---------------------|----------------|-------------------|
-| Free throw sequences | Discrete | ✅ Yes | 8 |
-| Number of baskets | Discrete | ❌ No | 4 |
-| Weight gain | Continuous | ❌ No | Infinite (∞) |
+**Question:** What's the probability of getting two heads in two coin flips?
 
-**Key takeaway:** The same physical situation (free throws) can have different sample spaces depending on what question we're asking!
+::: {.fragment}
+For two fair flips, the sample space is:
 
-## Discrete Sample Spaces {.smaller}
+$$S = \{HH, HT, TH, TT\}$$
+:::
+
+::: {.fragment}
+Each outcome is equally likely, so each has probability $1/4$
+:::
+
+::: {.fragment}
+Let event $A = \{\text{two heads}\} = \{HH\}$
+:::
+
+::: {.fragment}
+$$P(A) = P(HH) = \frac{1}{4}$$
+:::
+
+::: {.fragment}
+Equivalent multiplication view (independent flips):
+
+$$P(HH) = P(H)\times P(H) = \frac{1}{2}\times\frac{1}{2} = \frac{1}{4}$$
+:::
+
+## Discrete vs. Continuous Sample Spaces {.smaller}
 
 **Discrete sample spaces** deal with data that can only take on certain values, known in advance (that is, categorical data)
 
-**Example**: Throwing a single die
+- **Example**: Throwing a single die → $S = \{1, 2, 3, 4, 5, 6\}$, each with probability $1/6$
+- These are straightforward because we can list all possible outcomes
 
-- $S = \{1, 2, 3, 4, 5, 6\}$
-- Probability of each event, assuming a fair die: $1/6$
+::: {.fragment}
+**Continuous sample spaces** contain an infinite number of outcomes. They are typically intervals of possible, continuously distributed outcomes
 
-These are straightforward because we can list all possible outcomes
+- **Example**: Picking a random real number between 0 and 1 → $S = [0,1]$
+:::
 
-## Continuous Sample Spaces {.smaller}
-
-On the other hand, **continuous sample spaces** contain an infinite number of outcomes. They are typically intervals of possible, continuously distributed outcomes.
-
-**Example**: Picking a random real number between 0 and 1
-
-- $S = [0,1]$ (the interval containing all real numbers between 0 and 1)
-
+::: {.fragment}
 **Question**: How do we assign probabilities to outcomes in an infinite sample space?
+:::
 
 ## Probabilities in Continuous Sample Spaces {.smaller}
 
@@ -256,9 +301,7 @@ On the other hand, **continuous sample spaces** contain an infinite number of ou
 
 We use **density curves** to represent probabilities across the continuous sample space, and compute probabilities for intervals as the **area under the curve**
 
-**Example**: Uniform density curve over $S = [0,1]$
-
-Uniform density curves represent when all outcomes in a continuous sample space are equally likely
+**Example**: Uniform density curve over $S = [0,1]$ (all outcomes equally likely)
 
 The shaded portion represents:
 
@@ -273,110 +316,113 @@ $P(0.3 \leq x \leq 0.7) = (0.7 - 0.3) \times 1 = 0.4$
 :::
 :::::
 
-## Properties of Density Curves {.smaller}
+## Density Curves: Properties and Types {.smaller}
 
-**Three key properties:**
+**Properties:**
 
-1. **Single point probability**: The probability of a single outcome under a density curve is zero
-   - Think: what is the probability that a random number between 0 and 1 is, say, π/4?
-   - Only intervals have non-zero probability
+- P(single point) = 0 — only intervals have non-zero probability
+- Total area under the curve = 1
+- Density curves are always non-negative
 
-2. **Total area**: The total area under a density curve is equal to 1
-   - This is the analogue of $P(S) = 1$
+**Common types we'll encounter** (we'll use these extensively when we study the **normal distribution**):
 
-3. **Non-negativity**: Density curves are always positive
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 10
+#| fig-height: 3
 
-## Density Curve Examples {.smaller}
+library(patchwork)
 
-::::: columns
-::: {.column width="60%"}
+p1 <- ggplot() +
+  geom_rect(aes(xmin = 0, xmax = 1, ymin = 0, ymax = 1),
+            fill = "steelblue", alpha = 0.3, color = "steelblue") +
+  labs(x = NULL, y = NULL, title = "Uniform", subtitle = "e.g., equal chance across range") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+        plot.subtitle = element_text(size = 10, hjust = 0.5))
 
-Density curves come in all shapes and sizes:
+p2 <- ggplot(data.frame(x = seq(-4, 4, 0.01)), aes(x)) +
+  stat_function(fun = dnorm, geom = "area", fill = "steelblue", alpha = 0.3, color = "steelblue") +
+  labs(x = NULL, y = NULL, title = "Normal (bell curve)", subtitle = "e.g., heights, test scores") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+        plot.subtitle = element_text(size = 10, hjust = 0.5))
 
-- Some are well-known mathematically; others aren't
-- Some are described by simple equations; others aren't
+p3 <- ggplot(data.frame(x = seq(0, 6, 0.01)), aes(x)) +
+  stat_function(fun = dexp, geom = "area", fill = "steelblue", alpha = 0.3, color = "steelblue") +
+  labs(x = NULL, y = NULL, title = "Exponential", subtitle = "e.g., wait times") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+        plot.subtitle = element_text(size = 10, hjust = 0.5))
 
-**Common types we'll encounter:**
-
-- Uniform distribution (equal probability across range)
-- Normal distribution (bell curve)
-- Exponential distribution
-- And many others...
-
-:::
-
-::: {.column width="40%"}
-
-![Sample of various types of density curves](images/week5/density_curves.png){width="100%,fig-align=\"center\""}
-
-:::
-:::::
-
-## Questions?
-
-## Compound Probabilities: Multiple Events! {.smaller}
-
-
-::::: columns
-::: {.column width="60%"}
-
-**Union of events:**
-
-Let A and B be subsets of the sample space S (that is, A and B are events)
-
-The **union** of A and B ("A or B") consists of outcomes that are in A, or in B, or in both A and B
-
-**Notation**: $A \cup B$
-
-:::
-::: {.column width="40%"}
-
-![](images/week5/union.png){width="40%,fig-align=\"center\""}
-
-:::
-:::::
+p1 + p2 + p3
+```
 
 
-::: aside
-In words, whenever you see the $\cup$, it means "the union between". Or put more plainly "everything that’s in A, everything that’s in B, and anything they share."
-:::
+# Rules of Probability
 
-## Probability of the Union of Two Events {.smaller}
+Now that we know what outcomes are possible, we need **rules for calculating** the probability of combined events
 
+- Use the **Addition Rule** when the question asks for **"A or B"**
+- Use the **Multiplication Rule** when the question asks for **"A and B"**
 
-::::: columns
-::: {.column width="50%"}
+## Addition Rule: Union of "A or B" {.smaller}
 
-**Addition rule**: For the union of two events,
+The **union** of A and B ("A or B") consists of outcomes that are in A, or in B, or in both A and B. **Notation**: $A \cup B$
+
+![](images/week5/addition.png){width="40%,fig-align=\"center\""}
+
+::: {.panel-tabset}
+
+### Use when question says "or"
+
+For the union of two events,
 
 $$P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)$$
 
-:::
-::: {.column width="40%"}
+We subtract $P(A \text{ and } B)$ to avoid double-counting outcomes in both events
 
-![](images/week5/addition.png){width="100%,fig-align=\"center\""}
+Notice: even in an "or" problem, we still need the overlap term $P(A \text{ and } B)$
 
-:::
-:::::
-
-**Special case - Disjoint events:**
+### Special case: Disjoint events
 
 If the events are **disjoint** (mutually exclusive), then $P(A \text{ and } B) = 0$
 
-Therefore: $P(A \text{ or } B) = P(A) + P(B)$
+$$P(A \text{ or } B) = P(A) + P(B)$$
 
+Disjoint events have no overlap, so there's nothing to subtract
 
-## Intersection of Two Events {.smaller}
+:::
+
+## Addition Rule: Worked Example {.smaller}
+
+**Example**: I draw one card from a standard deck. What is the probability that I draw a club or a face card?
+
+- $P(\text{club}) = 13/52$ (13 clubs in the deck)
+- $P(\text{face card}) = 12/52$ (4 jacks + 4 queens + 4 kings)
+- $P(\text{club and face card}) = 3/52$ (jack, queen, king of clubs)
+
+::: {.fragment}
+Applying the addition rule:
+
+$$P(\text{club or face card}) = \frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} \approx 0.42$$
+
+We subtract $3/52$ because the jack, queen, and king of clubs are **both** clubs and face cards — without subtracting, we'd count them twice!
+:::
+
+## Intersection and Conditional Probabilities {.smaller}
 
 ::::: columns
-::: {.column width="60%"}
+::: {.column width="55%"}
 
+The **intersection** of A and B ($A \cap B$) consists of outcomes that are in both A and B — the overlap between two events
 
-The **intersection** of A and B ("A and B") consists of outcomes that are in both A and B
+The **conditional probability** of event A, given that event B has occurred, is:
 
-**Notation**: $A \cap B$
+$$P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$$
 
-This represents the overlap between two events
+- $P(A|B)$ is read as "the probability of A, given B"
 
 :::
 ::: {.column width="40%"}
@@ -386,38 +432,9 @@ This represents the overlap between two events
 :::
 :::::
 
+## Multiplication Rule: Intersection of "A and B" {.smaller}
 
-::: aside
-In words, whenever you see the $\cap$, it means "the intersection between". Or put more plainly, "only the things that A and B have in common."
-:::
-
-
-## Conditional Probabilities {.smaller}
-
-For events A and B, the **conditional probability** of event A, given that event B has occurred, is:
-
-$$P(A|B) = \frac{P(A \text{ and } B)}{P(B)}$$
-
-
-**Reading the notation:**
-
-- $P(A|B)$ is read as "the probability of (event) A, given (event) B"
-- The vertical slash represents the word "given" or "conditional on"
-
-**Interpretation:**
-
-Of all the times that B occurs, $P(A|B)$ is the proportion of times that A also occurs
-
-## Conditional Probabilities: Connection to Marginal Frequencies {.smaller}
-
-Note that this is equivalent to the **marginal frequency**, which we discussed last week
-
-This shows how probability theory connects to the descriptive statistics we've already learned
-
-![](images/week5/conditional_freq.png){width="100%,fig-align=\"center\""}
-
-
-## Multiplication Rule {.smaller}
+Use this rule when the question asks for the probability that **both** events happen.
 
 For the intersection of two events:
 
@@ -431,13 +448,48 @@ It doesn't matter which event we choose first!
 
 If two events are **independent**, the probability that one event occurs is not affected by whether the other event occurs
 
+::: {.fragment}
 **This implies:**
 
 - $P(B|A) = P(B)$
 - $P(A|B) = P(A)$
 - $P(A \text{ and } B) = P(A) \times P(B)$
+:::
 
+::: {.fragment}
 **Example**: Coin flips are independent - knowing the first flip doesn't tell you anything about the second flip
+:::
+
+## Independence and Sampling {.smaller}
+
+A common way to determine independence: **how are you sampling?**
+
+- **With replacement**: Put the item back before drawing again → draws are **independent** (probabilities don't change)
+- **Without replacement**: Keep the item out → draws are **dependent** (probabilities change after each draw)
+
+**Example**: An urn has 7 red and 3 blue marbles
+
+- With replacement: $P(\text{Red 2nd draw}) = 7/10$ regardless of 1st draw
+- Without replacement: $P(\text{Red 2nd} | \text{Red 1st}) = 6/9$, but $P(\text{Red 2nd} | \text{Blue 1st}) = 7/9$
+
+## Multiplication Rule: Worked Example {.smaller}
+
+
+> Example: An urn has 7 red and 3 blue marbles
+
+**With replacement** (independent draws):
+
+$$P(RR) = P(R) \times P(R) = \frac{7}{10} \times \frac{7}{10} = \frac{49}{100}$$
+
+::: {.fragment}
+**Without replacement** (dependent draws):
+
+$$P(RR) = P(R_1) \times P(R_2 | R_1) = \frac{7}{10} \times \frac{6}{9} = \frac{42}{90}$$
+:::
+
+::: {.fragment}
+Notice the difference: without replacement, getting a red marble first changes the probability of getting a red marble second
+:::
 
 ## Questions?
 
@@ -449,45 +501,22 @@ We will learn about **random variables**, which are numerical measurements of a 
 
 Then, we'll look at probability models of the distributions of random variables
 
-## Homework {.smaller}
+## Weekly Assignment #4 {.smaller}
 
-**Assignment details:**
+You'll answer some questions based on lecture today. You will not need a dataset.
 
-- No data analysis, or even anything in R
-- A relatively shorter assignment than last week's
-- Rest of class: work on HW in groups
+**HW #4:** due Thursday, February 26 at 11:59 PM
 
-**Groups:**
+## Paper Proposal (5%) {.smaller}
 
-- Group 1: [**ASSIGN**]
-- Group 2: [**ASSIGN**]
-- Group 3: [**ASSIGN**]
+A **two-page double-spaced proposal** for your final paper is due on bCourses by **Thursday, February 26 at 11:59 PM**. Here's [an example](https://www.kaseyzapatka.com/soc106/assignments/paper/01_proposal.html). 
 
-**Reminder**: <span class="highlight">Research paper proposal is due next Thursday, February 26</span>
+**Your proposal should include:**
 
-Shorter weekly assignment → good opportunity to work on your proposal!
+1. **Research question** - What are you trying to answer?
+2. **Why it matters** - Why should we care about this question?
+3. **Hypotheses** - What do you think the answer is, and why?
+4. **Data source** - What dataset will you use?
+5. **Key variables** - Identify your independent and dependent variables
 
-## Research Paper Proposal {.smaller}
-
-**Required components:**
-
-1. **Research question**, asked as a question (1 sentence)
-
-2. **Motivation**: why do we care? (one paragraph)
-
-3. **Hypotheses** about what the answer is, and why (one paragraph)
-
-4. **Data** (1-2 paragraphs):
-   - Describe who collected the data, what the units of analysis are (i.e., people, cities, organizations, countries)
-   - What year the data is from, how many observations will be in your sample
-   - Specifically describe your main independent and dependent variables: what is their level of measurement? If nominal/ordinal, what are the categories? If continuous, what are the units?
-
-## Research Paper Proposal {.smaller}
-
-You don't have to write about what statistical analysis you will use, but you should end with a sentence that talks generally about the relationship you expect to see between your independent and dependent variables
-
-**Example:**
-
-> "I expect that people who report higher family incomes will be more likely to agree with the survey question that the government should reduce taxes."
-
-**Note**: Your proposal can (and prob should) use the data/topic that you've been working with in weekly assignments so far.
+*Note: You do not need to discuss statistical techniques at this point.*
