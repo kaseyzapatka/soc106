@@ -18,7 +18,7 @@ editor: visual
 2.  Save the file in your assignments folder.
 3.  Follow the instructions below to complete the assignment. Show your work for all calculations where necessary!
 4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
-5.  Submit the `hw6.qmd` file to bCourse before the deadline.
+5.  Submit both `hw6.qmd` and `hw6.html`file to bCourse before the deadline.
 6.  Make sure your name appears in the "author" field in the YAML header above.
 :::
 
@@ -166,5 +166,5 @@ pnorm(p_hat_obs, mean = mu_phat, sd = se_phat)
 -   [ ] All code chunks run without errors
 -   [ ] You've answered all written response questions and shown your work
 -   [ ] You've clicked "Render" and successfully generated an HTML file
--   [ ] You're submitting the .qmd file to bCourse
+-   [ ] You're submitting both the .qmd and .html file to bCourse
 :::

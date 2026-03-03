@@ -206,7 +206,14 @@
 </section>
 <section id="housekeeping" class="slide level2 smaller">
 <h2>Housekeeping</h2>
-<p>[[<strong>ADD IT IN LATER</strong>]]</p>
+<p><strong>HW 4:</strong></p>
+<ul>
+<li>Great job overall: minor issues across the class.</li>
+</ul>
+<p><strong>Open Week Topic:</strong></p>
+<ul>
+<li>Will send out a survey for topics for open week after class today. Please answer by <strong>March 17</strong>.</li>
+</ul>
 </section>
 <section id="where-we-are-in-the-course" class="slide level2 smaller">
 <h2>Where We Are in the Course</h2>
@@ -217,6 +224,16 @@
 <li><strong>Then (Week 9):</strong> hypothesis testing</li>
 </ul>
 <p><strong>Main idea:</strong> We’ve been building probability models of <em>populations</em>. Today we ask: what happens when we draw a <em>sample</em>—and then another, and another? The answer is what makes all of statistical inference possible.</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The answer:</strong></p>
+</div>
+<div class="callout-content">
+<p>When we draw a sample—and then another, and another—the sample statistics vary in a systematic, mathematically predictable way. That predictable variation is what makes statistical inference possible.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="agenda" class="slide level2 smaller">
 <h2>Agenda</h2>
@@ -230,11 +247,16 @@
 <li><strong>Part 2</strong>: Sampling distributions — statistics vary from sample to sample</li>
 <li><strong>Part 3</strong>: The Central Limit Theorem — the key that unlocks inference</li>
 </ul>
+<p><strong>In-class lab:</strong></p>
+<ul>
+<li>work through some basic data management for your research project</li>
+</ul>
 </section>
 <section id="research-paper-proposals" class="slide level2 smaller">
 <h2>Research Paper Proposals</h2>
-<p><strong>Overall, great job—super interesting topics!</strong></p>
-<p>I tried to give feedback in two areas:</p>
+<p>Only about halfway done will finish by next week.</p>
+<p><strong>Overall, great job—super interesting topics so far!</strong></p>
+<p>I will give feedback in two areas:</p>
 <ol type="1">
 <li><p><strong>Research design</strong>: How to construct variables of interest, what units of analysis may be most appropriate, other issues you may want to think about going forward</p></li>
 <li><p><strong>What has been written in the academic literature</strong> on your topic — some topics have been studied a lot, which is a <strong>good sign</strong> that your question is important!</p></li>
@@ -371,7 +393,7 @@
 </section>
 <section id="sampling-from-a-population" class="slide level2 smaller">
 <h2>Sampling from a Population</h2>
-<p>We start with a <strong>population</strong> — every individual we want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997.</p>
+<p>Start with a <strong>population</strong> — every individual you want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997. Since you can’t talk to everyone, you have to take a representive <strong>sample</strong>, that will approximate your population.</p>
 
 <img data-src="images/week7/pop_vs_sample0.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
 <section id="sampling-from-a-population-1" class="slide level2 smaller">
@@ -389,7 +411,16 @@
 <p>To do inferential statistics, we need a <strong>representative sample</strong> — ideally, each unit of the population has an equal chance of being included</p>
 <p>We also want samples that are <strong>large enough for precision</strong>, which increases with sample size</p>
 <p><br></p>
-<p><span class="highlight"><strong>Important note</strong>:</span> Precision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)</p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important note</strong></p>
+</div>
+<div class="callout-content">
+<p>Precision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)</p>
+</div>
+</div>
+</div>
 </section>
 <section id="types-of-sampling-designs" class="slide level2 smaller">
 <h2>Types of Sampling Designs</h2>
@@ -434,17 +465,27 @@
 </section>
 <section id="stratified-vs.-cluster-sampling" class="slide level2 smaller">
 <h2>Stratified vs.&nbsp;Cluster Sampling</h2>
-<p>These sound similar — the <strong>key difference</strong>: cluster sampling selects only <em>some</em> groups; stratified sampling samples from <em>all</em> strata.</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Key difference</strong>: cluster sampling selects only <em>some</em> groups; stratified sampling samples from <em>all</em> strata.</p>
+<p><br></p>
+<p><strong>When to use which:</strong></p>
+<ul>
+<li><strong>Cluster</strong>: use when sampling individuals directly is costly (e.g., 4th graders in California)</li>
+<li><strong>Stratified</strong>: use when you need better representation of known subgroups (e.g., GPA by major)</li>
+</ul>
+</div><div class="column" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/week7/sampling_stratified.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="images/week7/sampling_stratified.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/week7/sampling_cluster.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="images/week7/sampling_cluster.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
+</div></div>
 </section>
 <section id="representative-samples-sample-weights" class="slide level2 smaller">
 <h2>Representative Samples &amp; Sample Weights</h2>
@@ -515,13 +556,21 @@
 </tr>
 </tbody>
 </table>
-<p><span class="highlight"><strong>Key insights:</strong></span></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Key insights</strong></p>
+</div>
+<div class="callout-content">
 <ul>
 <li>Sampling distributions describe <strong>variability from study to study</strong></li>
 <li>They tell us <strong>how close a statistic is likely to fall</strong> to the true population parameter</li>
 <li>They are <strong>not what we observe</strong> — they represent what we <em>would</em> observe across many hypothetical repetitions</li>
 <li>They are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)</li>
 </ul>
+</div>
+</div>
+</div>
 </section>
 <section id="sampling-distribution-of-a-proportion" class="slide level2 smaller">
 <h2>Sampling Distribution of a Proportion</h2>
@@ -530,7 +579,7 @@
 <div class="tab-content">
 <div id="tabset-4-1">
 <p>Recall: <span class="math inline">\(X \sim B(n, \pi)\)</span> has mean <span class="math inline">\(n\pi\)</span> and SD <span class="math inline">\(\sqrt{n\pi(1-\pi)}\)</span></p>
-<p>The <strong>sample proportion</strong> <span class="math inline">\(\hat{p} = X/n\)</span> divides that count by <span class="math inline">\(n\)</span>. Its sampling distribution:</p>
+<p>The <strong>sample proportion</strong> <span class="math inline">\(\hat{p} = X/n\)</span> divides that count by <span class="math inline">\(n\)</span>. It’s sampling distribution:</p>
 <p><span class="math display">\[\mu_{\hat{p}} = \frac{n\pi}{n} = \pi \qquad SE(\hat{p}) = \frac{\sqrt{n\pi(1-\pi)}}{n} = \sqrt{\frac{\pi(1-\pi)}{n}}\]</span></p>
 <p><strong>Same formula as last week’s Binomial SD — divided by <span class="math inline">\(n\)</span>.</strong></p>
 </div>
@@ -545,12 +594,21 @@
 <li>Small <span class="math inline">\(n\)</span> → large SE → estimates can be far from the truth</li>
 <li>Large <span class="math inline">\(n\)</span> → small SE → estimates are reliably close to the truth</li>
 </ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>key insight:</strong></p>
+</div>
+<div class="callout-content">
 <p>This is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 </section>
-<section id="racial-profiling-a-worked-example" class="slide level2 smaller">
+<section id="racial-profiling-a-worked-example" class="slide level2 smaller scrollable">
 <h2>Racial Profiling: A Worked Example</h2>
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">The Setup</a></li><li><a href="#tabset-5-2">The Math</a></li><li><a href="#tabset-5-3">The Verdict</a></li></ul>
@@ -575,6 +633,15 @@
 <p><strong>Distance from expected</strong>:</p>
 <p><span class="math display">\[z = \frac{0.79 - 0.422}{0.030} \approx 12 \text{ standard errors above the mean}\]</span></p>
 <p>Under random stopping, <span class="math inline">\(\hat{p} = 0.79\)</span> is essentially impossible — it lies 12 SEs above what we’d expect. The sampling distribution reveals that this pattern cannot be explained by chance, but some other bias.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week7_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -583,7 +650,7 @@
 <h2>Visualizing the Sampling Distribution</h2>
 <p>As <span class="math inline">\(N\)</span> increases, <span class="math inline">\(\hat{p}\)</span> becomes <strong>tighter and more bell-shaped</strong> — the Central Limit Theorem in action:</p>
 
-<img data-src="week7_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="week7_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="sampling-distribution-of-the-mean" class="slide level2 smaller">
 <h2>Sampling Distribution of the Mean</h2>
 <div class="panel-tabset">
@@ -596,9 +663,9 @@
 <p>Doubling <span class="math inline">\(n\)</span> cuts the SE by a factor of <span class="math inline">\(\sqrt{2}\)</span> — not 2. Precision is expensive!</p>
 </div>
 <div id="tabset-6-2">
-<p><strong>Pizza sales</strong>: <span class="math inline">\(\mu = \$900/\text{day}\)</span>, <span class="math inline">\(\sigma = \$300\)</span>, <span class="math inline">\(n = 7\)</span> days</p>
+<p><strong>The problem</strong>: You manage a pizza restaurant and want to estimate your true average daily sales. You know from years of records that daily sales average <span class="math inline">\(\mu = \$900\)</span> with a standard deviation of <span class="math inline">\(\sigma = \$300\)</span> — but sales fluctuate day to day. If you observe only <span class="math inline">\(n = 7\)</span> days, how close will your sample mean be to the true average?</p>
 <p><span class="math display">\[SE(\bar{x}) = \frac{\$300}{\sqrt{7}} \approx \$113\]</span></p>
-<p>A 7-day average will typically be within <span class="math inline">\(\pm\$226\)</span> (2 SEs) of the true mean. Sampling 28 days instead cuts the SE in half: <span class="math inline">\(\frac{\$300}{\sqrt{28}} \approx \$57\)</span>.</p>
+<p>A 7-day average will typically be within <span class="math inline">\(\pm\$226\)</span> (2 SEs) of the true mean — so your estimate could easily be off by over $200. Observing 28 days instead cuts the SE in half: <span class="math inline">\(\frac{\$300}{\sqrt{28}} \approx \$57\)</span>, giving a much more reliable estimate.</p>
 </div>
 <div id="tabset-6-3">
 <p>As <span class="math inline">\(n\)</span> grows, the sampling distribution narrows around the true mean <span class="math inline">\(\mu\)</span>:</p>
@@ -641,35 +708,55 @@
 <p><strong>Why this matters for your research</strong>: Most survey samples (GSS, IPUMS, etc.) have <span class="math inline">\(n\)</span> in the hundreds or thousands — well above the threshold where CLT guarantees apply. This is what lets us do inference from survey data without knowing the full population distribution.</p>
 </div>
 </section>
-<section id="rolling-dice-a-worked-example" class="slide level2 smaller">
-<h2>Rolling Dice: A Worked Example</h2>
+<section id="weekly-work-hours-a-worked-example" class="slide level2 smaller scrollable">
+<h2>Weekly Work Hours: A Worked Example</h2>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Setup</a></li><li><a href="#tabset-7-2">Applying the CLT</a></li><li><a href="#tabset-7-3">Solution</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Setup</a></li><li><a href="#tabset-7-2">Applying the CLT</a></li><li><a href="#tabset-7-3">Solution</a></li><li><a href="#tabset-7-4">The CLT in Action</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1">
-<p><strong>Question</strong>: What is the probability that the mean of 35 dice rolls is less than 3?</p>
-<p><strong>Step 1: Parameters of a single die roll</strong></p>
-<p>A fair die has outcomes 1–6, each with probability 1/6:</p>
-<ul>
-<li>Mean: <span class="math inline">\(\mu = \frac{1+2+3+4+5+6}{6} = 3.5\)</span></li>
-<li>Variance: <span class="math inline">\(\sigma^2 = \frac{(1-3.5)^2 + (2-3.5)^2 + \cdots + (6-3.5)^2}{6} = \frac{35}{12}\)</span>, so <span class="math inline">\(\sigma = \sqrt{35/12}\)</span></li>
-</ul>
+<p><strong>GSS data</strong> show that among employed US adults, weekly work hours are right-skewed: <span class="math inline">\(\mu = 40.5\)</span> hours, <span class="math inline">\(\sigma = 14\)</span> hours.</p>
+<p>A labor researcher samples <span class="math inline">\(n = 35\)</span> workers at a specific company and finds a mean of 45 hours/week.</p>
+<p><strong>Question</strong>: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?</p>
 </div>
 <div id="tabset-7-2">
-<p><strong>Step 2: Sampling distribution of <span class="math inline">\(\bar{x}\)</span></strong> for <span class="math inline">\(n = 35\)</span> rolls</p>
-<p>By the CLT — same <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span> formula as the Binomial SE from Week 6, now applied to any population:</p>
-<p><span class="math display">\[SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{\sqrt{35/12}}{\sqrt{35}} = \frac{\sqrt{35}}{\sqrt{12} \cdot \sqrt{35}} = \frac{1}{\sqrt{12}} \approx 0.289\]</span></p>
-<p>So <span class="math inline">\(\bar{x} \sim N(3.5,\; 0.289)\)</span></p>
+<p>The population is <strong>right-skewed</strong> — but <span class="math inline">\(n = 35 &gt; 30\)</span>, so the CLT applies:</p>
+<p><span class="math display">\[SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{14}{\sqrt{35}} \approx 2.37\]</span></p>
+<p><span class="math display">\[\bar{x} \sim N(40.5,\; 2.37)\]</span></p>
+<p>Even though individual work hours are skewed, the <em>sample mean</em> is approximately Normal.</p>
 </div>
 <div id="tabset-7-3">
-<p><strong>Step 3: Compute the probability in R</strong></p>
+<p><strong>Compute the probability in R</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">pnorm</span>(<span class="dv">3</span>, <span class="at">mean =</span> <span class="fl">3.5</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">12</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">pnorm</span>(<span class="dv">45</span>, <span class="at">mean =</span> <span class="fl">40.5</span>, <span class="at">sd =</span> <span class="dv">14</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">35</span>), <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.04163226</code></pre>
+<pre><code>[1] 0.02861193</code></pre>
 </div>
 </div>
-<p>The probability is approximately <strong>4.2%</strong> — rolling a mean below 3 across 35 dice is unusual but not impossible.</p>
+<p>About <strong>2.9%</strong> — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Why <code>sd = 14/sqrt(35)</code> and not <code>sd = 14</code>?</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>sd</code> argument must match the distribution you’re asking about. Here the question is about a <strong>sample mean</strong>, not an individual worker:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">pnorm</span>(<span class="dv">45</span>, <span class="at">mean =</span> <span class="fl">40.5</span>, <span class="at">sd =</span> <span class="dv">14</span>)             <span class="co"># P(one worker &gt; 45 hrs) ≈ 37%</span></span>
+<span id="cb3-2"><a></a><span class="fu">pnorm</span>(<span class="dv">45</span>, <span class="at">mean =</span> <span class="fl">40.5</span>, <span class="at">sd =</span> <span class="dv">14</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">35</span>))    <span class="co"># P(sample mean &gt; 45 hrs) ≈ 3%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a <em>group average</em> of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by <span class="math inline">\(\sqrt{n}\)</span> is exactly what the SE captures.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week7_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -682,9 +769,16 @@
 <li>The <strong>standard error</strong> (SE) measures this variability — it shrinks as <span class="math inline">\(\sqrt{n}\)</span> grows</li>
 <li>The <strong>Central Limit Theorem</strong> guarantees that sample means are approximately Normal for large <span class="math inline">\(n\)</span>, regardless of the population shape</li>
 </ul>
-<blockquote>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>key takeaway:</strong></p>
+</div>
+<div class="callout-content">
 <p>Sample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course.</p>
-</blockquote>
+</div>
+</div>
+</div>
 </section>
 <section id="why-this-matters-for-the-rest-of-the-course" class="slide level2 smaller">
 <h2>Why This Matters for the Rest of the Course</h2>
@@ -693,9 +787,16 @@
 <li><strong>Week 9:</strong> Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors</li>
 <li><strong>Weeks 11–13 (Regression):</strong> Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today</li>
 </ul>
-<blockquote>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>key takeaway:</strong></p>
+</div>
+<div class="callout-content">
 <p>The CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand <em>why</em> every test we’ll do actually works.</p>
-</blockquote>
+</div>
+</div>
+</div>
 </section>
 <section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
