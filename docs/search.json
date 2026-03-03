@@ -333,28 +333,28 @@
     "href": "slides/week7.html#housekeeping",
     "title": "Week 7",
     "section": "Housekeeping",
-    "text": "Housekeeping\n[[ADD IT IN LATER]]"
+    "text": "Housekeeping\nHW 4:\n\nGreat job overall: minor issues across the class.\n\nOpen Week Topic:\n\nWill send out a survey for topics for open week after class today. Please answer by March 17."
   },
   {
     "objectID": "slides/week7.html#where-we-are-in-the-course",
     "href": "slides/week7.html#where-we-are-in-the-course",
     "title": "Week 7",
     "section": "Where We Are in the Course",
-    "text": "Where We Are in the Course\n\nWeeks 5–6: rules of probability + probability models (Bernoulli, Binomial, Normal)\nThis week (Week 7): sampling distributions and the Central Limit Theorem\nNext week (Week 8): confidence intervals\nThen (Week 9): hypothesis testing\n\nMain idea: We’ve been building probability models of populations. Today we ask: what happens when we draw a sample—and then another, and another? The answer is what makes all of statistical inference possible."
+    "text": "Where We Are in the Course\n\nWeeks 5–6: rules of probability + probability models (Bernoulli, Binomial, Normal)\nThis week (Week 7): sampling distributions and the Central Limit Theorem\nNext week (Week 8): confidence intervals\nThen (Week 9): hypothesis testing\n\nMain idea: We’ve been building probability models of populations. Today we ask: what happens when we draw a sample—and then another, and another? The answer is what makes all of statistical inference possible.\n\n\n\nThe answer:\n\n\nWhen we draw a sample—and then another, and another—the sample statistics vary in a systematic, mathematically predictable way. That predictable variation is what makes statistical inference possible."
   },
   {
     "objectID": "slides/week7.html#agenda",
     "href": "slides/week7.html#agenda",
     "title": "Week 7",
     "section": "Agenda",
-    "text": "Agenda\nAdmin discussion:\n\nResearch paper proposals and annotated bibliography\n\nStatistical content — three parts:\n\nPart 1: Sampling — from populations to data\nPart 2: Sampling distributions — statistics vary from sample to sample\nPart 3: The Central Limit Theorem — the key that unlocks inference"
+    "text": "Agenda\nAdmin discussion:\n\nResearch paper proposals and annotated bibliography\n\nStatistical content — three parts:\n\nPart 1: Sampling — from populations to data\nPart 2: Sampling distributions — statistics vary from sample to sample\nPart 3: The Central Limit Theorem — the key that unlocks inference\n\nIn-class lab:\n\nwork through some basic data management for your research project"
   },
   {
     "objectID": "slides/week7.html#research-paper-proposals",
     "href": "slides/week7.html#research-paper-proposals",
     "title": "Week 7",
     "section": "Research Paper Proposals",
-    "text": "Research Paper Proposals\nOverall, great job—super interesting topics!\nI tried to give feedback in two areas:\n\nResearch design: How to construct variables of interest, what units of analysis may be most appropriate, other issues you may want to think about going forward\nWhat has been written in the academic literature on your topic — some topics have been studied a lot, which is a good sign that your question is important!\n\nIf your question seems already answered: try a different data source, or look for related unanswered questions in paper conclusions. Happy to discuss in office hours!"
+    "text": "Research Paper Proposals\nOnly about halfway done will finish by next week.\nOverall, great job—super interesting topics so far!\nI will give feedback in two areas:\n\nResearch design: How to construct variables of interest, what units of analysis may be most appropriate, other issues you may want to think about going forward\nWhat has been written in the academic literature on your topic — some topics have been studied a lot, which is a good sign that your question is important!\n\nIf your question seems already answered: try a different data source, or look for related unanswered questions in paper conclusions. Happy to discuss in office hours!"
   },
   {
     "objectID": "slides/week7.html#annotated-bibliography",
@@ -396,7 +396,7 @@
     "href": "slides/week7.html#sampling-from-a-population",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\nWe start with a population — every individual we want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997."
+    "text": "Sampling from a Population\nStart with a population — every individual you want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997. Since you can’t talk to everyone, you have to take a representive sample, that will approximate your population."
   },
   {
     "objectID": "slides/week7.html#sampling-from-a-population-1",
@@ -417,7 +417,7 @@
     "href": "slides/week7.html#sample-design",
     "title": "Week 7",
     "section": "Sample Design",
-    "text": "Sample Design\nTo do inferential statistics, we need a representative sample — ideally, each unit of the population has an equal chance of being included\nWe also want samples that are large enough for precision, which increases with sample size\n\nImportant note: Precision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)"
+    "text": "Sample Design\nTo do inferential statistics, we need a representative sample — ideally, each unit of the population has an equal chance of being included\nWe also want samples that are large enough for precision, which increases with sample size\n\n\n\n\nImportant note\n\n\nPrecision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)"
   },
   {
     "objectID": "slides/week7.html#types-of-sampling-designs",
@@ -431,7 +431,7 @@
     "href": "slides/week7.html#stratified-vs.-cluster-sampling",
     "title": "Week 7",
     "section": "Stratified vs. Cluster Sampling",
-    "text": "Stratified vs. Cluster Sampling\nThese sound similar — the key difference: cluster sampling selects only some groups; stratified sampling samples from all strata."
+    "text": "Stratified vs. Cluster Sampling\n\n\nKey difference: cluster sampling selects only some groups; stratified sampling samples from all strata.\n\nWhen to use which:\n\nCluster: use when sampling individuals directly is costly (e.g., 4th graders in California)\nStratified: use when you need better representation of known subgroups (e.g., GPA by major)"
   },
   {
     "objectID": "slides/week7.html#representative-samples-sample-weights",
@@ -445,14 +445,14 @@
     "href": "slides/week7.html#what-is-a-sampling-distribution",
     "title": "Week 7",
     "section": "What is a Sampling Distribution?",
-    "text": "What is a Sampling Distribution?\nA sampling distribution is the probability distribution of a sample statistic computed across many independent samples from the same population\nThree distributions you must keep straight:\n\n\n\n\n\n\n\n\nDistribution\nWhat it describes\nPhiladelphia example\n\n\n\n\nPopulation\nAll individuals in the population\n1.45M Philadelphia residents, 42.2% African American\n\n\nSample (data)\nThe individuals in our sample\n262 police stops in 1997\n\n\nSampling\nHow our statistic would vary across repeated samples\nDistribution of \\(\\hat{p}\\) across many random samples of 262\n\n\n\nKey insights:\n\nSampling distributions describe variability from study to study\nThey tell us how close a statistic is likely to fall to the true population parameter\nThey are not what we observe — they represent what we would observe across many hypothetical repetitions\nThey are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)"
+    "text": "What is a Sampling Distribution?\nA sampling distribution is the probability distribution of a sample statistic computed across many independent samples from the same population\nThree distributions you must keep straight:\n\n\n\n\n\n\n\n\nDistribution\nWhat it describes\nPhiladelphia example\n\n\n\n\nPopulation\nAll individuals in the population\n1.45M Philadelphia residents, 42.2% African American\n\n\nSample (data)\nThe individuals in our sample\n262 police stops in 1997\n\n\nSampling\nHow our statistic would vary across repeated samples\nDistribution of \\(\\hat{p}\\) across many random samples of 262\n\n\n\n\n\n\nKey insights\n\n\n\nSampling distributions describe variability from study to study\nThey tell us how close a statistic is likely to fall to the true population parameter\nThey are not what we observe — they represent what we would observe across many hypothetical repetitions\nThey are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)"
   },
   {
     "objectID": "slides/week7.html#sampling-distribution-of-a-proportion",
     "href": "slides/week7.html#sampling-distribution-of-a-proportion",
     "title": "Week 7",
     "section": "Sampling Distribution of a Proportion",
-    "text": "Sampling Distribution of a Proportion\n\nThe bridge from Week 6What it tells usConnection to inference\n\n\nRecall: \\(X \\sim B(n, \\pi)\\) has mean \\(n\\pi\\) and SD \\(\\sqrt{n\\pi(1-\\pi)}\\)\nThe sample proportion \\(\\hat{p} = X/n\\) divides that count by \\(n\\). Its sampling distribution:\n\\[\\mu_{\\hat{p}} = \\frac{n\\pi}{n} = \\pi \\qquad SE(\\hat{p}) = \\frac{\\sqrt{n\\pi(1-\\pi)}}{n} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\]\nSame formula as last week’s Binomial SD — divided by \\(n\\).\n\n\n\\[\\mu_{\\hat{p}} = \\pi \\qquad \\text{(unbiased — centered on the true proportion)}\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\pi(1-\\pi)}{n}} \\qquad \\text{(shrinks as } n \\text{ grows)}\\]\nWe use standard error (SE) rather than standard deviation to signal that this is the spread of a sampling distribution, not of raw data.\n\n\nThe SE answers: on average, how far will our \\(\\hat{p}\\) fall from the true \\(\\pi\\)?\n\nSmall \\(n\\) → large SE → estimates can be far from the truth\nLarge \\(n\\) → small SE → estimates are reliably close to the truth\n\nThis is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20."
+    "text": "Sampling Distribution of a Proportion\n\nThe bridge from Week 6What it tells usConnection to inference\n\n\nRecall: \\(X \\sim B(n, \\pi)\\) has mean \\(n\\pi\\) and SD \\(\\sqrt{n\\pi(1-\\pi)}\\)\nThe sample proportion \\(\\hat{p} = X/n\\) divides that count by \\(n\\). It’s sampling distribution:\n\\[\\mu_{\\hat{p}} = \\frac{n\\pi}{n} = \\pi \\qquad SE(\\hat{p}) = \\frac{\\sqrt{n\\pi(1-\\pi)}}{n} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\]\nSame formula as last week’s Binomial SD — divided by \\(n\\).\n\n\n\\[\\mu_{\\hat{p}} = \\pi \\qquad \\text{(unbiased — centered on the true proportion)}\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\pi(1-\\pi)}{n}} \\qquad \\text{(shrinks as } n \\text{ grows)}\\]\nWe use standard error (SE) rather than standard deviation to signal that this is the spread of a sampling distribution, not of raw data.\n\n\nThe SE answers: on average, how far will our \\(\\hat{p}\\) fall from the true \\(\\pi\\)?\n\nSmall \\(n\\) → large SE → estimates can be far from the truth\nLarge \\(n\\) → small SE → estimates are reliably close to the truth\n\n\n\n\nkey insight:\n\n\nThis is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20."
   },
   {
     "objectID": "slides/week7.html#racial-profiling-a-worked-example",
@@ -473,7 +473,7 @@
     "href": "slides/week7.html#sampling-distribution-of-the-mean",
     "title": "Week 7",
     "section": "Sampling Distribution of the Mean",
-    "text": "Sampling Distribution of the Mean\n\nThe FormulaWorked ExampleThe Visual\n\n\nFor a random sample of size \\(n\\) from a population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\):\n\\[\\mu_{\\bar{x}} = \\mu \\qquad \\text{(sample mean is unbiased)}\\]\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} \\qquad \\text{(precision increases with sample size)}\\]\nDoubling \\(n\\) cuts the SE by a factor of \\(\\sqrt{2}\\) — not 2. Precision is expensive!\n\n\nPizza sales: \\(\\mu = \\$900/\\text{day}\\), \\(\\sigma = \\$300\\), \\(n = 7\\) days\n\\[SE(\\bar{x}) = \\frac{\\$300}{\\sqrt{7}} \\approx \\$113\\]\nA 7-day average will typically be within \\(\\pm\\$226\\) (2 SEs) of the true mean. Sampling 28 days instead cuts the SE in half: \\(\\frac{\\$300}{\\sqrt{28}} \\approx \\$57\\).\n\n\nAs \\(n\\) grows, the sampling distribution narrows around the true mean \\(\\mu\\):"
+    "text": "Sampling Distribution of the Mean\n\nThe FormulaWorked ExampleThe Visual\n\n\nFor a random sample of size \\(n\\) from a population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\):\n\\[\\mu_{\\bar{x}} = \\mu \\qquad \\text{(sample mean is unbiased)}\\]\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} \\qquad \\text{(precision increases with sample size)}\\]\nDoubling \\(n\\) cuts the SE by a factor of \\(\\sqrt{2}\\) — not 2. Precision is expensive!\n\n\nThe problem: You manage a pizza restaurant and want to estimate your true average daily sales. You know from years of records that daily sales average \\(\\mu = \\$900\\) with a standard deviation of \\(\\sigma = \\$300\\) — but sales fluctuate day to day. If you observe only \\(n = 7\\) days, how close will your sample mean be to the true average?\n\\[SE(\\bar{x}) = \\frac{\\$300}{\\sqrt{7}} \\approx \\$113\\]\nA 7-day average will typically be within \\(\\pm\\$226\\) (2 SEs) of the true mean — so your estimate could easily be off by over $200. Observing 28 days instead cuts the SE in half: \\(\\frac{\\$300}{\\sqrt{28}} \\approx \\$57\\), giving a much more reliable estimate.\n\n\nAs \\(n\\) grows, the sampling distribution narrows around the true mean \\(\\mu\\):"
   },
   {
     "objectID": "slides/week7.html#the-central-limit-theorem",
@@ -501,21 +501,21 @@
     "href": "slides/week7.html#rolling-dice-a-worked-example",
     "title": "Week 7",
     "section": "Rolling Dice: A Worked Example",
-    "text": "Rolling Dice: A Worked Example\n\nSetupApplying the CLTSolution\n\n\nQuestion: What is the probability that the mean of 35 dice rolls is less than 3?\nStep 1: Parameters of a single die roll\nA fair die has outcomes 1–6, each with probability 1/6:\n\nMean: \\(\\mu = \\frac{1+2+3+4+5+6}{6} = 3.5\\)\nVariance: \\(\\sigma^2 = \\frac{(1-3.5)^2 + (2-3.5)^2 + \\cdots + (6-3.5)^2}{6} = \\frac{35}{12}\\), so \\(\\sigma = \\sqrt{35/12}\\)\n\n\n\nStep 2: Sampling distribution of \\(\\bar{x}\\) for \\(n = 35\\) rolls\nBy the CLT — same \\(\\frac{\\sigma}{\\sqrt{n}}\\) formula as the Binomial SE from Week 6, now applied to any population:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{\\sqrt{35/12}}{\\sqrt{35}} = \\frac{\\sqrt{35}}{\\sqrt{12} \\cdot \\sqrt{35}} = \\frac{1}{\\sqrt{12}} \\approx 0.289\\]\nSo \\(\\bar{x} \\sim N(3.5,\\; 0.289)\\)\n\n\nStep 3: Compute the probability in R\n\npnorm(3, mean = 3.5, sd = 1/sqrt(12))\n\n[1] 0.04163226\n\n\nThe probability is approximately 4.2% — rolling a mean below 3 across 35 dice is unusual but not impossible."
+    "text": "Rolling Dice: A Worked Example\n\nSetupApplying the CLTSolution\n\n\nQuestion: What is the probability that the mean of 35 dice rolls is less than 3?\nStep 1: Parameters of a single die roll\nA fair die has outcomes 1–6, each with probability 1/6:\n\nMean: \\(\\mu = \\frac{1+2+3+4+5+6}{6} = 3.5\\)\nVariance: \\(\\sigma^2 = \\frac{(1-3.5)^2 + (2-3.5)^2 + \\cdots + (6-3.5)^2}{6} = \\frac{35}{12}\\), so \\(\\sigma = \\sqrt{35/12}\\) or ~ 1.78\n\n\n\nStep 2: Sampling distribution of \\(\\bar{x}\\) for \\(n = 35\\) rolls\nBy the CLT — same \\(\\frac{\\sigma}{\\sqrt{n}}\\) formula as the Binomial SE from Week 6, now applied to any population:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{\\sqrt{35/12}}{\\sqrt{35}} = \\frac{\\sqrt{35}}{\\sqrt{12} \\cdot \\sqrt{35}} = \\frac{1}{\\sqrt{12}} \\approx 0.289\\]\nSo \\(\\bar{x} \\sim N(3.5,\\; 0.289)\\)\n\n\nStep 3: Compute the probability in R\n\npnorm(3, mean = 3.5, sd = 1/sqrt(12))\n\n[1] 0.04163226\n\n\nThe probability is approximately 4.2% — rolling a mean below 3 across 35 dice is unusual but not impossible."
   },
   {
     "objectID": "slides/week7.html#key-takeaways",
     "href": "slides/week7.html#key-takeaways",
     "title": "Week 7",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nPopulations have parameters; samples have statistics — and they’re different things\nA sampling distribution describes how a statistic varies across many hypothetical samples\nThe standard error (SE) measures this variability — it shrinks as \\(\\sqrt{n}\\) grows\nThe Central Limit Theorem guarantees that sample means are approximately Normal for large \\(n\\), regardless of the population shape\n\n\nSample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course."
+    "text": "Key Takeaways\n\nPopulations have parameters; samples have statistics — and they’re different things\nA sampling distribution describes how a statistic varies across many hypothetical samples\nThe standard error (SE) measures this variability — it shrinks as \\(\\sqrt{n}\\) grows\nThe Central Limit Theorem guarantees that sample means are approximately Normal for large \\(n\\), regardless of the population shape\n\n\n\n\nkey takeaway:\n\n\nSample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course."
   },
   {
     "objectID": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
     "href": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
     "title": "Week 7",
     "section": "Why This Matters for the Rest of the Course",
-    "text": "Why This Matters for the Rest of the Course\n\nNext week (Week 8): Confidence intervals use the SE and the Normal approximation to build a range of plausible parameter values\nWeek 9: Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors\nWeeks 11–13 (Regression): Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today\n\n\nThe CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand why every test we’ll do actually works."
+    "text": "Why This Matters for the Rest of the Course\n\nNext week (Week 8): Confidence intervals use the SE and the Normal approximation to build a range of plausible parameter values\nWeek 9: Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors\nWeeks 11–13 (Regression): Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today\n\n\n\n\nkey takeaway:\n\n\nThe CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand why every test we’ll do actually works."
   },
   {
     "objectID": "slides/week7.html#questions-1",
@@ -3295,5 +3295,12 @@
     "title": "Week 5",
     "section": "Paper Proposal (5%)",
     "text": "Paper Proposal (5%)\nA two-page double-spaced proposal for your final paper is due on bCourses by Thursday, February 26 at 11:59 PM. Here’s an example.\nYour proposal should include:\n\nResearch question - What are you trying to answer?\nWhy it matters - Why should we care about this question?\nHypotheses - What do you think the answer is, and why?\nData source - What dataset will you use?\nKey variables - Identify your independent and dependent variables\n\nNote: You do not need to discuss statistical techniques at this point."
+  },
+  {
+    "objectID": "slides/week7.html#weekly-work-hours-a-worked-example",
+    "href": "slides/week7.html#weekly-work-hours-a-worked-example",
+    "title": "Week 7",
+    "section": "Weekly Work Hours: A Worked Example",
+    "text": "Weekly Work Hours: A Worked Example\n\nSetupApplying the CLTSolutionThe CLT in Action\n\n\nGSS data show that among employed US adults, weekly work hours are right-skewed: \\(\\mu = 40.5\\) hours, \\(\\sigma = 14\\) hours.\nA labor researcher samples \\(n = 35\\) workers at a specific company and finds a mean of 45 hours/week.\nQuestion: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?\n\n\nThe population is right-skewed — but \\(n = 35 &gt; 30\\), so the CLT applies:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{14}{\\sqrt{35}} \\approx 2.37\\]\n\\[\\bar{x} \\sim N(40.5,\\; 2.37)\\]\nEven though individual work hours are skewed, the sample mean is approximately Normal.\n\n\nCompute the probability in R\n\npnorm(45, mean = 40.5, sd = 14 / sqrt(35), lower.tail = FALSE)\n\n[1] 0.02861193\n\n\nAbout 2.9% — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.\n\n\n\nWhy sd = 14/sqrt(35) and not sd = 14?\n\n\nThe sd argument must match the distribution you’re asking about. Here the question is about a sample mean, not an individual worker:\npnorm(45, mean = 40.5, sd = 14)             # P(one worker &gt; 45 hrs) ≈ 37%\npnorm(45, mean = 40.5, sd = 14/sqrt(35))    # P(sample mean &gt; 45 hrs) ≈ 3%\nThe same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a group average of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by \\(\\sqrt{n}\\) is exactly what the SE captures."
   }
 ]

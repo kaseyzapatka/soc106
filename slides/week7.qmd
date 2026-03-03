@@ -26,7 +26,13 @@ attain <- read_csv(here("data/attain.csv"))
 
 ## Housekeeping {.smaller}
 
-[[**ADD IT IN LATER**]]
+**HW 4:** 
+
+- Great job overall: minor issues across the class.
+
+**Open Week Topic:**
+
+- Will send out a survey for topics for open week after class today. Please answer by **March 17**.
 
 ## Where We Are in the Course {.smaller}
 
@@ -36,6 +42,11 @@ attain <- read_csv(here("data/attain.csv"))
 - **Then (Week 9):** hypothesis testing
 
 **Main idea:** We've been building probability models of *populations*. Today we ask: what happens when we draw a *sample*—and then another, and another? The answer is what makes all of statistical inference possible.
+
+::: {.callout-note icon=false}
+## The answer: 
+When we draw a sample—and then another, and another—the sample statistics vary in a systematic, mathematically predictable way. That predictable variation is what makes statistical inference possible.
+:::
 
 ## Agenda {.smaller}
 
@@ -49,11 +60,17 @@ attain <- read_csv(here("data/attain.csv"))
 - **Part 2**: Sampling distributions — statistics vary from sample to sample
 - **Part 3**: The Central Limit Theorem — the key that unlocks inference
 
+**In-class lab:**
+
+- work through some basic data management for your research project
+
 ## Research Paper Proposals {.smaller}
 
-**Overall, great job—super interesting topics!**
+Only about halfway done will finish by next week. 
 
-I tried to give feedback in two areas:
+**Overall, great job—super interesting topics so far!**
+
+I will give feedback in two areas:
 
 1. **Research design**: How to construct variables of interest, what units of analysis may be most appropriate, other issues you may want to think about going forward
 
@@ -137,7 +154,7 @@ How do we go from an abstract population to real data we can analyze?
 
 ## Sampling from a Population {.smaller}
 
-We start with a **population** — every individual we want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997.
+Start with a **population** — every individual you want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997. Since you can't talk to everyone, you have to take a representive **sample**, that will approximate your population.  
 
 ![](images/week7/pop_vs_sample0.png){width="75%" fig-align="center"}
 
@@ -161,7 +178,10 @@ We also want samples that are **large enough for precision**, which increases wi
 
 <br> 
 
-<span class="highlight">**Important note**:</span> Precision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)
+::: {.callout-tip icon=false}
+## Important note
+Precision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)
+:::
 
 
 ## Types of Sampling Designs {.smaller}
@@ -197,11 +217,30 @@ We also want samples that are **large enough for precision**, which increases wi
 
 ## Stratified vs. Cluster Sampling {.smaller}
 
-These sound similar — the **key difference**: cluster sampling selects only *some* groups; stratified sampling samples from *all* strata.
+:::{.columns}
 
-![](images/week7/sampling_stratified.png){width="60%" fig-align="center"}
+:::{.column width="55%"}
 
-![](images/week7/sampling_cluster.png){width="60%" fig-align="center"}
+**Key difference**: cluster sampling selects only *some* groups; stratified sampling samples from *all* strata.
+
+<br> 
+
+**When to use which:**
+
+- **Cluster**: use when sampling individuals directly is costly (e.g., 4th graders in California)
+- **Stratified**: use when you need better representation of known subgroups (e.g., GPA by major)
+
+:::
+
+:::{.column width="45%"}
+
+![](images/week7/sampling_stratified.png){width="100%" fig-align="center"}
+
+![](images/week7/sampling_cluster.png){width="100%" fig-align="center"}
+
+:::
+
+:::
 
 ## Representative Samples & Sample Weights {.smaller}
 
@@ -249,12 +288,14 @@ A **sampling distribution** is the probability distribution of a sample statisti
 | **Sample (data)** | The individuals in *our* sample | 262 police stops in 1997 |
 | **Sampling** | How our statistic would vary across *repeated* samples | Distribution of $\hat{p}$ across many random samples of 262 |
 
-<span class="highlight">**Key insights:**</span>
+::: {.callout-note icon=false}
 
+## Key insights
 - Sampling distributions describe **variability from study to study**
 - They tell us **how close a statistic is likely to fall** to the true population parameter
 - They are **not what we observe** — they represent what we *would* observe across many hypothetical repetitions
 - They are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)
+:::
 
 ## Sampling Distribution of a Proportion {.smaller}
 
@@ -264,7 +305,7 @@ A **sampling distribution** is the probability distribution of a sample statisti
 
 Recall: $X \sim B(n, \pi)$ has mean $n\pi$ and SD $\sqrt{n\pi(1-\pi)}$
 
-The **sample proportion** $\hat{p} = X/n$ divides that count by $n$. Its sampling distribution:
+The **sample proportion** $\hat{p} = X/n$ divides that count by $n$. It's sampling distribution:
 
 $$\mu_{\hat{p}} = \frac{n\pi}{n} = \pi \qquad SE(\hat{p}) = \frac{\sqrt{n\pi(1-\pi)}}{n} = \sqrt{\frac{\pi(1-\pi)}{n}}$$
 
@@ -285,11 +326,14 @@ The SE answers: on average, how far will our $\hat{p}$ fall from the true $\pi$?
 - Small $n$ → large SE → estimates can be far from the truth
 - Large $n$ → small SE → estimates are reliably close to the truth
 
+::: {.callout-note icon=false}
+## key insight: 
 This is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20.
+::: 
 
 :::
 
-## Racial Profiling: A Worked Example {.smaller}
+## Racial Profiling: A Worked Example {.smaller .scrollable}
 
 ::: {.panel-tabset}
 
@@ -313,7 +357,7 @@ $$\mu_{\hat{p}} = 0.422$$
 
 $$SE(\hat{p}) = \sqrt{\frac{0.422 \times 0.578}{262}} \approx 0.030$$
 
-### The Verdict
+### The Verdict 
 
 **Observed**: $\hat{p} = 0.79$
 
@@ -321,7 +365,39 @@ $$SE(\hat{p}) = \sqrt{\frac{0.422 \times 0.578}{262}} \approx 0.030$$
 
 $$z = \frac{0.79 - 0.422}{0.030} \approx 12 \text{ standard errors above the mean}$$
 
-Under random stopping, $\hat{p} = 0.79$ is essentially impossible — it lies 12 SEs above what we'd expect. The sampling distribution reveals that this pattern cannot be explained by chance, but some other bias. 
+Under random stopping, $\hat{p} = 0.79$ is essentially impossible — it lies 12 SEs above what we'd expect. The sampling distribution reveals that this pattern cannot be explained by chance, but some other bias.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 3.2
+#| fig-align: center
+
+mu  <- 0.422
+se  <- sqrt(0.422 * 0.578 / 262)
+obs <- 0.79
+
+x_range  <- seq(0.27, 0.95, length.out = 3000)
+df_curve <- tibble(x = x_range, y = dnorm(x_range, mean = mu, sd = se))
+peak     <- dnorm(mu, mu, se)
+
+ggplot(df_curve, aes(x, y)) +
+  geom_area(fill = "#4E79A7", alpha = 0.25) +
+  geom_line(color = "#4E79A7", linewidth = 1) +
+  geom_vline(xintercept = mu, linetype = "dashed", color = "gray50", linewidth = 0.6) +
+  annotate("text", x = mu + 0.004, y = peak * 0.9,
+           label = "π = 0.422", hjust = 0, size = 3, color = "gray30") +
+  geom_point(data = tibble(x = obs, y = 0), aes(x, y),
+             color = "#E15759", size = 4) +
+  annotate("text", x = obs, y = peak * 0.12,
+           label = "p̂ = 0.79\n(z ≈ 12)", color = "#E15759", hjust = 0.5, size = 3) +
+  labs(x = expression(hat(p)), y = "Density",
+       title = "Sampling distribution of p̂ under random stopping") +
+  scale_x_continuous(breaks = c(0.30, 0.422, 0.55, 0.70, 0.79)) +
+  theme_minimal(base_size = 10) +
+  theme(plot.title = element_text(hjust = 0.5, size = 10))
+```
 
 :::
 
@@ -398,11 +474,11 @@ Doubling $n$ cuts the SE by a factor of $\sqrt{2}$ — not 2. Precision is expen
 
 ### Worked Example
 
-**Pizza sales**: $\mu = \$900/\text{day}$, $\sigma = \$300$, $n = 7$ days
+**The problem**: You manage a pizza restaurant and want to estimate your true average daily sales. You know from years of records that daily sales average $\mu = \$900$ with a standard deviation of $\sigma = \$300$ — but sales fluctuate day to day. If you observe only $n = 7$ days, how close will your sample mean be to the true average?
 
 $$SE(\bar{x}) = \frac{\$300}{\sqrt{7}} \approx \$113$$
 
-A 7-day average will typically be within $\pm\$226$ (2 SEs) of the true mean. Sampling 28 days instead cuts the SE in half: $\frac{\$300}{\sqrt{28}} \approx \$57$.
+A 7-day average will typically be within $\pm\$226$ (2 SEs) of the true mean — so your estimate could easily be off by over $200. Observing 28 days instead cuts the SE in half: $\frac{\$300}{\sqrt{28}} \approx \$57$, giving a much more reliable estimate.
 
 ### The Visual
 
@@ -442,45 +518,105 @@ The sampling distribution approaches normality faster for more symmetric populat
 **Why this matters for your research**: Most survey samples (GSS, IPUMS, etc.) have $n$ in the hundreds or thousands — well above the threshold where CLT guarantees apply. This is what lets us do inference from survey data without knowing the full population distribution.
 :::
 
-## Rolling Dice: A Worked Example {.smaller}
+## Weekly Work Hours: A Worked Example {.smaller .scrollable}
 
 ::: {.panel-tabset}
 
 ### Setup
 
-**Question**: What is the probability that the mean of 35 dice rolls is less than 3?
+**GSS data** show that among employed US adults, weekly work hours are right-skewed: $\mu = 40.5$ hours, $\sigma = 14$ hours.
 
-**Step 1: Parameters of a single die roll**
+A labor researcher samples $n = 35$ workers at a specific company and finds a mean of 45 hours/week.
 
-A fair die has outcomes 1–6, each with probability 1/6:
-
-- Mean: $\mu = \frac{1+2+3+4+5+6}{6} = 3.5$
-- Variance: $\sigma^2 = \frac{(1-3.5)^2 + (2-3.5)^2 + \cdots + (6-3.5)^2}{6} = \frac{35}{12}$, so $\sigma = \sqrt{35/12}$
+**Question**: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?
 
 ### Applying the CLT
 
-**Step 2: Sampling distribution of $\bar{x}$** for $n = 35$ rolls
+The population is **right-skewed** — but $n = 35 > 30$, so the CLT applies:
 
-By the CLT — same $\frac{\sigma}{\sqrt{n}}$ formula as the Binomial SE from Week 6, now applied to any population:
+$$SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{14}{\sqrt{35}} \approx 2.37$$
 
-$$SE(\bar{x}) = \frac{\sigma}{\sqrt{n}} = \frac{\sqrt{35/12}}{\sqrt{35}} = \frac{\sqrt{35}}{\sqrt{12} \cdot \sqrt{35}} = \frac{1}{\sqrt{12}} \approx 0.289$$
+$$\bar{x} \sim N(40.5,\; 2.37)$$
 
-So $\bar{x} \sim N(3.5,\; 0.289)$
+Even though individual work hours are skewed, the *sample mean* is approximately Normal.
 
 ### Solution
 
-**Step 3: Compute the probability in R**
+**Compute the probability in R**
 
 ```{r}
 #| echo: true
 #| eval: true
 
-pnorm(3, mean = 3.5, sd = 1/sqrt(12))
+pnorm(45, mean = 40.5, sd = 14 / sqrt(35), lower.tail = FALSE)
 ```
 
-The probability is approximately **4.2%** — rolling a mean below 3 across 35 dice is unusual but not impossible.
+About **2.9%** — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.
+
+::: {.callout-note icon=false}
+## Why `sd = 14/sqrt(35)` and not `sd = 14`?
+
+The `sd` argument must match the distribution you're asking about. Here the question is about a **sample mean**, not an individual worker:
+
+```r
+pnorm(45, mean = 40.5, sd = 14)             # P(one worker > 45 hrs) ≈ 37%
+pnorm(45, mean = 40.5, sd = 14/sqrt(35))    # P(sample mean > 45 hrs) ≈ 3%
+```
+
+The same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a *group average* of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by $\sqrt{n}$ is exactly what the SE captures.
+:::
+
+### The CLT in Action
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-height: 3.5
+#| fig-align: center
+
+set.seed(106)
+mu_pop <- 40.5
+sd_pop <- 14
+n      <- 35
+n_sims <- 5000
+
+# Simulate a right-skewed population (gamma) with the right mean and SD
+shape <- mu_pop^2 / sd_pop^2
+scale <- sd_pop^2 / mu_pop
+pop   <- pmin(rgamma(200000, shape = shape, scale = scale), 80)
+
+sample_means <- replicate(n_sims, mean(sample(pop, n, replace = TRUE)))
+se           <- sd_pop / sqrt(n)
+
+p1 <- ggplot(tibble(x = pop), aes(x)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 45,
+                 fill = "#4E79A7", color = "white", linewidth = 0.2) +
+  labs(title = "Population distribution\n(right-skewed)",
+       x = "Hours per week", y = "Density") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title = element_text(hjust = 0.5, size = 9, face = "bold"))
+
+p2 <- ggplot(tibble(x = sample_means), aes(x)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 45,
+                 fill = "#59A14F", color = "white", linewidth = 0.2) +
+  stat_function(fun = dnorm, args = list(mean = mu_pop, sd = se),
+                color = "#E15759", linewidth = 1) +
+  geom_vline(xintercept = 45, linetype = "dashed", color = "#E15759", linewidth = 0.7) +
+  annotate("text", x = 45.3, y = dnorm(mu_pop, mu_pop, se) * 0.6,
+           label = "x̄ = 45", color = "#E15759", hjust = 0, size = 3) +
+  labs(title = "Sampling distribution of x̄\n(n = 35 → approximately Normal)",
+       x = "Sample mean hours", y = "Density") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title = element_text(hjust = 0.5, size = 9, face = "bold"))
+
+p1 + p2 +
+  plot_annotation(title = "CLT: skewed population, Normal sampling distribution",
+                  theme = theme(plot.title = element_text(size = 10, hjust = 0.5)))
+```
 
 :::
+
 
 ## Key Takeaways {.smaller}
 
@@ -489,7 +625,10 @@ The probability is approximately **4.2%** — rolling a mean below 3 across 35 d
 - The **standard error** (SE) measures this variability — it shrinks as $\sqrt{n}$ grows
 - The **Central Limit Theorem** guarantees that sample means are approximately Normal for large $n$, regardless of the population shape
 
-> Sample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course.
+::: {.callout-note icon=false}
+## key takeaway: 
+Sample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course.
+:::
 
 ## Why This Matters for the Rest of the Course {.smaller}
 
@@ -497,7 +636,10 @@ The probability is approximately **4.2%** — rolling a mean below 3 across 35 d
 - **Week 9:** Hypothesis tests ask "how far is our statistic from what we'd expect?" — measured in standard errors
 - **Weeks 11–13 (Regression):** Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today
 
-> The CLT is not just this week's topic. It is the engine of all classical statistical inference. Once you understand it, you understand *why* every test we'll do actually works.
+::: {.callout-note icon=false}
+## key takeaway: 
+The CLT is not just this week's topic. It is the engine of all classical statistical inference. Once you understand it, you understand *why* every test we'll do actually works.
+::: 
 
 ## Questions?
 
