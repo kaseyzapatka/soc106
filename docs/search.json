@@ -354,28 +354,28 @@
     "href": "slides/week7.html#research-paper-proposals",
     "title": "Week 7",
     "section": "Research Paper Proposals",
-    "text": "Research Paper Proposals\nOnly about halfway done will finish by next week.\nOverall, great job—super interesting topics so far!\nI will give feedback in two areas:\n\nResearch design: How to construct variables of interest, what units of analysis may be most appropriate, other issues you may want to think about going forward\nWhat has been written in the academic literature on your topic — some topics have been studied a lot, which is a good sign that your question is important!\n\nIf your question seems already answered: try a different data source, or look for related unanswered questions in paper conclusions. Happy to discuss in office hours!"
+    "text": "Research Paper Proposals\nHalfway done,will finish by next week. Overall, super interesting topics ! Some general feedback:\n\nWalk through specific scenarios to identify mechanisms: imagine a specific individual and think through their experiences will help you foresee issues with your design, raise clarifying questions, help you defend your work, etc. What is the mechanism that you are really asking about?\n\n\nEviction on employment status: how does their recent homelessness status impacts ability to keep their job? Where do they sleep? Where do they get mail? Shower? How does all this impact their performance at work?\nGender on income: what types of jobs is this person applying to? How does the imbalance of household responsibilities shape their work/time? How might they be viewed by potential employers?\n\n\nResearch design: How can you construct variables of interest? How do the variables in your data relate to your hyptotheses? What units of analysis may be most appropriate? Are there other issues you may want to think about going forward?\nWhat has already been written in the literature: some topics have been studied a lot, which is a good sign that your question is important! If your question seems already answered: try a different data source, or look for related unanswered questions in paper conclusions."
   },
   {
     "objectID": "slides/week7.html#annotated-bibliography",
     "href": "slides/week7.html#annotated-bibliography",
     "title": "Week 7",
     "section": "Annotated Bibliography",
-    "text": "Annotated Bibliography\nDue March 19\nIdentify ten scholarly sources related to your research question\nFor each source: in two short paragraphs:\n\nsummarize what the source is arguing\nexplain how it relates to your research question\n\n\nGood sources:Bad sources:\n\n\n\nArticles in academic journals\nAcademic books\nBook chapters from edited volumes\nNon-political reports from research centers / government agencies\n\n\n\n\nBlogs, internet / newspaper articles\nWikipedia pages\nPolitical reports from research centers / govt"
+    "text": "Annotated Bibliography\nDue March 19\nIdentify ten scholarly sources related to your research question\nFor each source: in two short paragraphs:\n\nsummarize what the source is arguing\nexplain how it relates to your research question\n\n\nGood sourcesBad sources\n\n\n\nArticles in academic journals\nAcademic books\nBook chapters from edited volumes\nNon-political reports from research centers / government agencies\n\n\n\n\nBlogs, internet / newspaper articles\nWikipedia pages\nPolitical reports from research centers / govt\n\n\n\n\nHere is a link to an example of one source: you will need 10."
   },
   {
     "objectID": "slides/week7.html#how-to-find-academic-articles",
     "href": "slides/week7.html#how-to-find-academic-articles",
     "title": "Week 7",
     "section": "How to Find Academic Articles",
-    "text": "How to Find Academic Articles\nSearch on Google Scholar or JSTOR\nYou’ll usually get somewhere by taking your independent and dependent variables and searching for:\n\n“effect of independent variable on dependent variable”\n\nYou may need to use a UC Berkeley Library proxy to access some academic articles\nThis is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help\nNOTE: AI will hallucinate citations, so don’t use"
+    "text": "How to Find Academic Articles\n\nSearch on Google Scholar or JSTOR: take your independent and dependent variables and searching for:\n\n\n“effect of independent variable on dependent variable”\n\nMay need to use a UC Berkeley Library proxy to access some academic articles. This is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help.\n\nFind one good citation on google scholar and see who cites them: see the cited by icon under the citation\nFrom a good article, mine useful citations from the literature review\n\n\n\n\nDon’t use AI for this:\n\n\nAI will hallucinate citations more often than not, so don’t use it for this. Google scholar is probably your best bet here!"
   },
   {
     "objectID": "slides/week7.html#how-to-read-academic-articles",
     "href": "slides/week7.html#how-to-read-academic-articles",
     "title": "Week 7",
     "section": "How to Read Academic Articles",
-    "text": "How to Read Academic Articles\n\n\n\n\n\n\n\nSection\nWhat to look for\n\n\n\n\nAbstract\nOverview: research question, data, main result — read first\n\n\nIntroduction\nSlightly more detailed than abstract; same format\n\n\nConclusion\nResults, alternative explanations, limitations — and future research topics\n\n\nBackground / Lit review\nPrevious research; a good source of additional citations\n\n\nData section\nHow the sample was constructed; what data sources researchers use\n\n\nMethods\nDon’t worry about this too much yet!\n\n\n\n\n\nTip: Start with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant."
+    "text": "How to Read Academic Articles\n\n\n\n\n\n\n\nSection\nWhat to look for\n\n\n\n\nAbstract\nOverview: research question, data, main result — read first\n\n\nIntroduction\nSlightly more detailed than abstract; same format\n\n\nConclusion\nResults, alternative explanations, limitations — and future research topics\n\n\nBackground / Lit review\nPrevious research; a good source of additional citations\n\n\nData section\nHow the sample was constructed; what data sources researchers use\n\n\nMethods\nDon’t worry about this too much yet!\n\n\n\n\n\n\nOrder of operations:\n\n\nStart with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant."
   },
   {
     "objectID": "slides/week7.html#questions",
@@ -396,7 +396,7 @@
     "href": "slides/week7.html#sampling-from-a-population",
     "title": "Week 7",
     "section": "Sampling from a Population",
-    "text": "Sampling from a Population\nStart with a population — every individual you want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997. Since you can’t talk to everyone, you have to take a representive sample, that will approximate your population."
+    "text": "Sampling from a Population\nStart with a population — every individual you want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997. Since you can’t talk to everyone, you have to take a representive sample, that you hope will approximate your population."
   },
   {
     "objectID": "slides/week7.html#sampling-from-a-population-1",
@@ -431,14 +431,14 @@
     "href": "slides/week7.html#stratified-vs.-cluster-sampling",
     "title": "Week 7",
     "section": "Stratified vs. Cluster Sampling",
-    "text": "Stratified vs. Cluster Sampling\n\n\nKey difference: cluster sampling selects only some groups; stratified sampling samples from all strata.\n\nWhen to use which:\n\nCluster: use when sampling individuals directly is costly (e.g., 4th graders in California)\nStratified: use when you need better representation of known subgroups (e.g., GPA by major)"
+    "text": "Stratified vs. Cluster Sampling\n\n\nKey difference: cluster sampling selects only some groups; stratified sampling samples from all strata.\n\nWhen to use which:\n\nCluster: use when sampling individuals directly is costly (e.g., 4th graders in California – schools)\nStratified: use when you need better representation of known subgroups (e.g., GPA by major – class year)"
   },
   {
     "objectID": "slides/week7.html#representative-samples-sample-weights",
     "href": "slides/week7.html#representative-samples-sample-weights",
     "title": "Week 7",
     "section": "Representative Samples & Sample Weights",
-    "text": "Representative Samples & Sample Weights\n\nThe ProblemSample WeightsGSS Example\n\n\nTrue random samples are almost never feasible — we rarely have a complete population list\nBut we often know the probability that each individual would be selected, based on demographics, geography, or other characteristics\n\n\nWeights are set inversely proportional to the probability of selection:\n\nIndividuals less likely to be sampled → higher weight\nIndividuals more likely to be sampled → lower weight\nResult: a weighted sample that mirrors the full population\n\n\n\nThe GSS uses cluster sampling. Within each selected household, only one adult is chosen:\n\nIndividuals in larger households are less likely to be selected → higher weights\nAdditional weights for oversampled Black respondents\nAdditional weights for non-responders on the first contact\n\nAlways check whether your dataset uses weights, and apply them in R"
+    "text": "Representative Samples & Sample Weights\n\nThe ProblemThe SolutionGSS Example\n\n\nTrue random samples are almost never feasible — we rarely have a complete population list\nBut we often know the probability that each individual would be selected, based on demographics, geography, or other characteristics\n\n\nSample Weights are set inversely proportional to the probability of selection:\n\nIndividuals less likely to be sampled → higher weight\nIndividuals more likely to be sampled → lower weight\nResult: a weighted sample that mirrors the full population\n\n\n\nThe GSS uses cluster sampling. Within each selected household, only one adult is chosen:\n\nIndividuals in larger households are less likely to be selected → higher weights\nAdditional weights for oversampled Black respondents\nAdditional weights for non-responders on the first contact\n\nAlways check whether your dataset uses weights, and apply them in R"
   },
   {
     "objectID": "slides/week7.html#what-is-a-sampling-distribution",
@@ -3302,5 +3302,19 @@
     "title": "Week 7",
     "section": "Weekly Work Hours: A Worked Example",
     "text": "Weekly Work Hours: A Worked Example\n\nSetupApplying the CLTSolutionThe CLT in Action\n\n\nGSS data show that among employed US adults, weekly work hours are right-skewed: \\(\\mu = 40.5\\) hours, \\(\\sigma = 14\\) hours.\nA labor researcher samples \\(n = 35\\) workers at a specific company and finds a mean of 45 hours/week.\nQuestion: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?\n\n\nThe population is right-skewed — but \\(n = 35 &gt; 30\\), so the CLT applies:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{14}{\\sqrt{35}} \\approx 2.37\\]\n\\[\\bar{x} \\sim N(40.5,\\; 2.37)\\]\nEven though individual work hours are skewed, the sample mean is approximately Normal.\n\n\nCompute the probability in R\n\npnorm(45, mean = 40.5, sd = 14 / sqrt(35), lower.tail = FALSE)\n\n[1] 0.02861193\n\n\nAbout 2.9% — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.\n\n\n\nWhy sd = 14/sqrt(35) and not sd = 14?\n\n\nThe sd argument must match the distribution you’re asking about. Here the question is about a sample mean, not an individual worker:\npnorm(45, mean = 40.5, sd = 14)             # P(one worker &gt; 45 hrs) ≈ 37%\npnorm(45, mean = 40.5, sd = 14/sqrt(35))    # P(sample mean &gt; 45 hrs) ≈ 3%\nThe same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a group average of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by \\(\\sqrt{n}\\) is exactly what the SE captures."
+  },
+  {
+    "objectID": "slides/week7.html#research-paper-proposals-.smaller-.scrollable",
+    "href": "slides/week7.html#research-paper-proposals-.smaller-.scrollable",
+    "title": "Week 7",
+    "section": "Research Paper Proposals {.smaller, .scrollable}",
+    "text": "Research Paper Proposals {.smaller, .scrollable}\nHalfway done,will finish by next week. Overall, super interesting topics ! Some general feedback:\n\nWalk through specific scenarios to identify mechanisms: imagine a specific individual and think through their experiences will help you foresee issues with your design, raise clarifying questions, help you defend your work, etc. What is the mechanism that you are really asking about?\n\n\nEviction on employment status: how does their recent homelessness status impacts ability to keep their job? Where do they sleep? Where do they get mail? Shower? How does all this impact their performance at work?\nGender on income: what types of jobs is this person applying to? How does the imbalance of household responsibilities shape their work/time? How might they be viewed by potential employers?\n\n\nResearch design: How can you construct variables of interest? How do the variables in your data relate to your hyptotheses? What units of analysis may be most appropriate? Are there other issues you may want to think about going forward?\nWhat has already been written in the literature: some topics have been studied a lot, which is a good sign that your question is important! If your question seems already answered: try a different data source, or look for related unanswered questions in paper conclusions."
+  },
+  {
+    "objectID": "slides/week7.html#strategies-to-find-academic-articles",
+    "href": "slides/week7.html#strategies-to-find-academic-articles",
+    "title": "Week 7",
+    "section": "Strategies to Find Academic Articles",
+    "text": "Strategies to Find Academic Articles\n\nSearch on Google Scholar or JSTOR: take your independent and dependent variables and searching for:\n\n\n“effect of independent variable on dependent variable”\n\nMay need to use a UC Berkeley Library proxy to access some academic articles. This is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help.\n\nFind one good citation on google scholar and see who cites them: see the cited by icon under the citation\nFind a relevant article, mine useful citations from the literature review\n\n\n\n\nDon’t use AI for this:\n\n\nAI will hallucinate citations more often than not, so don’t use it for this. Google scholar is probably your best bet here!"
   }
 ]
