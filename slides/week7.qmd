@@ -64,19 +64,18 @@ When we draw a sample—and then another, and another—the sample statistics va
 
 - work through some basic data management for your research project
 
-## Research Paper Proposals {.smaller}
+## Research Paper Proposals {.smaller .scrollable}
 
-Only about halfway done will finish by next week. 
+Halfway done,will finish by next week. **Overall, super interesting topics !** Some general feedback:
 
-**Overall, great job—super interesting topics so far!**
+1. **Walk through specific scenarios to identify mechanisms:** imagine a specific individual and think through their experiences will help you foresee issues with your design, raise clarifying questions, help you defend your work, etc. What is the mechanism that you are really asking about?
 
-I will give feedback in two areas:
+- Eviction on employment status: how does their recent homelessness status impacts ability to keep their job? Where do they sleep? Where do they get mail? Shower? How does all this impact their performance at work?
+- Gender on income: what types of jobs is this person applying to? How does the imbalance of household responsibilities shape their work/time? How might they be viewed by potential employers? 
 
-1. **Research design**: How to construct variables of interest, what units of analysis may be most appropriate, other issues you may want to think about going forward
+2. **Research design**: How can you construct variables of interest? How do the variables in your data relate to your hyptotheses? What units of analysis may be most appropriate? Are there other issues you may want to think about going forward?
 
-2. **What has been written in the academic literature** on your topic — some topics have been studied a lot, which is a **good sign** that your question is important!
-
-**If your question seems already answered**: try a different data source, or look for related unanswered questions in paper conclusions. Happy to discuss in office hours!
+3. **What has already been written in the literature:** some topics have been studied a lot, which is a good sign that your question is important! **If your question seems already answered**: try a different data source, or look for related unanswered questions in paper conclusions.
 
 ## Annotated Bibliography {.smaller}
 
@@ -91,14 +90,14 @@ For each source: in **two short paragraphs**:
 
 ::: {.panel-tabset}
 
-### Good sources:
+### Good sources
 
 - Articles in academic journals
 - Academic books
 - Book chapters from edited volumes
 - Non-political reports from research centers / government agencies
 
-### Bad sources:
+### Bad sources
 
 - Blogs, internet / newspaper articles
 - Wikipedia pages
@@ -106,19 +105,23 @@ For each source: in **two short paragraphs**:
 
 :::
 
-## How to Find Academic Articles {.smaller}
+Here is a [link to an example](https://www.kaseyzapatka.com/soc106/assignments/paper/02_bibliography.html) of one source: you will need 10. 
 
-**Search on Google Scholar or JSTOR**
+## Strategies to Find Academic Articles {.smaller}
 
-You'll usually get somewhere by taking your independent and dependent variables and searching for:
+1. **Search on Google Scholar or JSTOR:** take your independent and dependent variables and searching for:
 
 > "effect of *independent variable* on *dependent variable*"
 
-You may need to use a [UC Berkeley Library proxy](https://search.library.berkeley.edu/discovery/search?vid=01UCS_BER:UCB) to access some academic articles
+May need to use a [UC Berkeley Library proxy](https://search.library.berkeley.edu/discovery/search?vid=01UCS_BER:UCB) to access some academic articles. This is a [helpful webpage](https://guides.lib.berkeley.edu/ezproxy/home) for using the proxy server and here is a [link to make a virtual appointment](https://ucberkeley.libanswers.com/faq/302000) for research help.
 
-This is a [helpful webpage](https://guides.lib.berkeley.edu/ezproxy/home) for using the proxy server and here is a [link to make a virtual appointment](https://ucberkeley.libanswers.com/faq/302000) for research help
+2. Find one good citation on google scholar and **see who cites them**: see the `cited by` icon under the citation
+3. Find a relevant article, **mine useful citations** from the literature review
 
-<span class="highlight">NOTE: AI will hallucinate citations, so don't use</span>
+::: {.callout-tip icon=false}
+## Don't use AI for this: 
+AI will hallucinate citations more often than not, so don't use it for this. Google scholar is probably your best bet here!
+:::
 
 ## How to Read Academic Articles {.smaller}
 
@@ -131,8 +134,9 @@ This is a [helpful webpage](https://guides.lib.berkeley.edu/ezproxy/home) for us
 | **Data section** | How the sample was constructed; what data sources researchers use |
 | **Methods** | Don't worry about this too much yet! |
 
-:::{.aside}
-**Tip**: Start with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant.
+::: {.callout-tip icon=false}
+## Order of operations: 
+Start with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant.
 :::
 
 ## Questions?
@@ -154,7 +158,7 @@ How do we go from an abstract population to real data we can analyze?
 
 ## Sampling from a Population {.smaller}
 
-Start with a **population** — every individual you want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997. Since you can't talk to everyone, you have to take a representive **sample**, that will approximate your population.  
+Start with a **population** — every individual you want to study. In our running example, this is all 1.45 million residents of Philadelphia in 1997. Since you can't talk to everyone, you have to take a representive **sample**, that you hope will approximate your population.  
 
 ![](images/week7/pop_vs_sample0.png){width="75%" fig-align="center"}
 
@@ -227,8 +231,8 @@ Precision is inversely proportional to the diversity of values — larger sample
 
 **When to use which:**
 
-- **Cluster**: use when sampling individuals directly is costly (e.g., 4th graders in California)
-- **Stratified**: use when you need better representation of known subgroups (e.g., GPA by major)
+- **Cluster**: use when sampling individuals directly is costly (e.g., 4th graders in California -- schools)
+- **Stratified**: use when you need better representation of known subgroups (e.g., GPA by major -- class year)
 
 :::
 
@@ -252,9 +256,9 @@ True random samples are almost never feasible — we rarely have a complete popu
 
 **But** we often know the *probability* that each individual would be selected, based on demographics, geography, or other characteristics
 
-### Sample Weights
+### The Solution
 
-**Weights** are set inversely proportional to the probability of selection:
+**Sample Weights** are set inversely proportional to the probability of selection:
 
 - Individuals *less likely* to be sampled → *higher* weight
 - Individuals *more likely* to be sampled → *lower* weight
