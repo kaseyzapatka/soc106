@@ -417,6 +417,40 @@ Here $z^* = 1.96$ is the **critical value for a 95% confidence interval** — th
 We need at least **15 successes and 15 failures** for the Normal approximation to be valid. For $n = 1154, \hat{p} = 0.449$: we have 518 successes and 636 failures — both well above 15. ✓
 :::
 
+## Your Turn {.smaller}
+
+A campus poll finds **74 of 120 students** support extending library hours.
+
+**Calculate the 95% confidence interval for the true proportion of students in favor.**
+
+::: {.fragment .fade-up}
+**Step 1 — What is the sample proportion $\hat{p}$?**
+:::
+
+::: {.fragment .fade-up}
+$$\hat{p} = \frac{74}{120} = 0.617$$
+:::
+
+::: {.fragment .fade-up}
+**Step 2 — What is the standard error $SE(\hat{p})$?**
+:::
+
+::: {.fragment .fade-up}
+$$SE(\hat{p}) = \sqrt{\frac{0.617 \times 0.383}{120}} = \sqrt{0.00197} = 0.044$$
+:::
+
+::: {.fragment .fade-up}
+**Step 3 — What is the 95% CI?** ($z^* = 1.96$)
+:::
+
+::: {.fragment .fade-up}
+$$0.617 \pm 1.96 \times 0.044 = 0.617 \pm 0.086 = [0.531,\; 0.703]$$
+:::
+
+::: {.fragment .fade-up}
+**Interpretation**: We are 95% confident that between 53.1% and 70.3% of students support extending library hours.
+:::
+
 ## Worked Example: GSS Environmental Survey {.smaller .scrollable}
 
 ::: {.panel-tabset}
@@ -469,6 +503,23 @@ $$0.449 \pm 2.576 \times 0.0146 = 0.449 \pm 0.038 = [0.411, 0.487]$$
 - **Yes**: "95% of intervals constructed this way would contain the true population proportion"
 :::
 
+:::
+
+## Spot the Error {.smaller}
+
+A newspaper article reports:
+
+> *"Our poll shows 45% of voters support Measure A, with a margin of error of ±3 percentage points. **There is a 95% probability the true support is between 42% and 48%**."*
+
+**What's wrong with this statement?** *(Take 30 seconds, then turn to your neighbor)*
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The error:
+The article treats the population proportion $\pi$ as if it were a random variable with a 95% chance of landing in a range — but $\pi$ is a fixed (unknown) number. It doesn't have a probability of being anywhere. **Rather**, it is the *interval* that is random: if we repeated this poll many times, 95% of the resulting intervals would contain the true $\pi$. This particular interval either does or doesn't — we just don't know which.
+
+The correct statement: *"We are 95% confident the true support is between 42% and 48%."*
+:::
 :::
 
 ## Finding Critical Values in R {.smaller}
@@ -661,6 +712,32 @@ qnorm(0.025, lower.tail = FALSE)
 - **One-tailed**: rejection region entirely on one side
 - **Two-tailed**: rejection region split equally — requires a larger test statistic to reject
 
+:::
+
+## Pause & Predict {.smaller}
+
+The GSS environmental survey has $\hat{p} = 0.449$, $n = 1154$, and a 95% margin of error of **±0.029**.
+
+**If the sample size doubled to $n = 2308$ (same $\hat{p}$), what would happen to the margin of error?**
+
+::: {.fragment .fade-up}
+**A)** It would roughly double (get bigger)
+
+**B)** It would stay about the same
+
+**C)** It would shrink to about half (±0.014)
+
+**D)** It would shrink by about 30% (±0.020)
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Answer: D — it shrinks by ~30%
+
+$$ME = z^* \times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \qquad \text{doubling } n \text{ divides } ME \text{ by } \sqrt{2} \approx 1.41$$
+
+Precision is expensive: you need **4× the data** to halve the margin of error. A sample of 4616 would give ±0.014.
+:::
 :::
 
 ## Trade-offs in Confidence Intervals {.smaller}
@@ -1006,6 +1083,63 @@ qnorm((1 - 0.95) / 2, lower.tail = FALSE)   # z* for 95% CI
 # For a mean CI — use qt (t-distribution), specify degrees of freedom
 qt((1 - 0.95) / 2, df = 99, lower.tail = FALSE)   # t* for 95% CI, n = 100
 ```
+
+## Using CIs to Compare Groups {.smaller}
+
+The same CI logic applies separately to **subgroups** — useful when your research question involves comparing populations:
+
+::: {.panel-tabset}
+
+### The Idea
+
+Calculate a CI for each group independently, then compare:
+
+- If the intervals **do not overlap** → preliminary evidence of a real difference between the group means
+- If they **do overlap** → the observed difference may just be sampling variability
+
+::: {.callout-note icon=false}
+## Preview of Week 9:
+This is an informal first look at **hypothesis testing**. Next week we'll formalize exactly how far apart two groups need to be before we conclude the difference is real.
+:::
+
+### Example
+
+**Do childhood and adult arrivals differ in years spent in the U.S.?**
+
+| Group | $n$ | $\bar{x}$ | $s$ | 95% CI |
+|---|---|---|---|---|
+| Childhood arrivals (arrived < 18) | 20 | 11.4 | 3.6 | [9.7, 13.1] |
+| Adult arrivals (arrived ≥ 18) | 15 | 5.2 | 4.0 | [3.0, 7.4] |
+
+The intervals **do not overlap** → childhood arrivals have spent meaningfully more time in the U.S.
+
+### Visualization
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-height: 2.5
+#| fig-align: center
+
+groups <- tibble(
+  group = c("Childhood arrivals\n(arrived < 18)", "Adult arrivals\n(arrived ≥ 18)"),
+  mean  = c(11.4, 5.2),
+  lo    = c(9.72, 2.98),
+  hi    = c(13.08, 7.42)
+)
+
+ggplot(groups, aes(x = mean, y = group, color = group)) +
+  geom_point(size = 4) +
+  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0.18, linewidth = 1.2) +
+  scale_color_manual(values = c("#4E79A7", "#E15759")) +
+  labs(x = "Mean years in the U.S.", y = NULL,
+       title = "95% Confidence Intervals by Age of Arrival") +
+  theme_minimal(base_size = 11) +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, size = 11))
+```
+
+:::
 
 ## Key Takeaways {.smaller}
 
