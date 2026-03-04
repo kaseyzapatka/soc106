@@ -1,0 +1,136 @@
+---
+title: "Weekly Assignment #7"
+author: "Your Name Here"  # Replace with your name
+date: 03/19/2026
+date-format: long
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw7.qmd` file from bCourse.
+2.  Save the file in your assignments folder.
+3.  Follow the instructions below to complete the assignment. Show your work for all calculations where necessary!
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit both `hw7.qmd` and `hw7.html` to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. For questions requiring hand calculations, show your work in the text sections. Make sure your document renders without errors before submitting.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+# ---------
+rm(list = ls())
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+```
+
+------------------------------------------------------------------------
+
+## Question 1: Estimation Concepts
+
+**a) What does it mean for an estimator to be *unbiased*? What does *efficiency* refer to? In your answer, connect each property to the terms accuracy and precision.**
+
+*Your answer here:*
+
+**b) A researcher reports: "The 95% confidence interval for the proportion of Americans who support stricter gun laws is \[0.51, 0.59\]." A classmate says: "There is a 95% probability that the true proportion falls in that range." Is this correct? Explain in 2–3 sentences.**
+
+*Your answer here:*
+
+**c) You are estimating a population mean from a sample of** $n = 12$. Should you use $z^*$ or $t^*$ as your critical value? Why? What additional assumption is required?
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+## Question 2: Confidence Intervals for a Mean
+
+A sociologist collects a random sample of **18 recent immigrants** to the United States and asks how many years they have lived in the country. The sample mean is **8.4 years** and the sample standard deviation is **4.2 years**.
+
+**a) Report the values of** $n$, $\bar{x}$, $s$, and $df$ for this sample.
+
+*Your answer here:*
+
+**b) Use R to find the t\* critical value for a 95% confidence interval with the appropriate degrees of freedom. How does this compare to the z\* critical value of 1.96?**
+
+```{r}
+
+# Your code here
+
+```
+
+*Your answer here:*
+
+**c) Calculate the standard error** $SE(\bar{x})$. Show your work.
+
+```{r}
+
+# Your code here
+
+```
+
+*Your answer here:*
+
+**d) Calculate and interpret the 95% confidence interval.**
+
+```{r}
+
+# Your code here
+
+```
+
+*Your answer here:*
+
+**e) Would the confidence interval be wider or narrower if you had sampled 50 immigrants instead of 18? Explain briefly.**
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+## Question 3: Comparing Confidence Intervals Across Groups
+
+Using a larger follow-up sample of **35 immigrants**, the researcher splits respondents by age of arrival: those who **arrived before age 18** (childhood arrivals, $n_1 = 20$, $\bar{x}_1 = 11.4$ yrs, $s_1 = 3.6$ yrs) and those who **arrived at age 18 or older** (adult arrivals, $n_2 = 15$, $\bar{x}_2 = 5.2$ yrs, $s_2 = 4.0$ yrs).
+
+**a) Calculate a 95% confidence interval for the mean years in the U.S. for each group.**
+
+```{r}
+
+# Your code here
+
+```
+
+*Your answer here:*
+
+**b) Do the two confidence intervals overlap? Based on this comparison alone, what can you speculate about differences in mean years in the U.S. between the two groups?**
+
+*Your answer here:*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all written response questions and shown your work
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting both the .qmd and .html file to bCourse
+:::

@@ -1,0 +1,201 @@
+---
+title: "Weekly Assignment #7 — Key"
+author: "Your Name Here"  # Replace with your name
+date: 03/19/2026
+date-format: long
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw7.qmd` file from bCourse.
+2.  Save the file in your assignments folder.
+3.  Follow the instructions below to complete the assignment. Show your work for all calculations where necessary!
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit both `hw7.qmd` and `hw7.html` to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Complete all questions below, writing your code in the code chunks provided. Replace `# Your code here` with your actual code. For questions requiring hand calculations, show your work in the text sections. Make sure your document renders without errors before submitting.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+# ---------
+rm(list = ls())
+
+# load libraries
+# ---------
+library(tidyverse)
+library(here)
+```
+
+------------------------------------------------------------------------
+
+## Question 1: Estimation Concepts
+
+**a) What does it mean for an estimator to be *unbiased*? What does *efficiency* refer to? In your answer, connect each property to the terms accuracy and precision.**
+
+*Answer:*
+
+-   **Unbiased** means the expected value of the estimator equals the true population parameter — on average, the estimator "hits the target." This corresponds to **accuracy**: an unbiased estimator does not systematically over- or underestimate the parameter.
+-   **Efficient** means the estimator has low sampling variability (a small standard error) compared to alternative estimators. This corresponds to **precision**: an efficient estimator produces estimates that cluster tightly around the true value across repeated samples.
+
+**b) A researcher reports: "The 95% confidence interval for the proportion of Americans who support stricter gun laws is \[0.51, 0.59\]." A classmate says: "There is a 95% probability that the true proportion falls in that range." Is this correct? Explain in 2–3 sentences.**
+
+*Answer: No — this is the most common misconception about confidence intervals. The population proportion* $\pi$ *is a fixed (unknown) number, not a random variable. Once the interval is constructed, the true value is either inside it or not — there is no probability about it. The correct interpretation is: if we repeated this study many times and built a 95% CI each time, 95% of those intervals would contain the true population proportion.*
+
+**c) You are estimating a population mean from a sample of** $n = 12$. Should you use $z^*$ or $t^*$ as your critical value? Why? What additional assumption is required?
+
+*Answer: You should use* $t^*$ *from the t-distribution with* $df = n - 1 = 11$*. This is because the population standard deviation* $\sigma$ *is unknown, so we estimate it with* $s$*, which introduces additional uncertainty — especially in small samples. The t-distribution has heavier tails than the Normal to account for this. The additional assumption is that the variable is approximately normally distributed in the population (since* $n$ *is too small for the CLT to smooth things out).*
+
+------------------------------------------------------------------------
+
+## Question 2: Confidence Intervals for a Mean
+
+A sociologist collects a random sample of **18 recent immigrants** to the United States and asks how many years they have lived in the country. The sample mean is **8.4 years** and the sample standard deviation is **4.2 years**.
+
+**a) Report the values of** $n$, $\bar{x}$, $s$, and $df$ for this sample.
+
+*Answer:*
+
+-   $n = 18$
+-   $\bar{x} = 8.4$ years
+-   $s = 4.2$ years
+-   $df = n - 1 = 17$
+
+**b) Use R to find the t\* critical value for a 95% confidence interval with the appropriate degrees of freedom. How does this compare to the z\* critical value of 1.96?**
+
+```{r}
+
+# t* critical value for 95% CI with df = 17
+t_star <- qt((1 - 0.95) / 2, df = 17, lower.tail = FALSE)
+t_star
+
+# compare to z*
+z_star <- qnorm((1 - 0.95) / 2, lower.tail = FALSE)
+z_star
+
+```
+
+*Answer:* $t^* = 2.110$ *with* $df = 17$*, compared to* $z^* = 1.960$*. The t critical value is slightly larger because using* $s$ *instead of* $\sigma$ *introduces additional uncertainty, especially with a small sample. The t-distribution's heavier tails produce a wider critical value to account for this.*
+
+**c) Calculate the standard error** $SE(\bar{x})$. Show your work.
+
+```{r}
+
+# standard error of the mean
+n     <- 18
+s     <- 4.2
+se_xbar <- s / sqrt(n)
+se_xbar
+
+```
+
+*Answer:*
+
+$$SE(\bar{x}) = \frac{s}{\sqrt{n}} = \frac{4.2}{\sqrt{18}} = \frac{4.2}{4.243} \approx 0.990 \text{ years}$$
+
+**d) Calculate and interpret the 95% confidence interval.**
+
+```{r}
+
+x_bar <- 8.4
+me    <- t_star * se_xbar
+
+ci_lo <- x_bar - me
+ci_hi <- x_bar + me
+
+cat("95% CI: [", round(ci_lo, 2), ",", round(ci_hi, 2), "]\n")
+
+```
+
+*Answer:*
+
+$$8.4 \pm 2.110 \times 0.990 = 8.4 \pm 2.089 = [6.31,\; 10.49]$$
+
+*We are 95% confident that the average number of years spent in the United States among all recent immigrants is between 6.3 and 10.5 years.*
+
+**e) Would the confidence interval be wider or narrower if you had sampled 50 immigrants instead of 18? Explain briefly.**
+
+*Answer: Narrower. A larger sample size reduces the standard error (* $SE = s/\sqrt{n}$*), which shrinks the margin of error. With* $n = 50$*, the standard error would be* $4.2/\sqrt{50} \approx 0.594$*compared to 0.990 — nearly half as large. Additionally, with more degrees of freedom, the* $t^*$ *critical value would be closer to* $z^* = 1.96$*. Both effects produce a tighter interval.*
+
+------------------------------------------------------------------------
+
+## Question 3: Comparing Confidence Intervals Across Groups
+
+Using a larger follow-up sample of **35 immigrants**, the researcher splits respondents by age of arrival: those who **arrived before age 18** (childhood arrivals, $n_1 = 20$, $\bar{x}_1 = 11.4$ yrs, $s_1 = 3.6$ yrs) and those who **arrived at age 18 or older** (adult arrivals, $n_2 = 15$, $\bar{x}_2 = 5.2$ yrs, $s_2 = 4.0$ yrs).
+
+**a) Calculate a 95% confidence interval for the mean years in the U.S. for each group.**
+
+```{r}
+
+# --- Group 1: childhood arrivals (arrived before 18) ---
+n1    <- 20
+xbar1 <- 11.4
+s1    <- 3.6
+df1   <- n1 - 1
+
+t1     <- qt(0.975, df = df1)
+se1    <- s1 / sqrt(n1)
+me1    <- t1 * se1
+ci1_lo <- xbar1 - me1
+ci1_hi <- xbar1 + me1
+
+cat("Group 1 (childhood arrivals):\n")
+cat("  t* =", round(t1, 3), "  SE =", round(se1, 3), "\n")
+cat("  95% CI: [", round(ci1_lo, 2), ",", round(ci1_hi, 2), "]\n\n")
+
+# --- Group 2: adult arrivals (arrived at 18+) ---
+n2    <- 15
+xbar2 <- 5.2
+s2    <- 4.0
+df2   <- n2 - 1
+
+t2     <- qt(0.975, df = df2)
+se2    <- s2 / sqrt(n2)
+me2    <- t2 * se2
+ci2_lo <- xbar2 - me2
+ci2_hi <- xbar2 + me2
+
+cat("Group 2 (adult arrivals):\n")
+cat("  t* =", round(t2, 3), "  SE =", round(se2, 3), "\n")
+cat("  95% CI: [", round(ci2_lo, 2), ",", round(ci2_hi, 2), "]\n")
+
+```
+
+*Answer:*
+
+| Group              | $n$ | $\bar{x}$ | $s$ | $df$ | $t^*$ | $SE$  | 95% CI          |
+|--------------------|-----|-----------|-----|------|-------|-------|-----------------|
+| Childhood arrivals | 20  | 11.4      | 3.6 | 19   | 2.093 | 0.805 | \[9.72, 13.08\] |
+| Adult arrivals     | 15  | 5.2       | 4.0 | 14   | 2.145 | 1.033 | \[2.98, 7.42\]  |
+
+**b) Do the two confidence intervals overlap? Based on this comparison alone, what can you speculate about differences in mean years in the U.S. between the two groups?**
+
+*Answer: No — the two intervals do not overlap: the childhood arrivals CI ends at 13.08 and the adult arrivals CI ends at 7.42, well below the lower bound of the childhood arrivals interval (9.72). This suggests that childhood arrivals have, on average, spent significantly more time in the United States than adult arrivals. This makes sense: those who arrive as children are typically younger at arrival and therefore accumulate more years of residence by the time they are surveyed.*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] All code chunks run without errors
+-   [ ] You've answered all written response questions and shown your work
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting both the .qmd and .html file to bCourse
+:::
