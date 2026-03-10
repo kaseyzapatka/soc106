@@ -57,9 +57,26 @@ attain <- read_csv(here("data/attain.csv"))
 - <span class="highlight">Due Thursday, March 19</span>
 - Will involve applying confidence intervals from today's lecture
 
-## Homework #6 {.smaller}
+**Week 14 lecture:**
 
-[[FILL IN HERE]]
+- Focus on mediation analysis. 
+
+## Homework #6 and Paper Proposal {.smaller .scrollable}
+
+**Homework #6:**
+
+- Great job! 
+- Remember to subtract 1 from the lower value when trying to calculate probabilities between. 
+  - Since `pbinom(x) = P(X ≤ x)` and includes `x`, you subtract 1 from the lower bound: `pbinom(6) - pbinom(3)` gives `P(4 ≤ X ≤ 6)` because pbinom(3) already includes 3, removing it from the range.
+
+**Paper proposal:**
+
+- **Walk through specific scenarios to identify mechanisms:** imagine a specific individual and think through their experiences
+- **Research design**: How can you construct variables of interest? 
+- **What has already been written in the literature:** some topics have been studied a lot, which is a good! What can you add, what new angle can you take?
+- **Mediation vs moderation**: 
+    - **Mediation:** X causes X, which then causes Y (X > Z > Y)
+    - **Moderation:** The effect of X on Y is bigger/smaller/different depending on Z
 
 ## Annotated Bibliography {.smaller}
 
@@ -1035,35 +1052,19 @@ When $n > 100$, $t^* \approx z^*$ and the distinction rarely matters in practice
 
 ## When to use `z` vs `t` {.smaller .scrollable}
 
-::::: columns
-::: {.column width="50%"}
+**The decision starts with what you're estimating:**
 
-**Use the z-distribution when:**
-
-- Estimating a **population proportion** (large samples)
-- Population standard deviation $\sigma$ is actually known (rare!)
-- Very large samples ($n > 100$) where $t \approx z$
-
-:::
-::: {.column width="50%"}
-
-**Use the t-distribution when:**
-
-- Estimating a **population mean**
-- Population standard deviation $\sigma$ is unknown
-- Especially important for **small samples** ($n < 30$)
-
-:::
-:::::
-
-<br>
-
-| | Proportions | Means |
+| | Estimating a **proportion** | Estimating a **mean** |
 |---|---|---|
+| **Use** | z-distribution | t-distribution |
+| **Why** | SE only depends on $\hat{p}$ — no unknown $\sigma$ to estimate | We estimate $\sigma$ with $s$, adding uncertainty the t accounts for |
 | **Formula** | $\hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n}$ | $\bar{x} \pm t^* (s/\sqrt{n})$ |
-| **Critical value** | $z^*$ from $N(0,1)$ | $t^*$ from $t(df = n-1)$ |
-| **SE** | $\sqrt{\hat{p}(1-\hat{p})/n}$ | $s/\sqrt{n}$ |
-| **R function** | `qnorm()` | `qt()` |
+| **Critical value** | `qnorm()` | `qt(df = n - 1)` |
+
+::: {.callout-note icon=false}
+## Practical caveat — sample size:
+When $n > 100$, $t^* \approx z^*$ and the distinction rarely matters. But for means, always use `qt()` — it automatically converges to the Normal for large $n$.
+:::
 
 **Finding critical values in R:**
 
@@ -1071,11 +1072,14 @@ When $n > 100$, $t^* \approx z^*$ and the distinction rarely matters in practice
 #| echo: true
 #| eval: true
 
-# For a proportion CI — use qnorm (Normal distribution)
-qnorm((1 - 0.95) / 2, lower.tail = FALSE)   # z* for 95% CI
+# Proportion CI — z* from the Normal
+qnorm((1 - 0.95) / 2, lower.tail = FALSE)
 
-# For a mean CI — use qt (t-distribution), specify degrees of freedom
-qt((1 - 0.95) / 2, df = 99, lower.tail = FALSE)   # t* for 95% CI, n = 100
+# Mean CI (small n = 7, df = 6) — t* noticeably larger than z*
+qt((1 - 0.95) / 2, df = 6, lower.tail = FALSE)
+
+# Mean CI (large n = 100, df = 99) — t* converges to z*
+qt((1 - 0.95) / 2, df = 99, lower.tail = FALSE)
 ```
 
 ## Using CIs to Compare Groups {.smaller}
