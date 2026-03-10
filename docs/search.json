@@ -332,15 +332,15 @@
     "objectID": "slides/week7.html#housekeeping",
     "href": "slides/week7.html#housekeeping",
     "title": "Week 7",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nHW 4:\n\nGreat job overall: minor issues across the class.\n\nOpen Week Topic:\n\nWill send out a survey for topics for open week after class today. Please answer by March 17."
+    "section": "",
+    "text": "HW 4:\n\nGreat job overall: minor issues across the class.\n\nOpen Week Topic:\n\nWill send out a survey for topics for open week after class today. Please answer by March 17."
   },
   {
     "objectID": "slides/week7.html#where-we-are-in-the-course",
     "href": "slides/week7.html#where-we-are-in-the-course",
     "title": "Week 7",
     "section": "Where We Are in the Course",
-    "text": "Where We Are in the Course\n\nWeeks 5–6: rules of probability + probability models (Bernoulli, Binomial, Normal)\nThis week (Week 7): sampling distributions and the Central Limit Theorem\nNext week (Week 8): confidence intervals\nThen (Week 9): hypothesis testing\n\nMain idea: We’ve been building probability models of populations. Today we ask: what happens when we draw a sample—and then another, and another? The answer is what makes all of statistical inference possible.\n\n\n\nThe answer:\n\n\nWhen we draw a sample—and then another, and another—the sample statistics vary in a systematic, mathematically predictable way. That predictable variation is what makes statistical inference possible."
+    "text": "Where We Are in the Course\n\nWeeks 5–6: rules of probability + probability models (Bernoulli, Binomial, Normal)\nThis week (Week 7): sampling distributions and the Central Limit Theorem\nNext week (Week 8): confidence intervals\nThen (Week 9): hypothesis testing\n\nMain idea: We’ve been building probability models of populations. Today we ask: what happens when we draw a sample—and then another, and another? The answer is what makes all of statistical inference possible.\n\n\n\n\n\n\nNoteThe answer:\n\n\n\nWhen we draw a sample—and then another, and another—the sample statistics vary in a systematic, mathematically predictable way. That predictable variation is what makes statistical inference possible."
   },
   {
     "objectID": "slides/week7.html#agenda",
@@ -375,7 +375,7 @@
     "href": "slides/week7.html#how-to-read-academic-articles",
     "title": "Week 7",
     "section": "How to Read Academic Articles",
-    "text": "How to Read Academic Articles\n\n\n\n\n\n\n\nSection\nWhat to look for\n\n\n\n\nAbstract\nOverview: research question, data, main result — read first\n\n\nIntroduction\nSlightly more detailed than abstract; same format\n\n\nConclusion\nResults, alternative explanations, limitations — and future research topics\n\n\nBackground / Lit review\nPrevious research; a good source of additional citations\n\n\nData section\nHow the sample was constructed; what data sources researchers use\n\n\nMethods\nDon’t worry about this too much yet!\n\n\n\n\n\n\nOrder of operations:\n\n\nStart with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant."
+    "text": "How to Read Academic Articles\n\n\n\n\n\n\n\nSection\nWhat to look for\n\n\n\n\nAbstract\nOverview: research question, data, main result — read first\n\n\nIntroduction\nSlightly more detailed than abstract; same format\n\n\nConclusion\nResults, alternative explanations, limitations — and future research topics\n\n\nBackground / Lit review\nPrevious research; a good source of additional citations\n\n\nData section\nHow the sample was constructed; what data sources researchers use\n\n\nMethods\nDon’t worry about this too much yet!\n\n\n\n\n\n\n\n\n\nTipOrder of operations:\n\n\n\nStart with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant."
   },
   {
     "objectID": "slides/week7.html#questions",
@@ -417,7 +417,7 @@
     "href": "slides/week7.html#sample-design",
     "title": "Week 7",
     "section": "Sample Design",
-    "text": "Sample Design\nTo do inferential statistics, we need a representative sample — ideally, each unit of the population has an equal chance of being included\nWe also want samples that are large enough for precision, which increases with sample size\n\n\n\n\nImportant note\n\n\nPrecision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)"
+    "text": "Sample Design\nTo do inferential statistics, we need a representative sample — ideally, each unit of the population has an equal chance of being included\nWe also want samples that are large enough for precision, which increases with sample size\n\n\n\n\n\n\n\nTipImportant note\n\n\n\nPrecision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)"
   },
   {
     "objectID": "slides/week7.html#types-of-sampling-designs",
@@ -445,14 +445,14 @@
     "href": "slides/week7.html#what-is-a-sampling-distribution",
     "title": "Week 7",
     "section": "What is a Sampling Distribution?",
-    "text": "What is a Sampling Distribution?\nA sampling distribution is the probability distribution of a sample statistic computed across many independent samples from the same population\nThree distributions you must keep straight:\n\n\n\n\n\n\n\n\nDistribution\nWhat it describes\nPhiladelphia example\n\n\n\n\nPopulation\nAll individuals in the population\n1.45M Philadelphia residents, 42.2% African American\n\n\nSample (data)\nThe individuals in our sample\n262 police stops in 1997\n\n\nSampling\nHow our statistic would vary across repeated samples\nDistribution of \\(\\hat{p}\\) across many random samples of 262\n\n\n\n\n\n\nKey insights\n\n\n\nSampling distributions describe variability from study to study\nThey tell us how close a statistic is likely to fall to the true population parameter\nThey are not what we observe — they represent what we would observe across many hypothetical repetitions\nThey are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)"
+    "text": "What is a Sampling Distribution?\nA sampling distribution is the probability distribution of a sample statistic computed across many independent samples from the same population\nThree distributions you must keep straight:\n\n\n\n\n\n\n\n\nDistribution\nWhat it describes\nPhiladelphia example\n\n\n\n\nPopulation\nAll individuals in the population\n1.45M Philadelphia residents, 42.2% African American\n\n\nSample (data)\nThe individuals in our sample\n262 police stops in 1997\n\n\nSampling\nHow our statistic would vary across repeated samples\nDistribution of \\(\\hat{p}\\) across many random samples of 262\n\n\n\n\n\n\n\n\n\nNoteKey insights\n\n\n\n\nSampling distributions describe variability from study to study\nThey tell us how close a statistic is likely to fall to the true population parameter\nThey are not what we observe — they represent what we would observe across many hypothetical repetitions\nThey are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)"
   },
   {
     "objectID": "slides/week7.html#sampling-distribution-of-a-proportion",
     "href": "slides/week7.html#sampling-distribution-of-a-proportion",
     "title": "Week 7",
     "section": "Sampling Distribution of a Proportion",
-    "text": "Sampling Distribution of a Proportion\n\nThe bridge from Week 6What it tells usConnection to inference\n\n\nRecall: \\(X \\sim B(n, \\pi)\\) has mean \\(n\\pi\\) and SD \\(\\sqrt{n\\pi(1-\\pi)}\\)\nThe sample proportion \\(\\hat{p} = X/n\\) divides that count by \\(n\\). It’s sampling distribution:\n\\[\\mu_{\\hat{p}} = \\frac{n\\pi}{n} = \\pi \\qquad SE(\\hat{p}) = \\frac{\\sqrt{n\\pi(1-\\pi)}}{n} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\]\nSame formula as last week’s Binomial SD — divided by \\(n\\).\n\n\n\\[\\mu_{\\hat{p}} = \\pi \\qquad \\text{(unbiased — centered on the true proportion)}\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\pi(1-\\pi)}{n}} \\qquad \\text{(shrinks as } n \\text{ grows)}\\]\nWe use standard error (SE) rather than standard deviation to signal that this is the spread of a sampling distribution, not of raw data.\n\n\nThe SE answers: on average, how far will our \\(\\hat{p}\\) fall from the true \\(\\pi\\)?\n\nSmall \\(n\\) → large SE → estimates can be far from the truth\nLarge \\(n\\) → small SE → estimates are reliably close to the truth\n\n\n\n\nkey insight:\n\n\nThis is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20."
+    "text": "Sampling Distribution of a Proportion\n\nThe bridge from Week 6What it tells usConnection to inference\n\n\nRecall: \\(X \\sim B(n, \\pi)\\) has mean \\(n\\pi\\) and SD \\(\\sqrt{n\\pi(1-\\pi)}\\)\nThe sample proportion \\(\\hat{p} = X/n\\) divides that count by \\(n\\). It’s sampling distribution:\n\\[\\mu_{\\hat{p}} = \\frac{n\\pi}{n} = \\pi \\qquad SE(\\hat{p}) = \\frac{\\sqrt{n\\pi(1-\\pi)}}{n} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\]\nSame formula as last week’s Binomial SD — divided by \\(n\\).\n\n\n\\[\\mu_{\\hat{p}} = \\pi \\qquad \\text{(unbiased — centered on the true proportion)}\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\pi(1-\\pi)}{n}} \\qquad \\text{(shrinks as } n \\text{ grows)}\\]\nWe use standard error (SE) rather than standard deviation to signal that this is the spread of a sampling distribution, not of raw data.\n\n\nThe SE answers: on average, how far will our \\(\\hat{p}\\) fall from the true \\(\\pi\\)?\n\nSmall \\(n\\) → large SE → estimates can be far from the truth\nLarge \\(n\\) → small SE → estimates are reliably close to the truth\n\n\n\n\n\n\n\nNotekey insight:\n\n\n\nThis is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20."
   },
   {
     "objectID": "slides/week7.html#racial-profiling-a-worked-example",
@@ -508,14 +508,14 @@
     "href": "slides/week7.html#key-takeaways",
     "title": "Week 7",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nPopulations have parameters; samples have statistics — and they’re different things\nA sampling distribution describes how a statistic varies across many hypothetical samples\nThe standard error (SE) measures this variability — it shrinks as \\(\\sqrt{n}\\) grows\nThe Central Limit Theorem guarantees that sample means are approximately Normal for large \\(n\\), regardless of the population shape\n\n\n\n\nkey takeaway:\n\n\nSample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course."
+    "text": "Key Takeaways\n\nPopulations have parameters; samples have statistics — and they’re different things\nA sampling distribution describes how a statistic varies across many hypothetical samples\nThe standard error (SE) measures this variability — it shrinks as \\(\\sqrt{n}\\) grows\nThe Central Limit Theorem guarantees that sample means are approximately Normal for large \\(n\\), regardless of the population shape\n\n\n\n\n\n\n\nNotekey takeaway:\n\n\n\nSample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course."
   },
   {
     "objectID": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
     "href": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
     "title": "Week 7",
     "section": "Why This Matters for the Rest of the Course",
-    "text": "Why This Matters for the Rest of the Course\n\nNext week (Week 8): Confidence intervals use the SE and the Normal approximation to build a range of plausible parameter values\nWeek 9: Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors\nWeeks 11–13 (Regression): Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today\n\n\n\n\nkey takeaway:\n\n\nThe CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand why every test we’ll do actually works."
+    "text": "Why This Matters for the Rest of the Course\n\nNext week (Week 8): Confidence intervals use the SE and the Normal approximation to build a range of plausible parameter values\nWeek 9: Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors\nWeeks 11–13 (Regression): Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today\n\n\n\n\n\n\n\nNotekey takeaway:\n\n\n\nThe CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand why every test we’ll do actually works."
   },
   {
     "objectID": "slides/week7.html#questions-1",
@@ -2852,8 +2852,8 @@
     "objectID": "slides/week6.html#housekeeping",
     "href": "slides/week6.html#housekeeping",
     "title": "Week 6",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nHW 3: Great job overall. Two main comments:\n\nMake sure you are removing missing in your marginal frequency calculations (Q1: filter(!is.na(degree), !is.na(marital)) |&gt;)\nMake sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)"
+    "section": "",
+    "text": "HW 3: Great job overall. Two main comments:\n\nMake sure you are removing missing in your marginal frequency calculations (Q1: filter(!is.na(degree), !is.na(marital)) |&gt;)\nMake sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)"
   },
   {
     "objectID": "slides/week6.html#where-we-are-in-the-course",
@@ -2881,7 +2881,7 @@
     "href": "slides/week6.html#the-ladder-a-preview",
     "title": "Week 6",
     "section": "The Ladder: A Preview",
-    "text": "The Ladder: A Preview\nThese three distributions are connected — each is the same voting question at a different scale:\n\nSame event, different scale: one person → a small sample → a large sample. We’ll build up to this step by step."
+    "text": "The Ladder: A Preview\nThese three distributions are connected — each is the same voting question at a different scale:\n\n\n\n\n\n\n\n\n\nSame event, different scale: one person → a small sample → a large sample. We’ll build up to this step by step."
   },
   {
     "objectID": "slides/week6.html#random-variables-and-distributions",
@@ -2902,7 +2902,7 @@
     "href": "slides/week6.html#r-functions-for-distributions-1",
     "title": "Week 6",
     "section": "R Functions for Distributions",
-    "text": "R Functions for Distributions\nThe suffix tells you the distribution: binom for Binomial, norm for Normal.\n\nWe’ll use each of these as we go. Keep this pattern in mind!"
+    "text": "R Functions for Distributions\nThe suffix tells you the distribution: binom for Binomial, norm for Normal.\n\n\n\n\n\n\n\n\n\nWe’ll use each of these as we go. Keep this pattern in mind!"
   },
   {
     "objectID": "slides/week6.html#the-bernoulli-model",
@@ -2965,7 +2965,7 @@
     "href": "slides/week6.html#practice-binomial-probabilities",
     "title": "Week 6",
     "section": "Practice: Binomial Probabilities",
-    "text": "Practice: Binomial Probabilities\nLet’s some scenarios that are similar to HW questions.\n\n“At least” (Q1-style)“Between” (Q1-style)Passing threshold (Q2-style)\n\n\nLisa makes free throws 75% of the time and shoots 8 free throws at practice. What is the probability she makes at least 7?\n\n\n\n\\(P(X \\ge 7)\\) means \\(X = 7\\) or \\(X = 8\\). Use the complement:\n\\[P(X \\ge 7) = 1 - P(X \\le 6)\\]\n\n1 - pbinom(6, size = 8, prob = 0.75)\n\n[1] 0.3670807\n\n\nAbout a 37% chance she makes at least 7 of 8.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Lisa, n = 8, π = 0.75. What is the probability she makes between 4 and 6 free throws?\n\n\n\n\\(P(4 \\le X \\le 6)\\) — add up bars from 4 to 6. Equivalently:\n\\[P(4 \\le X \\le 6) = P(X \\le 6) - P(X \\le 3)\\]\n\npbinom(6, size = 8, prob = 0.75) -\n  pbinom(3, size = 8, prob = 0.75)\n\n[1] 0.6056213\n\n\nAbout a 61% chance she makes between 4 and 6.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Javier, n = 50, π = 0.80. He needs at least 35 correct (70%) to pass. What’s the probability he passes?\n\n\n\n70% of 50 = 35. “Pass” means \\(X \\ge 35\\):\n\\[P(X \\ge 35) = 1 - P(X \\le 34)\\]\n\n1 - pbinom(34, size = 50, prob = 0.80)\n\n[1] 0.9691966\n\n\nAbout a 97% chance Javier passes."
+    "text": "Practice: Binomial Probabilities\nLet’s some scenarios that are similar to HW questions.\n\n“At least” (Q1-style)“Between” (Q1-style)Passing threshold (Q2-style)\n\n\nLisa makes free throws 75% of the time and shoots 8 free throws at practice. What is the probability she makes at least 7?\n\n\n\n\\(P(X \\ge 7)\\) means \\(X = 7\\) or \\(X = 8\\). Use the complement:\n\\[P(X \\ge 7) = 1 - P(X \\le 6)\\]\n\n1 - pbinom(6, size = 8, prob = 0.75)\n\n[1] 0.3670807\n\n\nAbout a 37% chance she makes at least 7 of 8.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Lisa, n = 8, π = 0.75. What is the probability she makes between 4 and 6 free throws?\n\n\n\n\\(P(4 \\le X \\le 6)\\) — add up bars from 4 to 6. Equivalently:\n\\[P(4 \\le X \\le 6) = P(X \\le 6) - P(X \\le 3)\\]\n\npbinom(6, size = 8, prob = 0.75) -\n  pbinom(3, size = 8, prob = 0.75)\n\n[1] 0.6056213\n\n\nAbout a 61% chance she makes between 4 and 6.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Javier, n = 50, π = 0.80. He needs at least 35 correct (70%) to pass. What’s the probability he passes?\n\n\n\n70% of 50 = 35. “Pass” means \\(X \\ge 35\\):\n\\[P(X \\ge 35) = 1 - P(X \\le 34)\\]\n\n1 - pbinom(34, size = 50, prob = 0.80)\n\n[1] 0.9691966\n\n\nAbout a 97% chance Javier passes."
   },
   {
     "objectID": "slides/week6.html#binomial-sample-statistics-vs.-model-parameters",
@@ -2979,14 +2979,14 @@
     "href": "slides/week6.html#why-binomial-starts-looking-normal",
     "title": "Week 6",
     "section": "Why Binomial Starts Looking Normal",
-    "text": "Why Binomial Starts Looking Normal\nWhat if we surveyed 100 people instead of 10? As \\(n\\) grows, the Binomial distribution becomes smoother and starts to resemble a bell-shaped curve:\n\nThis is an early step toward central limit thinking: sums of many random components often look approximately Normal."
+    "text": "Why Binomial Starts Looking Normal\nWhat if we surveyed 100 people instead of 10? As \\(n\\) grows, the Binomial distribution becomes smoother and starts to resemble a bell-shaped curve:\n\n\n\n\n\n\n\n\n\nThis is an early step toward central limit thinking: sums of many random components often look approximately Normal."
   },
   {
     "objectID": "slides/week6.html#the-normal-distribution",
     "href": "slides/week6.html#the-normal-distribution",
     "title": "Week 6",
     "section": "The Normal Distribution",
-    "text": "The Normal Distribution\n\n\nFor \\(n = 100\\) voters with \\(\\pi = 0.6\\), the Binomial has:\n\nMean: \\(100 \\times 0.6 = 60\\) voters\nSD: \\(\\sqrt{100 \\times 0.6 \\times 0.4} \\approx 4.9\\) voters\n\nWhat does SD = 4.9 mean? In most surveys of 100 people, the number of voters will be within about 5 of 60 — typically between 55 and 65.\nInstead of computing exact Binomial probabilities across 101 values, we approximate with a Normal distribution: \\(N(60, 4.9)\\).\n\n\n\n\n\n\n\n\n\n\n\nFor continuous models, probabilities come from areas under the curve."
+    "text": "The Normal Distribution\n\n\nFor \\(n = 100\\) voters with \\(\\pi = 0.6\\), the Binomial has:\n\nMean: \\(100 \\times 0.6 = 60\\) voters\nSD: \\(\\sqrt{100 \\times 0.6 \\times 0.4} \\approx 4.9\\) voters\n\nWhat does SD = 4.9 mean? In most surveys of 100 people, the number of voters will be within about 5 of 60 — typically between 55 and 65.\nInstead of computing exact Binomial probabilities across 101 values, we approximate with a Normal distribution: \\(N(60, 4.9)\\).\n\n\n\n\n\n\n\n\n\n\n\n\nFor continuous models, probabilities come from areas under the curve."
   },
   {
     "objectID": "slides/week6.html#key-properties-of-normal-distributions",
@@ -3014,14 +3014,14 @@
     "href": "slides/week6.html#computing-normal-probabilities-in-r",
     "title": "Week 6",
     "section": "Computing Normal Probabilities in R",
-    "text": "Computing Normal Probabilities in R\n\nBetween two valuesAt mostMore thanPercentile cutoff\n\n\nWhat’s the probability of observing between 55 and 65 voters?\n\n\n\npnorm(65, mean = 60, sd = 4.9) -\n  pnorm(55, mean = 60, sd = 4.9)\n\n[1] 0.6924651\n\n\nIn general: \\(P(a \\le Y \\le b) = P(Y \\le b) - P(Y \\le a)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing at most 50 voters?\n\n\n\npnorm(50, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nThis is \\(P(Y \\le 50)\\) — the area to the left of 50.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing more than 70 voters?\n\n\n\n1 - pnorm(70, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nWe use \\(1 - P(Y \\le 70)\\) because pnorm() gives the area to the left.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBelow what count do 95% of samples fall?\n\n\n\nqnorm(0.95, mean = 60, sd = 4.9)\n\n[1] 68.05978\n\n\nqnorm() is the inverse of pnorm() — it goes from probability to value."
+    "text": "Computing Normal Probabilities in R\n\nBetween two valuesAt mostMore thanPercentile cutoff\n\n\nWhat’s the probability of observing between 55 and 65 voters?\n\n\n\npnorm(65, mean = 60, sd = 4.9) -\n  pnorm(55, mean = 60, sd = 4.9)\n\n[1] 0.6924651\n\n\nIn general: \\(P(a \\le Y \\le b) = P(Y \\le b) - P(Y \\le a)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing at most 50 voters?\n\n\n\npnorm(50, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nThis is \\(P(Y \\le 50)\\) — the area to the left of 50.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing more than 70 voters?\n\n\n\n1 - pnorm(70, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nWe use \\(1 - P(Y \\le 70)\\) because pnorm() gives the area to the left.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBelow what count do 95% of samples fall?\n\n\n\nqnorm(0.95, mean = 60, sd = 4.9)\n\n[1] 68.05978\n\n\nqnorm() is the inverse of pnorm() — it goes from probability to value."
   },
   {
     "objectID": "slides/week6.html#practice-z-scores-and-normal-probabilities",
     "href": "slides/week6.html#practice-z-scores-and-normal-probabilities",
     "title": "Week 6",
     "section": "Practice: Z-Scores and Normal Probabilities",
-    "text": "Practice: Z-Scores and Normal Probabilities\nThese examples are similar to what you’ll see on HW #5. Let’s work through them together.\n\nZ-scorearea to the leftarea to the rightbetween valuesfind the cutoff\n\n\nAndre’s height is 75 inches. Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.\n\n\n\n\\[z = \\frac{75 - 69}{3} = 2.0\\]\nAndre is 2 standard deviations above the mean. By the 68-95-99.7 rule, he is taller than about 97.5% of the population — only 2.5% of people are taller.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds on I-5 are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?\n\n\n\n\npnorm(65, mean = 71, sd = 8)\n\n[1] 0.2266274\n\n\nOnly about 23% of vehicles are going at or below 65 mph.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSAT scores are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?\n\n\n\n\n1 - pnorm(820, mean = 1026, sd = 209)\n\n[1] 0.8378466\n\n\nAbout 84% of students score above 820.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing the same SAT distribution, what proportion score between 720 and 820 (partial qualifiers)?\n\n\n\n\npnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)\n\n[1] 0.09057216\n\n\nAbout 9% of students fall in this range.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?\n\n\n\n\nqnorm(0.90, mean = 71, sd = 8)\n\n[1] 81.25241\n\n\nThe new speed limit should be about 81 mph — 90% of vehicles travel at or below this speed."
+    "text": "Practice: Z-Scores and Normal Probabilities\nThese examples are similar to what you’ll see on HW #5. Let’s work through them together.\n\nZ-scorearea to the leftarea to the rightbetween valuesfind the cutoff\n\n\nAndre’s height is 75 inches. Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.\n\n\n\n\\[z = \\frac{75 - 69}{3} = 2.0\\]\nAndre is 2 standard deviations above the mean. By the 68-95-99.7 rule, he is taller than about 97.5% of the population — only 2.5% of people are taller.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds on I-5 are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?\n\n\n\n\npnorm(65, mean = 71, sd = 8)\n\n[1] 0.2266274\n\n\nOnly about 23% of vehicles are going at or below 65 mph.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSAT scores are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?\n\n\n\n\n1 - pnorm(820, mean = 1026, sd = 209)\n\n[1] 0.8378466\n\n\nAbout 84% of students score above 820.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing the same SAT distribution, what proportion score between 720 and 820 (partial qualifiers)?\n\n\n\n\npnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)\n\n[1] 0.09057216\n\n\nAbout 9% of students fall in this range.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?\n\n\n\n\nqnorm(0.90, mean = 71, sd = 8)\n\n[1] 81.25241\n\n\nThe new speed limit should be about 81 mph — 90% of vehicles travel at or below this speed."
   },
   {
     "objectID": "slides/week6.html#r-translation-guide",
@@ -3042,7 +3042,7 @@
     "href": "slides/week6.html#the-ladder-visually",
     "title": "Week 6",
     "section": "The Ladder, Visually",
-    "text": "The Ladder, Visually\nOne trial → many trials → smooth approximation, all with \\(\\pi = 0.6\\):\n\nSame event, three levels of analysis. This is the logic that powers the rest of the course."
+    "text": "The Ladder, Visually\nOne trial → many trials → smooth approximation, all with \\(\\pi = 0.6\\):\n\n\n\n\n\n\n\n\n\nSame event, three levels of analysis. This is the logic that powers the rest of the course."
   },
   {
     "objectID": "slides/week6.html#key-takeaways",
@@ -3301,7 +3301,7 @@
     "href": "slides/week7.html#weekly-work-hours-a-worked-example",
     "title": "Week 7",
     "section": "Weekly Work Hours: A Worked Example",
-    "text": "Weekly Work Hours: A Worked Example\n\nSetupApplying the CLTSolutionThe CLT in Action\n\n\nGSS data show that among employed US adults, weekly work hours are right-skewed: \\(\\mu = 40.5\\) hours, \\(\\sigma = 14\\) hours.\nA labor researcher samples \\(n = 35\\) workers at a specific company and finds a mean of 45 hours/week.\nQuestion: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?\n\n\nThe population is right-skewed — but \\(n = 35 &gt; 30\\), so the CLT applies:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{14}{\\sqrt{35}} \\approx 2.37\\]\n\\[\\bar{x} \\sim N(40.5,\\; 2.37)\\]\nEven though individual work hours are skewed, the sample mean is approximately Normal.\n\n\nCompute the probability in R\n\npnorm(45, mean = 40.5, sd = 14 / sqrt(35), lower.tail = FALSE)\n\n[1] 0.02861193\n\n\nAbout 2.9% — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.\n\n\n\nWhy sd = 14/sqrt(35) and not sd = 14?\n\n\nThe sd argument must match the distribution you’re asking about. Here the question is about a sample mean, not an individual worker:\npnorm(45, mean = 40.5, sd = 14)             # P(one worker &gt; 45 hrs) ≈ 37%\npnorm(45, mean = 40.5, sd = 14/sqrt(35))    # P(sample mean &gt; 45 hrs) ≈ 3%\nThe same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a group average of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by \\(\\sqrt{n}\\) is exactly what the SE captures."
+    "text": "Weekly Work Hours: A Worked Example\n\nSetupApplying the CLTSolutionThe CLT in Action\n\n\nGSS data show that among employed US adults, weekly work hours are right-skewed: \\(\\mu = 40.5\\) hours, \\(\\sigma = 14\\) hours.\nA labor researcher samples \\(n = 35\\) workers at a specific company and finds a mean of 45 hours/week.\nQuestion: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?\n\n\nThe population is right-skewed — but \\(n = 35 &gt; 30\\), so the CLT applies:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{14}{\\sqrt{35}} \\approx 2.37\\]\n\\[\\bar{x} \\sim N(40.5,\\; 2.37)\\]\nEven though individual work hours are skewed, the sample mean is approximately Normal.\n\n\nCompute the probability in R\n\npnorm(45, mean = 40.5, sd = 14 / sqrt(35), lower.tail = FALSE)\n\n[1] 0.02861193\n\n\nAbout 2.9% — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.\n\n\n\n\n\n\nNoteWhy sd = 14/sqrt(35) and not sd = 14?\n\n\n\nThe sd argument must match the distribution you’re asking about. Here the question is about a sample mean, not an individual worker:\npnorm(45, mean = 40.5, sd = 14)             # P(one worker &gt; 45 hrs) ≈ 37%\npnorm(45, mean = 40.5, sd = 14/sqrt(35))    # P(sample mean &gt; 45 hrs) ≈ 3%\nThe same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a group average of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by \\(\\sqrt{n}\\) is exactly what the SE captures."
   },
   {
     "objectID": "slides/week7.html#research-paper-proposals-.smaller-.scrollable",
@@ -3315,7 +3315,7 @@
     "href": "slides/week7.html#strategies-to-find-academic-articles",
     "title": "Week 7",
     "section": "Strategies to Find Academic Articles",
-    "text": "Strategies to Find Academic Articles\n\nSearch on Google Scholar or JSTOR: take your independent and dependent variables and searching for:\n\n\n“effect of independent variable on dependent variable”\n\nMay need to use a UC Berkeley Library proxy to access some academic articles. This is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help.\n\nFind one good citation on google scholar and see who cites them: see the cited by icon under the citation\nFind a relevant article, mine useful citations from the literature review\n\n\n\n\nDon’t use AI for this:\n\n\nAI will hallucinate citations more often than not, so don’t use it for this. Google scholar is probably your best bet here!"
+    "text": "Strategies to Find Academic Articles\n\nSearch on Google Scholar or JSTOR: take your independent and dependent variables and searching for:\n\n\n“effect of independent variable on dependent variable”\n\nMay need to use a UC Berkeley Library proxy to access some academic articles. This is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help.\n\nFind one good citation on google scholar and see who cites them: see the cited by icon under the citation\nFind a relevant article, mine useful citations from the literature review\n\n\n\n\n\n\n\nTipDon’t use AI for this:\n\n\n\nAI will hallucinate citations more often than not, so don’t use it for this. Google scholar is probably your best bet here!"
   },
   {
     "objectID": "slides/week8.html#where-we-are-in-the-course",
@@ -3512,5 +3512,117 @@
     "title": "Week 8",
     "section": "Homework #6 and Paper Proposal",
     "text": "Homework #6 and Paper Proposal\nHomework #6:\n\nGreat job!\nRemember to subtract 1 from the lower value when trying to calculate probabilities between.\n\nSince pbinom(x) = P(X ≤ x) and includes x, you subtract 1 from the lower bound: pbinom(6) - pbinom(3) gives P(4 ≤ X ≤ 6) because pbinom(3) already includes 3, removing it from the range.\n\n\nPaper proposal:\n\nWalk through specific scenarios to identify mechanisms: imagine a specific individual and think through their experiences\nResearch design: How can you construct variables of interest?\nWhat has already been written in the literature: some topics have been studied a lot, which is a good! What can you add, what new angle can you take?\nMediation vs moderation:\n\nMediation: X causes X, which then causes Y (X &gt; Z &gt; Y)\nModeration: The effect of X on Y is bigger/smaller/different depending on Z"
+  },
+  {
+    "objectID": "slides/week14_planning.html",
+    "href": "slides/week14_planning.html",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Date: 4/21 — one week before presentations, two weeks before final papers due Context: Week 13 covers moderation/interactions (Thompson & Keith); many students proposed mediation in paper proposals\n\n\n\nWorking title: “How and Why: Mediation Analysis”\nCould stand alone given the level of conceptual work required and the R implementation.\n\n\n\nModeration vs. mediation — the key distinction\n\nModeration: for whom does X affect Y? (interaction between X and a third variable)\nMediation: how or why does X affect Y? (X → M → Y)\nStudents consistently conflate these; worth a full side-by-side comparison slide\nReal example: Does education affect income through occupation? (mediation). Does education affect income differently for men vs. women? (moderation)\n\nConceptual framework: direct, indirect, and total effects\n\nPath diagram showing X → Y (direct), X → M → Y (indirect), and total\nTotal effect = direct + indirect\nIntroduce notation: a path (X→M), b path (M→Y), c path (X→Y direct), c’ (total)\n\nBaron & Kenny four-step approach\n\nStep 1: X significantly predicts Y\nStep 2: X significantly predicts M\nStep 3: M significantly predicts Y (controlling for X)\nStep 4: X→Y relationship weakens or disappears when M is included\nFull vs. partial mediation distinction\n\nImplementation in R\n\nThree sequential lm() calls — no special package needed\nmediation package for indirect effects and confidence intervals (bootstrapped)\nInterpreting the output: coefficients, indirect effect size\n\nLimitations and causal interpretation\n\nMediation doesn’t prove causation — temporal ordering matters\nCross-sectional data limitations\nUnmeasured confounders of M→Y path\nBrief intro to why experiments are the gold standard for mediation\n\n\n\n\n\n\n\nWorking title: “Getting It Right: Regression Diagnostics and Mediation”\nMost intellectually coherent pairing — “what to check, and then what to ask.”\n\n\n\n\n\nWhy diagnostics matter\n\nRegression assumptions: linearity, independence, homoskedasticity, normality of residuals\nViolations don’t always invalidate results, but you need to know when they do\n\nResidual plots\n\nFitted vs. residuals plot: checking linearity and homoskedasticity\nQ-Q plot: checking normality of residuals\nIn R: plot(model) gives all four diagnostic plots; or ggplot with augment() from broom\n\nOutliers and influential observations\n\nLeverage vs. influence distinction\nCook’s distance — identifying influential points\nWhat to do: investigate, don’t automatically delete\n\nMulticollinearity\n\nWhen predictors are highly correlated with each other\nVIF (Variance Inflation Factor) — vif() from car package\nRule of thumb: VIF &gt; 5 or 10 is a problem\nConsequences: inflated standard errors, unstable coefficients\n\nHeteroskedasticity\n\nWhat it is, why it matters (biases standard errors)\nVisual detection vs. Breusch-Pagan test\nFix: robust standard errors — coeftest() with vcovHC() from sandwich package\n\n\n\n\n\n(same structure as Option A above)\n\n\n\n\n\n\nWorking title: “Asking Why: Causal Thinking and Mediation”\nMore conceptual and theory-forward; connects to how sociologists actually reason.\n\n\n\nCorrelation vs. causation — revisited\n\nReview confounding: a third variable causes both X and Y\nWhy regression controls “work” and when they don’t\nOmitted variable bias: what happens when you leave out an important confounder\n\nIntroduction to DAGs (Directed Acyclic Graphs)\n\nNodes = variables, arrows = causal relationships\nBackdoor paths and how confounders create them\nThe logic of “controlling for” a variable in DAG terms\nWhat NOT to control for: colliders and mediators (controlling for M blocks the path you care about)\nTools: dagitty package or draw on paper\n\nMediation in a causal framework\n\nMediation as a specific DAG structure: X → M → Y\nWhy you shouldn’t control for M if you want the total effect\nWhy you should control for M if you want the direct effect\nConnects Baron & Kenny to causal logic\n\nIdentification strategies (brief overview)\n\nRandomized experiments: the gold standard\nNatural experiments, instrumental variables (name-drop only)\nDifference-in-differences (name-drop)\nGoal: show students that sociologists have tools beyond OLS for causal questions\n\nImplications for their papers\n\nDrawing a DAG for their own research question\nWhat can they claim causally with cross-sectional survey data?\nHow to qualify causal language appropriately\n\n\n\n\n\n\n\nWorking title: “Finishing Strong: Mediation and Communicating Your Results”\nMost practically useful given timing (week before presentations, 2 weeks before papers).\n\n\n\n\n(same structure as Option A above)\n\n\n\n\nPresenting regression results in a paper\n\nAnatomy of a regression table: coefficients, standard errors (not t-stats), stars\nmodelsummary or stargazer packages in R\nWhat goes in the text vs. what goes in a table\nDescribing effect size, not just significance\n\nVisualizing regression results\n\nCoefficient plots as an alternative to tables (ggplot + broom::tidy())\nPredicted values plots — showing the relationship, not just the slope\nggeffects or marginaleffects package for marginal effects plots\n\nWriting about results for a sociological audience\n\nLead with the sociological finding, not the statistic\n“A one-unit increase in X is associated with a 0.3-unit increase in Y, holding other variables constant” — make this sociologically meaningful\nHow to discuss limitations honestly without undermining your argument\n\nPresentation tips for week 15\n\nStructure: question → motivation → data → results → so what\nHow to present a regression table to a general audience (hint: don’t show the whole table)\nAnticipating questions\n\n\n\n\n\n\n\n\nFirst choice: Option A (mediation standalone) if week 13 runs long or interactions need extra time to sink in. The moderation vs. mediation comparison alone justifies a full class.\nSecond choice: Option B (mediation + diagnostics) if you want to add practical value for paper-writing and the R component feels thin with mediation alone. Diagnostics are something students should be doing anyway.\nDark horse: Option D (mediation + writing results) — least “stats” but probably highest direct payoff for students in the final two weeks of the semester."
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-a-mediation-as-a-standalone-lecture",
+    "href": "slides/week14_planning.html#option-a-mediation-as-a-standalone-lecture",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “How and Why: Mediation Analysis”\nCould stand alone given the level of conceptual work required and the R implementation.\n\n\n\nModeration vs. mediation — the key distinction\n\nModeration: for whom does X affect Y? (interaction between X and a third variable)\nMediation: how or why does X affect Y? (X → M → Y)\nStudents consistently conflate these; worth a full side-by-side comparison slide\nReal example: Does education affect income through occupation? (mediation). Does education affect income differently for men vs. women? (moderation)\n\nConceptual framework: direct, indirect, and total effects\n\nPath diagram showing X → Y (direct), X → M → Y (indirect), and total\nTotal effect = direct + indirect\nIntroduce notation: a path (X→M), b path (M→Y), c path (X→Y direct), c’ (total)\n\nBaron & Kenny four-step approach\n\nStep 1: X significantly predicts Y\nStep 2: X significantly predicts M\nStep 3: M significantly predicts Y (controlling for X)\nStep 4: X→Y relationship weakens or disappears when M is included\nFull vs. partial mediation distinction\n\nImplementation in R\n\nThree sequential lm() calls — no special package needed\nmediation package for indirect effects and confidence intervals (bootstrapped)\nInterpreting the output: coefficients, indirect effect size\n\nLimitations and causal interpretation\n\nMediation doesn’t prove causation — temporal ordering matters\nCross-sectional data limitations\nUnmeasured confounders of M→Y path\nBrief intro to why experiments are the gold standard for mediation"
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-b-mediation-regression-diagnostics",
+    "href": "slides/week14_planning.html#option-b-mediation-regression-diagnostics",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “Getting It Right: Regression Diagnostics and Mediation”\nMost intellectually coherent pairing — “what to check, and then what to ask.”\n\n\n\n\n\nWhy diagnostics matter\n\nRegression assumptions: linearity, independence, homoskedasticity, normality of residuals\nViolations don’t always invalidate results, but you need to know when they do\n\nResidual plots\n\nFitted vs. residuals plot: checking linearity and homoskedasticity\nQ-Q plot: checking normality of residuals\nIn R: plot(model) gives all four diagnostic plots; or ggplot with augment() from broom\n\nOutliers and influential observations\n\nLeverage vs. influence distinction\nCook’s distance — identifying influential points\nWhat to do: investigate, don’t automatically delete\n\nMulticollinearity\n\nWhen predictors are highly correlated with each other\nVIF (Variance Inflation Factor) — vif() from car package\nRule of thumb: VIF &gt; 5 or 10 is a problem\nConsequences: inflated standard errors, unstable coefficients\n\nHeteroskedasticity\n\nWhat it is, why it matters (biases standard errors)\nVisual detection vs. Breusch-Pagan test\nFix: robust standard errors — coeftest() with vcovHC() from sandwich package\n\n\n\n\n\n(same structure as Option A above)"
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-c-mediation-causal-inference-dags",
+    "href": "slides/week14_planning.html#option-c-mediation-causal-inference-dags",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “Asking Why: Causal Thinking and Mediation”\nMore conceptual and theory-forward; connects to how sociologists actually reason.\n\n\n\nCorrelation vs. causation — revisited\n\nReview confounding: a third variable causes both X and Y\nWhy regression controls “work” and when they don’t\nOmitted variable bias: what happens when you leave out an important confounder\n\nIntroduction to DAGs (Directed Acyclic Graphs)\n\nNodes = variables, arrows = causal relationships\nBackdoor paths and how confounders create them\nThe logic of “controlling for” a variable in DAG terms\nWhat NOT to control for: colliders and mediators (controlling for M blocks the path you care about)\nTools: dagitty package or draw on paper\n\nMediation in a causal framework\n\nMediation as a specific DAG structure: X → M → Y\nWhy you shouldn’t control for M if you want the total effect\nWhy you should control for M if you want the direct effect\nConnects Baron & Kenny to causal logic\n\nIdentification strategies (brief overview)\n\nRandomized experiments: the gold standard\nNatural experiments, instrumental variables (name-drop only)\nDifference-in-differences (name-drop)\nGoal: show students that sociologists have tools beyond OLS for causal questions\n\nImplications for their papers\n\nDrawing a DAG for their own research question\nWhat can they claim causally with cross-sectional survey data?\nHow to qualify causal language appropriately"
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-d-mediation-writing-and-presenting-results",
+    "href": "slides/week14_planning.html#option-d-mediation-writing-and-presenting-results",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “Finishing Strong: Mediation and Communicating Your Results”\nMost practically useful given timing (week before presentations, 2 weeks before papers).\n\n\n\n\n(same structure as Option A above)\n\n\n\n\nPresenting regression results in a paper\n\nAnatomy of a regression table: coefficients, standard errors (not t-stats), stars\nmodelsummary or stargazer packages in R\nWhat goes in the text vs. what goes in a table\nDescribing effect size, not just significance\n\nVisualizing regression results\n\nCoefficient plots as an alternative to tables (ggplot + broom::tidy())\nPredicted values plots — showing the relationship, not just the slope\nggeffects or marginaleffects package for marginal effects plots\n\nWriting about results for a sociological audience\n\nLead with the sociological finding, not the statistic\n“A one-unit increase in X is associated with a 0.3-unit increase in Y, holding other variables constant” — make this sociologically meaningful\nHow to discuss limitations honestly without undermining your argument\n\nPresentation tips for week 15\n\nStructure: question → motivation → data → results → so what\nHow to present a regression table to a general audience (hint: don’t show the whole table)\nAnticipating questions"
+  },
+  {
+    "objectID": "slides/week14_planning.html#recommendation",
+    "href": "slides/week14_planning.html#recommendation",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "First choice: Option A (mediation standalone) if week 13 runs long or interactions need extra time to sink in. The moderation vs. mediation comparison alone justifies a full class.\nSecond choice: Option B (mediation + diagnostics) if you want to add practical value for paper-writing and the R component feels thin with mediation alone. Diagnostics are something students should be doing anyway.\nDark horse: Option D (mediation + writing results) — least “stats” but probably highest direct payoff for students in the final two weeks of the semester."
+  },
+  {
+    "objectID": "slides/week7.html",
+    "href": "slides/week7.html",
+    "title": "Week 7",
+    "section": "",
+    "text": "HW 4:\n\nGreat job overall: minor issues across the class.\n\nOpen Week Topic:\n\nWill send out a survey for topics for open week after class today. Please answer by March 17."
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html",
+    "href": "assignments/hw7/hw7.html",
+    "title": "Weekly Assignment #7",
+    "section": "",
+    "text": "ImportantSubmission Instructions\n\n\n\n\nDownload this hw7.qmd file from bCourse.\nSave the file in your assignments folder.\nFollow the instructions below to complete the assignment. Show your work for all calculations where necessary!\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file.\nSubmit both hw7.qmd and hw7.html to bCourse before the deadline.\nMake sure your name appears in the “author” field in the YAML header above."
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#setup",
+    "href": "assignments/hw7/hw7.html#setup",
+    "title": "Weekly Assignment #7",
+    "section": "Setup",
+    "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# load libraries\n# ---------\nlibrary(tidyverse)\nlibrary(here)"
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#question-1-estimation-concepts",
+    "href": "assignments/hw7/hw7.html#question-1-estimation-concepts",
+    "title": "Weekly Assignment #7",
+    "section": "Question 1: Estimation Concepts",
+    "text": "Question 1: Estimation Concepts\na) What does it mean for an estimator to be unbiased? What does efficiency refer to? In your answer, connect each property to the terms accuracy and precision.\nYour answer here:\nb) A researcher reports: “The 95% confidence interval for the proportion of Americans who support stricter gun laws is [0.51, 0.59].” A classmate says: “There is a 95% probability that the true proportion falls in that range.” Is this correct? Explain in 2–3 sentences.\nYour answer here:\nc) You are estimating a population mean from a sample of \\(n = 12\\). Should you use \\(z^*\\) or \\(t^*\\) as your critical value? Why? What additional assumption is required?\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#question-2-confidence-intervals-for-a-mean",
+    "href": "assignments/hw7/hw7.html#question-2-confidence-intervals-for-a-mean",
+    "title": "Weekly Assignment #7",
+    "section": "Question 2: Confidence Intervals for a Mean",
+    "text": "Question 2: Confidence Intervals for a Mean\nA sociologist collects a random sample of 18 recent immigrants to the United States and asks how many years they have lived in the country. The sample mean is 8.4 years and the sample standard deviation is 4.2 years.\na) Report the values of \\(n\\), \\(\\bar{x}\\), \\(s\\), and \\(df\\) for this sample.\nYour answer here:\nb) Use R to find the t* critical value for a 95% confidence interval with the appropriate degrees of freedom. How does this compare to the z* critical value of 1.96?\n\n# Your code here\n\nYour answer here:\nc) Calculate the standard error \\(SE(\\bar{x})\\). Show your work.\n\n# Your code here\n\nYour answer here:\nd) Calculate and interpret the 95% confidence interval.\n\n# Your code here\n\nYour answer here:\ne) Would the confidence interval be wider or narrower if you had sampled 50 immigrants instead of 18? Explain briefly.\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#question-3-comparing-confidence-intervals-across-groups",
+    "href": "assignments/hw7/hw7.html#question-3-comparing-confidence-intervals-across-groups",
+    "title": "Weekly Assignment #7",
+    "section": "Question 3: Comparing Confidence Intervals Across Groups",
+    "text": "Question 3: Comparing Confidence Intervals Across Groups\nUsing a larger follow-up sample of 35 immigrants, the researcher splits respondents by age of arrival: those who arrived before age 18 (childhood arrivals, \\(n_1 = 20\\), \\(\\bar{x}_1 = 11.4\\) yrs, \\(s_1 = 3.6\\) yrs) and those who arrived at age 18 or older (adult arrivals, \\(n_2 = 15\\), \\(\\bar{x}_2 = 5.2\\) yrs, \\(s_2 = 4.0\\) yrs).\na) Calculate a 95% confidence interval for the mean years in the U.S. for each group.\n\n# Your code here\n\nYour answer here:\nb) Do the two confidence intervals overlap? Based on this comparison alone, what can you speculate about differences in mean years in the U.S. between the two groups?\nYour answer here:\n\n\n\n\n\n\n\nTipBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions and shown your work\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting both the .qmd and .html file to bCourse"
+  },
+  {
+    "objectID": "assignments/grading_scale.html",
+    "href": "assignments/grading_scale.html",
+    "title": "Grading Scale",
+    "section": "",
+    "text": "Assignment\n%\nPoints\n\n\n\n\nWeekly Assignments (10 × 3pts)\n30%\n30\n\n\nAttendance & Participation\n10%\n10\n\n\nPaper Proposal\n5%\n5\n\n\nAnnotated Bibliography\n5%\n5\n\n\nRevised Proposal + Outline\n5%\n5\n\n\nIn-class Presentation\n5%\n5\n\n\nFinal Paper\n20%\n20\n\n\nFinal Exam\n20%\n20\n\n\nTotal\n100%\n100\n\n\n\n\n\n\nHomework assignments are graded out of 2 points but recorded out of 3. Apply the following conversion when entering scores:\n\n\n\nScore Received\nPoints Entered\n\n\n\n\n0/2\n0/3\n\n\n1/2\n1.5/3\n\n\n2/2\n3/3"
+  },
+  {
+    "objectID": "assignments/grading_scale.html#overall-point-breakdown-out-of-100",
+    "href": "assignments/grading_scale.html#overall-point-breakdown-out-of-100",
+    "title": "Grading Scale",
+    "section": "",
+    "text": "Assignment\n%\nPoints\n\n\n\n\nWeekly Assignments (10 × 3pts)\n30%\n30\n\n\nAttendance & Participation\n10%\n10\n\n\nPaper Proposal\n5%\n5\n\n\nAnnotated Bibliography\n5%\n5\n\n\nRevised Proposal + Outline\n5%\n5\n\n\nIn-class Presentation\n5%\n5\n\n\nFinal Paper\n20%\n20\n\n\nFinal Exam\n20%\n20\n\n\nTotal\n100%\n100"
+  },
+  {
+    "objectID": "assignments/grading_scale.html#homework-conversion",
+    "href": "assignments/grading_scale.html#homework-conversion",
+    "title": "Grading Scale",
+    "section": "",
+    "text": "Homework assignments are graded out of 2 points but recorded out of 3. Apply the following conversion when entering scores:\n\n\n\nScore Received\nPoints Entered\n\n\n\n\n0/2\n0/3\n\n\n1/2\n1.5/3\n\n\n2/2\n3/3"
+  },
+  {
+    "objectID": "slides/week6.html",
+    "href": "slides/week6.html",
+    "title": "Week 6",
+    "section": "",
+    "text": "HW 3: Great job overall. Two main comments:\n\nMake sure you are removing missing in your marginal frequency calculations (Q1: filter(!is.na(degree), !is.na(marital)) |&gt;)\nMake sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)"
   }
 ]
