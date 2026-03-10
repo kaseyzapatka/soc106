@@ -239,10 +239,32 @@
 <li><span class="highlight">Due Thursday, March 19</span></li>
 <li>Will involve applying confidence intervals from today’s lecture</li>
 </ul>
+<p><strong>Week 14 lecture:</strong></p>
+<ul>
+<li>Focus on mediation analysis.</li>
+</ul>
 </section>
-<section id="homework-6" class="slide level2 smaller">
-<h2>Homework #6</h2>
-<p>[[FILL IN HERE]]</p>
+<section id="homework-6-and-paper-proposal" class="slide level2 smaller scrollable">
+<h2>Homework #6 and Paper Proposal</h2>
+<p><strong>Homework #6:</strong></p>
+<ul>
+<li>Great job!</li>
+<li>Remember to subtract 1 from the lower value when trying to calculate probabilities between.
+<ul>
+<li>Since <code>pbinom(x) = P(X ≤ x)</code> and includes <code>x</code>, you subtract 1 from the lower bound: <code>pbinom(6) - pbinom(3)</code> gives <code>P(4 ≤ X ≤ 6)</code> because pbinom(3) already includes 3, removing it from the range.</li>
+</ul></li>
+</ul>
+<p><strong>Paper proposal:</strong></p>
+<ul>
+<li><strong>Walk through specific scenarios to identify mechanisms:</strong> imagine a specific individual and think through their experiences</li>
+<li><strong>Research design</strong>: How can you construct variables of interest?</li>
+<li><strong>What has already been written in the literature:</strong> some topics have been studied a lot, which is a good! What can you add, what new angle can you take?</li>
+<li><strong>Mediation vs moderation</strong>:
+<ul>
+<li><strong>Mediation:</strong> X causes X, which then causes Y (X &gt; Z &gt; Y)</li>
+<li><strong>Moderation:</strong> The effect of X on Y is bigger/smaller/different depending on Z</li>
+</ul></li>
+</ul>
 </section>
 <section id="annotated-bibliography" class="slide level2 smaller">
 <h2>Annotated Bibliography</h2>
@@ -373,7 +395,8 @@
 <p><strong>The chain of inference:</strong></p>
 </div>
 <div class="callout-content">
-<p>Population → Sample → Statistic → Sampling distribution → <strong>Confidence interval → Inference</strong></p>
+<p><strong>Week 7:</strong> Population → Sample → Statistic → Sampling distribution</p>
+<p><strong>Week 8:</strong> Sample → Statistic → Sampling distribution → Confidence interval → Inference</p>
 </div>
 </div>
 </div>
@@ -565,7 +588,7 @@
 <div class="fragment fade-up">
 <p><strong>2. Efficiency</strong>: The sampling variability of the estimator</p>
 <ul>
-<li>An estimator is <strong>efficient</strong> if its sampling variability is lowest among alternatives</li>
+<li>An estimator is <strong>efficient</strong> if its sampling variability (spread) is lowest among alternatives</li>
 <li>In a single sample, efficiency = <strong>precision</strong> (tight clustering of estimates)</li>
 </ul>
 </div>
@@ -595,8 +618,8 @@
 <p><strong>Key ingredients:</strong></p>
 <ol type="1">
 <li>A <strong>point estimate</strong>: our best single guess (e.g., <span class="math inline">\(\hat{p}\)</span>)</li>
-<li>A <strong>standard error</strong>: how uncertain is that estimate?</li>
-<li>A <strong>critical value</strong>: how many SEs do we need to cover 95% of outcomes?</li>
+<li>A <strong>standard error</strong>: how uncertain is that estimate <span class="math inline">\((SE(\hat{p}))\)</span> ?</li>
+<li>A <strong>critical value</strong> (<span class="math inline">\(z^*\)</span>): how many SEs do we need to cover 95% of outcomes?</li>
 </ol>
 <p><span class="math display">\[\text{Confidence Interval} = \underbrace{\hat{p}}_{\text{point estimate}} \pm \underbrace{z^* \times SE(\hat{p})}_{\text{margin of error}}\]</span></p>
 </section>
@@ -617,7 +640,8 @@
 <p><strong>Common misconception:</strong></p>
 </div>
 <div class="callout-content">
-<p>It is tempting to say “there’s a 95% chance the true value is in this interval” — but this is wrong. The true parameter <span class="math inline">\(\pi\)</span> is a fixed (unknown) number; it doesn’t have a probability of being anywhere. <strong>Rather</strong>, it is the <em>interval itself</em> that varies from sample to sample. The correct interpretation: if we repeated this study 100 times and built a CI each time, 95 of those intervals would contain the true <span class="math inline">\(\pi\)</span>. Any single interval either contains it or doesn’t.</p>
+<p>It is tempting to say “there’s a 95% chance the true value is in this interval” — but this is wrong. The true parameter <span class="math inline">\(\pi\)</span> is a fixed (unknown) number; it doesn’t have a probability of being anywhere. <strong>Rather</strong>, it is the <em>interval itself</em> that varies from sample to sample.</p>
+<p><strong>The correct interpretation:</strong> if we repeated this study 100 times and built a CI each time, 95 of those intervals would contain the true <span class="math inline">\(\pi\)</span>. Any single interval either contains it or doesn’t.</p>
 </div>
 </div>
 </div>
@@ -793,13 +817,45 @@
 <p><strong>Goal:</strong> Estimate the 95% confidence interval for the proportion of adult Americans willing to pay higher prices to protect the environment (ignoring sample weights for now)</p>
 </div>
 <div id="tabset-4-2">
-<p><strong>Step 1</strong> — Sample proportion: <span class="math display">\[\hat{p} = \frac{518}{1154} = 0.449\]</span></p>
-<p><strong>Step 2</strong> — Standard error: <span class="math display">\[SE(\hat{p}) = \sqrt{\frac{0.449 \times 0.551}{1154}} = 0.0146\]</span></p>
-<p><strong>Step 3</strong> — 95% CI (<span class="math inline">\(z^* = 1.96\)</span>): <span class="math display">\[0.449 \pm 1.96 \times 0.0146 = 0.449 \pm 0.029 = [0.420, 0.478]\]</span></p>
+<div class="fragment fade-up">
+<p><strong>Step 1</strong> — Sample proportion:</p>
+</div>
+<div class="fragment fade-up">
+<p><span class="math display">\[\hat{p} = \frac{518}{1154} = 0.449\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Step 2</strong> — Standard error:</p>
+</div>
+<div class="fragment fade-up">
+<p><span class="math display">\[SE(\hat{p}) = \sqrt{\frac{0.449 \times 0.551}{1154}} = 0.0146\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Step 3</strong> — 95% CI (<span class="math inline">\(z^* = 1.96\)</span>):</p>
+</div>
+<div class="fragment fade-up">
+<p><span class="math display">\[0.449 \pm 1.96 \times 0.0146 = 0.449 \pm 0.029 = [0.420, 0.478]\]</span></p>
+</div>
 </div>
 <div id="tabset-4-3">
 <p>Same steps, but with <span class="math inline">\(z^* = 2.576\)</span> for 99% confidence:</p>
+<div class="fragment fade-up">
+<p><strong>Step 1</strong> — Sample proportion:</p>
+</div>
+<div class="fragment fade-up">
+<p><span class="math display">\[\hat{p} = \frac{518}{1154} = 0.449\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Step 2</strong> — Standard error:</p>
+</div>
+<div class="fragment fade-up">
+<p><span class="math display">\[SE(\hat{p}) = \sqrt{\frac{0.449 \times 0.551}{1154}} = 0.0146\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Step 3</strong> — 99% CI (<span class="math inline">\(z^* = 2.576\)</span>):</p>
+</div>
+<div class="fragment fade-up">
 <p><span class="math display">\[0.449 \pm 2.576 \times 0.0146 = 0.449 \pm 0.038 = [0.411, 0.487]\]</span></p>
+</div>
 </div>
 <div id="tabset-4-4">
 <table class="caption-top">
@@ -1009,30 +1065,6 @@
 </div>
 </div>
 </section>
-<section id="pause-predict" class="slide level2 smaller">
-<h2>Pause &amp; Predict</h2>
-<p>The GSS environmental survey has <span class="math inline">\(\hat{p} = 0.449\)</span>, <span class="math inline">\(n = 1154\)</span>, and a 95% margin of error of <strong>±0.029</strong>.</p>
-<p><strong>If the sample size doubled to <span class="math inline">\(n = 2308\)</span> (same <span class="math inline">\(\hat{p}\)</span>), what would happen to the margin of error?</strong></p>
-<div class="fragment fade-up">
-<p><strong>A)</strong> It would roughly double (get bigger)</p>
-<p><strong>B)</strong> It would stay about the same</p>
-<p><strong>C)</strong> It would shrink to about half (±0.014)</p>
-<p><strong>D)</strong> It would shrink by about 30% (±0.020)</p>
-</div>
-<div class="fragment fade-up">
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Answer: D — it shrinks by ~30%</strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math display">\[ME = z^* \times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \qquad \text{doubling } n \text{ divides } ME \text{ by } \sqrt{2} \approx 1.41\]</span></p>
-<p>Precision is expensive: you need <strong>4× the data</strong> to halve the margin of error. A sample of 4616 would give ±0.014.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="trade-offs-in-confidence-intervals" class="slide level2 smaller">
 <h2>Trade-offs in Confidence Intervals</h2>
 <div class="panel-tabset">
@@ -1202,46 +1234,19 @@
 <p>When the population standard deviation is unknown:</p>
 <p><span class="math display">\[\bar{x} \pm t^* \times \frac{s}{\sqrt{n}}\]</span></p>
 <p>where <span class="math inline">\(t^*\)</span> comes from the <strong>t-distribution with <span class="math inline">\(df = n - 1\)</span></strong></p>
-<div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Finding <span class="math inline">\(t^*\)</span> in R</a></li><li><a href="#tabset-9-2">Worked Example</a></li><li><a href="#tabset-9-3">Visualization</a></li></ul>
-<div class="tab-content">
-<div id="tabset-9-1">
+<p><strong>Finding <span class="math inline">\(t^*\)</span> in R:</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># General formula</span></span>
 <span id="cb13-2"><a></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> conf_level) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<div id="tabset-9-2">
-<p>For a <strong>95% CI</strong> with <span class="math inline">\(n = 100\)</span> observations:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">99</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.984217</code></pre>
-</div>
-</div>
-<p>Compare to <span class="math inline">\(z^* = 1.960\)</span> — very close when <span class="math inline">\(n\)</span> is large!</p>
-</div>
-<div id="tabset-9-3">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="week8_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="example-heights" class="slide level2 smaller scrollable">
-<h2>Example: Heights</h2>
+<section id="worked-example-heights" class="slide level2 smaller scrollable">
+<h2>Worked Example: Heights</h2>
 <p><strong>Study</strong>: 7 American adults from a simple random sample. Average height: 67.2 in, SD: 3.9 in. What is the 95% CI for the average height of all American adults?</p>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Step 1: Inputs</a></li><li><a href="#tabset-10-2">Step 2: Find <span class="math inline">\(t^*\)</span></a></li><li><a href="#tabset-10-3">Step 3: SE</a></li><li><a href="#tabset-10-4">Step 4: CI</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Step 1: Inputs</a></li><li><a href="#tabset-9-2">Step 2: Find <span class="math inline">\(t^*\)</span></a></li><li><a href="#tabset-9-3">Step 3: SE</a></li><li><a href="#tabset-9-4">Step 4: CI</a></li><li><a href="#tabset-9-5">Visualization</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-9-1">
 <p><strong>Identify the values:</strong></p>
 <table class="caption-top">
 <thead>
@@ -1270,23 +1275,35 @@
 </tbody>
 </table>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-9-2">
 <p><strong>Find the critical t-value</strong> for a 95% CI with <span class="math inline">\(df = 6\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">6</span>)   <span class="co"># two-tailed: 0.025 in each tail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">6</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.446912</code></pre>
 </div>
 </div>
+<p>Compare to <span class="math inline">\(z^* = 1.960\)</span> — noticeably larger with a small sample. This is why we use the t-distribution: with only 7 observations, we need a wider interval to achieve true 95% coverage.</p>
 </div>
-<div id="tabset-10-3">
+<div id="tabset-9-3">
 <p><strong>Calculate the standard error:</strong></p>
 <p><span class="math display">\[SE(\bar{x}) = \frac{s}{\sqrt{n}} = \frac{3.9}{\sqrt{7}} = \frac{3.9}{2.646} = 1.474 \text{ inches}\]</span></p>
 </div>
-<div id="tabset-10-4">
+<div id="tabset-9-4">
 <p><strong>Compute and interpret the confidence interval:</strong></p>
 <p><span class="math display">\[\bar{x} \pm t^* \times SE = 67.2 \pm 2.447 \times 1.474 = 67.2 \pm 3.6 = [63.6,\; 70.8]\]</span></p>
 <p><strong>Interpretation</strong>: We are 95% confident the average height of all American adults is between 63.6 and 70.8 inches</p>
+</div>
+<div id="tabset-9-5">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week8_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1338,23 +1355,7 @@
 </section>
 <section id="when-to-use-z-vs-t" class="slide level2 smaller scrollable">
 <h2>When to use <code>z</code> vs <code>t</code></h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Use the z-distribution when:</strong></p>
-<ul>
-<li>Estimating a <strong>population proportion</strong> (large samples)</li>
-<li>Population standard deviation <span class="math inline">\(\sigma\)</span> is actually known (rare!)</li>
-<li>Very large samples (<span class="math inline">\(n &gt; 100\)</span>) where <span class="math inline">\(t \approx z\)</span></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Use the t-distribution when:</strong></p>
-<ul>
-<li>Estimating a <strong>population mean</strong></li>
-<li>Population standard deviation <span class="math inline">\(\sigma\)</span> is unknown</li>
-<li>Especially important for <strong>small samples</strong> (<span class="math inline">\(n &lt; 30\)</span>)</li>
-</ul>
-</div></div>
-<p><br></p>
+<p><strong>The decision starts with what you’re estimating:</strong></p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -1364,11 +1365,21 @@
 <thead>
 <tr class="header">
 <th></th>
-<th>Proportions</th>
-<th>Means</th>
+<th>Estimating a <strong>proportion</strong></th>
+<th>Estimating a <strong>mean</strong></th>
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td><strong>Use</strong></td>
+<td>z-distribution</td>
+<td>t-distribution</td>
+</tr>
+<tr class="even">
+<td><strong>Why</strong></td>
+<td>SE only depends on <span class="math inline">\(\hat{p}\)</span> — no unknown <span class="math inline">\(\sigma\)</span> to estimate</td>
+<td>We estimate <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span>, adding uncertainty the t accounts for</td>
+</tr>
 <tr class="odd">
 <td><strong>Formula</strong></td>
 <td><span class="math inline">\(\hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n}\)</span></td>
@@ -1376,30 +1387,35 @@
 </tr>
 <tr class="even">
 <td><strong>Critical value</strong></td>
-<td><span class="math inline">\(z^*\)</span> from <span class="math inline">\(N(0,1)\)</span></td>
-<td><span class="math inline">\(t^*\)</span> from <span class="math inline">\(t(df = n-1)\)</span></td>
-</tr>
-<tr class="odd">
-<td><strong>SE</strong></td>
-<td><span class="math inline">\(\sqrt{\hat{p}(1-\hat{p})/n}\)</span></td>
-<td><span class="math inline">\(s/\sqrt{n}\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>R function</strong></td>
 <td><code>qnorm()</code></td>
-<td><code>qt()</code></td>
+<td><code>qt(df = n - 1)</code></td>
 </tr>
 </tbody>
 </table>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Practical caveat — sample size:</strong></p>
+</div>
+<div class="callout-content">
+<p>When <span class="math inline">\(n &gt; 100\)</span>, <span class="math inline">\(t^* \approx z^*\)</span> and the distinction rarely matters. But for means, always use <code>qt()</code> — it automatically converges to the Normal for large <span class="math inline">\(n\)</span>.</p>
+</div>
+</div>
+</div>
 <p><strong>Finding critical values in R:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># For a proportion CI — use qnorm (Normal distribution)</span></span>
-<span id="cb18-2"><a></a><span class="fu">qnorm</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)   <span class="co"># z* for 95% CI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># Proportion CI — z* from the Normal</span></span>
+<span id="cb16-2"><a></a><span class="fu">qnorm</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.959964</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># For a mean CI — use qt (t-distribution), specify degrees of freedom</span></span>
-<span id="cb20-2"><a></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">99</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)   <span class="co"># t* for 95% CI, n = 100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># Mean CI (small n = 7, df = 6) — t* noticeably larger than z*</span></span>
+<span id="cb18-2"><a></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">6</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.446912</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># Mean CI (large n = 100, df = 99) — t* converges to z*</span></span>
+<span id="cb20-2"><a></a><span class="fu">qt</span>((<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>, <span class="at">df =</span> <span class="dv">99</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.984217</code></pre>
 </div>
@@ -1409,9 +1425,9 @@
 <h2>Using CIs to Compare Groups</h2>
 <p>The same CI logic applies separately to <strong>subgroups</strong> — useful when your research question involves comparing populations:</p>
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">The Idea</a></li><li><a href="#tabset-11-2">Example</a></li><li><a href="#tabset-11-3">Visualization</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">The Idea</a></li><li><a href="#tabset-10-2">Example</a></li><li><a href="#tabset-10-3">Visualization</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1">
+<div id="tabset-10-1">
 <p>Calculate a CI for each group independently, then compare:</p>
 <ul>
 <li>If the intervals <strong>do not overlap</strong> → preliminary evidence of a real difference between the group means</li>
@@ -1428,7 +1444,7 @@
 </div>
 </div>
 </div>
-<div id="tabset-11-2">
+<div id="tabset-10-2">
 <p><strong>Do childhood and adult arrivals differ in years spent in the U.S.?</strong></p>
 <table class="caption-top">
 <thead>
@@ -1459,12 +1475,12 @@
 </table>
 <p>The intervals <strong>do not overlap</strong> → childhood arrivals have spent meaningfully more time in the U.S.</p>
 </div>
-<div id="tabset-11-3">
+<div id="tabset-10-3">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week8_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week8_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
