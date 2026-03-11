@@ -26,11 +26,22 @@ editor: visual
 
 Using the dataset that you will use in your final paper, formulate a research question that involves **one** of the following:
 
-1.  Testing a null hypothesis that a proportion variable has a population proportion P (where P is of your choosing, based on what you think is theoretically interesting)
-2.  Testing a null hypothesis that a continuous variable has a population mean μ (where μ is of your choosing, based on what you think is theoretically interesting)
-3.  Testing a null hypothesis that the mean of a continuous variable in one subsample of your data is the same as the mean of that continuous variable in another subsample of your data
+1.  **One-sample proportion test (z-test):** Testing a null hypothesis that a binary/proportion variable has a population proportion P (where P is of your choosing, based on what you think is theoretically interesting)
+2.  **One-sample t-test:** Testing a null hypothesis that a continuous variable has a population mean μ (where μ is of your choosing, based on what you think is theoretically interesting)
+3.  **Two-sample t-test:** Testing a null hypothesis that the mean of a continuous variable is the same across two subsamples of your data (e.g., by race, gender, union status)
+4.  **Chi-squared test:** Testing a null hypothesis that two categorical variables are independent of each other (use this option if your research question involves two categorical variables)
 
 Then, test your hypothesis and decide whether to reject or to not reject the null hypothesis. Write up your analysis using the Weekly Assignment Analysis Template structure below.
+
+::: callout-note
+## A few things to keep in mind before you start
+
+**On your SE formula (options 1–3):** When *testing* a hypothesis, compute the standard error using the **null value** — not the sample estimate. For a proportion test: $SE_0 = \sqrt{\pi_0(1-\pi_0)/n}$, where $\pi_0$ is your null hypothesis value. This is different from the CI formula, which uses $\hat{p}$.
+
+**On one-tailed tests:** If you use a one-tailed test (e.g., $H_1: \mu > 40$) but your sample result goes in the *opposite* direction (e.g., $\bar{x} = 35$), you still **fail to reject** $H_0$ — even if the p-value appears small. When in doubt, use a two-tailed test.
+
+**On reporting:** A p-value alone is not enough. Always report the actual sample statistic (mean, proportion, or difference), not just whether the result is significant. The reader needs to know the *direction* and *magnitude* of the effect, not just whether it exists.
+:::
 
 ## Setup
 
@@ -46,6 +57,8 @@ rm(list = ls())
 library(tidyverse)
 library(here)
 # Add more libraries here if you need them!
+
+options(scipen = 999)
 
 ```
 
@@ -79,8 +92,9 @@ library(here)
 
 **Describe the exact procedure you are going to use to analyze the data, including:**
 
--   *What type of hypothesis test you will conduct (one-sample proportion test, one-sample t-test, two-sample t-test, etc.)*
--   *What your null hypothesis (H₀) and alternative hypothesis (H₁) are*
+-   *What type of hypothesis test you will conduct (one-sample proportion test, one-sample t-test, two-sample t-test, or chi-squared test)*
+-   *What your null hypothesis (H₀) and alternative hypothesis (H₁) are, written out explicitly*
+-   *Whether you are using a one-tailed or two-tailed test, and why*
 -   *What significance level (α) you will use*
 -   *What specific R functions you will use*
 
@@ -126,10 +140,11 @@ library(here)
 
 **Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. This should be 3-5 sentences and should include:**
 
--   **The test statistic value**
--   **The p-value**
+-   **The sample statistic(s)** — the actual mean(s), proportion(s), or difference, so the reader can see the direction and magnitude of the effect
+-   **The test statistic value** (z, t, or χ²) and degrees of freedom
+-   **The p-value** and your significance threshold (α = 0.05)
 -   **Whether you reject or fail to reject the null hypothesis**
--   **The confidence interval (if applicable)**
+-   **The 95% confidence interval** for the relevant estimate (for proportion and t-tests; not required for chi-squared, but a difference in proportions should be reported instead)
 
 *Your results:*
 
@@ -155,11 +170,13 @@ library(here)
 ## Before You Submit
 
 -   [ ] Your name is in the author field at the top of this document
--   [ ] You've clearly stated your null and alternative hypotheses
--   [ ] All code chunks run without errors
--   [ ] You've answered all sections of the analysis template
+-   [ ] You've clearly stated your null and alternative hypotheses ($H_0$ and $H_1$)
+-   [ ] You've stated whether you used a one-tailed or two-tailed test
+-   [ ] Your SE formula uses the **null value** (for proportion/t-tests), not the sample estimate
+-   [ ] Your Results section reports the actual sample statistic(s) — not just the p-value
+-   [ ] Your Results section includes the 95% CI (or difference in proportions for chi-squared)
 -   [ ] You've stated whether you reject or fail to reject the null hypothesis
--   [ ] You've included your complete R output in the appendix
+-   [ ] All code chunks run without errors
 -   [ ] You've clicked "Render" and successfully generated an HTML file
 -   [ ] You're submitting the .qmd file to bCourse
 :::
