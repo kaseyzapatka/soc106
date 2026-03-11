@@ -332,15 +332,15 @@
     "objectID": "slides/week7.html#housekeeping",
     "href": "slides/week7.html#housekeeping",
     "title": "Week 7",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nHW 4:\n\nGreat job overall: minor issues across the class.\n\nOpen Week Topic:\n\nWill send out a survey for topics for open week after class today. Please answer by March 17."
+    "section": "",
+    "text": "HW 4:\n\nGreat job overall: minor issues across the class.\n\nOpen Week Topic:\n\nWill send out a survey for topics for open week after class today. Please answer by March 17."
   },
   {
     "objectID": "slides/week7.html#where-we-are-in-the-course",
     "href": "slides/week7.html#where-we-are-in-the-course",
     "title": "Week 7",
     "section": "Where We Are in the Course",
-    "text": "Where We Are in the Course\n\nWeeks 5–6: rules of probability + probability models (Bernoulli, Binomial, Normal)\nThis week (Week 7): sampling distributions and the Central Limit Theorem\nNext week (Week 8): confidence intervals\nThen (Week 9): hypothesis testing\n\nMain idea: We’ve been building probability models of populations. Today we ask: what happens when we draw a sample—and then another, and another? The answer is what makes all of statistical inference possible.\n\n\n\nThe answer:\n\n\nWhen we draw a sample—and then another, and another—the sample statistics vary in a systematic, mathematically predictable way. That predictable variation is what makes statistical inference possible."
+    "text": "Where We Are in the Course\n\nWeeks 5–6: rules of probability + probability models (Bernoulli, Binomial, Normal)\nThis week (Week 7): sampling distributions and the Central Limit Theorem\nNext week (Week 8): confidence intervals\nThen (Week 9): hypothesis testing\n\nMain idea: We’ve been building probability models of populations. Today we ask: what happens when we draw a sample—and then another, and another? The answer is what makes all of statistical inference possible.\n\n\n\n\n\n\nNoteThe answer:\n\n\n\nWhen we draw a sample—and then another, and another—the sample statistics vary in a systematic, mathematically predictable way. That predictable variation is what makes statistical inference possible."
   },
   {
     "objectID": "slides/week7.html#agenda",
@@ -375,7 +375,7 @@
     "href": "slides/week7.html#how-to-read-academic-articles",
     "title": "Week 7",
     "section": "How to Read Academic Articles",
-    "text": "How to Read Academic Articles\n\n\n\n\n\n\n\nSection\nWhat to look for\n\n\n\n\nAbstract\nOverview: research question, data, main result — read first\n\n\nIntroduction\nSlightly more detailed than abstract; same format\n\n\nConclusion\nResults, alternative explanations, limitations — and future research topics\n\n\nBackground / Lit review\nPrevious research; a good source of additional citations\n\n\nData section\nHow the sample was constructed; what data sources researchers use\n\n\nMethods\nDon’t worry about this too much yet!\n\n\n\n\n\n\nOrder of operations:\n\n\nStart with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant."
+    "text": "How to Read Academic Articles\n\n\n\n\n\n\n\nSection\nWhat to look for\n\n\n\n\nAbstract\nOverview: research question, data, main result — read first\n\n\nIntroduction\nSlightly more detailed than abstract; same format\n\n\nConclusion\nResults, alternative explanations, limitations — and future research topics\n\n\nBackground / Lit review\nPrevious research; a good source of additional citations\n\n\nData section\nHow the sample was constructed; what data sources researchers use\n\n\nMethods\nDon’t worry about this too much yet!\n\n\n\n\n\n\n\n\n\nTipOrder of operations:\n\n\n\nStart with abstract → conclusion → introduction. Only go deeper if the paper is clearly relevant."
   },
   {
     "objectID": "slides/week7.html#questions",
@@ -417,7 +417,7 @@
     "href": "slides/week7.html#sample-design",
     "title": "Week 7",
     "section": "Sample Design",
-    "text": "Sample Design\nTo do inferential statistics, we need a representative sample — ideally, each unit of the population has an equal chance of being included\nWe also want samples that are large enough for precision, which increases with sample size\n\n\n\n\nImportant note\n\n\nPrecision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)"
+    "text": "Sample Design\nTo do inferential statistics, we need a representative sample — ideally, each unit of the population has an equal chance of being included\nWe also want samples that are large enough for precision, which increases with sample size\n\n\n\n\n\n\n\nTipImportant note\n\n\n\nPrecision is inversely proportional to the diversity of values — larger samples are needed to draw inferences about small subgroups (by race, education, sexual orientation, etc.)"
   },
   {
     "objectID": "slides/week7.html#types-of-sampling-designs",
@@ -445,14 +445,14 @@
     "href": "slides/week7.html#what-is-a-sampling-distribution",
     "title": "Week 7",
     "section": "What is a Sampling Distribution?",
-    "text": "What is a Sampling Distribution?\nA sampling distribution is the probability distribution of a sample statistic computed across many independent samples from the same population\nThree distributions you must keep straight:\n\n\n\n\n\n\n\n\nDistribution\nWhat it describes\nPhiladelphia example\n\n\n\n\nPopulation\nAll individuals in the population\n1.45M Philadelphia residents, 42.2% African American\n\n\nSample (data)\nThe individuals in our sample\n262 police stops in 1997\n\n\nSampling\nHow our statistic would vary across repeated samples\nDistribution of \\(\\hat{p}\\) across many random samples of 262\n\n\n\n\n\n\nKey insights\n\n\n\nSampling distributions describe variability from study to study\nThey tell us how close a statistic is likely to fall to the true population parameter\nThey are not what we observe — they represent what we would observe across many hypothetical repetitions\nThey are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)"
+    "text": "What is a Sampling Distribution?\nA sampling distribution is the probability distribution of a sample statistic computed across many independent samples from the same population\nThree distributions you must keep straight:\n\n\n\n\n\n\n\n\nDistribution\nWhat it describes\nPhiladelphia example\n\n\n\n\nPopulation\nAll individuals in the population\n1.45M Philadelphia residents, 42.2% African American\n\n\nSample (data)\nThe individuals in our sample\n262 police stops in 1997\n\n\nSampling\nHow our statistic would vary across repeated samples\nDistribution of \\(\\hat{p}\\) across many random samples of 262\n\n\n\n\n\n\n\n\n\nNoteKey insights\n\n\n\n\nSampling distributions describe variability from study to study\nThey tell us how close a statistic is likely to fall to the true population parameter\nThey are not what we observe — they represent what we would observe across many hypothetical repetitions\nThey are the foundation for confidence intervals (Week 8) and hypothesis tests (Week 9)"
   },
   {
     "objectID": "slides/week7.html#sampling-distribution-of-a-proportion",
     "href": "slides/week7.html#sampling-distribution-of-a-proportion",
     "title": "Week 7",
     "section": "Sampling Distribution of a Proportion",
-    "text": "Sampling Distribution of a Proportion\n\nThe bridge from Week 6What it tells usConnection to inference\n\n\nRecall: \\(X \\sim B(n, \\pi)\\) has mean \\(n\\pi\\) and SD \\(\\sqrt{n\\pi(1-\\pi)}\\)\nThe sample proportion \\(\\hat{p} = X/n\\) divides that count by \\(n\\). It’s sampling distribution:\n\\[\\mu_{\\hat{p}} = \\frac{n\\pi}{n} = \\pi \\qquad SE(\\hat{p}) = \\frac{\\sqrt{n\\pi(1-\\pi)}}{n} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\]\nSame formula as last week’s Binomial SD — divided by \\(n\\).\n\n\n\\[\\mu_{\\hat{p}} = \\pi \\qquad \\text{(unbiased — centered on the true proportion)}\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\pi(1-\\pi)}{n}} \\qquad \\text{(shrinks as } n \\text{ grows)}\\]\nWe use standard error (SE) rather than standard deviation to signal that this is the spread of a sampling distribution, not of raw data.\n\n\nThe SE answers: on average, how far will our \\(\\hat{p}\\) fall from the true \\(\\pi\\)?\n\nSmall \\(n\\) → large SE → estimates can be far from the truth\nLarge \\(n\\) → small SE → estimates are reliably close to the truth\n\n\n\n\nkey insight:\n\n\nThis is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20."
+    "text": "Sampling Distribution of a Proportion\n\nThe bridge from Week 6What it tells usConnection to inference\n\n\nRecall: \\(X \\sim B(n, \\pi)\\) has mean \\(n\\pi\\) and SD \\(\\sqrt{n\\pi(1-\\pi)}\\)\nThe sample proportion \\(\\hat{p} = X/n\\) divides that count by \\(n\\). It’s sampling distribution:\n\\[\\mu_{\\hat{p}} = \\frac{n\\pi}{n} = \\pi \\qquad SE(\\hat{p}) = \\frac{\\sqrt{n\\pi(1-\\pi)}}{n} = \\sqrt{\\frac{\\pi(1-\\pi)}{n}}\\]\nSame formula as last week’s Binomial SD — divided by \\(n\\).\n\n\n\\[\\mu_{\\hat{p}} = \\pi \\qquad \\text{(unbiased — centered on the true proportion)}\\]\n\\[SE(\\hat{p}) = \\sqrt{\\frac{\\pi(1-\\pi)}{n}} \\qquad \\text{(shrinks as } n \\text{ grows)}\\]\nWe use standard error (SE) rather than standard deviation to signal that this is the spread of a sampling distribution, not of raw data.\n\n\nThe SE answers: on average, how far will our \\(\\hat{p}\\) fall from the true \\(\\pi\\)?\n\nSmall \\(n\\) → large SE → estimates can be far from the truth\nLarge \\(n\\) → small SE → estimates are reliably close to the truth\n\n\n\n\n\n\n\nNotekey insight:\n\n\n\nThis is the mechanism that makes large surveys more trustworthy — and why the GSS (≈3,000 respondents) gives more reliable estimates than a sample of 20."
   },
   {
     "objectID": "slides/week7.html#racial-profiling-a-worked-example",
@@ -508,14 +508,14 @@
     "href": "slides/week7.html#key-takeaways",
     "title": "Week 7",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nPopulations have parameters; samples have statistics — and they’re different things\nA sampling distribution describes how a statistic varies across many hypothetical samples\nThe standard error (SE) measures this variability — it shrinks as \\(\\sqrt{n}\\) grows\nThe Central Limit Theorem guarantees that sample means are approximately Normal for large \\(n\\), regardless of the population shape\n\n\n\n\nkey takeaway:\n\n\nSample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course."
+    "text": "Key Takeaways\n\nPopulations have parameters; samples have statistics — and they’re different things\nA sampling distribution describes how a statistic varies across many hypothetical samples\nThe standard error (SE) measures this variability — it shrinks as \\(\\sqrt{n}\\) grows\nThe Central Limit Theorem guarantees that sample means are approximately Normal for large \\(n\\), regardless of the population shape\n\n\n\n\n\n\n\nNotekey takeaway:\n\n\n\nSample → statistic → sampling distribution → inference. This is the chain that runs through the rest of the course."
   },
   {
     "objectID": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
     "href": "slides/week7.html#why-this-matters-for-the-rest-of-the-course",
     "title": "Week 7",
     "section": "Why This Matters for the Rest of the Course",
-    "text": "Why This Matters for the Rest of the Course\n\nNext week (Week 8): Confidence intervals use the SE and the Normal approximation to build a range of plausible parameter values\nWeek 9: Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors\nWeeks 11–13 (Regression): Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today\n\n\n\n\nkey takeaway:\n\n\nThe CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand why every test we’ll do actually works."
+    "text": "Why This Matters for the Rest of the Course\n\nNext week (Week 8): Confidence intervals use the SE and the Normal approximation to build a range of plausible parameter values\nWeek 9: Hypothesis tests ask “how far is our statistic from what we’d expect?” — measured in standard errors\nWeeks 11–13 (Regression): Every regression coefficient comes with a standard error and a significance test — all built on exactly the CLT logic we developed today\n\n\n\n\n\n\n\nNotekey takeaway:\n\n\n\nThe CLT is not just this week’s topic. It is the engine of all classical statistical inference. Once you understand it, you understand why every test we’ll do actually works."
   },
   {
     "objectID": "slides/week7.html#questions-1",
@@ -2852,8 +2852,8 @@
     "objectID": "slides/week6.html#housekeeping",
     "href": "slides/week6.html#housekeeping",
     "title": "Week 6",
-    "section": "Housekeeping",
-    "text": "Housekeeping\nHW 3: Great job overall. Two main comments:\n\nMake sure you are removing missing in your marginal frequency calculations (Q1: filter(!is.na(degree), !is.na(marital)) |&gt;)\nMake sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)"
+    "section": "",
+    "text": "HW 3: Great job overall. Two main comments:\n\nMake sure you are removing missing in your marginal frequency calculations (Q1: filter(!is.na(degree), !is.na(marital)) |&gt;)\nMake sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)"
   },
   {
     "objectID": "slides/week6.html#where-we-are-in-the-course",
@@ -2881,7 +2881,7 @@
     "href": "slides/week6.html#the-ladder-a-preview",
     "title": "Week 6",
     "section": "The Ladder: A Preview",
-    "text": "The Ladder: A Preview\nThese three distributions are connected — each is the same voting question at a different scale:\n\nSame event, different scale: one person → a small sample → a large sample. We’ll build up to this step by step."
+    "text": "The Ladder: A Preview\nThese three distributions are connected — each is the same voting question at a different scale:\n\n\n\n\n\n\n\n\n\nSame event, different scale: one person → a small sample → a large sample. We’ll build up to this step by step."
   },
   {
     "objectID": "slides/week6.html#random-variables-and-distributions",
@@ -2902,7 +2902,7 @@
     "href": "slides/week6.html#r-functions-for-distributions-1",
     "title": "Week 6",
     "section": "R Functions for Distributions",
-    "text": "R Functions for Distributions\nThe suffix tells you the distribution: binom for Binomial, norm for Normal.\n\nWe’ll use each of these as we go. Keep this pattern in mind!"
+    "text": "R Functions for Distributions\nThe suffix tells you the distribution: binom for Binomial, norm for Normal.\n\n\n\n\n\n\n\n\n\nWe’ll use each of these as we go. Keep this pattern in mind!"
   },
   {
     "objectID": "slides/week6.html#the-bernoulli-model",
@@ -2965,7 +2965,7 @@
     "href": "slides/week6.html#practice-binomial-probabilities",
     "title": "Week 6",
     "section": "Practice: Binomial Probabilities",
-    "text": "Practice: Binomial Probabilities\nLet’s some scenarios that are similar to HW questions.\n\n“At least” (Q1-style)“Between” (Q1-style)Passing threshold (Q2-style)\n\n\nLisa makes free throws 75% of the time and shoots 8 free throws at practice. What is the probability she makes at least 7?\n\n\n\n\\(P(X \\ge 7)\\) means \\(X = 7\\) or \\(X = 8\\). Use the complement:\n\\[P(X \\ge 7) = 1 - P(X \\le 6)\\]\n\n1 - pbinom(6, size = 8, prob = 0.75)\n\n[1] 0.3670807\n\n\nAbout a 37% chance she makes at least 7 of 8.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Lisa, n = 8, π = 0.75. What is the probability she makes between 4 and 6 free throws?\n\n\n\n\\(P(4 \\le X \\le 6)\\) — add up bars from 4 to 6. Equivalently:\n\\[P(4 \\le X \\le 6) = P(X \\le 6) - P(X \\le 3)\\]\n\npbinom(6, size = 8, prob = 0.75) -\n  pbinom(3, size = 8, prob = 0.75)\n\n[1] 0.6056213\n\n\nAbout a 61% chance she makes between 4 and 6.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Javier, n = 50, π = 0.80. He needs at least 35 correct (70%) to pass. What’s the probability he passes?\n\n\n\n70% of 50 = 35. “Pass” means \\(X \\ge 35\\):\n\\[P(X \\ge 35) = 1 - P(X \\le 34)\\]\n\n1 - pbinom(34, size = 50, prob = 0.80)\n\n[1] 0.9691966\n\n\nAbout a 97% chance Javier passes."
+    "text": "Practice: Binomial Probabilities\nLet’s some scenarios that are similar to HW questions.\n\n“At least” (Q1-style)“Between” (Q1-style)Passing threshold (Q2-style)\n\n\nLisa makes free throws 75% of the time and shoots 8 free throws at practice. What is the probability she makes at least 7?\n\n\n\n\\(P(X \\ge 7)\\) means \\(X = 7\\) or \\(X = 8\\). Use the complement:\n\\[P(X \\ge 7) = 1 - P(X \\le 6)\\]\n\n1 - pbinom(6, size = 8, prob = 0.75)\n\n[1] 0.3670807\n\n\nAbout a 37% chance she makes at least 7 of 8.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Lisa, n = 8, π = 0.75. What is the probability she makes between 4 and 6 free throws?\n\n\n\n\\(P(4 \\le X \\le 6)\\) — add up bars from 4 to 6. Equivalently:\n\\[P(4 \\le X \\le 6) = P(X \\le 6) - P(X \\le 3)\\]\n\npbinom(6, size = 8, prob = 0.75) -\n  pbinom(3, size = 8, prob = 0.75)\n\n[1] 0.6056213\n\n\nAbout a 61% chance she makes between 4 and 6.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame scenario: Javier, n = 50, π = 0.80. He needs at least 35 correct (70%) to pass. What’s the probability he passes?\n\n\n\n70% of 50 = 35. “Pass” means \\(X \\ge 35\\):\n\\[P(X \\ge 35) = 1 - P(X \\le 34)\\]\n\n1 - pbinom(34, size = 50, prob = 0.80)\n\n[1] 0.9691966\n\n\nAbout a 97% chance Javier passes."
   },
   {
     "objectID": "slides/week6.html#binomial-sample-statistics-vs.-model-parameters",
@@ -2979,14 +2979,14 @@
     "href": "slides/week6.html#why-binomial-starts-looking-normal",
     "title": "Week 6",
     "section": "Why Binomial Starts Looking Normal",
-    "text": "Why Binomial Starts Looking Normal\nWhat if we surveyed 100 people instead of 10? As \\(n\\) grows, the Binomial distribution becomes smoother and starts to resemble a bell-shaped curve:\n\nThis is an early step toward central limit thinking: sums of many random components often look approximately Normal."
+    "text": "Why Binomial Starts Looking Normal\nWhat if we surveyed 100 people instead of 10? As \\(n\\) grows, the Binomial distribution becomes smoother and starts to resemble a bell-shaped curve:\n\n\n\n\n\n\n\n\n\nThis is an early step toward central limit thinking: sums of many random components often look approximately Normal."
   },
   {
     "objectID": "slides/week6.html#the-normal-distribution",
     "href": "slides/week6.html#the-normal-distribution",
     "title": "Week 6",
     "section": "The Normal Distribution",
-    "text": "The Normal Distribution\n\n\nFor \\(n = 100\\) voters with \\(\\pi = 0.6\\), the Binomial has:\n\nMean: \\(100 \\times 0.6 = 60\\) voters\nSD: \\(\\sqrt{100 \\times 0.6 \\times 0.4} \\approx 4.9\\) voters\n\nWhat does SD = 4.9 mean? In most surveys of 100 people, the number of voters will be within about 5 of 60 — typically between 55 and 65.\nInstead of computing exact Binomial probabilities across 101 values, we approximate with a Normal distribution: \\(N(60, 4.9)\\).\n\n\n\n\n\n\n\n\n\n\n\nFor continuous models, probabilities come from areas under the curve."
+    "text": "The Normal Distribution\n\n\nFor \\(n = 100\\) voters with \\(\\pi = 0.6\\), the Binomial has:\n\nMean: \\(100 \\times 0.6 = 60\\) voters\nSD: \\(\\sqrt{100 \\times 0.6 \\times 0.4} \\approx 4.9\\) voters\n\nWhat does SD = 4.9 mean? In most surveys of 100 people, the number of voters will be within about 5 of 60 — typically between 55 and 65.\nInstead of computing exact Binomial probabilities across 101 values, we approximate with a Normal distribution: \\(N(60, 4.9)\\).\n\n\n\n\n\n\n\n\n\n\n\n\nFor continuous models, probabilities come from areas under the curve."
   },
   {
     "objectID": "slides/week6.html#key-properties-of-normal-distributions",
@@ -3014,14 +3014,14 @@
     "href": "slides/week6.html#computing-normal-probabilities-in-r",
     "title": "Week 6",
     "section": "Computing Normal Probabilities in R",
-    "text": "Computing Normal Probabilities in R\n\nBetween two valuesAt mostMore thanPercentile cutoff\n\n\nWhat’s the probability of observing between 55 and 65 voters?\n\n\n\npnorm(65, mean = 60, sd = 4.9) -\n  pnorm(55, mean = 60, sd = 4.9)\n\n[1] 0.6924651\n\n\nIn general: \\(P(a \\le Y \\le b) = P(Y \\le b) - P(Y \\le a)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing at most 50 voters?\n\n\n\npnorm(50, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nThis is \\(P(Y \\le 50)\\) — the area to the left of 50.\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing more than 70 voters?\n\n\n\n1 - pnorm(70, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nWe use \\(1 - P(Y \\le 70)\\) because pnorm() gives the area to the left.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBelow what count do 95% of samples fall?\n\n\n\nqnorm(0.95, mean = 60, sd = 4.9)\n\n[1] 68.05978\n\n\nqnorm() is the inverse of pnorm() — it goes from probability to value."
+    "text": "Computing Normal Probabilities in R\n\nBetween two valuesAt mostMore thanPercentile cutoff\n\n\nWhat’s the probability of observing between 55 and 65 voters?\n\n\n\npnorm(65, mean = 60, sd = 4.9) -\n  pnorm(55, mean = 60, sd = 4.9)\n\n[1] 0.6924651\n\n\nIn general: \\(P(a \\le Y \\le b) = P(Y \\le b) - P(Y \\le a)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing at most 50 voters?\n\n\n\npnorm(50, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nThis is \\(P(Y \\le 50)\\) — the area to the left of 50.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s the probability of observing more than 70 voters?\n\n\n\n1 - pnorm(70, mean = 60, sd = 4.9)\n\n[1] 0.02063454\n\n\nWe use \\(1 - P(Y \\le 70)\\) because pnorm() gives the area to the left.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBelow what count do 95% of samples fall?\n\n\n\nqnorm(0.95, mean = 60, sd = 4.9)\n\n[1] 68.05978\n\n\nqnorm() is the inverse of pnorm() — it goes from probability to value."
   },
   {
     "objectID": "slides/week6.html#practice-z-scores-and-normal-probabilities",
     "href": "slides/week6.html#practice-z-scores-and-normal-probabilities",
     "title": "Week 6",
     "section": "Practice: Z-Scores and Normal Probabilities",
-    "text": "Practice: Z-Scores and Normal Probabilities\nThese examples are similar to what you’ll see on HW #5. Let’s work through them together.\n\nZ-scorearea to the leftarea to the rightbetween valuesfind the cutoff\n\n\nAndre’s height is 75 inches. Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.\n\n\n\n\\[z = \\frac{75 - 69}{3} = 2.0\\]\nAndre is 2 standard deviations above the mean. By the 68-95-99.7 rule, he is taller than about 97.5% of the population — only 2.5% of people are taller.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds on I-5 are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?\n\n\n\n\npnorm(65, mean = 71, sd = 8)\n\n[1] 0.2266274\n\n\nOnly about 23% of vehicles are going at or below 65 mph.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSAT scores are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?\n\n\n\n\n1 - pnorm(820, mean = 1026, sd = 209)\n\n[1] 0.8378466\n\n\nAbout 84% of students score above 820.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing the same SAT distribution, what proportion score between 720 and 820 (partial qualifiers)?\n\n\n\n\npnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)\n\n[1] 0.09057216\n\n\nAbout 9% of students fall in this range.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?\n\n\n\n\nqnorm(0.90, mean = 71, sd = 8)\n\n[1] 81.25241\n\n\nThe new speed limit should be about 81 mph — 90% of vehicles travel at or below this speed."
+    "text": "Practice: Z-Scores and Normal Probabilities\nThese examples are similar to what you’ll see on HW #5. Let’s work through them together.\n\nZ-scorearea to the leftarea to the rightbetween valuesfind the cutoff\n\n\nAndre’s height is 75 inches. Heights in his population are Normal with mean 69 inches and SD 3 inches. Calculate his z-score.\n\n\n\n\\[z = \\frac{75 - 69}{3} = 2.0\\]\nAndre is 2 standard deviations above the mean. By the 68-95-99.7 rule, he is taller than about 97.5% of the population — only 2.5% of people are taller.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds on I-5 are approximately Normal with mean 71 mph and SD 8 mph. The speed limit is 65 mph. What proportion of vehicles are at or below the speed limit?\n\n\n\n\npnorm(65, mean = 71, sd = 8)\n\n[1] 0.2266274\n\n\nOnly about 23% of vehicles are going at or below 65 mph.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSAT scores are approximately Normal with mean 1026 and SD 209. The NCAA requires a score above 820 to compete. What proportion of students qualify?\n\n\n\n\n1 - pnorm(820, mean = 1026, sd = 209)\n\n[1] 0.8378466\n\n\nAbout 84% of students score above 820.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing the same SAT distribution, what proportion score between 720 and 820 (partial qualifiers)?\n\n\n\n\npnorm(820, mean = 1026, sd = 209) - pnorm(720, mean = 1026, sd = 209)\n\n[1] 0.09057216\n\n\nAbout 9% of students fall in this range.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVehicle speeds again (mean 71, SD 8). A new speed limit will be set so that 10% of vehicles exceed it. What should the new limit be?\n\n\n\n\nqnorm(0.90, mean = 71, sd = 8)\n\n[1] 81.25241\n\n\nThe new speed limit should be about 81 mph — 90% of vehicles travel at or below this speed."
   },
   {
     "objectID": "slides/week6.html#r-translation-guide",
@@ -3042,7 +3042,7 @@
     "href": "slides/week6.html#the-ladder-visually",
     "title": "Week 6",
     "section": "The Ladder, Visually",
-    "text": "The Ladder, Visually\nOne trial → many trials → smooth approximation, all with \\(\\pi = 0.6\\):\n\nSame event, three levels of analysis. This is the logic that powers the rest of the course."
+    "text": "The Ladder, Visually\nOne trial → many trials → smooth approximation, all with \\(\\pi = 0.6\\):\n\n\n\n\n\n\n\n\n\nSame event, three levels of analysis. This is the logic that powers the rest of the course."
   },
   {
     "objectID": "slides/week6.html#key-takeaways",
@@ -3301,7 +3301,7 @@
     "href": "slides/week7.html#weekly-work-hours-a-worked-example",
     "title": "Week 7",
     "section": "Weekly Work Hours: A Worked Example",
-    "text": "Weekly Work Hours: A Worked Example\n\nSetupApplying the CLTSolutionThe CLT in Action\n\n\nGSS data show that among employed US adults, weekly work hours are right-skewed: \\(\\mu = 40.5\\) hours, \\(\\sigma = 14\\) hours.\nA labor researcher samples \\(n = 35\\) workers at a specific company and finds a mean of 45 hours/week.\nQuestion: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?\n\n\nThe population is right-skewed — but \\(n = 35 &gt; 30\\), so the CLT applies:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{14}{\\sqrt{35}} \\approx 2.37\\]\n\\[\\bar{x} \\sim N(40.5,\\; 2.37)\\]\nEven though individual work hours are skewed, the sample mean is approximately Normal.\n\n\nCompute the probability in R\n\npnorm(45, mean = 40.5, sd = 14 / sqrt(35), lower.tail = FALSE)\n\n[1] 0.02861193\n\n\nAbout 2.9% — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.\n\n\n\nWhy sd = 14/sqrt(35) and not sd = 14?\n\n\nThe sd argument must match the distribution you’re asking about. Here the question is about a sample mean, not an individual worker:\npnorm(45, mean = 40.5, sd = 14)             # P(one worker &gt; 45 hrs) ≈ 37%\npnorm(45, mean = 40.5, sd = 14/sqrt(35))    # P(sample mean &gt; 45 hrs) ≈ 3%\nThe same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a group average of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by \\(\\sqrt{n}\\) is exactly what the SE captures."
+    "text": "Weekly Work Hours: A Worked Example\n\nSetupApplying the CLTSolutionThe CLT in Action\n\n\nGSS data show that among employed US adults, weekly work hours are right-skewed: \\(\\mu = 40.5\\) hours, \\(\\sigma = 14\\) hours.\nA labor researcher samples \\(n = 35\\) workers at a specific company and finds a mean of 45 hours/week.\nQuestion: If this company is typical of the US workforce, how unusual is a sample mean of 45 hours or higher?\n\n\nThe population is right-skewed — but \\(n = 35 &gt; 30\\), so the CLT applies:\n\\[SE(\\bar{x}) = \\frac{\\sigma}{\\sqrt{n}} = \\frac{14}{\\sqrt{35}} \\approx 2.37\\]\n\\[\\bar{x} \\sim N(40.5,\\; 2.37)\\]\nEven though individual work hours are skewed, the sample mean is approximately Normal.\n\n\nCompute the probability in R\n\npnorm(45, mean = 40.5, sd = 14 / sqrt(35), lower.tail = FALSE)\n\n[1] 0.02861193\n\n\nAbout 2.9% — if the company were typical, a mean this high would occur only 3% of the time by chance. This gives the researcher grounds to argue the company is unusually demanding.\n\n\n\n\n\n\nNoteWhy sd = 14/sqrt(35) and not sd = 14?\n\n\n\nThe sd argument must match the distribution you’re asking about. Here the question is about a sample mean, not an individual worker:\npnorm(45, mean = 40.5, sd = 14)             # P(one worker &gt; 45 hrs) ≈ 37%\npnorm(45, mean = 40.5, sd = 14/sqrt(35))    # P(sample mean &gt; 45 hrs) ≈ 3%\nThe same gap feels very different depending on scale. A single worker putting in 45 hours is common — but a group average of 45 hours is rare, because averaging 35 people smooths out the extremes. That shrinkage by \\(\\sqrt{n}\\) is exactly what the SE captures."
   },
   {
     "objectID": "slides/week7.html#research-paper-proposals-.smaller-.scrollable",
@@ -3315,7 +3315,7 @@
     "href": "slides/week7.html#strategies-to-find-academic-articles",
     "title": "Week 7",
     "section": "Strategies to Find Academic Articles",
-    "text": "Strategies to Find Academic Articles\n\nSearch on Google Scholar or JSTOR: take your independent and dependent variables and searching for:\n\n\n“effect of independent variable on dependent variable”\n\nMay need to use a UC Berkeley Library proxy to access some academic articles. This is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help.\n\nFind one good citation on google scholar and see who cites them: see the cited by icon under the citation\nFind a relevant article, mine useful citations from the literature review\n\n\n\n\nDon’t use AI for this:\n\n\nAI will hallucinate citations more often than not, so don’t use it for this. Google scholar is probably your best bet here!"
+    "text": "Strategies to Find Academic Articles\n\nSearch on Google Scholar or JSTOR: take your independent and dependent variables and searching for:\n\n\n“effect of independent variable on dependent variable”\n\nMay need to use a UC Berkeley Library proxy to access some academic articles. This is a helpful webpage for using the proxy server and here is a link to make a virtual appointment for research help.\n\nFind one good citation on google scholar and see who cites them: see the cited by icon under the citation\nFind a relevant article, mine useful citations from the literature review\n\n\n\n\n\n\n\nTipDon’t use AI for this:\n\n\n\nAI will hallucinate citations more often than not, so don’t use it for this. Google scholar is probably your best bet here!"
   },
   {
     "objectID": "slides/week8.html#where-we-are-in-the-course",
@@ -3512,5 +3512,411 @@
     "title": "Week 8",
     "section": "Homework #6 and Paper Proposal",
     "text": "Homework #6 and Paper Proposal\nHomework #6:\n\nGreat job!\nRemember to subtract 1 from the lower value when trying to calculate probabilities between.\n\nSince pbinom(x) = P(X ≤ x) and includes x, you subtract 1 from the lower bound: pbinom(6) - pbinom(3) gives P(4 ≤ X ≤ 6) because pbinom(3) already includes 3, removing it from the range.\n\n\nPaper proposal:\n\nWalk through specific scenarios to identify mechanisms: imagine a specific individual and think through their experiences\nResearch design: How can you construct variables of interest?\nWhat has already been written in the literature: some topics have been studied a lot, which is a good! What can you add, what new angle can you take?\nMediation vs moderation:\n\nMediation: X causes X, which then causes Y (X &gt; Z &gt; Y)\nModeration: The effect of X on Y is bigger/smaller/different depending on Z"
+  },
+  {
+    "objectID": "slides/week14_planning.html",
+    "href": "slides/week14_planning.html",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Date: 4/21 — one week before presentations, two weeks before final papers due Context: Week 13 covers moderation/interactions (Thompson & Keith); many students proposed mediation in paper proposals\n\n\n\nWorking title: “How and Why: Mediation Analysis”\nCould stand alone given the level of conceptual work required and the R implementation.\n\n\n\nModeration vs. mediation — the key distinction\n\nModeration: for whom does X affect Y? (interaction between X and a third variable)\nMediation: how or why does X affect Y? (X → M → Y)\nStudents consistently conflate these; worth a full side-by-side comparison slide\nReal example: Does education affect income through occupation? (mediation). Does education affect income differently for men vs. women? (moderation)\n\nConceptual framework: direct, indirect, and total effects\n\nPath diagram showing X → Y (direct), X → M → Y (indirect), and total\nTotal effect = direct + indirect\nIntroduce notation: a path (X→M), b path (M→Y), c path (X→Y direct), c’ (total)\n\nBaron & Kenny four-step approach\n\nStep 1: X significantly predicts Y\nStep 2: X significantly predicts M\nStep 3: M significantly predicts Y (controlling for X)\nStep 4: X→Y relationship weakens or disappears when M is included\nFull vs. partial mediation distinction\n\nImplementation in R\n\nThree sequential lm() calls — no special package needed\nmediation package for indirect effects and confidence intervals (bootstrapped)\nInterpreting the output: coefficients, indirect effect size\n\nLimitations and causal interpretation\n\nMediation doesn’t prove causation — temporal ordering matters\nCross-sectional data limitations\nUnmeasured confounders of M→Y path\nBrief intro to why experiments are the gold standard for mediation\n\n\n\n\n\n\n\nWorking title: “Getting It Right: Regression Diagnostics and Mediation”\nMost intellectually coherent pairing — “what to check, and then what to ask.”\n\n\n\n\n\nWhy diagnostics matter\n\nRegression assumptions: linearity, independence, homoskedasticity, normality of residuals\nViolations don’t always invalidate results, but you need to know when they do\n\nResidual plots\n\nFitted vs. residuals plot: checking linearity and homoskedasticity\nQ-Q plot: checking normality of residuals\nIn R: plot(model) gives all four diagnostic plots; or ggplot with augment() from broom\n\nOutliers and influential observations\n\nLeverage vs. influence distinction\nCook’s distance — identifying influential points\nWhat to do: investigate, don’t automatically delete\n\nMulticollinearity\n\nWhen predictors are highly correlated with each other\nVIF (Variance Inflation Factor) — vif() from car package\nRule of thumb: VIF &gt; 5 or 10 is a problem\nConsequences: inflated standard errors, unstable coefficients\n\nHeteroskedasticity\n\nWhat it is, why it matters (biases standard errors)\nVisual detection vs. Breusch-Pagan test\nFix: robust standard errors — coeftest() with vcovHC() from sandwich package\n\n\n\n\n\n(same structure as Option A above)\n\n\n\n\n\n\nWorking title: “Asking Why: Causal Thinking and Mediation”\nMore conceptual and theory-forward; connects to how sociologists actually reason.\n\n\n\nCorrelation vs. causation — revisited\n\nReview confounding: a third variable causes both X and Y\nWhy regression controls “work” and when they don’t\nOmitted variable bias: what happens when you leave out an important confounder\n\nIntroduction to DAGs (Directed Acyclic Graphs)\n\nNodes = variables, arrows = causal relationships\nBackdoor paths and how confounders create them\nThe logic of “controlling for” a variable in DAG terms\nWhat NOT to control for: colliders and mediators (controlling for M blocks the path you care about)\nTools: dagitty package or draw on paper\n\nMediation in a causal framework\n\nMediation as a specific DAG structure: X → M → Y\nWhy you shouldn’t control for M if you want the total effect\nWhy you should control for M if you want the direct effect\nConnects Baron & Kenny to causal logic\n\nIdentification strategies (brief overview)\n\nRandomized experiments: the gold standard\nNatural experiments, instrumental variables (name-drop only)\nDifference-in-differences (name-drop)\nGoal: show students that sociologists have tools beyond OLS for causal questions\n\nImplications for their papers\n\nDrawing a DAG for their own research question\nWhat can they claim causally with cross-sectional survey data?\nHow to qualify causal language appropriately\n\n\n\n\n\n\n\nWorking title: “Finishing Strong: Mediation and Communicating Your Results”\nMost practically useful given timing (week before presentations, 2 weeks before papers).\n\n\n\n\n(same structure as Option A above)\n\n\n\n\nPresenting regression results in a paper\n\nAnatomy of a regression table: coefficients, standard errors (not t-stats), stars\nmodelsummary or stargazer packages in R\nWhat goes in the text vs. what goes in a table\nDescribing effect size, not just significance\n\nVisualizing regression results\n\nCoefficient plots as an alternative to tables (ggplot + broom::tidy())\nPredicted values plots — showing the relationship, not just the slope\nggeffects or marginaleffects package for marginal effects plots\n\nWriting about results for a sociological audience\n\nLead with the sociological finding, not the statistic\n“A one-unit increase in X is associated with a 0.3-unit increase in Y, holding other variables constant” — make this sociologically meaningful\nHow to discuss limitations honestly without undermining your argument\n\nPresentation tips for week 15\n\nStructure: question → motivation → data → results → so what\nHow to present a regression table to a general audience (hint: don’t show the whole table)\nAnticipating questions\n\n\n\n\n\n\n\n\nFirst choice: Option A (mediation standalone) if week 13 runs long or interactions need extra time to sink in. The moderation vs. mediation comparison alone justifies a full class.\nSecond choice: Option B (mediation + diagnostics) if you want to add practical value for paper-writing and the R component feels thin with mediation alone. Diagnostics are something students should be doing anyway.\nDark horse: Option D (mediation + writing results) — least “stats” but probably highest direct payoff for students in the final two weeks of the semester."
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-a-mediation-as-a-standalone-lecture",
+    "href": "slides/week14_planning.html#option-a-mediation-as-a-standalone-lecture",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “How and Why: Mediation Analysis”\nCould stand alone given the level of conceptual work required and the R implementation.\n\n\n\nModeration vs. mediation — the key distinction\n\nModeration: for whom does X affect Y? (interaction between X and a third variable)\nMediation: how or why does X affect Y? (X → M → Y)\nStudents consistently conflate these; worth a full side-by-side comparison slide\nReal example: Does education affect income through occupation? (mediation). Does education affect income differently for men vs. women? (moderation)\n\nConceptual framework: direct, indirect, and total effects\n\nPath diagram showing X → Y (direct), X → M → Y (indirect), and total\nTotal effect = direct + indirect\nIntroduce notation: a path (X→M), b path (M→Y), c path (X→Y direct), c’ (total)\n\nBaron & Kenny four-step approach\n\nStep 1: X significantly predicts Y\nStep 2: X significantly predicts M\nStep 3: M significantly predicts Y (controlling for X)\nStep 4: X→Y relationship weakens or disappears when M is included\nFull vs. partial mediation distinction\n\nImplementation in R\n\nThree sequential lm() calls — no special package needed\nmediation package for indirect effects and confidence intervals (bootstrapped)\nInterpreting the output: coefficients, indirect effect size\n\nLimitations and causal interpretation\n\nMediation doesn’t prove causation — temporal ordering matters\nCross-sectional data limitations\nUnmeasured confounders of M→Y path\nBrief intro to why experiments are the gold standard for mediation"
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-b-mediation-regression-diagnostics",
+    "href": "slides/week14_planning.html#option-b-mediation-regression-diagnostics",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “Getting It Right: Regression Diagnostics and Mediation”\nMost intellectually coherent pairing — “what to check, and then what to ask.”\n\n\n\n\n\nWhy diagnostics matter\n\nRegression assumptions: linearity, independence, homoskedasticity, normality of residuals\nViolations don’t always invalidate results, but you need to know when they do\n\nResidual plots\n\nFitted vs. residuals plot: checking linearity and homoskedasticity\nQ-Q plot: checking normality of residuals\nIn R: plot(model) gives all four diagnostic plots; or ggplot with augment() from broom\n\nOutliers and influential observations\n\nLeverage vs. influence distinction\nCook’s distance — identifying influential points\nWhat to do: investigate, don’t automatically delete\n\nMulticollinearity\n\nWhen predictors are highly correlated with each other\nVIF (Variance Inflation Factor) — vif() from car package\nRule of thumb: VIF &gt; 5 or 10 is a problem\nConsequences: inflated standard errors, unstable coefficients\n\nHeteroskedasticity\n\nWhat it is, why it matters (biases standard errors)\nVisual detection vs. Breusch-Pagan test\nFix: robust standard errors — coeftest() with vcovHC() from sandwich package\n\n\n\n\n\n(same structure as Option A above)"
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-c-mediation-causal-inference-dags",
+    "href": "slides/week14_planning.html#option-c-mediation-causal-inference-dags",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “Asking Why: Causal Thinking and Mediation”\nMore conceptual and theory-forward; connects to how sociologists actually reason.\n\n\n\nCorrelation vs. causation — revisited\n\nReview confounding: a third variable causes both X and Y\nWhy regression controls “work” and when they don’t\nOmitted variable bias: what happens when you leave out an important confounder\n\nIntroduction to DAGs (Directed Acyclic Graphs)\n\nNodes = variables, arrows = causal relationships\nBackdoor paths and how confounders create them\nThe logic of “controlling for” a variable in DAG terms\nWhat NOT to control for: colliders and mediators (controlling for M blocks the path you care about)\nTools: dagitty package or draw on paper\n\nMediation in a causal framework\n\nMediation as a specific DAG structure: X → M → Y\nWhy you shouldn’t control for M if you want the total effect\nWhy you should control for M if you want the direct effect\nConnects Baron & Kenny to causal logic\n\nIdentification strategies (brief overview)\n\nRandomized experiments: the gold standard\nNatural experiments, instrumental variables (name-drop only)\nDifference-in-differences (name-drop)\nGoal: show students that sociologists have tools beyond OLS for causal questions\n\nImplications for their papers\n\nDrawing a DAG for their own research question\nWhat can they claim causally with cross-sectional survey data?\nHow to qualify causal language appropriately"
+  },
+  {
+    "objectID": "slides/week14_planning.html#option-d-mediation-writing-and-presenting-results",
+    "href": "slides/week14_planning.html#option-d-mediation-writing-and-presenting-results",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "Working title: “Finishing Strong: Mediation and Communicating Your Results”\nMost practically useful given timing (week before presentations, 2 weeks before papers).\n\n\n\n\n(same structure as Option A above)\n\n\n\n\nPresenting regression results in a paper\n\nAnatomy of a regression table: coefficients, standard errors (not t-stats), stars\nmodelsummary or stargazer packages in R\nWhat goes in the text vs. what goes in a table\nDescribing effect size, not just significance\n\nVisualizing regression results\n\nCoefficient plots as an alternative to tables (ggplot + broom::tidy())\nPredicted values plots — showing the relationship, not just the slope\nggeffects or marginaleffects package for marginal effects plots\n\nWriting about results for a sociological audience\n\nLead with the sociological finding, not the statistic\n“A one-unit increase in X is associated with a 0.3-unit increase in Y, holding other variables constant” — make this sociologically meaningful\nHow to discuss limitations honestly without undermining your argument\n\nPresentation tips for week 15\n\nStructure: question → motivation → data → results → so what\nHow to present a regression table to a general audience (hint: don’t show the whole table)\nAnticipating questions"
+  },
+  {
+    "objectID": "slides/week14_planning.html#recommendation",
+    "href": "slides/week14_planning.html#recommendation",
+    "title": "Week 14 Lecture Planning Notes",
+    "section": "",
+    "text": "First choice: Option A (mediation standalone) if week 13 runs long or interactions need extra time to sink in. The moderation vs. mediation comparison alone justifies a full class.\nSecond choice: Option B (mediation + diagnostics) if you want to add practical value for paper-writing and the R component feels thin with mediation alone. Diagnostics are something students should be doing anyway.\nDark horse: Option D (mediation + writing results) — least “stats” but probably highest direct payoff for students in the final two weeks of the semester."
+  },
+  {
+    "objectID": "slides/week7.html",
+    "href": "slides/week7.html",
+    "title": "Week 7",
+    "section": "",
+    "text": "HW 4:\n\nGreat job overall: minor issues across the class.\n\nOpen Week Topic:\n\nWill send out a survey for topics for open week after class today. Please answer by March 17."
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html",
+    "href": "assignments/hw7/hw7.html",
+    "title": "Weekly Assignment #7",
+    "section": "",
+    "text": "ImportantSubmission Instructions\n\n\n\n\nDownload this hw7.qmd file from bCourse.\nSave the file in your assignments folder.\nFollow the instructions below to complete the assignment. Show your work for all calculations where necessary!\nWhen you are done, click the “Render” button at the top of Positron to generate an .html file.\nSubmit both hw7.qmd and hw7.html to bCourse before the deadline.\nMake sure your name appears in the “author” field in the YAML header above."
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#setup",
+    "href": "assignments/hw7/hw7.html#setup",
+    "title": "Weekly Assignment #7",
+    "section": "Setup",
+    "text": "Setup\n\n# Clear environment\n# ---------\nrm(list = ls())\n\n# load libraries\n# ---------\nlibrary(tidyverse)\nlibrary(here)"
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#question-1-estimation-concepts",
+    "href": "assignments/hw7/hw7.html#question-1-estimation-concepts",
+    "title": "Weekly Assignment #7",
+    "section": "Question 1: Estimation Concepts",
+    "text": "Question 1: Estimation Concepts\na) What does it mean for an estimator to be unbiased? What does efficiency refer to? In your answer, connect each property to the terms accuracy and precision.\nYour answer here:\nb) A researcher reports: “The 95% confidence interval for the proportion of Americans who support stricter gun laws is [0.51, 0.59].” A classmate says: “There is a 95% probability that the true proportion falls in that range.” Is this correct? Explain in 2–3 sentences.\nYour answer here:\nc) You are estimating a population mean from a sample of \\(n = 12\\). Should you use \\(z^*\\) or \\(t^*\\) as your critical value? Why? What additional assumption is required?\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#question-2-confidence-intervals-for-a-mean",
+    "href": "assignments/hw7/hw7.html#question-2-confidence-intervals-for-a-mean",
+    "title": "Weekly Assignment #7",
+    "section": "Question 2: Confidence Intervals for a Mean",
+    "text": "Question 2: Confidence Intervals for a Mean\nA sociologist collects a random sample of 18 recent immigrants to the United States and asks how many years they have lived in the country. The sample mean is 8.4 years and the sample standard deviation is 4.2 years.\na) Report the values of \\(n\\), \\(\\bar{x}\\), \\(s\\), and \\(df\\) for this sample.\nYour answer here:\nb) Use R to find the t* critical value for a 95% confidence interval with the appropriate degrees of freedom. How does this compare to the z* critical value of 1.96?\n\n# Your code here\n\nYour answer here:\nc) Calculate the standard error \\(SE(\\bar{x})\\). Show your work.\n\n# Your code here\n\nYour answer here:\nd) Calculate and interpret the 95% confidence interval.\n\n# Your code here\n\nYour answer here:\ne) Would the confidence interval be wider or narrower if you had sampled 50 immigrants instead of 18? Explain briefly.\nYour answer here:"
+  },
+  {
+    "objectID": "assignments/hw7/hw7.html#question-3-comparing-confidence-intervals-across-groups",
+    "href": "assignments/hw7/hw7.html#question-3-comparing-confidence-intervals-across-groups",
+    "title": "Weekly Assignment #7",
+    "section": "Question 3: Comparing Confidence Intervals Across Groups",
+    "text": "Question 3: Comparing Confidence Intervals Across Groups\nUsing a larger follow-up sample of 35 immigrants, the researcher splits respondents by age of arrival: those who arrived before age 18 (childhood arrivals, \\(n_1 = 20\\), \\(\\bar{x}_1 = 11.4\\) yrs, \\(s_1 = 3.6\\) yrs) and those who arrived at age 18 or older (adult arrivals, \\(n_2 = 15\\), \\(\\bar{x}_2 = 5.2\\) yrs, \\(s_2 = 4.0\\) yrs).\na) Calculate a 95% confidence interval for the mean years in the U.S. for each group.\n\n# Your code here\n\nYour answer here:\nb) Do the two confidence intervals overlap? Based on this comparison alone, what can you speculate about differences in mean years in the U.S. between the two groups?\nYour answer here:\n\n\n\n\n\n\n\nTipBefore You Submit\n\n\n\n\nYour name is in the author field at the top of this document\nAll code chunks run without errors\nYou’ve answered all written response questions and shown your work\nYou’ve clicked “Render” and successfully generated an HTML file\nYou’re submitting both the .qmd and .html file to bCourse"
+  },
+  {
+    "objectID": "assignments/grading_scale.html",
+    "href": "assignments/grading_scale.html",
+    "title": "Grading Scale",
+    "section": "",
+    "text": "Assignment\n%\nPoints\n\n\n\n\nWeekly Assignments (10 × 3pts)\n30%\n30\n\n\nAttendance & Participation\n10%\n10\n\n\nPaper Proposal\n5%\n5\n\n\nAnnotated Bibliography\n5%\n5\n\n\nRevised Proposal + Outline\n5%\n5\n\n\nIn-class Presentation\n5%\n5\n\n\nFinal Paper\n20%\n20\n\n\nFinal Exam\n20%\n20\n\n\nTotal\n100%\n100\n\n\n\n\n\n\nHomework assignments are graded out of 2 points but recorded out of 3. Apply the following conversion when entering scores:\n\n\n\nScore Received\nPoints Entered\n\n\n\n\n0/2\n0/3\n\n\n1/2\n1.5/3\n\n\n2/2\n3/3"
+  },
+  {
+    "objectID": "assignments/grading_scale.html#overall-point-breakdown-out-of-100",
+    "href": "assignments/grading_scale.html#overall-point-breakdown-out-of-100",
+    "title": "Grading Scale",
+    "section": "",
+    "text": "Assignment\n%\nPoints\n\n\n\n\nWeekly Assignments (10 × 3pts)\n30%\n30\n\n\nAttendance & Participation\n10%\n10\n\n\nPaper Proposal\n5%\n5\n\n\nAnnotated Bibliography\n5%\n5\n\n\nRevised Proposal + Outline\n5%\n5\n\n\nIn-class Presentation\n5%\n5\n\n\nFinal Paper\n20%\n20\n\n\nFinal Exam\n20%\n20\n\n\nTotal\n100%\n100"
+  },
+  {
+    "objectID": "assignments/grading_scale.html#homework-conversion",
+    "href": "assignments/grading_scale.html#homework-conversion",
+    "title": "Grading Scale",
+    "section": "",
+    "text": "Homework assignments are graded out of 2 points but recorded out of 3. Apply the following conversion when entering scores:\n\n\n\nScore Received\nPoints Entered\n\n\n\n\n0/2\n0/3\n\n\n1/2\n1.5/3\n\n\n2/2\n3/3"
+  },
+  {
+    "objectID": "slides/week6.html",
+    "href": "slides/week6.html",
+    "title": "Week 6",
+    "section": "",
+    "text": "HW 3: Great job overall. Two main comments:\n\nMake sure you are removing missing in your marginal frequency calculations (Q1: filter(!is.na(degree), !is.na(marital)) |&gt;)\nMake sure to answer all the interpretation questions (e.g., Q4b asked to interpret the correlation coefficient)"
+  },
+  {
+    "objectID": "slides/week9.html#agenda",
+    "href": "slides/week9.html#agenda",
+    "title": "Week 9",
+    "section": "Agenda",
+    "text": "Agenda\nHousekeeping:\n\nAnnotated bibliography & Spring Recess\n\nStatistical content — three parts:\n\nPart 1: Hypothesis testing — the logic\nPart 2: t-tests for means and group differences (+ proportion z-test)\nPart 3: Chi-squared test — associations between two categorical variables\n\nIn-class lab:\n\nApplying hypothesis tests to your research data"
+  },
+  {
+    "objectID": "slides/week9.html#housekeeping",
+    "href": "slides/week9.html#housekeeping",
+    "title": "Week 9",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nAnnotated Bibliography\n\nDue Thursday, March 19\nHappy to answer last-minute questions after class!\nExample on bCourses under the Research Paper folder\n\nWeekly Assignment #8\n\nDue Thursday, April 2 (after Spring Recess)\nInvolves applying today’s hypothesis testing tools to your research dataset\n\nSpring Recess\n\nMarch 24 — enjoy the break!\nUse that time to relax and work on you paper proposal with outline due on 4/16"
+  },
+  {
+    "objectID": "slides/week9.html#where-we-are-in-the-course",
+    "href": "slides/week9.html#where-we-are-in-the-course",
+    "title": "Week 9",
+    "section": "Where We Are in the Course",
+    "text": "Where We Are in the Course\n\nWeek 7: sampling distributions and the Central Limit Theorem\nWeek 8: confidence intervals — estimating population parameters from samples\nThis week (Week 9): hypothesis testing + chi-squared tests for associations\nWeeks 10–13: regression analysis (OLS and logistic)\n\nMain idea: Last week we built confidence intervals — a range of plausible values for a parameter. Today we flip the question: given a specific claim about the population, how likely are our sample results if that claim were true?\n\n\n\nThe chain of inference so far:\n\n\nWeek 7: Population → Sample → Statistic → Sampling distribution\nWeek 8: Sample → Statistic → Confidence interval → Inference\nWeek 9: Null hypothesis + Sample statistic → Test statistic → p-value → Decision"
+  },
+  {
+    "objectID": "slides/week9.html#last-week-recap",
+    "href": "slides/week9.html#last-week-recap",
+    "title": "Week 9",
+    "section": "Last Week: Recap",
+    "text": "Last Week: Recap\n\n\n\n\n\n\n\n\nConcept\nKey idea\nExample\n\n\n\n\nPoint estimate\nBest single guess for population parameter\n\\(\\hat{p} = 0.449\\) (GSS env. support)\n\n\nStandard error\nHow uncertain is the estimate?\n\\(SE(\\hat{p}) = 0.015\\)\n\n\nConfidence interval\nRange likely to contain the true parameter\n95% CI: [0.420, 0.478]\n\n\nz vs t\nProportions → z; Means → t\n\\(z^* = 1.96\\); \\(t^* = 2.447\\) (\\(df = 6\\))\n\n\n\n\n\n\nConnection to today:\n\n\nLast week we estimated unknown population parameters and surrounded them with intervals. Today we start from a specific claim about the population — and ask whether our data are consistent with it."
+  },
+  {
+    "objectID": "slides/week9.html#questions",
+    "href": "slides/week9.html#questions",
+    "title": "Week 9",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week9.html#what-is-a-hypothesis-test",
+    "href": "slides/week9.html#what-is-a-hypothesis-test",
+    "title": "Week 9",
+    "section": "What Is a Hypothesis Test?",
+    "text": "What Is a Hypothesis Test?\nA hypothesis test is a formal statistical procedure for evaluating whether a finding is likely due to chance.\n\nThe core steps:\n\nState a null hypothesis (\\(H_0\\)): “there is no real effect” — the finding is just chance\nCompute a test statistic: how far is our sample result from what \\(H_0\\) would predict?\nCalculate a p-value: if \\(H_0\\) is true, how likely is a result this extreme?\nDecide: if the p-value is small enough, reject \\(H_0\\)\n\n\n\n\n\n\nThe core logic:\n\n\nWe don’t prove the null hypothesis wrong — we ask: if it were true, how surprising would our data be? If very surprising, we have grounds to doubt the null."
+  },
+  {
+    "objectID": "slides/week9.html#a-motivating-example-james-bond",
+    "href": "slides/week9.html#a-motivating-example-james-bond",
+    "title": "Week 9",
+    "section": "A Motivating Example: James Bond",
+    "text": "A Motivating Example: James Bond\nJames Bond claims he can tell whether a martini is shaken or stirred just by tasting it.\n\nThe experiment: Give him 16 randomly prepared martinis. He correctly identifies 13 out of 16.\nNull hypothesis (\\(H_0\\)): He’s just guessing — each trial is a 50-50 coin flip (\\(\\pi = 0.5\\))\nAlternative hypothesis (\\(H_1\\)): He can genuinely tell the difference — he performs better than random guessing (\\(\\pi &gt; 0.5\\))\n\n\nThe question: If he were just guessing, how likely is it that he’d get 13 or more right out of 16?\n\n# P(X &gt;= 13) under H0: X ~ Binomial(n = 16, p = 0.5)\n1 - pbinom(12, size = 16, prob = 0.5)\n\n[1] 0.01063538\n\n\n\n\nProbability ≈ 1.1% — very unlikely if he were just guessing. We have strong evidence he can actually tell the difference."
+  },
+  {
+    "objectID": "slides/week9.html#p-values",
+    "href": "slides/week9.html#p-values",
+    "title": "Week 9",
+    "section": "P-values",
+    "text": "P-values\n\nDefinitionWhat p-values tell usWhat p-values do NOT tell us\n\n\nA p-value is the probability of observing a test statistic as extreme as (or more extreme than) the one we got, assuming the null hypothesis is true\n\nJames Bond: \\(p = 0.011\\) — if guessing randomly, only 1.1% chance of ≥ 13/16 correct\n\n\n\n\nCritical misconception:\n\n\nThe p-value is NOT the probability that \\(H_0\\) is true. The null hypothesis is either true or false — it doesn’t have a probability.\nWhat it IS: The p-value is P(data this extreme | \\(H_0\\) true) — the probability of observing results at least this extreme, assuming the null holds. It answers: “if the null were true, how often would we see data like ours?” — not “how likely is the null to be true?”\n\n\n\n\n\n\n\n\n\n\n\n\np-value\nInterpretation\n\n\n\n\nVery small (e.g., 0.001)\nData would be very surprising under \\(H_0\\) → strong evidence against \\(H_0\\)\n\n\nSmall (e.g., 0.03)\nData somewhat unlikely under \\(H_0\\) → moderate evidence against \\(H_0\\)\n\n\nLarge (e.g., 0.40)\nData consistent with \\(H_0\\) → no reason to doubt \\(H_0\\)\n\n\n\n\n\n\n❌ The probability that \\(H_0\\) is true\n❌ The probability that we made an error\n❌ How large or important the effect is\n❌ Whether the finding matters in practice\n\n\n\n\nStatistical ≠ substantive significance:\n\n\nA result can be statistically significant (\\(p &lt; 0.05\\)) but substantively trivial — the effect is real but tiny. With large samples, even meaningless effects can reach significance. Always report the size of the effect, not just whether it is significant."
+  },
+  {
+    "objectID": "slides/week9.html#significance-levels",
+    "href": "slides/week9.html#significance-levels",
+    "title": "Week 9",
+    "section": "Significance Levels",
+    "text": "Significance Levels\nHow small does the p-value need to be before we reject \\(H_0\\)?\nWe set a significance level \\(\\alpha\\) in advance — the threshold below which we’ll reject:\n\n\nMost common: \\(\\alpha = 0.05\\) — we use this in this class\nAlso used: \\(\\alpha = 0.01\\), \\(\\alpha = 0.10\\)\n\nDecision rule:\n\n\n\n\n\n\n\nResult\nDecision\n\n\n\n\n\\(p &lt; \\alpha\\)\nReject \\(H_0\\) — accept \\(H_1\\); say the result is “statistically significant”\n\n\n\\(p \\geq \\alpha\\)\nFail to reject \\(H_0\\) — we do not “accept” \\(H_0\\), we just lack evidence to reject it\n\n\n\n\n\n\n\n\nWhy “fail to reject” — not “accept”?\n\n\nA negative result doesn’t prove the null is true. A small sample may simply be too underpowered to detect a real effect. We might be failing to reject because the effect doesn’t exist — or because we didn’t have enough data to see it."
+  },
+  {
+    "objectID": "slides/week9.html#the-danger-of-weak-tests-an-illustration",
+    "href": "slides/week9.html#the-danger-of-weak-tests-an-illustration",
+    "title": "Week 9",
+    "section": "The Danger of Weak Tests: An Illustration",
+    "text": "The Danger of Weak Tests: An Illustration\nSuppose a coin has a true probability of heads \\(\\pi = 0.51\\). We flip it 50 times and get 24 heads.\n\nTest \\(H_0: \\pi = 0.50\\) with a two-tailed test:\n\npbinom(24, 50, 0.5) + (1 - pbinom(25, 50, 0.5))\n\n[1] 0.8877248\n\n\n\\(p \\approx 0.89\\) — we fail to reject the null.\n\n\nBut we know \\(H_0\\) is false — the true value is \\(\\pi = 0.51\\), not \\(0.50\\)!\n\n\n\nThe lesson:\n\n\nFailing to reject \\(H_0\\) does not mean \\(H_0\\) is true. The test just didn’t have enough statistical power to detect a very small effect. This is why we say “fail to reject” — not “accept.”"
+  },
+  {
+    "objectID": "slides/week9.html#one--and-two-tailed-tests",
+    "href": "slides/week9.html#one--and-two-tailed-tests",
+    "title": "Week 9",
+    "section": "One- and Two-Tailed Tests",
+    "text": "One- and Two-Tailed Tests\n\nOne-TailedTwo-TailedVisualizedWhen to Use Which\n\n\nA one-tailed test checks for a significant effect in one specific direction\n\n\\(H_0: \\pi \\leq 0.50\\) vs. \\(H_1: \\pi &gt; 0.50\\)\nAll of \\(\\alpha\\) is in one tail — easier to reject, but only in the predicted direction\n\nJames Bond (one-tailed): Did he perform better than random guessing?\n\n# P(X &gt;= 13): all probability in upper tail\n1 - pbinom(12, size = 16, prob = 0.5)\n\n[1] 0.01063538\n\n\n\n\nA two-tailed test checks for a significant effect in either direction\n\n\\(H_0: \\pi = 0.50\\) vs. \\(H_1: \\pi \\neq 0.50\\)\n\\(\\alpha\\) is split equally — 2.5% in each tail; more conservative and more common in social science\n\nJames Bond (two-tailed): Did he perform differently from random guessing?\n\n# Multiply by 2: account for both tails\n2 * (1 - pbinom(12, size = 16, prob = 0.5))\n\n[1] 0.02127075\n\n\n\n\n\n\n\nOne-tailed (top) vs. two-tailed (bottom) tests\n\n\n\nOne-tailed: rejection region entirely on one side\nTwo-tailed: rejection region split — requires a more extreme result to reject\n\n\n\n\n\n\n\n\n\n\nScenario\nRecommended\n\n\n\n\nTheory strongly predicts the direction\nOne-tailed (use sparingly!)\n\n\nNo strong directional prediction\nTwo-tailed (default)\n\n\nExploratory research\nTwo-tailed\n\n\n\n\n\n\nDefault to two-tailed:\n\n\nUnless you have a strong, pre-specified theoretical reason to predict direction, use a two-tailed test. Effects in the “unexpected” direction are often theoretically important!"
+  },
+  {
+    "objectID": "slides/week9.html#cis-and-hypothesis-tests-are-connected",
+    "href": "slides/week9.html#cis-and-hypothesis-tests-are-connected",
+    "title": "Week 9",
+    "section": "CIs and Hypothesis Tests Are Connected",
+    "text": "CIs and Hypothesis Tests Are Connected\nLast week’s confidence intervals and today’s hypothesis tests are two sides of the same coin:\n\n\nIf the 95% CI does not contain the null value \\(\\mu_0\\) → reject \\(H_0\\) at \\(\\alpha = 0.05\\)\nIf the 95% CI contains the null value → fail to reject \\(H_0\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe equivalence:\n\n\nThe 95% CI is precisely the set of null values you would fail to reject at \\(\\alpha = 0.05\\). Testing and estimation are equivalent — they just frame the same question differently."
+  },
+  {
+    "objectID": "slides/week9.html#questions-1",
+    "href": "slides/week9.html#questions-1",
+    "title": "Week 9",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week9.html#three-common-tests",
+    "href": "slides/week9.html#three-common-tests",
+    "title": "Week 9",
+    "section": "Three Common Tests",
+    "text": "Three Common Tests\n\n\n\n\n\n\n\n\n\nTest\nWhen to use\nKey statistic\nDistribution\n\n\n\n\nOne-sample t-test\nContinuous variable; test if \\(\\bar{x} = \\mu\\)\nt-score\nt (\\(df = n-1\\))\n\n\nTwo-sample t-test\nCompare means of two groups\nt-score\nt (\\(df \\approx n_1+n_2-2\\))\n\n\nProportion test\nBinary variable; test if \\(\\hat{p} = P\\)\nz-score\nNormal\n\n\n\n\n\n\nAll three tests follow the same steps:\n\n\n\nstate \\(H_0\\)\ncompute a test statistic measuring how far the sample result is from \\(H_0\\)\nfind the p-value under the null distribution\ndecide"
+  },
+  {
+    "objectID": "slides/week9.html#test-1-hypothesis-test-for-a-proportion",
+    "href": "slides/week9.html#test-1-hypothesis-test-for-a-proportion",
+    "title": "Week 9",
+    "section": "Test 1: Hypothesis Test for a Proportion",
+    "text": "Test 1: Hypothesis Test for a Proportion\n\nSetupFormulaR CodeVisualization\n\n\nRunning example: Is the proportion of U.S. adults who are union members equal to 20%?\n\n\\(H_0: \\pi = 0.20\\)\n\\(H_1: \\pi \\neq 0.20\\) (two-tailed)\nSignificance level: \\(\\alpha = 0.05\\)\n\nUnder \\(H_0\\), the sampling distribution of \\(\\hat{p}\\) is approximately:\n\\[\\hat{p} \\sim N\\!\\left(\\pi_0,\\; SE_0\\right) \\quad \\text{where} \\quad SE_0 = \\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}\\]\n\n\n\nKey distinction — testing vs. estimation:\n\n\nWhen building a CI, use \\(SE = \\sqrt{\\hat{p}(1-\\hat{p})/n}\\) (the sample estimate). When testing a hypothesis, use \\(SE_0 = \\sqrt{\\pi_0(1-\\pi_0)/n}\\) (the null value).\n\n\n\n\n\nStep 1: Compute the standard error under \\(H_0\\):\n\\[SE_0 = \\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}} = \\sqrt{\\frac{0.20 \\times 0.80}{n}}\\]\nStep 2: Compute the z-statistic:\n\\[z = \\frac{\\hat{p} - \\pi_0}{SE_0}\\]\nStep 3: Calculate the p-value:\n\n\n\nTest\nR code\n\n\n\n\nTwo-tailed\n2 * pnorm(-abs(z))\n\n\nOne-tailed (upper)\npnorm(-abs(z))\n\n\n\n\n\n\n# Key values\np_hat &lt;- mean(attain$union_member, na.rm = TRUE)\nn     &lt;- sum(!is.na(attain$union))\np0    &lt;- 0.20    # null hypothesis\n\ncat(\"Sample proportion:\", round(p_hat, 3), \"\\n\")\n\nSample proportion: 0.086 \n\ncat(\"Sample size:\", n, \"\\n\")\n\nSample size: 1983 \n\n# SE under H0 (use null value, not p_hat!)\nse_null &lt;- sqrt(p0 * (1 - p0) / n)\n\n# z-statistic and two-tailed p-value\nz_stat &lt;- (p_hat - p0) / se_null\np_val  &lt;- 2 * pnorm(-abs(z_stat))\n\ncat(\"z-statistic:\", round(z_stat, 3), \"\\n\")\n\nz-statistic: -12.74 \n\ncat(\"p-value:    \", round(p_val, 4), \"\\n\")\n\np-value:     0"
+  },
+  {
+    "objectID": "slides/week9.html#test-2-one-sample-t-test-for-a-mean",
+    "href": "slides/week9.html#test-2-one-sample-t-test-for-a-mean",
+    "title": "Week 9",
+    "section": "Test 2: One-Sample t-Test for a Mean",
+    "text": "Test 2: One-Sample t-Test for a Mean\n\nSetupFormulaR CodeInterpretation\n\n\nRunning example: Is the mean hours worked per week by U.S. adults equal to 40 hours?\n\n\\(H_0: \\mu = 40\\)\n\\(H_1: \\mu \\neq 40\\) (two-tailed)\nSignificance level: \\(\\alpha = 0.05\\)\n\nUnder \\(H_0\\), the test statistic follows a t-distribution with \\(df = n - 1\\):\n\\[t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}}\\]\n\n\n\n\n\nStep\nWhat to compute\nFormula\n\n\n\n\n1\nSample mean\n\\(\\bar{x}\\)\n\n\n2\nStandard error\n\\(SE = s / \\sqrt{n}\\)\n\n\n3\nt-statistic\n\\(t = (\\bar{x} - \\mu_0) / SE\\)\n\n\n4\np-value (two-tailed)\n2 * pt(-abs(t), df = n - 1)\n\n\n\n\n\n\nhrs_clean &lt;- attain |&gt; filter(!is.na(hrs1))\n\nx_bar  &lt;- mean(hrs_clean$hrs1)\ns      &lt;- sd(hrs_clean$hrs1)\nn      &lt;- nrow(hrs_clean)\nmu0    &lt;- 40      # null hypothesis\n\nse     &lt;- s / sqrt(n)\nt_stat &lt;- (x_bar - mu0) / se\np_val  &lt;- 2 * pt(-abs(t_stat), df = n - 1)\n\ncat(\"Sample mean: \", round(x_bar, 2), \"hours\\n\")\n\nSample mean:  41.66 hours\n\ncat(\"Sample SD:   \", round(s, 2), \"\\n\")\n\nSample SD:    14.31 \n\ncat(\"n:           \", n, \"\\n\")\n\nn:            1900 \n\ncat(\"t-statistic: \", round(t_stat, 3), \"\\n\")\n\nt-statistic:  5.051 \n\ncat(\"p-value:     \", round(p_val, 4), \"\\n\")\n\np-value:      0 \n\n\n\n\n\n\n\nHow to write up results:\n\n\nState the sample mean, test statistic, p-value, and conclusion:\n“The mean hours worked per week in the sample was [x̄] hours (SD = [s]). A one-sample t-test showed this was [significantly / not significantly] different from 40 hours (t([df]) = [t], p = [p]).”"
+  },
+  {
+    "objectID": "slides/week9.html#test-3-two-sample-t-test",
+    "href": "slides/week9.html#test-3-two-sample-t-test",
+    "title": "Week 9",
+    "section": "Test 3: Two-Sample t-Test",
+    "text": "Test 3: Two-Sample t-Test\nRunning example: Do union members work a different number of hours per week than non-members?\n\nSetupR CodeVisualizationWriting Up Differences\n\n\n\n\\(H_0\\): \\(\\mu_{\\text{union}} = \\mu_{\\text{non-union}}\\) (equivalently: \\(\\mu_1 - \\mu_2 = 0\\))\n\\(H_1\\): \\(\\mu_{\\text{union}} \\neq \\mu_{\\text{non-union}}\\)\n\nUnder \\(H_0\\), the test statistic:\n\\[t = \\frac{\\bar{x}_1 - \\bar{x}_2}{SE_{\\text{diff}}} \\quad \\text{where} \\quad SE_{\\text{diff}} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}\\]\nDegrees of freedom: \\(df = n_1 + n_2 - 2\\)\n\n\n\n# Split into two groups\nunion_hrs    &lt;- attain |&gt;\n  filter(union_member == 1, !is.na(hrs1)) |&gt; pull(hrs1)\nnonunion_hrs &lt;- attain |&gt;\n  filter(union_member == 0, !is.na(hrs1), !is.na(union)) |&gt; pull(hrs1)\n\nn1 &lt;- length(union_hrs);    n2 &lt;- length(nonunion_hrs)\nx1 &lt;- mean(union_hrs);      x2 &lt;- mean(nonunion_hrs)\ns1 &lt;- sd(union_hrs);        s2 &lt;- sd(nonunion_hrs)\n\nse_diff &lt;- sqrt(s1^2/n1 + s2^2/n2)\nt_stat  &lt;- (x1 - x2) / se_diff\np_val   &lt;- 2 * pt(-abs(t_stat), df = n1 + n2 - 2)\n\ncat(\"Union members:     n =\", n1, \"| mean =\", round(x1, 2), \"hrs | SD =\", round(s1, 2), \"\\n\")\n\nUnion members:     n = 197 | mean = 43.52 hrs | SD = 12.22 \n\ncat(\"Non-union members: n =\", n2, \"| mean =\", round(x2, 2), \"hrs | SD =\", round(s2, 2), \"\\n\")\n\nNon-union members: n = 1053 | mean = 41.7 hrs | SD = 14.93 \n\ncat(\"Difference:        \", round(x1 - x2, 2), \"hrs\\n\")\n\nDifference:         1.82 hrs\n\ncat(\"t-statistic:\", round(t_stat, 3), \"| df:\", n1 + n2 - 2, \"\\n\")\n\nt-statistic: 1.853 | df: 1248 \n\ncat(\"p-value:    \", round(p_val, 4), \"\\n\")\n\np-value:     0.0641 \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAlways report the group statistics — not just the test result!\n\n\nWhen reporting a two-sample test:\n\nState the mean of each group — the reader wants to know which group is higher and how big the gap is\nReport the test statistic and p-value\nState the decision — reject or fail to reject\n\n“Union members worked an average of [x̄₁] hours per week (SD = [s₁]), compared to [x̄₂] hours for non-members (SD = [s₂]). A two-sample t-test showed this difference was [significant / not significant] (t([df]) = [t], p = [p]).”"
+  },
+  {
+    "objectID": "slides/week9.html#writing-up-results-best-practices",
+    "href": "slides/week9.html#writing-up-results-best-practices",
+    "title": "Week 9",
+    "section": "Writing Up Results: Best Practices",
+    "text": "Writing Up Results: Best Practices\n\n\n\nEvery hypothesis test write-up should include:\n\n\n\nThe sample statistic (mean, proportion, or difference) — not just the p-value\nThe test statistic and p-value\nWhether you reject or fail to reject \\(H_0\\), at \\(\\alpha = 0.05\\)\nA plain-language interpretation connecting the result to your research question\n\nOne-tailed test caveat: If you use a one-tailed test (e.g., \\(H_1: \\mu &lt; 40\\)) but the sample result goes in the opposite direction, you still fail to reject \\(H_0\\).\nConfidence intervals: A 95% CI alongside your test tells the reader the range of plausible values — pair this with the test whenever you can."
+  },
+  {
+    "objectID": "slides/week9.html#questions-2",
+    "href": "slides/week9.html#questions-2",
+    "title": "Week 9",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week9.html#connecting-to-previous-tests",
+    "href": "slides/week9.html#connecting-to-previous-tests",
+    "title": "Week 9",
+    "section": "Connecting to Previous Tests",
+    "text": "Connecting to Previous Tests\n\n\n\n\n\n\n\n\nWhat we’ve tested\nVariables\nMethod\n\n\n\n\nIs a proportion = \\(P\\)?\n1 binary variable\nz-test\n\n\nIs a mean = \\(\\mu\\)?\n1 continuous variable\none-sample t-test\n\n\nDo two groups have the same mean?\n1 continuous + 1 binary\ntwo-sample t-test\n\n\nAre two categorical variables independent?\n2 categorical variables\nChi-squared test\n\n\n\n\n\n\nToday’s question:\n\n\nIs gender associated with union membership? Are race and environmental attitudes related? These questions involve two categorical variables — we need a new tool."
+  },
+  {
+    "objectID": "slides/week9.html#review-contingency-tables",
+    "href": "slides/week9.html#review-contingency-tables",
+    "title": "Week 9",
+    "section": "Review: Contingency Tables",
+    "text": "Review: Contingency Tables\n\nWhat Is a Contingency Table?Relative FrequenciesIn R\n\n\nA contingency table shows the joint distribution of two categorical variables — counts of observations in each combination of categories\n\n\n\n\nNon-member\nUnion member\nTotal\n\n\n\n\nFemale\n\\(n_{11}\\)\n\\(n_{12}\\)\n\\(n_{1\\bullet}\\)\n\n\nMale\n\\(n_{21}\\)\n\\(n_{22}\\)\n\\(n_{2\\bullet}\\)\n\n\nTotal\n\\(n_{\\bullet 1}\\)\n\\(n_{\\bullet 2}\\)\n\\(n\\)\n\n\n\n\n\nRelative (marginal) frequency: the proportion of one variable’s categories, within categories of another variable\n\\[p_{X=i \\mid Y=j} = \\frac{n_{X=i,\\, Y=j}}{n_{Y=j}}\\]\nExample: Among female respondents, what proportion are union members?\n\\[p_{\\text{union} \\mid \\text{female}} = \\frac{n_{\\text{union, female}}}{n_{\\text{female}}}\\]\n\n\n\nattain_ct &lt;- attain |&gt;\n  filter(!is.na(union), !is.na(sex)) |&gt;\n  mutate(union_lab = if_else(union_member == 1, \"Union\", \"Non-member\"))\n\n# Absolute frequency table\ntab &lt;- table(attain_ct$sex, attain_ct$union_lab)\naddmargins(tab)\n\n        \n         Non-member Union  Sum\n  female       1003   105 1108\n  male          724   151  875\n  Sum          1727   256 1983\n\n# Row proportions: union membership rate within each sex\nround(prop.table(tab, margin = 1), 3)\n\n        \n         Non-member Union\n  female      0.905 0.095\n  male        0.827 0.173"
+  },
+  {
+    "objectID": "slides/week9.html#the-chi-squared-logic",
+    "href": "slides/week9.html#the-chi-squared-logic",
+    "title": "Week 9",
+    "section": "The Chi-Squared Logic",
+    "text": "The Chi-Squared Logic\n\nThe null hypothesis: The two categorical variables are independent — knowing someone’s category on one variable tells us nothing about their category on the other\n\\[H_0: \\text{no association between } X \\text{ and } Y\\]\n\n\nUnder independence, the expected count in each cell:\n\\[\\hat{n}_{ij} = \\frac{(\\text{row total}_i) \\times (\\text{column total}_j)}{n}\\]\nThis is what the table would look like if the two variables had no relationship at all.\n\n\nThe test asks: Are the observed cell counts far enough from the expected cell counts that we doubt independence?"
+  },
+  {
+    "objectID": "slides/week9.html#the-chi-squared-test-statistic",
+    "href": "slides/week9.html#the-chi-squared-test-statistic",
+    "title": "Week 9",
+    "section": "The Chi-Squared Test Statistic",
+    "text": "The Chi-Squared Test Statistic\n\\[\\chi^2 = \\sum_{i}\\sum_{j} \\frac{(n_{ij} - \\hat{n}_{ij})^2}{\\hat{n}_{ij}}\\]\nwhere \\(n_{ij}\\) = observed and \\(\\hat{n}_{ij}\\) = expected count in cell \\((i, j)\\)\n\n\nLarge \\(\\chi^2\\): observed counts are far from expected → evidence against independence\nSmall \\(\\chi^2\\): observed counts are close to expected → consistent with independence\nDegrees of freedom: \\((I-1)(J-1)\\), where \\(I\\) = number of rows, \\(J\\) = number of columns\n\n\n\n\n\n\nAssumptions:\n\n\n\nData are a random sample from the population\nExpected count in each cell ≥ 5 — if not, the chi-squared approximation may not be reliable"
+  },
+  {
+    "objectID": "slides/week9.html#the-chi-squared-distribution",
+    "href": "slides/week9.html#the-chi-squared-distribution",
+    "title": "Week 9",
+    "section": "The Chi-Squared Distribution",
+    "text": "The Chi-Squared Distribution\n\n\nRight-skewed and non-negative (sums of squared deviations are always ≥ 0)\nLike the t-distribution: governed by degrees of freedom\nWe reject \\(H_0\\) when our \\(\\chi^2\\) lands in the far right tail"
+  },
+  {
+    "objectID": "slides/week9.html#worked-example-sex-and-union-membership",
+    "href": "slides/week9.html#worked-example-sex-and-union-membership",
+    "title": "Week 9",
+    "section": "Worked Example: Sex and Union Membership",
+    "text": "Worked Example: Sex and Union Membership\n\nContingency TableExpected CountsChi-Squared TestVisualizationInterpretation\n\n\nResearch question: Is there a significant association between sex and union membership?\n\ntab &lt;- table(attain_ct$sex, attain_ct$union_lab)\naddmargins(tab)\n\n        \n         Non-member Union  Sum\n  female       1003   105 1108\n  male          724   151  875\n  Sum          1727   256 1983\n\n\n\n\nUnder \\(H_0\\) (independence), expected count = (row total × column total) / \\(n\\):\n\nchisq_result &lt;- chisq.test(tab, correct = FALSE)\nround(chisq_result$expected, 1)\n\n        \n         Non-member Union\n  female        965   143\n  male          762   113\n\n\nAll expected counts ≥ 5? The chi-squared approximation is valid if so.\n\n\n\nchisq.test(tab, correct = FALSE)\n\n\n    Pearson's Chi-squared test\n\ndata:  tab\nX-squared = 26.325, df = 1, p-value = 2.886e-07\n\n\ncorrect = FALSE turns off Yates’ continuity correction — standard for 2×2 tables when all expected counts ≥ 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to interpret chi-squared:\n\n\n\nReject \\(H_0\\) (\\(p &lt; 0.05\\)): significant association between sex and union membership\nFail to reject \\(H_0\\) (\\(p \\geq 0.05\\)): data are consistent with independence\n\nImportant: The chi-squared test only tells you whether there is an association — not how strong it is or which direction. For that, you need measures of association."
+  },
+  {
+    "objectID": "slides/week9.html#measures-of-association",
+    "href": "slides/week9.html#measures-of-association",
+    "title": "Week 9",
+    "section": "Measures of Association",
+    "text": "Measures of Association\nChi-squared says if there’s an association. These measures say how strong and in which direction:\n\nDifference in ProportionsRelative Risk RatioIn R\n\n\n\\[\\Delta p = p_{X=i \\mid Y=j} - p_{X=i \\mid Y=k}\\]\nDifference in the proportion of outcome \\(X = i\\) between groups \\(j\\) and \\(k\\)\nInterpretation: \\(\\Delta p = 0.10\\) → group \\(j\\) has a 10 percentage point higher rate than group \\(k\\)\nMost intuitive — use for binary outcome variables\n\n\n\\[RRR = \\frac{p_{X=i \\mid Y=j}}{p_{X=i \\mid Y=k}}\\]\nRatio of proportions across two groups\nInterpretation: \\(RRR = 2.0\\) → group \\(j\\) is twice as likely to have outcome \\(X = i\\) as group \\(k\\)\nUseful for rare outcomes, where absolute differences look small but ratios are striking\n\n\n\n# Step 1: absolute frequency table\ntab_abs &lt;- table(attain_ct$sex, attain_ct$union_lab, useNA = \"no\")\n\n# Step 2: row proportions (union membership rate within each sex)\ntab_rel &lt;- prop.table(tab_abs, margin = 1)\nround(tab_rel, 3)\n\n        \n         Non-member Union\n  female      0.905 0.095\n  male        0.827 0.173\n\n# Step 3: calculate measures of association\ndiff_prop &lt;- tab_rel[\"male\", \"Union\"] - tab_rel[\"female\", \"Union\"]\nrr_ratio  &lt;- tab_rel[\"male\", \"Union\"] / tab_rel[\"female\", \"Union\"]\n\ncat(\"\\nDifference in proportions (male - female):\", round(diff_prop, 3), \"\\n\")\n\n\nDifference in proportions (male - female): 0.078 \n\ncat(\"Relative risk ratio (male / female):      \", round(rr_ratio, 3), \"\\n\")\n\nRelative risk ratio (male / female):       1.821"
+  },
+  {
+    "objectID": "slides/week9.html#writing-up-chi-squared-results",
+    "href": "slides/week9.html#writing-up-chi-squared-results",
+    "title": "Week 9",
+    "section": "Writing Up Chi-Squared Results",
+    "text": "Writing Up Chi-Squared Results\n\n\n\nA complete chi-squared write-up includes:\n\n\n\nDescription of the table: e.g., “Table 1 shows the distribution of union membership by sex”\nChi-squared statistic and p-value: \\(\\chi^2\\)(df) = [value], \\(p\\) = [value]\nDecision: reject or fail to reject \\(H_0\\)\nA measure of association describing the direction and magnitude of the relationship\nPlain-language interpretation tied to the research question\n\nExample: “Men were [X] percentage points more likely to be union members than women (difference in proportions = [X]). A chi-squared test showed this association was [significant / not significant] (\\(\\chi^2\\)(1) = [value], \\(p\\) = [p]).”"
+  },
+  {
+    "objectID": "slides/week9.html#questions-3",
+    "href": "slides/week9.html#questions-3",
+    "title": "Week 9",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week9.html#key-takeaways",
+    "href": "slides/week9.html#key-takeaways",
+    "title": "Week 9",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nPart 1 — LogicPart 2 — t-TestsPart 3 — Chi-Squared\n\n\n\nA hypothesis test asks: if \\(H_0\\) were true, how likely is our data?\nThe p-value is P(data this extreme | \\(H_0\\) true) — NOT the probability \\(H_0\\) is true\nReject \\(H_0\\) when \\(p &lt; \\alpha\\); fail to reject (not “accept”) when \\(p \\geq \\alpha\\)\nDefault to two-tailed; one-tailed only with strong pre-specified directional theory\n\n\n\n\nConnection to Week 8:\n\n\nIf the 95% CI does not contain \\(\\mu_0\\) → reject \\(H_0\\) at \\(\\alpha = 0.05\\). Tests and CIs are two sides of the same coin.\n\n\n\n\n\n\nOne-sample t-test: \\(t = (\\bar{x} - \\mu_0) / (s/\\sqrt{n})\\); use t.test(x, mu = μ₀)\nTwo-sample t-test: compare group means; use t.test(x, y)\nProportion test: use prop.test(x, n, p = π₀) — SE uses null value \\(\\pi_0\\)\n\nAlways report: sample statistic, t (or z), p-value, and a plain-language conclusion.\n\n\n\nTests independence of two categorical variables\n\\(\\chi^2 = \\sum (n_{ij} - \\hat{n}_{ij})^2 / \\hat{n}_{ij}\\); use chisq.test(table)\nAll expected counts must be ≥ 5\nChi-squared says whether there’s an association — not direction or strength\nAlways supplement with difference in proportions or RRR"
+  },
+  {
+    "objectID": "slides/week9.html#why-this-matters-for-the-rest-of-the-course",
+    "href": "slides/week9.html#why-this-matters-for-the-rest-of-the-course",
+    "title": "Week 9",
+    "section": "Why This Matters for the Rest of the Course",
+    "text": "Why This Matters for the Rest of the Course\n\nWeeks 10–13 (Regression): OLS is essentially the two-sample t-test extended to multiple variables simultaneously. Every regression coefficient comes with its own t-test and p-value — built on exactly the same logic we used today.\nYour research paper: You will almost certainly use regression. But the interpretation of \\(p\\)-values, test statistics, and significance thresholds is identical to what we covered today.\n\n\n\n\nKey takeaway:\n\n\nHypothesis testing is not just a tool for this week — it is the core inferential logic running through all of statistics. Every result in your paper will be evaluated with the same p-value framework we built today."
+  },
+  {
+    "objectID": "slides/week9.html#questions-4",
+    "href": "slides/week9.html#questions-4",
+    "title": "Week 9",
+    "section": "Questions?",
+    "text": "Questions?"
+  },
+  {
+    "objectID": "slides/week9.html#assignments",
+    "href": "slides/week9.html#assignments",
+    "title": "Week 9",
+    "section": "Assignments",
+    "text": "Assignments\nWeekly Assignment #8\n\nDue Thursday, April 2 by 11:59 PM\nUsing your research dataset, formulate a research question involving one of:\n\nA null hypothesis that a proportion = \\(P\\)\nA null hypothesis that a mean = \\(\\mu\\)\nA null hypothesis that two group means are equal (two-sample t-test)\n\nReport: test statistic, p-value, reject/fail-to-reject decision, and a plain-language interpretation\nBonus: if your research involves two categorical variables, try a chi-squared test\n\nAnnotated Bibliography\n\nDue Thursday, March 19\nSpring Recess March 24 — a great time to work on your research paper!"
+  },
+  {
+    "objectID": "slides/week9.html#in-class-lab",
+    "href": "slides/week9.html#in-class-lab",
+    "title": "Week 9",
+    "section": "In-Class Lab",
+    "text": "In-Class Lab\nPart A: Class example — work through this together before applying to your own data."
+  },
+  {
+    "objectID": "slides/week9.html#the-family-of-hypothesis-tests",
+    "href": "slides/week9.html#the-family-of-hypothesis-tests",
+    "title": "Week 9",
+    "section": "The Family of Hypothesis Tests",
+    "text": "The Family of Hypothesis Tests\nEvery test we’ve covered this week asks the same fundamental question: is there a relationship between variables? The choice of test depends entirely on the types of variables involved.\n\n\n\n\n\n\n\n\n\nWhat we’re testing\nOutcome variable\nGrouping variable\nMethod\n\n\n\n\nIs a proportion = \\(P\\)?\nBinary\n—\nz-test\n\n\nIs a mean = \\(\\mu_0\\)?\nContinuous\n—\none-sample t-test\n\n\nDo two group means differ?\nContinuous\nBinary/categorical\ntwo-sample t-test\n\n\nAre two categorical variables independent?\nCategorical\nCategorical\nchi-squared test\n\n\n\n\n\n\nThe key decision:\n\n\nIs your outcome variable continuous? → use a t-test. Is your outcome variable categorical? → use chi-squared."
+  },
+  {
+    "objectID": "slides/week9.html#t-tests-vs.-chi-squared-parallel-logic",
+    "href": "slides/week9.html#t-tests-vs.-chi-squared-parallel-logic",
+    "title": "Week 9",
+    "section": "t-Tests vs. Chi-Squared: Parallel Logic",
+    "text": "t-Tests vs. Chi-Squared: Parallel Logic\nBoth tests ask “Is \\(X\\) related to \\(Y\\)?” — for different variable combinations:\n\nTwo-Sample t-TestChi-SquaredSide-by-Side\n\n\nQuestion: Does the mean of a continuous outcome differ across groups?\n\nOutcome: continuous (e.g., hours worked)\nGroup: binary/categorical (e.g., union membership)\n\\(H_0\\): \\(\\mu_{\\text{union}} = \\mu_{\\text{non-union}}\\)\nTest stat: \\(t = (\\bar{x}_1 - \\bar{x}_2) / SE_{\\text{diff}}\\), compared to t-distribution\n\nOur example: Do union members work a different number of hours than non-members?\n\n\nQuestion: Does the distribution of a categorical outcome differ across groups?\n\nOutcome: categorical (e.g., union membership — yes/no)\nGroup: categorical (e.g., sex)\n\\(H_0\\): Union membership and sex are independent\nTest stat: \\(\\chi^2 = \\sum (n_{ij} - \\hat{n}_{ij})^2 / \\hat{n}_{ij}\\), compared to \\(\\chi^2\\) distribution\n\nOur example: Is union membership associated with sex?\n\n\n\n\n\n\n\n\n\n\n\nTwo-sample t-test\nChi-squared\n\n\n\n\n\\(H_0\\)\n\\(\\mu_1 = \\mu_2\\)\n\\(X\\) and \\(Y\\) are independent\n\n\nOutcome type\nContinuous\nCategorical\n\n\nGroup type\nBinary/categorical\nCategorical\n\n\nTest statistic\n\\(t\\)\n\\(\\chi^2\\)\n\n\nDistribution\nt (\\(df = n_1+n_2-2\\))\n\\(\\chi^2\\) (\\(df = (I{-}1)(J{-}1)\\))\n\n\nMeasure of effect\nDifference in means\nDiff. in proportions / RRR\n\n\nIn R\nt.test(x, y)\nchisq.test(table)\n\n\n\n\n\n\n\n\n\nChoosing your test for hw8:\n\n\nDoes your research question compare a continuous outcome across groups? → two-sample t-test. Does it compare the rates of a categorical outcome across groups? → chi-squared."
+  },
+  {
+    "objectID": "slides/week9.html#test-1-one-sample-t-test-for-a-mean",
+    "href": "slides/week9.html#test-1-one-sample-t-test-for-a-mean",
+    "title": "Week 9",
+    "section": "Test 1: One-Sample t-Test for a Mean",
+    "text": "Test 1: One-Sample t-Test for a Mean\n\nSetupFormulaR CodeInterpretation\n\n\nGeneral form of the one-sample t-test:\n\\[H_0: \\mu = \\mu_0 \\qquad \\text{(sample mean equals a specified population value)}\\]\n\\(H_1\\) depends on whether the research hypothesis predicts a direction:\n\n\n\n\n\n\n\n\nAlternative\nTest type\nWhen to use\n\n\n\n\n\\(H_1: \\mu \\neq \\mu_0\\)\nTwo-tailed\nNo predicted direction — default choice\n\n\n\\(H_1: \\mu &gt; \\mu_0\\)\nOne-tailed (upper)\nTheory predicts sample is higher than \\(\\mu_0\\)\n\n\n\\(H_1: \\mu &lt; \\mu_0\\)\nOne-tailed (lower)\nTheory predicts sample is lower than \\(\\mu_0\\)\n\n\n\n\nRunning example: Is the mean hours worked per week by U.S. adults equal to 40 hours?\n\n\\(H_0: \\mu = 40\\) — the population mean is 40 hours\n\\(H_1: \\mu \\neq 40\\) — the population mean is something other than 40 (two-tailed)\nSignificance level: \\(\\alpha = 0.05\\)\n\nUnder \\(H_0\\), the test statistic follows a t-distribution with \\(df = n - 1\\):\n\\[t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}}\\]\n\n\n\n\n\n\n\n\n\n\nStep\nWhat to compute\nFormula/Rule\n\n\n\n\n1\nState \\(H_0\\) and \\(H_1\\)\n\\(H_0: \\mu = \\mu_0\\); choose \\(H_1\\) based on theory\n\n\n2\nOne- or two-tailed?\nDoes theory predict a direction? → one-tailed; otherwise → two-tailed (default)\n\n\n3\nSample mean & SE\n\\(\\bar{x}\\); \\(SE = s / \\sqrt{n}\\)\n\n\n4\nt-statistic\n\\(t = (\\bar{x} - \\mu_0) / SE\\)\n\n\n5\np-value\nSee below\n\n\n\n\n\n\nStep 2 determines the p-value formula:\n\n\n\nTwo-tailed (\\(H_1: \\mu \\neq \\mu_0\\)): 2 * pt(-abs(t), df = n - 1)\nOne-tailed upper (\\(H_1: \\mu &gt; \\mu_0\\)): 1 - pt(t, df = n - 1)\nOne-tailed lower (\\(H_1: \\mu &lt; \\mu_0\\)): pt(t, df = n - 1)\n\n\n\n\n\n\nmu = 40 sets the null hypothesis value — R tests whether the true population mean equals 40.\n\nhrs_clean &lt;- attain |&gt; filter(!is.na(hrs1))\n\nt1_result &lt;- t.test(hrs_clean$hrs1, mu = 40)\nt1_result\n\n\n    One Sample t-test\n\ndata:  hrs_clean$hrs1\nt = 5.0511, df = 1899, p-value = 0.0000004813\nalternative hypothesis: true mean is not equal to 40\n95 percent confidence interval:\n 41.01450 42.30234\nsample estimates:\nmean of x \n 41.65842 \n\n\n\n\n\nReading the t.test() output:\n\n\n\nt = 5.05: the sample mean is 5.05 SEs from \\(\\mu_0 = 40\\)\ndf = 1899: degrees of freedom (\\(n - 1\\))\np-value = 0: probability of a result this extreme if \\(H_0\\) were true\n95% CI: [41.01, 42.3] — plausible range for the true population mean\nmean of x = 41.66: sample mean \\(\\bar{x}\\)\n\n\n\n\n\n\n\n\n\nHow to write up results:\n\n\nState the sample mean, test statistic, p-value, and conclusion:\n“The mean hours worked per week in the sample was [x̄] hours (SD = s). A one-sample t-test showed this was [significantly / not significantly] different from 40 hours (pvalue = p).”\n\n\n\n\n\n\nWhy the reject/fail-to-reject decision matters:\n\n\nWhen we reject \\(H_0\\): the sample result is too unlikely to be explained by chance alone — we conclude there is a real difference in the population, not just sampling noise.\nWhen we fail to reject \\(H_0\\): we are not saying the null is true. We simply lack sufficient evidence to doubt it. The effect may be real but small, or the sample too small to detect it — this is why we say “fail to reject,” never “accept.”"
+  },
+  {
+    "objectID": "slides/week9.html#test-2-two-sample-t-test",
+    "href": "slides/week9.html#test-2-two-sample-t-test",
+    "title": "Week 9",
+    "section": "Test 2: Two-Sample t-Test",
+    "text": "Test 2: Two-Sample t-Test\nRunning example: Do union members work a different number of hours per week than non-members?\n\nSetupR CodeVisualizationWriting Up Differences\n\n\n\n\\(H_0\\): \\(\\mu_{\\text{union}} = \\mu_{\\text{non-union}}\\) (equivalently: \\(\\mu_1 - \\mu_2 = 0\\))\n\\(H_1\\): \\(\\mu_{\\text{union}} \\neq \\mu_{\\text{non-union}}\\)\n\nUnder \\(H_0\\), the test statistic:\n\\[t = \\frac{\\bar{x}_1 - \\bar{x}_2}{SE_{\\text{diff}}} \\quad \\text{where} \\quad SE_{\\text{diff}} = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}\\]\nDegrees of freedom: \\(df \\approx n_1 + n_2 - 2\\) (R uses Welch’s correction, adjusting df when variances differ)\n\n\n\nunion_hrs    &lt;- attain |&gt;\n  filter(union_member == 1, !is.na(hrs1)) |&gt; pull(hrs1)\nnonunion_hrs &lt;- attain |&gt;\n  filter(union_member == 0, !is.na(hrs1), !is.na(union)) |&gt; pull(hrs1)\n\nt2_result &lt;- t.test(union_hrs, nonunion_hrs)\nt2_result\n\n\n    Welch Two Sample t-test\n\ndata:  union_hrs and nonunion_hrs\nt = 1.8535, df = 316.26, p-value = 0.06475\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.1122722  3.7619461\nsample estimates:\nmean of x mean of y \n 43.52284  41.69801 \n\n\n\n\n\nReading the t.test() output:\n\n\n\nt = 1.85: test statistic for the difference in means\ndf = 316.3: Welch’s adjusted degrees of freedom\np-value = 0.065: probability of observing a difference this large if \\(H_0\\) is true\n95% CI: [-0.11, 3.76] — plausible range for the true difference in means (\\(\\mu_1 - \\mu_2\\))\nmeans: union = 43.52 hrs, non-union = 41.7 hrs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAlways report the group statistics — not just the test result!\n\n\nWhen reporting a two-sample test:\n\nState the mean of each group — the reader wants to know which group is higher and how big the gap is\nReport the test statistic and p-value\nState the decision — reject or fail to reject\n\n“Union members worked an average of [x̄₁] hours per week (SD = s₁), compared to [x̄₂] hours for non-members (SD = [s₂]). A two-sample t-test showed this difference was [significant / not significant] (pvalue = p).”"
+  },
+  {
+    "objectID": "slides/week9.html#test-3-hypothesis-test-for-a-proportion",
+    "href": "slides/week9.html#test-3-hypothesis-test-for-a-proportion",
+    "title": "Week 9",
+    "section": "Test 3: Hypothesis Test for a Proportion",
+    "text": "Test 3: Hypothesis Test for a Proportion\n\nSetupFormulaR CodeVisualization\n\n\nRunning example: Is the proportion of U.S. adults who are union members equal to 20%?\n\n\\(H_0: \\pi = 0.20\\)\n\\(H_1: \\pi \\neq 0.20\\) (two-tailed)\nSignificance level: \\(\\alpha = 0.05\\)\n\nUnder \\(H_0\\), the sampling distribution of \\(\\hat{p}\\) is approximately:\n\\[\\hat{p} \\sim N\\!\\left(\\pi_0,\\; SE_0\\right) \\quad \\text{where} \\quad SE_0 = \\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}\\]\n\n\n\nKey distinction — testing vs. estimation:\n\n\nWhen building a CI, use \\(SE = \\sqrt{\\hat{p}(1-\\hat{p})/n}\\) (the sample estimate). When testing a hypothesis, use \\(SE_0 = \\sqrt{\\pi_0(1-\\pi_0)/n}\\) (the null value).\n\n\n\n\n\nStep 1: Compute the standard error under \\(H_0\\):\n\\[SE_0 = \\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}} = \\sqrt{\\frac{0.20 \\times 0.80}{n}}\\]\nStep 2: Compute the z-statistic:\n\\[z = \\frac{\\hat{p} - \\pi_0}{SE_0}\\]\nStep 3: Calculate the p-value:\n\n\n\nTest\nR code\n\n\n\n\nTwo-tailed\n2 * pnorm(-abs(z))\n\n\nOne-tailed (upper)\npnorm(-abs(z))\n\n\n\n\n\nprop.test() handles the SE and test statistic automatically — just supply the count of successes, the sample size, and the null value.\n\nn &lt;- sum(!is.na(attain$union))\nx &lt;- sum(attain$union_member, na.rm = TRUE)   # number of union members\n\n# prop.test(successes, n, p = null_value, correct = FALSE)\nt3_result &lt;- prop.test(x, n, p = 0.20, correct = FALSE)\nt3_result\n\n\n    1-sample proportions test without continuity correction\n\ndata:  x out of n, null probability 0.2\nX-squared = 62.306, df = 1, p-value = 0.000000000000002941\nalternative hypothesis: true p is not equal to 0.2\n95 percent confidence interval:\n 0.1150532 0.1445757\nsample estimates:\n        p \n0.1290973 \n\n\n\n\n\nReading the prop.test() output:\n\n\n\nX-squared = 62.31: the test statistic (\\(\\chi^2 = z^2\\); equivalent to a z-test for proportions)\np-value = 0: probability of a proportion this far from 0.20 if \\(H_0\\) were true\n95% CI: [0.115, 0.145] — plausible range for the true population proportion \\(\\pi\\)\nsample estimates: p = 0.129: your sample proportion \\(\\hat{p}\\)\n\nNote: correct = FALSE turns off the continuity correction — appropriate when \\(n\\) is large."
+  },
+  {
+    "objectID": "slides/week9.html#worked-example-white-new-yorkers-income",
+    "href": "slides/week9.html#worked-example-white-new-yorkers-income",
+    "title": "Week 9",
+    "section": "Worked Example: White New Yorkers’ Income",
+    "text": "Worked Example: White New Yorkers’ Income\n\nScenarioStep 1 — HypothesesStep 2 — One or Two-Tailed?Step 3 — Test StatisticStep 4 — p-value and Decision\n\n\nThe mean income for a sample of \\(n = 100\\) White New Yorkers is $48,000. The average income for all New Yorkers is $55,000 (the known population value). The sample standard deviation is \\(s = \\$35,000\\).\nResearch claim: We believe that the average income of the population of White New Yorkers is lower than the average income of all New Yorkers.\nQuestion: Write the hypothesis notation and specify whether this is a one- or two-tailed test.\n\n\nNull hypothesis: The mean income of White New Yorkers equals the city-wide average:\n\\[H_0: \\mu = \\$55{,}000\\]\nAlternative hypothesis: The mean income of White New Yorkers is lower than the city-wide average:\n\\[H_1: \\mu &lt; \\$55{,}000\\]\n\n\nOne-tailed (lower tail) — because the research hypothesis makes a specific directional prediction.\n\n\n\nThe logic:\n\n\nWe are not asking whether White New Yorkers earn differently from average New Yorkers — we have a specific prediction: they earn less. So the entire rejection region (\\(\\alpha = 5\\%\\)) goes in the lower tail.\nIf we had no directional prediction, we would use a two-tailed test.\n\n\n\n\n\n\\[SE = \\frac{s}{\\sqrt{n}} = \\frac{35{,}000}{\\sqrt{100}} = 3{,}500\\]\n\\[t = \\frac{\\bar{x} - \\mu_0}{SE} = \\frac{48{,}000 - 55{,}000}{3{,}500} = \\frac{-7{,}000}{3{,}500} = -2.0 \\qquad (df = n - 1 = 99)\\]\n\n\nFor a one-tailed lower test, compute \\(P(t &lt; -2.0)\\) with \\(df = 99\\):\n\\[p = \\text{pt}(-2.0, \\, df = 99) \\approx 0.024\\]\nSince \\(p = 0.024 &lt; \\alpha = 0.05\\), we reject \\(H_0\\).\n\n\n\nConclusion:\n\n\nThe mean income of White New Yorkers in our sample ($48,000) is significantly lower than the average income for all New Yorkers ($55,000) at the 5% significance level (\\(t\\)(99) = −2.0, \\(p\\) = 0.024). We have evidence that this gap is not due to sampling error alone."
+  },
+  {
+    "objectID": "slides/week9.html#worked-example-white-san-franciscans-income",
+    "href": "slides/week9.html#worked-example-white-san-franciscans-income",
+    "title": "Week 9",
+    "section": "Worked Example: White San Franciscans’ Income",
+    "text": "Worked Example: White San Franciscans’ Income\n\nScenarioStep 1 — HypothesesStep 2 — One or Two-Tailed?Step 3 — Test StatisticStep 4 — p-value and Decision\n\n\nThe mean income for a sample of \\(n = 100\\) White San Franciscans is $48,000. The average income for all San Franciscans is $55,000 (the known population value). The sample standard deviation is \\(s = \\$35,000\\).\nResearch claim: We believe that the average income of the population of White San Franciscans is lower than the average income of all San Franciscans.\nQuestion: Write the hypothesis notation and specify whether this is a one- or two-tailed test.\n\n\n\nNull hypothesis: The mean income of White San Franciscans equals the city-wide average:\n\\[H_0: \\mu = \\$55{,}000\\]\n\n\nAlternative hypothesis: The mean income of White San Franciscans is lower than the city-wide average:\n\\[H_1: \\mu &lt; \\$55{,}000\\]\n\n\n\nOne-tailed (lower tail) — because the research hypothesis makes a specific directional prediction.\n\n\n\nThe logic:\n\n\nWe are not asking whether White San Franciscans earn differently from average San Franciscans — we have a specific prediction: they earn less. So the entire rejection region (\\(\\alpha = 5\\%\\)) goes in the lower tail.\nIf we had no directional prediction, we would use a two-tailed test.\n\n\n\n\n\n\\[SE = \\frac{s}{\\sqrt{n}} = \\frac{35{,}000}{\\sqrt{100}} = 3{,}500\\]\n\\[t = \\frac{\\bar{x} - \\mu_0}{SE} = \\frac{48{,}000 - 55{,}000}{3{,}500} = \\frac{-7{,}000}{3{,}500} = -2.0 \\qquad (df = n - 1 = 99)\\]\n\n\nFor a one-tailed lower test, compute \\(P(t &lt; -2.0)\\) with \\(df = 99\\):\n\\[p = \\text{pt}(-2.0, \\, df = 99) \\approx 0.024\\]\nSince \\(p = 0.024 &lt; \\alpha = 0.05\\), we reject \\(H_0\\).\n\n\n\nConclusion:\n\n\nThe mean income of White San Franciscans in our sample ($48,000) is significantly lower than the average income for all San Franciscans ($55,000) at the 5% significance level (\\(t\\)(99) = −2.0, \\(p\\) = 0.024). We have evidence that this gap is not due to sampling error alone."
+  },
+  {
+    "objectID": "slides/week9.html#worked-example-1-sex-and-union-membership",
+    "href": "slides/week9.html#worked-example-1-sex-and-union-membership",
+    "title": "Week 9",
+    "section": "Worked Example 1: Sex and Union Membership",
+    "text": "Worked Example 1: Sex and Union Membership\n\nContingency TableExpected CountsChi-Squared TestInterpretation\n\n\nResearch question: Is there a significant association between sex and union membership?\n\ntab &lt;- table(attain_ct$sex, attain_ct$union_lab)\naddmargins(tab)\n\n        \n         Non-member Union  Sum\n  female       1003   105 1108\n  male          724   151  875\n  Sum          1727   256 1983\n\n\n\n\nUnder \\(H_0\\) (independence), expected count = (row total × column total) / \\(n\\):\n\nchisq_result &lt;- chisq.test(tab, correct = FALSE)\nround(chisq_result$expected, 1)\n\n        \n         Non-member Union\n  female        965   143\n  male          762   113\n\n\nAll expected counts ≥ 5? The chi-squared approximation is valid if so.\n\n\n\nchisq.test(tab, correct = FALSE)\n\n\n    Pearson's Chi-squared test\n\ndata:  tab\nX-squared = 26.325, df = 1, p-value = 0.0000002886\n\n\ncorrect = FALSE turns off Yates’ continuity correction — standard for 2×2 tables when all expected counts ≥ 5\n\n\n\n\n\nHow to interpret chi-squared:\n\n\n\nReject \\(H_0\\) (\\(p &lt; 0.05\\)): significant association between sex and union membership\nFail to reject \\(H_0\\) (\\(p \\geq 0.05\\)): data are consistent with independence\n\nImportant: The chi-squared test only tells you whether there is an association — not how strong it is or which direction. For that, you need measures of association."
+  },
+  {
+    "objectID": "slides/week9.html#worked-example-2-sex-and-educational-attainment",
+    "href": "slides/week9.html#worked-example-2-sex-and-educational-attainment",
+    "title": "Week 9",
+    "section": "Worked Example 2: Sex and Educational Attainment",
+    "text": "Worked Example 2: Sex and Educational Attainment\n\nSetupR CodeMeasuresInterpretation\n\n\nResearch question: Is there a significant association between sex and having a college degree?\n\n\\(H_0\\): Sex and college attainment are independent — knowing someone’s sex tells us nothing about whether they have a degree\n\\(H_1\\): Sex and college attainment are not independent — there is an association\nSignificance level: \\(\\alpha = 0.05\\)\n\n\n\n\n\nNo college degree\nCollege degree\nTotal\n\n\n\n\nFemale\n?\n?\n?\n\n\nMale\n?\n?\n?\n\n\n\n\n\n\n# Create binary college degree variable\nattain_deg &lt;- attain |&gt;\n  filter(!is.na(sex), !is.na(degree)) |&gt;\n  mutate(college = if_else(degree %in% c(\"bachelor\", \"graduate\"), \"College+\", \"No college\"))\n\ntab2 &lt;- table(attain_deg$sex, attain_deg$college)\naddmargins(tab2)\n\n        \n         College+ No college  Sum\n  female      382       1316 1698\n  male        331        953 1284\n  Sum         713       2269 2982\n\n# Verify expected counts ≥ 5\nround(chisq.test(tab2, correct = FALSE)$expected, 1)\n\n        \n         College+ No college\n  female      406       1292\n  male        307        977\n\n# Run the chi-squared test\nchisq.test(tab2, correct = FALSE)\n\n\n    Pearson's Chi-squared test\n\ndata:  tab2\nX-squared = 4.3281, df = 1, p-value = 0.03749\n\n\n\n\n\nReading the output:\n\n\n\nX-squared: the \\(\\chi^2\\) test statistic\ndf: \\((I-1)(J-1) = (2-1)(2-1) = 1\\) for a 2×2 table\np-value: probability of a \\(\\chi^2\\) this large if sex and degree were independent\n\n\n\n\n\n\n\ntab_rel2     &lt;- prop.table(tab2, margin = 1)\nround(tab_rel2, 3)\n\n        \n         College+ No college\n  female    0.225      0.775\n  male      0.258      0.742\n\ndiff_college &lt;- tab_rel2[\"female\", \"College+\"] - tab_rel2[\"male\", \"College+\"]\nrr_college   &lt;- tab_rel2[\"female\", \"College+\"] / tab_rel2[\"male\", \"College+\"]\n\ncat(\"College rate — female:\", round(tab_rel2[\"female\", \"College+\"], 3), \"\\n\")\n\nCollege rate — female: 0.225 \n\ncat(\"College rate — male:  \", round(tab_rel2[\"male\",   \"College+\"], 3), \"\\n\")\n\nCollege rate — male:   0.258 \n\ncat(\"\\nDifference in proportions:\", round(diff_college, 3), \"\\n\")\n\n\nDifference in proportions: -0.033 \n\ncat(\"Relative risk ratio:      \", round(rr_college,   3), \"\\n\")\n\nRelative risk ratio:       0.873 \n\n\n\n\n\n\n\nHow to write up the result:\n\n\nReport the association direction, the chi-squared statistic, df, p-value, and a measure of effect:\n“Women were [X] percentage points [more / less] likely than men to have a college degree (difference in proportions = [X]). A chi-squared test showed this association was [significant / not significant] (\\(\\chi^2\\)(1) = [value], \\(p\\) = [p]).”"
   }
 ]

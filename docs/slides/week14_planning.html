@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lecture Slides – Sociology 106</title>
+<title>week14_planning – Sociology 106</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../slides/index.html" aria-current="page"> 
+    <a class="nav-link" href="../slides/index.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
@@ -123,50 +123,204 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Lecture Slides</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<section id="week-14-lecture-planning-notes" class="level1">
+<h1>Week 14 Lecture Planning Notes</h1>
+<p><strong>Date:</strong> 4/21 — one week before presentations, two weeks before final papers due <strong>Context:</strong> Week 13 covers moderation/interactions (Thompson &amp; Keith); many students proposed mediation in paper proposals</p>
+<hr>
+<section id="option-a-mediation-as-a-standalone-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="option-a-mediation-as-a-standalone-lecture">Option A: Mediation as a Standalone Lecture</h2>
+<p><strong>Working title:</strong> “How and Why: Mediation Analysis”</p>
+<p>Could stand alone given the level of conceptual work required and the R implementation.</p>
+<section id="main-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="main-concepts">Main concepts</h3>
+<ol type="1">
+<li><strong>Moderation vs.&nbsp;mediation — the key distinction</strong>
 <ul>
-<li><a href="week1.html">Week 1: Introduction</a></li>
-<li><a href="week2.html">Week 2: Statistical computing in R</a></li>
-<li><a href="week3.html">Week 3: Visualizing distributions</a></li>
-<li><a href="week4.html">Week 4: Summarizing distributions</a></li>
-<li><a href="week5.html">Week 5: Basics of probability theory</a></li>
-<li><a href="week6.html">Week 6: Probability models of distributions</a></li>
-<li><a href="week7.html">Week 7: Sampling distributions</a></li>
-<li><a href="week8.html">Week 8: Estimates and confidence intervals</a></li>
-<li><a href="week9.html">Week 9: Hypothesis testing and power</a></li>
-<li>Week 10: Spring Recess – no class</li>
-<li>Week 11: Linear regression</li>
-<li>Week 12: Logistic regression</li>
-<li>Week 13: Extensions to regression</li>
-<li>Week 14: TBD</li>
-<li>Week 15: Research presentations; wrap-up</li>
-<li>Week 16: RRR Week – no new material</li>
-<li>Week 17: Final (11:30AM - 2:30PM)</li>
-</ul>
+<li>Moderation: <em>for whom</em> does X affect Y? (interaction between X and a third variable)</li>
+<li>Mediation: <em>how</em> or <em>why</em> does X affect Y? (X → M → Y)</li>
+<li>Students consistently conflate these; worth a full side-by-side comparison slide</li>
+<li>Real example: Does education affect income <em>through</em> occupation? (mediation). Does education affect income <em>differently</em> for men vs.&nbsp;women? (moderation)</li>
+</ul></li>
+<li><strong>Conceptual framework: direct, indirect, and total effects</strong>
+<ul>
+<li>Path diagram showing X → Y (direct), X → M → Y (indirect), and total</li>
+<li>Total effect = direct + indirect</li>
+<li>Introduce notation: <em>a</em> path (X→M), <em>b</em> path (M→Y), <em>c</em> path (X→Y direct), <em>c’</em> (total)</li>
+</ul></li>
+<li><strong>Baron &amp; Kenny four-step approach</strong>
+<ul>
+<li>Step 1: X significantly predicts Y</li>
+<li>Step 2: X significantly predicts M</li>
+<li>Step 3: M significantly predicts Y (controlling for X)</li>
+<li>Step 4: X→Y relationship weakens or disappears when M is included</li>
+<li>Full vs.&nbsp;partial mediation distinction</li>
+</ul></li>
+<li><strong>Implementation in R</strong>
+<ul>
+<li>Three sequential <code>lm()</code> calls — no special package needed</li>
+<li><code>mediation</code> package for indirect effects and confidence intervals (bootstrapped)</li>
+<li>Interpreting the output: coefficients, indirect effect size</li>
+</ul></li>
+<li><strong>Limitations and causal interpretation</strong>
+<ul>
+<li>Mediation doesn’t prove causation — temporal ordering matters</li>
+<li>Cross-sectional data limitations</li>
+<li>Unmeasured confounders of M→Y path</li>
+<li>Brief intro to why experiments are the gold standard for mediation</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="option-b-mediation-regression-diagnostics" class="level2">
+<h2 class="anchored" data-anchor-id="option-b-mediation-regression-diagnostics">Option B: Mediation + Regression Diagnostics</h2>
+<p><strong>Working title:</strong> “Getting It Right: Regression Diagnostics and Mediation”</p>
+<p>Most intellectually coherent pairing — “what to check, and then what to ask.”</p>
+<section id="main-concepts-1" class="level3">
+<h3 class="anchored" data-anchor-id="main-concepts-1">Main concepts</h3>
+<section id="part-1-regression-diagnostics-40-min" class="level4">
+<h4 class="anchored" data-anchor-id="part-1-regression-diagnostics-40-min">Part 1: Regression Diagnostics (~40 min)</h4>
+<ol type="1">
+<li><strong>Why diagnostics matter</strong>
+<ul>
+<li>Regression assumptions: linearity, independence, homoskedasticity, normality of residuals</li>
+<li>Violations don’t always invalidate results, but you need to know when they do</li>
+</ul></li>
+<li><strong>Residual plots</strong>
+<ul>
+<li>Fitted vs.&nbsp;residuals plot: checking linearity and homoskedasticity</li>
+<li>Q-Q plot: checking normality of residuals</li>
+<li>In R: <code>plot(model)</code> gives all four diagnostic plots; or <code>ggplot</code> with <code>augment()</code> from <code>broom</code></li>
+</ul></li>
+<li><strong>Outliers and influential observations</strong>
+<ul>
+<li>Leverage vs.&nbsp;influence distinction</li>
+<li>Cook’s distance — identifying influential points</li>
+<li>What to do: investigate, don’t automatically delete</li>
+</ul></li>
+<li><strong>Multicollinearity</strong>
+<ul>
+<li>When predictors are highly correlated with each other</li>
+<li>VIF (Variance Inflation Factor) — <code>vif()</code> from <code>car</code> package</li>
+<li>Rule of thumb: VIF &gt; 5 or 10 is a problem</li>
+<li>Consequences: inflated standard errors, unstable coefficients</li>
+</ul></li>
+<li><strong>Heteroskedasticity</strong>
+<ul>
+<li>What it is, why it matters (biases standard errors)</li>
+<li>Visual detection vs.&nbsp;Breusch-Pagan test</li>
+<li>Fix: robust standard errors — <code>coeftest()</code> with <code>vcovHC()</code> from <code>sandwich</code> package</li>
+</ul></li>
+</ol>
+</section>
+<section id="part-2-mediation-40-min" class="level4">
+<h4 class="anchored" data-anchor-id="part-2-mediation-40-min">Part 2: Mediation (~40 min)</h4>
+<p><em>(same structure as Option A above)</em></p>
+<hr>
+</section>
+</section>
+</section>
+<section id="option-c-mediation-causal-inference-dags" class="level2">
+<h2 class="anchored" data-anchor-id="option-c-mediation-causal-inference-dags">Option C: Mediation + Causal Inference / DAGs</h2>
+<p><strong>Working title:</strong> “Asking Why: Causal Thinking and Mediation”</p>
+<p>More conceptual and theory-forward; connects to how sociologists actually reason.</p>
+<section id="main-concepts-2" class="level3">
+<h3 class="anchored" data-anchor-id="main-concepts-2">Main concepts</h3>
+<ol type="1">
+<li><strong>Correlation vs.&nbsp;causation — revisited</strong>
+<ul>
+<li>Review confounding: a third variable causes both X and Y</li>
+<li>Why regression controls “work” and when they don’t</li>
+<li>Omitted variable bias: what happens when you leave out an important confounder</li>
+</ul></li>
+<li><strong>Introduction to DAGs (Directed Acyclic Graphs)</strong>
+<ul>
+<li>Nodes = variables, arrows = causal relationships</li>
+<li>Backdoor paths and how confounders create them</li>
+<li>The logic of “controlling for” a variable in DAG terms</li>
+<li>What NOT to control for: colliders and mediators (controlling for M blocks the path you care about)</li>
+<li>Tools: <code>dagitty</code> package or draw on paper</li>
+</ul></li>
+<li><strong>Mediation in a causal framework</strong>
+<ul>
+<li>Mediation as a specific DAG structure: X → M → Y</li>
+<li>Why you shouldn’t control for M if you want the total effect</li>
+<li>Why you should control for M if you want the direct effect</li>
+<li>Connects Baron &amp; Kenny to causal logic</li>
+</ul></li>
+<li><strong>Identification strategies (brief overview)</strong>
+<ul>
+<li>Randomized experiments: the gold standard</li>
+<li>Natural experiments, instrumental variables (name-drop only)</li>
+<li>Difference-in-differences (name-drop)</li>
+<li>Goal: show students that sociologists have tools beyond OLS for causal questions</li>
+</ul></li>
+<li><strong>Implications for their papers</strong>
+<ul>
+<li>Drawing a DAG for their own research question</li>
+<li>What can they claim causally with cross-sectional survey data?</li>
+<li>How to qualify causal language appropriately</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="option-d-mediation-writing-and-presenting-results" class="level2">
+<h2 class="anchored" data-anchor-id="option-d-mediation-writing-and-presenting-results">Option D: Mediation + Writing and Presenting Results</h2>
+<p><strong>Working title:</strong> “Finishing Strong: Mediation and Communicating Your Results”</p>
+<p>Most practically useful given timing (week before presentations, 2 weeks before papers).</p>
+<section id="main-concepts-3" class="level3">
+<h3 class="anchored" data-anchor-id="main-concepts-3">Main concepts</h3>
+<section id="part-1-mediation-50-min" class="level4">
+<h4 class="anchored" data-anchor-id="part-1-mediation-50-min">Part 1: Mediation (~50 min)</h4>
+<p><em>(same structure as Option A above)</em></p>
+</section>
+<section id="part-2-writing-and-presenting-results-30-min" class="level4">
+<h4 class="anchored" data-anchor-id="part-2-writing-and-presenting-results-30-min">Part 2: Writing and Presenting Results (~30 min)</h4>
+<ol type="1">
+<li><strong>Presenting regression results in a paper</strong>
+<ul>
+<li>Anatomy of a regression table: coefficients, standard errors (not t-stats), stars</li>
+<li><code>modelsummary</code> or <code>stargazer</code> packages in R</li>
+<li>What goes in the text vs.&nbsp;what goes in a table</li>
+<li>Describing effect size, not just significance</li>
+</ul></li>
+<li><strong>Visualizing regression results</strong>
+<ul>
+<li>Coefficient plots as an alternative to tables (<code>ggplot</code> + <code>broom::tidy()</code>)</li>
+<li>Predicted values plots — showing the relationship, not just the slope</li>
+<li><code>ggeffects</code> or <code>marginaleffects</code> package for marginal effects plots</li>
+</ul></li>
+<li><strong>Writing about results for a sociological audience</strong>
+<ul>
+<li>Lead with the sociological finding, not the statistic</li>
+<li>“A one-unit increase in X is associated with a 0.3-unit increase in Y, holding other variables constant” — make this sociologically meaningful</li>
+<li>How to discuss limitations honestly without undermining your argument</li>
+</ul></li>
+<li><strong>Presentation tips for week 15</strong>
+<ul>
+<li>Structure: question → motivation → data → results → so what</li>
+<li>How to present a regression table to a general audience (hint: don’t show the whole table)</li>
+<li>Anticipating questions</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+</section>
+<section id="recommendation" class="level2">
+<h2 class="anchored" data-anchor-id="recommendation">Recommendation</h2>
+<p><strong>First choice: Option A (mediation standalone)</strong> if week 13 runs long or interactions need extra time to sink in. The moderation vs.&nbsp;mediation comparison alone justifies a full class.</p>
+<p><strong>Second choice: Option B (mediation + diagnostics)</strong> if you want to add practical value for paper-writing and the R component feels thin with mediation alone. Diagnostics are something students should be doing anyway.</p>
+<p><strong>Dark horse: Option D (mediation + writing results)</strong> — least “stats” but probably highest direct payoff for students in the final two weeks of the semester.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
