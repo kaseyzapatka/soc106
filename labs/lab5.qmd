@@ -14,15 +14,7 @@ format:
 
 ## Overview
 
-In this lab you will practice running and interpreting hypothesis tests using the `attain.csv` dataset. By the end, you should be able to run all three test types required for hw8 — and interpret the results in plain English.
-
-The lab covers:
-
-1.  **Proportion z-test** — is the union membership rate equal to a hypothesized value?
-2.  **One-sample t-test** — is the mean hours worked equal to a hypothesized value?
-3.  **Two-sample t-test** — do union members and non-members work different hours?
-4.  **Chi-squared test** — is union membership associated with sex?
-5.  **Measures of association** and writing up results
+In this lab you will run and interpret the four hypothesis tests covered in lecture — the same tests you'll use for hw8. By the end, you should be able to pick the right test for your research question and write up the result.
 
 ------------------------------------------------------------------------
 
@@ -37,353 +29,124 @@ library(here)
 
 options(scipen = 999)
 
-# Load the data
 attain <- read_csv(here("data", "attain.csv"))
 
-# Create a binary union membership variable
-# union == "r belong"  → respondent is a union member
-# union == "r and sp"  → both respondent and spouse are members
 attain <- attain |>
   mutate(
     union_member = if_else(union %in% c("r belong", "r and sp"), 1L, 0L),
-    union_label  = if_else(union_member == 1, "Union", "Non-member")
+    college      = if_else(degree %in% c("bachelor", "graduate"), 1L, 0L),
+    college_lab  = if_else(college == 1, "College+", "No college")
   )
+```
 
-glimpse(attain)
+------------------------------------------------------------------------
+
+## Test 1: Proportion z-Test
+
+**Research question:** Is the proportion of U.S. adults with a college degree equal to 25%?
+
+- $H_0: \pi = 0.25$
+- $H_1: \pi \neq 0.25$ (two-tailed), $\alpha = 0.05$
+
+```{r}
+x <- sum(attain$college, na.rm = TRUE)   # number with college degree
+n <- sum(!is.na(attain$degree))          # sample size
+
+prop.test(x, n, p = 0.25, correct = FALSE)
 ```
 
 ::: callout-note
-## Quick check before continuing
-
-Look at the output of `glimpse()`:
-
--   What are the units of analysis in this dataset (i.e., what does each row represent)?
--   What type of variable is `hrs1`? What type is `union_member`?
+`p = 0.25` sets the **null hypothesis value**. When testing, R uses $SE_0 = \sqrt{\pi_0(1-\pi_0)/n}$ — the null value, not the sample proportion.
 :::
 
-------------------------------------------------------------------------
-
-## Part 1: Proportion z-Test
-
-**Research question:** Is the proportion of U.S. adults who are union members equal to 20%?
-
--   $H_0: \pi = 0.20$
--   $H_1: \pi \neq 0.20$ (two-tailed)
--   $\alpha = 0.05$
-
-### Step 1: Compute the sample proportion
-
-```{r}
-# Remove observations with missing union variable
-p_hat <- mean(attain$union_member, na.rm = TRUE)
-n     <- sum(!is.na(attain$union))
-
-cat("Sample proportion (p̂):", round(p_hat, 3), "\n")
-cat("Sample size (n):       ", n, "\n")
-```
-
-**Question 1a.** What is the sample proportion of union members in this dataset? Does it seem close to 20%?
-
-*Your answer:*
-
-### Step 2: Compute the z-statistic and p-value
-
-```{r}
-x <- sum(attain$union_member, na.rm = TRUE)   # number of union members
-
-# prop.test(successes, n, p = null_value, correct = FALSE)
-p1_result <- prop.test(x, n, p = 0.20, correct = FALSE)
-p1_result
-```
-
-**Question 1b.** In `prop.test(x, n, p = 0.20, correct = FALSE)`, the `p = 0.20` argument sets the null hypothesis value. Why does `prop.test()` use this null value — rather than the sample proportion — when computing the test statistic? *(Hint: what does the SE represent here?)*
-
-*Your answer:*
-
-**Question 1c.** Based on the p-value, do you reject or fail to reject $H_0$ at $\alpha = 0.05$? Write one sentence interpreting the result in plain English.
-
-*Your answer:*
-
-### Step 3: Compare to a confidence interval
-
-```{r}
-# The 95% CI is already in the prop.test() output above
-cat("95% CI: [", round(p1_result$conf.int[1], 3), ",", round(p1_result$conf.int[2], 3), "]\n")
-cat("Does the CI contain 0.20?", p1_result$conf.int[1] <= 0.20 & 0.20 <= p1_result$conf.int[2], "\n")
-```
-
-**Question 1d.** The CI and the hypothesis test give the same answer about $H_0: \pi = 0.20$. Explain in one sentence why they always agree for a two-tailed test at $\alpha = 0.05$.
+**Question 1.** Based on the p-value, do you reject or fail to reject $H_0$? Write one sentence interpreting the result (include the sample proportion and p-value).
 
 *Your answer:*
 
 ------------------------------------------------------------------------
 
-## Part 2: One-Sample t-Test
+## Test 2: One-Sample t-Test
 
-**Research question:** Is the mean number of hours worked per week by U.S. adults equal to 40?
+**Research question:** Is the mean years of education among U.S. adults equal to 12 (a high school diploma)?
 
--   $H_0: \mu = 40$
--   $H_1: \mu \neq 40$ (two-tailed)
--   $\alpha = 0.05$
-
-### Step 1: Summarize the variable
+- $H_0: \mu = 12$
+- $H_1: \mu \neq 12$ (two-tailed), $\alpha = 0.05$
 
 ```{r}
-hrs_clean <- attain |> filter(!is.na(hrs1))
+educ_clean <- attain |> filter(!is.na(educ))
 
-x_bar <- mean(hrs_clean$hrs1)
-s     <- sd(hrs_clean$hrs1)
-n_hrs <- nrow(hrs_clean)
-
-cat("Sample mean (x̄):", round(x_bar, 2), "hours\n")
-cat("Sample SD (s):   ", round(s, 2), "\n")
-cat("n:               ", n_hrs, "\n")
+t.test(educ_clean$educ, mu = 12)
 ```
 
-**Question 2a.** Does the sample mean look close to 40 hours? Before running the test, do you expect to reject $H_0$?
-
-*Your answer:*
-
-### Step 2: Run the t-test
-
-```{r}
-# mu = 40 sets the null hypothesis value
-t.test(hrs_clean$hrs1, mu = 40)
-```
-
-**Question 2b.** Why does `t.test()` use the t-distribution rather than the Normal distribution when testing a mean? *(Hint: what do we not know about the population?)*
-
-*Your answer:*
-
-**Question 2c.** Do you reject or fail to reject $H_0$? Write one sentence interpreting the result, including the sample mean, test statistic, and p-value.
-
-*Your answer:*
-
-------------------------------------------------------------------------
-
-## Part 3: Two-Sample t-Test
-
-**Research question:** Do union members work a different number of hours per week than non-members?
-
--   $H_0: \mu_{\text{union}} = \mu_{\text{non-union}}$
--   $H_1: \mu_{\text{union}} \neq \mu_{\text{non-union}}$ (two-tailed)
--   $\alpha = 0.05$
-
-### Step 1: Summarize each group
-
-```{r}
-# Split into two groups
-union_hrs    <- attain |> filter(union_member == 1, !is.na(hrs1)) |> pull(hrs1)
-nonunion_hrs <- attain |> filter(union_member == 0, !is.na(hrs1), !is.na(union)) |> pull(hrs1)
-
-# Summary statistics
-n1 <- length(union_hrs);    n2 <- length(nonunion_hrs)
-x1 <- mean(union_hrs);      x2 <- mean(nonunion_hrs)
-s1 <- sd(union_hrs);        s2 <- sd(nonunion_hrs)
-
-cat("Union members:     n =", n1, "| mean =", round(x1, 2), "hrs | SD =", round(s1, 2), "\n")
-cat("Non-union members: n =", n2, "| mean =", round(x2, 2), "hrs | SD =", round(s2, 2), "\n")
-cat("Difference in means:", round(x1 - x2, 2), "hours\n")
-```
-
-**Question 3a.** Looking at the group means alone, which group works more hours on average? Does the difference seem large or small to you?
-
-*Your answer:*
-
-### Step 2: Run the test
-
-```{r}
-t.test(union_hrs, nonunion_hrs)
-```
-
-**Question 3b.** The p-value is close to, but above, 0.05. Do you reject or fail to reject $H_0$? What does this mean — are we confident the two groups work the same hours?
-
-*Your answer:*
-
-**Question 3c.** Write a 2-sentence results statement that includes: both group means, the t-statistic, the p-value, and whether you reject $H_0$.
-
-*Your answer:*
-
-::: callout-tip
-## Borderline results
-
-A p-value just above 0.05 (say, 0.06 or 0.07) is not the same as strong evidence *for* the null. It means the test is underpowered to detect the effect at this sample size — not that the effect is zero. In your write-up, note that the result approaches but does not meet the conventional significance threshold.
+::: callout-note
+`mu = 12` sets the null hypothesis value. The output reports the sample mean, t-statistic, degrees of freedom, p-value, and 95% CI.
 :::
 
+**Question 2.** Do you reject or fail to reject $H_0$? Write one sentence interpreting the result (include the sample mean, t-statistic, and p-value).
+
+*Your answer:*
+
 ------------------------------------------------------------------------
 
-## Part 4: Chi-Squared Test
+## Test 3: Two-Sample t-Test
 
-**Research question:** Is union membership associated with sex?
+**Research question:** Do married people work a different number of hours per week than never-married people?
 
--   $H_0$: Union membership and sex are independent
--   $H_1$: Union membership and sex are not independent
--   $\alpha = 0.05$
-
-### Step 1: Build the contingency table
+- $H_0: \mu_{\text{married}} = \mu_{\text{never married}}$
+- $H_1: \mu_{\text{married}} \neq \mu_{\text{never married}}$ (two-tailed), $\alpha = 0.05$
 
 ```{r}
-attain_ct <- attain |>
-  filter(!is.na(union), !is.na(sex))
+married_hrs <- attain |> filter(marital == "married",  !is.na(hrs1)) |> pull(hrs1)
+nevmar_hrs  <- attain |> filter(marital == "never ma", !is.na(hrs1)) |> pull(hrs1)
 
-# Absolute frequency table
-tab <- table(attain_ct$sex, attain_ct$union_label)
+t.test(married_hrs, nevmar_hrs)
+```
+
+::: callout-note
+The output shows the mean for each group, the t-statistic, and the 95% CI for the **difference** in means. If the CI contains 0, that is consistent with failing to reject $H_0$.
+:::
+
+**Question 3.** Do you reject or fail to reject $H_0$? Write 2 sentences reporting the result: include both group means, the t-statistic, the p-value, and your decision.
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+## Test 4: Chi-Squared Test
+
+**Research question:** Is race associated with having a college degree?
+
+- $H_0$: Race and college attainment are independent
+- $H_1$: They are not independent, $\alpha = 0.05$
+
+```{r}
+attain_deg <- attain |> filter(!is.na(race), !is.na(degree))
+
+# Contingency table (table() is needed for chisq.test)
+tab <- table(attain_deg$race, attain_deg$college_lab)
 addmargins(tab)
+
+# College rate within each racial group
+attain_deg |>
+  group_by(race) |>
+  summarize(college_rate = mean(college, na.rm = TRUE))
+
+# Chi-squared test
+chisq.test(tab, correct = FALSE)
 ```
-
-**Question 4a.** How many female union members are there? How many male non-members? What would these numbers look like *if* sex and union membership were completely independent?
-
-*Your answer:*
-
-### Step 2: Row proportions and expected counts
-
-```{r}
-# Proportion of union members within each sex
-round(prop.table(tab, margin = 1), 3)
-
-# Expected counts under H0 (independence)
-chisq_result <- chisq.test(tab, correct = FALSE)
-round(chisq_result$expected, 1)
-```
-
-**Question 4b.** Compare the observed row proportions to the expected counts. Are men or women more likely to be union members in the observed data? Is that difference also visible in the expected counts?
-
-*Your answer:*
-
-### Step 3: Run the chi-squared test
-
-```{r}
-chisq_result
-```
-
-**Question 4c.** Based on the p-value, do you reject or fail to reject $H_0$? Interpret the result in one sentence.
-
-*Your answer:*
-
-### Step 4: Measures of association
-
-```{r}
-tab_rel   <- prop.table(tab, margin = 1)
-diff_prop <- tab_rel["male", "Union"] - tab_rel["female", "Union"]
-rr_ratio  <- tab_rel["male", "Union"] / tab_rel["female", "Union"]
-
-cat("Union rate — male:  ", round(tab_rel["male",   "Union"], 3), "\n")
-cat("Union rate — female:", round(tab_rel["female", "Union"], 3), "\n")
-cat("\nDifference in proportions:", round(diff_prop, 3), "\n")
-cat("Relative risk ratio:      ", round(rr_ratio,   3), "\n")
-```
-
-**Question 4d.** Using the difference in proportions and relative risk ratio, describe the association in plain English. Which measure is more useful here, and why?
-
-*Your answer:*
 
 ::: callout-note
-## Why chi-squared alone isn't enough
-
-The chi-squared test tells you *whether* an association exists — but not *how strong* or *in which direction*. Always supplement with a measure of association (difference in proportions, relative risk ratio, or polychoric correlation for ordinal variables).
+The chi-squared test tells you **whether** an association exists — the group rates above tell you *where* the differences are.
 :::
 
-------------------------------------------------------------------------
-
-## Part 5: Putting It All Together
-
-### Writing Up Results
-
-Below is an example write-up for the two-sample t-test from Part 3. Read it, then answer the questions that follow.
-
-> *"Union members worked an average of 42.5 hours per week (SD = 10.2), compared to 41.2 hours for non-union members (SD = 11.1). A two-sample t-test showed that this difference was not statistically significant at α = 0.05 (t(435) = 1.85, p = 0.064). We therefore fail to reject the null hypothesis that union and non-union members work the same number of hours per week on average. The 95% confidence interval for the mean hours worked among union members was \[40.6, 44.4\] hours."*
-
-**Question 5a.** The write-up includes the group means, test statistic, p-value, decision, and CI. Why is it important to report the group means and not just the p-value?
+**Question 4.** Do you reject or fail to reject $H_0$? Write 2 sentences: state your decision (with the $\chi^2$ statistic and p-value), then describe which racial group has the highest/lowest college rate.
 
 *Your answer:*
-
-**Question 5b.** Suppose someone argued: "The p-value is 0.064, so we can conclude that union membership has no effect on hours worked." What is wrong with this reasoning?
-
-*Your answer:*
-
-**Question 5c.** *(Your own data)* Using your research dataset, pick **one** variable pair and run whichever test is appropriate. Briefly write up the result (3–4 sentences) following the template above.
-
-```{r}
-# Your code here
-
-```
-
-*Your write-up:*
-
-------------------------------------------------------------------------
-
-## Part 6: Class Example — Racial Education Gap
-
-**Research question:** Do White men have a higher average years of education than Black men?
-
-**Null hypothesis:** White men have the *same* average years of education as Black men — any difference is due to sampling error
-
-$$H_0: \mu_{\text{White}} = \mu_{\text{Black}}$$
-
-**Research hypothesis:** White men have a *higher* average years of education than Black men
-
-$$H_1: \mu_{\text{White}} > \mu_{\text{Black}}$$
-
-**Question 6a.** Is this a one-tailed or two-tailed test? Which tail? Why?
-
-*Your answer:*
-
-### Step 1: Run the test
-
-```{r}
-# Check race variable coding first
-table(attain$race)
-
-# Filter to White men and Black men
-white_men <- attain |> filter(race == "white", sex == "male") |> pull(educ)
-black_men  <- attain |> filter(race == "black", sex == "male") |> pull(educ)
-
-# One-tailed upper test: H1 is White men > Black men
-t.test(white_men, black_men, alternative = "greater")
-```
-
-**Question 6b.** What are the mean years of education for White men and Black men in the sample? What is the t-statistic and p-value?
-
-*Your answer:*
-
-**Question 6c.** Do you reject or fail to reject $H_0$ at $\alpha = 0.05$? Write one sentence interpreting the result in plain language.
-
-*Your answer:*
-
-**Question 6d.** What would happen to the p-value if you switched to a two-tailed test? Why?
-
-*Your answer:*
-
-------------------------------------------------------------------------
-
-## Part 7: Apply to Your Own Research Data
-
-Using your **own research dataset**, run one hypothesis test relevant to your research question.
-
-1. **State** $H_0$ and $H_1$ explicitly
-2. **Choose the test type**: one-sample t, two-sample t, proportion test, or chi-squared
-3. **Decide**: one- or two-tailed? Justify your choice
-4. **Run the test** in R
-5. **Write 2–3 sentences** reporting the result: sample statistic(s), test statistic, p-value, and decision
-
-```{r}
-# Load your research data here
-# your_data <- read_csv(here("data", "your_file.csv"))
-
-# Your hypothesis test code here
-
-```
-
-*Your write-up:*
-
-------------------------------------------------------------------------
 
 ::: callout-tip
 ## Before You Leave
 
--   [ ] You can explain why the SE formula for hypothesis testing uses the null value $\pi_0$, not $\hat{p}$
--   [ ] You can run and interpret all three tests: proportion z, one-sample t, two-sample t
--   [ ] You can run a chi-squared test and report a measure of association alongside it
--   [ ] You understand why "fail to reject $H_0$" is not the same as "accept $H_0$"
--   [ ] You can write up results that include the sample statistic, test statistic, p-value, and decision
+-   [ ] You can run all four tests and read the output
+-   [ ] You know which test to use based on your variable types
+-   [ ] You understand that "fail to reject $H_0$" ≠ "accept $H_0$"
 :::

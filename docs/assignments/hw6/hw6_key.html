@@ -4082,8 +4082,6 @@ color: #f8f9fa !important;
   <li><a href="#question-1-the-three-distributions" id="toc-question-1-the-three-distributions" class="nav-link" data-scroll-target="#question-1-the-three-distributions">Question 1: The Three Distributions</a></li>
   <li><a href="#question-2-sampling-designs" id="toc-question-2-sampling-designs" class="nav-link" data-scroll-target="#question-2-sampling-designs">Question 2: Sampling Designs</a></li>
   <li><a href="#question-3-jury-selection-and-racial-representation" id="toc-question-3-jury-selection-and-racial-representation" class="nav-link" data-scroll-target="#question-3-jury-selection-and-racial-representation">Question 3: Jury Selection and Racial Representation</a></li>
-  <li><a href="#question-4-standard-error-and-sample-size" id="toc-question-4-standard-error-and-sample-size" class="nav-link" data-scroll-target="#question-4-standard-error-and-sample-size">Question 4: Standard Error and Sample Size</a></li>
-  <li><a href="#question-5-central-limit-theorem-student-loan-debt" id="toc-question-5-central-limit-theorem-student-loan-debt" class="nav-link" data-scroll-target="#question-5-central-limit-theorem-student-loan-debt">Question 5: Central Limit Theorem — Student Loan Debt</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4137,7 +4135,7 @@ color: #f8f9fa !important;
 <li>Save the file in your assignments folder.</li>
 <li>Follow the instructions below to complete the assignment. Show your work for all calculations where necessary!</li>
 <li>When you are done, click the “Render” button at the top of Positron to generate an .html file.</li>
-<li>Submit the <code>hw6.qmd</code> file to bCourse before the deadline.</li>
+<li>Submit both <code>hw6.qmd</code> and <code>hw6.html</code>file to bCourse before the deadline.</li>
 <li>Make sure your name appears in the “author” field in the YAML header above.</li>
 </ol>
 </div>
@@ -4179,7 +4177,7 @@ color: #f8f9fa !important;
 </div>
 <p><em>Answer: Under random selection, we would expect</em> <span class="math inline">\(\pi = 0.22\)</span> of recipients (about 17–18 of 80) to be first-generation. The standard error is:</p>
 <p><span class="math display">\[SE(\hat{p}) = \sqrt{\frac{0.22 \times 0.78}{80}} \approx 0.046\]</span></p>
-<p><strong>c) The observed proportion is</strong> <span class="math inline">\(\hat{p} = 8/80 = 0.10\)</span>. How many standard errors is this from what we would expect under random selection?</p>
+<p><strong>c) The observed proportion is</strong> <span class="math inline">\(\hat{p} = 8/80 = 0.10\)</span>. How many standard errors is this from what we would expect under random selection? Also calculate the probability of observing a proportion this low or lower under random selection.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># z-score</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(<span class="fl">0.10</span> <span class="sc">-</span> <span class="fl">0.22</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">0.22</span> <span class="sc">*</span> <span class="fl">0.78</span> <span class="sc">/</span> <span class="dv">80</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -4252,76 +4250,6 @@ color: #f8f9fa !important;
 <p><strong>d) Interpret your results. Is this pattern consistent with random jury selection? What might explain the gap between the expected and observed proportions?</strong></p>
 <p><em>Answer: A result this far from the expected value would occur only about 1–2% of the time if summons were truly random. This is strong evidence that Latino residents are being systematically underrepresented in this county’s jury pool. Possible explanations include biased address lists used to generate summons (which may miss Latino neighborhoods), higher rates of disqualification among Latino residents (e.g., non-citizenship), or other administrative factors that produce non-random outcomes.</em></p>
 <hr>
-</section>
-<section id="question-4-standard-error-and-sample-size" class="level2">
-<h2 class="anchored" data-anchor-id="question-4-standard-error-and-sample-size">Question 4: Standard Error and Sample Size</h2>
-<p>The American Community Survey reports that average annual household income in the United States is approximately <span class="math inline">\(\mu = \$75{,}000\)</span>, with a standard deviation of <span class="math inline">\(\sigma = \$50{,}000\)</span>.</p>
-<p><strong>a) You are designing a study to estimate average household income in your city. Calculate the standard error of</strong> <span class="math inline">\(\bar{x}\)</span> for sample sizes of <span class="math inline">\(n = 25\)</span>, <span class="math inline">\(n = 100\)</span>, and <span class="math inline">\(n = 400\)</span>. Show your work.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">50000</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SE for each sample size</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>se_25  <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">25</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>se_100 <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>se_400 <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">400</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>se_25</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10000</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>se_100</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5000</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>se_400</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2500</code></pre>
-</div>
-</div>
-<p><em>Answer:</em></p>
-<p><span class="math display">\[SE(n=25) = \frac{50{,}000}{\sqrt{25}} = \$10{,}000 \qquad SE(n=100) = \frac{50{,}000}{\sqrt{100}} = \$5{,}000 \qquad SE(n=400) = \frac{50{,}000}{\sqrt{400}} = \$2{,}500\]</span></p>
-<p><strong>b) What happens to the standard error each time you quadruple the sample size (from</strong> <span class="math inline">\(n = 25\)</span> to <span class="math inline">\(n = 100\)</span>, and from <span class="math inline">\(n = 100\)</span> to <span class="math inline">\(n = 400\)</span>)? Generalize: if you want to cut the SE in half, by how much must you increase <span class="math inline">\(n\)</span>?</p>
-<p><em>Answer: Each time the sample size quadruples, the standard error is cut in half (</em><span class="math inline">\(10{,}000 \to \$5{,}000 \to \$2{,}500\)</span>). This follows from <span class="math inline">\(SE = \sigma/\sqrt{n}\)</span>: multiplying <span class="math inline">\(n\)</span> by 4 multiplies <span class="math inline">\(\sqrt{n}\)</span> by 2, dividing the SE by 2. <strong>To halve the SE, you must quadruple the sample size.</strong> Precision is expensive — each additional halving of uncertainty requires four times as many observations.</p>
-<p><strong>c) Suppose you collect a sample of 100 households in your city. What is the probability that your sample mean exceeds</strong> <span class="math inline">\(\$85{,}000\)</span>?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(x-bar &gt; 85000) with n = 100</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">85000</span>, <span class="at">mean =</span> <span class="dv">75000</span>, <span class="at">sd =</span> se_100)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02275013</code></pre>
-</div>
-</div>
-<p><em>Answer: The probability that the sample mean exceeds</em> <span class="math inline">\(\$85{,}000\)</span> is approximately <strong>2.3%</strong>. Although extreme sample means are possible, with <span class="math inline">\(n = 100\)</span> our estimate is precise enough that being <span class="math inline">\(\$10{,}000\)</span> above the true mean is quite unlikely.</p>
-<hr>
-</section>
-<section id="question-5-central-limit-theorem-student-loan-debt" class="level2">
-<h2 class="anchored" data-anchor-id="question-5-central-limit-theorem-student-loan-debt">Question 5: Central Limit Theorem — Student Loan Debt</h2>
-<p>According to data from the Federal Reserve, the average student loan balance among borrowers is <span class="math inline">\(\mu = \$37{,}500\)</span> with a standard deviation of <span class="math inline">\(\sigma = \$25{,}000\)</span>. Suppose a researcher takes a random sample of <strong>64 student loan borrowers</strong>.</p>
-<p><strong>a) By the Central Limit Theorem, what is the sampling distribution of the sample mean</strong> <span class="math inline">\(\bar{x}\)</span>? State the distribution and its parameters, and explain why the CLT applies here.</p>
-<p><em>Answer: By the CLT,</em> <span class="math inline">\(\bar{x} \sim N\!\left(37{,}500,\; \frac{25{,}000}{\sqrt{64}}\right) = N(37{,}500,\; 3{,}125)\)</span>. The CLT applies because even though student loan debt is likely right-skewed in the population, the sample size <span class="math inline">\(n = 64 &gt; 30\)</span> is large enough that the sampling distribution of <span class="math inline">\(\bar{x}\)</span> is approximately Normal regardless of the population shape.</p>
-<p><strong>b) What is the probability that the sample mean is below</strong> <span class="math inline">\(\$33{,}000\)</span>?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mu    <span class="ot">&lt;-</span> <span class="dv">37500</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">25000</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>n     <span class="ot">&lt;-</span> <span class="dv">64</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>se    <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># P(x-bar &lt; 33000)</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">33000</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> se)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0749337</code></pre>
-</div>
-</div>
-<p><em>Answer: There is approximately a <strong>7.6%</strong> chance that a sample of 64 borrowers yields a mean below</em> <span class="math inline">\(\$33{,}000\)</span>.</p>
-<p><strong>c) What is the probability that the sample mean is between</strong> <span class="math inline">\(\$35{,}000\)</span> and <span class="math inline">\(\$40{,}000\)</span>?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P(35000 &lt; x-bar &lt; 40000)</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">40000</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> se) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">35000</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> se)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5762892</code></pre>
-</div>
-</div>
-<p><em>Answer: There is approximately a <strong>57.5%</strong> chance that the sample mean falls between</em> <span class="math inline">\(\$35{,}000\)</span> and <span class="math inline">\(\$40{,}000\)</span> — a bit more likely than not, since this range spans from 0.8 SEs below to 0.8 SEs above the true mean.</p>
-<hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4337,7 +4265,7 @@ color: #f8f9fa !important;
 <li><label><input type="checkbox">All code chunks run without errors</label></li>
 <li><label><input type="checkbox">You’ve answered all written response questions and shown your work</label></li>
 <li><label><input type="checkbox">You’ve clicked “Render” and successfully generated an HTML file</label></li>
-<li><label><input type="checkbox">You’re submitting the .qmd file to bCourse</label></li>
+<li><label><input type="checkbox">You’re submitting both the .qmd and .html file to bCourse</label></li>
 </ul>
 </div>
 </div>

@@ -4082,8 +4082,6 @@ color: #f8f9fa !important;
   <li><a href="#question-1-the-three-distributions" id="toc-question-1-the-three-distributions" class="nav-link" data-scroll-target="#question-1-the-three-distributions">Question 1: The Three Distributions</a></li>
   <li><a href="#question-2-sampling-designs" id="toc-question-2-sampling-designs" class="nav-link" data-scroll-target="#question-2-sampling-designs">Question 2: Sampling Designs</a></li>
   <li><a href="#question-3-jury-selection-and-racial-representation" id="toc-question-3-jury-selection-and-racial-representation" class="nav-link" data-scroll-target="#question-3-jury-selection-and-racial-representation">Question 3: Jury Selection and Racial Representation</a></li>
-  <li><a href="#question-4-standard-error-and-sample-size" id="toc-question-4-standard-error-and-sample-size" class="nav-link" data-scroll-target="#question-4-standard-error-and-sample-size">Question 4: Standard Error and Sample Size</a></li>
-  <li><a href="#question-5-central-limit-theorem-student-loan-debt" id="toc-question-5-central-limit-theorem-student-loan-debt" class="nav-link" data-scroll-target="#question-5-central-limit-theorem-student-loan-debt">Question 5: Central Limit Theorem — Student Loan Debt</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4137,7 +4135,7 @@ color: #f8f9fa !important;
 <li>Save the file in your assignments folder.</li>
 <li>Follow the instructions below to complete the assignment. Show your work for all calculations where necessary!</li>
 <li>When you are done, click the “Render” button at the top of Positron to generate an .html file.</li>
-<li>Submit the <code>hw6.qmd</code> file to bCourse before the deadline.</li>
+<li>Submit both <code>hw6.qmd</code> and <code>hw6.html</code>file to bCourse before the deadline.</li>
 <li>Make sure your name appears in the “author” field in the YAML header above.</li>
 </ol>
 </div>
@@ -4212,40 +4210,6 @@ color: #f8f9fa !important;
 <p><strong>d) Interpret your results. Is this pattern consistent with random jury selection? What might explain the gap between the expected and observed proportions?</strong></p>
 <p><em>Your answer here:</em></p>
 <hr>
-</section>
-<section id="question-4-standard-error-and-sample-size" class="level2">
-<h2 class="anchored" data-anchor-id="question-4-standard-error-and-sample-size">Question 4: Standard Error and Sample Size</h2>
-<p>The American Community Survey reports that average annual household income in the United States is approximately <span class="math inline">\(\mu = \$75{,}000\)</span>, with a standard deviation of <span class="math inline">\(\sigma = \$50{,}000\)</span>.</p>
-<p><strong>a) You are designing a study to estimate average household income in your city. Calculate the standard error of</strong> <span class="math inline">\(\bar{x}\)</span> for sample sizes of <span class="math inline">\(n = 25\)</span>, <span class="math inline">\(n = 100\)</span>, and <span class="math inline">\(n = 400\)</span>. Show your work.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><em>Your answer here:</em></p>
-<p><strong>b) What happens to the standard error each time you quadruple the sample size (from</strong> <span class="math inline">\(n = 25\)</span> to <span class="math inline">\(n = 100\)</span>, and from <span class="math inline">\(n = 100\)</span> to <span class="math inline">\(n = 400\)</span>)? Generalize: if you want to cut the SE in half, by how much must you increase <span class="math inline">\(n\)</span>?</p>
-<p><em>Your answer here:</em></p>
-<p><strong>c) Suppose you collect a sample of 100 households in your city. What is the probability that your sample mean exceeds</strong> <span class="math inline">\(\$85{,}000\)</span>?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><em>Your answer here:</em></p>
-<hr>
-</section>
-<section id="question-5-central-limit-theorem-student-loan-debt" class="level2">
-<h2 class="anchored" data-anchor-id="question-5-central-limit-theorem-student-loan-debt">Question 5: Central Limit Theorem — Student Loan Debt</h2>
-<p>According to data from the Federal Reserve, the average student loan balance among borrowers is <span class="math inline">\(\mu = \$37{,}500\)</span> with a standard deviation of <span class="math inline">\(\sigma = \$25{,}000\)</span>. Suppose a researcher takes a random sample of <strong>64 student loan borrowers</strong>.</p>
-<p><strong>a) By the Central Limit Theorem, what is the sampling distribution of the sample mean</strong> <span class="math inline">\(\bar{x}\)</span>? State the distribution and its parameters, and explain why the CLT applies here.</p>
-<p><em>Your answer here:</em></p>
-<p><strong>b) What is the probability that the sample mean is below</strong> <span class="math inline">\(\$33{,}000\)</span>?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><em>Your answer here:</em></p>
-<p><strong>c) What is the probability that the sample mean is between</strong> <span class="math inline">\(\$35{,}000\)</span> and <span class="math inline">\(\$40{,}000\)</span>?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><em>Your answer here:</em></p>
-<hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4261,7 +4225,7 @@ color: #f8f9fa !important;
 <li><label><input type="checkbox">All code chunks run without errors</label></li>
 <li><label><input type="checkbox">You’ve answered all written response questions and shown your work</label></li>
 <li><label><input type="checkbox">You’ve clicked “Render” and successfully generated an HTML file</label></li>
-<li><label><input type="checkbox">You’re submitting the .qmd file to bCourse</label></li>
+<li><label><input type="checkbox">You’re submitting both the .qmd and .html file to bCourse</label></li>
 </ul>
 </div>
 </div>

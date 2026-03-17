@@ -1,6 +1,6 @@
 # hidden files
 /.quarto/
-.DS_Store
+*.DS_Store
 
 # folders
 /resources

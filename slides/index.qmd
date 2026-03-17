@@ -12,7 +12,7 @@ title: "Lecture Slides"
 - [Week 6: Probability models of distributions](week6.html)
 - [Week 7: Sampling distributions](week7.html)
 - [Week 8: Estimates and confidence intervals](week8.html)
-- [Week 9: Hypothesis testing and power](week9.html)
+- [Week 9: Hypothesis testing](week9.html)
 - Week 10: Spring Recess – no class
 - Week 11: Linear regression
 - Week 12: Logistic regression

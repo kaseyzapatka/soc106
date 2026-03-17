@@ -10,6 +10,7 @@ format:
       buttons: false
     preview-links: auto
     css: slides.css
+    scrollable: true
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
 
@@ -67,7 +68,7 @@ attain <- attain |>
 **Spring Recess**
 
 - <span class="highlight">March 24 — enjoy the break!</span>
-- Use that time to relax and work on you paper proposal with outline due on 4/16
+- Use that time to relax and work on your paper proposal with outline due on 4/16
 
 ## Where We Are in the Course {.smaller}
 
@@ -90,7 +91,7 @@ attain <- attain |>
 ## Last Week: Recap {.smaller}
 
 | Concept | Key idea | Example |
-|---|---|---|
+|--|---|---|
 | **Point estimate** | Best single guess for population parameter | $\hat{p} = 0.449$ (GSS env. support) |
 | **Standard error** | How uncertain is the estimate? | $SE(\hat{p}) = 0.015$ |
 | **Confidence interval** | Range likely to contain the true parameter | 95% CI: [0.420, 0.478] |
@@ -115,9 +116,10 @@ A **hypothesis test** is a formal statistical procedure for evaluating whether a
 **The core steps:**
 
 1. **State a null hypothesis** ($H_0$): "there is no real effect" — the finding is just chance
-2. **Compute a test statistic**: how far is our sample result from what $H_0$ would predict?
-3. **Calculate a p-value**: if $H_0$ is true, how likely is a result this extreme?
-4. **Decide**: if the p-value is small enough, reject $H_0$
+2. **Choose a tail**: does theory predict a direction? → one-tailed; otherwise → two-tailed (default)
+3. **Compute a test statistic**: how far is our sample result from what $H_0$ would predict?
+4. **Calculate a p-value**: if $H_0$ is true, how likely is a result this extreme?
+5. **Decide**: if the p-value is small enough, reject $H_0$; accept $H_1$
 :::
 
 ::: {.fragment .fade-up}
@@ -133,9 +135,13 @@ James Bond claims he can tell whether a martini is **shaken or stirred** just by
 
 ::: {.fragment .fade-up}
 **The experiment:** Give him 16 randomly prepared martinis. He correctly identifies **13 out of 16**.
+:::
 
+::: {.fragment .fade-up}
 **Null hypothesis ($H_0$):** He's just guessing — each trial is a 50-50 coin flip ($\pi = 0.5$)
+:::
 
+::: {.fragment .fade-up}
 **Alternative hypothesis ($H_1$):** He can genuinely tell the difference — he performs better than random guessing ($\pi > 0.5$)
 :::
 
@@ -167,9 +173,9 @@ A **p-value** is the probability of observing a test statistic **as extreme as (
 
 ::: {.callout-note icon=false}
 ## Critical misconception:
-The p-value is **NOT** the probability that $H_0$ is true. The null hypothesis is either true or false — it doesn't have a probability.
+**What the p-value is NOT:** the probability that $H_0$ is true. The null hypothesis is either true or false — it doesn't have a probability.
 
-**What it IS:** The p-value is P(data this extreme | $H_0$ true) — the probability of observing results *at least this extreme*, assuming the null holds. It answers: *"if the null were true, how often would we see data like ours?"* — not *"how likely is the null to be true?"*
+**What the p-value is :** P(data this extreme | $H_0$ true) — the probability of observing results *at least this extreme*, assuming the null holds. It answers: *"if the null were true, how often would we see data like ours?"* — not *"how likely is the null to be true?"*
 :::
 
 ### What p-values tell us
@@ -202,7 +208,7 @@ We set a **significance level** $\alpha$ in advance — the threshold below whic
 
 ::: {.fragment .fade-up}
 - **Most common:** $\alpha = 0.05$ — we use this in this class
-- Also used: $\alpha = 0.01$, $\alpha = 0.10$
+- Sometimes people use: $\alpha = 0.01$, $\alpha = 0.10$
 
 **Decision rule:**
 
@@ -219,31 +225,37 @@ A negative result doesn't prove the null is true. A small sample may simply be t
 :::
 :::
 
-## The Danger of Weak Tests: An Illustration {.smaller}
+## Two Ways to Be Wrong {.smaller}
 
-Suppose a coin has a true probability of heads $\pi = 0.51$. We flip it 50 times and get 24 heads.
+Every decision has two possible mistakes:
 
-::: {.fragment .fade-up}
-**Test $H_0: \pi = 0.50$** with a two-tailed test:
+| | $H_0$ is **True** | $H_0$ is **False** |
+|---|----|----|
+| **Reject $H_0$** | [Type I error]{.highlight} (false positive)  | Correct ✓ |
+| **Fail to reject $H_0$** | Correct ✓ | [Type II error]{.highlight} (false negative)|
 
-```{r}
-#| echo: true
-#| eval: true
-
-pbinom(24, 50, 0.5) + (1 - pbinom(25, 50, 0.5))
-```
-
-$p \approx 0.89$ — we fail to reject the null.
-:::
-
-::: {.fragment .fade-up}
-But we **know** $H_0$ is false — the true value is $\pi = 0.51$, not $0.50$!
+<br>
 
 ::: {.callout-note icon=false}
-## The lesson:
-Failing to reject $H_0$ does not mean $H_0$ is true. The test just didn't have enough **statistical power** to detect a very small effect. This is why we say "fail to reject" — not "accept."
+## In plain language: the paramedic
+You arrive at an accident. Is the victim alive ($H_0$) or dead ($H_1$)?
+
+- **Type I error:** You declare them dead when they're alive → they don't get treatment. *Catastrophic.*
+- **Type II error:** You rush a dead person to hospital. *Wasteful, but not deadly.*
+
+Here you'd want a very small $\alpha$ — the cost of the errors is not symmetric.
 :::
-:::
+
+## Trade-off between Type I and II Error  {.smaller}
+
+![](images/week9/tradeoff.png){width="55%" fig-align="center"}
+
+::: {.callout-note icon=false}
+**The trade-off:** Moving the threshold right reduces [Type I error]{.highlight} but increases [Type II error]{.highlight} — and vice versa. You can shrink *both* by increasing $n$, which pulls the two distributions apart.
+
+- Lower $\alpha$ (e.g., 0.05 vs 0.10) → less Type I risk, more Type II risk
+- Larger $N$ → distributions pull apart → less Type II risk *without* increasing Type I risk
+::: 
 
 ## One- and Two-Tailed Tests {.smaller}
 
@@ -254,7 +266,7 @@ Failing to reject $H_0$ does not mean $H_0$ is true. The test just didn't have e
 A **one-tailed test** checks for a significant effect in *one specific direction*
 
 - $H_0: \pi \leq 0.50$ vs. $H_1: \pi > 0.50$
-- All of $\alpha$ is in one tail — easier to reject, but only in the predicted direction
+- All of $\alpha$ is in one tail — *critical value is lower* — and therefore easier to reject $H_0$, but only if the effect is in the predicted direction
 
 **James Bond (one-tailed):** Did he perform *better than* random guessing?
 
@@ -271,7 +283,7 @@ A **one-tailed test** checks for a significant effect in *one specific direction
 A **two-tailed test** checks for a significant effect in *either direction*
 
 - $H_0: \pi = 0.50$ vs. $H_1: \pi \neq 0.50$
-- $\alpha$ is split equally — 2.5% in each tail; **more conservative and more common** in social science
+- $\alpha$ is split equally — 2.5% in each tail — *critical value is higher* ; **more conservative and more common** in social science
 
 **James Bond (two-tailed):** Did he perform *differently from* random guessing?
 
@@ -305,7 +317,7 @@ Unless you have a strong, pre-specified theoretical reason to predict direction,
 
 :::
 
-## CIs and Hypothesis Tests Are Connected {.smaller .scrollable} 
+## CIs and Hypothesis Tests  {.smaller .scrollable} 
 
 Last week's confidence intervals and today's hypothesis tests are two sides of the same coin:
 
@@ -326,7 +338,7 @@ df_ci <- tibble(
   est   = c(0.449, 0.21),
   lo    = c(0.420, 0.18),
   hi    = c(0.478, 0.24),
-  col   = c("#E15759", "#4E79A7")
+  col   = c("#4E79A7", "#E15759")
 )
 
 ggplot(df_ci, aes(x = est, y = label, color = col)) +
@@ -359,37 +371,25 @@ Testing associations involving a continuous outcome variable
 
 ## Three Common Tests {.smaller}
 
-| Test | When to use | Key statistic | Distribution |
+| Test | When to use | Key statistic | Example |
 |---|---|--|----|
-| **One-sample t-test** | Continuous variable; test if $\bar{x} = \mu$ | t-score | t ($df = n-1$) |
-| **Two-sample t-test** | Compare means of two groups | t-score | t ($df \approx n_1+n_2-2$) |
-| **Proportion test** | Binary variable; test if $\hat{p} = P$ | z-score | Normal |
+| **One-sample t-test** | Comparing sample to population; $\bar{x} = \mu$ | t-score | Do Berkeley students work more than 20 hrs/week on average? |
+| **Two-sample t-test** | Comparing means of two groups; $\bar{x_1} = \bar{x_2}$ | t-score | Do men and women differ in hours worked per week? |
+| **Proportion test** | Testing proportions; test if $\hat{p} = P$ | z-score | Is union membership among women different from 20%? |
 
 ::: {.callout-note icon=false}
 ## All three tests follow the same steps:
 
 (1) state $H_0$
-(2) compute a test statistic measuring how far the sample result is from $H_0$
-(3) find the p-value under the null distribution
-(4) decide
-:::
-
-## Writing Up Results: Best Practices {.smaller}
-
-::: {.callout-tip icon=false}
-## Every hypothesis test write-up should include:
-
-1. **The sample statistic** (mean, proportion, or difference) — not just the p-value
-2. **The test statistic** and **p-value**
-3. **Whether you reject or fail to reject $H_0$**, at $\alpha = 0.05$
-4. **A plain-language interpretation** connecting the result to your research question
-
-**One-tailed test caveat:** If you use a one-tailed test (e.g., $H_1: \mu < 40$) but the sample result goes in the *opposite* direction, you **still fail to reject** $H_0$.
-
-**Confidence intervals:** A 95% CI alongside your test tells the reader the range of plausible values — pair this with the test whenever you can.
+(2) choose one- or two-tailed
+(3) compute a test statistic measuring how far the sample result is from $H_0$
+(4) find the p-value under the null distribution
+(5) decide
 :::
 
 ## Test 1: One-Sample t-Test for a Mean {.smaller .scrollable}
+
+Compare the sample to the population. 
 
 ::: {.panel-tabset}
 
@@ -452,88 +452,42 @@ t1_result
 
 ::: {.callout-note icon=false}
 ## Reading the `t.test()` output:
-- **t** = `r round(t1_result$statistic, 2)`: the sample mean is `r round(abs(t1_result$statistic), 2)` SEs from $\mu_0 = 40$
-- **df** = `r round(t1_result$parameter, 0)`: degrees of freedom ($n - 1$)
-- **p-value** = `r round(t1_result$p.value, 4)`: probability of a result this extreme if $H_0$ were true
-- **95% CI**: [`r round(t1_result$conf.int[1], 2)`, `r round(t1_result$conf.int[2], 2)`] — plausible range for the true population mean
-- **mean of x** = `r round(t1_result$estimate, 2)`: sample mean $\bar{x}$
+- **t = `r round(t1_result$statistic, 2)`**: our sample mean (`r round(t1_result$estimate, 2)` hrs) is `r round(abs(t1_result$statistic), 2)` standard errors above the null value of 40 — that is a large distance
+- **df = `r round(t1_result$parameter, 0)`**: degrees of freedom ($n - 1$); we have a large sample
+- **p-value < 0.001**: if the true mean were exactly 40 hrs, a result this extreme would occur less than 0.1% of the time — very strong evidence against $H_0$
+- **95% CI [`r round(t1_result$conf.int[1], 2)`, `r round(t1_result$conf.int[2], 2)`]**: we are 95% confident the true mean is between `r round(t1_result$conf.int[1], 2)` and `r round(t1_result$conf.int[2], 2)` hrs — this range does not include 40, confirming we reject $H_0$
+- **mean of x = `r round(t1_result$estimate, 2)`**: sample mean hours worked per week
 :::
 
 ### Interpretation
 
-::: {.callout-tip icon=false}
-## How to write up results:
-State the sample mean, test statistic, p-value, and conclusion:
+**The sample mean hours worked per week was `r round(t1_result$estimate, 2)` hours.** A one-sample t-test showed this is significantly different from 40 hours ($p$ < 0.001). We **reject $H_0$; we accept $H_1$**: U.S. adults in this sample work significantly more than a standard 40-hour week.
 
-*"The mean hours worked per week in the sample was [`x̄`] hours (SD = s). A one-sample t-test showed this was [significantly / not significantly] different from 40 hours (pvalue = p)."*
-:::
+The 95% CI [`r round(t1_result$conf.int[1], 2)`, `r round(t1_result$conf.int[2], 2)`] does not contain 40 — this is the CI equivalent of rejecting $H_0$ at $\alpha = 0.05$.
 
-::: {.callout-note icon=false}
-## Why the reject/fail-to-reject decision matters:
-**When we reject $H_0$:** the sample result is too unlikely to be explained by chance alone — we conclude there is a real difference in the population, not just sampling noise.
-
-**When we fail to reject $H_0$:** we are *not* saying the null is true. We simply lack sufficient evidence to doubt it. The effect may be real but small, or the sample too small to detect it — this is why we say "fail to reject," never "accept."
-:::
-
-:::
-
-## Worked Example: White San Franciscans' Income {.smaller .scrollable}
-
-::: {.panel-tabset}
-
-### Scenario
-
-The mean income for a sample of $n = 100$ White San Franciscans is **\$48,000**. The average income for all San Franciscans is **\$55,000** (the known population value). The sample standard deviation is $s = \$35,000$.
-
-**Research claim:** We believe that the average income of the *population* of White San Franciscans is **lower** than the average income of all San Franciscans.
-
-**Question:** Write the hypothesis notation and specify whether this is a one- or two-tailed test.
-
-### Step 1 — Hypotheses
-
-::: {.fragment .fade-up}
-**Null hypothesis:** The mean income of White San Franciscans equals the city-wide average:
-
-$$H_0: \mu = \$55{,}000$$
-:::
-
-::: {.fragment .fade-up}
-**Alternative hypothesis:** The mean income of White San Franciscans is *lower than* the city-wide average:
-
-$$H_1: \mu < \$55{,}000$$
-:::
-
-### Step 2 — One or Two-Tailed?
-
-**One-tailed (lower tail)** — because the research hypothesis makes a specific directional prediction.
-
-::: {.callout-tip icon=false}
-## The logic:
-We are not asking whether White San Franciscans earn *differently* from average San Franciscans — we have a specific prediction: they earn *less*. So the entire rejection region ($\alpha = 5\%$) goes in the **lower tail**.
-
-If we had no directional prediction, we would use a two-tailed test.
-:::
-
-### Step 3 — Test Statistic
-
-$$SE = \frac{s}{\sqrt{n}} = \frac{35{,}000}{\sqrt{100}} = 3{,}500$$
-
-$$t = \frac{\bar{x} - \mu_0}{SE} = \frac{48{,}000 - 55{,}000}{3{,}500} = \frac{-7{,}000}{3{,}500} = -2.0 \qquad (df = n - 1 = 99)$$
-
-### Step 4 — p-value and Decision
-
-For a **one-tailed lower test**, compute $P(t < -2.0)$ with $df = 99$:
-
-$$p = \text{pt}(-2.0, \, df = 99) \approx 0.024$$
-
-Since $p = 0.024 < \alpha = 0.05$, we **reject $H_0$**.
-
-::: {.callout-note icon=false}
-## Conclusion:
-The mean income of White San Franciscans in our sample (\$48,000) is significantly *lower* than the average income for all San Franciscans (\$55,000) at the 5% significance level ($t$(99) = −2.0, $p$ = 0.024). We have evidence that this gap is not due to sampling error alone.
-:::
+```{r}
+#| echo: false
+#| fig-height: 1.6
+#| fig-align: center
+tibble(
+  label = "Mean hours worked",
+  est   = as.numeric(t1_result$estimate),
+  lo    = t1_result$conf.int[1],
+  hi    = t1_result$conf.int[2]
+) |>
+  ggplot(aes(x = est, y = label)) +
+  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0.12, linewidth = 1.2, color = "#4E79A7") +
+  geom_point(size = 4, color = "#4E79A7") +
+  geom_vline(xintercept = 40, linetype = "dashed", color = "#E15759", linewidth = 1) +
+  annotate("text", x = 40, y = 1.35, label = "H₀: μ = 40", color = "#E15759", size = 3.2) +
+  labs(x = "Hours per week", y = NULL, title = "95% CI for mean hours worked — does it contain 40?") +
+  theme_minimal(base_size = 10) +
+  theme(plot.title = element_text(hjust = 0.5, size = 10),
+        axis.text.y = element_text(size = 9))
+```
 
 :::
+
 
 ## Test 2: Two-Sample t-Test {.smaller .scrollable}
 
@@ -569,60 +523,46 @@ t2_result
 
 ::: {.callout-note icon=false}
 ## Reading the `t.test()` output:
-- **t** = `r round(t2_result$statistic, 2)`: test statistic for the difference in means
-- **df** = `r round(t2_result$parameter, 1)`: Welch's adjusted degrees of freedom
-- **p-value** = `r round(t2_result$p.value, 3)`: probability of observing a difference this large if $H_0$ is true
-- **95% CI**: [`r round(t2_result$conf.int[1], 2)`, `r round(t2_result$conf.int[2], 2)`] — plausible range for the true *difference* in means ($\mu_1 - \mu_2$)
+- **t = `r round(t2_result$statistic, 2)`**: the observed difference in means (`r round(t2_result$estimate[1], 2)` − `r round(t2_result$estimate[2], 2)` = `r round(t2_result$estimate[1] - t2_result$estimate[2], 2)` hrs) is `r round(abs(t2_result$statistic), 2)` standard errors from zero
+- **df = `r round(t2_result$parameter, 1)`**: Welch's adjusted degrees of freedom (R accounts for unequal variances)
+- **p-value = `r round(t2_result$p.value, 3)`**: a difference this large would occur `r round(t2_result$p.value * 100, 1)`% of the time by chance if $H_0$ were true — does not clear $\alpha = 0.05$
+- **95% CI [`r round(t2_result$conf.int[1], 2)`, `r round(t2_result$conf.int[2], 2)`]**: plausible range for the true difference $\mu_{\text{union}} - \mu_{\text{non-union}}$ — this interval **contains 0**, consistent with failing to reject $H_0$
 - **means**: union = `r round(t2_result$estimate[1], 2)` hrs, non-union = `r round(t2_result$estimate[2], 2)` hrs
 :::
 
-### Visualization
+### Interpretation
+
+**Union members worked an average of `r round(t2_result$estimate[1], 2)` hours per week, compared to `r round(t2_result$estimate[2], 2)` hours for non-members** (difference = `r round(t2_result$estimate[1] - t2_result$estimate[2], 2)` hrs). A two-sample t-test showed this difference was not statistically significant ($p$ = `r round(t2_result$p.value, 3)`). We **fail to reject $H_0$**: we cannot conclude union members work different hours than non-members.
+
+The 95% CI on the difference [`r round(t2_result$conf.int[1], 2)`, `r round(t2_result$conf.int[2], 2)`] includes 0 — consistent with failing to reject $H_0$ at $\alpha = 0.05$.
 
 ```{r}
 #| echo: false
-#| warning: false
-#| fig-height: 2.8
+#| fig-height: 1.6
 #| fig-align: center
-
-t_obs  <- as.numeric(t2_result$statistic)
-df_val <- as.numeric(t2_result$parameter)
-x_seq  <- seq(-5, 5, 0.001)
-df_t   <- tibble(x = x_seq, y = dt(x_seq, df = df_val))
-
-ggplot(df_t, aes(x, y)) +
-  geom_area(data = filter(df_t, x < -abs(t_obs)), fill = "#E15759", alpha = 0.6) +
-  geom_area(data = filter(df_t, x >  abs(t_obs)), fill = "#E15759", alpha = 0.6) +
-  geom_area(data = filter(df_t, x >= -abs(t_obs), x <= abs(t_obs)),
-            fill = "#4E79A7", alpha = 0.2) +
-  geom_line(color = "#4E79A7", linewidth = 1) +
-  geom_vline(xintercept = c(-abs(t_obs), abs(t_obs)),
-             color = "#E15759", linetype = "dashed") +
-  annotate("text", x = abs(t_obs) + 0.15,
-           y = dt(abs(t_obs), df_val) + 0.04,
-           label = paste0("t = ", round(abs(t_obs), 2)),
-           color = "#E15759", size = 3.2, hjust = 0) +
-  labs(x = "t-statistic", y = "Density",
-       title = "Two-sample t-test: union vs. non-union hours worked") +
+tibble(
+  label = "Union − Non-union (hrs/week)",
+  est   = t2_result$estimate[1] - t2_result$estimate[2],
+  lo    = t2_result$conf.int[1],
+  hi    = t2_result$conf.int[2]
+) |>
+  ggplot(aes(x = est, y = label)) +
+  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0.12, linewidth = 1.2, color = "#4E79A7") +
+  geom_point(size = 4, color = "#4E79A7") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "#E15759", linewidth = 1) +
+  annotate("text", x = 0, y = 1.35, label = "H₀: diff = 0", color = "#E15759", size = 3.2) +
+  labs(x = "Difference in hours per week", y = NULL,
+       title = "95% CI for difference in means — does it contain 0?") +
   theme_minimal(base_size = 10) +
-  theme(plot.title = element_text(hjust = 0.5, size = 10))
+  theme(plot.title = element_text(hjust = 0.5, size = 10),
+        axis.text.y = element_text(size = 9))
 ```
 
-### Writing Up Differences
-
-::: {.callout-note icon=false}
-## Always report the group statistics — not just the test result!
-When reporting a two-sample test:
-
-1. **State the mean of each group** — the reader wants to know *which* group is higher and *how big* the gap is
-2. **Report the test statistic and p-value**
-3. **State the decision** — reject or fail to reject
-
-*"Union members worked an average of [x̄₁] hours per week (SD = s₁), compared to [x̄₂] hours for non-members (SD = [s₂]). A two-sample t-test showed this difference was [significant / not significant] (pvalue = p)."*
 :::
 
-:::
+## Test 3: Testing a Proportion {.smaller .scrollable}
 
-## Test 3: Hypothesis Test for a Proportion {.smaller .scrollable}
+We follow the same set up, but use a slightly different distribution. 
 
 ::: {.panel-tabset}
 
@@ -679,57 +619,113 @@ t3_result
 
 ::: {.callout-note icon=false}
 ## Reading the `prop.test()` output:
-- **X-squared** = `r round(t3_result$statistic, 2)`: the test statistic ($\chi^2 = z^2$; equivalent to a z-test for proportions)
-- **p-value** = `r round(t3_result$p.value, 4)`: probability of a proportion this far from 0.20 if $H_0$ were true
-- **95% CI**: [`r round(t3_result$conf.int[1], 3)`, `r round(t3_result$conf.int[2], 3)`] — plausible range for the true population proportion $\pi$
-- **sample estimates: p** = `r round(t3_result$estimate, 3)`: your sample proportion $\hat{p}$
+- **X-squared = `r round(t3_result$statistic, 2)`**: the test statistic ($z^2$); our sample proportion is `r round(abs(sqrt(t3_result$statistic)), 2)` standard errors from the null value of 0.20
+- **p-value = `r round(t3_result$p.value, 4)`**: if the true proportion were exactly 20%, a result this far away would occur `r round(t3_result$p.value * 100, 1)`% of the time — this is our evidence against $H_0$
+- **95% CI [`r round(t3_result$conf.int[1], 3)`, `r round(t3_result$conf.int[2], 3)`]**: plausible range for the true union membership rate — check whether this contains 0.20
+- **p = `r round(t3_result$estimate, 3)`**: our sample union membership rate ($\hat{p}$)
 
 *Note: `correct = FALSE` turns off the continuity correction — appropriate when $n$ is large.*
 :::
 
-### Visualization
+### Interpretation
+
+**The sample union membership rate was `r round(t3_result$estimate, 3)` (`r round(t3_result$estimate * 100, 1)`%).** A proportion test showed this was `r ifelse(t3_result$p.value < 0.05, "significantly", "not significantly")` different from 20% ($p$ = `r round(t3_result$p.value, 4)`). We **`r ifelse(t3_result$p.value < 0.05, "reject $H_0$; we accept $H_1$", "fail to reject $H_0$")`**.
+
+The 95% CI [`r round(t3_result$conf.int[1], 3)`, `r round(t3_result$conf.int[2], 3)`] does not contain 0.20 — the null value falls entirely outside the plausible range for the true proportion, confirming we reject $H_0$.
 
 ```{r}
 #| echo: false
-#| warning: false
-#| fig-height: 3.2
+#| fig-height: 1.6
 #| fig-align: center
-
-p_hat_v <- mean(attain$union_member, na.rm = TRUE)
-n_v     <- sum(!is.na(attain$union))
-p0_v    <- 0.20
-se_v    <- sqrt(p0_v * (1 - p0_v) / n_v)
-z_v     <- (p_hat_v - p0_v) / se_v
-
-x_seq <- seq(-5, 5, 0.001)
-df_z  <- tibble(x = x_seq, y = dnorm(x_seq))
-
-ggplot(df_z, aes(x, y)) +
-  geom_area(data = filter(df_z, x < -abs(z_v)), fill = "#E15759", alpha = 0.6) +
-  geom_area(data = filter(df_z, x >  abs(z_v)), fill = "#E15759", alpha = 0.6) +
-  geom_area(data = filter(df_z, x >= -abs(z_v), x <= abs(z_v)),
-            fill = "#4E79A7", alpha = 0.2) +
-  geom_line(color = "#4E79A7", linewidth = 1) +
-  geom_vline(xintercept = c(-abs(z_v), abs(z_v)),
-             color = "#E15759", linetype = "dashed") +
-  annotate("text", x =  abs(z_v) + 0.15, y = 0.06,
-           label = paste0("z = ", round(abs(z_v), 2)),
-           color = "#E15759", size = 3.2, hjust = 0) +
-  annotate("text", x = -abs(z_v) - 0.15, y = 0.06,
-           label = paste0("z = -", round(abs(z_v), 2)),
-           color = "#E15759", size = 3.2, hjust = 1) +
-  annotate("text", x = 0, y = 0.20, label = "Fail to reject H₀",
-           color = "#4E79A7", size = 3.2) +
-  annotate("text", x =  3.5, y = 0.09, label = "Reject\nH₀",
-           color = "#E15759", size = 2.8, hjust = 0.5) +
-  annotate("text", x = -3.5, y = 0.09, label = "Reject\nH₀",
-           color = "#E15759", size = 2.8, hjust = 0.5) +
-  labs(x = "z-score", y = "Density",
-       title = paste0("Two-tailed z-test | H₀: π = 0.20 | p-value = ",
-                      round(2 * pnorm(-abs(z_v)), 4))) +
+tibble(
+  label = "Union membership rate",
+  est   = as.numeric(t3_result$estimate),
+  lo    = t3_result$conf.int[1],
+  hi    = t3_result$conf.int[2]
+) |>
+  ggplot(aes(x = est, y = label)) +
+  geom_errorbarh(aes(xmin = lo, xmax = hi), height = 0.12, linewidth = 1.2, color = "#4E79A7") +
+  geom_point(size = 4, color = "#4E79A7") +
+  geom_vline(xintercept = 0.20, linetype = "dashed", color = "#E15759", linewidth = 1) +
+  annotate("text", x = 0.20, y = 1.35, label = "H₀: π = 0.20", color = "#E15759", size = 3.2) +
+  scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(x = "Proportion", y = NULL,
+       title = "95% CI for union membership rate — does it contain 20%?") +
   theme_minimal(base_size = 10) +
-  theme(plot.title = element_text(hjust = 0.5, size = 10))
+  theme(plot.title = element_text(hjust = 0.5, size = 10),
+        axis.text.y = element_text(size = 9))
 ```
+
+:::
+
+## Worked Example: Household Income {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Scenario
+
+Using the GSS `attain` dataset, we test whether respondents' mean household income differs from the **U.S. national median household income of \$30,000** (1991 Census benchmark, the year these data were collected).
+
+The `income91` variable records household income as midpoints of GSS income brackets (e.g., \$500, \$2,000 … \$100,000).
+
+**Research question:** Does mean household income in the GSS sample differ from the national median?
+
+**Question:** Write the hypothesis notation and specify whether this is a one- or two-tailed test.
+
+### Step 1 — Hypotheses
+
+::: {.fragment .fade-up}
+**Null hypothesis:** Mean household income in the sample equals the national median:
+
+$$H_0: \mu = \$30{,}000$$
+:::
+
+::: {.fragment .fade-up}
+**Alternative hypothesis:** Mean household income is *different from* the national median:
+
+$$H_1: \mu \neq \$30{,}000$$
+:::
+
+### Step 2 — One or Two-Tailed?
+
+**Two-tailed** — the research question asks whether income differs, not specifically whether it is higher or lower.
+
+::: {.callout-tip icon=false}
+## The logic:
+We have no directional prediction going in — the GSS sample could plausibly earn more *or* less than the national median. So we split the rejection region ($\alpha = 5\%$) equally across **both tails** (2.5% each). This is the more conservative and more common choice in social science.
+:::
+
+### Step 3 — Test Statistic
+
+```{r}
+#| echo: true
+#| eval: true
+
+inc_clean <- attain |> filter(!is.na(income91))
+
+we_result <- t.test(inc_clean$income91, mu = 30000)
+we_result
+```
+
+### Step 4 — p-value
+
+```{r}
+#| echo: true
+#| eval: true
+
+cat("p-value =", format.pval(we_result$p.value), "\n")
+```
+
+Since `t.test()` runs a two-tailed test by default, the p-value already reflects both tails.
+
+### Step 5 — Decision and Conclusion
+
+Since $p < 0.001 < \alpha = 0.05$, we **reject $H_0$; we accept $H_1$**.
+
+::: {.callout-note icon=false}
+## Conclusion:
+The mean household income in our sample (\$`r format(round(we_result$estimate), big.mark=",")`)) is significantly *higher* than the national median of \$30,000 ($p$ < 0.001). The 95% CI [\$`r format(round(we_result$conf.int[1]), big.mark=",")`, \$`r format(round(we_result$conf.int[2]), big.mark=",")`] does not contain \$30,000, confirming we reject $H_0$. GSS respondents earn more than the national median, and this gap is unlikely to be due to sampling error alone.
+:::
 
 :::
 
@@ -747,13 +743,14 @@ Every test we've covered this week asks the same fundamental question: **is ther
 |---|---|---|---|
 | Is a proportion = $P$? | Binary | — | z-test |
 | Is a mean = $\mu_0$? | Continuous | — | one-sample t-test |
-| Do two group means differ? | Continuous | Binary/categorical | **two-sample t-test** |
+| Do two group means differ? | Continuous | Binary (2 groups) | **two-sample t-test** |
+| Do 3+ group means differ? | Continuous | Categorical (3+ groups) | ANOVA *(not covered)* |
 | Are two categorical variables independent? | Categorical | Categorical | **chi-squared test** |
 
 ::: {.callout-note icon=false}
 ## The key decision:
-Is your outcome variable **continuous**? → use a t-test.
-Is your outcome variable **categorical**? → use chi-squared.
+Is your outcome variable **continuous**? → use a t-test (or ANOVA for 3+ groups).
+Is your outcome variable **categorical**? → use chi-squared. Note: chi-squared works for *any* number of categories — not just binary variables.
 :::
 
 ## t-Tests vs. Chi-Squared: Parallel Logic {.smaller}
@@ -771,7 +768,7 @@ Both tests ask "Is $X$ related to $Y$?" — for different variable combinations:
 - **$H_0$:** $\mu_{\text{union}} = \mu_{\text{non-union}}$
 - **Test stat:** $t = (\bar{x}_1 - \bar{x}_2) / SE_{\text{diff}}$, compared to t-distribution
 
-*Our example:* Do union members work a different number of hours than non-members?
+*Our example:* Do union members work a different number of hours than non-members? Focusing on the difference in means between the two groups.
 
 ### Chi-Squared
 
@@ -793,7 +790,7 @@ Both tests ask "Is $X$ related to $Y$?" — for different variable combinations:
 | **Group type** | Binary/categorical | Categorical |
 | **Test statistic** | $t$ | $\chi^2$ |
 | **Distribution** | t ($df = n_1+n_2-2$) | $\chi^2$ ($df = (I{-}1)(J{-}1)$) |
-| **Measure of effect** | Difference in means | Diff. in proportions / RRR |
+| **Measure of effect** | Difference in means | Difference in proportions |
 | **In R** | `t.test(x, y)` | `chisq.test(table)` |
 
 :::
@@ -804,19 +801,6 @@ Does your research question compare a **continuous** outcome across groups? → 
 Does it compare the **rates** of a categorical outcome across groups? → chi-squared.
 :::
 
-## Connecting to Previous Tests {.smaller}
-
-| What we've tested | Variables | Method |
-|---|---|---|
-| Is a proportion = $P$? | 1 binary variable | z-test |
-| Is a mean = $\mu$? | 1 continuous variable | one-sample t-test |
-| Do two groups have the same mean? | 1 continuous + 1 binary | two-sample t-test |
-| **Are two categorical variables independent?** | **2 categorical variables** | **Chi-squared test** |
-
-::: {.callout-note icon=false}
-## Today's question:
-Is gender associated with union membership? Are race and environmental attitudes related? These questions involve **two categorical variables** — we need a new tool.
-:::
 
 ## Review: Contingency Tables {.smaller .scrollable}
 
@@ -832,16 +816,6 @@ A **contingency table** shows the joint distribution of two categorical variable
 | **Male** | $n_{21}$ | $n_{22}$ | $n_{2\bullet}$ |
 | **Total** | $n_{\bullet 1}$ | $n_{\bullet 2}$ | $n$ |
 
-### Relative Frequencies
-
-**Relative (marginal) frequency**: the proportion of one variable's categories, *within* categories of another variable
-
-$$p_{X=i \mid Y=j} = \frac{n_{X=i,\, Y=j}}{n_{Y=j}}$$
-
-**Example:** Among female respondents, what proportion are union members?
-
-$$p_{\text{union} \mid \text{female}} = \frac{n_{\text{union, female}}}{n_{\text{female}}}$$
-
 ### In R
 
 ```{r}
@@ -852,7 +826,7 @@ attain_ct <- attain |>
   filter(!is.na(union), !is.na(sex)) |>
   mutate(union_lab = if_else(union_member == 1, "Union", "Non-member"))
 
-# Absolute frequency table
+# Count table with row and column totals
 tab <- table(attain_ct$sex, attain_ct$union_lab)
 addmargins(tab)
 
@@ -914,23 +888,16 @@ where $n_{ij}$ = observed and $\hat{n}_{ij}$ = expected count in cell $(i, j)$
 #| echo: true
 #| eval: true
 
+attain_ct |>
+  count(sex, union_lab) |>
+  pivot_wider(names_from = union_lab, values_from = n) |>
+  mutate(Total = `Non-member` + Union)
+
 tab <- table(attain_ct$sex, attain_ct$union_lab)
-addmargins(tab)
+
+# Row proportions: union rate within each sex
+round(prop.table(tab, margin = 1), 3)
 ```
-
-### Expected Counts
-
-Under $H_0$ (independence), expected count = (row total × column total) / $n$:
-
-```{r}
-#| echo: true
-#| eval: true
-
-chisq_result <- chisq.test(tab, correct = FALSE)
-round(chisq_result$expected, 1)
-```
-
-*All expected counts ≥ 5? The chi-squared approximation is valid if so.*
 
 ### Chi-Squared Test
 
@@ -938,39 +905,29 @@ round(chisq_result$expected, 1)
 #| echo: true
 #| eval: true
 
-chisq.test(tab, correct = FALSE)
+chisq_result <- chisq.test(tab, correct = FALSE)
+round(chisq_result$expected, 1)  # verify all expected counts ≥ 5
+chisq_result
 ```
 
-*`correct = FALSE` turns off Yates' continuity correction — standard for 2×2 tables when all expected counts ≥ 5*
+*`correct = FALSE` turns off Yates' continuity correction — standard when all expected counts ≥ 5*
 
 ### Interpretation
 
-::: {.callout-note icon=false}
-## How to interpret chi-squared:
-- **Reject $H_0$** ($p < 0.05$): significant association between sex and union membership
-- **Fail to reject $H_0$** ($p \geq 0.05$): data are consistent with independence
+Men were 7.8 percentage points more likely to be union members than women (17.3% vs. 9.5%). A chi-squared test showed this association was statistically significant ($\chi^2$(1) = 26.3, $p$ < 0.001). We **reject $H_0$; we accept $H_1$**: sex and union membership are not independent in this sample.
 
-**Important:** The chi-squared test only tells you *whether* there is an association — **not how strong** it is or **which direction**. For that, you need measures of association.
+::: {.callout-note icon=false}
+## Important:
+Chi-squared only tells you *whether* an association exists — not its direction or magnitude. Always supplement with a difference in proportions.
 :::
 
 :::
 
 ## Worked Example 2: Sex and Educational Attainment {.smaller .scrollable}
 
+$H_0$: Sex and college attainment are independent. $H_1$: They are not. $\alpha = 0.05$.
+
 ::: {.panel-tabset}
-
-### Setup
-
-**Research question:** Is there a significant association between sex and having a college degree?
-
-- $H_0$: Sex and college attainment are **independent** — knowing someone's sex tells us nothing about whether they have a degree
-- $H_1$: Sex and college attainment are **not independent** — there is an association
-- Significance level: $\alpha = 0.05$
-
-| | No college degree | College degree | **Total** |
-|---|---|---|---|
-| **Female** | ? | ? | ? |
-| **Male** | ? | ? | ? |
 
 ### R Code
 
@@ -978,27 +935,19 @@ chisq.test(tab, correct = FALSE)
 #| echo: true
 #| eval: true
 
-# Create binary college degree variable
 attain_deg <- attain |>
   filter(!is.na(sex), !is.na(degree)) |>
   mutate(college = if_else(degree %in% c("bachelor", "graduate"), "College+", "No college"))
 
+attain_deg |>
+  count(sex, college) |>
+  pivot_wider(names_from = college, values_from = n) |>
+  mutate(Total = `College+` + `No college`)
+
 tab2 <- table(attain_deg$sex, attain_deg$college)
-addmargins(tab2)
-
-# Verify expected counts ≥ 5
-round(chisq.test(tab2, correct = FALSE)$expected, 1)
-
-# Run the chi-squared test
+round(chisq.test(tab2, correct = FALSE)$expected, 1)  # verify ≥ 5
 chisq.test(tab2, correct = FALSE)
 ```
-
-::: {.callout-note icon=false}
-## Reading the output:
-- **X-squared**: the $\chi^2$ test statistic
-- **df**: $(I-1)(J-1) = (2-1)(2-1) = 1$ for a 2×2 table
-- **p-value**: probability of a $\chi^2$ this large if sex and degree were independent
-:::
 
 ### Measures
 
@@ -1006,41 +955,34 @@ chisq.test(tab2, correct = FALSE)
 #| echo: true
 #| eval: true
 
-tab_rel2     <- prop.table(tab2, margin = 1)
-round(tab_rel2, 3)
+attain_deg |>
+  count(sex, college) |>
+  group_by(sex) |>
+  mutate(prop = round(n / sum(n), 3)) |>
+  select(-n) |>
+  pivot_wider(names_from = college, values_from = prop)
 
-diff_college <- tab_rel2["female", "College+"] - tab_rel2["male", "College+"]
-rr_college   <- tab_rel2["female", "College+"] / tab_rel2["male", "College+"]
+college_props <- attain_deg |>
+  count(sex, college) |>
+  group_by(sex) |>
+  mutate(prop = n / sum(n)) |>
+  filter(college == "College+")
 
-cat("College rate — female:", round(tab_rel2["female", "College+"], 3), "\n")
-cat("College rate — male:  ", round(tab_rel2["male",   "College+"], 3), "\n")
-cat("\nDifference in proportions:", round(diff_college, 3), "\n")
-cat("Relative risk ratio:      ", round(rr_college,   3), "\n")
+cat("Difference in proportions:", round(college_props$prop[1] - college_props$prop[2], 3), "\n")
 ```
 
 ### Interpretation
 
-::: {.callout-note icon=false}
-## How to write up the result:
-Report the association direction, the chi-squared statistic, df, p-value, and a measure of effect:
-
-*"Women were [X] percentage points [more / less] likely than men to have a college degree (difference in proportions = [X]). A chi-squared test showed this association was [significant / not significant] ($\chi^2$(1) = [value], $p$ = [p])."*
-:::
-
-:::
-
-## Writing Up Chi-Squared Results {.smaller}
+Women were 3.3 percentage points *less* likely than men to have a college degree (22.5% vs. 25.8%). A chi-squared test showed this association was statistically significant ($\chi^2$(1) = 4.3, $p$ = 0.038). We **reject $H_0$; we accept $H_1$**: sex and college attainment are not independent in this sample.
 
 ::: {.callout-tip icon=false}
-## A complete chi-squared write-up includes:
+## Writing up chi-squared results — always include:
+1. **The group rates** — which group is higher and by how much?
+2. **The test result** — $\chi^2$(df), $p$-value
+3. **The decision** — reject $H_0$; accept $H_1$ / fail to reject $H_0$
+4. **Plain-language conclusion** tied to the research question
+:::
 
-1. **Description of the table**: e.g., "Table 1 shows the distribution of union membership by sex"
-2. **Chi-squared statistic and p-value**: $\chi^2$(df) = [value], $p$ = [value]
-3. **Decision**: reject or fail to reject $H_0$
-4. **A measure of association** describing the *direction* and *magnitude* of the relationship
-5. **Plain-language interpretation** tied to the research question
-
-*Example: "Men were [X] percentage points more likely to be union members than women (difference in proportions = [X]). A chi-squared test showed this association was [significant / not significant] ($\chi^2$(1) = [value], $p$ = [p])."*
 :::
 
 ## Questions?
@@ -1051,33 +993,37 @@ Report the association direction, the chi-squared statistic, df, p-value, and a 
 
 ### Part 1 — Logic
 
-- A hypothesis test asks: *if $H_0$ were true, how likely is our data?*
-- The **p-value** is P(data this extreme | $H_0$ true) — NOT the probability $H_0$ is true
-- Reject $H_0$ when $p < \alpha$; fail to reject (not "accept") when $p \geq \alpha$
-- Default to two-tailed; one-tailed only with strong pre-specified directional theory
+- A hypothesis test asks: *if the null were true, how likely is our data?*
+- The **p-value** is the probability of seeing a result this extreme if the null were true — NOT the probability the null is true
+- Reject the null when p < 0.05; otherwise fail to reject (never "accept" the null)
+- Default to two-tailed; use one-tailed only when theory predicts a specific direction
 
 ::: {.callout-note icon=false}
 ## Connection to Week 8:
-If the 95% CI **does not contain** $\mu_0$ → reject $H_0$ at $\alpha = 0.05$. Tests and CIs are two sides of the same coin.
+If the 95% CI does **not** contain the null value → reject the null at 0.05. Tests and CIs are two sides of the same coin.
 :::
 
-### Part 2 — t-Tests
+### Part 2 — Tests
 
-- **One-sample t-test**: $t = (\bar{x} - \mu_0) / (s/\sqrt{n})$; use `t.test(x, mu = μ₀)`
-- **Two-sample t-test**: compare group means; use `t.test(x, y)`
-- **Proportion test**: use `prop.test(x, n, p = π₀)` — SE uses **null value** $\pi_0$
+| Test | Use when | R function | Example |
+|---|---|---|---|
+| One-sample t-test | Is the mean = some value? | `t.test(x, mu = value)` | Do GSS respondents earn differently from $30,000? |
+| Two-sample t-test | Do two group means differ? | `t.test(x, y)` | Do union members work more hours than non-members? |
+| Proportion test | Is a proportion = some value? | `prop.test(x, n, p = value)` | Is union membership different from 20%? |
+| Chi-squared | Are two categorical variables independent? | `chisq.test(table)` | Is union membership associated with sex? |
 
-Always report: sample statistic, t (or z), p-value, and a plain-language conclusion.
+Always report: the group statistic(s), the p-value, your decision, and a plain-language conclusion.
 
 ### Part 3 — Chi-Squared
 
-- Tests independence of two **categorical** variables
-- $\chi^2 = \sum (n_{ij} - \hat{n}_{ij})^2 / \hat{n}_{ij}$; use `chisq.test(table)`
+- Tests whether two **categorical** variables are independent
+- Compares the counts you *observed* to what you'd *expect* if there were no relationship
 - All expected counts must be ≥ 5
-- Chi-squared says *whether* there's an association — not direction or strength
-- Always supplement with **difference in proportions** or **RRR**
+- Only tells you *whether* an association exists — not direction or strength
+- Always supplement with a **difference in proportions**
 
 :::
+
 
 ## Why This Matters for the Rest of the Course {.smaller}
 

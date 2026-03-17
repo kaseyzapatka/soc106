@@ -193,7 +193,7 @@ Like any other skill, effective writing can be developed with practice and assis
 | 6 | 2/24 | Probability models of distributions | Lane p. 248-265 | HW #5 due 3/5 |
 | 7 | 3/3 | Sampling distributions | Lane p. 300-315, 319-321; [seeing theory- central limits theorem](https://seeing-theory.brown.edu/probability-distributions/index.html#section3) | HW #6 due 3/12 |
 | 8 | 3/10 | Estimates and confidence intervals | Lane p. 328-355, 358-359; [seeing theory-confidence intervals](https://seeing-theory.brown.edu/frequentist-inference/index.html#section2) | HW #7 due 3/19; annotated bibliography due 3/19 |
-| 9 | 3/17 | Hypothesis testing and power | Lane p. 369-391, 398-411, 448-457, 597-607 | HW #8 due 4/2 |
+| 9 | 3/17 | Hypothesis testing | Lane p. 369-391, 398-411, 448-457, 597-607 | HW #8 due 4/2 |
 | 10 | 3/24 | Spring Recess |
 | 11 | 3/31 | Linear regression | Lane p. 461-481; Thompson and Keith (Introduction p. 336-340, Data and Methods p.342-344, Results p. 344-348) | HW #9 due 4/9 |
 | 12 | 4/7 | Logistic regression | Freeman and Braconi (focus on Methodology, Results) | HW #10 due 4/16; revised proposal with outline due 4/16 |
