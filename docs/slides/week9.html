@@ -267,9 +267,9 @@
 <h2>Last Week: Recap</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -350,7 +350,11 @@
 <p>James Bond claims he can tell whether a martini is <strong>shaken or stirred</strong> just by tasting it.</p>
 <div class="fragment fade-up">
 <p><strong>The experiment:</strong> Give him 16 randomly prepared martinis. He correctly identifies <strong>13 out of 16</strong>.</p>
+</div>
+<div class="fragment fade-up">
 <p><strong>Null hypothesis (<span class="math inline">\(H_0\)</span>):</strong> He’s just guessing — each trial is a 50-50 coin flip (<span class="math inline">\(\pi = 0.5\)</span>)</p>
+</div>
+<div class="fragment fade-up">
 <p><strong>Alternative hypothesis (<span class="math inline">\(H_1\)</span>):</strong> He can genuinely tell the difference — he performs better than random guessing (<span class="math inline">\(\pi &gt; 0.5\)</span>)</p>
 </div>
 <div class="fragment fade-up">
@@ -383,8 +387,8 @@
 <p><strong>Critical misconception:</strong></p>
 </div>
 <div class="callout-content">
-<p>The p-value is <strong>NOT</strong> the probability that <span class="math inline">\(H_0\)</span> is true. The null hypothesis is either true or false — it doesn’t have a probability.</p>
-<p><strong>What it IS:</strong> The p-value is P(data this extreme | <span class="math inline">\(H_0\)</span> true) — the probability of observing results <em>at least this extreme</em>, assuming the null holds. It answers: <em>“if the null were true, how often would we see data like ours?”</em> — not <em>“how likely is the null to be true?”</em></p>
+<p><strong>What the p-value is NOT:</strong> the probability that <span class="math inline">\(H_0\)</span> is true. The null hypothesis is either true or false — it doesn’t have a probability.</p>
+<p><strong>What the p-value is :</strong> P(data this extreme | <span class="math inline">\(H_0\)</span> true) — the probability of observing results <em>at least this extreme</em>, assuming the null holds. It answers: <em>“if the null were true, how often would we see data like ours?”</em> — not <em>“how likely is the null to be true?”</em></p>
 </div>
 </div>
 </div>
@@ -445,7 +449,7 @@
 <div class="fragment fade-up">
 <ul>
 <li><strong>Most common:</strong> <span class="math inline">\(\alpha = 0.05\)</span> — we use this in this class</li>
-<li>Also used: <span class="math inline">\(\alpha = 0.01\)</span>, <span class="math inline">\(\alpha = 0.10\)</span></li>
+<li>Sometimes people use: <span class="math inline">\(\alpha = 0.01\)</span>, <span class="math inline">\(\alpha = 0.10\)</span></li>
 </ul>
 <p><strong>Decision rule:</strong></p>
 <table class="caption-top">
@@ -513,6 +517,7 @@
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -556,7 +561,7 @@
 <p>A <strong>one-tailed test</strong> checks for a significant effect in <em>one specific direction</em></p>
 <ul>
 <li><span class="math inline">\(H_0: \pi \leq 0.50\)</span> vs.&nbsp;<span class="math inline">\(H_1: \pi &gt; 0.50\)</span></li>
-<li>All of <span class="math inline">\(\alpha\)</span> is in one tail — easier to reject, but only in the predicted direction</li>
+<li>All of <span class="math inline">\(\alpha\)</span> is in one tail — <em>critical value is lower</em> — and therefore easier to reject <span class="math inline">\(H_0\)</span>, but only if the effect is in the predicted direction</li>
 </ul>
 <p><strong>James Bond (one-tailed):</strong> Did he perform <em>better than</em> random guessing?</p>
 <div class="cell">
@@ -571,7 +576,7 @@
 <p>A <strong>two-tailed test</strong> checks for a significant effect in <em>either direction</em></p>
 <ul>
 <li><span class="math inline">\(H_0: \pi = 0.50\)</span> vs.&nbsp;<span class="math inline">\(H_1: \pi \neq 0.50\)</span></li>
-<li><span class="math inline">\(\alpha\)</span> is split equally — 2.5% in each tail; <strong>more conservative and more common</strong> in social science</li>
+<li><span class="math inline">\(\alpha\)</span> is split equally — 2.5% in each tail — <em>critcal value is higher</em> ; <strong>more conservative and more common</strong> in social science</li>
 </ul>
 <p><strong>James Bond (two-tailed):</strong> Did he perform <em>differently from</em> random guessing?</p>
 <div class="cell">
@@ -635,8 +640,8 @@
 </div>
 </div>
 </section>
-<section id="cis-and-hypothesis-tests-are-connected" class="slide level2 smaller scrollable">
-<h2>CIs and Hypothesis Tests Are Connected</h2>
+<section id="cis-and-hypothesis-tests" class="slide level2 smaller scrollable">
+<h2>CIs and Hypothesis Tests</h2>
 <p>Last week’s confidence intervals and today’s hypothesis tests are two sides of the same coin:</p>
 <div class="fragment fade-up">
 <ul>

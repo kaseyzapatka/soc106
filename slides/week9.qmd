@@ -91,7 +91,7 @@ attain <- attain |>
 ## Last Week: Recap {.smaller}
 
 | Concept | Key idea | Example |
-|---|---|---|
+|--|---|---|
 | **Point estimate** | Best single guess for population parameter | $\hat{p} = 0.449$ (GSS env. support) |
 | **Standard error** | How uncertain is the estimate? | $SE(\hat{p}) = 0.015$ |
 | **Confidence interval** | Range likely to contain the true parameter | 95% CI: [0.420, 0.478] |
@@ -134,9 +134,13 @@ James Bond claims he can tell whether a martini is **shaken or stirred** just by
 
 ::: {.fragment .fade-up}
 **The experiment:** Give him 16 randomly prepared martinis. He correctly identifies **13 out of 16**.
+:::
 
+::: {.fragment .fade-up}
 **Null hypothesis ($H_0$):** He's just guessing — each trial is a 50-50 coin flip ($\pi = 0.5$)
+:::
 
+::: {.fragment .fade-up}
 **Alternative hypothesis ($H_1$):** He can genuinely tell the difference — he performs better than random guessing ($\pi > 0.5$)
 :::
 
@@ -168,9 +172,9 @@ A **p-value** is the probability of observing a test statistic **as extreme as (
 
 ::: {.callout-note icon=false}
 ## Critical misconception:
-The p-value is **NOT** the probability that $H_0$ is true. The null hypothesis is either true or false — it doesn't have a probability.
+**What the p-value is NOT:** the probability that $H_0$ is true. The null hypothesis is either true or false — it doesn't have a probability.
 
-**What it IS:** The p-value is P(data this extreme | $H_0$ true) — the probability of observing results *at least this extreme*, assuming the null holds. It answers: *"if the null were true, how often would we see data like ours?"* — not *"how likely is the null to be true?"*
+**What the p-value is :** P(data this extreme | $H_0$ true) — the probability of observing results *at least this extreme*, assuming the null holds. It answers: *"if the null were true, how often would we see data like ours?"* — not *"how likely is the null to be true?"*
 :::
 
 ### What p-values tell us
@@ -203,7 +207,7 @@ We set a **significance level** $\alpha$ in advance — the threshold below whic
 
 ::: {.fragment .fade-up}
 - **Most common:** $\alpha = 0.05$ — we use this in this class
-- Also used: $\alpha = 0.01$, $\alpha = 0.10$
+- Sometimes people use: $\alpha = 0.01$, $\alpha = 0.10$
 
 **Decision rule:**
 
@@ -229,6 +233,7 @@ Every decision has two possible mistakes:
 | **Reject $H_0$** | [Type I error]{.highlight} (false positive)  | Correct ✓ |
 | **Fail to reject $H_0$** | Correct ✓ | [Type II error]{.highlight} (false negative)|
 
+<br>
 
 ::: {.callout-note icon=false}
 ## In plain language: the paramedic
@@ -251,7 +256,6 @@ Here you'd want a very small $\alpha$ — the cost of the errors is not symmetri
 - Higher power (larger $N$) → less Type II risk, more Type I risk
 ::: 
 
-
 ## One- and Two-Tailed Tests {.smaller}
 
 ::: {.panel-tabset}
@@ -261,7 +265,7 @@ Here you'd want a very small $\alpha$ — the cost of the errors is not symmetri
 A **one-tailed test** checks for a significant effect in *one specific direction*
 
 - $H_0: \pi \leq 0.50$ vs. $H_1: \pi > 0.50$
-- All of $\alpha$ is in one tail — easier to reject, but only in the predicted direction
+- All of $\alpha$ is in one tail — *critical value is lower* — and therefore easier to reject $H_0$, but only if the effect is in the predicted direction
 
 **James Bond (one-tailed):** Did he perform *better than* random guessing?
 
@@ -278,7 +282,7 @@ A **one-tailed test** checks for a significant effect in *one specific direction
 A **two-tailed test** checks for a significant effect in *either direction*
 
 - $H_0: \pi = 0.50$ vs. $H_1: \pi \neq 0.50$
-- $\alpha$ is split equally — 2.5% in each tail; **more conservative and more common** in social science
+- $\alpha$ is split equally — 2.5% in each tail — *critcal value is higher* ; **more conservative and more common** in social science
 
 **James Bond (two-tailed):** Did he perform *differently from* random guessing?
 
@@ -312,7 +316,7 @@ Unless you have a strong, pre-specified theoretical reason to predict direction,
 
 :::
 
-## CIs and Hypothesis Tests Are Connected {.smaller .scrollable} 
+## CIs and Hypothesis Tests  {.smaller .scrollable} 
 
 Last week's confidence intervals and today's hypothesis tests are two sides of the same coin:
 
