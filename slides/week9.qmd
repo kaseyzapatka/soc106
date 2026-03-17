@@ -50,7 +50,7 @@ attain <- attain |>
 
 **In-class lab:**
 
-- Applying hypothesis tests to your research data
+- Example of how to apply hypothesis tests to your research data
 
 ## Housekeeping {.smaller}
 
@@ -74,7 +74,7 @@ attain <- attain |>
 
 - **Week 7:** sampling distributions and the Central Limit Theorem
 - **Week 8:** confidence intervals — estimating population parameters from samples
-- **This week (Week 9):** hypothesis testing + chi-squared tests for associations
+- **This week (Week 9):** hypothesis testing + tests for associations
 - **Weeks 10–13:** regression analysis (OLS and logistic)
 
 **Main idea:** Last week we built confidence intervals — a *range* of plausible values for a parameter. Today we flip the question: given a specific claim about the population, how likely are our sample results if that claim were true?
@@ -308,7 +308,6 @@ A **two-tailed test** checks for a significant effect in *either direction*
 |---|---|
 | Theory strongly predicts the *direction* | One-tailed (use sparingly!) |
 | No strong directional prediction | **Two-tailed** (default) |
-| Exploratory research | Two-tailed |
 
 ::: {.callout-tip icon=false}
 ## Default to two-tailed:
