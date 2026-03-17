@@ -3918,5 +3918,33 @@
     "title": "Week 9",
     "section": "Worked Example 2: Sex and Educational Attainment",
     "text": "Worked Example 2: Sex and Educational Attainment\n\nSetupR CodeMeasuresInterpretation\n\n\nResearch question: Is there a significant association between sex and having a college degree?\n\n\\(H_0\\): Sex and college attainment are independent — knowing someone’s sex tells us nothing about whether they have a degree\n\\(H_1\\): Sex and college attainment are not independent — there is an association\nSignificance level: \\(\\alpha = 0.05\\)\n\n\n\n\n\nNo college degree\nCollege degree\nTotal\n\n\n\n\nFemale\n?\n?\n?\n\n\nMale\n?\n?\n?\n\n\n\n\n\n\n# Create binary college degree variable\nattain_deg &lt;- attain |&gt;\n  filter(!is.na(sex), !is.na(degree)) |&gt;\n  mutate(college = if_else(degree %in% c(\"bachelor\", \"graduate\"), \"College+\", \"No college\"))\n\ntab2 &lt;- table(attain_deg$sex, attain_deg$college)\naddmargins(tab2)\n\n        \n         College+ No college  Sum\n  female      382       1316 1698\n  male        331        953 1284\n  Sum         713       2269 2982\n\n# Verify expected counts ≥ 5\nround(chisq.test(tab2, correct = FALSE)$expected, 1)\n\n        \n         College+ No college\n  female      406       1292\n  male        307        977\n\n# Run the chi-squared test\nchisq.test(tab2, correct = FALSE)\n\n\n    Pearson's Chi-squared test\n\ndata:  tab2\nX-squared = 4.3281, df = 1, p-value = 0.03749\n\n\n\n\n\nReading the output:\n\n\n\nX-squared: the \\(\\chi^2\\) test statistic\ndf: \\((I-1)(J-1) = (2-1)(2-1) = 1\\) for a 2×2 table\np-value: probability of a \\(\\chi^2\\) this large if sex and degree were independent\n\n\n\n\n\n\n\ntab_rel2     &lt;- prop.table(tab2, margin = 1)\nround(tab_rel2, 3)\n\n        \n         College+ No college\n  female    0.225      0.775\n  male      0.258      0.742\n\ndiff_college &lt;- tab_rel2[\"female\", \"College+\"] - tab_rel2[\"male\", \"College+\"]\nrr_college   &lt;- tab_rel2[\"female\", \"College+\"] / tab_rel2[\"male\", \"College+\"]\n\ncat(\"College rate — female:\", round(tab_rel2[\"female\", \"College+\"], 3), \"\\n\")\n\nCollege rate — female: 0.225 \n\ncat(\"College rate — male:  \", round(tab_rel2[\"male\",   \"College+\"], 3), \"\\n\")\n\nCollege rate — male:   0.258 \n\ncat(\"\\nDifference in proportions:\", round(diff_college, 3), \"\\n\")\n\n\nDifference in proportions: -0.033 \n\ncat(\"Relative risk ratio:      \", round(rr_college,   3), \"\\n\")\n\nRelative risk ratio:       0.873 \n\n\n\n\n\n\n\nHow to write up the result:\n\n\nReport the association direction, the chi-squared statistic, df, p-value, and a measure of effect:\n“Women were [X] percentage points [more / less] likely than men to have a college degree (difference in proportions = [X]). A chi-squared test showed this association was [significant / not significant] (\\(\\chi^2\\)(1) = [value], \\(p\\) = [p]).”"
+  },
+  {
+    "objectID": "slides/week9.html#two-ways-to-be-wrong",
+    "href": "slides/week9.html#two-ways-to-be-wrong",
+    "title": "Week 9",
+    "section": "Two Ways to Be Wrong",
+    "text": "Two Ways to Be Wrong\nEvery decision has two possible mistakes:\n\n\n\n\n\n\n\n\n\n\\(H_0\\) is True\n\\(H_0\\) is False\n\n\n\n\nReject \\(H_0\\)\nType I error (false positive)\nCorrect ✓\n\n\nFail to reject \\(H_0\\)\nCorrect ✓\nType II error (false negative)\n\n\n\n\n\n\nIn plain language: the paramedic\n\n\nYou arrive at an accident. Is the victim alive (\\(H_0\\)) or dead (\\(H_1\\))?\n\nType I error: You declare them dead when they’re alive → they don’t get treatment. Catastrophic.\nType II error: You rush a dead person to hospital. Wasteful, but not deadly.\n\nHere you’d want a very small \\(\\alpha\\) — the cost of the errors is not symmetric."
+  },
+  {
+    "objectID": "slides/week9.html#type-i-vs-type-ii-error-tradeoff",
+    "href": "slides/week9.html#type-i-vs-type-ii-error-tradeoff",
+    "title": "Week 9",
+    "section": "Type I vs Type II Error Tradeoff",
+    "text": "Type I vs Type II Error Tradeoff\n\nThe trade-off: Moving the threshold right reduces Type I error but increases Type II error — and vice versa. You can shrink both by increasing \\(n\\), which pulls the two distributions apart."
+  },
+  {
+    "objectID": "slides/week9.html#trade-off-between-type-i-and-type-ii-error",
+    "href": "slides/week9.html#trade-off-between-type-i-and-type-ii-error",
+    "title": "Week 9",
+    "section": "Trade-off between Type I and Type II Error",
+    "text": "Trade-off between Type I and Type II Error\n\nTrade-off between Type I and Type II Error\nThe trade-off: Moving the threshold right reduces Type I error but increases Type II error — and vice versa. You can shrink both by increasing \\(n\\), which pulls the two distributions apart."
+  },
+  {
+    "objectID": "slides/week9.html#trade-off-between-type-i-and-ii-error",
+    "href": "slides/week9.html#trade-off-between-type-i-and-ii-error",
+    "title": "Week 9",
+    "section": "Trade-off between Type I and II Error",
+    "text": "Trade-off between Type I and II Error\n\n\n\n\nNote\n\n\nThe trade-off: Moving the threshold right reduces Type I error but increases Type II error — and vice versa. You can shrink both by increasing \\(n\\), which pulls the two distributions apart.\n\nLower \\(\\alpha\\) (e.g., 0.05 vs 0.10) → less Type I risk, more Type II risk\nHigher power (larger \\(N\\)) → less Type II risk, more Type I risk"
   }
 ]

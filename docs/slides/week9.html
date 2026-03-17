@@ -114,6 +114,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -319,7 +320,7 @@
 <h1>Part 1: Hypothesis Testing</h1>
 <p>Can we rule out chance as an explanation?</p>
 </section>
-<section id="what-is-a-hypothesis-test" class="slide level2 smaller">
+<section id="what-is-a-hypothesis-test" class="slide level2 smaller scrollable">
 <h2>What Is a Hypothesis Test?</h2>
 <p>A <strong>hypothesis test</strong> is a formal statistical procedure for evaluating whether a finding is likely due to chance.</p>
 <div class="fragment fade-up">
@@ -483,29 +484,65 @@
 </div>
 </div>
 </section>
-<section id="the-danger-of-weak-tests-an-illustration" class="slide level2 smaller">
-<h2>The Danger of Weak Tests: An Illustration</h2>
-<p>Suppose a coin has a true probability of heads <span class="math inline">\(\pi = 0.51\)</span>. We flip it 50 times and get 24 heads.</p>
-<div class="fragment fade-up">
-<p><strong>Test <span class="math inline">\(H_0: \pi = 0.50\)</span></strong> with a two-tailed test:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">pbinom</span>(<span class="dv">24</span>, <span class="dv">50</span>, <span class="fl">0.5</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8877248</code></pre>
-</div>
-</div>
-<p><span class="math inline">\(p \approx 0.89\)</span> — we fail to reject the null.</p>
-</div>
-<div class="fragment fade-up">
-<p>But we <strong>know</strong> <span class="math inline">\(H_0\)</span> is false — the true value is <span class="math inline">\(\pi = 0.51\)</span>, not <span class="math inline">\(0.50\)</span>!</p>
+<section id="two-ways-to-be-wrong" class="slide level2 smaller">
+<h2>Two Ways to Be Wrong</h2>
+<p>Every decision has two possible mistakes:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(H_0\)</span> is <strong>True</strong></th>
+<th><span class="math inline">\(H_0\)</span> is <strong>False</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Reject <span class="math inline">\(H_0\)</span></strong></td>
+<td><span class="highlight">Type I error</span> (false positive)</td>
+<td>Correct ✓</td>
+</tr>
+<tr class="even">
+<td><strong>Fail to reject <span class="math inline">\(H_0\)</span></strong></td>
+<td>Correct ✓</td>
+<td><span class="highlight">Type II error</span> (false negative)</td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>The lesson:</strong></p>
+<p><strong>In plain language: the paramedic</strong></p>
 </div>
 <div class="callout-content">
-<p>Failing to reject <span class="math inline">\(H_0\)</span> does not mean <span class="math inline">\(H_0\)</span> is true. The test just didn’t have enough <strong>statistical power</strong> to detect a very small effect. This is why we say “fail to reject” — not “accept.”</p>
+<p>You arrive at an accident. Is the victim alive (<span class="math inline">\(H_0\)</span>) or dead (<span class="math inline">\(H_1\)</span>)?</p>
+<ul>
+<li><strong>Type I error:</strong> You declare them dead when they’re alive → they don’t get treatment. <em>Catastrophic.</em></li>
+<li><strong>Type II error:</strong> You rush a dead person to hospital. <em>Wasteful, but not deadly.</em></li>
+</ul>
+<p>Here you’d want a very small <span class="math inline">\(\alpha\)</span> — the cost of the errors is not symmetric.</p>
 </div>
+</div>
+</div>
+</section>
+<section id="trade-off-between-type-i-and-ii-error" class="slide level2 smaller">
+<h2>Trade-off between Type I and II Error</h2>
+
+<img data-src="images/week9/tradeoff.png" class="quarto-figure quarto-figure-center r-stretch" style="width:55.0%"><div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The trade-off:</strong> Moving the threshold right reduces <span class="highlight">Type I error</span> but increases <span class="highlight">Type II error</span> — and vice versa. You can shrink <em>both</em> by increasing <span class="math inline">\(n\)</span>, which pulls the two distributions apart.</p>
+<ul>
+<li>Lower <span class="math inline">\(\alpha\)</span> (e.g., 0.05 vs 0.10) → less Type I risk, more Type II risk</li>
+<li>Higher power (larger <span class="math inline">\(N\)</span>) → less Type II risk, more Type I risk</li>
+</ul>
 </div>
 </div>
 </div>
@@ -523,8 +560,8 @@
 </ul>
 <p><strong>James Bond (one-tailed):</strong> Did he perform <em>better than</em> random guessing?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># P(X &gt;= 13): all probability in upper tail</span></span>
-<span id="cb5-2"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">12</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># P(X &gt;= 13): all probability in upper tail</span></span>
+<span id="cb3-2"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">12</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.01063538</code></pre>
 </div>
@@ -538,8 +575,8 @@
 </ul>
 <p><strong>James Bond (two-tailed):</strong> Did he perform <em>differently from</em> random guessing?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Multiply by 2: account for both tails</span></span>
-<span id="cb7-2"><a></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">12</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">prob =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Multiply by 2: account for both tails</span></span>
+<span id="cb5-2"><a></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">12</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">prob =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02127075</code></pre>
 </div>
@@ -612,7 +649,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -639,7 +676,7 @@
 <h1>Part 2: t-Tests for Means and Group Differences</h1>
 <p>Testing associations involving a continuous outcome variable</p>
 </section>
-<section id="three-common-tests" class="slide level2 smaller">
+<section id="three-common-tests" class="slide level2 smaller scrollable">
 <h2>Three Common Tests</h2>
 <table class="caption-top">
 <colgroup>
@@ -693,7 +730,7 @@
 </div>
 </div>
 </section>
-<section id="writing-up-results-best-practices" class="slide level2 smaller">
+<section id="writing-up-results-best-practices" class="slide level2 smaller scrollable">
 <h2>Writing Up Results: Best Practices</h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -823,10 +860,10 @@
 <div id="tabset-3-3">
 <p><code>mu = 40</code> sets the null hypothesis value — R tests whether the true population mean equals 40.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>hrs_clean <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(hrs1))</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a>t1_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(hrs_clean<span class="sc">$</span>hrs1, <span class="at">mu =</span> <span class="dv">40</span>)</span>
-<span id="cb9-4"><a></a>t1_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>hrs_clean <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(hrs1))</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>t1_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(hrs_clean<span class="sc">$</span>hrs1, <span class="at">mu =</span> <span class="dv">40</span>)</span>
+<span id="cb7-4"><a></a>t1_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -958,13 +995,13 @@ mean of x
 </div>
 <div id="tabset-5-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>union_hrs    <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">filter</span>(union_member <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">!</span><span class="fu">is.na</span>(hrs1)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(hrs1)</span>
-<span id="cb11-3"><a></a>nonunion_hrs <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">filter</span>(union_member <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(hrs1), <span class="sc">!</span><span class="fu">is.na</span>(union)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(hrs1)</span>
-<span id="cb11-5"><a></a></span>
-<span id="cb11-6"><a></a>t2_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(union_hrs, nonunion_hrs)</span>
-<span id="cb11-7"><a></a>t2_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>union_hrs    <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">filter</span>(union_member <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">!</span><span class="fu">is.na</span>(hrs1)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(hrs1)</span>
+<span id="cb9-3"><a></a>nonunion_hrs <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a></a>  <span class="fu">filter</span>(union_member <span class="sc">==</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(hrs1), <span class="sc">!</span><span class="fu">is.na</span>(union)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(hrs1)</span>
+<span id="cb9-5"><a></a></span>
+<span id="cb9-6"><a></a>t2_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(union_hrs, nonunion_hrs)</span>
+<span id="cb9-7"><a></a>t2_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1001,7 +1038,7 @@ mean of x mean of y
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1081,12 +1118,12 @@ mean of x mean of y
 <div id="tabset-6-3">
 <p><code>prop.test()</code> handles the SE and test statistic automatically — just supply the count of successes, the sample size, and the null value.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(attain<span class="sc">$</span>union))</span>
-<span id="cb13-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">sum</span>(attain<span class="sc">$</span>union_member, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   <span class="co"># number of union members</span></span>
-<span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a><span class="co"># prop.test(successes, n, p = null_value, correct = FALSE)</span></span>
-<span id="cb13-5"><a></a>t3_result <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(x, n, <span class="at">p =</span> <span class="fl">0.20</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb13-6"><a></a>t3_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(attain<span class="sc">$</span>union))</span>
+<span id="cb11-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">sum</span>(attain<span class="sc">$</span>union_member, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   <span class="co"># number of union members</span></span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="co"># prop.test(successes, n, p = null_value, correct = FALSE)</span></span>
+<span id="cb11-5"><a></a>t3_result <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(x, n, <span class="at">p =</span> <span class="fl">0.20</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-6"><a></a>t3_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     1-sample proportions test without continuity correction
@@ -1123,7 +1160,7 @@ sample estimates:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1383,13 +1420,13 @@ sample estimates:
 </div>
 <div id="tabset-8-3">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>attain_ct <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(union), <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">mutate</span>(<span class="at">union_lab =</span> <span class="fu">if_else</span>(union_member <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Union"</span>, <span class="st">"Non-member"</span>))</span>
-<span id="cb15-4"><a></a></span>
-<span id="cb15-5"><a></a><span class="co"># Absolute frequency table</span></span>
-<span id="cb15-6"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
-<span id="cb15-7"><a></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>attain_ct <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(union), <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">mutate</span>(<span class="at">union_lab =</span> <span class="fu">if_else</span>(union_member <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Union"</span>, <span class="st">"Non-member"</span>))</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a><span class="co"># Absolute frequency table</span></span>
+<span id="cb13-6"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
+<span id="cb13-7"><a></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Non-member Union  Sum
@@ -1397,8 +1434,8 @@ sample estimates:
   male          724   151  875
   Sum          1727   256 1983</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># Row proportions: union membership rate within each sex</span></span>
-<span id="cb17-2"><a></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Row proportions: union membership rate within each sex</span></span>
+<span id="cb15-2"><a></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Non-member Union
@@ -1425,7 +1462,7 @@ sample estimates:
 <p><strong>The test asks:</strong> Are the <em>observed</em> cell counts far enough from the <em>expected</em> cell counts that we doubt independence?</p>
 </div>
 </section>
-<section id="the-chi-squared-test-statistic" class="slide level2 smaller">
+<section id="the-chi-squared-test-statistic" class="slide level2 smaller scrollable">
 <h2>The Chi-Squared Test Statistic</h2>
 <p><span class="math display">\[\chi^2 = \sum_{i}\sum_{j} \frac{(n_{ij} - \hat{n}_{ij})^2}{\hat{n}_{ij}}\]</span></p>
 <p>where <span class="math inline">\(n_{ij}\)</span> = observed and <span class="math inline">\(\hat{n}_{ij}\)</span> = expected count in cell <span class="math inline">\((i, j)\)</span></p>
@@ -1460,8 +1497,8 @@ sample estimates:
 <div id="tabset-9-1">
 <p><strong>Research question:</strong> Is there a significant association between sex and union membership?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
-<span id="cb19-2"><a></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
+<span id="cb17-2"><a></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Non-member Union  Sum
@@ -1474,8 +1511,8 @@ sample estimates:
 <div id="tabset-9-2">
 <p>Under <span class="math inline">\(H_0\)</span> (independence), expected count = (row total × column total) / <span class="math inline">\(n\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>chisq_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb21-2"><a></a><span class="fu">round</span>(chisq_result<span class="sc">$</span>expected, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>chisq_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-2"><a></a><span class="fu">round</span>(chisq_result<span class="sc">$</span>expected, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Non-member Union
@@ -1487,7 +1524,7 @@ sample estimates:
 </div>
 <div id="tabset-9-3">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">chisq.test</span>(tab, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">chisq.test</span>(tab, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1556,13 +1593,13 @@ X-squared = 26.325, df = 1, p-value = 0.0000002886</code></pre>
 </div>
 <div id="tabset-10-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># Create binary college degree variable</span></span>
-<span id="cb25-2"><a></a>attain_deg <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex), <span class="sc">!</span><span class="fu">is.na</span>(degree)) <span class="sc">|&gt;</span></span>
-<span id="cb25-4"><a></a>  <span class="fu">mutate</span>(<span class="at">college =</span> <span class="fu">if_else</span>(degree <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"bachelor"</span>, <span class="st">"graduate"</span>), <span class="st">"College+"</span>, <span class="st">"No college"</span>))</span>
-<span id="cb25-5"><a></a></span>
-<span id="cb25-6"><a></a>tab2 <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_deg<span class="sc">$</span>sex, attain_deg<span class="sc">$</span>college)</span>
-<span id="cb25-7"><a></a><span class="fu">addmargins</span>(tab2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Create binary college degree variable</span></span>
+<span id="cb23-2"><a></a>attain_deg <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex), <span class="sc">!</span><span class="fu">is.na</span>(degree)) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a></a>  <span class="fu">mutate</span>(<span class="at">college =</span> <span class="fu">if_else</span>(degree <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"bachelor"</span>, <span class="st">"graduate"</span>), <span class="st">"College+"</span>, <span class="st">"No college"</span>))</span>
+<span id="cb23-5"><a></a></span>
+<span id="cb23-6"><a></a>tab2 <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_deg<span class="sc">$</span>sex, attain_deg<span class="sc">$</span>college)</span>
+<span id="cb23-7"><a></a><span class="fu">addmargins</span>(tab2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          College+ No college  Sum
@@ -1570,16 +1607,16 @@ X-squared = 26.325, df = 1, p-value = 0.0000002886</code></pre>
   male        331        953 1284
   Sum         713       2269 2982</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Verify expected counts ≥ 5</span></span>
-<span id="cb27-2"><a></a><span class="fu">round</span>(<span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>expected, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># Verify expected counts ≥ 5</span></span>
+<span id="cb25-2"><a></a><span class="fu">round</span>(<span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>expected, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          College+ No college
   female      406       1292
   male        307        977</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="co"># Run the chi-squared test</span></span>
-<span id="cb29-2"><a></a><span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Run the chi-squared test</span></span>
+<span id="cb27-2"><a></a><span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1605,31 +1642,31 @@ X-squared = 4.3281, df = 1, p-value = 0.03749</code></pre>
 </div>
 <div id="tabset-10-3">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>tab_rel2     <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab2, <span class="at">margin =</span> <span class="dv">1</span>)</span>
-<span id="cb31-2"><a></a><span class="fu">round</span>(tab_rel2, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>tab_rel2     <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab2, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb29-2"><a></a><span class="fu">round</span>(tab_rel2, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          College+ No college
   female    0.225      0.775
   male      0.258      0.742</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>diff_college <span class="ot">&lt;-</span> tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>] <span class="sc">-</span> tab_rel2[<span class="st">"male"</span>, <span class="st">"College+"</span>]</span>
-<span id="cb33-2"><a></a>rr_college   <span class="ot">&lt;-</span> tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>] <span class="sc">/</span> tab_rel2[<span class="st">"male"</span>, <span class="st">"College+"</span>]</span>
-<span id="cb33-3"><a></a></span>
-<span id="cb33-4"><a></a><span class="fu">cat</span>(<span class="st">"College rate — female:"</span>, <span class="fu">round</span>(tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>diff_college <span class="ot">&lt;-</span> tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>] <span class="sc">-</span> tab_rel2[<span class="st">"male"</span>, <span class="st">"College+"</span>]</span>
+<span id="cb31-2"><a></a>rr_college   <span class="ot">&lt;-</span> tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>] <span class="sc">/</span> tab_rel2[<span class="st">"male"</span>, <span class="st">"College+"</span>]</span>
+<span id="cb31-3"><a></a></span>
+<span id="cb31-4"><a></a><span class="fu">cat</span>(<span class="st">"College rate — female:"</span>, <span class="fu">round</span>(tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>College rate — female: 0.225 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">cat</span>(<span class="st">"College rate — male:  "</span>, <span class="fu">round</span>(tab_rel2[<span class="st">"male"</span>,   <span class="st">"College+"</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">cat</span>(<span class="st">"College rate — male:  "</span>, <span class="fu">round</span>(tab_rel2[<span class="st">"male"</span>,   <span class="st">"College+"</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>College rate — male:   0.258 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Difference in proportions:"</span>, <span class="fu">round</span>(diff_college, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Difference in proportions:"</span>, <span class="fu">round</span>(diff_college, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Difference in proportions: -0.033 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">cat</span>(<span class="st">"Relative risk ratio:      "</span>, <span class="fu">round</span>(rr_college,   <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">cat</span>(<span class="st">"Relative risk ratio:      "</span>, <span class="fu">round</span>(rr_college,   <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Relative risk ratio:       0.873 </code></pre>
 </div>
@@ -1651,7 +1688,7 @@ Difference in proportions: -0.033 </code></pre>
 </div>
 </div>
 </section>
-<section id="writing-up-chi-squared-results" class="slide level2 smaller">
+<section id="writing-up-chi-squared-results" class="slide level2 smaller scrollable">
 <h2>Writing Up Chi-Squared Results</h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">

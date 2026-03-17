@@ -10,6 +10,7 @@ format:
       buttons: false
     preview-links: auto
     css: slides.css
+    scrollable: true
     footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
 ---
 
@@ -219,31 +220,37 @@ A negative result doesn't prove the null is true. A small sample may simply be t
 :::
 :::
 
-## The Danger of Weak Tests: An Illustration {.smaller}
+## Two Ways to Be Wrong {.smaller}
 
-Suppose a coin has a true probability of heads $\pi = 0.51$. We flip it 50 times and get 24 heads.
+Every decision has two possible mistakes:
 
-::: {.fragment .fade-up}
-**Test $H_0: \pi = 0.50$** with a two-tailed test:
+| | $H_0$ is **True** | $H_0$ is **False** |
+|---|----|----|
+| **Reject $H_0$** | [Type I error]{.highlight} (false positive)  | Correct ✓ |
+| **Fail to reject $H_0$** | Correct ✓ | [Type II error]{.highlight} (false negative)|
 
-```{r}
-#| echo: true
-#| eval: true
-
-pbinom(24, 50, 0.5) + (1 - pbinom(25, 50, 0.5))
-```
-
-$p \approx 0.89$ — we fail to reject the null.
-:::
-
-::: {.fragment .fade-up}
-But we **know** $H_0$ is false — the true value is $\pi = 0.51$, not $0.50$!
 
 ::: {.callout-note icon=false}
-## The lesson:
-Failing to reject $H_0$ does not mean $H_0$ is true. The test just didn't have enough **statistical power** to detect a very small effect. This is why we say "fail to reject" — not "accept."
+## In plain language: the paramedic
+You arrive at an accident. Is the victim alive ($H_0$) or dead ($H_1$)?
+
+- **Type I error:** You declare them dead when they're alive → they don't get treatment. *Catastrophic.*
+- **Type II error:** You rush a dead person to hospital. *Wasteful, but not deadly.*
+
+Here you'd want a very small $\alpha$ — the cost of the errors is not symmetric.
 :::
-:::
+
+## Trade-off between Type I and II Error  {.smaller}
+
+![](images/week9/tradeoff.png){width="55%" fig-align="center"}
+
+::: {.callout-note icon=false}
+**The trade-off:** Moving the threshold right reduces [Type I error]{.highlight} but increases [Type II error]{.highlight} — and vice versa. You can shrink *both* by increasing $n$, which pulls the two distributions apart.
+
+- Lower $\alpha$ (e.g., 0.05 vs 0.10) → less Type I risk, more Type II risk
+- Higher power (larger $N$) → less Type II risk, more Type I risk
+::: 
+
 
 ## One- and Two-Tailed Tests {.smaller}
 
