@@ -238,7 +238,7 @@
 <p><strong>Spring Recess</strong></p>
 <ul>
 <li><span class="highlight">March 24 — enjoy the break!</span></li>
-<li>Use that time to relax and work on you paper proposal with outline due on 4/16</li>
+<li>Use that time to relax and work on your paper proposal with outline due on 4/16</li>
 </ul>
 </section>
 <section id="where-we-are-in-the-course" class="slide level2 smaller">
@@ -327,9 +327,10 @@
 <p><strong>The core steps:</strong></p>
 <ol type="1">
 <li><strong>State a null hypothesis</strong> (<span class="math inline">\(H_0\)</span>): “there is no real effect” — the finding is just chance</li>
+<li><strong>Choose a tail</strong>: does theory predict a direction? → one-tailed; otherwise → two-tailed (default)</li>
 <li><strong>Compute a test statistic</strong>: how far is our sample result from what <span class="math inline">\(H_0\)</span> would predict?</li>
 <li><strong>Calculate a p-value</strong>: if <span class="math inline">\(H_0\)</span> is true, how likely is a result this extreme?</li>
-<li><strong>Decide</strong>: if the p-value is small enough, reject <span class="math inline">\(H_0\)</span></li>
+<li><strong>Decide</strong>: if the p-value is small enough, reject <span class="math inline">\(H_0\)</span>; accept <span class="math inline">\(H_1\)</span></li>
 </ol>
 </div>
 <div class="fragment fade-up">
@@ -546,7 +547,7 @@
 <p><strong>The trade-off:</strong> Moving the threshold right reduces <span class="highlight">Type I error</span> but increases <span class="highlight">Type II error</span> — and vice versa. You can shrink <em>both</em> by increasing <span class="math inline">\(n\)</span>, which pulls the two distributions apart.</p>
 <ul>
 <li>Lower <span class="math inline">\(\alpha\)</span> (e.g., 0.05 vs 0.10) → less Type I risk, more Type II risk</li>
-<li>Higher power (larger <span class="math inline">\(N\)</span>) → less Type II risk, more Type I risk</li>
+<li>Larger <span class="math inline">\(N\)</span> → distributions pull apart → less Type II risk <em>without</em> increasing Type I risk</li>
 </ul>
 </div>
 </div>
@@ -576,7 +577,7 @@
 <p>A <strong>two-tailed test</strong> checks for a significant effect in <em>either direction</em></p>
 <ul>
 <li><span class="math inline">\(H_0: \pi = 0.50\)</span> vs.&nbsp;<span class="math inline">\(H_1: \pi \neq 0.50\)</span></li>
-<li><span class="math inline">\(\alpha\)</span> is split equally — 2.5% in each tail — <em>critcal value is higher</em> ; <strong>more conservative and more common</strong> in social science</li>
+<li><span class="math inline">\(\alpha\)</span> is split equally — 2.5% in each tail — <em>critical value is higher</em> ; <strong>more conservative and more common</strong> in social science</li>
 </ul>
 <p><strong>James Bond (two-tailed):</strong> Did he perform <em>differently from</em> random guessing?</p>
 <div class="cell">
@@ -695,27 +696,27 @@
 <th>Test</th>
 <th>When to use</th>
 <th>Key statistic</th>
-<th>Distribution</th>
+<th>Example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>One-sample t-test</strong></td>
-<td>Continuous variable; test if <span class="math inline">\(\bar{x} = \mu\)</span></td>
+<td>Comparing sample to population; <span class="math inline">\(\bar{x} = \mu\)</span></td>
 <td>t-score</td>
-<td>t (<span class="math inline">\(df = n-1\)</span>)</td>
+<td>Do Berkeley students work more than 20 hrs/week on average?</td>
 </tr>
 <tr class="even">
 <td><strong>Two-sample t-test</strong></td>
-<td>Compare means of two groups</td>
+<td>Comparing means of two groups; <span class="math inline">\(\bar{x_1} = \bar{x_2}\)</span></td>
 <td>t-score</td>
-<td>t (<span class="math inline">\(df \approx n_1+n_2-2\)</span>)</td>
+<td>Do men and women differ in hours worked per week?</td>
 </tr>
 <tr class="odd">
 <td><strong>Proportion test</strong></td>
-<td>Binary variable; test if <span class="math inline">\(\hat{p} = P\)</span></td>
+<td>Testing proportions; test if <span class="math inline">\(\hat{p} = P\)</span></td>
 <td>z-score</td>
-<td>Normal</td>
+<td>Is union membership among women different from 20%?</td>
 </tr>
 </tbody>
 </table>
@@ -727,6 +728,7 @@
 <div class="callout-content">
 <ol type="1">
 <li>state <span class="math inline">\(H_0\)</span></li>
+<li>choose one- or two-tailed</li>
 <li>compute a test statistic measuring how far the sample result is from <span class="math inline">\(H_0\)</span></li>
 <li>find the p-value under the null distribution</li>
 <li>decide</li>
@@ -735,28 +737,9 @@
 </div>
 </div>
 </section>
-<section id="writing-up-results-best-practices" class="slide level2 smaller scrollable">
-<h2>Writing Up Results: Best Practices</h2>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Every hypothesis test write-up should include:</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li><strong>The sample statistic</strong> (mean, proportion, or difference) — not just the p-value</li>
-<li><strong>The test statistic</strong> and <strong>p-value</strong></li>
-<li><strong>Whether you reject or fail to reject <span class="math inline">\(H_0\)</span></strong>, at <span class="math inline">\(\alpha = 0.05\)</span></li>
-<li><strong>A plain-language interpretation</strong> connecting the result to your research question</li>
-</ol>
-<p><strong>One-tailed test caveat:</strong> If you use a one-tailed test (e.g., <span class="math inline">\(H_1: \mu &lt; 40\)</span>) but the sample result goes in the <em>opposite</em> direction, you <strong>still fail to reject</strong> <span class="math inline">\(H_0\)</span>.</p>
-<p><strong>Confidence intervals:</strong> A 95% CI alongside your test tells the reader the range of plausible values — pair this with the test whenever you can.</p>
-</div>
-</div>
-</div>
-</section>
 <section id="test-1-one-sample-t-test-for-a-mean" class="slide level2 smaller scrollable">
 <h2>Test 1: One-Sample t-Test for a Mean</h2>
+<p>Compare the sample to the population.</p>
 <div class="panel-tabset">
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Setup</a></li><li><a href="#tabset-3-2">Formula</a></li><li><a href="#tabset-3-3">R Code</a></li><li><a href="#tabset-3-4">Interpretation</a></li></ul>
 <div class="tab-content">
@@ -890,92 +873,25 @@ mean of x
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>t</strong> = 5.05: the sample mean is 5.05 SEs from <span class="math inline">\(\mu_0 = 40\)</span></li>
-<li><strong>df</strong> = 1899: degrees of freedom (<span class="math inline">\(n - 1\)</span>)</li>
-<li><strong>p-value</strong> = 0: probability of a result this extreme if <span class="math inline">\(H_0\)</span> were true</li>
-<li><strong>95% CI</strong>: [41.01, 42.3] — plausible range for the true population mean</li>
-<li><strong>mean of x</strong> = 41.66: sample mean <span class="math inline">\(\bar{x}\)</span></li>
+<li><strong>t = 5.05</strong>: our sample mean (41.66 hrs) is 5.05 standard errors above the null value of 40 — that is a large distance</li>
+<li><strong>df = 1899</strong>: degrees of freedom (<span class="math inline">\(n - 1\)</span>); we have a large sample</li>
+<li><strong>p-value &lt; 0.001</strong>: if the true mean were exactly 40 hrs, a result this extreme would occur less than 0.1% of the time — very strong evidence against <span class="math inline">\(H_0\)</span></li>
+<li><strong>95% CI [41.01, 42.3]</strong>: we are 95% confident the true mean is between 41.01 and 42.3 hrs — this range does not include 40, confirming we reject <span class="math inline">\(H_0\)</span></li>
+<li><strong>mean of x = 41.66</strong>: sample mean hours worked per week</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-3-4">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>How to write up results:</strong></p>
-</div>
-<div class="callout-content">
-<p>State the sample mean, test statistic, p-value, and conclusion:</p>
-<p><em>“The mean hours worked per week in the sample was [<code>x̄</code>] hours (SD = s). A one-sample t-test showed this was [significantly / not significantly] different from 40 hours (pvalue = p).”</em></p>
-</div>
-</div>
-</div>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Why the reject/fail-to-reject decision matters:</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>When we reject <span class="math inline">\(H_0\)</span>:</strong> the sample result is too unlikely to be explained by chance alone — we conclude there is a real difference in the population, not just sampling noise.</p>
-<p><strong>When we fail to reject <span class="math inline">\(H_0\)</span>:</strong> we are <em>not</em> saying the null is true. We simply lack sufficient evidence to doubt it. The effect may be real but small, or the sample too small to detect it — this is why we say “fail to reject,” never “accept.”</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="worked-example-white-san-franciscans-income" class="slide level2 smaller scrollable">
-<h2>Worked Example: White San Franciscans’ Income</h2>
-<div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Scenario</a></li><li><a href="#tabset-4-2">Step 1 — Hypotheses</a></li><li><a href="#tabset-4-3">Step 2 — One or Two-Tailed?</a></li><li><a href="#tabset-4-4">Step 3 — Test Statistic</a></li><li><a href="#tabset-4-5">Step 4 — p-value and Decision</a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1">
-<p>The mean income for a sample of <span class="math inline">\(n = 100\)</span> White San Franciscans is <strong>$48,000</strong>. The average income for all San Franciscans is <strong>$55,000</strong> (the known population value). The sample standard deviation is <span class="math inline">\(s = \$35,000\)</span>.</p>
-<p><strong>Research claim:</strong> We believe that the average income of the <em>population</em> of White San Franciscans is <strong>lower</strong> than the average income of all San Franciscans.</p>
-<p><strong>Question:</strong> Write the hypothesis notation and specify whether this is a one- or two-tailed test.</p>
-</div>
-<div id="tabset-4-2">
-<div class="fragment fade-up">
-<p><strong>Null hypothesis:</strong> The mean income of White San Franciscans equals the city-wide average:</p>
-<p><span class="math display">\[H_0: \mu = \$55{,}000\]</span></p>
-</div>
-<div class="fragment fade-up">
-<p><strong>Alternative hypothesis:</strong> The mean income of White San Franciscans is <em>lower than</em> the city-wide average:</p>
-<p><span class="math display">\[H_1: \mu &lt; \$55{,}000\]</span></p>
-</div>
-</div>
-<div id="tabset-4-3">
-<p><strong>One-tailed (lower tail)</strong> — because the research hypothesis makes a specific directional prediction.</p>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>The logic:</strong></p>
-</div>
-<div class="callout-content">
-<p>We are not asking whether White San Franciscans earn <em>differently</em> from average San Franciscans — we have a specific prediction: they earn <em>less</em>. So the entire rejection region (<span class="math inline">\(\alpha = 5\%\)</span>) goes in the <strong>lower tail</strong>.</p>
-<p>If we had no directional prediction, we would use a two-tailed test.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-4-4">
-<p><span class="math display">\[SE = \frac{s}{\sqrt{n}} = \frac{35{,}000}{\sqrt{100}} = 3{,}500\]</span></p>
-<p><span class="math display">\[t = \frac{\bar{x} - \mu_0}{SE} = \frac{48{,}000 - 55{,}000}{3{,}500} = \frac{-7{,}000}{3{,}500} = -2.0 \qquad (df = n - 1 = 99)\]</span></p>
-</div>
-<div id="tabset-4-5">
-<p>For a <strong>one-tailed lower test</strong>, compute <span class="math inline">\(P(t &lt; -2.0)\)</span> with <span class="math inline">\(df = 99\)</span>:</p>
-<p><span class="math display">\[p = \text{pt}(-2.0, \, df = 99) \approx 0.024\]</span></p>
-<p>Since <span class="math inline">\(p = 0.024 &lt; \alpha = 0.05\)</span>, we <strong>reject <span class="math inline">\(H_0\)</span></strong>.</p>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Conclusion:</strong></p>
-</div>
-<div class="callout-content">
-<p>The mean income of White San Franciscans in our sample ($48,000) is significantly <em>lower</em> than the average income for all San Franciscans ($55,000) at the 5% significance level (<span class="math inline">\(t\)</span>(99) = −2.0, <span class="math inline">\(p\)</span> = 0.024). We have evidence that this gap is not due to sampling error alone.</p>
+<p><strong>The sample mean hours worked per week was 41.66 hours.</strong> A one-sample t-test showed this is significantly different from 40 hours (<span class="math inline">\(p\)</span> &lt; 0.001). We <strong>reject <span class="math inline">\(H_0\)</span>; we accept <span class="math inline">\(H_1\)</span></strong>: U.S. adults in this sample work significantly more than a standard 40-hour week.</p>
+<p>The 95% CI [41.01, 42.3] does not contain 40 — this is the CI equivalent of rejecting <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
 </div>
 </div>
 </div>
@@ -987,9 +903,9 @@ mean of x
 <h2>Test 2: Two-Sample t-Test</h2>
 <p><strong>Running example:</strong> Do union members work a <em>different</em> number of hours per week than non-members?</p>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Setup</a></li><li><a href="#tabset-5-2">R Code</a></li><li><a href="#tabset-5-3">Visualization</a></li><li><a href="#tabset-5-4">Writing Up Differences</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Setup</a></li><li><a href="#tabset-4-2">R Code</a></li><li><a href="#tabset-4-3">Interpretation</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1">
+<div id="tabset-4-1">
 <ul>
 <li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{\text{union}} = \mu_{\text{non-union}}\)</span> (equivalently: <span class="math inline">\(\mu_1 - \mu_2 = 0\)</span>)</li>
 <li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu_{\text{union}} \neq \mu_{\text{non-union}}\)</span></li>
@@ -998,7 +914,7 @@ mean of x
 <p><span class="math display">\[t = \frac{\bar{x}_1 - \bar{x}_2}{SE_{\text{diff}}} \quad \text{where} \quad SE_{\text{diff}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\]</span></p>
 <p>Degrees of freedom: <span class="math inline">\(df \approx n_1 + n_2 - 2\)</span> (R uses Welch’s correction, adjusting df when variances differ)</p>
 </div>
-<div id="tabset-5-2">
+<div id="tabset-4-2">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>union_hrs    <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a></a>  <span class="fu">filter</span>(union_member <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">!</span><span class="fu">is.na</span>(hrs1)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(hrs1)</span>
@@ -1028,41 +944,25 @@ mean of x mean of y
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>t</strong> = 1.85: test statistic for the difference in means</li>
-<li><strong>df</strong> = 316.3: Welch’s adjusted degrees of freedom</li>
-<li><strong>p-value</strong> = 0.065: probability of observing a difference this large if <span class="math inline">\(H_0\)</span> is true</li>
-<li><strong>95% CI</strong>: [-0.11, 3.76] — plausible range for the true <em>difference</em> in means (<span class="math inline">\(\mu_1 - \mu_2\)</span>)</li>
+<li><strong>t = 1.85</strong>: the observed difference in means (43.52 − 41.7 = 1.82 hrs) is 1.85 standard errors from zero</li>
+<li><strong>df = 316.3</strong>: Welch’s adjusted degrees of freedom (R accounts for unequal variances)</li>
+<li><strong>p-value = 0.065</strong>: a difference this large would occur 6.5% of the time by chance if <span class="math inline">\(H_0\)</span> were true — does not clear <span class="math inline">\(\alpha = 0.05\)</span></li>
+<li><strong>95% CI [-0.11, 3.76]</strong>: plausible range for the true difference <span class="math inline">\(\mu_{\text{union}} - \mu_{\text{non-union}}\)</span> — this interval <strong>contains 0</strong>, consistent with failing to reject <span class="math inline">\(H_0\)</span></li>
 <li><strong>means</strong>: union = 43.52 hrs, non-union = 41.7 hrs</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-5-3">
+<div id="tabset-4-3">
+<p><strong>Union members worked an average of 43.52 hours per week, compared to 41.7 hours for non-members</strong> (difference = 1.82 hrs). A two-sample t-test showed this difference was not statistically significant (<span class="math inline">\(p\)</span> = 0.065). We <strong>fail to reject <span class="math inline">\(H_0\)</span></strong>: we cannot conclude union members work different hours than non-members.</p>
+<p>The 95% CI on the difference [-0.11, 3.76] includes 0 — consistent with failing to reject <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-5-4">
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Always report the group statistics — not just the test result!</strong></p>
-</div>
-<div class="callout-content">
-<p>When reporting a two-sample test:</p>
-<ol type="1">
-<li><strong>State the mean of each group</strong> — the reader wants to know <em>which</em> group is higher and <em>how big</em> the gap is</li>
-<li><strong>Report the test statistic and p-value</strong></li>
-<li><strong>State the decision</strong> — reject or fail to reject</li>
-</ol>
-<p><em>“Union members worked an average of [x̄₁] hours per week (SD = s₁), compared to [x̄₂] hours for non-members (SD = [s₂]). A two-sample t-test showed this difference was [significant / not significant] (pvalue = p).”</em></p>
 </div>
 </div>
 </div>
@@ -1070,12 +970,13 @@ mean of x mean of y
 </div>
 </div>
 </section>
-<section id="test-3-hypothesis-test-for-a-proportion" class="slide level2 smaller scrollable">
-<h2>Test 3: Hypothesis Test for a Proportion</h2>
+<section id="test-3-testing-a-proportion" class="slide level2 smaller scrollable">
+<h2>Test 3: Testing a Proportion</h2>
+<p>We follow the same set up, but use a slightly different distribution.</p>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Setup</a></li><li><a href="#tabset-6-2">Formula</a></li><li><a href="#tabset-6-3">R Code</a></li><li><a href="#tabset-6-4">Visualization</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Setup</a></li><li><a href="#tabset-5-2">Formula</a></li><li><a href="#tabset-5-3">R Code</a></li><li><a href="#tabset-5-4">Interpretation</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1">
+<div id="tabset-5-1">
 <p><strong>Running example:</strong> Is the proportion of U.S. adults who are union members equal to 20%?</p>
 <ul>
 <li><span class="math inline">\(H_0: \pi = 0.20\)</span></li>
@@ -1095,7 +996,7 @@ mean of x mean of y
 </div>
 </div>
 </div>
-<div id="tabset-6-2">
+<div id="tabset-5-2">
 <p><strong>Step 1:</strong> Compute the standard error <strong>under <span class="math inline">\(H_0\)</span></strong>:</p>
 <p><span class="math display">\[SE_0 = \sqrt{\frac{\pi_0(1-\pi_0)}{n}} = \sqrt{\frac{0.20 \times 0.80}{n}}\]</span></p>
 <p><strong>Step 2:</strong> Compute the z-statistic:</p>
@@ -1120,7 +1021,7 @@ mean of x mean of y
 </tbody>
 </table>
 </div>
-<div id="tabset-6-3">
+<div id="tabset-5-3">
 <p><code>prop.test()</code> handles the SE and test statistic automatically — just supply the count of successes, the sample size, and the null value.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(attain<span class="sc">$</span>union))</span>
@@ -1150,23 +1051,105 @@ sample estimates:
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>X-squared</strong> = 62.31: the test statistic (<span class="math inline">\(\chi^2 = z^2\)</span>; equivalent to a z-test for proportions)</li>
-<li><strong>p-value</strong> = 0: probability of a proportion this far from 0.20 if <span class="math inline">\(H_0\)</span> were true</li>
-<li><strong>95% CI</strong>: [0.115, 0.145] — plausible range for the true population proportion <span class="math inline">\(\pi\)</span></li>
-<li><strong>sample estimates: p</strong> = 0.129: your sample proportion <span class="math inline">\(\hat{p}\)</span></li>
+<li><strong>X-squared = 62.31</strong>: the test statistic (<span class="math inline">\(z^2\)</span>); our sample proportion is 7.89 standard errors from the null value of 0.20</li>
+<li><strong>p-value = 0</strong>: if the true proportion were exactly 20%, a result this far away would occur 0% of the time — this is our evidence against <span class="math inline">\(H_0\)</span></li>
+<li><strong>95% CI [0.115, 0.145]</strong>: plausible range for the true union membership rate — check whether this contains 0.20</li>
+<li><strong>p = 0.129</strong>: our sample union membership rate (<span class="math inline">\(\hat{p}\)</span>)</li>
 </ul>
 <p><em>Note: <code>correct = FALSE</code> turns off the continuity correction — appropriate when <span class="math inline">\(n\)</span> is large.</em></p>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-6-4">
+<div id="tabset-5-4">
+<p><strong>The sample union membership rate was 0.129 (12.9%).</strong> A proportion test showed this was significantly different from 20% (<span class="math inline">\(p\)</span> = 0). We <strong>reject <span class="math inline">\(H_0\)</span>; we accept <span class="math inline">\(H_1\)</span></strong>.</p>
+<p>The 95% CI [0.115, 0.145] does not contain 0.20 — the null value falls entirely outside the plausible range for the true proportion, confirming we reject <span class="math inline">\(H_0\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="worked-example-household-income" class="slide level2 smaller scrollable">
+<h2>Worked Example: Household Income</h2>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Scenario</a></li><li><a href="#tabset-6-2">Step 1 — Hypotheses</a></li><li><a href="#tabset-6-3">Step 2 — One or Two-Tailed?</a></li><li><a href="#tabset-6-4">Step 3 — Test Statistic</a></li><li><a href="#tabset-6-5">Step 4 — p-value</a></li><li><a href="#tabset-6-6">Step 5 — Decision and Conclusion</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p>Using the GSS <code>attain</code> dataset, we test whether respondents’ mean household income differs from the <strong>U.S. national median household income of $30,000</strong> (1991 Census benchmark, the year these data were collected).</p>
+<p>The <code>income91</code> variable records household income as midpoints of GSS income brackets (e.g., $500, $2,000 … $100,000).</p>
+<p><strong>Research question:</strong> Does mean household income in the GSS sample differ from the national median?</p>
+<p><strong>Question:</strong> Write the hypothesis notation and specify whether this is a one- or two-tailed test.</p>
+</div>
+<div id="tabset-6-2">
+<div class="fragment fade-up">
+<p><strong>Null hypothesis:</strong> Mean household income in the sample equals the national median:</p>
+<p><span class="math display">\[H_0: \mu = \$30{,}000\]</span></p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Alternative hypothesis:</strong> Mean household income is <em>different from</em> the national median:</p>
+<p><span class="math display">\[H_1: \mu \neq \$30{,}000\]</span></p>
+</div>
+</div>
+<div id="tabset-6-3">
+<p><strong>Two-tailed</strong> — the research question asks whether income differs, not specifically whether it is higher or lower.</p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The logic:</strong></p>
+</div>
+<div class="callout-content">
+<p>We have no directional prediction going in — the GSS sample could plausibly earn more <em>or</em> less than the national median. So we split the rejection region (<span class="math inline">\(\alpha = 5\%\)</span>) equally across <strong>both tails</strong> (2.5% each). This is the more conservative and more common choice in social science.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-4">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>inc_clean <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(income91))</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>we_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(inc_clean<span class="sc">$</span>income91, <span class="at">mu =</span> <span class="dv">30000</span>)</span>
+<span id="cb13-4"><a></a>we_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  inc_clean$income91
+t = 14.205, df = 2635, p-value &lt; 0.00000000000000022
+alternative hypothesis: true mean is not equal to 30000
+95 percent confidence interval:
+ 36547.93 38645.17
+sample estimates:
+mean of x 
+ 37596.55 </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-6-5">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">cat</span>(<span class="st">"p-value ="</span>, <span class="fu">format.pval</span>(we_result<span class="sc">$</span>p.value), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>p-value = &lt; 0.000000000000000222 </code></pre>
+</div>
+</div>
+<p>Since <code>t.test()</code> runs a two-tailed test by default, the p-value already reflects both tails.</p>
+</div>
+<div id="tabset-6-6">
+<p>Since <span class="math inline">\(p &lt; 0.001 &lt; \alpha = 0.05\)</span>, we <strong>reject <span class="math inline">\(H_0\)</span>; we accept <span class="math inline">\(H_1\)</span></strong>.</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Conclusion:</strong></p>
+</div>
+<div class="callout-content">
+<p>The mean household income in our sample ($37,597)) is significantly <em>higher</em> than the national median of $30,000 (<span class="math inline">\(p\)</span> &lt; 0.001). The 95% CI [$36,548, $38,645] does not contain $30,000, confirming we reject <span class="math inline">\(H_0\)</span>. GSS respondents earn more than the national median, and this gap is unlikely to be due to sampling error alone.</p>
 </div>
 </div>
 </div>
@@ -1216,10 +1199,16 @@ sample estimates:
 <tr class="odd">
 <td>Do two group means differ?</td>
 <td>Continuous</td>
-<td>Binary/categorical</td>
+<td>Binary (2 groups)</td>
 <td><strong>two-sample t-test</strong></td>
 </tr>
 <tr class="even">
+<td>Do 3+ group means differ?</td>
+<td>Continuous</td>
+<td>Categorical (3+ groups)</td>
+<td>ANOVA <em>(not covered)</em></td>
+</tr>
+<tr class="odd">
 <td>Are two categorical variables independent?</td>
 <td>Categorical</td>
 <td>Categorical</td>
@@ -1233,7 +1222,7 @@ sample estimates:
 <p><strong>The key decision:</strong></p>
 </div>
 <div class="callout-content">
-<p>Is your outcome variable <strong>continuous</strong>? → use a t-test. Is your outcome variable <strong>categorical</strong>? → use chi-squared.</p>
+<p>Is your outcome variable <strong>continuous</strong>? → use a t-test (or ANOVA for 3+ groups). Is your outcome variable <strong>categorical</strong>? → use chi-squared. Note: chi-squared works for <em>any</em> number of categories — not just binary variables.</p>
 </div>
 </div>
 </div>
@@ -1252,7 +1241,7 @@ sample estimates:
 <li><strong><span class="math inline">\(H_0\)</span>:</strong> <span class="math inline">\(\mu_{\text{union}} = \mu_{\text{non-union}}\)</span></li>
 <li><strong>Test stat:</strong> <span class="math inline">\(t = (\bar{x}_1 - \bar{x}_2) / SE_{\text{diff}}\)</span>, compared to t-distribution</li>
 </ul>
-<p><em>Our example:</em> Do union members work a different number of hours than non-members?</p>
+<p><em>Our example:</em> Do union members work a different number of hours than non-members? Focusing on the difference in means between the two groups.</p>
 </div>
 <div id="tabset-7-2">
 <p><strong>Question:</strong> Does the <em>distribution</em> of a categorical outcome differ across groups?</p>
@@ -1307,7 +1296,7 @@ sample estimates:
 <tr class="even">
 <td><strong>Measure of effect</strong></td>
 <td>Difference in means</td>
-<td>Diff. in proportions / RRR</td>
+<td>Difference in proportions</td>
 </tr>
 <tr class="odd">
 <td><strong>In R</strong></td>
@@ -1330,59 +1319,10 @@ sample estimates:
 </div>
 </div>
 </section>
-<section id="connecting-to-previous-tests" class="slide level2 smaller">
-<h2>Connecting to Previous Tests</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>What we’ve tested</th>
-<th>Variables</th>
-<th>Method</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Is a proportion = <span class="math inline">\(P\)</span>?</td>
-<td>1 binary variable</td>
-<td>z-test</td>
-</tr>
-<tr class="even">
-<td>Is a mean = <span class="math inline">\(\mu\)</span>?</td>
-<td>1 continuous variable</td>
-<td>one-sample t-test</td>
-</tr>
-<tr class="odd">
-<td>Do two groups have the same mean?</td>
-<td>1 continuous + 1 binary</td>
-<td>two-sample t-test</td>
-</tr>
-<tr class="even">
-<td><strong>Are two categorical variables independent?</strong></td>
-<td><strong>2 categorical variables</strong></td>
-<td><strong>Chi-squared test</strong></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Today’s question:</strong></p>
-</div>
-<div class="callout-content">
-<p>Is gender associated with union membership? Are race and environmental attitudes related? These questions involve <strong>two categorical variables</strong> — we need a new tool.</p>
-</div>
-</div>
-</div>
-</section>
 <section id="review-contingency-tables" class="slide level2 smaller scrollable">
 <h2>Review: Contingency Tables</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">What Is a Contingency Table?</a></li><li><a href="#tabset-8-2">Relative Frequencies</a></li><li><a href="#tabset-8-3">In R</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">What Is a Contingency Table?</a></li><li><a href="#tabset-8-2">In R</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
 <p>A <strong>contingency table</strong> shows the joint distribution of two categorical variables — counts of observations in each combination of categories</p>
@@ -1418,20 +1358,14 @@ sample estimates:
 </table>
 </div>
 <div id="tabset-8-2">
-<p><strong>Relative (marginal) frequency</strong>: the proportion of one variable’s categories, <em>within</em> categories of another variable</p>
-<p><span class="math display">\[p_{X=i \mid Y=j} = \frac{n_{X=i,\, Y=j}}{n_{Y=j}}\]</span></p>
-<p><strong>Example:</strong> Among female respondents, what proportion are union members?</p>
-<p><span class="math display">\[p_{\text{union} \mid \text{female}} = \frac{n_{\text{union, female}}}{n_{\text{female}}}\]</span></p>
-</div>
-<div id="tabset-8-3">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>attain_ct <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(union), <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">mutate</span>(<span class="at">union_lab =</span> <span class="fu">if_else</span>(union_member <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Union"</span>, <span class="st">"Non-member"</span>))</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a><span class="co"># Absolute frequency table</span></span>
-<span id="cb13-6"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
-<span id="cb13-7"><a></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>attain_ct <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(union), <span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a></a>  <span class="fu">mutate</span>(<span class="at">union_lab =</span> <span class="fu">if_else</span>(union_member <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Union"</span>, <span class="st">"Non-member"</span>))</span>
+<span id="cb17-4"><a></a></span>
+<span id="cb17-5"><a></a><span class="co"># Count table with row and column totals</span></span>
+<span id="cb17-6"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
+<span id="cb17-7"><a></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Non-member Union  Sum
@@ -1439,8 +1373,8 @@ sample estimates:
   male          724   151  875
   Sum          1727   256 1983</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Row proportions: union membership rate within each sex</span></span>
-<span id="cb15-2"><a></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Row proportions: union membership rate within each sex</span></span>
+<span id="cb19-2"><a></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Non-member Union
@@ -1497,39 +1431,45 @@ sample estimates:
 <section id="worked-example-1-sex-and-union-membership" class="slide level2 smaller scrollable">
 <h2>Worked Example 1: Sex and Union Membership</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Contingency Table</a></li><li><a href="#tabset-9-2">Expected Counts</a></li><li><a href="#tabset-9-3">Chi-Squared Test</a></li><li><a href="#tabset-9-4">Interpretation</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Contingency Table</a></li><li><a href="#tabset-9-2">Chi-Squared Test</a></li><li><a href="#tabset-9-3">Interpretation</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1">
 <p><strong>Research question:</strong> Is there a significant association between sex and union membership?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
-<span id="cb17-2"><a></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>attain_ct <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a></a>  <span class="fu">count</span>(sex, union_lab) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> union_lab, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a></a>  <span class="fu">mutate</span>(<span class="at">Total =</span> <span class="st">`</span><span class="at">Non-member</span><span class="st">`</span> <span class="sc">+</span> Union)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  sex    `Non-member` Union Total
+  &lt;chr&gt;         &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1 female         1003   105  1108
+2 male            724   151   875</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_ct<span class="sc">$</span>sex, attain_ct<span class="sc">$</span>union_lab)</span>
+<span id="cb23-2"><a></a></span>
+<span id="cb23-3"><a></a><span class="co"># Row proportions: union rate within each sex</span></span>
+<span id="cb23-4"><a></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
-         Non-member Union  Sum
-  female       1003   105 1108
-  male          724   151  875
-  Sum          1727   256 1983</code></pre>
+         Non-member Union
+  female      0.905 0.095
+  male        0.827 0.173</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-9-2">
-<p>Under <span class="math inline">\(H_0\)</span> (independence), expected count = (row total × column total) / <span class="math inline">\(n\)</span>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>chisq_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb19-2"><a></a><span class="fu">round</span>(chisq_result<span class="sc">$</span>expected, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>chisq_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tab, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-2"><a></a><span class="fu">round</span>(chisq_result<span class="sc">$</span>expected, <span class="dv">1</span>)  <span class="co"># verify all expected counts ≥ 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Non-member Union
   female        965   143
   male          762   113</code></pre>
 </div>
-</div>
-<p><em>All expected counts ≥ 5? The chi-squared approximation is valid if so.</em></p>
-</div>
-<div id="tabset-9-3">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">chisq.test</span>(tab, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>chisq_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1538,20 +1478,17 @@ data:  tab
 X-squared = 26.325, df = 1, p-value = 0.0000002886</code></pre>
 </div>
 </div>
-<p><em><code>correct = FALSE</code> turns off Yates’ continuity correction — standard for 2×2 tables when all expected counts ≥ 5</em></p>
+<p><em><code>correct = FALSE</code> turns off Yates’ continuity correction — standard when all expected counts ≥ 5</em></p>
 </div>
-<div id="tabset-9-4">
+<div id="tabset-9-3">
+<p>Men were 7.8 percentage points more likely to be union members than women (17.3% vs.&nbsp;9.5%). A chi-squared test showed this association was statistically significant (<span class="math inline">\(\chi^2\)</span>(1) = 26.3, <span class="math inline">\(p\)</span> &lt; 0.001). We <strong>reject <span class="math inline">\(H_0\)</span>; we accept <span class="math inline">\(H_1\)</span></strong>: sex and union membership are not independent in this sample.</p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>How to interpret chi-squared:</strong></p>
+<p><strong>Important:</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li><strong>Reject <span class="math inline">\(H_0\)</span></strong> (<span class="math inline">\(p &lt; 0.05\)</span>): significant association between sex and union membership</li>
-<li><strong>Fail to reject <span class="math inline">\(H_0\)</span></strong> (<span class="math inline">\(p \geq 0.05\)</span>): data are consistent with independence</li>
-</ul>
-<p><strong>Important:</strong> The chi-squared test only tells you <em>whether</em> there is an association — <strong>not how strong</strong> it is or <strong>which direction</strong>. For that, you need measures of association.</p>
+<p>Chi-squared only tells you <em>whether</em> an association exists — not its direction or magnitude. Always supplement with a difference in proportions.</p>
 </div>
 </div>
 </div>
@@ -1561,67 +1498,36 @@ X-squared = 26.325, df = 1, p-value = 0.0000002886</code></pre>
 </section>
 <section id="worked-example-2-sex-and-educational-attainment" class="slide level2 smaller scrollable">
 <h2>Worked Example 2: Sex and Educational Attainment</h2>
+<p><span class="math inline">\(H_0\)</span>: Sex and college attainment are independent. <span class="math inline">\(H_1\)</span>: They are not. <span class="math inline">\(\alpha = 0.05\)</span>.</p>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Setup</a></li><li><a href="#tabset-10-2">R Code</a></li><li><a href="#tabset-10-3">Measures</a></li><li><a href="#tabset-10-4">Interpretation</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">R Code</a></li><li><a href="#tabset-10-2">Measures</a></li><li><a href="#tabset-10-3">Interpretation</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
-<p><strong>Research question:</strong> Is there a significant association between sex and having a college degree?</p>
-<ul>
-<li><span class="math inline">\(H_0\)</span>: Sex and college attainment are <strong>independent</strong> — knowing someone’s sex tells us nothing about whether they have a degree</li>
-<li><span class="math inline">\(H_1\)</span>: Sex and college attainment are <strong>not independent</strong> — there is an association</li>
-<li>Significance level: <span class="math inline">\(\alpha = 0.05\)</span></li>
-</ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>No college degree</th>
-<th>College degree</th>
-<th><strong>Total</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Female</strong></td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-</tr>
-<tr class="even">
-<td><strong>Male</strong></td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-10-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># Create binary college degree variable</span></span>
-<span id="cb23-2"><a></a>attain_deg <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
-<span id="cb23-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex), <span class="sc">!</span><span class="fu">is.na</span>(degree)) <span class="sc">|&gt;</span></span>
-<span id="cb23-4"><a></a>  <span class="fu">mutate</span>(<span class="at">college =</span> <span class="fu">if_else</span>(degree <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"bachelor"</span>, <span class="st">"graduate"</span>), <span class="st">"College+"</span>, <span class="st">"No college"</span>))</span>
-<span id="cb23-5"><a></a></span>
-<span id="cb23-6"><a></a>tab2 <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_deg<span class="sc">$</span>sex, attain_deg<span class="sc">$</span>college)</span>
-<span id="cb23-7"><a></a><span class="fu">addmargins</span>(tab2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>attain_deg <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex), <span class="sc">!</span><span class="fu">is.na</span>(degree)) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a></a>  <span class="fu">mutate</span>(<span class="at">college =</span> <span class="fu">if_else</span>(degree <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"bachelor"</span>, <span class="st">"graduate"</span>), <span class="st">"College+"</span>, <span class="st">"No college"</span>))</span>
+<span id="cb29-4"><a></a></span>
+<span id="cb29-5"><a></a>attain_deg <span class="sc">|&gt;</span></span>
+<span id="cb29-6"><a></a>  <span class="fu">count</span>(sex, college) <span class="sc">|&gt;</span></span>
+<span id="cb29-7"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> college, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span></span>
+<span id="cb29-8"><a></a>  <span class="fu">mutate</span>(<span class="at">Total =</span> <span class="st">`</span><span class="at">College+</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">No college</span><span class="st">`</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        
-         College+ No college  Sum
-  female      382       1316 1698
-  male        331        953 1284
-  Sum         713       2269 2982</code></pre>
+<pre><code># A tibble: 2 × 4
+  sex    `College+` `No college` Total
+  &lt;chr&gt;       &lt;int&gt;        &lt;int&gt; &lt;int&gt;
+1 female        382         1316  1698
+2 male          331          953  1284</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># Verify expected counts ≥ 5</span></span>
-<span id="cb25-2"><a></a><span class="fu">round</span>(<span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>expected, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>tab2 <span class="ot">&lt;-</span> <span class="fu">table</span>(attain_deg<span class="sc">$</span>sex, attain_deg<span class="sc">$</span>college)</span>
+<span id="cb31-2"><a></a><span class="fu">round</span>(<span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>expected, <span class="dv">1</span>)  <span class="co"># verify ≥ 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          College+ No college
   female      406       1292
   male        307        977</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># Run the chi-squared test</span></span>
-<span id="cb27-2"><a></a><span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">chisq.test</span>(tab2, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -1630,85 +1536,52 @@ data:  tab2
 X-squared = 4.3281, df = 1, p-value = 0.03749</code></pre>
 </div>
 </div>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Reading the output:</strong></p>
 </div>
-<div class="callout-content">
-<ul>
-<li><strong>X-squared</strong>: the <span class="math inline">\(\chi^2\)</span> test statistic</li>
-<li><strong>df</strong>: <span class="math inline">\((I-1)(J-1) = (2-1)(2-1) = 1\)</span> for a 2×2 table</li>
-<li><strong>p-value</strong>: probability of a <span class="math inline">\(\chi^2\)</span> this large if sex and degree were independent</li>
-</ul>
+<div id="tabset-10-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>attain_deg <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a></a>  <span class="fu">count</span>(sex, college) <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">round</span>(n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb35-5"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>n) <span class="sc">|&gt;</span></span>
+<span id="cb35-6"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> college, <span class="at">values_from =</span> prop)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+# Groups:   sex [2]
+  sex    `College+` `No college`
+  &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+1 female      0.225        0.775
+2 male        0.258        0.742</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>college_props <span class="ot">&lt;-</span> attain_deg <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a></a>  <span class="fu">count</span>(sex, college) <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span></span>
+<span id="cb37-4"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb37-5"><a></a>  <span class="fu">filter</span>(college <span class="sc">==</span> <span class="st">"College+"</span>)</span>
+<span id="cb37-6"><a></a></span>
+<span id="cb37-7"><a></a><span class="fu">cat</span>(<span class="st">"Difference in proportions:"</span>, <span class="fu">round</span>(college_props<span class="sc">$</span>prop[<span class="dv">1</span>] <span class="sc">-</span> college_props<span class="sc">$</span>prop[<span class="dv">2</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Difference in proportions: -0.033 </code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-10-3">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>tab_rel2     <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab2, <span class="at">margin =</span> <span class="dv">1</span>)</span>
-<span id="cb29-2"><a></a><span class="fu">round</span>(tab_rel2, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        
-         College+ No college
-  female    0.225      0.775
-  male      0.258      0.742</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>diff_college <span class="ot">&lt;-</span> tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>] <span class="sc">-</span> tab_rel2[<span class="st">"male"</span>, <span class="st">"College+"</span>]</span>
-<span id="cb31-2"><a></a>rr_college   <span class="ot">&lt;-</span> tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>] <span class="sc">/</span> tab_rel2[<span class="st">"male"</span>, <span class="st">"College+"</span>]</span>
-<span id="cb31-3"><a></a></span>
-<span id="cb31-4"><a></a><span class="fu">cat</span>(<span class="st">"College rate — female:"</span>, <span class="fu">round</span>(tab_rel2[<span class="st">"female"</span>, <span class="st">"College+"</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>College rate — female: 0.225 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">cat</span>(<span class="st">"College rate — male:  "</span>, <span class="fu">round</span>(tab_rel2[<span class="st">"male"</span>,   <span class="st">"College+"</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>College rate — male:   0.258 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Difference in proportions:"</span>, <span class="fu">round</span>(diff_college, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Difference in proportions: -0.033 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">cat</span>(<span class="st">"Relative risk ratio:      "</span>, <span class="fu">round</span>(rr_college,   <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Relative risk ratio:       0.873 </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-10-4">
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>How to write up the result:</strong></p>
-</div>
-<div class="callout-content">
-<p>Report the association direction, the chi-squared statistic, df, p-value, and a measure of effect:</p>
-<p><em>“Women were [X] percentage points [more / less] likely than men to have a college degree (difference in proportions = [X]). A chi-squared test showed this association was [significant / not significant] (<span class="math inline">\(\chi^2\)</span>(1) = [value], <span class="math inline">\(p\)</span> = [p]).”</em></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="writing-up-chi-squared-results" class="slide level2 smaller scrollable">
-<h2>Writing Up Chi-Squared Results</h2>
+<p>Women were 3.3 percentage points <em>less</em> likely than men to have a college degree (22.5% vs.&nbsp;25.8%). A chi-squared test showed this association was statistically significant (<span class="math inline">\(\chi^2\)</span>(1) = 4.3, <span class="math inline">\(p\)</span> = 0.038). We <strong>reject <span class="math inline">\(H_0\)</span>; we accept <span class="math inline">\(H_1\)</span></strong>: sex and college attainment are not independent in this sample.</p>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>A complete chi-squared write-up includes:</strong></p>
+<p><strong>Writing up chi-squared results — always include:</strong></p>
 </div>
 <div class="callout-content">
 <ol type="1">
-<li><strong>Description of the table</strong>: e.g., “Table 1 shows the distribution of union membership by sex”</li>
-<li><strong>Chi-squared statistic and p-value</strong>: <span class="math inline">\(\chi^2\)</span>(df) = [value], <span class="math inline">\(p\)</span> = [value]</li>
-<li><strong>Decision</strong>: reject or fail to reject <span class="math inline">\(H_0\)</span></li>
-<li><strong>A measure of association</strong> describing the <em>direction</em> and <em>magnitude</em> of the relationship</li>
-<li><strong>Plain-language interpretation</strong> tied to the research question</li>
+<li><strong>The group rates</strong> — which group is higher and by how much?</li>
+<li><strong>The test result</strong> — <span class="math inline">\(\chi^2\)</span>(df), <span class="math inline">\(p\)</span>-value</li>
+<li><strong>The decision</strong> — reject <span class="math inline">\(H_0\)</span>; accept <span class="math inline">\(H_1\)</span> / fail to reject <span class="math inline">\(H_0\)</span></li>
+<li><strong>Plain-language conclusion</strong> tied to the research question</li>
 </ol>
-<p><em>Example: “Men were [X] percentage points more likely to be union members than women (difference in proportions = [X]). A chi-squared test showed this association was [significant / not significant] (<span class="math inline">\(\chi^2\)</span>(1) = [value], <span class="math inline">\(p\)</span> = [p]).”</em></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1719,14 +1592,14 @@ Difference in proportions: -0.033 </code></pre>
 <section id="key-takeaways" class="slide level2 smaller">
 <h2>Key Takeaways</h2>
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Part 1 — Logic</a></li><li><a href="#tabset-11-2">Part 2 — t-Tests</a></li><li><a href="#tabset-11-3">Part 3 — Chi-Squared</a></li></ul>
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Part 1 — Logic</a></li><li><a href="#tabset-11-2">Part 2 — Tests</a></li><li><a href="#tabset-11-3">Part 3 — Chi-Squared</a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1">
 <ul>
-<li>A hypothesis test asks: <em>if <span class="math inline">\(H_0\)</span> were true, how likely is our data?</em></li>
-<li>The <strong>p-value</strong> is P(data this extreme | <span class="math inline">\(H_0\)</span> true) — NOT the probability <span class="math inline">\(H_0\)</span> is true</li>
-<li>Reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(p &lt; \alpha\)</span>; fail to reject (not “accept”) when <span class="math inline">\(p \geq \alpha\)</span></li>
-<li>Default to two-tailed; one-tailed only with strong pre-specified directional theory</li>
+<li>A hypothesis test asks: <em>if the null were true, how likely is our data?</em></li>
+<li>The <strong>p-value</strong> is the probability of seeing a result this extreme if the null were true — NOT the probability the null is true</li>
+<li>Reject the null when p &lt; 0.05; otherwise fail to reject (never “accept” the null)</li>
+<li>Default to two-tailed; use one-tailed only when theory predicts a specific direction</li>
 </ul>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -1734,26 +1607,63 @@ Difference in proportions: -0.033 </code></pre>
 <p><strong>Connection to Week 8:</strong></p>
 </div>
 <div class="callout-content">
-<p>If the 95% CI <strong>does not contain</strong> <span class="math inline">\(\mu_0\)</span> → reject <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span>. Tests and CIs are two sides of the same coin.</p>
+<p>If the 95% CI does <strong>not</strong> contain the null value → reject the null at 0.05. Tests and CIs are two sides of the same coin.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-11-2">
-<ul>
-<li><strong>One-sample t-test</strong>: <span class="math inline">\(t = (\bar{x} - \mu_0) / (s/\sqrt{n})\)</span>; use <code>t.test(x, mu = μ₀)</code></li>
-<li><strong>Two-sample t-test</strong>: compare group means; use <code>t.test(x, y)</code></li>
-<li><strong>Proportion test</strong>: use <code>prop.test(x, n, p = π₀)</code> — SE uses <strong>null value</strong> <span class="math inline">\(\pi_0\)</span></li>
-</ul>
-<p>Always report: sample statistic, t (or z), p-value, and a plain-language conclusion.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Use when</th>
+<th>R function</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One-sample t-test</td>
+<td>Is the mean = some value?</td>
+<td><code>t.test(x, mu = value)</code></td>
+<td>Do GSS respondents earn differently from $30,000?</td>
+</tr>
+<tr class="even">
+<td>Two-sample t-test</td>
+<td>Do two group means differ?</td>
+<td><code>t.test(x, y)</code></td>
+<td>Do union members work more hours than non-members?</td>
+</tr>
+<tr class="odd">
+<td>Proportion test</td>
+<td>Is a proportion = some value?</td>
+<td><code>prop.test(x, n, p = value)</code></td>
+<td>Is union membership different from 20%?</td>
+</tr>
+<tr class="even">
+<td>Chi-squared</td>
+<td>Are two categorical variables independent?</td>
+<td><code>chisq.test(table)</code></td>
+<td>Is union membership associated with sex?</td>
+</tr>
+</tbody>
+</table>
+<p>Always report: the group statistic(s), the p-value, your decision, and a plain-language conclusion.</p>
 </div>
 <div id="tabset-11-3">
 <ul>
-<li>Tests independence of two <strong>categorical</strong> variables</li>
-<li><span class="math inline">\(\chi^2 = \sum (n_{ij} - \hat{n}_{ij})^2 / \hat{n}_{ij}\)</span>; use <code>chisq.test(table)</code></li>
+<li>Tests whether two <strong>categorical</strong> variables are independent</li>
+<li>Compares the counts you <em>observed</em> to what you’d <em>expect</em> if there were no relationship</li>
 <li>All expected counts must be ≥ 5</li>
-<li>Chi-squared says <em>whether</em> there’s an association — not direction or strength</li>
-<li>Always supplement with <strong>difference in proportions</strong> or <strong>RRR</strong></li>
+<li>Only tells you <em>whether</em> an association exists — not direction or strength</li>
+<li>Always supplement with a <strong>difference in proportions</strong></li>
 </ul>
 </div>
 </div>
