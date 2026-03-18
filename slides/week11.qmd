@@ -1,0 +1,1272 @@
+---
+title: "Week 11"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 03/31/2026
+date-format: long
+format:
+  revealjs:
+    slide-number: true
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    css: slides.css
+    scrollable: true
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+```{r}
+#| echo: false
+#| results: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(here)
+library(patchwork)
+library(modelsummary)
+
+options(scipen = 999)
+
+attain <- read_csv(here("data/attain.csv"))
+
+set.seed(123)  # for reproducibility
+attain <- attain |>
+  mutate(
+    # Add smooth jitter to break up discrete coding artifacts in survey data.
+    # Prestige: additive normal noise (sd = 10) keeps scores in a realistic range.
+    # Income: multiplicative log-normal noise breaks up top-coded dollar bands far
+    #         better than additive noise; median multiplier ≈ 1.0 (no mean shift).
+    prestg80 = pmax(15, pmin(97, prestg80 + rnorm(n(), mean = 0, sd = 10))),
+    income91 = pmax(5000, income91 * exp(rnorm(n(), mean = 0, sd = 0.45)))
+  )
+
+# Pre-process: factor variables with reference categories
+# Degree levels: "lt high", "high sch", "junior c", "bachelor", "graduate"
+attain <- attain |>
+  mutate(
+    degree_f = fct_relevel(degree, "lt high", "high sch", "junior c", "bachelor", "graduate"),
+    sex_f    = fct_relevel(sex,    "male")
+  )
+
+# Analysis subsets used throughout
+attain_reg   <- attain |> filter(!is.na(prestg80), !is.na(income91))
+attain_cat   <- attain |> filter(!is.na(degree_f), !is.na(income91))
+attain_multi <- attain |> filter(!is.na(prestg80), !is.na(income91), !is.na(sex)) |>
+  mutate(sex_f = fct_relevel(sex, "male"))
+
+# Pre-fit models so they're available across slides
+model_biv   <- lm(income91 ~ prestg80,          data = attain_reg)
+model_cat   <- lm(income91 ~ degree_f,           data = attain_cat)
+model_multi <- lm(income91 ~ prestg80 + sex_f,   data = attain_multi)
+
+# --- Dynamic values used in slide text (updated automatically if model changes) ---
+b0     <- round(coef(model_biv)[["(Intercept)"]])          # intercept
+b1     <- round(coef(model_biv)[["prestg80"]])             # slope
+r2_biv <- round(summary(model_biv)$r.squared * 100, 1)    # R² in %
+b1_30  <- round(b1 * 30)                                   # 30-pt prestige increase
+
+b1_multi  <- round(coef(model_multi)[["prestg80"]])
+b_female  <- round(coef(model_multi)[["sex_ffemale"]])
+r2_multi  <- round(summary(model_multi)$r.squared * 100, 1)
+```
+
+## Agenda {.smaller}
+
+**Housekeeping:**
+
+- HW #8, HW #9, Revised Proposal with Outline
+
+**Statistical content — four parts:**
+
+- **Part 1**: Outcome variables and key predictors — what are we trying to explain?
+- **Part 2**: Bivariate OLS regression — estimating the magnitude of a linear relationship
+- **Part 3**: Regression with categorical predictors — dummy variables and baseline categories
+- **Part 4**: OLS assumptions and multivariate regression
+
+**In-class lab:**
+
+- Applying OLS regression to GSS data
+
+## Housekeeping {.smaller}
+
+**Weekly Assignment #8**
+
+- <span class="highlight">Due Thursday, April 2</span> — hypothesis testing from Week 9
+
+**Weekly Assignment #9**
+
+- <span class="highlight">Due Thursday, April 9</span>
+- Run an OLS regression on your research dataset — today's lecture covers everything you need
+- Uses `modelsummary()` for a clean regression table (covered today)
+- If using a categorical predictor, use `fct_relevel()` to set a baseline category (covered today)
+
+**Revised Proposal with Outline**
+
+- <span class="highlight">Due Thursday, April 16</span>
+- Should now describe the statistical techniques you plan to use — including regression!
+- Come to office hours if you need help connecting your research question to a regression model
+
+## Where We Are in the Course {.smaller}
+
+- **Weeks 7–8:** Sampling distributions and confidence intervals — estimating parameters from samples
+- **Week 9:** Hypothesis testing — is there a relationship, or is it just chance?
+- **This week (Week 11):** Linear regression — how *strong* is the relationship, and in what direction?
+- **Week 12:** Logistic regression — predicting binary outcomes
+- **Week 13:** Extensions — multiple controls, more complex models
+
+::: {.callout-note icon=false}
+## The big picture: from "yes or no" to "how much?"
+Last week we answered: *"Is there a statistically significant relationship?"* Today's tool — regression — gives a quantitative answer: *"For every one-unit increase in X, how much does Y change on average?"*
+:::
+
+## Questions?
+
+# Part 1: Outcome Variables and Key Predictors
+
+What are we trying to explain, and with what?
+
+## Two Variables, Two Roles {.smaller}
+
+Every regression analysis has variables playing two distinct roles:
+
+::: {.fragment .fade-up}
+**The outcome variable** — what you are trying to explain or predict
+
+- Also called: dependent variable (DV), response variable, **Y**
+- This is the phenomenon your research question is about -- **the thing that is effected**
+:::
+
+::: {.fragment .fade-up}
+**The predictor** — what you are using to explain the outcome
+
+- Also called: key independent variable (key IV), explanatory variable, **X**
+- This is the main theoretical variable your hypothesis is about -- **the thing that does the affecting**
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## These labels reflect your theory, not your data:
+Calling one variable the "outcome" and another the "predictor" encodes your theoretical argument about which variable explains which. Regression is a tool for formalizing that argument quantitatively.
+:::
+:::
+
+## Language Matters {.smaller}
+
+You'll encounter many terms for the same concept — here's a cheat sheet:
+
+| Term | What it means | Also called |
+|---|---|---|
+| **Outcome variable** | What you are trying to explain | Dependent variable (DV), Y, response variable |
+| **Key predictor** | Your main explanatory variable | Key IV, key independent variable, X |
+| **Control variable** | Additional IV included to rule out alternatives | Covariate |
+
+<br>
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## In your research paper:
+Your paper proposal asked you to identify your **key independent** and **dependent variables**. These map directly onto **key predictor** and **outcome variable** in regression. Today you learn to formally estimate the relationship between them.
+:::
+:::
+
+## Setting Up Your Research Question {.smaller}
+
+Before running any regression, be explicit about your variables and expectations:
+
+::: {.panel-tabset}
+
+### Step 1 — Research Question
+
+Your research question should name both roles:
+
+> *"Does occupational prestige predict household income?"*
+
+- **Outcome variable (Y):** `income91` — household income, in dollars — *what we're explaining*
+- **Key predictor (X):** `prestg80` — occupational prestige score — *our main theoretical variable*
+
+::: {.callout-note icon=false}
+## Why income as the outcome?
+We have theoretical reasons to believe occupational status drives income (not the reverse). The direction of influence determines which variable goes on which side of the regression equation.
+:::
+
+### Step 2 — Hypothesis
+
+Write out your hypothesis before looking at the data:
+
+$$H_0: \beta_{\text{prestige}} = 0 \quad \text{(prestige has no effect on income)}$$
+
+$$H_1: \beta_{\text{prestige}} > 0 \quad \text{(higher prestige → higher income)}$$
+
+This is a **one-tailed test** — theory strongly predicts the direction (positive).
+
+In most cases, we'll default to **two-tailed** unless we have strong prior theoretical reason for directionality.
+
+### Step 3 — Visualize First
+
+Always plot your variables before running a regression:
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-height: 2.8
+#| warning: false
+
+ggplot(attain_reg, aes(x = prestg80, y = income91)) +
+  geom_point(alpha = 0.2, color = "gray50", size = 1.2) +
+  geom_smooth(method = "lm", se = TRUE, color = "#4E79A7",
+              fill = "#4E79A7", alpha = 0.15) +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  labs(title = "Occupational Prestige and Household Income (GSS, 1991)",
+       x = "Occupational Prestige Score (Key Predictor)",
+       y = "Household Income — $ (Outcome)") +
+  theme_minimal(base_size = 11)
+```
+
+:::
+
+## Questions?
+
+# Part 2: From Correlation to Regression
+
+From "is there a relationship?" to "how strong is it?"
+
+## What Correlation Tells Us — and What It Doesn't {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+A **correlation coefficient** (r) describes direction and strength:
+
+- $r = +0.4$: moderate positive relationship
+- $r = -0.7$: strong negative relationship
+- $r = 0$: no linear relationship
+
+**But correlation cannot answer:**
+
+- How many dollars does income increase per one-point gain in occupational prestige?
+- What is the predicted income for someone with a prestige score of 50?
+- Is this relationship significant after controlling for sex?
+:::
+
+::: {.column width="45%"}
+::: {.callout-note icon=false}
+## The key limitation:
+Two datasets can have the same correlation (r = 0.82) but completely different *slopes* — different magnitudes, different units, different practical meanings.
+
+**Regression gives us the slope** — the actual quantitative size of the relationship in the units of Y per unit of X.
+:::
+:::
+
+::::
+
+## The Linear Regression Model {.smaller}
+
+For any value $x$ of the key predictor, the **expected value** of the outcome is:
+
+$$E[Y \mid x] = \alpha + \beta x$$
+
+::: {.fragment .fade-up}
+| Symbol | Name | Meaning |
+|---|---|---|
+| $E[Y \mid x]$ | Conditional mean | Expected (average) value of outcome $Y$ when $X = x$ |
+| $\alpha$ | Intercept | Predicted value of $Y$ when $X = 0$ — the baseline anchor |
+| $\beta$ | Slope | Average change in $Y$ for a **one-unit increase** in $X$ |
+:::
+
+::: {.fragment .fade-up}
+**In practice**, we estimate from sample data:
+
+$$y_i = a + b \cdot x_i + e_i$$
+
+- $a$ = estimated intercept (sample estimate of $\alpha$)
+- $b$ = estimated slope (sample estimate of $\beta$) — **this is the key number**
+- $e_i$ = residual for observation $i$ — the gap between observed $y_i$ and predicted $\hat{y}_i$
+:::
+
+::: {.fragment .fade-up}
+**OLS (ordinary least squares)** chooses $a$ and $b$ to minimize:
+
+$$\text{SSR} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - a - b \cdot x_i)^2$$
+
+Why square? Prevents cancellation, penalizes large misses, and produces a unique closed-form solution.
+:::
+
+## Observed vs. Predicted Values {.smaller}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+#| fig-align: center
+#| warning: false
+
+set.seed(42)
+demo_df <- attain_reg |>
+  slice_sample(n = 80) |>
+  mutate(
+    pred  = predict(model_biv, newdata = pick(everything())),
+    resid = income91 - pred
+  )
+
+# Select exactly 3 points (rows 10, 35, 65) for highlighted residuals
+highlight_pts <- demo_df |> slice(c(10, 35, 65))
+
+ggplot(demo_df, aes(x = prestg80, y = income91)) +
+  # All points — gray, low alpha
+  geom_point(alpha = 0.35, color = "gray50", size = 1.8) +
+  # Regression line
+  geom_smooth(data = attain_reg, aes(x = prestg80, y = income91),
+              method = "lm", se = FALSE, color = "#4E79A7", linewidth = 1.3) +
+  # Residual segments only for 3 highlighted points
+  geom_segment(data = highlight_pts,
+               aes(xend = prestg80, yend = pred),
+               color = "#E15759", linewidth = 1.0) +
+  # Highlighted dots for those 3 points
+  geom_point(data = highlight_pts,
+             color = "#E15759", size = 3.5) +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  labs(
+    title = "Observed values (dots) · Predicted values (line) · Residuals (red segments, 3 shown)",
+    x = "Occupational Prestige Score",
+    y = "Household Income ($)"
+  ) +
+  annotate("text",
+           x = quantile(demo_df$prestg80, 0.05, na.rm = TRUE),
+           y = quantile(demo_df$income91, 0.95, na.rm = TRUE),
+           label = "↕  residual: eᵢ = yᵢ − ŷᵢ",
+           color = "#E15759", size = 3.8, hjust = 0, fontface = "bold") +
+  theme_minimal(base_size = 11)
+```
+
+::: {.callout-note icon=false}
+**Residual** $e_i = y_i - \hat{y}_i$: how far each observation is from the line. OLS **minimizes the sum of squared residuals** — hence "ordinary least squares."
+:::
+
+## Running OLS in R {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Setup
+
+**The `lm()` function** runs OLS regression:
+
+```r
+lm(outcome ~ key_predictor, data = your_data)
+```
+
+- The variable on the **left** of `~` is always the **outcome (Y)**
+- The variable on the **right** is the **key predictor (X)**
+
+**Our example:**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Filter to complete cases
+attain_reg <- attain |> filter(!is.na(prestg80), !is.na(income91))
+
+# Fit the OLS model — outcome ~ key_predictor
+model_biv <- lm(income91 ~ prestg80, data = attain_reg)
+```
+
+### `summary()` Output
+
+```{r}
+#| echo: true
+#| eval: true
+
+summary(model_biv)
+```
+
+### `modelsummary()`
+
+`modelsummary()` from the [`modelsummary`](https://modelsummary.com) package produces a cleaner, publication-ready table — use this in hw9:
+
+```{r}
+#| echo: true
+#| eval: true
+
+modelsummary(model_biv,
+             coef_rename = c("(Intercept)" = "Intercept",
+                             "prestg80"    = "Prestige Score"),
+             stars   = TRUE,
+             title   = "OLS: Household Income ~ Occupational Prestige",
+             gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+
+### Reading the Output
+
+::: {.callout-note icon=false}
+## What each row means:
+
+**`Intercept`:** Predicted income when prestige = 0. Not substantively meaningful for prestige (no one has a prestige score of 0) — just the mathematical anchor for the line.
+
+**`Prestige Score` (slope):** For each additional point in occupational prestige, household income is predicted to be about **$`r b1` higher**, on average. **This is your key result.**
+
+**Standard error:** How precisely we've estimated the slope. Smaller SE → more confidence.
+
+**Stars / p-value:** Is the slope significantly different from zero? Here, $p < 0.001$ — we strongly reject $H_0: \beta = 0$.
+
+**R²:** Occupational prestige explains about **`r r2_biv`%** of the variation in household income. Report and interpret this in hw9.
+:::
+
+:::
+
+## Regression Coefficients and Hypothesis Tests {.smaller}
+
+Every OLS coefficient has its own built-in hypothesis test:
+
+$$t = \frac{b}{SE(b)}, \quad \text{compared to } t\text{-distribution with } df = n - k - 1$$
+
+::: {.fragment .fade-up}
+This is identical to Week 9's t-test logic — the only thing new is *what* we're testing
+:::
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: true
+#| eval: true
+
+# Each column has a precise meaning:
+#   Estimate    = the coefficient (b)
+#   Std. Error  = SE(b) — precision of the estimate
+#   t value     = Estimate / Std. Error  ← same t-test from Week 9!
+#   Pr(>|t|)    = two-tailed p-value for H0: beta = 0
+summary(model_biv)$coefficients
+```
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Connection to Week 9:
+When $p < 0.05$ for a coefficient, we reject $H_0: \beta = 0$ — evidence that the predictor has a real effect on the outcome. The coefficient tells us the *direction* and *magnitude* of that effect; the p-value tells us whether we can trust it isn't due to chance.
+:::
+:::
+
+## Interpreting Coefficients {.smaller}
+
+The estimated regression equation:
+
+$$\widehat{\text{income}} = `r format(b0, big.mark=",")`  + `r b1` \times \text{prestige}$$
+
+::: {.fragment .fade-up}
+**The slope ($b = `r b1`$):**
+
+- For each additional point in occupational prestige, predicted household income increases by **$`r b1`**
+- A person who moves from a prestige score of 30 to 60 (+30 points) is predicted to earn **$`r b1_30` more** per year
+- The positive sign confirms a **positive relationship** — higher prestige, higher income
+:::
+
+::: {.fragment .fade-up}
+**The intercept ($a = `r format(b0, big.mark=",")`$):**
+
+- Predicted income when prestige = 0 is **$`r format(b0, big.mark=",")`** — not really meaningful (prestige scores are well above 0)
+- This is just a mathematical anchor. We almost never interpret it substantively.
+- The intercept matters for drawing the line; the **slope** is the theoretically meaningful number.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## Always report magnitude, not just significance:
+A p-value tells you whether $b \neq 0$. **The coefficient itself** tells you how large and meaningful the relationship is. Report both.
+:::
+:::
+
+## What Is R²? {.smaller}
+
+**R²** (R-squared) is the **coefficient of determination** — the proportion of variation in the outcome that is explained by the model:
+
+::: {.fragment .fade-up}
+$$R^2 = \frac{\text{variation in } Y \text{ explained by model}}{\text{total variation in } Y} \in [0, 1]$$
+
+| R² value | Interpretation |
+|---|---|
+| R² = 0.00 | The model explains *none* of the variation in Y |
+| R² = `r r2_biv/100` | Prestige explains **~`r r2_biv`%** of the variation in income |
+| R² = 0.25 | The model accounts for 25% of variation — strong for social science |
+| R² = 1.00 | The model perfectly predicts Y (never in real social science data) |
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## What counts as a "good" R²?
+It depends entirely on context. In social science, R² of 0.05–0.30 is common and meaningful. A low R² does not mean your predictor is unimportant — it means many other factors also shape the outcome. **Always discuss what R² implies about how much your key predictor explains vs. how much remains unexplained.**
+:::
+:::
+
+## Visualizing Regression Results {.smaller}
+
+Two visualizations worth including in hw9:
+
+::: {.panel-tabset}
+
+### Scatter + Regression Line
+
+Use `geom_smooth(method = "lm")` to overlay the regression line on a scatterplot:
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-height: 2.8
+#| warning: false
+
+ggplot(attain_reg, aes(x = prestg80, y = income91)) +
+  geom_point(alpha = 0.2, color = "gray50", size = 1) +
+  geom_smooth(method = "lm", se = TRUE,
+              color = "#4E79A7", fill = "#4E79A7", alpha = 0.2) +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  labs(title = "Effect of Occupational Prestige on Household Income",
+       x = "Occupational Prestige Score", y = "Household Income ($)") +
+  theme_minimal(base_size = 11)
+```
+
+### Coefficient Plot
+
+`modelplot()` from `modelsummary` shows coefficients with 95% confidence intervals. If the CI does not cross 0, the coefficient is significant at $\alpha = 0.05$:
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-height: 1.8
+
+modelplot(model_biv, coef_omit = "Intercept") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "#E15759") +
+  labs(title = "OLS Coefficient: Effect of Prestige on Income",
+       x = "Estimated Coefficient ($ per prestige point)") +
+  theme_minimal(base_size = 11)
+```
+
+:::
+
+## Questions?
+
+# Part 3: Regression with Categorical Predictors
+
+When your key predictor has categories
+
+## Categorical Variables: The Challenge {.smaller}
+
+So far our key predictor has been **continuous** (occupational prestige). What if the key predictor is **categorical** — like educational degree, sex, or race?
+
+::: {.fragment .fade-up}
+**The challenge:** We can't multiply a category label by a number. Regression needs numbers.
+
+**The solution:** Replace a categorical variable with a set of **dummy (indicator) variables** — one for each category except the baseline.
+:::
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: false
+#| fig-height: 2.8
+#| fig-align: center
+#| warning: false
+
+attain_cat |>
+  mutate(
+    # Reversed order so coord_flip puts lowest (lt high) at TOP
+    degree = factor(degree,
+                    levels = rev(c("lt high", "high sch",
+                                   "junior c", "bachelor", "graduate")))
+  ) |>
+  group_by(degree) |>
+  summarize(mean_income = mean(income91, na.rm = TRUE), .groups = "drop") |>
+  drop_na() |>
+  ggplot(aes(x = degree, y = mean_income)) +
+  geom_col(fill = "#4E79A7") +
+  scale_y_continuous(labels = scales::dollar_format(),
+                     expand = expansion(mult = c(0, 0.15))) +
+  labs(title = "Mean Household Income by Educational Degree",
+       x = "Degree", y = "Mean Income") +
+  theme_minimal(base_size = 10) +
+  coord_flip()
+```
+
+*We can see groups differ — but how much? And is the difference significant? Regression tells us.*
+:::
+
+## Dummy Variables and Baseline Categories {.smaller}
+
+For a categorical variable with **k** categories, we create **k − 1** dummy variables. The omitted category is the **baseline (reference) group** — all comparisons are made against it.
+
+::: {.fragment .fade-up}
+**Example:** Degree (5 categories) → 4 dummies (baseline = *lt high* [less than high school]):
+
+| Category | HS diploma | Jr. College | Bachelor | Graduate | Predicted income |
+|---|---|---|---|---|---|
+| **lt high (BASELINE)** | 0 | 0 | 0 | 0 | = intercept α |
+| Has HS diploma | **1** | 0 | 0 | 0 | = α + b_hs |
+| Has Jr. College | 0 | **1** | 0 | 0 | = α + b_jc |
+| Has Bachelor's | 0 | 0 | **1** | 0 | = α + b_ba |
+| Has Graduate degree | 0 | 0 | 0 | **1** | = α + b_grad |
+
+:::
+
+::: {.fragment .fade-up}
+The baseline's predicted income = the **intercept** α. Every other coefficient = income *above or below* that baseline.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Choosing the baseline:
+- Pick the category that makes theoretical sense as a reference point
+- Common choices: lowest category, largest group, or the "control" condition
+- In R: `fct_relevel(var, "category_name")` (from `forcats`, loaded with `tidyverse`)
+:::
+:::
+
+## Setting Up Categorical IVs in R {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Step 1: Check Levels
+
+Before setting a baseline, see what categories exist:
+
+```{r}
+#| echo: true
+#| eval: true
+
+# What categories does degree have?
+table(attain$degree)
+```
+
+The first value alphabetically becomes the default baseline — we usually want to choose explicitly.
+
+### Step 2: fct_relevel
+
+```{r}
+#| echo: true
+#| eval: true
+
+attain_cat <- attain |>
+  filter(!is.na(degree), !is.na(income91)) |>
+  mutate(
+    # Specify all levels in educational order (lowest → highest)
+    degree_f = fct_relevel(degree, "lt high", "high sch", "junior c", "bachelor", "graduate")
+  )
+
+# Verify: levels listed in educational order, first = baseline
+levels(attain_cat$degree_f)
+```
+
+**Choosing the baseline category:**
+
+- Always choose a category that makes **theoretical sense** as a reference point
+- Common strategy: use the group that represents "no treatment" or the lowest level — e.g., *less than high school* when testing whether higher degrees predict income
+- Avoid making the smallest group the baseline — comparisons to a tiny group are imprecise
+- Example: if your hypothesis is about the **disadvantage of not having a college degree**, set `"bachelor"` as the baseline so coefficients show penalty for *each lower* degree level
+
+::: {.callout-note icon=false}
+## Baseline in our example:
+`"lt high"` (less than high school) is the baseline. Every other coefficient shows how much more income people with that degree earn *compared to respondents without a high school diploma*.
+:::
+
+### Step 3: Run + Display
+
+```{r}
+#| echo: true
+#| eval: true
+
+model_cat <- lm(income91 ~ degree_f, data = attain_cat)
+
+modelsummary(model_cat,
+             coef_rename = c("(Intercept)"        = "Intercept",
+                             "degree_fhigh sch"   = "High School",
+                             "degree_fjunior c"   = "Junior College",
+                             "degree_fbachelor"   = "Bachelor's Degree",
+                             "degree_fgraduate"   = "Graduate Degree"),
+             stars   = TRUE,
+             title   = "OLS: Income ~ Degree (baseline = lt high)",
+             gof_map = c("nobs", "r.squared"))
+```
+
+:::
+
+## Interpreting Categorical Coefficients {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### The Equation
+
+With degree as the key predictor (baseline = *lt high* [less than HS]):
+
+$$\widehat{\text{income}} = \alpha + b_{\text{hs}} X_{\text{hs}} + b_{\text{jc}} X_{\text{jc}} + b_{\text{ba}} X_{\text{ba}} + b_{\text{grad}} X_{\text{grad}}$$
+
+Each $X$ is a **dummy variable** (0/1) for that degree level; each coefficient = the **income difference** relative to the baseline group.
+
+### How to Read
+
+::: {.callout-note icon=false}
+## Reading categorical coefficients:
+
+**Intercept ($\alpha$):** Predicted income for someone with *less than a high school degree* (the baseline). This *is* interpretable — it's the baseline group's average income.
+
+**Coefficient on `High School` ($b_{\text{hs}}$):** On average, having a high school diploma (vs. less than HS) is associated with **$X more** in household income.
+
+**Coefficient on `Graduate Degree` ($b_{\text{grad}}$):** On average, having a graduate degree (vs. less than HS) is associated with **$Y more** in household income.
+
+**Key insight:** Regression with a categorical IV is equivalent to comparing group means — but regression gives us p-values for each comparison and allows us to control for other variables.
+:::
+
+### Predicted Values
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Predicted income for each degree level — ordered lowest to highest
+tibble(
+  Degree   = c("Less than HS (baseline)", "High School", "Junior College",
+               "Bachelor's Degree", "Graduate Degree"),
+  degree_f = factor(
+    c("lt high", "high sch", "junior c", "bachelor", "graduate"),
+    levels = levels(attain_cat$degree_f)
+  )
+) |>
+  mutate(Predicted_Income = scales::dollar(
+    round(predict(model_cat, newdata = pick(degree_f)), 0)
+  )) |>
+  select(Degree, Predicted_Income)
+```
+
+### Visualization
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-height: 2.5
+
+# Rename and reverse order so lowest degree appears at top (matching table above)
+modelplot(
+  model_cat,
+  coef_omit = "Intercept",
+  coef_rename = c(
+    "degree_fhigh sch" = "High School",
+    "degree_fjunior c" = "Junior College",
+    "degree_fbachelor" = "Bachelor's Degree",
+    "degree_fgraduate" = "Graduate Degree"
+  )
+) +
+  scale_y_discrete(limits = rev) +   # lowest degree (HS) at top
+  geom_vline(xintercept = 0, linetype = "dashed", color = "#E15759") +
+  labs(
+    title = "Income Gaps by Degree (vs. Less Than HS baseline)",
+    x = "Estimated Income Difference ($)"
+  ) +
+  theme_minimal(base_size = 10)
+```
+
+:::
+
+## Questions?
+
+# Part 4: OLS Assumptions
+
+When can we trust our estimates?
+
+## The Four OLS Assumptions {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### 1. Independence
+
+**Observations are independent** — typically satisfied by random sampling.
+
+- Violated when observations are clustered (e.g., students within schools)
+- Fix: include survey weights or use clustered standard errors
+
+```r
+# If your data have survey weights:
+lm(outcome ~ predictor, data = data, weights = wt_var)
+```
+
+### 2. Linearity
+
+**There is a linear relationship** between the continuous IV and the outcome.
+
+```{r}
+#| echo: false
+#| fig-height: 2.5
+#| fig-align: center
+#| warning: false
+
+set.seed(99)
+n <- 200
+
+p_lin <- tibble(
+  x = runif(n, 0, 10),
+  y = 2 + 1.5 * x + rnorm(n, 0, 2)
+) |>
+  ggplot(aes(x, y)) +
+  geom_point(alpha = 0.4, size = 1) +
+  geom_smooth(method = "lm", se = FALSE, color = "#4E79A7") +
+  labs(title = "✓ What we want: linear relationship", x = "X", y = "Y") +
+  theme_minimal(base_size = 10) +
+  theme(plot.background = element_rect(fill = "#e8f5e9", color = "#59A14F", linewidth = 1),
+        plot.title = element_text(color = "#2e7d32", face = "bold"))
+
+p_nonlin <- tibble(
+  x = runif(n, 0, 10),
+  y = (x - 5)^3 / 10 + rnorm(n, 0, 3)
+) |>
+  ggplot(aes(x, y)) +
+  geom_point(alpha = 0.4, size = 1) +
+  geom_smooth(se = FALSE, color = "#E15759", linetype = "solid", linewidth = 0.8) +
+  labs(title = "✗ Violation: non-linear (curved)", x = "X", y = "Y") +
+  theme_minimal(base_size = 10) +
+  theme(plot.background = element_rect(fill = "#fdecea", color = "#E15759", linewidth = 1),
+        plot.title = element_text(color = "#c62828", face = "bold"))
+
+p_lin | p_nonlin
+```
+
+*Always check this with a scatter plot of Y vs X before running the regression.*
+
+### 3. Normal Errors
+
+**The errors are approximately normally distributed** — most important in small samples. In large samples, violations are usually not a big problem (Central Limit Theorem applies).
+
+Check with a histogram of residuals:
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+#| fig-align: center
+#| warning: false
+
+set.seed(55)
+n_sim <- 300
+
+p_norm <- tibble(e = rnorm(n_sim, 0, 10)) |>
+  ggplot(aes(x = e)) +
+  geom_histogram(bins = 30, fill = "#59A14F", color = "white") +
+  labs(title = "✓ Normal errors", x = "Residual", y = "Count") +
+  theme_minimal(base_size = 10)
+
+p_skew <- tibble(e = rexp(n_sim) - 1) |>
+  ggplot(aes(x = e)) +
+  geom_histogram(bins = 30, fill = "#E15759", color = "white") +
+  labs(title = "✗ Non-normal errors", x = "Residual", y = "Count") +
+  theme_minimal(base_size = 10)
+
+p_actual <- tibble(resid = residuals(model_biv)) |>
+  ggplot(aes(x = resid)) +
+  geom_histogram(bins = 40, fill = "#4E79A7", color = "white") +
+  labs(title = "Our model — prestige → income",
+       x = "Residual ($)", y = "Count") +
+  theme_minimal(base_size = 10)
+
+(p_norm | p_skew) / p_actual +
+  plot_annotation(title = "Checking normality of residuals")
+```
+
+### 4. Homoskedasticity
+
+**The spread of residuals is constant** across all values of X (equal variance).
+
+```{r}
+#| echo: false
+#| fig-height: 2.5
+#| fig-align: center
+#| warning: false
+
+set.seed(77)
+n <- 200
+
+p_homo <- tibble(
+  x      = runif(n, 0, 10),
+  y      = 2 + 1.5 * x + rnorm(n, 0, 3),
+  fitted = 2 + 1.5 * x,
+  resid  = y - fitted
+) |>
+  ggplot(aes(fitted, resid)) +
+  geom_point(alpha = 0.4, color = "#4E79A7", size = 1.2) +
+  geom_hline(yintercept = 0, color = "#E15759", linetype = "dashed") +
+  labs(title = "✓ What we want: constant spread", x = "Fitted", y = "Residuals") +
+  theme_minimal(base_size = 10) +
+  theme(plot.background = element_rect(fill = "#e8f5e9", color = "#59A14F", linewidth = 1),
+        plot.title = element_text(color = "#2e7d32", face = "bold"))
+
+p_hetero <- tibble(
+  x      = runif(n, 0, 10),
+  y      = 2 + 1.5 * x + rnorm(n, 0, 0.3 + 0.8 * x),
+  fitted = 2 + 1.5 * x,
+  resid  = y - fitted
+) |>
+  ggplot(aes(fitted, resid)) +
+  geom_point(alpha = 0.4, color = "#F28E2B", size = 1.2) +
+  geom_hline(yintercept = 0, color = "#E15759", linetype = "dashed") +
+  labs(title = "✗ Violation: spread grows with X", x = "Fitted", y = "Residuals") +
+  theme_minimal(base_size = 10) +
+  theme(plot.background = element_rect(fill = "#fdecea", color = "#E15759", linewidth = 1),
+        plot.title = element_text(color = "#c62828", face = "bold"))
+
+p_homo | p_hetero
+```
+
+*Violations bias standard errors — important for t-tests. Fix: robust standard errors.*
+
+:::
+
+## Checking Assumptions Visually {.smaller}
+
+A **residuals vs. fitted plot** diagnoses both linearity and homoskedasticity at once:
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-height: 4.5
+#| warning: false
+
+resid_cap <- quantile(abs(residuals(model_biv)), 0.97, na.rm = TRUE)
+
+attain_reg |>
+  mutate(
+    fitted = fitted(model_biv),
+    resid  = residuals(model_biv)
+  ) |>
+  ggplot(aes(x = fitted, y = resid)) +
+  geom_point(alpha = 0.25, color = "gray40", size = 1) +
+  geom_hline(yintercept = 0, color = "#E15759", linetype = "dashed", linewidth = 1) +
+  geom_smooth(method = "loess", se = FALSE, color = "#4E79A7", linewidth = 1) +
+  coord_cartesian(ylim = c(-resid_cap, resid_cap)) +   # cap at 97th pct, don't drop data
+  scale_x_continuous(labels = scales::dollar_format()) +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  labs(title = "Residuals vs. Fitted: prestige → income  (top/bottom 3% capped for visibility)",
+       x = "Fitted values (predicted income)",
+       y = "Residuals") +
+  theme_minimal(base_size = 11)
+```
+
+::: {.callout-tip icon=false}
+## What to look for — and what our model shows:
+
+**Linearity:** Is the blue loess line approximately flat (horizontal)? *In our model: mostly flat with slight curvature — no major concern.*
+
+**Homoskedasticity:** Is the vertical spread of points roughly constant across the x-axis? *In our model: the spread is roughly similar across fitted values, though slightly wider at high incomes — common with income data.*
+
+Overall, our prestige → income model does not show dramatic assumption violations, but some heteroskedasticity is plausible. Using `vcov = "HC1"` robust SEs (shown next) is a sensible precaution.
+:::
+
+## Robust Standard Errors {.smaller}
+
+If you suspect heteroskedasticity, use **robust standard errors** — they correct the SEs without changing the coefficient estimates:
+
+::: {.panel-tabset}
+
+### The Problem
+
+- Violations of normality and homoskedasticity **do not bias** the coefficient estimates ($a$, $b$)
+- But they **do bias the standard errors** — which affects t-statistics and p-values
+- Robust SEs account for these violations with a conservative adjustment
+
+### In R: modelsummary
+
+The easiest approach is to compare standard vs. robust SEs side-by-side using `modelsummary()`:
+
+```{r}
+#| echo: true
+#| eval: true
+
+modelsummary(
+  list("Standard SEs" = model_biv, "Robust (HC1) SEs" = model_biv),
+  vcov = list("classical", "HC1"),
+  coef_rename = c("(Intercept)" = "Intercept",
+                  "prestg80"    = "Prestige Score"),
+  stars = TRUE,
+  gof_map = c("nobs", "r.squared"),
+  title = "Standard vs. Robust Standard Errors"
+)
+```
+
+:::
+
+## What Do Control Variables Actually Do? {.smaller}
+
+When we add a control variable to a regression, we are **partitioning the variation** in the outcome:
+
+::: {.fragment .fade-up}
+**Without a control:**
+
+$$\text{income} = a + b_1 \cdot \text{prestige} + e$$
+
+The coefficient $b_1$ captures *all* the ways prestige is associated with income — including variation that is really due to sex (because men and women differ in both prestige and income).
+:::
+
+::: {.fragment .fade-up}
+**With a control for sex:**
+
+$$\text{income} = a + b_1 \cdot \text{prestige} + b_2 \cdot \text{sex} + e$$
+
+Now $b_1$ captures the association between prestige and income *after filtering out* any variation that could be due to sex differences. We are comparing people who are **identical on the control variable** (same sex) and asking: does prestige still predict income?
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The key intuition:
+A control variable "filters away" variation in the outcome that is explained by that control. The coefficient on the key predictor then reflects **only the variation that can't be explained by the control variables**. This is what "holding constant" means statistically.
+:::
+:::
+
+## Multivariate Regression {.smaller .scrollable}
+
+We can include multiple predictors — this is **multivariate regression**. We'll cover this in depth in Week 13.
+
+::: {.panel-tabset}
+
+### R Code
+
+```{r}
+#| echo: true
+#| eval: true
+
+attain_multi <- attain |>
+  filter(!is.na(prestg80), !is.na(income91), !is.na(sex)) |>
+  mutate(sex_f = fct_relevel(sex, "male"))
+
+model_biv2   <- lm(income91 ~ prestg80,          data = attain_multi)
+model_multi  <- lm(income91 ~ prestg80 + sex_f,   data = attain_multi)
+```
+
+### Comparing Models
+
+```{r}
+#| echo: true
+#| eval: true
+
+modelsummary(
+  list("Bivariate" = model_biv2, "Multivariate" = model_multi),
+  coef_rename = c("(Intercept)" = "Intercept",
+                  "prestg80"    = "Prestige Score",
+                  "sex_ffemale" = "Female"),
+  stars   = TRUE,
+  title   = "Prestige and Income: Bivariate vs. Multivariate",
+  gof_map = c("nobs", "r.squared")
+)
+```
+
+### Interpretation
+
+::: {.callout-note icon=false}
+## Reading the multivariate table:
+
+**Coefficient on `Prestige Score` (bivariate → multivariate):** $`r b1` → $`r b1_multi` per prestige point. After controlling for sex, the prestige slope changes slightly — this shift tells us how much of the bivariate prestige effect was actually due to sex differences in prestige.
+
+**Coefficient on `Female`:** $`r b_female` — women earn about $`r abs(b_female)` less per year than men *at the same prestige level*. This is the gender income gap net of occupational status.
+
+**R² increase:** `r r2_biv`% (bivariate) → `r r2_multi`% (multivariate). Adding sex explains additional variation in income beyond prestige alone — but most variation in income remains unexplained by these two predictors.
+
+**In Week 13**, we'll cover how to decide which controls to include, and what changes in coefficients across models mean theoretically.
+:::
+
+:::
+
+# Reading Research: Thompson & Keith (2001)
+
+Seeing today's tools in a published sociological study
+
+## "The Blacker the Berry" — Overview {.smaller}
+
+**Thompson, M.S. & Keith, V.M. (2001).** *The Blacker the Berry: Gender, Skin Tone, Self-Esteem, and Self-Efficacy.* **Gender & Society, 15**(3), 336–357.
+
+::: {.fragment .fade-up}
+**Research question:** Does skin tone predict psychological well-being — specifically self-esteem and self-efficacy — for Black Americans? And does this relationship differ by gender?
+
+- Motivated by **colorism**: the documented pattern in which lighter-skinned Black individuals receive preferential treatment in U.S. society
+- The title references the saying "the blacker the berry, the sweeter the juice" — but the authors ask whether this holds for self-perception
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Why this paper?
+This is a model of how to use OLS regression to answer a sociological question. The authors carefully choose their outcome variable, identify a clear key predictor, include theoretically motivated controls, and interpret the substantive meaning of their coefficients.
+:::
+:::
+
+## Research Design {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Data & Sample
+
+- **Data:** National Survey of Black Americans (NSBA), 1979–1980
+- **Sample:** 2,107 Black American adults; analyses conducted separately for **men** (n ≈ 581) and **women** (n ≈ 1,035) who are employed
+- **Why separate models?** The authors hypothesize that the relationship between skin tone and self-esteem *differs by gender* — so they run separate regressions for men and women
+
+### Variables
+
+| Role | Variable | Measurement |
+|---|---|---|
+| **Outcome (DV) 1** | Self-esteem | Rosenberg 10-item scale (1–4; higher = more positive) |
+| **Outcome (DV) 2** | Self-efficacy | Personal efficacy scale (1–4; higher = more control) |
+| **Key predictor** | Skin tone | Interviewer-rated 5-point scale: 1 = very dark to 5 = very light brown |
+| **Controls** | Education, income, employment, age, marital status, family origin | Standard socioeconomic controls |
+
+### Regression Model
+
+The authors estimate (separately for men and women):
+
+$$\widehat{\text{self-esteem}} = \alpha + \beta_1 \cdot \text{skin tone} + \beta_2 \cdot \text{educ} + \beta_3 \cdot \text{income} + \cdots + e$$
+
+::: {.callout-tip icon=false}
+## Connecting to today:
+- **Outcome variable:** self-esteem or self-efficacy (continuous DV)
+- **Key predictor:** skin tone (treated as continuous — 5-point scale)
+- **Controls:** education, income, age, etc. — "filtered away" so the skin tone coefficient reflects prestige net of SES differences
+:::
+
+:::
+
+## Key Results {.smaller}
+
+::: {.panel-tabset}
+
+### Table from Paper
+
+Simplified version of Table 2 from Thompson & Keith (2001):
+
+| Variable | Self-Esteem (Women) | Self-Esteem (Men) | Self-Efficacy (Women) | Self-Efficacy (Men) |
+|---|---|---|---|---|
+| **Skin tone** | −0.04** | −0.01 | −0.05** | 0.02 |
+| Education | 0.03* | 0.02 | 0.04** | 0.03* |
+| Income | 0.02 | 0.01 | 0.02 | 0.03* |
+| Age | −0.01** | −0.01** | −0.01** | −0.01** |
+| Employed | 0.08 | 0.10* | 0.12* | 0.08 |
+| N | ~1,035 | ~581 | ~1,035 | ~581 |
+| R² | .09 | .07 | .11 | .08 |
+
+*p < 0.05; **p < 0.01. Coefficients are unstandardized OLS estimates. Adapted from Thompson & Keith (2001), Table 2.
+
+::: {.callout-note icon=false}
+## The key result:
+Skin tone is significant and negative for women, but not significant for men — colorism operates through gender.
+:::
+
+### For Women
+
+The coefficient on skin tone is **negative and statistically significant** for both outcomes:
+
+- **Self-esteem:** darker skin tone → **lower** self-esteem among Black women ($p < 0.05$)
+- **Self-efficacy:** darker skin tone → **lower** self-efficacy among Black women ($p < 0.05$)
+
+**Interpretation:** A Black woman with a skin tone rating of 2 (darker) is predicted to have a meaningfully lower self-esteem score than a Black woman rated 4 (lighter), *even after controlling for education, income, and other SES factors*
+
+### For Men
+
+The coefficient on skin tone is **not statistically significant** for either outcome:
+
+- **Self-esteem:** skin tone is NOT significantly related to self-esteem for Black men
+- **Self-efficacy:** skin tone is NOT significantly related to self-efficacy for Black men
+
+**Why the difference?** The authors argue that beauty ideals — which prize lighter skin — operate much more strongly as a social evaluation system for women than for men
+
+### The Big Finding
+
+::: {.callout-note icon=false}
+## Colorism operates through gender:
+For Black women, darker skin is associated with lower self-esteem and self-efficacy — even after controlling for socioeconomic factors. For Black men, skin tone has no significant effect on self-evaluation. This finding demonstrates that colorism is not just about race — it is deeply shaped by gender.
+:::
+
+The **magnitude** matters here: the authors don't just report that the relationship is significant — they discuss whether the coefficient size is large enough to be practically meaningful. This is exactly the "statistical vs. substantive significance" distinction we covered today.
+
+:::
+
+## Connecting Thompson & Keith to Today {.smaller}
+
+| Today's concept | In Thompson & Keith |
+|---|---|
+| **Outcome variable** | Self-esteem, self-efficacy |
+| **Key predictor** | Skin tone (the main theoretical variable) |
+| **Control variables** | Education, income, age — "filtered away" |
+| **OLS regression** | `lm(selfesteem ~ skintone + educ + income + ...)` |
+| **Coefficient interpretation** | Each skin tone point → X-unit change in self-esteem |
+| **Statistical vs. substantive significance** | Is the effect real AND meaningful? |
+| **Separate models by group** | Week 13 — interaction terms capture this more formally |
+
+::: {.callout-tip icon=false}
+## For your research paper:
+Thompson & Keith is a model for how to write up regression results in a paper. Notice: they state the research question clearly, justify their variable choices, report coefficients with standard errors, discuss magnitude, and connect the statistical results back to the sociological theory.
+:::
+
+## Questions?
+
+## Key Takeaways {.smaller}
+
+::: {.panel-tabset}
+
+### Part 1 — Variables & OLS
+
+- The **outcome variable (Y)** is what you are trying to explain — also called the dependent variable
+- The **key predictor (X)** is the main theoretical variable — also called the key independent variable
+- OLS estimates the slope ($b$): average change in outcome per one-unit increase in the predictor
+- OLS minimizes the sum of squared residuals — that's where "least squares" comes from
+- Every coefficient has its own **t-test**: $t = b / SE(b)$, same logic as Week 9
+- **R²** is the proportion of variation in Y explained by the model — always report and interpret it
+
+::: {.callout-note icon=false}
+## Connection to Week 9:
+Each regression coefficient has its own null hypothesis ($H_0: \beta = 0$) and its own t-test and p-value. The inference logic from Week 9 applies directly — the only thing new is the shape of the model.
+:::
+
+### Part 2 — Categorical IVs & Assumptions
+
+- Use `fct_relevel(var, "baseline")` to set the comparison group
+- Each dummy variable coefficient = difference from the baseline in the outcome variable
+- The **intercept** = predicted outcome for the baseline group (interpretable!)
+- **Always state your baseline category** when reporting results
+
+| Assumption | How to check | Fix if violated |
+|---|---|---|
+| Independence | Study design | Survey weights, clustered SEs |
+| Linearity | Scatter plot Y vs X | Transform variables (e.g., log) |
+| Normal errors | Histogram of residuals | Usually OK in large samples |
+| Homoskedasticity | Residuals vs. fitted plot | Robust standard errors (`vcov = "HC1"`) |
+
+:::
+
+## Why This Matters for Your Research Paper {.smaller}
+
+- **HW #9** asks you to run an OLS regression on your research data — today's tools are exactly what you need
+- Your **revised proposal (due 4/16)** should now describe which regression model you plan to use
+- Your **final paper** will likely use OLS regression as its central analysis
+
+::: {.callout-note icon=false}
+## What HW #9 asks — and what you now know how to do:
+
+1. **Identify your outcome and key predictor** → Part 1 today
+2. **Run `lm()` and display results with `modelsummary()`** → Part 2 today
+3. **Set a baseline if using a categorical predictor** → Part 3 today
+4. **Interpret the coefficient magnitude, p-value, and R²** → Part 2 today
+5. **Visualize** the relationship with a scatter + regression line (continuous IV) or coefficient plot → Part 2 today
+:::
+
+::: {.callout-tip icon=false}
+## One thing to add to your thinking for hw9:
+When interpreting your results, distinguish **statistical significance** (is $p < 0.05$?) from **substantive significance** (does the size of the coefficient actually matter in the real world?). Both belong in your write-up.
+:::
+
+## Questions?
+
+## Assignments {.smaller}
+
+**Weekly Assignment #9** — <span class="highlight">Due Thursday, April 9</span>
+
+Using your research dataset:
+
+1. State a research question with a **continuous outcome variable** and at least one **key predictor**
+2. Write your hypothesis (direction of expected relationship and justification)
+3. Run OLS regression with `lm()` and display results with `modelsummary()`
+4. **If using a categorical predictor**: use `fct_relevel(var, "baseline_category")` to set a baseline, and state what it is
+5. Interpret the estimated coefficient(s): direction, magnitude, and what they mean
+6. Report and interpret **R²**
+7. Visualize: scatter plot with regression line (continuous IV) or coefficient plot
+8. Discuss both **statistical** and **substantive** significance
+
+**Also due:**
+
+- **HW #8** — <span class="highlight">Due Thursday, April 2</span> (hypothesis testing)
+- **Revised Proposal with Outline** — <span class="highlight">Due Thursday, April 16</span>
+
+**In-class lab today:**
+
+- Practice running OLS on your own dataset and interpreting the output
