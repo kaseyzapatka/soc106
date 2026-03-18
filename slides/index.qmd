@@ -14,7 +14,7 @@ title: "Lecture Slides"
 - [Week 8: Estimates and confidence intervals](week8.html)
 - [Week 9: Hypothesis testing](week9.html)
 - Week 10: Spring Recess – no class
-- Week 11: Linear regression
+- [Week 11: Linear regression]((week11.html))
 - Week 12: Logistic regression
 - Week 13: Extensions to regression
 - Week 14: TBD
