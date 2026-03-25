@@ -1,0 +1,116 @@
+---
+title: "Research Paper Title"
+subtitle: "SOC 106 Final Presentation — Your Name"
+date: 05/05/2026
+date-format: long
+format:
+  revealjs:
+    slide-number: true
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    css: slides.css
+    scrollable: true
+    footer: "SOC 106 | Spring 2026"
+---
+
+## Motivation & Research Question {.smaller}
+
+**Why does this matter?**
+
+- [1–2 sentences: What social problem or gap in knowledge motivated this study?]
+- [Why should the class care? Who is affected?]
+
+**Research Question**
+
+> [State your research question clearly in one sentence.]
+
+**Hypothesis**
+
+- $H_1$: [Your main hypothesis — what do you expect to find and why?]
+- $H_0$: [The null hypothesis — no relationship / no difference]
+
+::: {.callout-note}
+**Key theoretical claim:** [One sentence connecting your hypothesis to a broader sociological argument.]
+:::
+
+---
+
+## Data, Variables & Method {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Data**
+
+- **Source:** [Dataset name, e.g., GSS 2022]
+- **Sample:** [Who is included? n = ?]
+- **Unit of analysis:** [Individuals / households / etc.]
+
+**Key Variables**
+
+| Role | Variable | Measurement |
+|------|----------|-------------|
+| Outcome (DV) | [name] | [how measured] |
+| Key predictor (IV) | [name] | [how measured] |
+| Controls | [name(s)] | [brief description] |
+:::
+
+::: {.column width="50%"}
+**Methodology**
+
+- **Model:** [OLS / Logistic regression / Chi-squared / t-test]
+- **Why this method?** [One sentence justification]
+- **Any data prep decisions worth noting?** [Recodes, listwise deletion, etc.]
+
+::: {.callout-tip}
+**Potential limitations:** [Sample restrictions, missing data, measurement concerns]
+:::
+:::
+
+::::
+
+---
+
+## Results {.smaller}
+
+**[Insert your main figure or table here]**
+
+```
+[Replace this block with your ggplot / modelsummary output]
+```
+
+**What the results show:**
+
+- [Finding 1: Direction + magnitude + significance, e.g., "Each additional year of education is associated with a 0.3 SD increase in income (p < .05)."]
+- [Finding 2: Any notable secondary finding or subgroup pattern]
+- [Finding 3: If null — what does the non-finding tell us?]
+
+::: {.callout-note}
+**Effect size check:** Is the effect substantively meaningful, not just statistically significant?
+:::
+
+---
+
+## So What? {.smaller}
+
+**Main takeaway**
+
+> [One sentence: what did you find and what does it mean sociologically?]
+
+**Contributions**
+
+- [How does this add to or challenge existing research?]
+- [Any policy or real-world implication?]
+
+**What I'd do with more time**
+
+- [Limitation 1 + how you'd address it]
+- [Limitation 2]
+
+::: {.callout-tip}
+**Questions I'd love feedback on:**
+
+1. [Specific methodological or interpretation question for the class]
+2. [Optional second question]
+:::
