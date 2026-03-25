@@ -1,0 +1,139 @@
+---
+title: "Final Paper Outline Example"
+author: "Your Name Here"
+date: "03/25/2026"
+format:
+  html:
+    toc: false
+    embed-resources: true
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 12pt
+    linestretch: 2
+---
+
+## Overview
+
+Your final paper should be approximately **10–12 pages** (double-spaced, 12pt font, 1-inch margins), not counting tables, figures, or references. It should read as a coherent research report — not a problem set — with clear prose connecting each section.
+
+The outline below follows the example research question from the proposal assignment: *Does parental education influence children's educational attainment, and does this relationship differ by gender?* Your paper should follow this same structure, adapted to your own question, data, and findings.
+
+**Below is an example outline -- you will need to be more specific than my general examples below**. 
+
+---
+
+## 1. Introduction *(~1–2 pages)*
+
+- Hook: Why should a reader care about this topic?
+- Brief background: What is the broader social phenomenon you're examining?
+- The gap or puzzle: What is unknown or contested in the literature?
+- Research question: State it clearly and directly
+- Brief roadmap: What data, method, and approach will you use?
+
+> *Example:* "This paper examines whether parental education shapes children's educational attainment, and whether this relationship differs by the gender of parent and child. Using data from the General Social Survey, I find..."
+
+---
+
+## 2. Background and Theory *(~2–3 pages)*
+
+- **Prior research**
+  - What do we already know about your topic?
+  - What have past studies found, and where do they disagree?
+  - Cite at least 4–5 sources (drawn from your annotated bibliography)
+
+- **Theoretical framework**
+  - What theoretical lens guides your analysis? (e.g., status attainment theory, gender socialization theory)
+  - How does theory help explain the patterns you expect to find?
+
+- **Hypotheses**
+  - State each hypothesis explicitly, derived from theory
+  - Explain the logic: *why* do you expect this relationship?
+
+> *Example:*
+>
+> **H1 (Patriarchal Model):** Father's education will be a stronger predictor of children's attainment than mother's education for both sons and daughters.
+>
+> **H2 (Gender-Matching Model):** Father's education will predict more strongly for sons; mother's education will predict more strongly for daughters.
+
+---
+
+## 3. Data and Methods *(~2–3 pages)*
+
+- **Data source**
+  - What dataset are you using?
+  - Who collected it, when, and how? (survey? administrative records? observational?)
+  - What is the unit of analysis?
+
+- **Sample**
+  - Any restrictions on the sample? (e.g., age range, specific years, non-missing on key variables)
+  - Final analytic N
+
+- **Variables**
+  - *Dependent variable:* What are you trying to explain? How is it measured and coded?
+  - *Key independent variable(s):* What is your main predictor? How is it measured?
+  - *Control variables:* What else might explain your outcome that you need to hold constant?
+  - *Moderating variable (if applicable):* What variable might change the relationship between your IV and DV?
+
+- **Analytical strategy**
+  - What method are you using? (OLS regression? Logistic regression?)
+  - Why is this method appropriate given your outcome variable?
+  - How will you evaluate your hypotheses?
+
+> *Example:* "I use the 'attain' subset of the GSS (N = X). My dependent variable is years of completed education (`educ`). My key independent variables are father's education (`paeduc`) and mother's education (`maeduc`), both in years. I control for age and race. I use OLS regression because my outcome is continuous..."
+
+---
+
+## 4. Results *(~3–4 pages)*
+
+### 4.1 Descriptive Statistics
+
+- Table of means/proportions and standard deviations for all key variables
+- 1–2 sentences narrating what stands out
+
+### 4.2 Main Findings
+
+- Regression table with at least two models (bivariate, then with controls)
+- For each key coefficient, report: direction, magnitude, and significance
+- Explicitly connect each finding to your hypotheses — supported or not?
+
+### 4.3 Additional Analyses *(if applicable)*
+
+- Interaction terms, subgroup models, or robustness checks
+- At least one figure (scatter plot, coefficient plot, predicted probability plot, etc.)
+
+> *Example:* "Table 2 presents OLS results. In Model 1, each additional year of father's education predicts 0.32 more years of the respondent's education (p < .001). Mother's education has a similar effect (β = 0.28, p < .001). There is no significant interaction with respondent's sex (Model 3), failing to support H2..."
+
+---
+
+## 5. Discussion *(~2–3 pages)*
+
+- **Hypotheses revisited:** Go through each hypothesis — was it supported? Why or why not?
+- **Substantive interpretation:** What do the findings mean for the social world? Don't just restate coefficients — interpret them.
+- **Comparison to prior literature:** Do your results align with or diverge from what others have found?
+- **Limitations:** What are the weaknesses of your data or method? What alternative explanations can't you rule out?
+- **Future directions:** What would a follow-up study need to address?
+
+---
+
+## 6. Conclusion *(~0.5–1 page)*
+
+- Restate the research question and main finding in 1–2 sentences
+- So what? Why do these findings matter for sociology or for policy?
+- One forward-looking sentence about future research or implications
+
+---
+
+## References
+
+- List all cited sources in **ASA style**
+- Every in-text citation must appear here; every entry here must be cited in the text
+
+---
+
+## A Note on Tables and Figures
+
+- Number all tables and figures and give each a descriptive title
+- Reference every table and figure in the text ("As shown in Table 1...")
+- Format tables cleanly — use `modelsummary()` or `knitr::kable()`, not raw R output
+- Label axes and include legends on all figures

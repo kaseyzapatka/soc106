@@ -199,6 +199,6 @@ Like any other skill, effective writing can be developed with practice and assis
 | 12 | 4/7 | Logistic regression | Freeman and Braconi (focus on Methodology, Results) | HW #10 due 4/16; revised proposal with outline due 4/16 |
 | 13 | 4/14 | Extensions to regression | Thompson and Keith (Results p.349-351, Discussion p. 351-354) | HW #11 due 4/23 |
 | 14 | 4/21 | Mediation analysis and multicollinearity |  |
-| 15 | 4/28 | Research presentations |   |
-| 16 | 5/5 | RRR Week |  | Final paper due 5/7 |
+| 15 | 4/28 | Research presentations 1 |   |
+| 16 | 5/5 | Presentations 2 & RRR Week |  | Final paper due 5/7 |
 | 17 | 5/11 | Final | 11:30 AM - 2:30 PM |
