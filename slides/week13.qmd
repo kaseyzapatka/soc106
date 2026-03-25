@@ -526,7 +526,7 @@ In the **no-interaction model** (`Y ~ X + Z`), the lines are parallel — the sa
 
 To model an interaction, we add the **product** of the two predictors:
 
-$$E[Y \mid X_1, X_2] = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
+$$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 
 ::: {.fragment .fade-up}
 **What each coefficient means when $X_2$ is binary (0 = reference, 1 = other):**
@@ -570,11 +570,31 @@ Using `Y ~ X1 * X2` in R enforces this automatically — it expands to `Y ~ X1 +
 
 ::: {.panel-tabset}
 
+### Continuous × Continuous
+
+Both X₁ and X₂ are continuous (e.g., age × education → income).
+
+$$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
+
+- Effect of X₁ = $\beta_1 + \beta_3 X_2$ — the slope for X₁ **depends on the value of X₂**
+- Effect of X₂ = $\beta_2 + \beta_3 X_1$ — the slope for X₂ **depends on the value of X₁**
+
+::: {.callout-note icon=false}
+## Evaluating at meaningful values
+In a continuous × continuous interaction, $\beta_1$ is the effect of $X_1$ **only when $X_2 = 0$** — which is often outside the range of your data and substantively meaningless. Instead, compute **simple slopes**: the effect of $X_1$ at low, average, and high values of $X_2$ (conventionally mean − 1 SD, mean, mean + 1 SD). Use `ggpredict(model, terms = c("X1", "X2 [meansd]"))` to compute and plot these automatically.
+:::
+
+::: {.callout-note icon=false}
+## Evaluating direction:
+More common but less precise is to just describe the direction. For example, "As $X_2$ increases, the impact of $X_1$ increases/decreases (depending on +/- of $X_3$)".
+
+:::
+
 ### Continuous × Binary
 
 Most common in sociology: continuous X₁, binary X₂ (e.g., sex, race indicator, treatment/control).
 
-$$E[Y] = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
+$$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 
 | Group | Slope for X₁ | Formula |
 |---|---|---|
@@ -589,27 +609,11 @@ $$E[Y] = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 - **Test of moderation:** is $\beta_3$ statistically significantly different from zero?
 :::
 
-### Continuous × Continuous
-
-Both X₁ and X₂ are continuous (e.g., age × education → income).
-
-$$E[Y] = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
-
-- Effect of X₁ = $\beta_1 + \beta_3 X_2$ — the slope for X₁ **depends on the value of X₂**
-- Effect of X₂ = $\beta_2 + \beta_3 X_1$ — the slope for X₂ **depends on the value of X₁**
-
-::: {.callout-note icon=false}
-## Evaluating at meaningful values:
-Because main effects ($\beta_1$, $\beta_2$) represent effects at X = 0, which is often not meaningful, always evaluate the interaction at **substantively interesting values** of the moderating variable (e.g., mean ± 1 SD, or specific theoretical thresholds).
-
-Use `ggpredict(model, terms = c("X1 [meansd]", "X2 [meansd]"))` to plot predicted values at mean ± 1 SD automatically.
-:::
-
 ### Binary × Binary
 
 Both X₁ and X₂ are binary (e.g., race × sex → income).
 
-$$E[Y] = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
+$$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 
 | X₁ | X₂ | Predicted Y |
 |---|---|---|
@@ -620,7 +624,87 @@ $$E[Y] = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 
 - $\beta_3$ measures **non-additivity**: the effect of X₁ is different when X₂ = 1 vs. X₂ = 0
 - This is sometimes called a **multiplicative interaction** or a **synergistic / suppressive effect**
-- Thompson & Keith (2001) use this logic: skin tone × weight predicting men's self-esteem (both continuous)
+
+:::
+
+
+## Worked Examples: Interaction Terms {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Continuous × Continuous
+
+**Model:** `lm(self_esteem ~ skin_tone * income_z)` — does income moderate the impact of skin-tone on self-esteem?
+
+$$\hat{Y} = 4.5 + 0.30\,(\text{skin_tone}) + 0.08\,(\text{income}) - 0.04\,(\text{skin_tone} \times \text{income})$$
+
+On effective way to visualize this effect is to calculate effect size at **low, average, and high values** of income (e.g., low = −1 SD, mean = 0, high = +1 SD) (assuming income is standardized):
+
+| Income level | Calculation | Skin-tone slope |
+|---|---|---|
+| Low (−1 SD) | $0.30 + (-0.04)(-1)$ | **+0.34** |
+| Mean (0) | $0.30 + (-0.04)(0)$ | **+0.30** |
+| High (+1 SD) | $0.30 + (-0.04)(+1)$ | **+0.26** |
+
+::: {.callout-tip icon=false}
+## Interpretation at meaningful values
+The simple slopes show that the positive effect of skin tone on self-esteem is strongest at **low income** (+0.34) and attenuates as income rises (+0.26 at high income). In other words, income **moderates** the impact of skin-tone on self-esteem: higher income weakens the relationship. $\beta_3 = -0.04$ tells us the skin-tone slope decreases by 0.04 for each 1-SD increase in income.
+:::
+
+::: {.callout-tip icon=false}
+## Interpretation using direction
+- "As income increases, the effect of skin tone descreases."
+- Or something a bit more precise: "At lower values of income, skin tone has a stronger positive association with self-esteem (+0.34), but as income increases the impact of skin tone on self-esteem weakens (+0.26)."
+:::
+
+### Continuous × Binary
+
+**Model:** `lm(income ~ educ * female)` — does the income return to education differ by sex?
+
+$$\hat{Y} = 10{,}000 + 3{,}200\,(\text{educ}) - 8{,}000\,(\text{female}) - 600\,(\text{educ} \times \text{female})$$
+
+| Group | Slope for educ | Calculation |
+|---|---|---|
+| Men ($\text{female}=0$) | **$3,200/year** | $\beta_1 = 3{,}200$ |
+| Women ($\text{female}=1$) | **$2,600/year** | $\beta_1 + \beta_3 = 3{,}200 + (-600)$ |
+| Difference | **−$600/year** | $\beta_3 = -600$ |
+
+::: {.callout-tip icon=false}
+## Interpretation
+Each additional year of education is associated with **$3,200 more income for men** but only **$2,600 more for women** — a gap of $600 per year. If $\beta_3$ is statistically significant (p < .05), we conclude the returns to education differ by sex. Note: $\beta_2 = -8{,}000$ is the gap at **zero years of education** (rarely meaningful on its own).
+:::
+
+### Binary × Binary
+
+**Model:** `lm(income ~ Black * female)` — does the racial income gap differ by sex?
+
+$$\hat{Y} = 65{,}000 - 12{,}000\,(\text{Black}) - 18{,}000\,(\text{female}) + 5{,}000\,(\text{Black} \times \text{female})$$
+
+**Predicted incomes (2×2 table):**
+
+| | White ($X_1=0$) | Black ($X_1=1$) |
+|---|---|---|
+| **Men** ($X_2=0$) | $\$65K$ | $\$65K-\$12K = \$53K$ |
+| **Women** ($X_2=1$) | $\$65K -\$12K  = \$47K$ |$\$65K -\$12K -\$18K +\$5K= \$40K$ |
+
+**Race gap within sex:**
+
+- Among men: \$65,000 − \$53,000 = **−\$12,000** ($\beta_1$)
+- Among women: \$47,000 − \$40,000 = **−\$7,000** ($\beta_1 + \beta_3$)
+
+**Gender gap within race:**
+
+- Among white workers: \$65,000 − \$47,000 = **−\$18,000** ($\beta_2$)
+- Among Black workers: \$53,000 − \$40,000 = **−\$13,000** ($\beta_2 + \beta_3$)
+
+**Race + gender gap (white men vs. Black women):**
+
+- \$65,000 − \$40,000 = **−\$25,000** ($\beta_1 + \beta_2 + \beta_3 = -12{,}000 + (-18{,}000) + 5{,}000$)
+
+::: {.callout-tip icon=false}
+## Interpretation
+The racial income gap is smaller for women (−\$7k) than for men (−\$12k), and the gender gap is smaller among Black workers (−\$13k) than among white workers (−\$18k). Both patterns are driven by the same thing: $\beta_3 = +5{,}000$. Black women face the largest combined disadvantage at −\$25,000 relative to white men.
+:::
 
 :::
 
@@ -698,9 +782,9 @@ From the regression output:
 | Women | `r scales::dollar(effect_men)` + (`r b_int_term`) = **`r scales::dollar(effect_women)`** |
 | Difference | `r b_int_term` (`r p_int_label`) |
 
-::: {.callout-tip icon=false}
+::: {.callout-important icon=false}
 ## Note: this interaction is not statistically significant
-In this example, `r p_int_label` — we **fail to reject H₀** that the education slope is the same for men and women. The lower-order terms (education, female) are significant, but that's irrelevant here: **significance of main effects tells you nothing about whether the interaction is real.** The only test that matters for moderation is the p-value on the interaction term itself (`educ:sex_ffemale`). A non-significant result means the data are consistent with parallel slopes — not that an interaction definitely doesn't exist (see the power note later).
+In this example, `r p_int_label` — we **fail to reject H₀** that the education slope is the same for men and women. Even if both lower-order terms (education, female) were significant (only education is here), it's irrelevant: **significance of main effects tells you nothing about whether the interaction is real.** The only test that matters for moderation is the p-value on the interaction term itself (`educ:sex_ffemale`). A non-significant result means the data are consistent with parallel slopes — not that an interaction definitely doesn't exist (see the power note later).
 :::
 :::
 
