@@ -2944,7 +2944,7 @@
     "href": "assignments/index.html#paper-proposal-examples",
     "title": "Sociology 106",
     "section": "Paper proposal examples",
-    "text": "Paper proposal examples\n\n01-Paper proposal example\n02-Bibliography example"
+    "text": "Paper proposal examples\nHere are some examples of what I’m expecting at each stage of the proposal process:\n\n01-Paper proposal example\n02-Bibliography example\n04-Presentation example\n04-Presentation template - feel free to use this template"
   },
   {
     "objectID": "assignments/hw6/hw6_key.html",
@@ -4716,5 +4716,33 @@
     "title": "Week 14",
     "section": "In-Class Lab",
     "text": "In-Class Lab\nToday: Mediation analysis on your own data\nWork through the following steps:\n\nStep 1: Identify your mediation hypothesis\n\nWhat is your X (key predictor)?\nWhat is your Y (outcome)?\nWhat variable M sits on the causal path between them?\nWrite one sentence: “I expect [X] to affect [Y] partly through [M] because…”\n\n\n\nStep 2: Fit the three Baron & Kenny models\n\n# Replace X, M, Y with your variable names\nstep1 &lt;- lm(Y ~ X,     data = your_data)   # total effect\nstep2 &lt;- lm(M ~ X,     data = your_data)   # a path\nstep3 &lt;- lm(Y ~ X + M, data = your_data)   # b path + direct effect\n\n\n\nStep 3: Bootstrap the indirect effect\n\nmed_result &lt;- mediate(step2, step3, treat = \"X\", mediator = \"M\",\n                      boot = TRUE, sims = 500)\nsummary(med_result)\n\n\n\nStep 4: Check multicollinearity on your final multivariate model\n\nvif(your_multivariate_model)"
+  },
+  {
+    "objectID": "slides/final-presentation-template.html#motivation-research-question",
+    "href": "slides/final-presentation-template.html#motivation-research-question",
+    "title": "Research Paper Title",
+    "section": "Motivation & Research Question",
+    "text": "Motivation & Research Question\nWhy does this matter?\n\n[1–2 sentences: What social problem or gap in knowledge motivated this study?]\n[Why should the class care? Who is affected?]\n\nResearch Question\n\n[State your research question clearly in one sentence.]\n\nHypothesis\n\n\\(H_1\\): [Your main hypothesis — what do you expect to find and why?]\n\\(H_0\\): [The null hypothesis — no relationship / no difference]\n\n\n\n\n\n\n\nNote\n\n\nKey theoretical claim: [One sentence connecting your hypothesis to a broader sociological argument.]"
+  },
+  {
+    "objectID": "slides/final-presentation-template.html#data-variables-method",
+    "href": "slides/final-presentation-template.html#data-variables-method",
+    "title": "Research Paper Title",
+    "section": "Data, Variables & Method",
+    "text": "Data, Variables & Method\n\n\nData\n\nSource: [Dataset name, e.g., GSS 2022]\nSample: [Who is included? n = ?]\nUnit of analysis: [Individuals / households / etc.]\n\nKey Variables\n\n\n\nRole\nVariable\nMeasurement\n\n\n\n\nOutcome (DV)\n[name]\n[how measured]\n\n\nKey predictor (IV)\n[name]\n[how measured]\n\n\nControls\n[name(s)]\n[brief description]\n\n\n\n\nMethodology\n\nModel: [OLS / Logistic regression / Chi-squared / t-test]\nWhy this method? [One sentence justification]\nAny data prep decisions worth noting? [Recodes, listwise deletion, etc.]\n\n\n\n\n\n\n\nTip\n\n\nPotential limitations: [Sample restrictions, missing data, measurement concerns]"
+  },
+  {
+    "objectID": "slides/final-presentation-template.html#results",
+    "href": "slides/final-presentation-template.html#results",
+    "title": "Research Paper Title",
+    "section": "Results",
+    "text": "Results\n[Insert your main figure or table here]\n[Replace this block with your ggplot / modelsummary output]\nWhat the results show:\n\n[Finding 1: Direction + magnitude + significance, e.g., “Each additional year of education is associated with a 0.3 SD increase in income (p &lt; .05).”]\n[Finding 2: Any notable secondary finding or subgroup pattern]\n[Finding 3: If null — what does the non-finding tell us?]\n\n\n\n\n\n\n\nNote\n\n\nEffect size check: Is the effect substantively meaningful, not just statistically significant?"
+  },
+  {
+    "objectID": "slides/final-presentation-template.html#so-what",
+    "href": "slides/final-presentation-template.html#so-what",
+    "title": "Research Paper Title",
+    "section": "So What?",
+    "text": "So What?\nMain takeaway\n\n[One sentence: what did you find and what does it mean sociologically?]\n\nContributions\n\n[How does this add to or challenge existing research?]\n[Any policy or real-world implication?]\n\nWhat I’d do with more time\n\n[Limitation 1 + how you’d address it]\n[Limitation 2]\n\n\n\n\n\n\n\nTip\n\n\nQuestions I’d love feedback on:\n\n[Specific methodological or interpretation question for the class]\n[Optional second question]"
   }
 ]
