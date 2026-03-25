@@ -1,0 +1,1042 @@
+---
+title: "Week 12"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 04/07/2026
+date-format: long
+format:
+  revealjs:
+    slide-number: true
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    css: slides.css
+    scrollable: true
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+```{r}
+#| echo: false
+#| results: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(here)
+library(patchwork)
+library(modelsummary)
+library(ggeffects)
+
+options(scipen = 999)
+
+attain <- read_csv(here("data/attain.csv"))
+
+set.seed(123)
+attain <- attain |>
+  mutate(
+    prestg80 = pmax(15, pmin(97, prestg80 + rnorm(n(), mean = 0, sd = 10))),
+    income91 = pmax(5000, income91 * exp(rnorm(n(), mean = 0, sd = 0.45)))
+  )
+
+# Factor variables with reference categories
+attain <- attain |>
+  mutate(
+    degree_f     = fct_relevel(degree, "lt high", "high sch", "junior c", "bachelor", "graduate"),
+    sex_f        = fct_relevel(sex, "male"),
+    # Binary outcome: union member (respondent or respondent + spouse)
+    union_member = as.integer(union %in% c("r belong", "r and sp"))
+  )
+
+# Analysis subset — complete cases on all variables we'll use
+attain_logit <- attain |>
+  filter(!is.na(union_member), !is.na(educ), !is.na(sex_f))
+
+# --- Pre-fit models ---
+
+# LPM (OLS on binary DV) for comparison
+model_lpm         <- lm( union_member ~ educ,         data = attain_logit)
+
+# Bivariate and multivariate logistic regressions
+model_logit_biv   <- glm(union_member ~ educ,         family = binomial, data = attain_logit)
+model_logit_multi <- glm(union_member ~ educ + sex_f, family = binomial, data = attain_logit)
+
+# --- Dynamic inline values ---
+union_rate    <- round(mean(attain_logit$union_member, na.rm = TRUE) * 100, 1)
+b_lpm         <- round(coef(model_lpm)[["educ"]], 4)
+b_educ_logit  <- round(coef(model_logit_biv)[["educ"]], 3)
+or_educ       <- round(exp(coef(model_logit_biv)[["educ"]]), 3)
+pct_chg_educ  <- round((or_educ - 1) * 100, 1)
+b_educ_multi  <- round(coef(model_logit_multi)[["educ"]], 3)
+or_sex_female <- round(exp(coef(model_logit_multi)[["sex_ffemale"]]), 3)
+pct_chg_sex   <- round((or_sex_female - 1) * 100, 1)
+
+# --- Simulation for LPM vs Logit visual ---
+set.seed(1776)
+n_vis  <- 350
+sim_df <- tibble(
+  x      = runif(n_vis, -2, 16),
+  p_true = plogis(-1.8 + 0.33 * x),
+  y      = rbinom(n_vis, 1, p_true)
+)
+lpm_vis   <- lm( y ~ x, data = sim_df)
+logit_vis <- glm(y ~ x, family = binomial, data = sim_df)
+
+grid_vis <- tibble(x = seq(-2, 16, by = 0.05)) |>
+  mutate(
+    lpm_pred   = predict(lpm_vis,   newdata = pick(everything())),
+    logit_pred = predict(logit_vis, newdata = pick(everything()), type = "response")
+  )
+```
+
+## Agenda {.smaller}
+
+**Housekeeping:**
+
+- HW #9, HW #10, Revised Proposal with Outline
+
+**Statistical content — four parts:**
+
+- **Part 1**: Why not OLS? — the limits of linear models for binary outcomes
+- **Part 2**: The logistic regression model — odds, log-odds, and the sigmoid function
+- **Part 3**: Interpreting logistic regression — log-odds, odds ratios, and `modelsummary()`
+- **Part 4**: Predicted probabilities and margins plots — making results intuitive
+
+**Reading discussion:**
+
+- Freeman & Braconi (2004) — logistic regression in practice
+
+**In-class lab:**
+
+- Running and interpreting logistic regression on your research data
+
+## Housekeeping {.smaller}
+
+**Weekly Assignment #9**
+
+- <span class="highlight">Due Thursday, April 9</span> — OLS regression from Week 11
+- Use `modelsummary()` for a clean table; interpret the slope, R², and statistical significance
+
+**Weekly Assignment #10** *(last weekly assignment!)*
+
+- <span class="highlight">Due Thursday, April 23</span>
+- Run a logistic regression on a binary outcome from your research dataset — today's lecture covers everything you need
+- Report the odds ratio for your key predictor; compute predicted probabilities at two or more values
+
+**Revised Proposal with Outline**
+
+- <span class="highlight">Due Thursday, April 16</span>
+- Should now describe whether your final analysis uses OLS or logistic regression — and why
+
+## Where We Are in the Course {.smaller}
+
+- **Week 11:** OLS regression — how *strong* is the linear relationship?
+- **This week (Week 12):** Logistic regression — predicting *binary* outcomes
+- **Week 13:** Multiple regression extensions — controlling for confounders
+
+::: {.callout-note icon=false}
+## The big picture: from "how much?" to "what are the odds?"
+Last week, OLS answered: *"For every additional unit of X, how much does Y change on average?"* That works when Y is continuous. This week, Y is binary (0/1) — and we need a different tool.
+:::
+
+
+# Part 1: Why Not OLS?
+
+When the outcome is 0 or 1
+
+## Recap: What OLS Does {.smaller}
+
+OLS estimates the **expected value** of Y as a linear function of X:
+
+$$E[Y \mid x] = \alpha + \beta x$$
+
+When Y is **continuous** (in `attain` data: income, prestige, hours worked), this works well:
+
+- $\beta$ is the change in Y per one-unit increase in X
+- Predicted values are on the same continuous scale as Y
+- Nothing forces predicted values to stay within any bounds
+
+::: {.callout-note icon=false}
+## Now imagine Y is binary
+What if Y = 1 (union member) or Y = 0 (not)?
+
+For a binary variable, $E[Y] = P(Y = 1)$, the **probability** of the outcome.
+
+A probability must be between 0 and 1. But nothing stops OLS from predicting 1.4 or −0.2.
+:::
+
+## The Linear Probability Model {.smaller}
+
+When OLS is applied to a binary (0/1) outcome, the result is called a **linear probability model (LPM)**:
+
+::: {.fragment .fade-up}
+$$E[Y \mid x] = P(Y = 1 \mid x) = \alpha + \beta x$$
+
+The coefficient $\beta$ is interpreted as: *a one-unit increase in X is associated with a $\beta$-unit change in the **probability** that Y = 1.*
+
+This is appealingly simple and directly interpretable.
+:::
+
+::: {.fragment .fade-up}
+**Our running example:**
+
+- **Outcome (Y):** `union_member` — 1 if respondent (or their spouse) is in a union, 0 otherwise
+- **Key predictor (X):** `educ` — years of education
+- **Research question:** Does educational attainment predict the probability of union membership?
+
+About **`r union_rate`%** of respondents in our sample are union members.
+:::
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: true
+#| eval: true
+
+# OLS on a binary outcome = linear probability model
+model_lpm <- lm(union_member ~ educ, data = attain_logit)
+coef(model_lpm)
+```
+:::
+
+## Problems with the LPM {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### The Data
+
+Binary outcomes look like this — the data are 0s and 1s, but the *probability* of Y = 1 varies smoothly with X:
+
+```{r}
+#| echo: false
+#| fig-height: 3.2
+#| fig-align: center
+#| warning: false
+
+ggplot(sim_df, aes(x = x, y = y)) +
+  geom_jitter(height = 0.03, alpha = 0.3, color = "gray50", size = 1.2) +
+  geom_hline(yintercept = c(0, 1), color = "gray30", linetype = "dashed", linewidth = 0.8) +
+  scale_y_continuous(breaks = c(0, 0.5, 1), labels = c("0 (No)", "0.5", "1 (Yes)"),
+                     limits = c(-0.2, 1.2)) +
+  labs(title = "Binary outcome data — Y is only 0 or 1",
+       x = "X (continuous predictor)", y = "P(Y = 1)") +
+  annotate("text", x = 15, y = 0.1, label = "← valid probability range", color = "gray40",
+           hjust = 1, size = 3.5) +
+  theme_minimal(base_size = 11)
+```
+
+The dashed lines mark the valid probability range: **any model must stay between 0 and 1.**
+
+### LPM Problem
+
+The OLS line ignores the 0–1 constraint — it will **extend below 0 and above 1** at extreme values of X:
+
+```{r}
+#| echo: false
+#| fig-height: 3.2
+#| fig-align: center
+#| warning: false
+
+ggplot(sim_df, aes(x = x, y = y)) +
+  geom_jitter(height = 0.03, alpha = 0.3, color = "gray50", size = 1.2) +
+  geom_hline(yintercept = c(0, 1), color = "gray30", linetype = "dashed", linewidth = 0.8) +
+  geom_line(data = grid_vis, aes(x = x, y = lpm_pred),
+            color = "#E15759", linewidth = 1.4) +
+  annotate("rect", xmin = -2, xmax = min(grid_vis$x[grid_vis$lpm_pred >= 0]),
+           ymin = -0.2, ymax = 1.2, fill = "#E15759", alpha = 0.08) +
+  annotate("text", x = -1.5, y = -0.13, label = "LPM predicts < 0",
+           color = "#E15759", size = 3.5, hjust = 0, fontface = "bold") +
+  scale_y_continuous(breaks = c(0, 0.5, 1), labels = c("0 (No)", "0.5", "1 (Yes)"),
+                     limits = c(-0.2, 1.2)) +
+  labs(title = "LPM: regression line extends below 0 at low X values",
+       x = "X (continuous predictor)", y = "P(Y = 1)") +
+  theme_minimal(base_size = 11)
+```
+
+::: {.callout-note icon=false}
+## Two core problems with LPM:
+1. **Predicted probabilities can fall outside [0, 1]** — meaningless (you can't have a −5% chance)
+2. **Constant marginal effects** — a one-unit increase in X always changes probability by the same amount, no matter where you are on the scale. But in reality, an extra year of education matters less for someone already near 0% or 100% probability.
+:::
+
+### The Fix: Logit
+
+A **logistic (sigmoid) curve** solves both problems — it naturally stays between 0 and 1, and its slope is steepest at intermediate probabilities and flattens near the extremes:
+
+```{r}
+#| echo: false
+#| fig-height: 3.2
+#| fig-align: center
+#| warning: false
+
+ggplot(sim_df, aes(x = x, y = y)) +
+  geom_jitter(height = 0.03, alpha = 0.3, color = "gray50", size = 1.2) +
+  geom_hline(yintercept = c(0, 1), color = "gray30", linetype = "dashed", linewidth = 0.8) +
+  geom_line(data = grid_vis, aes(x = x, y = lpm_pred),
+            color = "#E15759", linewidth = 1.0, linetype = "dashed") +
+  geom_line(data = grid_vis, aes(x = x, y = logit_pred),
+            color = "#4E79A7", linewidth = 1.5) +
+  scale_y_continuous(breaks = c(0, 0.5, 1), labels = c("0 (No)", "0.5", "1 (Yes)"),
+                     limits = c(-0.2, 1.2)) +
+  annotate("text", x = 13.5, y = 0.38, label = "Logit (blue)\nstays within [0, 1]",
+           color = "#4E79A7", size = 3.2, hjust = 0, fontface = "bold") +
+  annotate("text", x = 0.2, y = -0.12, label = "LPM (red dashed)\ngoes below 0",
+           color = "#E15759", size = 3.2, hjust = 0, fontface = "bold") +
+  labs(title = "Logit (blue) vs. LPM (red dashed): logit stays bounded within [0, 1]",
+       x = "X (continuous predictor)", y = "P(Y = 1)") +
+  theme_minimal(base_size = 11)
+```
+
+### Middle Range
+
+Here's the key practical insight: **when predicted probabilities are between roughly 0.2 and 0.8, both models give very similar answers.** They only diverge at the extremes.
+
+```{r}
+#| echo: false
+#| fig-height: 3.2
+#| fig-align: center
+#| warning: false
+
+grid_mid <- grid_vis |> filter(x >= 2, x <= 12)
+
+ggplot(sim_df |> filter(x >= 2, x <= 12), aes(x = x, y = y)) +
+  geom_jitter(height = 0.03, alpha = 0.3, color = "gray50", size = 1.2) +
+  geom_rect(aes(xmin = 2, xmax = 12, ymin = 0.2, ymax = 0.8),
+            inherit.aes = FALSE, fill = "#59A14F", alpha = 0.07) +
+  geom_line(data = grid_mid, aes(x = x, y = lpm_pred),
+            color = "#E15759", linewidth = 1.2, linetype = "dashed") +
+  geom_line(data = grid_mid, aes(x = x, y = logit_pred),
+            color = "#4E79A7", linewidth = 1.5) +
+  scale_y_continuous(breaks = c(0, 0.2, 0.5, 0.8, 1),
+                     limits = c(0, 1)) +
+  labs(title = "Middle range (green zone): LPM and logit give nearly identical predictions",
+       x = "X (predictor, middle range shown)", y = "P(Y = 1)") +
+  annotate("text", x = 7, y = 0.86, label = "In this range: models agree",
+           color = "#2e7d32", size = 3.5, fontface = "bold") +
+  theme_minimal(base_size = 11)
+```
+
+:::
+
+## A Note on Disciplinary Conventions {.smaller}
+
+::: {.callout-note icon=false}
+## Do sociologists and economists disagree?
+
+**Yes — and it's a real debate in empirical social science:**
+
+- **Economists** routinely use the LPM. Reasons: coefficients are directly interpretable as probability changes (no transformation needed); robust standard errors correct for heteroskedasticity; estimates are consistent. Many economists see logit as unnecessarily complex when probabilities are in the middle range.
+
+- **Sociologists** have traditionally preferred logistic regression. Reasons: the sigmoid function better matches the theoretical idea of diminishing returns; avoiding out-of-bounds predictions is conceptually important; it's the discipline's standard.
+
+**The practical bottom line:** The two models give nearly identical results unless predicted probabilities approach 0 or 1. Your discipline's convention matters more than the choice per se — but *understanding why logit exists* is essential for reading and evaluating quantitative research in sociology.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## For this course:
+We use logistic regression as our standard for binary outcomes — both because it is the sociological convention and because it's harder of the two options -- you can always do the easier one.
+:::
+:::
+
+## Questions?
+
+# Part 2: The Logistic Regression Model
+
+Odds, log-odds, and the sigmoid
+
+## From Probabilities to Odds {.smaller}
+
+To build logistic regression, we first transform the outcome:
+
+::: {.fragment .fade-up}
+**Step 1: Probability → Odds**
+
+$$\text{Odds} = \frac{P(Y = 1)}{P(Y = 0)} = \frac{P(Y = 1)}{1 - P(Y = 1)}$$
+
+- Odds > 1: event is **more likely** to happen than not
+- Odds = 1: event equally likely to happen or not
+- Odds < 1: event is **less likely** to happen than not
+
+*Example:* If 25% of workers are union members, the odds are $0.25 / 0.75 = 0.33$
+:::
+
+::: {.fragment .fade-up}
+**Step 2: Odds → Log-odds (Logit)**
+
+$$\text{logit}(p) = \log\!\left(\frac{p}{1-p}\right)$$
+
+Taking the log of the odds gives us a number that ranges from $-\infty$ to $+\infty$ — now we can use a linear model!
+:::
+
+::: {.fragment .fade-up}
+| $P(Y=1)$ | Odds | Log-odds (logit) | Plain reading |
+|---|---|---|---|
+| 0.10 | 0.11 | −2.20 | 9× more likely *not* to happen |
+| 0.25 | 0.33 | −1.10 | 3× more likely *not* to happen |
+| 0.50 | 1.00 | 0.00 | equally likely either way |
+| 0.75 | 3.00 | +1.10 | 3× more likely *to* happen |
+| 0.90 | 9.00 | +2.20 | 9× more likely *to* happen |
+
+::: {.callout-note icon=false}
+## Odds vs. Odds Ratios — not the same thing!
+The table above shows raw **odds** (the ratio $P/(1-P)$ for one group or one value of X). An **odds ratio** compares the odds from two groups — it is the *ratio of two odds*: $OR = \text{Odds}_{\text{group A}} / \text{Odds}_{\text{group B}}$. Log-odds is simply $\log(\text{Odds})$, which is what the logistic regression model predicts directly.
+:::
+:::
+
+## The Logistic Regression Model {.smaller}
+
+We model the **log-odds** as a linear function of the predictors:
+
+$$\underbrace{\log\!\left(\frac{P(Y=1)}{P(Y=0)}\right)}_{\text{log-odds (logit)}} = \alpha + \beta x$$
+
+::: {.fragment .fade-up}
+This looks identical to OLS on the **right-hand side** — same $\alpha$ and $\beta x$ structure. Only the **left-hand side** is different: instead of $E[Y]$, we model the log-odds.
+:::
+
+::: {.fragment .fade-up}
+Solving for the probability directly gives the **logistic (sigmoid) function**:
+
+$$P(Y = 1 \mid x) = \frac{e^{\alpha + \beta x}}{1 + e^{\alpha + \beta x}}$$
+
+This is what produces the S-shaped curve — it mathematically guarantees predictions between 0 and 1.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Estimation: maximum likelihood, not OLS
+Logistic regression is estimated by **maximum likelihood estimation (MLE)**: we find the values of $\alpha$ and $\beta$ that make the observed data most probable. When all OLS assumptions hold, MLE and OLS give the same answer for continuous outcomes — but for binary outcomes, MLE is the right approach.
+:::
+:::
+
+## Running Logistic Regression in R {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Syntax
+
+Use `glm()` (generalized linear model) instead of `lm()`, with `family = binomial`:
+
+```r
+glm(outcome ~ predictor1 + predictor2, family = binomial, data = your_data)
+```
+
+**Key difference from `lm()`:** you must specify `family = binomial` — this tells R you want logistic regression.
+
+**Our example:**
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Bivariate logistic regression
+model_logit_biv <- glm(union_member ~ educ,
+                       family = binomial,
+                       data   = attain_logit)
+```
+
+The outcome `union_member` must be **0/1** (or a factor with two levels — R converts it automatically).
+
+### `summary()` Output
+
+```{r}
+#| echo: true
+#| eval: true
+
+summary(model_logit_biv)
+```
+
+The output looks like OLS — but the coefficients are now **log-odds**, not raw units of Y.
+
+### `modelsummary()`
+
+Use `modelsummary()` for a clean table — same package as last week:
+
+```{r}
+#| echo: true
+#| eval: true
+
+modelsummary(model_logit_biv,
+             coef_rename = c("(Intercept)" = "Intercept",
+                             "educ"        = "Years of Education"),
+             stars   = TRUE,
+             title   = "Logistic Regression: Union Membership ~ Education",
+             gof_map = c("nobs", "logLik", "AIC"))
+```
+
+::: {.callout-note icon=false}
+## Note on model fit
+Logistic regression reports **log-likelihood** and **AIC** instead of R². We'll interpret these as relative model fit metrics (lower AIC = better fit), but they are harder to communicate as percentages. We'll rely on predicted probabilities to communicate effect sizes substantively.
+:::
+
+:::
+
+## Assumptions of Logistic Regression {.smaller}
+
+The assumptions are similar to OLS but slightly less demanding:
+
+::: {.fragment .fade-up}
+| Assumption | What it means | How to check |
+|---|---|---|
+| **Linearity (in log-odds)** | The log-odds of Y is a linear function of each continuous IV | Plot log-odds against IV; Box-Tidwell test |
+| **Independence** | Observations are independent (not clustered) | Study design |
+| **No perfect separation** | No value of X perfectly predicts Y = 0 or Y = 1 | Model convergence warning in R |
+| **Large enough n** | Rule of thumb: ≥ 10 events per predictor | Count: `sum(outcome == 1)` |
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## What logistic regression does NOT require:
+- Normally distributed residuals
+- Homoskedasticity (constant variance)
+
+These are OLS-specific assumptions that do not apply to logistic regression — another advantage of using the right model for binary outcomes.
+:::
+:::
+
+## Questions?
+
+# Part 3: Interpreting Logistic Regression
+
+From log-odds to odds ratios
+
+## Reading Log-Odds Coefficients {.smaller}
+
+The coefficient $\beta$ in logistic regression is the **change in log-odds** for a one-unit increase in X:
+
+::: {.fragment .fade-up}
+**Our model:** $\text{logit}(\text{union}) = `r round(coef(model_logit_biv)[1], 3)` + `r b_educ_logit` \times \text{educ}$
+
+- **Intercept:** log-odds of union membership when education = 0 — not substantively meaningful here
+- **Education coefficient (`r b_educ_logit`):** for each additional year of education, the **log-odds** of being a union member change by `r b_educ_logit`
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The problem with log-odds
+"The log-odds decrease by `r abs(b_educ_logit)`" is technically correct but nearly impossible to communicate to a general audience. We need a better scale.
+
+**The sign is always interpretable:**
+- Positive $\beta$: higher X → higher probability of Y = 1
+- Negative $\beta$ (`r b_educ_logit < 0`): more education → **lower** probability of union membership
+
+But the magnitude requires transformation. There are two options: odds ratios, or predicted probabilities.
+:::
+:::
+
+## From Log-Odds to Odds Ratios {.smaller}
+
+Exponentiating the coefficient converts log-odds to **odds ratios (OR)**:
+
+$$OR = e^{\beta}$$
+
+::: {.fragment .fade-up}
+| OR value | Interpretation |
+|-|---|
+| OR > 1 | Each unit increase in X is **associated with an increase in the odds** of Y = 1 |
+| OR = 1 | No association between X and Y |
+| OR < 1 | Each unit increase in X is **associated with a decrease in the odds** of Y = 1 |
+:::
+
+::: {.fragment .fade-up}
+**Our example:**
+$$OR_{\text{educ}} = e^{`r b_educ_logit`} = `r or_educ`$$
+
+Each additional year of education is associated with odds of union membership that are **`r or_educ` times** those of someone with one fewer year — that is, each year is **associated with a `r abs(pct_chg_educ)`% `r ifelse(pct_chg_educ < 0, "decrease", "increase")` in the odds** of union membership.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## How to report an odds ratio
+$OR = e^\beta$; the percentage change in the odds $= (e^\beta - 1) \times 100$
+
+Our result: $(e^{`r b_educ_logit`} - 1) \times 100 = `r pct_chg_educ`\%$
+
+**Academic phrasing:** "Each additional year of education is associated with a `r abs(pct_chg_educ)`% `r ifelse(pct_chg_educ < 0, "decrease", "increase")` in the odds of union membership."
+:::
+:::
+
+## Odds Ratios in `modelsummary()` {.smaller .scrollable}
+
+`modelsummary()` can display both log-odds and odds ratios — use `exponentiate = TRUE`:
+
+::: {.panel-tabset}
+
+### Side-by-Side Comparison
+
+```{r}
+#| echo: true
+#| eval: true
+
+modelsummary(
+  list("Log-Odds" = model_logit_biv, "Odds Ratios" = model_logit_biv),
+  exponentiate = c(FALSE, TRUE),
+  coef_rename  = c("(Intercept)" = "Intercept",
+                   "educ"        = "Years of Education"),
+  stars   = TRUE,
+  title   = "Log-Odds vs. Odds Ratios: same model, different scale",
+  gof_map = c("nobs", "AIC")
+)
+```
+
+### Reading the Table
+
+::: {.callout-note icon=false}
+## How to read the two columns:
+
+**Log-Odds column:** Coefficient = `r b_educ_logit`. Sign tells direction; value is the change in log-odds per year of education. Hard to communicate directly.
+
+**Odds Ratios column:** OR = `r or_educ`. Values < 1 mean lower odds; values > 1 mean higher odds. An OR of `r or_educ` per year of education means: each additional year is associated with a **`r abs(pct_chg_educ)`% increase in the odds** of union membership.
+
+**Stars / p-value** are identical in both columns — statistical significance does not change when you transform the scale.
+
+**For your assignments and final paper:** report odds ratios, not log-odds. Always state what "OR = X" means in a plain-English sentence.
+:::
+
+### Adding Controls
+
+Adding `sex_f` as a control variable:
+
+```{r}
+#| echo: false
+#| eval: true
+
+model_logit_multi <- glm(union_member ~ educ + sex_f,
+                         family = binomial,
+                         data   = attain_logit)
+
+modelsummary(
+  list("Bivariate" = model_logit_biv, "Multiple" = model_logit_multi),
+  exponentiate = TRUE,
+  coef_rename  = c("(Intercept)"  = "Intercept",
+                   "educ"         = "Years of Education",
+                   "sex_ffemale"  = "Female"),
+  stars   = TRUE,
+  title   = "Odds Ratios: Union Membership",
+  gof_map = c("nobs", "AIC")
+)
+```
+
+::: {.callout-note icon=false}
+## Interpretation:
+**Years of Education:** After controlling for sex, each additional year of education is associated with a `r abs(round((exp(coef(model_logit_multi)[["educ"]]) - 1) * 100, 1))`% `r ifelse(exp(coef(model_logit_multi)[["educ"]]) < 1, "decrease", "increase")` in the odds of union membership (OR = `r round(exp(coef(model_logit_multi)[["educ"]]), 3)`), holding sex constant.
+
+**Female:** Women have `r abs(pct_chg_sex)`% `r ifelse(or_sex_female < 1, "lower", "higher")` lower odds of union membership than men (1- `r or_sex_female`), after controlling for education — consistent with occupational segregation patterns in 1991 GSS data.
+:::
+
+:::
+
+## Categorical Predictors in Logit {.smaller}
+
+Categorical IVs work the same way as in OLS — use `fct_relevel()` to set the baseline:
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: true
+#| eval: true
+
+# Categorical IV: degree (baseline = lt high)
+attain_logit_cat <- attain |>
+  filter(!is.na(union_member), !is.na(degree_f))
+
+model_logit_cat <- glm(union_member ~ degree_f,
+                       family = binomial,
+                       data   = attain_logit_cat)
+
+modelsummary(model_logit_cat,
+             exponentiate = TRUE,
+             coef_rename  = c("(Intercept)"        = "Intercept (lt high, baseline)",
+                              "degree_fhigh sch"   = "High School",
+                              "degree_fjunior c"   = "Junior College",
+                              "degree_fbachelor"   = "Bachelor's Degree",
+                              "degree_fgraduate"   = "Graduate Degree"),
+             stars   = TRUE,
+             gof_map = c("nobs", "AIC"))
+```
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Interpreting categorical logit coefficients (as ORs):
+Each OR shows the **odds of union membership** for that degree level **relative to the baseline** (less than high school). OR > 1 = higher odds than baseline; OR < 1 = lower odds.
+:::
+:::
+
+## Questions?
+
+# Part 4: Predicted Probabilities and Margins
+
+Making logit results interpretable
+
+## Why Probabilities, Not Just Odds Ratios? {.smaller}
+
+Odds ratios are better than log-odds, but they have a limitation:
+
+::: {.fragment .fade-up}
+**The non-constant effect problem:** In logistic regression, the change in *probability* associated with a one-unit increase in X depends on where you start.
+
+- Going from `educ = 4` to `educ = 5` → small change in probability (if you're already near the floor/ceiling)
+- Going from `educ = 10` to `educ = 11` → larger change in probability (steeper part of the sigmoid)
+
+The odds ratio gives **one summary number** that averages over this variation. But showing **predicted probabilities at specific values of X** is often more interpretable and more honest.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## For multiple regression models: "hold others constant"
+When you have more than one predictor, the predicted probability of Y = 1 depends on the values of all predictors. The standard approach: hold all other continuous variables at their sample mean, and all other categorical variables at their most common category (or specify the group of interest), then vary the key predictor.
+:::
+:::
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: false
+#| fig-height: 3.0
+#| fig-align: center
+#| warning: false
+
+b_viz <- coef(model_logit_biv)[["educ"]]
+a_viz <- coef(model_logit_biv)[["(Intercept)"]]
+
+x_seq  <- seq(4, 22, by = 0.1)
+sig_df <- tibble(x = x_seq, p = plogis(a_viz + b_viz * x_seq))
+
+x_pts  <- c(7, 11, 15, 19)
+p0_pts <- plogis(a_viz + b_viz * x_pts)
+p1_pts <- plogis(a_viz + b_viz * (x_pts + 1))
+dp_pts <- p1_pts - p0_pts
+
+arr_df <- tibble(
+  xm    = x_pts + 0.5,
+  y0    = p0_pts,
+  y1    = p1_pts,
+  label = paste0(round(abs(dp_pts) * 100, 2), " pp")
+)
+
+ggplot() +
+  geom_line(data = sig_df, aes(x = x, y = p),
+            color = "#4E79A7", linewidth = 1.5) +
+  geom_segment(data = arr_df,
+               aes(x = xm, xend = xm, y = y0, yend = y1),
+               arrow = arrow(length = unit(0.14, "cm")),
+               color = "#E15759", linewidth = 1.3) +
+  geom_label(data = arr_df,
+             aes(x = xm + 0.4, y = (y0 + y1) / 2, label = label),
+             color = "#E15759", size = 3.0, hjust = 0,
+             label.size = NA, fill = "white") +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(
+    title    = "The same odds ratio, but different probability effects",
+    subtitle = paste0("Each red arrow = probability change for +1 year of education  |  OR = ",
+                      or_educ, " at every point on the curve"),
+    x = "Years of Education",
+    y = "P(Union Member)"
+  ) +
+  theme_minimal(base_size = 11)
+```
+:::
+
+## Computing Predicted Probabilities {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Manual Approach
+
+Use `predict(..., type = "response")` to get predicted probabilities directly:
+
+```{r}
+#| echo: true
+#| eval: true
+
+# Predict probability at specific education levels
+pred_manual <- tibble(educ = c(8, 10, 12, 14, 16, 18)) |>
+  mutate(
+    log_odds  = predict(model_logit_biv, newdata = pick(everything())),
+    prob      = predict(model_logit_biv, newdata = pick(everything()), type = "response"),
+    prob_pct  = scales::percent(prob, accuracy = 0.1)
+  )
+
+pred_manual |> select(educ, prob_pct)
+```
+
+::: {.callout-tip icon=false}
+## The formula behind `predict(..., type = "response")`:
+$$P(Y = 1 \mid \text{educ} = x) = \frac{e^{\hat\alpha + \hat\beta \cdot x}}{1 + e^{\hat\alpha + \hat\beta \cdot x}}$$
+R computes this for you automatically with `type = "response"`.
+:::
+
+### Margins Plot
+
+The `ggeffects` package creates a **margins plot** — predicted probability across values of X, with a 95% confidence interval:
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-height: 3.0
+
+ggpredict(model_logit_biv, terms = "educ") |>
+  plot() +
+  labs(
+    title = "Predicted Probability of Union Membership by Education",
+    x     = "Years of Education",
+    y     = "P(Union Member)"
+  ) +
+  theme_minimal(base_size = 11)
+```
+
+::: {.callout-note icon=false}
+## Reading the margins plot:
+**The line:** Predicted probability of union membership falls as years of education increase — but the rate of decline is steepest in the middle of the education range and flattens at the extremes (exactly the non-constant effect shown in the previous slide).
+
+**The ribbon (95% CI):** Uncertainty around predicted probabilities. Notice it widens at the tails (very low/high education), where fewer respondents fall in the sample. **Overlapping CIs between two values of X are a rough guide only** — the proper test of significance comes from the logit coefficient's p-value, not by visually comparing ribbon widths.
+:::
+
+### Margins by Category
+
+With multiple predictors, plot the key predictor at each level of a categorical control:
+
+```{r}
+#| echo: true
+#| eval: true
+#| fig-height: 3.2
+
+ggpredict(model_logit_multi, terms = c("educ", "sex_f")) |>
+  plot() +
+  scale_color_manual(values = c("male" = "#4E79A7", "female" = "#E15759"),
+                     labels = c("Men", "Women")) +
+  scale_fill_manual(values  = c("male" = "#4E79A7", "female" = "#E15759"),
+                    labels  = c("Men", "Women")) +
+  labs(
+    title  = "Predicted P(Union Member) by Education and Sex",
+    x      = "Years of Education",
+    y      = "Predicted Probability",
+    color  = "Sex",
+    fill   = "Sex"
+  ) +
+  theme_minimal(base_size = 11)
+```
+
+::: {.callout-note icon=false}
+## Reading the margins by category plot:
+**Two lines:** Each line shows the predicted probability of union membership across education levels — blue for men, red for women. The vertical gap between the curves at any education level reflects the sex coefficient from the multiple regression model.
+
+**Overlapping confidence ribbons between curves:** Where the ribbons for men and women overlap, the difference in predicted probability between sexes at that education level is **not statistically distinguishable** — we cannot rule out that the apparent gap is due to sampling variation. Where the ribbons *do not* overlap, the sex difference is statistically meaningful. This makes the margins plot more informative than a single odds ratio: you can see *where* and *for whom* the effect matters.
+
+**Key finding:** More educated respondents have lower predicted probability of union membership for both men and women — consistent with the historical pattern that union membership in the early 1990s was concentrated among blue-collar and manufacturing workers.
+:::
+
+:::
+
+## Questions?
+
+# Reading: Freeman & Braconi (2004)
+
+Logistic regression in an urban sociology classic
+
+## "Gentrification and Displacement" — Overview {.smaller}
+
+**Freeman, L. & Braconi, F. (2004).** *Gentrification and Displacement: New York City in the 1990s.* **Journal of the American Planning Association, 70**(1), 39–52.
+
+::: {.fragment .fade-up}
+**Research question:** Does gentrification actually displace lower-income residents? Are lower-income households in gentrifying NYC neighborhoods more likely to move than comparable households in non-gentrifying neighborhoods?
+
+- Driven by a fundamental debate in urban sociology: gentrification is widely assumed to push poor residents out
+- The authors bring **quantitative methods** to a debate that had relied largely on anecdote and case studies
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Why this paper for logistic regression week?
+The outcome of interest — whether a household moves — is **binary** (moved = 1, stayed = 0). OLS cannot sensibly model this. The authors use logistic regression to model this.
+:::
+:::
+
+## Research Design {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### Data & Sample
+
+- **Data:** New York City Housing and Vacancy Survey (NYCHVS), 1991 and 1999 waves — a panel survey of NYC housing units
+- **Sample:** Lower-income renters tracked across the two survey waves
+- **Strategy:** Compare mobility rates between households in gentrifying vs. non-gentrifying census tracts, after controlling for individual characteristics
+
+### Variables
+
+| Role | Variable | Measurement |
+|-|---|---|
+| **Outcome (DV)** | Moved between surveys | Binary: 1 = household moved, 0 = stayed |
+| **Key predictor** | Neighborhood gentrification | Binary: 1 = tract classified as gentrifying, 0 = not |
+| **Controls** | Race, income, education, household size, tenure status, overcrowding | Individual and household characteristics |
+
+::: {.callout-tip icon=false}
+## Connecting to today:
+- **Outcome variable:** `moved` (binary 0/1) → requires logistic regression, not OLS
+- **Key predictor:** gentrification status (binary IV, treated as categorical)
+- **Controls:** individual characteristics — "held constant" so the gentrification coefficient reflects neighborhood effect net of who lives there
+:::
+
+:::
+
+## Key Results {.smaller}
+
+::: {.panel-tabset}
+
+### The Counterintuitive Finding
+
+::: {.callout-note icon=false}
+## Surprise: lower-income households in gentrifying neighborhoods were *less* likely to move
+
+After controlling for individual and household characteristics, the odds ratio on the gentrification variable was **less than 1** — meaning lower-income residents in gentrifying neighborhoods were actually **less likely to be displaced** than comparable residents in non-gentrifying neighborhoods.
+
+This directly challenged the dominant narrative that gentrification necessarily causes displacement.
+:::
+
+### Results Table
+
+Selected results from Freeman & Braconi (2004), Table 3 — poor households model (logistic regression, DV = household moved between NYCHVS waves):
+
+<table style="font-size:0.82em; width:100%; border-collapse:collapse;">
+<thead>
+<tr>
+  <th style="border-bottom:2px solid #888; text-align:left; padding:4px 8px;"></th>
+  <th colspan="2" style="background-color:#4E79A7; color:white; text-align:center; padding:4px 8px; border-radius:4px 4px 0 0;">Probability of Moving (logit)</th>
+</tr>
+<tr>
+  <th style="border-bottom:1px solid #ccc; text-align:left; padding:4px 8px; width:55%;">Variable</th>
+  <th style="background-color:#d0e4f5; text-align:center; padding:4px 8px;">Odds Ratio</th>
+  <th style="background-color:#d0e4f5; text-align:center; padding:4px 8px;">Sig.</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding:4px 8px;"><strong>Gentrifying neighborhood</strong></td><td style="background-color:#d0e4f5; text-align:center;"><strong>0.81</strong></td><td style="background-color:#d0e4f5; text-align:center;">**</td></tr>
+<tr><td style="padding:4px 8px;">Monthly rent</td><td style="background-color:#d0e4f5; text-align:center;">1.01</td><td style="background-color:#d0e4f5; text-align:center;">***</td></tr>
+<tr><td style="padding:4px 8px;">Years in current residence</td><td style="background-color:#d0e4f5; text-align:center;">0.98</td><td style="background-color:#d0e4f5; text-align:center;">***</td></tr>
+<tr><td style="padding:4px 8px;">Rent-stabilized unit</td><td style="background-color:#d0e4f5; text-align:center;">0.94</td><td style="background-color:#d0e4f5; text-align:center;"><em>ns</em></td></tr>
+<tr><td style="padding:4px 8px;">Rent-controlled unit</td><td style="background-color:#d0e4f5; text-align:center;">1.39</td><td style="background-color:#d0e4f5; text-align:center;"><em>ns</em></td></tr>
+<tr><td style="padding:4px 8px;">Other regulated unit</td><td style="background-color:#d0e4f5; text-align:center;">0.78</td><td style="background-color:#d0e4f5; text-align:center;">*</td></tr>
+<tr><td style="padding:4px 8px;">Overcrowded unit</td><td style="background-color:#d0e4f5; text-align:center;">1.37</td><td style="background-color:#d0e4f5; text-align:center;">**</td></tr>
+<tr><td style="padding:4px 8px; border-top:1px solid #ccc;">N</td><td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;" colspan="2">3,496 poor renter households</td></tr>
+</tbody>
+</table>
+
+<small>*p < .10; **p < .05; ***p < .01. Adapted from Freeman & Braconi (2004), Table 3.</small>
+
+::: {.callout-note icon=false}
+## The key result: OR = 0.81 on gentrifying neighborhood
+Living in a gentrifying neighborhood is associated with **19% lower odds of moving** (OR = 0.81, p < .05) compared to comparable poor households elsewhere — even after controlling for rent, tenure, housing regulation, and crowding. Race is controlled but not significant. This is the counterintuitive finding that drove the debate.
+:::
+
+### The Scholarly Debate
+
+Freeman & Braconi's finding generated enormous debate:
+
+- **Critics** argued the study underestimated displacement by focusing on *who stayed* rather than tracking those who left
+- **Methodological objections:** selection bias (only gentrifying areas that didn't displace residents get classified as gentrifying?); survivorship bias in panel data
+- **Follow-up studies** using different methods found mixed results
+
+::: {.callout-tip icon=false}
+## A lesson about quantitative methods:
+Even when a study uses the right statistical technique correctly, the **research design** (what data are collected, who is in the sample, how variables are measured) can produce misleading results. Statistics can only answer the question you've asked — asking the right question is the harder problem.
+:::
+
+:::
+
+## Connecting Freeman & Braconi to Today {.smaller}
+
+| Today's concept | In Freeman & Braconi |
+|-|---|
+| **Binary outcome** | Household moved (1) or stayed (0) |
+| **Logistic regression** | `glm(moved ~ gentrification + controls, family = binomial)` |
+| **Key predictor** | Neighborhood gentrification status (the main theoretical variable) |
+| **Controls** | Race, income, education — "held constant" |
+| **Odds ratio interpretation** | OR < 1 → lower odds of moving in gentrifying areas |
+| **Counterintuitive result** | Statistics sometimes challenge common sense — which is why we do quantitative research |
+
+::: {.callout-tip icon=false}
+## For your research paper:
+Freeman & Braconi show how to: (1) justify the choice of logistic regression based on the outcome's measurement; (2) interpret odds ratios substantively; (3) discuss what controls are doing; (4) acknowledge limitations honestly. These are the same elements your final paper needs.
+:::
+
+## Questions?
+
+## Key Takeaways {.smaller}
+
+::: {.panel-tabset}
+
+### Part 1 — Why Logit
+
+- When the outcome is **binary (0/1)**, OLS produces a **linear probability model (LPM)** that can predict probabilities outside [0, 1]
+- LPM also assumes **constant marginal effects** — unrealistic when probabilities are near 0 or 1
+- **Logistic regression** transforms the outcome to **log-odds**, which can range from $-\infty$ to $+\infty$ — then the predicted *probability* is recovered via the sigmoid function, guaranteed to stay within [0, 1]
+- **Practical note:** LPM and logit give similar results in the middle range of probabilities — they diverge at extremes; discipline convention favors logit in sociology
+
+### Part 2 — The Model & Coefficients
+
+- The logistic model: $\log\!\left(\frac{P}{1-P}\right) = \alpha + \beta x$
+- Fit with `glm(y ~ x, family = binomial)` — not `lm()`
+- Coefficient $\beta$ = change in **log-odds** per one-unit increase in X
+- $e^\beta$ = **odds ratio** — how much the odds of Y = 1 multiply per one-unit increase in X
+- $(e^\beta - 1) \times 100$ = **percentage change in the odds**
+- `modelsummary(..., exponentiate = TRUE)` converts the table to odds ratios automatically
+
+### Part 3 — Predicted Probabilities
+
+- Odds ratios tell you direction and relative magnitude; **predicted probabilities** make results tangible
+- Use `predict(model, newdata = ..., type = "response")` for probabilities at specific values
+- Use `ggpredict(model, terms = "var")` from `ggeffects` for a clean **margins plot**; add a second term for a **margins by category** plot
+- For multiple regression models: hold other variables at their means/modes and vary the key predictor
+- **Always report predicted probabilities** when presenting logistic regression results to non-technical audiences
+
+| Scale | How to get it | Best for |
+|---|---|---|
+| Log-odds | Direct coefficient | Testing significance |
+| Odds ratio | `exp(coef)` or `exponentiate = TRUE` | Reporting direction + magnitude |
+| Probability | `predict(..., type = "response")` or `ggpredict()` | Communicating to audiences |
+
+:::
+
+## Why This Matters for Your Research Paper {.smaller}
+
+- **HW #10** asks you to run a logistic regression on a binary outcome from your research data
+- If your **outcome variable** is binary (0/1, yes/no, has/doesn't have), logistic regression is the right choice for your **final paper**
+- If your outcome is continuous, stay with OLS — no need to use logit
+
+::: {.callout-note icon=false}
+## What HW #10 asks — and what you now know how to do:
+
+1. **Identify a binary outcome and key predictor** → Part 1 today
+2. **Run `glm(..., family = binomial)` and display odds ratios with `modelsummary(..., exponentiate = TRUE)`** → Part 3 today
+3. **Interpret the odds ratio** in plain language: OR, direction, percentage change in odds → Part 3 today
+4. **Compute and visualize predicted probabilities** at key values of your predictor → Part 4 today
+5. **If using a categorical predictor**: use `fct_relevel()` to set a baseline → Part 3 today
+:::
+
+::: {.callout-tip icon=false}
+## One thing to add to your thinking:
+Unlike OLS, there is no simple $R^2$ for logistic regression. Focus your discussion on **(1) whether the relationship is significant**, **(2) the odds ratio magnitude**, and **(3) predicted probabilities at substantively interesting values of your predictor**.
+:::
+
+## Questions?
+
+## Assignments {.smaller}
+
+**Weekly Assignment #10** — <span class="highlight">Due Thursday, April 23</span> *(last weekly assignment!)*
+
+Using your research dataset:
+
+1. Identify a **binary outcome variable** — state why this variable is binary and what Y = 1 means
+2. State a research question and directional hypothesis
+3. Run logistic regression with `glm(..., family = binomial)` and display an odds ratio table using `modelsummary(..., exponentiate = TRUE)`
+4. Interpret your key predictor's **odds ratio**: direction, magnitude, percentage change in the odds
+5. Compute **predicted probabilities** at two or more meaningful values of your key predictor
+6. Produce a **margins plot** using `ggeffects::ggpredict(model, terms = "var")` — add a second term for a margins by category breakdown if you have a categorical predictor or control
+7. Briefly discuss whether the pattern is **statistically** and **substantively** significant
+
+**Also upcoming:**
+
+- **Revised Proposal with Outline** — <span class="highlight">Due Thursday, April 16</span>
+  - Specify whether your final analysis uses OLS or logistic regression, and why
+- **Final paper** — details to follow
+
+**In-class lab today:**
+
+- Apply logistic regression to your own research dataset
+- Practice converting log-odds to odds ratios and computing predicted probabilities

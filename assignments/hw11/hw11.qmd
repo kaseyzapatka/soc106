@@ -1,0 +1,202 @@
+---
+title: "Weekly Assignment #11"
+author: "Your Name Here"  # Replace with your name
+date: 04/23/2026
+date-format: long
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+editor: visual
+---
+
+::: callout-important
+## Submission Instructions
+
+1.  Download this `hw11.qmd` file from bCourse and use the dataset for your final research paper.
+2.  Save both files on your computer. Make sure to save your data in your data folder and `hw11.qmd` in your assignments folder.
+3.  Follow the Weekly Assignment Analysis Template structure below to complete the assignment.
+4.  When you are done, click the "Render" button at the top of Positron to generate an .html file.
+5.  Submit the `hw11.qmd` file to bCourse before the deadline.
+6.  Make sure your name appears in the "author" field in the YAML header above.
+:::
+
+# Instructions
+
+Develop a hypothesis about whether the relationship between an independent variable and your outcome **depends on** a third variable — the moderator. For example: "I expect that the positive relationship between X and Y is stronger for Group A than for Group B." Then, test that hypothesis by running an OLS regression with an interaction term, and write up your analysis using the Weekly Assignment Analysis Template below.
+
+**Important Notes:**
+
+-   The test of moderation is the **p-value on the interaction term (β₃) only** — not the significance of the main effects. The main effects are not the right test for whether the relationship differs across groups.
+-   Always include both main effects when you include an interaction term. Use `Y ~ X1 * X2` in R (which automatically expands to `Y ~ X1 + X2 + X1:X2`). Never use `X1:X2` alone.
+-   Drop missing values on all variables **before** running the model, in your data loading step.
+-   In writing up your results, report: (1) the sign and significance of the interaction term, (2) the group-specific slopes or predicted values at meaningful values of the moderator, and (3) the margins plot showing whether lines are parallel or non-parallel.
+
+## Setup
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+# Clear environment
+rm(list = ls())
+
+# Load libraries
+library(tidyverse)
+library(here)
+library(modelsummary)
+library(ggeffects)
+
+# Turn off scientific notation
+options(scipen = 999)
+```
+
+------------------------------------------------------------------------
+
+## Question
+
+**Write your research question here as a single sentence ending in a question mark. It should ask whether the relationship between your predictor and outcome is moderated by a third variable.**
+
+*Your research question:*
+
+------------------------------------------------------------------------
+
+## Prediction(s) and Brief Justification
+
+**State what you expect to find and why. Specifically: in which direction do you expect the interaction to go? Does the relationship between X and Y get stronger, weaker, or reverse sign for one group compared to another? Base your reasoning on theory, previous research, or logical argument. Competing predictions from different theoretical frameworks are especially strong.**
+
+*Your prediction and justification (3-5 sentences):*
+
+------------------------------------------------------------------------
+
+## Data
+
+**Describe the data in one or two sentences. Then state in one or two sentences why you're using this data instead of different data. Be sure to describe your outcome variable (Y), your key predictor (X₁), and your moderating variable (X₂).**
+
+*Your data description:*
+
+------------------------------------------------------------------------
+
+## Analytic Strategy
+
+**Describe the exact procedure you are going to use to analyze the data, including:**
+
+-   *Your outcome (Y), key predictor (X₁), and moderator (X₂), and what type of interaction this is (continuous × continuous, continuous × binary, or binary × binary)*
+-   *If using categorical or binary variables, what the baseline category is*
+-   *What your regression equation looks like, written out with β notation*
+-   *Your null hypothesis (H₀: β₃ = 0) and alternative hypothesis (H₁: β₃ ≠ 0) for the interaction term*
+-   *What significance level (α) you will use*
+-   *What specific R functions you will use*
+
+*This should be 3-6 sentences.*
+
+*Your analytic strategy:*
+
+------------------------------------------------------------------------
+
+## Code and Analysis
+
+**Load your data and conduct your analysis below. Show all relevant code.**
+
+```{r}
+# Load your data
+# Drop rows with missing values on Y, X1, and X2 before running any model
+# Create factor variables and set explicit baseline categories if needed
+
+# your code here
+```
+
+```{r}
+#| message: false
+#| warning: false
+
+# Visualize the relationship between your outcome and your key predictor,
+# separately for each group (or at low/mean/high values of your moderator)
+
+# your code here
+```
+
+```{r}
+# Fit two models: one WITHOUT the interaction (main effects only),
+# and one WITH the interaction term using Y ~ X1 * X2
+
+# your code here
+```
+
+```{r}
+# Display both models side-by-side using modelsummary()
+# Use vcov = "HC1" for robust standard errors
+# The interaction term is your key coefficient — focus there
+
+# your code here
+```
+
+```{r}
+#| message: false
+
+# Margins plot: use ggpredict() to visualize the interaction
+# For continuous × binary: terms = c("X1", "X2") — two lines, one per group
+# For continuous × continuous: terms = c("X1", "X2 [meansd]") — three lines at mean ± 1 SD
+# For binary × binary: terms = c("X1 [0, 1]", "X2") — grouped point/bar plot
+# Parallel lines = no interaction; non-parallel lines = interaction
+
+# your code here
+```
+
+------------------------------------------------------------------------
+
+## Results
+
+**Present the results of the analysis here. Include:**
+
+1.  *The sign and significance of the interaction term (β₃): is it positive, negative, and is it statistically significant at your chosen α?*
+2.  *The group-specific slopes or predicted values:*
+    -   *Continuous × binary: state the slope for the reference group (β₁) and for the other group (β₁ + β₃)*
+    -   *Continuous × continuous: state the simple slopes at low, mean, and high values of the moderator*
+    -   *Binary × binary: fill in a 2×2 table of predicted values*
+3.  *What the margins plot shows: do the lines appear parallel or non-parallel?*
+4.  *Whether you reject or fail to reject H₀: β₃ = 0*
+
+**This should be 5-8 sentences.**
+
+*Your results:*
+
+------------------------------------------------------------------------
+
+## Discussion of Results
+
+**Discuss how your predictions held up and what the findings mean. Did you find evidence of moderation? Was the interaction in the direction you expected? Comment on both the statistical significance and the substantive size of the interaction — a significant interaction that is tiny in magnitude may not be practically meaningful. One to three sentences will do.**
+
+*Your discussion:*
+
+------------------------------------------------------------------------
+
+## Limitations and Alternative Explanations
+
+**All research is flawed in dozens of ways. For this assignment, discuss one limitation of your data, one limitation of your analysis, and one possible alternative explanation for your findings. Three to five sentences is fine.**
+
+*Your limitations and alternative explanations:*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Submit
+
+-   [ ] Your name is in the author field at the top of this document
+-   [ ] You've clearly identified your outcome (Y), predictor (X₁), and moderator (X₂)
+-   [ ] You've stated the type of interaction (continuous × continuous, continuous × binary, or binary × binary)
+-   [ ] If using categorical or binary variables, you've specified the baseline category
+-   [ ] Missing values are dropped in the data loading step, before any model is run
+-   [ ] You've fit and displayed both a main-effects model and an interaction model side by side
+-   [ ] You've used `vcov = "HC1"` for robust standard errors
+-   [ ] You've reported the sign, magnitude, and significance of the interaction term (β₃)
+-   [ ] You've reported group-specific slopes, simple slopes, or a 2×2 predicted value table
+-   [ ] You've produced a margins plot and described whether the lines are parallel or non-parallel
+-   [ ] You've stated whether you reject or fail to reject H₀: β₃ = 0
+-   [ ] You've discussed both statistical and substantive significance
+-   [ ] All code chunks run without errors
+-   [ ] You've clicked "Render" and successfully generated an HTML file
+-   [ ] You're submitting the `.qmd` file to bCourse
+:::

@@ -52,6 +52,9 @@ library(here)
 library(modelsummary)
 # Add more libraries here if you need them!
 
+# Turn off scientific notation
+options(scipen = 999)
+
 ```
 
 ------------------------------------------------------------------------
@@ -82,7 +85,7 @@ library(modelsummary)
 
 ## Analytic Strategy
 
-**Describe the exact procedure you are going to use to analyze the data, including:**
+**Describe the procedure you are going to use to analyze the data, including:**
 
 -   *Your dependent variable (Y) and independent variable(s) (X)*
 -   *If using categorical variables, what the baseline category is*
@@ -91,7 +94,7 @@ library(modelsummary)
 -   *What significance level (α) you will use*
 -   *What specific R functions you will use*
 
-*This should be 3-6 sentences, but no longer than 1/3 of a page.*
+*This should be 3-6 sentences.*
 
 *Your analytic strategy:*
 
@@ -102,40 +105,51 @@ library(modelsummary)
 **Load your data and conduct your analysis below. Show all relevant code.**
 
 ```{r}
-
 # Load your data
-# Your code here
+# Drop missing values on all variables that enter the model (do this before lm())
+# If using a categorical predictor, set an explicit baseline with fct_relevel()
 
+# your code here
 ```
 
 ```{r}
-
-# Any data cleaning or variable creation needed
-# If using categorical variables, create factors and set baseline categories
-# Your code here
-
-```
-
-```{r}
-
 # Show descriptive statistics for your key variables
-# Your code here
+# For categorical predictors, show group means on the outcome
 
+# your code here
 ```
 
 ```{r}
+#| message: false
+#| warning: false
 
-# Run your OLS regression
-# Your code here
+# Visualize the relationship between your key predictor and outcome
+# (scatter plot with regression line for continuous; bar chart of means for categorical)
 
+# your code here
 ```
 
 ```{r}
+# Fit your OLS regression using lm()
+# Use summary() to see the raw output
 
-# Display a clean summary of your regression results
-# You can use summary(), modelsummary(), or other formatting functions. 
-# Your code here
+# your code here
+```
 
+```{r}
+# Display a clean results table using modelsummary()
+# Use vcov = "HC1" for robust SEs
+
+# your code here
+```
+
+```{r}
+#| fig-height: 3.5
+
+# Visualize your coefficients using modelplot()
+# Add geom_vline(xintercept = 0, ...) as the reference line
+
+# your code here
 ```
 
 ------------------------------------------------------------------------

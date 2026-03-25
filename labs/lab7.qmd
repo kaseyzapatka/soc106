@@ -1,0 +1,349 @@
+---
+title: "Lab 7: Logistic Regression"
+author: "Your Name Here"
+date: today
+project:
+  type: website
+  execute-dir: project
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+---
+
+## Overview
+
+In this lab you will run a logistic regression using the `attain` dataset. The outcome is a **binary variable** — whether a respondent is a union member — which makes OLS inappropriate and logistic regression the right tool. You will use `glm()` to fit the model, `modelsummary()` to display results in log-odds and then odds ratios with robust standard errors, `modelplot()` to visualize coefficients, and `ggpredict()` from the `ggeffects` package to build margins plots of predicted probabilities. By the end you should be able to replicate this workflow on your own research data.
+
+------------------------------------------------------------------------
+
+## Setup
+
+Load packages, read the data, drop rows with missing values on the variables we will use, and create the binary outcome and factor variables.
+
+```{r}
+#| message: false
+#| warning: false
+
+# load libraries
+library(tidyverse)
+library(here)
+library(modelsummary)
+library(ggeffects)
+
+# set scientific notation off
+options(scipen = 999)
+
+# load raw data
+attain_raw <- read_csv(here("data", "attain.csv"))
+
+# Drop rows missing any variable that enters the model, then create variables
+attain <- attain_raw |>
+  filter(
+    !is.na(union),    # raw variable used to build the outcome
+    !is.na(degree),   # categorical predictor
+    !is.na(sex),      # binary control
+    !is.na(age)       # continuous control
+  ) |>
+  mutate(
+    # Binary outcome: 1 = respondent is a union member (alone or with spouse)
+    union_member = as.integer(union %in% c("r belong", "r and sp")),
+    # Categorical predictor with explicit baseline (lt high = less than high school)
+    degree_f     = fct_relevel(degree, "lt high", "high sch", "junior c", "bachelor", "graduate"),
+    # Binary control with explicit baseline (male)
+    sex_f        = fct_relevel(sex, "male")
+  )
+
+# How many rows did we drop?
+cat("Original rows:", nrow(attain_raw), "\n")
+cat("Rows after dropping missing:", nrow(attain), "\n")
+cat("Rows dropped:", nrow(attain_raw) - nrow(attain), "\n")
+
+# What share are union members?
+cat("Union membership rate:", round(mean(attain$union_member) * 100, 1), "%\n")
+```
+
+::: callout-note
+We drop missing values in the data-loading step so that all models are estimated on the **same sample**. If you filter inside `glm()` or at different steps, sample sizes can vary, making comparisons misleading.
+:::
+
+------------------------------------------------------------------------
+
+## Step 1 — Research Question and Variables
+
+We will estimate the following logistic regression:
+
+$$\log\!\left(\frac{P(\text{union})}{1 - P(\text{union})}\right) = \alpha + b_1\,\text{degree} + b_2\,\text{sex} + b_3\,\text{age}$$
+
+| Role | Variable | Description |
+|---|---|---|
+| **Outcome (Y)** | `union_member` | Union membership — **binary**: 1 = member, 0 = not |
+| **Key predictor** | `degree_f` | Educational degree — 5 levels, baseline = *lt high* |
+| **Continuous control** | `age` | Respondent's age in years |
+| **Binary control** | `sex_f` | Sex — binary, baseline = *male* |
+
+**Our research question:** After controlling for age and sex, how does educational attainment relate to the odds of union membership?
+
+------------------------------------------------------------------------
+
+## Step 2 — Explore the Outcome Variable
+
+Before fitting the model, always look at your variables.
+
+**Outcome variable — union membership by degree:**
+
+```{r}
+#| message: false
+#| warning: false
+
+attain |>
+  group_by(degree_f) |>
+  summarize(
+    n          = n(),
+    union_rate = mean(union_member),
+    .groups    = "drop"
+  ) |>
+  ggplot(aes(x = degree_f, y = union_rate)) +
+  geom_col(fill = "#4E79A7") +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1),
+                     expand = expansion(mult = c(0, 0.1))) +
+  labs(
+    title = "Union Membership Rate by Educational Degree",
+    x     = "Degree (left = lowest; right = highest)",
+    y     = "Proportion Union Members"
+  ) +
+  theme_minimal()
+```
+
+**Question 1.** Looking at the bar chart above, describe the direction of the relationship in one sentence. Does union membership go up or down as education increases? Is the pattern what you expected?
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+## Step 3 — Fit the Logistic Regression Model
+
+Use `glm()` with `family = binomial` instead of `lm()`. Everything else looks the same.
+
+```{r}
+model <- glm(union_member ~ degree_f + sex_f + age,
+             family = binomial,
+             data   = attain)
+
+summary(model)
+```
+
+::: callout-note
+`summary()` gives raw output — the coefficients shown here are **log-odds**, which are difficult to interpret directly. We will use `modelsummary()` below for a cleaner table displayed as odds ratios.
+:::
+
+------------------------------------------------------------------------
+
+## Step 4 — Regression Table with Robust Standard Errors
+
+Use `modelsummary()` with `vcov = "HC1"` for **heteroskedasticity-robust standard errors** and `exponentiate = TRUE` to display results directly as **odds ratios** ($OR = e^\beta$).
+
+```{r}
+modelsummary(
+  model,
+  vcov         = "HC1",
+  exponentiate = TRUE,
+  coef_rename  = c(
+    "(Intercept)"       = "Intercept",
+    "degree_fhigh sch"  = "High School (vs. lt high)",
+    "degree_fjunior c"  = "Junior College (vs. lt high)",
+    "degree_fbachelor"  = "Bachelor's Degree (vs. lt high)",
+    "degree_fgraduate"  = "Graduate Degree (vs. lt high)",
+    "sex_ffemale"       = "Female (vs. male)",
+    "age"               = "Age (years)"
+  ),
+  stars   = TRUE,
+  gof_map = c("nobs", "logLik", "AIC"),
+  title   = "Logistic Regression: Union Membership ~ Degree + Sex + Age (HC1 Robust SEs, Odds Ratios)"
+)
+```
+
+::: callout-note
+**Reading odds ratios:**
+
+| OR value | Meaning |
+|---|---|
+| OR > 1 | Higher odds of Y = 1 compared to baseline (or per unit increase) |
+| OR = 1 | No difference in odds |
+| OR < 1 | Lower odds of Y = 1 compared to baseline (or per unit increase) |
+
+**Percentage change in odds:** $(OR - 1) \times 100$. For example, OR = 0.75 → $(0.75 - 1) \times 100 = -25\%$ → 25% lower odds.
+
+**Stars and significance:** Converting to ORs does not change p-values — significance is the same whether you read log-odds or odds ratios.
+
+**Model fit:** Logistic regression reports log-likelihood and AIC instead of R². Lower AIC is better when comparing models. We rely on predicted probabilities (Step 7) to communicate effect sizes substantively.
+:::
+
+**Question 2.** Looking at the odds ratio table, which coefficients are statistically significant at α = 0.05 (two stars or more)? For each significant coefficient, state whether the OR is above or below 1 and what that means for the direction of the relationship.
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+## Step 5 — Visualize Coefficients
+
+A coefficient plot displays each odds ratio with its 95% confidence interval. If the CI **does not include 1** (the dashed line), the coefficient is statistically significant at α = 0.05.
+
+```{r}
+#| fig-height: 4
+
+modelplot(
+  model,
+  vcov        = "HC1",
+  exponentiate = TRUE,
+  coef_omit   = "Intercept",
+  coef_rename = c(
+    "degree_fhigh sch"  = "High School (vs. lt high)",
+    "degree_fjunior c"  = "Junior College (vs. lt high)",
+    "degree_fbachelor"  = "Bachelor's Degree (vs. lt high)",
+    "degree_fgraduate"  = "Graduate Degree (vs. lt high)",
+    "sex_ffemale"       = "Female (vs. male)",
+    "age"               = "Age (years)"
+  )
+) +
+  geom_vline(xintercept = 1, linetype = "dashed", color = "#E15759") +
+  labs(
+    title = "Odds Ratios with 95% Confidence Intervals (HC1 Robust SEs)",
+    x     = "Odds Ratio"
+  ) +
+  theme_minimal()
+```
+
+::: callout-note
+The reference line for odds ratio plots is **1** (not 0 as in OLS coefficient plots). An OR = 1 means no difference in odds. CIs that cross the dashed line at 1 are not statistically significant.
+:::
+
+**Question 3.** Which coefficients in the plot have confidence intervals that do not cross 1? Are their odds ratios above or below 1? What does that tell you substantively about the direction of the relationship?
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+## Step 6 — Interpret Your Results
+
+Use the odds ratio table from Step 4 to answer the questions below. Write full sentences.
+
+**Question 4 — Continuous predictor.**
+Interpret the coefficient on `Age`. Compute the percentage change in odds: $(OR - 1) \times 100$. Use this template:
+
+> "Each additional year of age is associated with a \_\_\_% [increase/decrease] in the odds of union membership, holding degree and sex constant."
+
+*Your answer:*
+
+---
+
+**Question 5 — Categorical predictor (one level).**
+Interpret the odds ratio on `Bachelor's Degree (vs. lt high)`. Remember: the baseline category is *less than high school*. Use this template:
+
+> "Compared to respondents with less than a high school degree, those with a bachelor's degree have \_\_\_% [higher/lower] odds of union membership, holding sex and age constant (OR = \_\_\_)."
+
+*Your answer:*
+
+---
+
+**Question 6 — Categorical predictor (all levels).**
+Look at the four degree coefficients together. As education increases from *lt high* to *graduate*, what happens to the odds of union membership? Is the pattern what you expected? Why or why not?
+
+*Your answer:*
+
+---
+
+**Question 7 — Binary predictor.**
+Interpret the coefficient on `Female (vs. male)`. Remember: the baseline is *male*. Use this template:
+
+> "Compared to men, women have \_\_\_% [higher/lower] odds of union membership, holding degree and age constant (OR = \_\_\_)."
+
+*Your answer:*
+
+---
+
+**Question 8 — Statistical significance.**
+Look at the `Age` coefficient. Is it statistically significant at α = 0.05? State whether you reject or fail to reject $H_0: \beta_{\text{age}} = 0$.
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+## Step 7 — Predicted Probabilities and Margins Plots
+
+Odds ratios are useful, but **predicted probabilities** are often easier to communicate. The `ggeffects` package computes predicted probabilities across values of a predictor, holding everything else at its sample mean or reference category.
+
+### Margins plot — continuous predictor
+
+```{r}
+#| message: false
+
+ggpredict(model, terms = "age") |>
+  plot() +
+  labs(
+    title = "Predicted Probability of Union Membership by Age",
+    subtitle = "Holding degree and sex at reference values",
+    x = "Age (years)",
+    y = "Predicted P(Union Member)"
+  ) +
+  theme_minimal()
+```
+
+::: callout-note
+**Reading the margins plot:** The line shows the predicted probability of union membership across ages. The shaded ribbon is the 95% confidence interval. Notice the S-shaped (sigmoid) curve — the rate of change in probability is not constant across ages, even though the odds ratio is a single summary number.
+
+**Overlapping confidence ribbons** in a plot like this indicate uncertainty in the estimate at that point on the x-axis. The proper test of whether age is significant comes from the p-value in the logit table — not from visual inspection of ribbon width.
+:::
+
+### Margins by category — continuous predictor by a binary grouping variable
+
+```{r}
+#| message: false
+
+ggpredict(model, terms = c("age", "sex_f")) |>
+  plot() +
+  scale_color_manual(values = c("male" = "#4E79A7", "female" = "#E15759"),
+                     labels = c("Men", "Women")) +
+  scale_fill_manual(values  = c("male" = "#4E79A7", "female" = "#E15759"),
+                    labels  = c("Men", "Women")) +
+  labs(
+    title  = "Predicted P(Union Member) by Age and Sex",
+    subtitle = "Holding degree at its reference category",
+    x      = "Age (years)",
+    y      = "Predicted Probability",
+    color  = "Sex",
+    fill   = "Sex"
+  ) +
+  theme_minimal()
+```
+
+::: callout-note
+**Two lines:** Each line shows the predicted probability of union membership across ages for men (blue) and women (red). The vertical gap between the curves at any age reflects the sex coefficient from the model.
+
+**Overlapping confidence ribbons between curves:** Where the ribbons for men and women overlap, the predicted gap between sexes at that age is **not statistically distinguishable** from zero given sampling uncertainty. Where they do not overlap, the sex difference is statistically meaningful. This gives you more information than a single odds ratio: you can see *where* and *for whom* the effect is concentrated.
+:::
+
+**Question 9.** Looking at the "Margins by Category" plot: at what ages, if any, do the confidence ribbons for men and women overlap? What does this mean about the statistical significance of the sex difference at those ages?
+
+*Your answer:*
+
+---
+
+**Question 10.** Compare what the odds ratio for `Female` tells you (a single number) to what the margins by category plot tells you (a curve with CI). What additional information does the margins plot provide that the odds ratio alone does not?
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## Before You Leave
+
+- [ ] I can create a binary (0/1) outcome variable and drop missing values in the setup step
+- [ ] I can fit a logistic regression with `glm(..., family = binomial)` and read the `summary()` output
+- [ ] I can display odds ratios using `modelsummary()` with `vcov = "HC1"` robust SEs and `exponentiate = TRUE`
+- [ ] I can visualize coefficients with `modelplot()` and identify which ORs exclude 1 from their CI
+- [ ] I can interpret a continuous OR, a categorical OR (relative to baseline), and a binary OR
+- [ ] I can build and interpret a margins plot with `ggpredict()` for a continuous predictor and by-group predictor
+- [ ] I understand why odds ratios and predicted probability plots provide complementary information
+:::

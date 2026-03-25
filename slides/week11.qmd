@@ -56,6 +56,7 @@ attain_multi <- attain |> filter(!is.na(prestg80), !is.na(income91), !is.na(sex)
 
 # Pre-fit models so they're available across slides
 model_biv   <- lm(income91 ~ prestg80,          data = attain_reg)
+model_log   <- lm(log(income91) ~ prestg80,     data = attain_reg)
 model_cat   <- lm(income91 ~ degree_f,           data = attain_cat)
 model_multi <- lm(income91 ~ prestg80 + sex_f,   data = attain_multi)
 
@@ -79,9 +80,9 @@ r2_multi  <- round(summary(model_multi)$r.squared * 100, 1)
 **Statistical content — four parts:**
 
 - **Part 1**: Outcome variables and key predictors — what are we trying to explain?
-- **Part 2**: Bivariate OLS regression — estimating the magnitude of a linear relationship
+- **Part 2**: From correlation to regression — estimating the magnitude of a linear relationship
 - **Part 3**: Regression with categorical predictors — dummy variables and baseline categories
-- **Part 4**: OLS assumptions and multivariate regression
+- **Part 4**: OLS assumptions and multiple regression
 
 **In-class lab:**
 
@@ -108,7 +109,6 @@ r2_multi  <- round(summary(model_multi)$r.squared * 100, 1)
 
 ## Where We Are in the Course {.smaller}
 
-- **Weeks 7–8:** Sampling distributions and confidence intervals — estimating parameters from samples
 - **Week 9:** Hypothesis testing — is there a relationship, or is it just chance?
 - **This week (Week 11):** Linear regression — how *strong* is the relationship, and in what direction?
 - **Week 12:** Logistic regression — predicting binary outcomes
@@ -118,8 +118,6 @@ r2_multi  <- round(summary(model_multi)$r.squared * 100, 1)
 ## The big picture: from "yes or no" to "how much?"
 Last week we answered: *"Is there a statistically significant relationship?"* Today's tool — regression — gives a quantitative answer: *"For every one-unit increase in X, how much does Y change on average?"*
 :::
-
-## Questions?
 
 # Part 1: Outcome Variables and Key Predictors
 
@@ -179,7 +177,7 @@ Before running any regression, be explicit about your variables and expectations
 
 Your research question should name both roles:
 
-> *"Does occupational prestige predict household income?"*
+> *"How does occupational prestige impact household income?"*
 
 - **Outcome variable (Y):** `income91` — household income, in dollars — *what we're explaining*
 - **Key predictor (X):** `prestg80` — occupational prestige score — *our main theoretical variable*
@@ -237,9 +235,11 @@ From "is there a relationship?" to "how strong is it?"
 ::: {.column width="55%"}
 A **correlation coefficient** (r) describes direction and strength:
 
-- $r = +0.4$: moderate positive relationship
-- $r = -0.7$: strong negative relationship
-- $r = 0$: no linear relationship
+| r | Strength |
+|---|---|
+| r ≈ 0.3 | Weak |
+| r ≈ 0.5 | Moderate |
+| r ≈ 0.8 | Strong |
 
 **But correlation cannot answer:**
 
@@ -267,7 +267,7 @@ $$E[Y \mid x] = \alpha + \beta x$$
 
 ::: {.fragment .fade-up}
 | Symbol | Name | Meaning |
-|---|---|---|
+|-|-|---|
 | $E[Y \mid x]$ | Conditional mean | Expected (average) value of outcome $Y$ when $X = x$ |
 | $\alpha$ | Intercept | Predicted value of $Y$ when $X = 0$ — the baseline anchor |
 | $\beta$ | Slope | Average change in $Y$ for a **one-unit increase** in $X$ |
@@ -276,7 +276,7 @@ $$E[Y \mid x] = \alpha + \beta x$$
 ::: {.fragment .fade-up}
 **In practice**, we estimate from sample data:
 
-$$y_i = a + b \cdot x_i + e_i$$
+$$y_i = a + bx_i + e_i$$
 
 - $a$ = estimated intercept (sample estimate of $\alpha$)
 - $b$ = estimated slope (sample estimate of $\beta$) — **this is the key number**
@@ -286,7 +286,7 @@ $$y_i = a + b \cdot x_i + e_i$$
 ::: {.fragment .fade-up}
 **OLS (ordinary least squares)** chooses $a$ and $b$ to minimize:
 
-$$\text{SSR} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - a - b \cdot x_i)^2$$
+$$\text{RSS} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - a - bx_i)^2$$
 
 Why square? Prevents cancellation, penalizes large misses, and produces a unique closed-form solution.
 :::
@@ -307,8 +307,8 @@ demo_df <- attain_reg |>
     resid = income91 - pred
   )
 
-# Select exactly 3 points (rows 10, 35, 65) for highlighted residuals
-highlight_pts <- demo_df |> slice(c(10, 35, 65))
+# Select exactly 3 points (rows 10, 7, 65) for highlighted residuals
+highlight_pts <- demo_df |> slice(c(10, 7, 65))
 
 ggplot(demo_df, aes(x = prestg80, y = income91)) +
   # All points — gray, low alpha
@@ -325,7 +325,7 @@ ggplot(demo_df, aes(x = prestg80, y = income91)) +
              color = "#E15759", size = 3.5) +
   scale_y_continuous(labels = scales::dollar_format()) +
   labs(
-    title = "Observed values (dots) · Predicted values (line) · Residuals (red segments, 3 shown)",
+    title = "Observed values (grey dots) · Predicted values (blue line) · Residuals (red segments)",
     x = "Occupational Prestige Score",
     y = "Household Income ($)"
   ) +
@@ -412,7 +412,7 @@ modelsummary(model_biv,
 
 :::
 
-## Regression Coefficients and Hypothesis Tests {.smaller}
+## Coefficients and Hypothesis Tests {.smaller}
 
 Every OLS coefficient has its own built-in hypothesis test:
 
@@ -440,6 +440,8 @@ summary(model_biv)$coefficients
 ::: {.callout-note icon=false}
 ## Connection to Week 9:
 When $p < 0.05$ for a coefficient, we reject $H_0: \beta = 0$ — evidence that the predictor has a real effect on the outcome. The coefficient tells us the *direction* and *magnitude* of that effect; the p-value tells us whether we can trust it isn't due to chance.
+
+**In this example:** $p < 0.001$ for the prestige coefficient, so we **reject** $H_0: \beta_{\text{prestige}} = 0$ — occupational prestige has a statistically significant effect on household income.
 :::
 :::
 
@@ -452,9 +454,9 @@ $$\widehat{\text{income}} = `r format(b0, big.mark=",")`  + `r b1` \times \text{
 ::: {.fragment .fade-up}
 **The slope ($b = `r b1`$):**
 
-- For each additional point in occupational prestige, predicted household income increases by **$`r b1`**
-- A person who moves from a prestige score of 30 to 60 (+30 points) is predicted to earn **$`r b1_30` more** per year
-- The positive sign confirms a **positive relationship** — higher prestige, higher income
+- For every one unit increase in occupational prestige, predicted household income increases by **$`r b1`**
+- So, a person who moves from a prestige score of 30 to 60 (+30 points) is predicted to earn **$`r b1_30` more** per year
+- The positive sign confirms a **positive relationship** — higher prestige = higher income
 :::
 
 ::: {.fragment .fade-up}
@@ -480,7 +482,7 @@ A p-value tells you whether $b \neq 0$. **The coefficient itself** tells you how
 $$R^2 = \frac{\text{variation in } Y \text{ explained by model}}{\text{total variation in } Y} \in [0, 1]$$
 
 | R² value | Interpretation |
-|---|---|
+|-|---|
 | R² = 0.00 | The model explains *none* of the variation in Y |
 | R² = `r r2_biv/100` | Prestige explains **~`r r2_biv`%** of the variation in income |
 | R² = 0.25 | The model accounts for 25% of variation — strong for social science |
@@ -591,13 +593,15 @@ For a categorical variable with **k** categories, we create **k − 1** dummy va
 ::: {.fragment .fade-up}
 **Example:** Degree (5 categories) → 4 dummies (baseline = *lt high* [less than high school]):
 
-| Category | HS diploma | Jr. College | Bachelor | Graduate | Predicted income |
-|---|---|---|---|---|---|
-| **lt high (BASELINE)** | 0 | 0 | 0 | 0 | = intercept α |
-| Has HS diploma | **1** | 0 | 0 | 0 | = α + b_hs |
-| Has Jr. College | 0 | **1** | 0 | 0 | = α + b_jc |
-| Has Bachelor's | 0 | 0 | **1** | 0 | = α + b_ba |
-| Has Graduate degree | 0 | 0 | 0 | **1** | = α + b_grad |
+| Degree | Dummy variable R creates | Predicted income |
+|--|----|--|
+| **lt high (baseline)** | *(omitted — absorbed into intercept)* | $\alpha$ |
+| High School | `degree_fhigh sch` = 1, all others = 0 | $\alpha + b_1$ |
+| Junior College | `degree_fjunior c` = 1, all others = 0 | $\alpha + b_2$ |
+| Bachelor's | `degree_fbachelor` = 1, all others = 0 | $\alpha + b_3$ |
+| Graduate | `degree_fgraduate` = 1, all others = 0 | $\alpha + b_4$ |
+
+Each coefficient ($b_1, b_2, \ldots$) = predicted income **above or below** the baseline group.
 
 :::
 
@@ -826,8 +830,6 @@ p_lin | p_nonlin
 
 **The errors are approximately normally distributed** — most important in small samples. In large samples, violations are usually not a big problem (Central Limit Theorem applies).
 
-Check with a histogram of residuals:
-
 ```{r}
 #| echo: false
 #| fig-height: 3.5
@@ -852,13 +854,25 @@ p_skew <- tibble(e = rexp(n_sim) - 1) |>
 p_actual <- tibble(resid = residuals(model_biv)) |>
   ggplot(aes(x = resid)) +
   geom_histogram(bins = 40, fill = "#4E79A7", color = "white") +
-  labs(title = "Our model — prestige → income",
+  labs(title = "Our model: prestige → income",
        x = "Residual ($)", y = "Count") +
   theme_minimal(base_size = 10)
 
-(p_norm | p_skew) / p_actual +
-  plot_annotation(title = "Checking normality of residuals")
+p_actual_log <- tibble(resid = residuals(model_log)) |>
+  ggplot(aes(x = resid)) +
+  geom_histogram(bins = 40, fill = "#4E79A7", color = "white") +
+  labs(title = "Our model: Log(prestige) → income",
+       x = "Residual ($)", y = "Count") +
+  theme_minimal(base_size = 10)
+
+(p_norm | p_skew) / (p_actual | p_actual_log) +
+  plot_annotation(title = "Check normality of residuals with a histogram")
 ```
+
+::: {.callout-note icon=false}
+## What we did in this class:
+The raw `income91` variable is right-skewed (common with income data), which produces non-normal residuals in the bottom-left panel. Running `log(income91)` as the outcome — `model_log` above — produces the more symmetric residuals in the bottom-right panel. This is a standard fix: when your outcome is right-skewed, **log-transforming it often corrects the non-normality of errors**.
+:::
 
 ### 4. Homoskedasticity
 
@@ -912,10 +926,13 @@ p_homo | p_hetero
 
 A **residuals vs. fitted plot** diagnoses both linearity and homoskedasticity at once:
 
+:::: {.columns}
+
+::: {.column width="60%"}
 ```{r}
 #| echo: false
 #| eval: true
-#| fig-height: 4.5
+#| fig-height: 7
 #| warning: false
 
 resid_cap <- quantile(abs(residuals(model_biv)), 0.97, na.rm = TRUE)
@@ -938,6 +955,10 @@ attain_reg |>
   theme_minimal(base_size = 11)
 ```
 
+:::
+
+::: {.column width="40%"}
+
 ::: {.callout-tip icon=false}
 ## What to look for — and what our model shows:
 
@@ -945,8 +966,13 @@ attain_reg |>
 
 **Homoskedasticity:** Is the vertical spread of points roughly constant across the x-axis? *In our model: the spread is roughly similar across fitted values, though slightly wider at high incomes — common with income data.*
 
-Overall, our prestige → income model does not show dramatic assumption violations, but some heteroskedasticity is plausible. Using `vcov = "HC1"` robust SEs (shown next) is a sensible precaution.
+Overall, our prestige → income model does not show dramatic assumption violations, but some heteroskedasticity is plausible. Using `vcov = "HC1"` robust SEs (shown next) is a most common precaution used.
 :::
+
+:::
+
+::::
+
 
 ## Robust Standard Errors {.smaller}
 
@@ -956,7 +982,7 @@ If you suspect heteroskedasticity, use **robust standard errors** — they corre
 
 ### The Problem
 
-- Violations of normality and homoskedasticity **do not bias** the coefficient estimates ($a$, $b$)
+- Violations of normality and homoskedasticity **do not bias** coefficient estimates ($a$, $b$)
 - But they **do bias the standard errors** — which affects t-statistics and p-values
 - Robust SEs account for these violations with a conservative adjustment
 
@@ -981,14 +1007,14 @@ modelsummary(
 
 :::
 
-## What Do Control Variables Actually Do? {.smaller}
+## What Do Control Variables Do? {.smaller}
 
 When we add a control variable to a regression, we are **partitioning the variation** in the outcome:
 
 ::: {.fragment .fade-up}
 **Without a control:**
 
-$$\text{income} = a + b_1 \cdot \text{prestige} + e$$
+$$\text{income} = a + b_1{\text{prestige}} + e$$
 
 The coefficient $b_1$ captures *all* the ways prestige is associated with income — including variation that is really due to sex (because men and women differ in both prestige and income).
 :::
@@ -996,7 +1022,7 @@ The coefficient $b_1$ captures *all* the ways prestige is associated with income
 ::: {.fragment .fade-up}
 **With a control for sex:**
 
-$$\text{income} = a + b_1 \cdot \text{prestige} + b_2 \cdot \text{sex} + e$$
+$$\text{income} = a + b_1\text{prestige} + b_2\text{sex} + e$$
 
 Now $b_1$ captures the association between prestige and income *after filtering out* any variation that could be due to sex differences. We are comparing people who are **identical on the control variable** (same sex) and asking: does prestige still predict income?
 :::
@@ -1008,9 +1034,9 @@ A control variable "filters away" variation in the outcome that is explained by 
 :::
 :::
 
-## Multivariate Regression {.smaller .scrollable}
+## Multiple Regression {.smaller .scrollable}
 
-We can include multiple predictors — this is **multivariate regression**. We'll cover this in depth in Week 13.
+We can include multiple predictors — this is **multiple regression**. We'll cover this in depth in Week 13.
 
 ::: {.panel-tabset}
 
@@ -1035,12 +1061,12 @@ model_multi  <- lm(income91 ~ prestg80 + sex_f,   data = attain_multi)
 #| eval: true
 
 modelsummary(
-  list("Bivariate" = model_biv2, "Multivariate" = model_multi),
+  list("Bivariate" = model_biv2, "Multiple" = model_multi),
   coef_rename = c("(Intercept)" = "Intercept",
                   "prestg80"    = "Prestige Score",
                   "sex_ffemale" = "Female"),
   stars   = TRUE,
-  title   = "Prestige and Income: Bivariate vs. Multivariate",
+  title   = "Prestige and Income: Bivariate vs. Multiple",
   gof_map = c("nobs", "r.squared")
 )
 ```
@@ -1048,13 +1074,13 @@ modelsummary(
 ### Interpretation
 
 ::: {.callout-note icon=false}
-## Reading the multivariate table:
+## Reading the multiple regression table:
 
-**Coefficient on `Prestige Score` (bivariate → multivariate):** $`r b1` → $`r b1_multi` per prestige point. After controlling for sex, the prestige slope changes slightly — this shift tells us how much of the bivariate prestige effect was actually due to sex differences in prestige.
+**Coefficient on `Prestige Score` (bivariate → multiple):** $`r b1` → $`r b1_multi` per prestige point. After controlling for sex, the prestige slope changes slightly — this shift tells us how much of the bivariate prestige effect was actually due to sex differences in prestige.
 
 **Coefficient on `Female`:** $`r b_female` — women earn about $`r abs(b_female)` less per year than men *at the same prestige level*. This is the gender income gap net of occupational status.
 
-**R² increase:** `r r2_biv`% (bivariate) → `r r2_multi`% (multivariate). Adding sex explains additional variation in income beyond prestige alone — but most variation in income remains unexplained by these two predictors.
+**R² increase:** `r r2_biv`% (bivariate) → `r r2_multi`% (multiple regression). Adding sex explains additional variation in income beyond prestige alone — but most variation in income remains unexplained by these two predictors.
 
 **In Week 13**, we'll cover how to decide which controls to include, and what changes in coefficients across models mean theoretically.
 :::
@@ -1063,7 +1089,7 @@ modelsummary(
 
 # Reading Research: Thompson & Keith (2001)
 
-Seeing today's tools in a published sociological study
+Seeing today's tools published in a classical sociological study
 
 ## "The Blacker the Berry" — Overview {.smaller}
 
@@ -1073,7 +1099,7 @@ Seeing today's tools in a published sociological study
 **Research question:** Does skin tone predict psychological well-being — specifically self-esteem and self-efficacy — for Black Americans? And does this relationship differ by gender?
 
 - Motivated by **colorism**: the documented pattern in which lighter-skinned Black individuals receive preferential treatment in U.S. society
-- The title references the saying "the blacker the berry, the sweeter the juice" — but the authors ask whether this holds for self-perception
+- "The blacker the berry, the sweeter the juice" is a common idiom that celebrates dark skin tones in Black individuals — serving as a counter-narrative to colorism. The authors ask whether this affirmation holds for Black Americans' own self-perception
 :::
 
 ::: {.fragment .fade-up}
@@ -1091,22 +1117,32 @@ This is a model of how to use OLS regression to answer a sociological question. 
 
 - **Data:** National Survey of Black Americans (NSBA), 1979–1980
 - **Sample:** 2,107 Black American adults; analyses conducted separately for **men** (n ≈ 581) and **women** (n ≈ 1,035) who are employed
-- **Why separate models?** The authors hypothesize that the relationship between skin tone and self-esteem *differs by gender* — so they run separate regressions for men and women
+- **Why separate models?** The authors hypothesize that the relationship between skin tone and self-esteem *differs by gender*. Running separate regressions for men and women is similar in spirit to including an interaction term (which we'll cover in Week 13), but the authors chose this approach for simplicity — because they test multiple interactions across several controls, splitting the sample is more tractable than modeling every interaction explicitly
 
 ### Variables
 
 | Role | Variable | Measurement |
-|---|---|---|
+|-|---|---|
 | **Outcome (DV) 1** | Self-esteem | Rosenberg 10-item scale (1–4; higher = more positive) |
 | **Outcome (DV) 2** | Self-efficacy | Personal efficacy scale (1–4; higher = more control) |
 | **Key predictor** | Skin tone | Interviewer-rated 5-point scale: 1 = very dark to 5 = very light brown |
 | **Controls** | Education, income, employment, age, marital status, family origin | Standard socioeconomic controls |
 
+::: {.callout-note icon=false}
+## Self-esteem vs. self-efficacy — what's the difference?
+
+**Self-esteem** is a person's overall sense of their own value or worth — *"Do I feel good about myself?"* It reflects how positively someone regards themselves as a person.
+
+**Self-efficacy** is a person's belief in their ability to control outcomes in their own life — *"Can I make things happen?"* It reflects how much agency or personal power someone feels they have.
+
+These are related but distinct psychological constructs. The authors study both because colorism may affect not just how you feel about yourself (self-esteem) but also your sense of whether your efforts can shape your future (self-efficacy).
+:::
+
 ### Regression Model
 
 The authors estimate (separately for men and women):
 
-$$\widehat{\text{self-esteem}} = \alpha + \beta_1 \cdot \text{skin tone} + \beta_2 \cdot \text{educ} + \beta_3 \cdot \text{income} + \cdots + e$$
+$$\widehat{\text{self-esteem}} = \alpha + \beta_1\text{skin tone} + \beta_2\text{educ} + \beta_3\text{income} + \cdots + e$$
 
 ::: {.callout-tip icon=false}
 ## Connecting to today:
@@ -1125,17 +1161,33 @@ $$\widehat{\text{self-esteem}} = \alpha + \beta_1 \cdot \text{skin tone} + \beta
 
 Simplified version of Table 2 from Thompson & Keith (2001):
 
-| Variable | Self-Esteem (Women) | Self-Esteem (Men) | Self-Efficacy (Women) | Self-Efficacy (Men) |
-|---|---|---|---|---|
-| **Skin tone** | −0.04** | −0.01 | −0.05** | 0.02 |
-| Education | 0.03* | 0.02 | 0.04** | 0.03* |
-| Income | 0.02 | 0.01 | 0.02 | 0.03* |
-| Age | −0.01** | −0.01** | −0.01** | −0.01** |
-| Employed | 0.08 | 0.10* | 0.12* | 0.08 |
-| N | ~1,035 | ~581 | ~1,035 | ~581 |
-| R² | .09 | .07 | .11 | .08 |
+<table style="font-size:0.85em; width:100%; border-collapse:collapse;">
+<thead>
+<tr>
+  <th style="border-bottom:2px solid #888; text-align:left; padding:4px 8px;"></th>
+  <th colspan="2" style="background-color:#4E79A7; color:white; text-align:center; padding:4px 8px; border-radius:4px 4px 0 0;">Women</th>
+  <th colspan="2" style="background-color:#F28E2B; color:white; text-align:center; padding:4px 8px; border-radius:4px 4px 0 0;">Men</th>
+</tr>
+<tr>
+  <th style="border-bottom:1px solid #ccc; text-align:left; padding:4px 8px;">Variable</th>
+  <th style="background-color:#d0e4f5; text-align:center; padding:4px 8px;">Self-Esteem</th>
+  <th style="background-color:#d0e4f5; text-align:center; padding:4px 8px;">Self-Efficacy</th>
+  <th style="background-color:#fde8c8; text-align:center; padding:4px 8px;">Self-Esteem</th>
+  <th style="background-color:#fde8c8; text-align:center; padding:4px 8px;">Self-Efficacy</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding:4px 8px;"><strong>Skin tone</strong></td><td style="background-color:#d0e4f5; text-align:center;">−0.04**</td><td style="background-color:#d0e4f5; text-align:center;">−0.05**</td><td style="background-color:#fde8c8; text-align:center;">−0.01</td><td style="background-color:#fde8c8; text-align:center;">0.02</td></tr>
+<tr><td style="padding:4px 8px;">Education</td><td style="background-color:#d0e4f5; text-align:center;">0.03*</td><td style="background-color:#d0e4f5; text-align:center;">0.04**</td><td style="background-color:#fde8c8; text-align:center;">0.02</td><td style="background-color:#fde8c8; text-align:center;">0.03*</td></tr>
+<tr><td style="padding:4px 8px;">Income</td><td style="background-color:#d0e4f5; text-align:center;">0.02</td><td style="background-color:#d0e4f5; text-align:center;">0.02</td><td style="background-color:#fde8c8; text-align:center;">0.01</td><td style="background-color:#fde8c8; text-align:center;">0.03*</td></tr>
+<tr><td style="padding:4px 8px;">Age</td><td style="background-color:#d0e4f5; text-align:center;">−0.01**</td><td style="background-color:#d0e4f5; text-align:center;">−0.01**</td><td style="background-color:#fde8c8; text-align:center;">−0.01**</td><td style="background-color:#fde8c8; text-align:center;">−0.01**</td></tr>
+<tr><td style="padding:4px 8px;">Employed</td><td style="background-color:#d0e4f5; text-align:center;">0.08</td><td style="background-color:#d0e4f5; text-align:center;">0.12*</td><td style="background-color:#fde8c8; text-align:center;">0.10*</td><td style="background-color:#fde8c8; text-align:center;">0.08</td></tr>
+<tr><td style="padding:4px 8px;">N</td><td style="background-color:#d0e4f5; text-align:center;">~1,035</td><td style="background-color:#d0e4f5; text-align:center;">~1,035</td><td style="background-color:#fde8c8; text-align:center;">~581</td><td style="background-color:#fde8c8; text-align:center;">~581</td></tr>
+<tr><td style="padding:4px 8px; border-top:1px solid #ccc;">R²</td><td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">.09</td><td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">.11</td><td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">.07</td><td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">.08</td></tr>
+</tbody>
+</table>
 
-*p < 0.05; **p < 0.01. Coefficients are unstandardized OLS estimates. Adapted from Thompson & Keith (2001), Table 2.
+<small>*p < 0.05; \*\*p < 0.01. Coefficients are unstandardized OLS estimates. Adapted from Thompson & Keith (2001), Table 2.</small>
 
 ::: {.callout-note icon=false}
 ## The key result:
