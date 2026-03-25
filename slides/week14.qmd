@@ -1,0 +1,1419 @@
+---
+title: "Week 14"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 04/21/2026
+date-format: long
+format:
+  revealjs:
+    slide-number: true
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    css: slides.css
+    scrollable: true
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+```{r}
+#| echo: false
+#| results: false
+#| warning: false
+#| message: false
+
+# will likely need to install
+# install.packages("mediation")
+
+library(tidyverse)
+library(here)
+library(patchwork)
+library(modelsummary)
+library(ggeffects)
+library(mediation)
+library(car)        # for vif()
+
+options(scipen = 999)
+
+attain <- read_csv(here("data/attain.csv"))
+
+set.seed(123)
+attain <- attain |>
+  mutate(
+    prestg80 = pmax(15, pmin(97, prestg80 + rnorm(n(), mean = 0, sd = 10))),
+    income91 = pmax(5000, income91 * exp(rnorm(n(), mean = 0, sd = 0.45)))
+  )
+
+attain <- attain |>
+  mutate(
+    degree_f     = fct_relevel(degree, "lt high", "high sch", "junior c", "bachelor", "graduate"),
+    sex_f        = fct_relevel(sex, "male"),
+    union_member = as.integer(union %in% c("r belong", "r and sp"))
+  )
+
+# Complete-case subset for mediation analysis
+# Key path: Education (X) → Occupational Prestige (M) → Income (Y)
+attain_med <- attain |>
+  filter(!is.na(income91), !is.na(educ), !is.na(prestg80), !is.na(sex_f))
+
+# ---- MEDIATION MODELS ----
+# Step 1 (total effect): educ → income
+med_total   <- lm(income91  ~ educ,                    data = attain_med)
+# Step 2 (X → M):        educ → prestg80
+med_a_path  <- lm(prestg80  ~ educ,                    data = attain_med)
+# Step 3 (X + M → Y):    educ + prestg80 → income
+med_b_path  <- lm(income91  ~ educ + prestg80,         data = attain_med)
+
+# Coefficients for inline text
+c_prime      <- round(coef(med_total)[["educ"]])          # total effect
+a_coef       <- round(coef(med_a_path)[["educ"]], 2)      # a path
+b_coef       <- round(coef(med_b_path)[["prestg80"]])     # b path
+c_direct     <- round(coef(med_b_path)[["educ"]])         # direct effect
+indirect_est <- round(a_coef * b_coef)                    # approx indirect
+
+# Mediation package: bootstrap CIs for indirect effect
+med_out <- mediate(
+  model.m = med_a_path,
+  model.y = med_b_path,
+  treat   = "educ",
+  mediator = "prestg80",
+  boot    = TRUE,
+  sims    = 500
+)
+
+acme_est  <- round(med_out$d0)
+acme_lo   <- round(med_out$d0.ci[[1]])
+acme_hi   <- round(med_out$d0.ci[[2]])
+ade_est   <- round(med_out$z0)
+total_est <- round(med_out$tau.coef)
+
+# ---- MULTICOLLINEARITY MODELS ----
+# High collinearity: educ + degree_f (very correlated)
+model_vif_high <- lm(income91 ~ educ + prestg80 + age, data = attain_med)
+model_vif_bad  <- lm(income91 ~ educ + prestg80 + age +
+                       as.numeric(degree_f),            data = attain_med)
+vif_vals <- round(vif(model_vif_high), 2)
+
+# Pre-compute for slide text
+pct_mediated <- round(100 * abs(acme_est) / abs(total_est))
+```
+
+
+## Agenda {.smaller}
+
+**Housekeeping:**
+
+- Final paper, HW #11, In-class presentations
+
+**Statistical content — three parts:**
+
+- **Part 1**: Mediation vs. moderation — getting the concepts straight
+- **Part 2**: Mediation analysis — path models, Baron & Kenny, R implementation
+- **Part 3**: Multicollinearity — when predictors are too similar
+
+**In-class lab:**
+
+- Mediation analysis on your own research data
+
+## Housekeeping {.smaller}
+
+**Weekly Assignment #11**
+
+- <span class="highlight">Due Thursday, April 24</span> — interaction analysis (from Week 13)
+
+**In-class presentations**
+
+- <span class="highlight">Monday, April 28</span> — 7–10 minutes per student
+- Slide template on the course site; structure: question → data → results → so what
+- Practice out loud at least once before class
+
+**Final paper**
+
+- <span class="highlight">Due Monday, May 5</span>
+- Should include at least: bivariate model, multivariate model with controls, and one extension (interaction, mediation, or logistic)
+- Today's lecture covers mediation and multicollinearity — both are relevant to writing up results
+
+
+## Where We Are in the Course {.smaller}
+
+- **Week 11:** OLS regression — estimating linear relationships
+- **Week 12:** Logistic regression — predicting binary outcomes
+- **Week 13:** Interaction effects — *for whom* does X affect Y?
+- **This week (Week 14):** Mediation — *how* or *why* does X affect Y?
+
+::: {.callout-note icon=false}
+## The arc of the course: from "Is there a relationship?" to "What kind?"
+Each week we've added a layer of nuance. This week we ask not just whether X predicts Y, but **through what mechanism** — and we tackle a practical issue (multicollinearity) you'll likely encounter writing up your papers.
+:::
+
+
+## Questions?
+
+
+# Part 1: Getting the Concepts Straight
+
+Moderation vs. Mediation — the distinction that trips everyone up
+
+
+## Two Questions, Two Models {.smaller}
+
+::: {.panel-tabset}
+
+### Side-by-Side
+
+| | **Moderation** | **Mediation** |
+|---|---|---|
+| **Question** | *For whom* does X affect Y? | *How/why* does X affect Y? |
+| **Third variable** | A moderator — *changes the slope* of X→Y | A mediator — *carries the effect* of X to Y |
+| **Path structure** | X → Y, with slope depending on Z | X → M → Y |
+| **Regression term** | Interaction: `X * Z` | Sequential models: `Y ~ X`, then `Y ~ X + M` |
+| **What you see** | Different slopes for different groups | X effect shrinks when M is added |
+
+### Education & Income: Two Different Stories
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Mediation story:**
+
+Does education raise income *because* it leads to higher-prestige jobs?
+
+$$\text{Education} \rightarrow \underbrace{\text{Job Prestige}}_{\text{mediator } M} \rightarrow \text{Income}$$
+
+The mediator *explains the mechanism*.
+:::
+
+::: {.column width="50%"}
+**Moderation story (Week 13):**
+
+Does education raise income *more* for men than for women?
+
+$$\text{Education} \xrightarrow{\text{slope differs by}} \text{Income}$$
+$$\text{(depending on Sex)}$$
+
+The moderator *changes who benefits*.
+:::
+
+::::
+
+::: {.callout-tip icon=false}
+## Memory trick
+**Mediation** → the mechanism (**M**ediator = **M**echanism).
+**Moderation** → the modifier (**M**oderator = **M**odifier of the slope).
+:::
+
+### Common Mistakes
+
+::: {.fragment .fade-up}
+**Mistake 1: Controlling for a mediator**
+
+If you add job prestige as a *control* in a model predicting income from education, you **block the very path you're trying to study**. The coefficient on education will tell you only the direct effect — missing the part that works *through* prestige.
+
+→ Week 13 warned: don't control for mediators. Today we learn what to do instead.
+:::
+
+::: {.fragment .fade-up}
+**Mistake 2: Calling a mediator a moderator**
+
+A mediator is *on the causal path*. A moderator is *off the path*, conditioning how strong it is.
+
+- "Prestige carries the education→income effect" → **mediator**
+- "Sex changes how strong the education→income effect is" → **moderator**
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The test: where is the third variable?
+Draw the arrows. If the third variable sits **between** X and Y (X → M → Y), it's a mediator. If it sits **beside** the X→Y arrow, changing its slope, it's a moderator.
+:::
+:::
+
+:::
+
+
+# Part 2: Mediation Analysis
+
+How and why does X affect Y?
+
+
+## The Three-Effect Framework {.smaller}
+
+```{r}
+#| echo: false
+#| fig-height: 4.0
+#| fig-align: center
+#| warning: false
+
+# ---- Path diagram: total vs mediated ----
+# Two-panel: left = total effect, right = decomposed
+
+make_path_plot <- function(show_m = FALSE, title_text = "") {
+  p <- ggplot() +
+    # X node
+    annotate("label", x = 0, y = 0,
+             label = "Education\n(X)",
+             fill = "#d0e4f5", color = "#4E79A7",
+             size = 4.5, fontface = "bold", label.size = 1.0) +
+    # Y node
+    annotate("label", x = 4, y = 0,
+             label = "Income\n(Y)",
+             fill = "#d0e4f5", color = "#4E79A7",
+             size = 4.5, fontface = "bold", label.size = 1.0) +
+    labs(title = title_text) +
+    coord_cartesian(xlim = c(-0.7, 4.7), ylim = c(-0.7, 2.5)) +
+    theme_void(base_size = 13) +
+    theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 13))
+
+  if (!show_m) {
+    # Total effect: single arrow X → Y
+    p <- p +
+      annotate("segment",
+               x = 0.52, xend = 3.48, y = 0, yend = 0,
+               arrow = arrow(type = "closed", length = unit(0.15, "in")),
+               color = "#4E79A7", linewidth = 1.6) +
+      annotate("text", x = 2, y = 0.28,
+               label = paste0("c' (total = $", scales::comma(total_est), "/yr)"),
+               size = 3.8, color = "#4E79A7", fontface = "bold")
+  } else {
+    # Mediator node
+    p <- p +
+      annotate("label", x = 2, y = 2.0,
+               label = "Job Prestige\n(M)",
+               fill = "#e8f5e9", color = "#59A14F",
+               size = 4.5, fontface = "bold", label.size = 1.0) +
+      # a path: X → M
+      annotate("segment",
+               x = 0.52, xend = 1.55, y = 0.28, yend = 1.74,
+               arrow = arrow(type = "closed", length = unit(0.13, "in")),
+               color = "#59A14F", linewidth = 1.4) +
+      annotate("text", x = 0.72, y = 1.15,
+               label = paste0("a = ", a_coef),
+               size = 3.8, color = "#59A14F", fontface = "bold") +
+      # b path: M → Y
+      annotate("segment",
+               x = 2.45, xend = 3.48, y = 1.74, yend = 0.28,
+               arrow = arrow(type = "closed", length = unit(0.13, "in")),
+               color = "#59A14F", linewidth = 1.4) +
+      annotate("text", x = 3.28, y = 1.15,
+               label = paste0("b = $", scales::comma(b_coef)),
+               size = 3.8, color = "#59A14F", fontface = "bold") +
+      # Direct effect: X → Y
+      annotate("segment",
+               x = 0.52, xend = 3.48, y = -0.05, yend = -0.05,
+               arrow = arrow(type = "closed", length = unit(0.13, "in")),
+               color = "#F28E2B", linewidth = 1.4) +
+      annotate("text", x = 2, y = -0.38,
+               label = paste0("c (direct = $", scales::comma(c_direct), "/yr)"),
+               size = 3.8, color = "#F28E2B", fontface = "bold")
+  }
+  p
+}
+
+p_total <- make_path_plot(show_m = FALSE, title_text = "Total Effect")
+p_decomp <- make_path_plot(show_m = TRUE,  title_text = "Decomposed")
+
+p_total + p_decomp
+```
+
+::: {.fragment .fade-up}
+$$\underbrace{c'}_{\text{total}} = \underbrace{c}_{\text{direct}} + \underbrace{a \times b}_{\text{indirect}}$$
+
+- **Total effect** (*c'*): the overall X → Y relationship (before adding M)
+- **Direct effect** (*c*): X → Y *after* controlling for M
+- **Indirect effect** (*a × b*): the part of X's effect that travels *through* M
+:::
+
+
+## The *a*, *b*, *c* Paths Explained {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.panel-tabset}
+
+### Path *a*: X → M
+
+**Does education predict job prestige?**
+
+```{r}
+#| echo: true
+#| eval: false
+model_a <- lm(prestg80 ~ educ, data = attain_med)
+```
+
+```{r}
+#| echo: false
+modelsummary(med_a_path,
+             coef_rename = c("educ" = "Education (yrs)"),
+             statistic = "({std.error})",
+             gof_map = c("nobs", "r.squared"),
+             fmt = 2,
+             title = "Path a: Education → Prestige")
+```
+
+Each additional year of education is associated with **`r a_coef` more prestige points**.
+
+### Path *b*: M → Y (+ X)
+
+**Does prestige predict income, controlling for education?**
+
+```{r}
+#| echo: true
+#| eval: false
+model_b <- lm(income91 ~ educ + prestg80, data = attain_med)
+```
+
+```{r}
+#| echo: false
+modelsummary(med_b_path,
+             coef_rename = c("educ" = "Education (yrs)",
+                             "prestg80" = "Job Prestige"),
+             statistic = "({std.error})",
+             gof_map = c("nobs", "r.squared"),
+             fmt = 0,
+             title = "Paths b & c: Educ + Prestige → Income")
+```
+
+### Total Effect (*c'*)
+
+**Ignoring prestige — what's the raw education effect?**
+
+```{r}
+#| echo: true
+#| eval: false
+model_total <- lm(income91 ~ educ, data = attain_med)
+```
+
+```{r}
+#| echo: false
+modelsummary(med_total,
+             coef_rename = c("educ" = "Education (yrs)"),
+             statistic = "({std.error})",
+             gof_map = c("nobs", "r.squared"),
+             fmt = 0,
+             title = "Total Effect: Education → Income")
+```
+
+Total effect: **$`r scales::comma(c_prime)`/year of education**.
+
+:::
+
+:::
+
+::: {.column width="45%"}
+
+::: {.callout-note icon=false}
+## Putting it together
+
+- **Total effect**: $`r scales::comma(c_prime)` per year of educ
+- **Direct effect**: $`r scales::comma(c_direct)` per year of educ
+- **Indirect effect** (*a × b*): `r a_coef` × $`r scales::comma(b_coef)` ≈ $`r scales::comma(indirect_est)`
+
+A year of education raises prestige by `r a_coef` points; each prestige point raises income by $`r scales::comma(b_coef)`. So **about `r pct_mediated`% of the education effect on income runs through job prestige**.
+:::
+
+::: {.callout-tip icon=false}
+## Why not just subtract?
+You can estimate the indirect effect as *c' − c*, but the *a × b* product gives you the same number and generalizes better (especially with bootstrapped confidence intervals).
+:::
+
+:::
+
+::::
+
+
+## Full vs. Partial Mediation {.smaller}
+
+```{r}
+#| echo: false
+#| fig-height: 3.5
+#| fig-align: center
+#| warning: false
+
+# Illustrate full vs partial mediation with simulated data
+set.seed(42)
+n_ex <- 400
+x_ex  <- rnorm(n_ex, 12, 3)
+m_ex  <- 0.8 * x_ex + rnorm(n_ex, 0, 2)
+
+# Full mediation: direct effect ≈ 0 after controlling for M
+y_full  <- 5000 + 1200 * m_ex              + rnorm(n_ex, 0, 3000)
+# Partial mediation: some direct effect remains
+y_part  <- 5000 + 1200 * m_ex + 1500 * x_ex + rnorm(n_ex, 0, 3000)
+
+df_full <- tibble(x = x_ex, m = m_ex, y = y_full, type = "Full mediation")
+df_part <- tibble(x = x_ex, m = m_ex, y = y_part, type = "Partial mediation")
+
+df_plot <- bind_rows(df_full, df_part)
+
+ggplot(df_plot, aes(x = x, y = y)) +
+  geom_point(alpha = 0.18, size = 0.9, color = "#4E79A7") +
+  geom_smooth(method = "lm", se = FALSE, color = "#E15759", linewidth = 1.1) +
+  geom_smooth(data = df_plot, aes(x = m, y = y),
+              method = "lm", se = FALSE, color = "#59A14F",
+              linewidth = 1.1, linetype = "dashed") +
+  facet_wrap(~type) +
+  labs(
+    x = "X (or M — green dashed)",
+    y = "Y (Income)",
+    caption = "Red = X→Y; Green dashed = M→Y after controlling for X"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(strip.text = element_text(face = "bold", size = 13))
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Full mediation**
+
+The direct effect *c* drops to (near) **zero** when M enters the model.
+
+M fully explains *why* X affects Y.
+
+*The indirect path is the whole story.*
+:::
+
+::: {.column width="50%"}
+**Partial mediation**
+
+The direct effect *c* decreases but **remains significant**.
+
+M explains *part* of the mechanism; something else also connects X directly to Y.
+
+*Both paths matter.*
+:::
+
+::::
+
+::: {.callout-tip icon=false}
+## In practice: partial mediation is the norm
+Full mediation is rare in observational social science. Expect the direct effect to shrink — but not disappear. That's still an important substantive finding.
+:::
+
+
+## Baron & Kenny Four Steps {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+### The Steps
+
+The Baron & Kenny (1986) approach tests mediation through four sequential regressions:
+
+::: {.fragment .fade-up}
+| Step | Model | What you're checking |
+|---|---|---|
+| **1** | `lm(Y ~ X)` | X significantly predicts Y (there's something to explain) |
+| **2** | `lm(M ~ X)` | X significantly predicts M (X moves the mediator) |
+| **3** | `lm(Y ~ X + M)` | M significantly predicts Y, controlling for X |
+| **4** | Compare Step 1 vs. Step 3 | X→Y coefficient *decreases* when M is added |
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The logic
+If X moves M (Step 2), and M moves Y independently of X (Step 3), then some of what looks like a direct X→Y effect is really X working *through* M. Step 4 quantifies how much.
+:::
+:::
+
+### Step-by-Step: Our Example
+
+```{r}
+#| echo: true
+
+# Step 1: Does education predict income?
+step1 <- lm(income91 ~ educ,            data = attain_med)
+
+# Step 2: Does education predict prestige?
+step2 <- lm(prestg80 ~ educ,            data = attain_med)
+
+# Step 3 & 4: Does prestige predict income? Does education effect shrink?
+step3 <- lm(income91 ~ educ + prestg80, data = attain_med)
+```
+
+```{r}
+#| echo: false
+modelsummary(
+  list("Step 1: Y~X" = step1,
+       "Step 2: M~X" = step2,
+       "Step 3: Y~X+M" = step3),
+  coef_rename = c("educ"     = "Education (X)",
+                  "prestg80" = "Job Prestige (M)"),
+  statistic = "({std.error})",
+  stars = TRUE,
+  gof_map = c("nobs", "r.squared"),
+  fmt = 0,
+  title = "Baron & Kenny Steps 1–4"
+)
+```
+
+### Interpreting the Table
+
+**What the table shows:**
+
+- **Step 1**: Education → Income: +$`r scales::comma(c_prime)` per year ✓ (Step 1 met)
+- **Step 2**: Education → Prestige: +`r a_coef` pts per year ✓ (Step 2 met)
+- **Step 3**: Prestige → Income (controlling educ): +$`r scales::comma(b_coef)` per prestige point ✓ (Step 3 met)
+- **Step 4**: Education effect on income drops from $`r scales::comma(c_prime)` → $`r scales::comma(c_direct)` when prestige enters ✓
+
+::: {.callout-tip icon=false}
+## Verdict: **partial mediation**
+Education still has a direct effect on income, but part of its total effect works *through* occupational prestige. Both the direct and indirect paths matter.
+:::
+
+### Limitation of B&K
+
+Baron & Kenny tells you *whether* mediation exists, but not *how much* or *how confident* you should be in the indirect effect.
+
+::: {.fragment .fade-up}
+The indirect effect (*a × b*) needs its **own standard error and confidence interval** — and the distribution of a product of two estimates is not normal, so we can't use a simple z-test.
+
+**Solution: bootstrapping** (re-sample the data many times, compute *a × b* each time, use the percentiles as the CI).
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Modern practice
+The `mediation` package in R implements bootstrapped confidence intervals for the indirect effect (ACME = Average Causal Mediation Effect). This is the standard in published sociology papers.
+:::
+:::
+
+:::
+
+
+## Indirect Effects with `mediation` {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(mediation)
+
+# Fit the two models first
+model_m <- lm(prestg80 ~ educ,            data = attain_med)
+model_y <- lm(income91 ~ educ + prestg80, data = attain_med)
+
+# Run mediation with bootstrap
+med_out <- mediate(
+  model.m  = model_m,
+  model.y  = model_y,
+  treat    = "educ",       # X variable
+  mediator = "prestg80",   # M variable
+  boot     = TRUE,
+  sims     = 1000          # bootstrap draws
+)
+
+summary(med_out)
+```
+
+::: {.callout-note icon=false}
+## Reading the output
+
+- **ACME** = Average Causal Mediation Effect = indirect effect (*a × b*)
+- **ADE** = Average Direct Effect = direct effect (*c*)
+- **Total Effect** = ACME + ADE (*c'*)
+- **Prop. Mediated** = ACME / Total Effect
+:::
+
+:::
+
+::: {.column width="45%"}
+
+**Our results (500 bootstraps):**
+
+| Effect | Estimate | 95% CI |
+|---|---|---|
+| **Indirect (ACME)** | $`r scales::comma(acme_est)` | [$`r scales::comma(acme_lo)`, $`r scales::comma(acme_hi)`] |
+| **Direct (ADE)** | $`r scales::comma(ade_est)` | — |
+| **Total** | $`r scales::comma(total_est)` | — |
+| **% Mediated** | `r pct_mediated`% | — |
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## Interpretation
+About **`r pct_mediated`% of education's effect on income** is mediated by occupational prestige. The indirect path (education → prestige → income) is statistically distinguishable from zero (the CI excludes 0). But a substantial direct effect remains.
+:::
+:::
+
+:::
+
+::::
+
+
+## Visualizing the Indirect Effect {.smaller}
+
+```{r}
+#| echo: false
+#| fig-height: 4.0
+#| fig-align: center
+#| warning: false
+
+# Coefficient plot showing how education coefficient changes
+coef_data <- tibble(
+  model   = c("Total effect\n(no mediator)", "Direct effect\n(with prestige)"),
+  estimate = c(c_prime, c_direct),
+  se      = c(
+    summary(med_total)$coefficients["educ", "Std. Error"],
+    summary(med_b_path)$coefficients["educ", "Std. Error"]
+  )
+) |>
+  mutate(
+    lo = estimate - 1.96 * se,
+    hi = estimate + 1.96 * se,
+    model = fct_rev(fct_inorder(model))
+  )
+
+ggplot(coef_data, aes(x = estimate, y = model)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray60", linewidth = 0.8) +
+  geom_segment(aes(x = lo, xend = hi, yend = model),
+               linewidth = 2.2, color = "#4E79A7", alpha = 0.4) +
+  geom_point(size = 5, color = "#4E79A7") +
+  geom_text(aes(label = paste0("$", scales::comma(round(estimate)))),
+            hjust = -0.25, size = 4.2, fontface = "bold", color = "#4E79A7") +
+  annotate("segment",
+           x = c_direct + 120, xend = c_prime - 120,
+           y = 1.5, yend = 1.5,
+           arrow = arrow(ends = "both", type = "closed",
+                         length = unit(0.12, "in")),
+           color = "#59A14F", linewidth = 1.3) +
+  annotate("text",
+           x = (c_direct + c_prime) / 2, y = 1.65,
+           label = paste0("Indirect\n$", scales::comma(indirect_est)),
+           size = 3.8, color = "#59A14F", fontface = "bold") +
+  scale_x_continuous(labels = scales::dollar_format()) +
+  labs(
+    x = "Effect of one additional year of education on income",
+    y = NULL,
+    title = "Mediation shrinks the education coefficient",
+    subtitle = "Adding job prestige absorbs part of the education effect"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    axis.text.y  = element_text(size = 12),
+    plot.title   = element_text(face = "bold"),
+    plot.subtitle = element_text(color = "gray40")
+  )
+```
+
+
+## Causal Limitations {.smaller}
+
+::: {.panel-tabset}
+
+### What Mediation Can't Do
+
+Mediation analysis tests a **causal claim** — that X works *through* M — but with observational data, we can never fully prove it.
+
+::: {.fragment .fade-up}
+**Three threats to causal mediation:**
+
+| Threat | What it means |
+|---|---|
+| **No temporal ordering** | We assume X precedes M precedes Y. With cross-sectional data, we can't verify this. |
+| **M→Y confounding** | A third variable may cause both prestige and income, creating a spurious M→Y association. |
+| **X→M→Y vs X←M→Y** | Without experiments, the arrow could point the other way (prestige affects education attainment). |
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## The gold standard
+The cleanest mediation evidence comes from **randomized experiments** where X is randomly assigned. Then you know X precedes M, and there's no X-confounder. But experiments are rare in sociology — so we work with what we have, acknowledge the limits, and make the theoretical argument carefully.
+:::
+:::
+
+### For Your Final Papers
+
+**If you're running a mediation analysis:**
+
+1. Fit the three models (B&K Steps 1–3)
+2. Report coefficients for all three — show the reader the direct, indirect, and total effects
+3. Use `mediate()` with `boot = TRUE` for the indirect effect CI
+4. State your theoretical argument for *why* M mediates X→Y
+5. Acknowledge the cross-sectional limitation — you can't prove causal mediation, but you can show the pattern is consistent with it
+
+::: {.fragment .fade-up}
+**Language template:**
+
+> "Consistent with a mediation hypothesis, the coefficient on [X] declined from [total] to [direct] when [M] was included (ACME = [value], 95% CI [lo, hi]). This suggests that approximately [%] of the association between [X] and [Y] may operate through [M], though cross-sectional data preclude strong causal claims about the mediating mechanism."
+:::
+
+### What to Do Instead (Advanced)
+
+If you wanted stronger causal mediation evidence with observational data, you would:
+
+- Use **panel data** (before/after measurements) to verify temporal ordering
+- Control for all plausible **M→Y confounders** explicitly
+- Use **sensitivity analysis** (`medsens()` in the `mediation` package) to test how robust the indirect effect is to unmeasured M→Y confounding
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## For this course
+For your final papers: fit the three models, bootstrap the indirect effect, state the caveats. That's the sociological standard for cross-sectional mediation claims.
+:::
+:::
+
+:::
+
+
+# Part 3: Multicollinearity
+
+When your predictors are too alike
+
+
+## What Is Multicollinearity? {.smaller}
+
+**Multicollinearity** occurs when two or more predictors in a regression are highly correlated with each other.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.fragment .fade-up}
+**Why it's a problem:**
+
+When X₁ and X₂ are highly correlated:
+- The model can't tell which one is doing the work
+- Coefficient estimates become **unstable** — tiny data changes → large coefficient changes
+- **Standard errors inflate** → wide confidence intervals → everything looks non-significant
+- Coefficients can flip sign or become implausibly large
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The core issue
+Multicollinearity doesn't bias your coefficients — it just makes them imprecise. With enough data, standard errors shrink. But in typical survey samples, high multicollinearity can completely obscure real effects.
+:::
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: false
+#| fig-height: 4.0
+#| fig-align: center
+#| warning: false
+
+# Illustrate: educ and years of prestige are correlated
+cor_val <- round(cor(attain_med$educ, attain_med$prestg80, use = "complete.obs"), 2)
+
+ggplot(attain_med, aes(x = educ, y = prestg80)) +
+  geom_point(alpha = 0.25, size = 0.9, color = "#4E79A7") +
+  geom_smooth(method = "lm", se = TRUE, color = "#E15759",
+              fill = "#E15759", alpha = 0.15, linewidth = 1.2) +
+  labs(
+    x = "Education (years)",
+    y = "Occupational Prestige",
+    title = paste0("Education and prestige: r = ", cor_val),
+    subtitle = "Correlated — but not perfectly so (both can be in the model)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"))
+```
+:::
+
+:::
+
+::::
+
+
+## Detecting Multicollinearity: VIF {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+The **Variance Inflation Factor (VIF)** measures how much each predictor's variance is inflated by correlation with the others.
+
+$$\text{VIF}_j = \frac{1}{1 - R^2_j}$$
+
+where $R^2_j$ is the R² from regressing predictor $j$ on all other predictors.
+
+::: {.fragment .fade-up}
+**Rules of thumb:**
+
+| VIF | Interpretation |
+|---|---|
+| 1 | No multicollinearity |
+| 1–5 | Low — acceptable |
+| 5–10 | Moderate — investigate |
+| > 10 | Severe — take action |
+:::
+
+:::
+
+::: {.column width="45%"}
+
+```{r}
+#| echo: true
+
+library(car)
+
+# Fit model with education, prestige, and age
+model_check <- lm(
+  income91 ~ educ + prestg80 + age,
+  data = attain_med
+)
+
+vif(model_check)
+```
+
+```{r}
+#| echo: false
+#| fig-height: 2.8
+#| warning: false
+
+vif_df <- tibble(
+  predictor = names(vif_vals),
+  vif       = vif_vals
+) |>
+  mutate(predictor = c("Education", "Job Prestige", "Age"),
+         color = case_when(vif > 10 ~ "#E15759",
+                           vif > 5  ~ "#F28E2B",
+                           TRUE     ~ "#59A14F"))
+
+ggplot(vif_df, aes(x = vif, y = fct_reorder(predictor, vif), fill = color)) +
+  geom_col(width = 0.5) +
+  geom_vline(xintercept = 5,  linetype = "dashed", color = "#F28E2B", linewidth = 0.8) +
+  geom_vline(xintercept = 10, linetype = "dashed", color = "#E15759", linewidth = 0.8) +
+  geom_text(aes(label = vif), hjust = -0.3, size = 4) +
+  scale_fill_identity() +
+  scale_x_continuous(limits = c(0, max(vif_df$vif) * 1.3)) +
+  labs(x = "VIF", y = NULL,
+       title = "VIF values — all well below 5") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"))
+```
+
+:::
+
+::::
+
+
+## What Multicollinearity Looks Like {.smaller}
+
+```{r}
+#| echo: false
+#| fig-height: 4.2
+#| fig-align: center
+#| warning: false
+
+# Manually specified for clarity: identical point estimates, SEs inflated by
+# VIF = 1/(1 - r²) under high multicollinearity (r = 0.95 → VIF ≈ 10.3 → SE × 3.2)
+sim_df <- tribble(
+  ~condition,                          ~term, ~estimate, ~se,
+  "Low multicollinearity (r ≈ 0)",     "X₁",       2.0, 0.09,
+  "Low multicollinearity (r ≈ 0)",     "X₂",       1.5, 0.09,
+  "High multicollinearity (r ≈ 0.95)", "X₁",       2.0, 0.29,
+  "High multicollinearity (r ≈ 0.95)", "X₂",       1.5, 0.29
+) |>
+  mutate(lo        = estimate - 1.96 * se,
+         hi        = estimate + 1.96 * se,
+         condition = fct_inorder(condition))
+
+true_vals <- tibble(term = c("X₁", "X₂"), truth = c(2, 1.5))
+
+ggplot(sim_df, aes(x = term, y = estimate, color = condition)) +
+  geom_hline(data = true_vals, aes(yintercept = truth),
+             linetype = "dotted", color = "gray40", linewidth = 0.8) +
+  geom_errorbar(aes(ymin = lo, ymax = hi),
+                width = 0.15, linewidth = 1.3,
+                position = position_dodge(width = 0.4)) +
+  geom_point(size = 4.5, position = position_dodge(width = 0.4)) +
+  scale_color_manual(values = c("#59A14F", "#E15759"), name = NULL) +
+  annotate("text", x = 0.62, y = 2.08,
+           label = "true = 2",   size = 3.5, color = "gray40", fontface = "italic") +
+  annotate("text", x = 1.62, y = 1.58,
+           label = "true = 1.5", size = 3.5, color = "gray40", fontface = "italic") +
+  labs(
+    x        = NULL,
+    y        = "Coefficient estimate (95% CI)",
+    title    = "Multicollinearity inflates standard errors — not the estimates",
+    subtitle = "Identical point estimates; SEs are ~3× larger when r(X₁, X₂) = 0.95"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position  = "bottom",
+    plot.title       = element_text(face = "bold"),
+    plot.subtitle    = element_text(color = "gray40")
+  )
+```
+
+::: {.callout-tip icon=false}
+## The takeaway
+The point estimates are approximately the same in both conditions — multicollinearity does **not** bias coefficients. What it does is inflate the standard errors: the confidence intervals are much wider when x₁ and x₂ are highly correlated. You're more likely to miss a real effect (Type II error), but the estimates themselves are not systematically wrong.
+:::
+
+
+## Is Multicollinearity Actually a Problem? {.smaller}
+
+::: {.panel-tabset}
+
+### The Short Answer
+
+**It depends on what you're trying to do — and which variables are collinear.**
+
+| Goal | Does multicollinearity matter? |
+|---|---|
+| **Prediction** | Usually **no** — collinear models predict just as well; R² is unaffected |
+| **Inference on a control variable** | Often **no** — imprecise control coefficients don't invalidate your key result |
+| **Inference on your variable of interest** | **Yes** — if your key X is the collinear one, SEs inflate and you may miss a real effect |
+| **Understanding relative importance of two predictors** | **Yes** — you can't disentangle their individual contributions |
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The core issue: precision, not accuracy
+Multicollinearity does **not bias your coefficients** — the estimates are still correct on average. What it does is make them *imprecise*: standard errors inflate, confidence intervals widen, and t-statistics shrink. The main consequence is **more Type II errors** — failing to detect real effects that are actually there.
+:::
+:::
+
+### Type II Errors
+
+**Type II error** = failing to reject H₀ when it's actually false (a "false negative").
+
+::: {.fragment .fade-up}
+Here's the chain of consequences:
+
+$$\underbrace{\text{High multicollinearity}}_{\text{predictors too similar}} \Rightarrow \underbrace{\uparrow \text{SE}}_{\text{wider uncertainty}} \Rightarrow \underbrace{\downarrow t\text{-statistic}}_{\frac{\hat\beta}{SE}} \Rightarrow \underbrace{\uparrow p\text{-value}}_{\text{harder to reject }H_0} \Rightarrow \underbrace{\text{Type II error}}_{\text{miss a real effect}}$$
+:::
+
+::: {.fragment .fade-up}
+**Example:**
+
+Suppose education truly does affect income controlling for prestige (direct effect = $800/year). With low multicollinearity between educ and prestige, SE = 200, t = 4.0, p < 0.001. With high multicollinearity (r = 0.92), SE = 1100, t = 0.73, p = 0.47 — we'd conclude "no direct effect" even though one exists.
+
+The effect is real. The data just can't tell the two predictors apart.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## The practical implication
+If you run a multivariate model and a variable you expected to be significant is not — and its VIF is high — consider whether multicollinearity is masking the effect. This is *not* grounds to drop the variable; it's grounds to note the limitation.
+:::
+:::
+
+### It's Not Always Pairwise
+
+Multicollinearity is not just about two variables being correlated. **Any set of predictors can jointly cause it**, even if no two are highly correlated in isolation.
+
+::: {.fragment .fade-up}
+**Example 1: Age, work experience, and tenure**
+
+- Age and years of work experience: r ≈ 0.75 (moderate)
+- Age and job tenure: r ≈ 0.55 (moderate)
+- Experience and tenure: r ≈ 0.60 (moderate)
+- But **together**, they carry almost the same information → VIF for each could be 8+
+
+No single pairwise correlation screams "problem," but the three together are nearly redundant.
+:::
+
+::: {.fragment .fade-up}
+**Example 2: Education, degree, and test score**
+
+- Education in years, highest degree attained, and a cognitive ability test score
+- All three measure roughly the same underlying "human capital" concept
+- Including all three → VIF > 10 on each, unstable coefficients, possibly sign flips
+
+→ **This is why you check VIF on the fitted model, not just pairwise correlations.**
+:::
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: true
+#| eval: false
+# Always check VIF on the full model, not just cor()
+library(car)
+vif(your_model)   # catches joint multicollinearity that cor() misses
+```
+:::
+
+### When It's Not Your Variable of Interest
+
+**The best news: collinear controls often don't threaten your main conclusion.**
+
+If your research question is *"Does education affect income?"* and education has a low VIF, then:
+
+- The coefficient on education is precisely estimated ✓
+- Its SE and p-value are unaffected by multicollinearity among the controls ✓
+- You can still make your main inference confidently ✓
+
+The collinear controls (say, age and experience) just have imprecise coefficients — but you probably don't care about their individual effects.
+
+::: {.fragment .fade-up}
+**Example from our data:**
+
+```{r}
+#| echo: true
+
+# education is our key IV; age and prestige are controls
+model_key <- lm(income91 ~ educ + prestg80 + age, data = attain_med)
+vif(model_key)
+```
+
+If `educ` has VIF ≈ 2 but `prestg80` and `age` have VIF ≈ 4, that's fine — our inference about education is unaffected.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## Rule of thumb for your papers
+Check VIF on all predictors. If the **variable of interest** has low VIF (< 5), report it and move on. If **only controls** have elevated VIF, note it briefly but don't panic — your main finding is still valid.
+:::
+:::
+
+:::
+
+
+## What to Do About Multicollinearity {.smaller}
+
+::: {.panel-tabset}
+
+### Diagnose First
+
+**Step 1: Check the correlation matrix**
+
+```{r}
+#| echo: true
+
+attain_med |>
+  dplyr::select(educ, prestg80, age) |>
+  cor(use = "complete.obs") |>
+  round(2)
+```
+
+**Step 2: Check VIF after fitting the model**
+
+```{r}
+#| echo: true
+
+model_check <- lm(income91 ~ educ + prestg80 + age, data = attain_med)
+vif(model_check)
+```
+
+If VIF < 5 for all predictors → you're fine. Continue.
+
+### Solutions
+
+| Problem | Solution |
+|---|---|
+| Including education **and** degree (two measures of same concept) | Drop one; keep the theoretically central one |
+| Including age **and** birth year | These are perfectly collinear — pick one |
+| Two highly correlated controls | Drop the one less theoretically important |
+| Several items measuring the same underlying concept | **Combine into an index** (average or sum the items) |
+| Conceptually distinct variables that happen to correlate | Keep both, note the limitation, get more data |
+
+::: {.fragment .fade-up}
+**Creating an index when variables measure the same concept:**
+
+When several correlated predictors tap the same underlying idea (e.g., multiple survey items about socioeconomic status, or hours worked across multiple jobs), collapsing them into a single composite reduces multicollinearity and often improves interpretability.
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Example: respondent works multiple jobs — combine total hours
+attain <- attain |>
+  mutate(hrs_total = rowMeans(dplyr::select(., hrs1, hrs2), na.rm = TRUE))
+
+# Example: standardise and average two SES-related items into one index
+attain <- attain |>
+  mutate(
+    educ_z    = scale(educ),
+    prestg_z  = scale(prestg80),
+    ses_index = (educ_z + prestg_z) / 2   # simple equal-weight composite
+  )
+```
+
+Index variables also carry a **substantive interpretation**: you're saying these items measure one construct, not two separate concepts. Make that theoretical argument in your paper.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## What NOT to do
+Don't use regularization (ridge/LASSO) without understanding it. Don't drop variables that are theoretically important just because of high VIF. Report the issue and argue for your choice.
+:::
+:::
+
+### For Your Papers
+
+**Common multicollinearity problems in student papers:**
+
+1. **Including both education (years) and degree** → highly correlated (r ≈ 0.80). Pick one.
+2. **Including age and years of work experience** → age − 18 ≈ work experience for many. Drop one.
+3. **Including income and earnings from multiple sources** → summing them and using total is usually better.
+
+::: {.fragment .fade-up}
+**In your write-up:**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Always report VIF after your multivariate model
+library(car)
+vif(your_final_model)
+```
+
+A single line: "VIF values ranged from X to Y (all < 5), indicating no problematic multicollinearity."
+:::
+
+:::
+
+
+# Finishing Strong
+
+Getting your final paper across the finish line
+
+
+## What Your Final Paper Needs {.smaller}
+
+::: {.panel-tabset}
+
+### Model Checklist
+
+**Required components:**
+
+| Component | What to include |
+|---|---|
+| **Bivariate model** | `lm(Y ~ X)` — your key IV predicting Y |
+| **Multivariate model** | Add at least 2 controls; discuss why they matter |
+| **Extension** | At least one of: interaction, mediation, or logistic (if binary Y) |
+| **Assumption check** | Residual plot + VIF — a paragraph is sufficient |
+| **Model table** | `modelsummary()` comparing models side-by-side |
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: true
+#| eval: false
+
+# The pattern for a final paper model table
+modelsummary(
+  list(
+    "Bivariate"     = model_biv,
+    "Multivariate"  = model_multi,
+    "With Interaction" = model_interact    # or model with mediation
+  ),
+  stars  = TRUE,
+  vcov   = "HC1",           # robust SEs — use these throughout
+  gof_map = c("nobs", "r.squared", "adj.r.squared")
+)
+```
+:::
+
+### Interpreting Coefficients
+
+**Don't just report the number — tell the story:**
+
+| Instead of... | Try... |
+|---|---|
+| "The coefficient on education is 1847." | "Each additional year of education is associated with $1,847 higher income, holding sex and age constant." |
+| "The interaction term is significant." | "The education–income association is steeper for men than women: each year of education yields approximately $[gap] more income for men." |
+| "ACME = 624, p < 0.05." | "About [%]% of education's effect on income appears to operate through occupational prestige." |
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## Lead with substance
+Sociological audiences want to know: *what does this mean for inequality / stratification / the social world?* Start with the finding, then give the number.
+:::
+:::
+
+### Writing About Limitations
+
+**Every quantitative paper needs a limitations section. Be specific, not generic.**
+
+Generic (avoid):
+> "This study has some limitations. The data may not be perfectly representative."
+
+Specific (better):
+> "Because the GSS uses cross-sectional data, we cannot establish the temporal ordering required for causal inference. Specifically, the mediation claim — that education affects income through occupational prestige — requires that education precede prestige, which we assume but cannot verify. Additionally, unmeasured confounders of the prestige–income relationship (e.g., parental occupational networks) may bias the indirect effect estimate."
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## The goal of limitations
+Not to undermine your argument — but to show the reader you understand the boundaries of your evidence. A specific limitation paragraph signals methodological maturity.
+:::
+:::
+
+### Coefficient Plot
+
+A **coefficient plot** shows each predictor's estimated effect and its confidence interval as a dot-and-whisker. It lets readers immediately see which effects are large, which are small, and which cross zero (non-significant).
+
+Use a coefficient plot in your **presentation** instead of the full regression table — tables are hard to read aloud. Use the table in your **paper**.
+
+::: {.fragment .fade-up}
+```{r}
+#| echo: true
+#| fig-height: 3.2
+#| fig-align: center
+#| warning: false
+
+library(broom)
+
+model_coefplot <- lm(income91 ~ educ + prestg80 + sex_f + age,
+                     data = attain_med)
+
+tidy(model_coefplot, conf.int = TRUE) |>
+  filter(term != "(Intercept)") |>
+  mutate(term = case_match(term,
+    "educ"        ~ "Education (yrs)",
+    "prestg80"    ~ "Job Prestige",
+    "sex_ffemale" ~ "Female",
+    "age"         ~ "Age"
+  )) |>
+  ggplot(aes(x = estimate, y = fct_reorder(term, estimate))) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high),
+                 height = 0.2, linewidth = 1.1, color = "#4E79A7") +
+  geom_point(size = 3.5, color = "#4E79A7") +
+  scale_x_continuous(labels = scales::dollar_format()) +
+  labs(x = "Effect on income (95% CI)", y = NULL,
+       title = "Predictors of income — coefficient plot") +
+  theme_minimal(base_size = 12)
+```
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## Reading the plot
+A dot to the right of zero means a positive effect; left means negative. If the whisker (CI) crosses the dashed line at zero, the effect is not statistically significant at the 5% level. **The distance from zero shows effect size; the width of the whisker shows precision.**
+:::
+:::
+
+
+## Key Takeaways {.smaller}
+
+::: {.fragment .fade-up}
+**Mediation**
+
+- Asks *how/why* X affects Y — through a mediator M on the causal path
+- Three models: total effect (*c'*), X→M (*a* path), X+M→Y (*b* and *c* paths)
+- Indirect effect = *a × b*; use `mediation::mediate()` for bootstrapped CIs
+- Full mediation = direct effect disappears; partial = it shrinks
+- Causal claims require strong theoretical justification with cross-sectional data
+:::
+
+::: {.fragment .fade-up}
+**Multicollinearity**
+
+- Occurs when predictors are highly correlated → inflated SEs, unstable coefficients
+- Diagnose with `car::vif()`: VIF > 5 warrants attention, > 10 is severe
+- Fix: drop redundant predictors, keep the theoretically central one
+- Always report VIF in your paper (one sentence is enough)
+:::
+
+::: {.fragment .fade-up}
+**Final paper**
+
+- Bivariate + multivariate + one extension (interaction, mediation, or logistic)
+- Use `modelsummary()` with `vcov = "HC1"` (robust SEs) throughout
+- Lead with substance: what does the finding *mean* sociologically?
+- A specific limitations paragraph signals methodological maturity
+:::
+
+
+## Why This Matters {.smaller}
+
+::: {.fragment .fade-up}
+Mediation is how sociology asks *mechanism* questions:
+
+- Does education reduce poverty *because* it raises job quality? → mediation
+- Does neighborhood segregation affect health *through* differential access to healthcare? → mediation
+- Does discrimination reduce earnings *through* occupational sorting? → mediation
+:::
+
+::: {.fragment .fade-up}
+These aren't just statistical questions — they're questions about **how social structures reproduce themselves**. Knowing the mechanism tells us *where to intervene*.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip icon=false}
+## The big picture
+This course has moved from "is there a relationship?" (correlations, chi-squared) → "how strong is it?" (OLS) → "is it real?" (controls, confounding) → "for whom?" (interactions) → **"how does it work?"** (mediation). That's the arc of causal thinking in social science.
+:::
+:::
+
+
+## Questions?
+
+
+## Assignments {.smaller}
+
+**HW #11** — <span class="highlight">Due Thursday, April 24</span>
+
+- Interaction analysis on your research data
+- See Week 13 slides for the template
+
+**Final Paper** — <span class="highlight">Due Monday, May 5</span>
+
+::: {.callout-note icon=false}
+## Final paper components
+1. Introduction and research question
+2. Data and methods (describe attain.csv or your dataset, key variables, analytic strategy)
+3. Results: bivariate model → multivariate model → extension (interaction or mediation)
+4. Discussion: what do the results mean? connect to literature
+5. Limitations: cross-sectional data, measurement issues, omitted variables
+6. Model table using `modelsummary()` with robust SEs
+7. At least one visualization (scatter + regression line, coefficient plot, or marginal effects plot)
+:::
+
+**In-class presentations** — <span class="highlight">Monday, April 28</span>
+
+- 7–10 minutes: question → data → results → so what
+- Don't show the full model table to the class — use a coefficient plot or highlight 2–3 key numbers
+
+
+## In-Class Lab {.smaller}
+
+**Today: Mediation analysis on your own data**
+
+Work through the following steps:
+
+::: {.fragment .fade-up}
+**Step 1: Identify your mediation hypothesis**
+
+- What is your X (key predictor)?
+- What is your Y (outcome)?
+- What variable M sits on the causal path between them?
+- Write one sentence: "I expect [X] to affect [Y] partly through [M] because..."
+:::
+
+::: {.fragment .fade-up}
+**Step 2: Fit the three Baron & Kenny models**
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Replace X, M, Y with your variable names
+step1 <- lm(Y ~ X,     data = your_data)   # total effect
+step2 <- lm(M ~ X,     data = your_data)   # a path
+step3 <- lm(Y ~ X + M, data = your_data)   # b path + direct effect
+```
+:::
+
+::: {.fragment .fade-up}
+**Step 3: Bootstrap the indirect effect**
+
+```{r}
+#| echo: true
+#| eval: false
+
+med_result <- mediate(step2, step3, treat = "X", mediator = "M",
+                      boot = TRUE, sims = 500)
+summary(med_result)
+```
+:::
+
+::: {.fragment .fade-up}
+**Step 4: Check multicollinearity on your final multivariate model**
+
+```{r}
+#| echo: true
+#| eval: false
+vif(your_multivariate_model)
+```
+:::
