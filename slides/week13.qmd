@@ -123,12 +123,12 @@ demo_crossing <- tibble(
 
 ## Housekeeping {.smaller}
 
-**Weekly Assignment #10** *(last required assignment!)*
+**Weekly Assignment #10**
 
 - <span class="highlight">Due Thursday, April 23</span>
 - Logistic regression on a binary outcome — covered last week
 
-**Weekly Assignment #11** *(optional — extra credit)*
+**Weekly Assignment #11**
 
 - <span class="highlight">Due Thursday, April 23</span>
 - Run an interaction analysis on your research data (see Assignments slide)
@@ -1319,7 +1319,7 @@ Using your research dataset, run an **interaction analysis**:
 - **In-class presentations** — <span class="highlight">April 28</span>
 - **Final paper** — <span class="highlight">Due Thursday, May 7</span>
 
-**In-class lab today:**
+## In-class lab today {.smaller}
 
-- Apply interaction analysis to your own research dataset
-- Practice computing and interpreting group-specific slopes
+- Practice interaction analysis using `attain` dataset
+- see lab #8 on bCourses
