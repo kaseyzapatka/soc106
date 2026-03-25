@@ -216,9 +216,9 @@
 <p><strong>Statistical content — four parts:</strong></p>
 <ul>
 <li><strong>Part 1</strong>: Outcome variables and key predictors — what are we trying to explain?</li>
-<li><strong>Part 2</strong>: Bivariate OLS regression — estimating the magnitude of a linear relationship</li>
+<li><strong>Part 2</strong>: From correlation to regression — estimating the magnitude of a linear relationship</li>
 <li><strong>Part 3</strong>: Regression with categorical predictors — dummy variables and baseline categories</li>
-<li><strong>Part 4</strong>: OLS assumptions and multivariate regression</li>
+<li><strong>Part 4</strong>: OLS assumptions and multiple regression</li>
 </ul>
 <p><strong>In-class lab:</strong></p>
 <ul>
@@ -248,7 +248,6 @@
 <section id="where-we-are-in-the-course" class="slide level2 smaller">
 <h2>Where We Are in the Course</h2>
 <ul>
-<li><strong>Weeks 7–8:</strong> Sampling distributions and confidence intervals — estimating parameters from samples</li>
 <li><strong>Week 9:</strong> Hypothesis testing — is there a relationship, or is it just chance?</li>
 <li><strong>This week (Week 11):</strong> Linear regression — how <em>strong</em> is the relationship, and in what direction?</li>
 <li><strong>Week 12:</strong> Logistic regression — predicting binary outcomes</li>
@@ -264,9 +263,6 @@
 </div>
 </div>
 </div>
-</section>
-<section id="questions" class="slide level2">
-<h2>Questions?</h2>
 </section>
 <section>
 <section id="part-1-outcome-variables-and-key-predictors" class="title-slide slide level1 center">
@@ -360,7 +356,7 @@
 <div id="tabset-1-1">
 <p>Your research question should name both roles:</p>
 <blockquote>
-<p><em>“Does occupational prestige predict household income?”</em></p>
+<p><em>“How does occupational prestige impact household income?”</em></p>
 </blockquote>
 <ul>
 <li><strong>Outcome variable (Y):</strong> <code>income91</code> — household income, in dollars — <em>what we’re explaining</em></li>
@@ -408,7 +404,7 @@
 </div>
 </div>
 </section>
-<section id="questions-1" class="slide level2">
+<section id="questions" class="slide level2">
 <h2>Questions?</h2>
 </section></section>
 <section>
@@ -421,11 +417,28 @@
 <div class="columns">
 <div class="column" style="width:55%;">
 <p>A <strong>correlation coefficient</strong> (r) describes direction and strength:</p>
-<ul>
-<li><span class="math inline">\(r = +0.4\)</span>: moderate positive relationship</li>
-<li><span class="math inline">\(r = -0.7\)</span>: strong negative relationship</li>
-<li><span class="math inline">\(r = 0\)</span>: no linear relationship</li>
-</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>r</th>
+<th>Strength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>r ≈ 0.3</td>
+<td>Weak</td>
+</tr>
+<tr class="even">
+<td>r ≈ 0.5</td>
+<td>Moderate</td>
+</tr>
+<tr class="odd">
+<td>r ≈ 0.8</td>
+<td>Strong</td>
+</tr>
+</tbody>
+</table>
 <p><strong>But correlation cannot answer:</strong></p>
 <ul>
 <li>How many dollars does income increase per one-point gain in occupational prestige?</li>
@@ -453,9 +466,9 @@
 <div class="fragment fade-up">
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 60%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -485,7 +498,7 @@
 </div>
 <div class="fragment fade-up">
 <p><strong>In practice</strong>, we estimate from sample data:</p>
-<p><span class="math display">\[y_i = a + b \cdot x_i + e_i\]</span></p>
+<p><span class="math display">\[y_i = a + bx_i + e_i\]</span></p>
 <ul>
 <li><span class="math inline">\(a\)</span> = estimated intercept (sample estimate of <span class="math inline">\(\alpha\)</span>)</li>
 <li><span class="math inline">\(b\)</span> = estimated slope (sample estimate of <span class="math inline">\(\beta\)</span>) — <strong>this is the key number</strong></li>
@@ -494,7 +507,7 @@
 </div>
 <div class="fragment fade-up">
 <p><strong>OLS (ordinary least squares)</strong> chooses <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> to minimize:</p>
-<p><span class="math display">\[\text{SSR} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - a - b \cdot x_i)^2\]</span></p>
+<p><span class="math display">\[\text{RSS} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - a - bx_i)^2\]</span></p>
 <p>Why square? Prevents cancellation, penalizes large misses, and produces a unique closed-form solution.</p>
 </div>
 </section>
@@ -635,8 +648,8 @@ F-statistic: 105.6 on 1 and 2525 DF,  p-value: &lt; 0.00000000000000022</code></
 </div>
 </div>
 </section>
-<section id="regression-coefficients-and-hypothesis-tests" class="slide level2 smaller">
-<h2>Regression Coefficients and Hypothesis Tests</h2>
+<section id="coefficients-and-hypothesis-tests" class="slide level2 smaller">
+<h2>Coefficients and Hypothesis Tests</h2>
 <p>Every OLS coefficient has its own built-in hypothesis test:</p>
 <p><span class="math display">\[t = \frac{b}{SE(b)}, \quad \text{compared to } t\text{-distribution with } df = n - k - 1\]</span></p>
 <div class="fragment fade-up">
@@ -665,6 +678,7 @@ prestg80      472.1334   45.94284 10.276539 0.00000000000000000000000268663</cod
 </div>
 <div class="callout-content">
 <p>When <span class="math inline">\(p &lt; 0.05\)</span> for a coefficient, we reject <span class="math inline">\(H_0: \beta = 0\)</span> — evidence that the predictor has a real effect on the outcome. The coefficient tells us the <em>direction</em> and <em>magnitude</em> of that effect; the p-value tells us whether we can trust it isn’t due to chance.</p>
+<p><strong>In this example:</strong> <span class="math inline">\(p &lt; 0.001\)</span> for the prestige coefficient, so we <strong>reject</strong> <span class="math inline">\(H_0: \beta_{\text{prestige}} = 0\)</span> — occupational prestige has a statistically significant effect on household income.</p>
 </div>
 </div>
 </div>
@@ -677,9 +691,9 @@ prestg80      472.1334   45.94284 10.276539 0.00000000000000000000000268663</cod
 <div class="fragment fade-up">
 <p><strong>The slope (<span class="math inline">\(b = 472\)</span>):</strong></p>
 <ul>
-<li>For each additional point in occupational prestige, predicted household income increases by <strong>$472</strong></li>
-<li>A person who moves from a prestige score of 30 to 60 (+30 points) is predicted to earn <strong>$14160 more</strong> per year</li>
-<li>The positive sign confirms a <strong>positive relationship</strong> — higher prestige, higher income</li>
+<li>For every one unit increase in occupational prestige, predicted household income increases by <strong>$472</strong></li>
+<li>So, a person who moves from a prestige score of 30 to 60 (+30 points) is predicted to earn <strong>$14160 more</strong> per year</li>
+<li>The positive sign confirms a <strong>positive relationship</strong> — higher prestige = higher income</li>
 </ul>
 </div>
 <div class="fragment fade-up">
@@ -710,8 +724,8 @@ prestg80      472.1334   45.94284 10.276539 0.00000000000000000000000268663</cod
 <p><span class="math display">\[R^2 = \frac{\text{variation in } Y \text{ explained by model}}{\text{total variation in } Y} \in [0, 1]\]</span></p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 25%">
+<col style="width: 75%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -798,7 +812,7 @@ prestg80      472.1334   45.94284 10.276539 0.00000000000000000000000268663</cod
 </div>
 </div>
 </section>
-<section id="questions-2" class="slide level2">
+<section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
 </section></section>
 <section>
@@ -831,68 +845,48 @@ prestg80      472.1334   45.94284 10.276539 0.00000000000000000000000268663</cod
 <p>For a categorical variable with <strong>k</strong> categories, we create <strong>k − 1</strong> dummy variables. The omitted category is the <strong>baseline (reference) group</strong> — all comparisons are made against it.</p>
 <div class="fragment fade-up">
 <p><strong>Example:</strong> Degree (5 categories) → 4 dummies (baseline = <em>lt high</em> [less than high school]):</p>
-<table class="caption-top" style="width:100%;">
+<table class="caption-top">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col style="width: 25%">
+<col style="width: 50%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Category</th>
-<th>HS diploma</th>
-<th>Jr.&nbsp;College</th>
-<th>Bachelor</th>
-<th>Graduate</th>
+<th>Degree</th>
+<th>Dummy variable R creates</th>
 <th>Predicted income</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>lt high (BASELINE)</strong></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>= intercept α</td>
+<td><strong>lt high (baseline)</strong></td>
+<td><em>(omitted — absorbed into intercept)</em></td>
+<td><span class="math inline">\(\alpha\)</span></td>
 </tr>
 <tr class="even">
-<td>Has HS diploma</td>
-<td><strong>1</strong></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>= α + b_hs</td>
+<td>High School</td>
+<td><code>degree_fhigh sch</code> = 1, all others = 0</td>
+<td><span class="math inline">\(\alpha + b_1\)</span></td>
 </tr>
 <tr class="odd">
-<td>Has Jr.&nbsp;College</td>
-<td>0</td>
-<td><strong>1</strong></td>
-<td>0</td>
-<td>0</td>
-<td>= α + b_jc</td>
+<td>Junior College</td>
+<td><code>degree_fjunior c</code> = 1, all others = 0</td>
+<td><span class="math inline">\(\alpha + b_2\)</span></td>
 </tr>
 <tr class="even">
-<td>Has Bachelor’s</td>
-<td>0</td>
-<td>0</td>
-<td><strong>1</strong></td>
-<td>0</td>
-<td>= α + b_ba</td>
+<td>Bachelor’s</td>
+<td><code>degree_fbachelor</code> = 1, all others = 0</td>
+<td><span class="math inline">\(\alpha + b_3\)</span></td>
 </tr>
 <tr class="odd">
-<td>Has Graduate degree</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td><strong>1</strong></td>
-<td>= α + b_grad</td>
+<td>Graduate</td>
+<td><code>degree_fgraduate</code> = 1, all others = 0</td>
+<td><span class="math inline">\(\alpha + b_4\)</span></td>
 </tr>
 </tbody>
 </table>
+<p>Each coefficient (<span class="math inline">\(b_1, b_2, \ldots\)</span>) = predicted income <strong>above or below</strong> the baseline group.</p>
 </div>
 <div class="fragment fade-up">
 <p>The baseline’s predicted income = the <strong>intercept</strong> α. Every other coefficient = income <em>above or below</em> that baseline.</p>
@@ -1134,7 +1128,7 @@ bachelor graduate high sch junior c  lt high
 </div>
 </div>
 </section>
-<section id="questions-3" class="slide level2">
+<section id="questions-2" class="slide level2">
 <h2>Questions?</h2>
 </section></section>
 <section>
@@ -1180,6 +1174,16 @@ bachelor graduate high sch junior c  lt high
 </div>
 </div>
 </div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What we did in this class:</strong></p>
+</div>
+<div class="callout-content">
+<p>The raw <code>income91</code> variable is right-skewed (common with income data), which produces non-normal residuals in the bottom-left panel. Running <code>log(income91)</code> as the outcome — <code>model_log</code> above — produces the more symmetric residuals in the bottom-right panel. This is a standard fix: when your outcome is right-skewed, <strong>log-transforming it often corrects the non-normality of errors</strong>.</p>
+</div>
+</div>
+</div>
 </div>
 <div id="tabset-6-4">
 <p><strong>The spread of residuals is constant</strong> across all values of X (equal variance).</p>
@@ -1200,8 +1204,19 @@ bachelor graduate high sch junior c  lt high
 <section id="checking-assumptions-visually" class="slide level2 smaller">
 <h2>Checking Assumptions Visually</h2>
 <p>A <strong>residuals vs.&nbsp;fitted plot</strong> diagnoses both linearity and homoskedasticity at once:</p>
-
-<img data-src="week11_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"><div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week11_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>What to look for — and what our model shows:</strong></p>
@@ -1209,10 +1224,11 @@ bachelor graduate high sch junior c  lt high
 <div class="callout-content">
 <p><strong>Linearity:</strong> Is the blue loess line approximately flat (horizontal)? <em>In our model: mostly flat with slight curvature — no major concern.</em></p>
 <p><strong>Homoskedasticity:</strong> Is the vertical spread of points roughly constant across the x-axis? <em>In our model: the spread is roughly similar across fitted values, though slightly wider at high incomes — common with income data.</em></p>
-<p>Overall, our prestige → income model does not show dramatic assumption violations, but some heteroskedasticity is plausible. Using <code>vcov = "HC1"</code> robust SEs (shown next) is a sensible precaution.</p>
+<p>Overall, our prestige → income model does not show dramatic assumption violations, but some heteroskedasticity is plausible. Using <code>vcov = "HC1"</code> robust SEs (shown next) is a most common precaution used.</p>
 </div>
 </div>
 </div>
+</div></div>
 </section>
 <section id="robust-standard-errors" class="slide level2 smaller">
 <h2>Robust Standard Errors</h2>
@@ -1222,7 +1238,7 @@ bachelor graduate high sch junior c  lt high
 <div class="tab-content">
 <div id="tabset-7-1">
 <ul>
-<li>Violations of normality and homoskedasticity <strong>do not bias</strong> the coefficient estimates (<span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>)</li>
+<li>Violations of normality and homoskedasticity <strong>do not bias</strong> coefficient estimates (<span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>)</li>
 <li>But they <strong>do bias the standard errors</strong> — which affects t-statistics and p-values</li>
 <li>Robust SEs account for these violations with a conservative adjustment</li>
 </ul>
@@ -1300,12 +1316,12 @@ bachelor graduate high sch junior c  lt high
 <p>When we add a control variable to a regression, we are <strong>partitioning the variation</strong> in the outcome:</p>
 <div class="fragment fade-up">
 <p><strong>Without a control:</strong></p>
-<p><span class="math display">\[\text{income} = a + b_1 \cdot \text{prestige} + e\]</span></p>
+<p><span class="math display">\[\text{income} = a + b_1{\text{prestige}} + e\]</span></p>
 <p>The coefficient <span class="math inline">\(b_1\)</span> captures <em>all</em> the ways prestige is associated with income — including variation that is really due to sex (because men and women differ in both prestige and income).</p>
 </div>
 <div class="fragment fade-up">
 <p><strong>With a control for sex:</strong></p>
-<p><span class="math display">\[\text{income} = a + b_1 \cdot \text{prestige} + b_2 \cdot \text{sex} + e\]</span></p>
+<p><span class="math display">\[\text{income} = a + b_1\text{prestige} + b_2\text{sex} + e\]</span></p>
 <p>Now <span class="math inline">\(b_1\)</span> captures the association between prestige and income <em>after filtering out</em> any variation that could be due to sex differences. We are comparing people who are <strong>identical on the control variable</strong> (same sex) and asking: does prestige still predict income?</p>
 </div>
 <div class="fragment fade-up">
@@ -1321,9 +1337,9 @@ bachelor graduate high sch junior c  lt high
 </div>
 </div>
 </section>
-<section id="multivariate-regression" class="slide level2 smaller scrollable">
-<h2>Multivariate Regression</h2>
-<p>We can include multiple predictors — this is <strong>multivariate regression</strong>. We’ll cover this in depth in Week 13.</p>
+<section id="multiple-regression" class="slide level2 smaller scrollable">
+<h2>Multiple Regression</h2>
+<p>We can include multiple predictors — this is <strong>multiple regression</strong>. We’ll cover this in depth in Week 13.</p>
 <div class="panel-tabset">
 <ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">R Code</a></li><li><a href="#tabset-8-2">Comparing Models</a></li><li><a href="#tabset-8-3">Interpretation</a></li></ul>
 <div class="tab-content">
@@ -1340,22 +1356,22 @@ bachelor graduate high sch junior c  lt high
 <div id="tabset-8-2">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">modelsummary</span>(</span>
-<span id="cb22-2"><a></a>  <span class="fu">list</span>(<span class="st">"Bivariate"</span> <span class="ot">=</span> model_biv2, <span class="st">"Multivariate"</span> <span class="ot">=</span> model_multi),</span>
+<span id="cb22-2"><a></a>  <span class="fu">list</span>(<span class="st">"Bivariate"</span> <span class="ot">=</span> model_biv2, <span class="st">"Multiple"</span> <span class="ot">=</span> model_multi),</span>
 <span id="cb22-3"><a></a>  <span class="at">coef_rename =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span> <span class="ot">=</span> <span class="st">"Intercept"</span>,</span>
 <span id="cb22-4"><a></a>                  <span class="st">"prestg80"</span>    <span class="ot">=</span> <span class="st">"Prestige Score"</span>,</span>
 <span id="cb22-5"><a></a>                  <span class="st">"sex_ffemale"</span> <span class="ot">=</span> <span class="st">"Female"</span>),</span>
 <span id="cb22-6"><a></a>  <span class="at">stars   =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb22-7"><a></a>  <span class="at">title   =</span> <span class="st">"Prestige and Income: Bivariate vs. Multivariate"</span>,</span>
+<span id="cb22-7"><a></a>  <span class="at">title   =</span> <span class="st">"Prestige and Income: Bivariate vs. Multiple"</span>,</span>
 <span id="cb22-8"><a></a>  <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>)</span>
 <span id="cb22-9"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Prestige and Income: Bivariate vs. Multivariate</caption>
+<caption>Prestige and Income: Bivariate vs. Multiple</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
 <th style="text-align: center;" data-quarto-table-cell-role="th">Bivariate</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multivariate</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Multiple</th>
 </tr>
 </thead>
 <tbody>
@@ -1415,12 +1431,12 @@ bachelor graduate high sch junior c  lt high
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Reading the multivariate table:</strong></p>
+<p><strong>Reading the multiple regression table:</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Coefficient on <code>Prestige Score</code> (bivariate → multivariate):</strong> $472 → $470 per prestige point. After controlling for sex, the prestige slope changes slightly — this shift tells us how much of the bivariate prestige effect was actually due to sex differences in prestige.</p>
+<p><strong>Coefficient on <code>Prestige Score</code> (bivariate → multiple):</strong> $472 → $470 per prestige point. After controlling for sex, the prestige slope changes slightly — this shift tells us how much of the bivariate prestige effect was actually due to sex differences in prestige.</p>
 <p><strong>Coefficient on <code>Female</code>:</strong> $-4702 — women earn about $4702 less per year than men <em>at the same prestige level</em>. This is the gender income gap net of occupational status.</p>
-<p><strong>R² increase:</strong> 4% (bivariate) → 4.4% (multivariate). Adding sex explains additional variation in income beyond prestige alone — but most variation in income remains unexplained by these two predictors.</p>
+<p><strong>R² increase:</strong> 4% (bivariate) → 4.4% (multiple regression). Adding sex explains additional variation in income beyond prestige alone — but most variation in income remains unexplained by these two predictors.</p>
 <p><strong>In Week 13</strong>, we’ll cover how to decide which controls to include, and what changes in coefficients across models mean theoretically.</p>
 </div>
 </div>
@@ -1432,7 +1448,7 @@ bachelor graduate high sch junior c  lt high
 <section>
 <section id="reading-research-thompson-keith-2001" class="title-slide slide level1 center">
 <h1>Reading Research: Thompson &amp; Keith (2001)</h1>
-<p>Seeing today’s tools in a published sociological study</p>
+<p>Seeing today’s tools published in a classical sociological study</p>
 </section>
 <section id="the-blacker-the-berry-overview" class="slide level2 smaller">
 <h2>“The Blacker the Berry” — Overview</h2>
@@ -1441,7 +1457,7 @@ bachelor graduate high sch junior c  lt high
 <p><strong>Research question:</strong> Does skin tone predict psychological well-being — specifically self-esteem and self-efficacy — for Black Americans? And does this relationship differ by gender?</p>
 <ul>
 <li>Motivated by <strong>colorism</strong>: the documented pattern in which lighter-skinned Black individuals receive preferential treatment in U.S. society</li>
-<li>The title references the saying “the blacker the berry, the sweeter the juice” — but the authors ask whether this holds for self-perception</li>
+<li>“The blacker the berry, the sweeter the juice” is a common idiom that celebrates dark skin tones in Black individuals — serving as a counter-narrative to colorism. The authors ask whether this affirmation holds for Black Americans’ own self-perception</li>
 </ul>
 </div>
 <div class="fragment fade-up">
@@ -1466,15 +1482,15 @@ bachelor graduate high sch junior c  lt high
 <ul>
 <li><strong>Data:</strong> National Survey of Black Americans (NSBA), 1979–1980</li>
 <li><strong>Sample:</strong> 2,107 Black American adults; analyses conducted separately for <strong>men</strong> (n ≈ 581) and <strong>women</strong> (n ≈ 1,035) who are employed</li>
-<li><strong>Why separate models?</strong> The authors hypothesize that the relationship between skin tone and self-esteem <em>differs by gender</em> — so they run separate regressions for men and women</li>
+<li><strong>Why separate models?</strong> The authors hypothesize that the relationship between skin tone and self-esteem <em>differs by gender</em>. Running separate regressions for men and women is similar in spirit to including an interaction term (which we’ll cover in Week 13), but the authors chose this approach for simplicity — because they test multiple interactions across several controls, splitting the sample is more tractable than modeling every interaction explicitly</li>
 </ul>
 </div>
 <div id="tabset-9-2">
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 14%">
+<col style="width: 42%">
+<col style="width: 42%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1506,10 +1522,22 @@ bachelor graduate high sch junior c  lt high
 </tr>
 </tbody>
 </table>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Self-esteem vs.&nbsp;self-efficacy — what’s the difference?</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Self-esteem</strong> is a person’s overall sense of their own value or worth — <em>“Do I feel good about myself?”</em> It reflects how positively someone regards themselves as a person.</p>
+<p><strong>Self-efficacy</strong> is a person’s belief in their ability to control outcomes in their own life — <em>“Can I make things happen?”</em> It reflects how much agency or personal power someone feels they have.</p>
+<p>These are related but distinct psychological constructs. The authors study both because colorism may affect not just how you feel about yourself (self-esteem) but also your sense of whether your efforts can shape your future (self-efficacy).</p>
+</div>
+</div>
+</div>
 </div>
 <div id="tabset-9-3">
 <p>The authors estimate (separately for men and women):</p>
-<p><span class="math display">\[\widehat{\text{self-esteem}} = \alpha + \beta_1 \cdot \text{skin tone} + \beta_2 \cdot \text{educ} + \beta_3 \cdot \text{income} + \cdots + e\]</span></p>
+<p><span class="math display">\[\widehat{\text{self-esteem}} = \alpha + \beta_1\text{skin tone} + \beta_2\text{educ} + \beta_3\text{income} + \cdots + e\]</span></p>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1535,76 +1563,159 @@ bachelor graduate high sch junior c  lt high
 <div class="tab-content">
 <div id="tabset-10-1">
 <p>Simplified version of Table 2 from Thompson &amp; Keith (2001):</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
+<table style="font-size:0.85em; width:100%; border-collapse:collapse;">
 <thead>
-<tr class="header">
-<th>Variable</th>
-<th>Self-Esteem (Women)</th>
-<th>Self-Esteem (Men)</th>
-<th>Self-Efficacy (Women)</th>
-<th>Self-Efficacy (Men)</th>
+<tr>
+<th style="border-bottom:2px solid #888; text-align:left; padding:4px 8px;">
+</th>
+<th colspan="2" style="background-color:#4E79A7; color:white; text-align:center; padding:4px 8px; border-radius:4px 4px 0 0;">
+Women
+</th>
+<th colspan="2" style="background-color:#F28E2B; color:white; text-align:center; padding:4px 8px; border-radius:4px 4px 0 0;">
+Men
+</th>
+</tr>
+<tr>
+<th style="border-bottom:1px solid #ccc; text-align:left; padding:4px 8px;">
+Variable
+</th>
+<th style="background-color:#d0e4f5; text-align:center; padding:4px 8px;">
+Self-Esteem
+</th>
+<th style="background-color:#d0e4f5; text-align:center; padding:4px 8px;">
+Self-Efficacy
+</th>
+<th style="background-color:#fde8c8; text-align:center; padding:4px 8px;">
+Self-Esteem
+</th>
+<th style="background-color:#fde8c8; text-align:center; padding:4px 8px;">
+Self-Efficacy
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><strong>Skin tone</strong></td>
-<td>−0.04**</td>
-<td>−0.01</td>
-<td>−0.05**</td>
-<td>0.02</td>
+<tr>
+<td style="padding:4px 8px;">
+<strong>Skin tone</strong>
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+−0.04**
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+−0.05**
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+−0.01
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+0.02
+</td>
 </tr>
-<tr class="even">
-<td>Education</td>
-<td>0.03*</td>
-<td>0.02</td>
-<td>0.04**</td>
-<td>0.03*</td>
+<tr>
+<td style="padding:4px 8px;">
+Education
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+0.03*
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+0.04**
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+0.02
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+0.03*
+</td>
 </tr>
-<tr class="odd">
-<td>Income</td>
-<td>0.02</td>
-<td>0.01</td>
-<td>0.02</td>
-<td>0.03*</td>
+<tr>
+<td style="padding:4px 8px;">
+Income
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+0.02
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+0.02
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+0.01
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+0.03*
+</td>
 </tr>
-<tr class="even">
-<td>Age</td>
-<td>−0.01**</td>
-<td>−0.01**</td>
-<td>−0.01**</td>
-<td>−0.01**</td>
+<tr>
+<td style="padding:4px 8px;">
+Age
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+−0.01**
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+−0.01**
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+−0.01**
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+−0.01**
+</td>
 </tr>
-<tr class="odd">
-<td>Employed</td>
-<td>0.08</td>
-<td>0.10*</td>
-<td>0.12*</td>
-<td>0.08</td>
+<tr>
+<td style="padding:4px 8px;">
+Employed
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+0.08
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+0.12*
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+0.10*
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+0.08
+</td>
 </tr>
-<tr class="even">
-<td>N</td>
-<td>~1,035</td>
-<td>~581</td>
-<td>~1,035</td>
-<td>~581</td>
+<tr>
+<td style="padding:4px 8px;">
+N
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+~1,035
+</td>
+<td style="background-color:#d0e4f5; text-align:center;">
+~1,035
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+~581
+</td>
+<td style="background-color:#fde8c8; text-align:center;">
+~581
+</td>
 </tr>
-<tr class="odd">
-<td>R²</td>
-<td>.09</td>
-<td>.07</td>
-<td>.11</td>
-<td>.08</td>
+<tr>
+<td style="padding:4px 8px; border-top:1px solid #ccc;">
+R²
+</td>
+<td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">
+.09
+</td>
+<td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">
+.11
+</td>
+<td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">
+.07
+</td>
+<td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">
+.08
+</td>
 </tr>
 </tbody>
 </table>
-<p>*p &lt; 0.05; **p &lt; 0.01. Coefficients are unstandardized OLS estimates. Adapted from Thompson &amp; Keith (2001), Table 2.</p>
+<p><small>*p &lt; 0.05; **p &lt; 0.01. Coefficients are unstandardized OLS estimates. Adapted from Thompson &amp; Keith (2001), Table 2.</small></p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1703,7 +1814,7 @@ bachelor graduate high sch junior c  lt high
 </div>
 </div>
 </section>
-<section id="questions-4" class="slide level2">
+<section id="questions-3" class="slide level2">
 <h2>Questions?</h2>
 </section>
 <section id="key-takeaways" class="slide level2 smaller">
@@ -1812,7 +1923,7 @@ bachelor graduate high sch junior c  lt high
 </div>
 </div>
 </section>
-<section id="questions-5" class="slide level2">
+<section id="questions-4" class="slide level2">
 <h2>Questions?</h2>
 </section>
 <section id="assignments" class="slide level2 smaller scrollable">
