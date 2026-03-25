@@ -1,0 +1,435 @@
+---
+title: "Lab 8: Interaction Effects in OLS Regression"
+author: "Your Name Here"
+date: today
+project:
+  type: website
+  execute-dir: project
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+---
+
+## Overview
+
+In this lab you will practice specifying, estimating, and interpreting **interaction effects** in OLS regression using the `attain` dataset. An interaction term tests whether the relationship between a predictor and an outcome *depends on* the value of a third variable — the moderator.
+
+You will work through three models, one for each combination of variable types:
+
+| Model | Predictor (X₁) | Moderator (X₂) | Outcome (Y) | Type |
+|---|---|---|---|---|
+| 1 | `educ` | `age` | `income91` | Continuous × Continuous |
+| 2 | `educ` | `sex_f` | `income91` | Continuous × Binary |
+| 3 | `union_member` | `sex_f` | `income91` | Binary × Binary |
+
+All three use `income91` as the outcome so you can compare results across models.
+
+------------------------------------------------------------------------
+
+## Setup
+
+Load packages, read the data, drop rows with missing values on every variable used in any model, and create factor and binary variables.
+
+```{r}
+#| message: false
+#| warning: false
+
+# load libraries
+library(tidyverse)
+library(here)
+library(modelsummary)
+library(ggeffects)
+
+# turn off scientific notation
+options(scipen = 999)
+
+# load raw data
+attain_raw <- read_csv(here("data", "attain.csv"))
+
+# Drop rows missing any variable used across all three models,
+# then create recoded variables
+attain <- attain_raw |>
+  filter(
+    !is.na(income91),
+    !is.na(educ),
+    !is.na(age),
+    !is.na(sex),
+    !is.na(union)
+  ) |>
+  mutate(
+    # Binary moderator: set male as reference group
+    sex_f        = fct_relevel(sex, "male"),
+    # Binary predictor: 1 = respondent is a union member
+    union_member = as.integer(union %in% c("r belong", "r and sp"))
+  )
+
+# How many rows did we drop?
+cat("Original rows:", nrow(attain_raw), "\n")
+cat("Rows after dropping missing:", nrow(attain), "\n")
+cat("Rows dropped:", nrow(attain_raw) - nrow(attain), "\n")
+```
+
+::: callout-note
+We drop missing values in the setup step — before any model is run — so that all three models are estimated on the **same sample**. If you filter inside `lm()` or at different steps, sample sizes can vary across models, making comparisons misleading.
+:::
+
+------------------------------------------------------------------------
+
+## Model 1: Continuous × Continuous (Education × Age)
+
+### Research Question
+
+**Does the income return to each additional year of education depend on how old you are?**
+
+A positive interaction (β₃ > 0) would mean older workers capture *more* income per year of schooling — perhaps because experience and credentials compound over a career. A negative interaction (β₃ < 0) would suggest younger workers benefit more per year of education.
+
+$$\hat{Y} = \alpha + \beta_1\,(\text{educ}) + \beta_2\,(\text{age}) + \beta_3\,(\text{educ} \times \text{age})$$
+
+| Role | Variable | Description |
+|---|---|---|
+| **Outcome (Y)** | `income91` | Annual income in dollars |
+| **Key predictor (X₁)** | `educ` | Years of education (continuous) |
+| **Moderator (X₂)** | `age` | Age in years (continuous) |
+| **Interaction** | `educ * age` | Does the educ slope vary by age? |
+
+### Model Specification
+
+Use `*` in the formula to include both main effects and the interaction in one step.
+
+```{r}
+model1 <- lm(income91 ~ educ * age, data = attain)
+```
+
+::: callout-note
+`educ * age` in R automatically expands to `educ + age + educ:age`. **Never** write just `educ:age` without the main effects — the coefficients would be uninterpretable (this is called the **hierarchy principle**).
+:::
+
+### Regression Table
+
+```{r}
+modelsummary(
+  model1,
+  vcov        = "HC1",
+  coef_rename = c(
+    "(Intercept)" = "Intercept",
+    "educ"        = "Years of Education",
+    "age"         = "Age (years)",
+    "educ:age"    = "Education × Age"
+  ),
+  stars   = TRUE,
+  fmt     = 1,
+  gof_map = c("nobs", "r.squared", "adj.r.squared"),
+  title   = "OLS: Income ~ Education × Age (HC1 Robust SEs)"
+)
+```
+
+### Interpret the Coefficients
+
+::: callout-note
+**Reading a continuous × continuous interaction:**
+
+In the equation $\hat{Y} = \alpha + \beta_1\,(\text{educ}) + \beta_2\,(\text{age}) + \beta_3\,(\text{educ} \times \text{age})$, the main effect $\beta_1$ is the slope for education **only when age = 0** — which is outside the range of the data and not meaningful. Instead, compute **simple slopes**: the effect of education at specific, substantively interesting values of age.
+
+$$\text{Slope of educ at a given age} = \beta_1 + \beta_3 \times \text{age}$$
+:::
+
+**Question 1.** What is the sign on the `Education × Age` coefficient? Is it statistically significant at α = 0.05? State your conclusion in one sentence.
+
+*Your answer:*
+
+---
+
+**Question 2.** Using the formula above and the coefficients from your table, calculate the simple slope of education at three values of age. Round to the nearest dollar.
+
+| Age | Calculation | Income per year of education |
+|---|---|---|
+| Young (25 years) | β₁ + β₃ × 25 = | ___ |
+| Middle (45 years) | β₁ + β₃ × 45 = | ___ |
+| Older (65 years) | β₁ + β₃ × 65 = | ___ |
+
+*Fill in the table using your model output.*
+
+---
+
+**Question 3.** Based on the simple slopes you calculated: does the income return to education increase or decrease with age? What might explain this pattern sociologically?
+
+*Your answer:*
+
+---
+
+**Question 4.** The main effect of `Age (years)` is the income change per year of age **when education = 0** — also not meaningful on its own. Given that, what should you focus on when interpreting this model? What is the key coefficient?
+
+*Your answer:*
+
+### Margins Plot
+
+`ggpredict()` computes the effect of education at the mean, mean + 1 SD, and mean − 1 SD of age, then plots three separate lines. If the interaction is real, the lines will have **different slopes**.
+
+```{r}
+#| message: false
+
+ggpredict(model1, terms = c("educ", "age [meansd]")) |>
+  plot() +
+  labs(
+    title    = "Predicted Income by Education, at Low / Mean / High Age",
+    subtitle = "Lines show predicted income across education levels at three ages",
+    x        = "Years of Education",
+    y        = "Predicted Income ($)",
+    color    = "Age"
+  ) +
+  theme_minimal()
+```
+
+::: callout-note
+**Reading the margins plot:** Each line shows how predicted income changes across education levels for a different age group. If the lines are **parallel**, there is no interaction — the education slope is the same at all ages. If the lines **fan out** (diverge), older or younger respondents benefit more from each additional year of schooling.
+:::
+
+**Question 5.** Do the lines in the plot appear parallel or non-parallel? Does this match your conclusion from the regression table?
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+## Model 2: Continuous × Binary (Education × Sex)
+
+### Research Question
+
+**Does each additional year of education translate into the same income gain for men and women?**
+
+This is a classic stratification question: even when women have identical credentials, do they receive the same wage return per year of schooling? A negative interaction (β₃ < 0 on `Education × Female`) would be evidence of structural inequality — women receive a lower wage premium per credential.
+
+$$\hat{Y} = \alpha + \beta_1\,(\text{educ}) + \beta_2\,(\text{female}) + \beta_3\,(\text{educ} \times \text{female})$$
+
+| Role | Variable | Description |
+|---|---|---|
+| **Outcome (Y)** | `income91` | Annual income in dollars |
+| **Key predictor (X₁)** | `educ` | Years of education (continuous) |
+| **Moderator (X₂)** | `sex_f` | Sex — binary, baseline = *male* |
+| **Interaction** | `educ * sex_f` | Does the educ slope differ by sex? |
+
+### Model Specification
+
+```{r}
+model2 <- lm(income91 ~ educ * sex_f, data = attain)
+```
+
+### Regression Table
+
+```{r}
+modelsummary(
+  list("No Interaction" = lm(income91 ~ educ + sex_f, data = attain),
+       "With Interaction" = model2),
+  vcov        = "HC1",
+  coef_rename = c(
+    "(Intercept)"       = "Intercept",
+    "educ"              = "Years of Education",
+    "sex_ffemale"       = "Female",
+    "educ:sex_ffemale"  = "Education × Female"
+  ),
+  stars   = TRUE,
+  fmt     = 1,
+  gof_map = c("nobs", "r.squared", "adj.r.squared"),
+  title   = "OLS: Income ~ Education × Sex (HC1 Robust SEs)"
+)
+```
+
+::: callout-note
+**Why show both models?** Comparing the model *without* the interaction (parallel slopes assumed) to the model *with* the interaction lets you see how much the coefficients change when you allow slopes to differ by sex. The coefficient on `Female` means something different in each model: in the additive model it is the average income gap at any education level; in the interaction model it is the gap **only at zero years of education**.
+:::
+
+### Interpret the Coefficients
+
+::: callout-note
+**Reading a continuous × binary interaction:**
+
+| Group | Education slope | Formula |
+|---|---|---|
+| Men (reference, female = 0) | $\beta_1$ | Main effect of education |
+| Women (female = 1) | $\beta_1 + \beta_3$ | Main effect + interaction term |
+| **Difference** | $\beta_3$ | The interaction term itself |
+
+The interaction term $\beta_3$ is a **difference in slopes** — it tells you by how many dollars women's per-year return to education differs from men's.
+:::
+
+**Question 6.** Using your model output, fill in the table:
+
+| Group | Education slope ($/year) |
+|---|---|
+| Men | β₁ = ___ |
+| Women | β₁ + β₃ = ___ + ___ = ___ |
+| Difference | β₃ = ___ |
+
+---
+
+**Question 7.** Is the `Education × Female` coefficient statistically significant at α = 0.05? State whether you reject or fail to reject H₀: β₃ = 0. What does this mean for whether the education slope differs by sex?
+
+*Your answer:*
+
+---
+
+**Question 8.** Regardless of statistical significance: is the direction of the interaction what you expected? Based on what you know about gender inequality in the labor market, explain why β₃ might be negative.
+
+*Your answer:*
+
+---
+
+**Question 9.** The `Female` coefficient in the interaction model is the income gap between men and women **at zero years of education**. Why is this not a substantively meaningful number? What would be a more useful way to describe the gender gap from this model?
+
+*Your answer:*
+
+### Margins Plot
+
+```{r}
+#| message: false
+
+ggpredict(model2, terms = c("educ", "sex_f")) |>
+  plot() +
+  scale_color_manual(values = c("male" = "#4E79A7", "female" = "#E15759"),
+                     labels = c("Men", "Women")) +
+  scale_fill_manual(values  = c("male" = "#4E79A7", "female" = "#E15759"),
+                    labels  = c("Men", "Women")) +
+  labs(
+    title    = "Predicted Income by Education and Sex",
+    subtitle = "Slopes differ if lines are non-parallel",
+    x        = "Years of Education",
+    y        = "Predicted Income ($)",
+    color    = "Sex",
+    fill     = "Sex"
+  ) +
+  theme_minimal()
+```
+
+::: callout-note
+**Reading the margins plot:** Each line shows the predicted income trajectory across education levels for men (blue) and women (red). **Parallel lines** indicate no interaction — the education return is the same for both groups. **Diverging lines** indicate a positive interaction (the gap widens with more education). **Converging lines** indicate a negative interaction (the gap narrows).
+:::
+
+**Question 10.** Do the lines for men and women appear parallel, diverging, or converging? At what education level, if any, do the confidence ribbons stop overlapping? What does this suggest about where in the education distribution the gender gap is largest?
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+## Model 3: Binary × Binary (Union Membership × Sex)
+
+### Research Question
+
+**Is the union wage premium the same for men and women, or does union membership pay off differently depending on sex?**
+
+Unions historically compressed wages across skill levels. But if the union premium differs by sex, this would suggest that unions have not equalized wages across gender lines — and that the intersection of union status and sex produces unequal outcomes.
+
+$$\hat{Y} = \alpha + \beta_1\,(\text{union}) + \beta_2\,(\text{female}) + \beta_3\,(\text{union} \times \text{female})$$
+
+| Role | Variable | Description |
+|---|---|---|
+| **Outcome (Y)** | `income91` | Annual income in dollars |
+| **Key predictor (X₁)** | `union_member` | Union membership — 1 = member, 0 = not |
+| **Moderator (X₂)** | `sex_f` | Sex — binary, baseline = *male* |
+| **Interaction** | `union_member * sex_f` | Does the union premium differ by sex? |
+
+### Model Specification
+
+```{r}
+model3 <- lm(income91 ~ union_member * sex_f, data = attain)
+```
+
+### Regression Table
+
+```{r}
+modelsummary(
+  list("No Interaction" = lm(income91 ~ union_member + sex_f, data = attain),
+       "With Interaction" = model3),
+  vcov        = "HC1",
+  coef_rename = c(
+    "(Intercept)"               = "Intercept",
+    "union_member"              = "Union Member",
+    "sex_ffemale"               = "Female",
+    "union_member:sex_ffemale"  = "Union × Female"
+  ),
+  stars   = TRUE,
+  fmt     = 1,
+  gof_map = c("nobs", "r.squared", "adj.r.squared"),
+  title   = "OLS: Income ~ Union Membership × Sex (HC1 Robust SEs)"
+)
+```
+
+### Interpret the Coefficients
+
+::: callout-note
+**Reading a binary × binary interaction:**
+
+With two binary variables, you can build a 2×2 table of predicted incomes. Each cell is a linear combination of the intercept and coefficients:
+
+| | Not Union (X₁ = 0) | Union (X₁ = 1) |
+|---|---|---|
+| **Men** (X₂ = 0) | α | α + β₁ |
+| **Women** (X₂ = 1) | α + β₂ | α + β₁ + β₂ + β₃ |
+
+The interaction term β₃ captures **non-additivity**: whether the union premium for women (β₁ + β₃) is different from the union premium for men (β₁).
+:::
+
+**Question 11.** Using the coefficients from your table, fill in the 2×2 predicted income table:
+
+| | Not Union | Union | **Union premium** |
+|---|---|---|---|
+| **Men** | α = ___ | α + β₁ = ___ | β₁ = ___ |
+| **Women** | α + β₂ = ___ | α + β₁ + β₂ + β₃ = ___ | β₁ + β₃ = ___ |
+
+---
+
+**Question 12.** Is the union wage premium larger for men or women, based on the table you filled in? Is the `Union × Female` interaction term statistically significant?
+
+*Your answer:*
+
+---
+
+**Question 13.** The `Female` coefficient in the interaction model is the income gap between non-union men and non-union women. The `Union Member` coefficient is the union premium for men only. Explain in plain language why you cannot use these main effects to describe women's situation without also looking at the interaction term.
+
+*Your answer:*
+
+### Margins Plot
+
+```{r}
+#| message: false
+
+ggpredict(model3, terms = c("union_member [0, 1]", "sex_f")) |>
+  plot() +
+  scale_color_manual(values = c("male" = "#4E79A7", "female" = "#E15759"),
+                     labels = c("Men", "Women")) +
+  scale_fill_manual(values  = c("male" = "#4E79A7", "female" = "#E15759"),
+                    labels  = c("Men", "Women")) +
+  labs(
+    title    = "Predicted Income by Union Status and Sex",
+    subtitle = "Parallel lines = same union premium for both groups; non-parallel = interaction",
+    x        = "Union Member (0 = No, 1 = Yes)",
+    y        = "Predicted Income ($)",
+    color    = "Sex",
+    fill     = "Sex"
+  ) +
+  theme_minimal()
+```
+
+::: callout-note
+**Reading the margins plot:** The two lines show how predicted income changes from non-union to union status for men and women separately. If the lines are **parallel**, the union premium is identical for both groups. If the lines have **different slopes** (one steeper than the other), the union premium differs by sex — this is the visual signature of an interaction.
+:::
+
+**Question 14.** Do the lines in the margins plot appear parallel or non-parallel? Does the size of the union wage boost look different for men vs. women? Does this match the significance of the interaction term in your table?
+
+*Your answer:*
+
+------------------------------------------------------------------------
+
+
+::: callout-tip
+## Before You Leave
+
+- [ ] I can add an interaction term using `*` in `lm()` and explain why main effects must always be included
+- [ ] I can drop missing values in the setup step so all models share the same sample
+- [ ] I can use `modelsummary()` with `vcov = "HC1"` to display a clean table with robust standard errors
+- [ ] I can calculate group-specific slopes for a continuous × binary interaction: β₁ for the reference group, β₁ + β₃ for the other group
+- [ ] I can calculate simple slopes for a continuous × continuous interaction at low / mean / high values of the moderator
+- [ ] I can build a 2×2 predicted value table for a binary × binary interaction
+- [ ] I can use `ggpredict()` to produce a margins plot and identify whether lines are parallel or non-parallel
+- [ ] I understand that the test of moderation is the p-value on the **interaction term only** — not the significance of the main effects
+:::
