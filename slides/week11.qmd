@@ -861,7 +861,7 @@ p_actual <- tibble(resid = residuals(model_biv)) |>
 p_actual_log <- tibble(resid = residuals(model_log)) |>
   ggplot(aes(x = resid)) +
   geom_histogram(bins = 40, fill = "#4E79A7", color = "white") +
-  labs(title = "Our model: Log(prestige) → income",
+  labs(title = "Our model: income91 → Log(income)",
        x = "Residual ($)", y = "Count") +
   theme_minimal(base_size = 10)
 
@@ -1159,7 +1159,8 @@ $$\widehat{\text{self-esteem}} = \alpha + \beta_1\text{skin tone} + \beta_2\text
 
 ### Table from Paper
 
-Simplified version of Table 2 from Thompson & Keith (2001):
+Simplified version of Tables 2 & 3 from Thompson & Keith (2001). **Skin tone scale: 1 = very dark, 5 = very light** — a higher score means lighter skin, so a positive coefficient indicates lighter skin → higher outcome.
+
 
 <table style="font-size:0.85em; width:100%; border-collapse:collapse;">
 <thead>
@@ -1177,46 +1178,46 @@ Simplified version of Table 2 from Thompson & Keith (2001):
 </tr>
 </thead>
 <tbody>
-<tr><td style="padding:4px 8px;"><strong>Skin tone</strong></td><td style="background-color:#d0e4f5; text-align:center;">−0.04**</td><td style="background-color:#d0e4f5; text-align:center;">−0.05**</td><td style="background-color:#fde8c8; text-align:center;">−0.01</td><td style="background-color:#fde8c8; text-align:center;">0.02</td></tr>
-<tr><td style="padding:4px 8px;">Education</td><td style="background-color:#d0e4f5; text-align:center;">0.03*</td><td style="background-color:#d0e4f5; text-align:center;">0.04**</td><td style="background-color:#fde8c8; text-align:center;">0.02</td><td style="background-color:#fde8c8; text-align:center;">0.03*</td></tr>
-<tr><td style="padding:4px 8px;">Income</td><td style="background-color:#d0e4f5; text-align:center;">0.02</td><td style="background-color:#d0e4f5; text-align:center;">0.02</td><td style="background-color:#fde8c8; text-align:center;">0.01</td><td style="background-color:#fde8c8; text-align:center;">0.03*</td></tr>
-<tr><td style="padding:4px 8px;">Age</td><td style="background-color:#d0e4f5; text-align:center;">−0.01**</td><td style="background-color:#d0e4f5; text-align:center;">−0.01**</td><td style="background-color:#fde8c8; text-align:center;">−0.01**</td><td style="background-color:#fde8c8; text-align:center;">−0.01**</td></tr>
-<tr><td style="padding:4px 8px;">Employed</td><td style="background-color:#d0e4f5; text-align:center;">0.08</td><td style="background-color:#d0e4f5; text-align:center;">0.12*</td><td style="background-color:#fde8c8; text-align:center;">0.10*</td><td style="background-color:#fde8c8; text-align:center;">0.08</td></tr>
-<tr><td style="padding:4px 8px;">N</td><td style="background-color:#d0e4f5; text-align:center;">~1,035</td><td style="background-color:#d0e4f5; text-align:center;">~1,035</td><td style="background-color:#fde8c8; text-align:center;">~581</td><td style="background-color:#fde8c8; text-align:center;">~581</td></tr>
-<tr><td style="padding:4px 8px; border-top:1px solid #ccc;">R²</td><td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">.09</td><td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">.11</td><td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">.07</td><td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">.08</td></tr>
+<tr><td style="padding:4px 8px;"><strong>Skin tone</strong></td><td style="background-color:#d0e4f5; text-align:center;">.187*</td><td style="background-color:#d0e4f5; text-align:center;">.029</td><td style="background-color:#fde8c8; text-align:center;">.088</td><td style="background-color:#fde8c8; text-align:center;">.208†</td></tr>
+<tr><td style="padding:4px 8px;">Education</td><td style="background-color:#d0e4f5; text-align:center;">.053†</td><td style="background-color:#d0e4f5; text-align:center;">.127***</td><td style="background-color:#fde8c8; text-align:center;">.036</td><td style="background-color:#fde8c8; text-align:center;">.126***</td></tr>
+<tr><td style="padding:4px 8px;">Income</td><td style="background-color:#d0e4f5; text-align:center;">.025</td><td style="background-color:#d0e4f5; text-align:center;">.054***</td><td style="background-color:#fde8c8; text-align:center;">.019</td><td style="background-color:#fde8c8; text-align:center;">.014</td></tr>
+<tr><td style="padding:4px 8px;">Age</td><td style="background-color:#d0e4f5; text-align:center;">.034***</td><td style="background-color:#d0e4f5; text-align:center;">.033***</td><td style="background-color:#fde8c8; text-align:center;">.019**</td><td style="background-color:#fde8c8; text-align:center;">.030***</td></tr>
+<tr><td style="padding:4px 8px;">Employed</td><td style="background-color:#d0e4f5; text-align:center;">.292</td><td style="background-color:#d0e4f5; text-align:center;">−.093</td><td style="background-color:#fde8c8; text-align:center;">.449†</td><td style="background-color:#fde8c8; text-align:center;">−.378</td></tr>
+<tr><td style="padding:4px 8px;">N</td><td style="background-color:#d0e4f5; text-align:center;">1,036</td><td style="background-color:#d0e4f5; text-align:center;">1,036</td><td style="background-color:#fde8c8; text-align:center;">647</td><td style="background-color:#fde8c8; text-align:center;">647</td></tr>
+<tr><td style="padding:4px 8px; border-top:1px solid #ccc;">R²</td><td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">.092</td><td style="background-color:#d0e4f5; text-align:center; border-top:1px solid #ccc;">.096</td><td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">.072</td><td style="background-color:#fde8c8; text-align:center; border-top:1px solid #ccc;">.093</td></tr>
 </tbody>
 </table>
 
-<small>*p < 0.05; \*\*p < 0.01. Coefficients are unstandardized OLS estimates. Adapted from Thompson & Keith (2001), Table 2.</small>
+<small>†p ≤ .10. *p ≤ .05. **p ≤ .01. ***p ≤ .001. Coefficients are unstandardized OLS estimates from fully adjusted models (Model 4). Adapted from Thompson & Keith (2001), Tables 2 & 3.</small>
 
 ::: {.callout-note icon=false}
 ## The key result:
-Skin tone is significant and negative for women, but not significant for men — colorism operates through gender.
+Lighter skin tone (higher score) significantly predicts **higher self-esteem for Black women** (.187\*), but not for men, and not for self-efficacy once SES is controlled — colorism operates through gender and is outcome-specific.
 :::
 
 ### For Women
 
-The coefficient on skin tone is **negative and statistically significant** for both outcomes:
+The skin tone coefficient tells a **split story** across the two outcomes:
 
-- **Self-esteem:** darker skin tone → **lower** self-esteem among Black women ($p < 0.05$)
-- **Self-efficacy:** darker skin tone → **lower** self-efficacy among Black women ($p < 0.05$)
+- **Self-esteem:** coefficient = .187\* ($p < 0.05$) — lighter skin (higher score) → **higher** self-esteem. A Black woman rated 4 (lighter) is predicted to have meaningfully higher self-esteem than a Black woman rated 2 (darker), *even after controlling for education, income, and other SES factors*
+- **Self-efficacy:** coefficient = .029 (not significant) — once SES is controlled, skin tone does **not** significantly predict self-efficacy for women
 
-**Interpretation:** A Black woman with a skin tone rating of 2 (darker) is predicted to have a meaningfully lower self-esteem score than a Black woman rated 4 (lighter), *even after controlling for education, income, and other SES factors*
+**Interpretation:** Colorism shapes how Black women feel about their *worth* (self-esteem) but not their sense of personal *agency* (self-efficacy) in the fully adjusted model.
 
 ### For Men
 
-The coefficient on skin tone is **not statistically significant** for either outcome:
+The skin tone coefficients are weaker and largely non-significant for men:
 
-- **Self-esteem:** skin tone is NOT significantly related to self-esteem for Black men
-- **Self-efficacy:** skin tone is NOT significantly related to self-efficacy for Black men
+- **Self-esteem:** coefficient = .088 (not significant) — skin tone does not predict self-esteem for Black men
+- **Self-efficacy:** coefficient = .208† ($p ≤ .10$, borderline) — a marginal suggestion that lighter skin is associated with higher self-efficacy, but this falls short of conventional significance
 
-**Why the difference?** The authors argue that beauty ideals — which prize lighter skin — operate much more strongly as a social evaluation system for women than for men
+**Why the difference?** The authors argue that beauty ideals — which prize lighter skin — operate much more strongly as a social evaluation system for women than for men. For men, occupational and economic status matter more than appearance-based judgments.
 
 ### The Big Finding
 
 ::: {.callout-note icon=false}
-## Colorism operates through gender:
-For Black women, darker skin is associated with lower self-esteem and self-efficacy — even after controlling for socioeconomic factors. For Black men, skin tone has no significant effect on self-evaluation. This finding demonstrates that colorism is not just about race — it is deeply shaped by gender.
+## Colorism operates through gender — and is outcome-specific:
+For Black women, **lighter skin predicts higher self-esteem** (.187\*) even after controlling for SES — but skin tone does not significantly predict self-efficacy. For Black men, skin tone has no significant effect on self-esteem, and only a marginal effect on self-efficacy (.208†). This finding demonstrates that colorism is not just about race — it is deeply shaped by gender, and its psychological effects depend on *which* dimension of self-evaluation we examine.
 :::
 
 The **magnitude** matters here: the authors don't just report that the relationship is significant — they discuss whether the coefficient size is large enough to be practically meaningful. This is exactly the "statistical vs. substantive significance" distinction we covered today.
