@@ -73,7 +73,7 @@ We will estimate the following regression:
 $$\widehat{\text{income}} = \alpha + b_1\text{prestige} + b_2\text{degree} + b_3\text{sex} + e$$
 
 | Role | Variable | Description |
-|---|---|---|
+|------------------------|------------------------|------------------------|
 | **Outcome (Y)** | `income91` | Household income in dollars — continuous |
 | **Key predictor** | `prestg80` | Occupational prestige score — continuous |
 | **Categorical control** | `degree_f` | Educational degree — 5 levels, baseline = *lt high* |
@@ -132,10 +132,10 @@ attain |>
 
 Every regression requires a theoretical justification for which variables belong in the equation. Here is the logic behind each choice:
 
-- **Outcome — `income91`**: We are interested in economic inequality. Household income is a direct and continuous measure of material well-being, making OLS appropriate.
-- **Key predictor — `prestg80`**: Occupational prestige captures social standing and job desirability. The core question is whether higher-prestige occupations translate to higher earnings *after* accounting for the credentials workers bring to those jobs and gender differences in pay.
-- **Control — `degree_f`**: Education is a strong driver of both occupational placement and earnings. If we omit it, any apparent prestige effect may really reflect the fact that more educated people hold more prestigious *and* higher-paying jobs — a classic confounder.
-- **Control — `sex_f`**: A well-documented gender pay gap exists in the U.S. labor market, and women are also sorted into lower-prestige occupations on average. Controlling for sex isolates the prestige–income relationship from those gender differences.
+-   **Outcome — `income91`**: We are interested in economic inequality. Household income is a direct and continuous measure of material well-being, making OLS appropriate.
+-   **Key predictor — `prestg80`**: Occupational prestige captures social standing and job desirability. The core question is whether higher-prestige occupations translate to higher earnings *after* accounting for the credentials workers bring to those jobs and gender differences in pay.
+-   **Control — `degree_f`**: Education is a strong driver of both occupational placement and earnings. If we omit it, any apparent prestige effect may really reflect the fact that more educated people hold more prestigious *and* higher-paying jobs — a classic confounder.
+-   **Control — `sex_f`**: A well-documented gender pay gap exists in the U.S. labor market, and women are also sorted into lower-prestige occupations on average. Controlling for sex isolates the prestige–income relationship from those gender differences.
 
 Including both controls means the prestige coefficient tells us: *among people with the same education level and sex, how does a one-unit difference in occupational prestige impact income?*
 
@@ -219,10 +219,10 @@ This is a scale artifact, not a substantive finding. The prestige score runs rou
 
 **Two ways to deal with this:**
 
-1. **Check the table directly.** The stars and p-values in Step 4 are the authoritative test. A visually narrow CI on a shared-scale plot does not mean a coefficient is insignificant.
-2. **Rescale the predictor.** Replace `prestg80` with `I(prestg80 / 10)` inside `lm()`. Now the coefficient represents income change per *10-point* increase in prestige — a more meaningful unit — and the CI will visually stretch on the plot.
+1.  **Check the table directly.** The stars and p-values in Step 4 are the authoritative test. A visually narrow CI on a shared-scale plot does not mean a coefficient is insignificant.
+2.  **Rescale the predictor.** Replace `prestg80` with `I(prestg80 / 10)` inside `lm()`. Now the coefficient represents income change per *10-point* increase in prestige — a more meaningful unit — and the CI will visually stretch on the plot.
 
-**Back-of-napkin significance check — the "2× SE rule":** If |coefficient| ≥ 2 × SE, it is approximately significant at α = 0.05. This works because the critical t-value at α = 0.05 is ≈ 1.96 ≈ 2, so t = b / SE ≥ 2 implies p ≤ 0.05. Check this against the prestige row in your Step 4 table: multiply the SE by 2 and see if the coefficient is larger. It should be — by a lot.
+**Back-of-napkin significance check — the "2× SE rule":** If \|coefficient\| ≥ 2 × SE, it is approximately significant at α = 0.05. This works because the critical t-value at α = 0.05 is ≈ 1.96 ≈ 2, so t = b / SE ≥ 2 implies p ≤ 0.05. Check this against the prestige row in your Step 4 table: multiply the SE by 2 and see if the coefficient is larger. It should be — by a lot.
 :::
 
 ------------------------------------------------------------------------
@@ -231,46 +231,41 @@ This is a scale artifact, not a substantive finding. The prestige score runs rou
 
 Use the regression table from Step 4 to answer the following questions. Write full sentences.
 
-**Question 3 — Continuous predictor.**
-Interpret the coefficient on `Occupational Prestige`. Use this template:
+**Question 3 — Continuous predictor.** Interpret the coefficient on `Occupational Prestige`. Use this template:
 
-> "For every one unit increase in occupational prestige, predicted household income [increases/decreases] by $\_\_\_, holding educational degree and sex constant."
+> "For every one unit increase in occupational prestige, predicted household income \[increases/decreases\] by \$\_\_\_, holding educational degree and sex constant."
 
-*Answer:* For every one unit increase in occupational prestige, predicted household income increases by $[value from your output], holding educational degree and sex constant.
+*Answer:* For every one unit increase in occupational prestige, predicted household income increases by \$\[value from your output\], holding educational degree and sex constant.
 
 ::: callout-note
 The prestige score ranges from roughly 17 to 86 — a span of about 70 points. To get a sense of the practical magnitude, multiply the per-point coefficient by a realistic range (e.g., 10 or 20 points) rather than interpreting a single-point change in isolation.
 :::
 
----
+------------------------------------------------------------------------
 
-**Question 4 — Categorical predictor.**
-Interpret the coefficient on `Bachelor's Degree (vs. lt high)`. Remember: the baseline category is *less than high school*. Use this template:
+**Question 4 — Categorical predictor.** Interpret the coefficient on `Bachelor's Degree (vs. lt high)`. Remember: the baseline category is *less than high school*. Use this template:
 
-> "Compared to respondents with less than a high school degree, those with a bachelor's degree are predicted to earn $\_\_\_ [more/less] per year, holding prestige and sex constant."
+> "Compared to respondents with less than a high school degree, those with a bachelor's degree are predicted to earn \$\_\_\_ \[more/less\] per year, holding prestige and sex constant."
 
-*Answer:* Compared to respondents with less than a high school degree, those with a bachelor's degree are predicted to earn $[value from your output] more per year, holding prestige and sex constant.
+*Answer:* Compared to respondents with less than a high school degree, those with a bachelor's degree are predicted to earn \$\[value from your output\] more per year, holding prestige and sex constant.
 
----
+------------------------------------------------------------------------
 
-**Question 5 — Binary predictor.**
-Interpret the coefficient on `Female (vs. male)`. Remember: the baseline is *male*. Use this template:
+**Question 5 — Binary predictor.** Interpret the coefficient on `Female (vs. male)`. Remember: the baseline is *male*. Use this template:
 
-> "Compared to men, women are predicted to earn $\_\_\_ [more/less] per year, holding prestige and degree constant."
+> "Compared to men, women are predicted to earn \$\_\_\_ \[more/less\] per year, holding prestige and degree constant."
 
-*Answer:* Compared to men, women are predicted to earn $[value from your output] less per year, holding prestige and degree constant. (The coefficient on Female is negative, reflecting a persistent gender pay gap even after controlling for occupational prestige and educational attainment.)
+*Answer:* Compared to men, women are predicted to earn \$\[value from your output\] less per year, holding prestige and degree constant. (The coefficient on Female is negative, reflecting a persistent gender pay gap even after controlling for occupational prestige and educational attainment.)
 
----
+------------------------------------------------------------------------
 
-**Question 6 — R².**
-Report the R² value from the table and interpret it in one sentence. What proportion of variation in income does this model explain?
+**Question 6 — R².** Report the R² value from the table and interpret it in one sentence. What proportion of variation in income does this model explain?
 
-*Answer:* The R² value is [value from your output]. This model explains approximately [R² × 100]% of the variation in household income. The remaining variation is attributable to factors not included in the model, such as work experience, hours worked, industry, or geographic region.
+*Answer:* The R² value is \[value from your output\]. This model explains approximately \[R² × 100\]% of the variation in household income. The remaining variation is attributable to factors not included in the model, such as work experience, hours worked, industry, or geographic region.
 
----
+------------------------------------------------------------------------
 
-**Question 7 — Statistical significance.**
-Look at the stars on the `Occupational Prestige` coefficient. Is this coefficient statistically significant at the α = 0.05 level? What does that mean — do you reject or fail to reject $H_0: \beta_{\text{prestige}} = 0$?
+**Question 7 — Statistical significance.** Look at the stars on the `Occupational Prestige` coefficient. Is this coefficient statistically significant at the α = 0.05 level? What does that mean — do you reject or fail to reject $H_0: \beta_{\text{prestige}} = 0$?
 
 *Answer:* Yes, the Occupational Prestige coefficient is statistically significant at the α = 0.05 level (indicated by the star(s) in the table and a p-value below 0.05). We reject the null hypothesis $H_0: \beta_{\text{prestige}} = 0$. This means the observed relationship between prestige and income is unlikely to be due to chance alone, given the controls for degree and sex. We conclude there is a statistically significant positive association between occupational prestige and household income.
 
@@ -309,7 +304,7 @@ attain |>
 
 *Answer:* The loess curve is approximately flat, suggesting the linearity assumption is reasonably satisfied — there is no strong systematic curvature in the residuals. However, the vertical spread of points widens noticeably at higher fitted values (a fan or funnel shape), which is evidence of **heteroskedasticity**: the residual variance is not constant across the range of predictions. This is the expected pattern for income data, where high-income households exhibit more variability. This is exactly why we used `vcov = "HC1"` robust standard errors in Step 4 — they remain valid under heteroskedasticity.
 
----
+------------------------------------------------------------------------
 
 ### Histogram of Residuals (normality of errors)
 
@@ -331,7 +326,7 @@ tibble(resid = residuals(model)) |>
 
 *Answer:* The histogram of residuals is **right-skewed** (a long right tail), not symmetric. This reflects the underlying skewness of income distributions — most respondents cluster at lower to middle incomes, but a small number earn very high incomes, pulling the distribution and its residuals to the right. A **log transformation** of the outcome variable — replacing `income91` with `log(income91)` in the `lm()` call — would likely produce more normally distributed residuals, since log-income is approximately normal in most survey datasets. Note: in large samples, the Central Limit Theorem means non-normal errors have minimal impact on the validity of inference, but the transformation would also address the heteroskedasticity seen in Question 8.
 
----
+------------------------------------------------------------------------
 
 ::: callout-tip
 ## Putting It Together
@@ -344,10 +339,10 @@ Even if the residuals vs. fitted plot shows some heteroskedasticity, our results
 ::: callout-tip
 ## Before You Leave
 
-- [ ] I can load data, drop missing values, and create factor variables with a specified baseline
-- [ ] I can fit an OLS model with `lm()` and read the `summary()` output
-- [ ] I can produce a clean regression table with robust SEs using `modelsummary(vcov = "HC1")`
-- [ ] I can visualize coefficients with `modelplot()` and interpret whether CIs cross zero
-- [ ] I can interpret a continuous coefficient, a categorical coefficient, and a binary coefficient
-- [ ] I can produce and interpret a residuals vs. fitted plot and a residual histogram
+-   [ ] I can load data, drop missing values, and create factor variables with a specified baseline
+-   [ ] I can fit an OLS model with `lm()` and read the `summary()` output
+-   [ ] I can produce a clean regression table with robust SEs using `modelsummary(vcov = "HC1")`
+-   [ ] I can visualize coefficients with `modelplot()` and interpret whether CIs cross zero
+-   [ ] I can interpret a continuous coefficient, a categorical coefficient, and a binary coefficient
+-   [ ] I can produce and interpret a residuals vs. fitted plot and a residual histogram
 :::

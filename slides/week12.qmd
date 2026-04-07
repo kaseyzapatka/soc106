@@ -110,14 +110,18 @@ grid_vis <- tibble(x = seq(-2, 16, by = 0.05)) |>
 
 ## Housekeeping {.smaller}
 
+**Weekly Assignment #8**
+
+- **Feedback:** Remember if your confidence interval incldues infinitiy (∞) then you probabally forgot to drop NAs fro your analysis
+
 **Weekly Assignment #9**
 
 - <span class="highlight">Due Thursday, April 9</span> — OLS regression from Week 11
 - Use `modelsummary()` for a clean table; interpret the slope, R², and statistical significance
 
-**Weekly Assignment #10** *(last weekly assignment!)*
+**Weekly Assignment #10** 
 
-- <span class="highlight">Due Thursday, April 23</span>
+- <span class="highlight">Due Thursday, April 16</span>
 - Run a logistic regression on a binary outcome from your research dataset — today's lecture covers everything you need
 - Report the odds ratio for your key predictor; compute predicted probabilities at two or more values
 
@@ -194,6 +198,13 @@ About **`r union_rate`%** of respondents in our sample are union members.
 model_lpm <- lm(union_member ~ educ, data = attain_logit)
 coef(model_lpm)
 ```
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Interpreting the LPM coefficient
+Each additional year of education is associated with a **`r round(abs(b_lpm) * 100, 2)` percentage point `r ifelse(b_lpm < 0, "decrease", "increase")`** in the probability of union membership.
+:::
 :::
 
 ## Problems with the LPM {.smaller .scrollable}
@@ -349,13 +360,15 @@ To build logistic regression, we first transform the outcome:
 ::: {.fragment .fade-up}
 **Step 1: Probability → Odds**
 
-$$\text{Odds} = \frac{P(Y = 1)}{P(Y = 0)} = \frac{P(Y = 1)}{1 - P(Y = 1)}$$
+$$\text{Probability} = \frac{P(Y = 1)}{P(Y = 0)} = \text{Odds} = \frac{P(Y = 1)}{1 - P(Y = 1)}$$
 
 - Odds > 1: event is **more likely** to happen than not
 - Odds = 1: event equally likely to happen or not
 - Odds < 1: event is **less likely** to happen than not
 
 *Example:* If 25% of workers are union members, the odds are $0.25 / 0.75 = 0.33$
+
+However, odds give us a number that ranges from $0$ to $+\infty$ — which is not linear and unbounded in one direction -- this is not ideal for estimation!
 :::
 
 ::: {.fragment .fade-up}
@@ -367,8 +380,8 @@ Taking the log of the odds gives us a number that ranges from $-\infty$ to $+\in
 :::
 
 ::: {.fragment .fade-up}
-| $P(Y=1)$ | Odds | Log-odds (logit) | Plain reading |
-|---|---|---|---|
+| Probability $P(Y=1)$ | Odds Ratio $\frac{P}{1-P}$ | Log-odds $\log\!\left(\frac{P}{1-P}\right)$ | Plain reading |
+|-|-|-|---|
 | 0.10 | 0.11 | −2.20 | 9× more likely *not* to happen |
 | 0.25 | 0.33 | −1.10 | 3× more likely *not* to happen |
 | 0.50 | 1.00 | 0.00 | equally likely either way |
@@ -377,7 +390,7 @@ Taking the log of the odds gives us a number that ranges from $-\infty$ to $+\in
 
 ::: {.callout-note icon=false}
 ## Odds vs. Odds Ratios — not the same thing!
-The table above shows raw **odds** (the ratio $P/(1-P)$ for one group or one value of X). An **odds ratio** compares the odds from two groups — it is the *ratio of two odds*: $OR = \text{Odds}_{\text{group A}} / \text{Odds}_{\text{group B}}$. Log-odds is simply $\log(\text{Odds})$, which is what the logistic regression model predicts directly.
+The table above shows the odds ratio (the ratio $P/(1-P)$ for one group or one value of X). An **odds ratio** compares the odds from two groups — it is the *ratio of two odds*: $OR = \text{Odds}_{\text{group A}} / \text{Odds}_{\text{group B}}$. Log-odds is simply $\log(\text{Odds})$, which is the defaul output of the logistic regression model.
 :::
 :::
 
@@ -468,6 +481,17 @@ Logistic regression reports **log-likelihood** and **AIC** instead of R². We'll
 
 :::
 
+::: {.fragment .fade-up}
+::: {.callout-note icon=false}
+## Interpreting the output
+- **Intercept (`r round(coef(model_logit_biv)[1], 3)`):** the predicted log-odds of union membership when education = 0 — not substantively meaningful on its own
+- **Years of Education (`r b_educ_logit`):** for each additional year of education, the **log-odds** of union membership change by `r b_educ_logit` — the negative sign means more education is associated with *lower* odds of union membership
+- **The p-value** on education tells us whether this association is statistically distinguishable from zero — same logic as OLS
+
+Log-odds are hard to interpret directly. In the next section we convert them to **odds ratios** and **predicted probabilities**, which are much more communicable.
+:::
+:::
+
 ## Assumptions of Logistic Regression {.smaller}
 
 The assumptions are similar to OLS but slightly less demanding:
@@ -479,16 +503,6 @@ The assumptions are similar to OLS but slightly less demanding:
 | **Independence** | Observations are independent (not clustered) | Study design |
 | **No perfect separation** | No value of X perfectly predicts Y = 0 or Y = 1 | Model convergence warning in R |
 | **Large enough n** | Rule of thumb: ≥ 10 events per predictor | Count: `sum(outcome == 1)` |
-:::
-
-::: {.fragment .fade-up}
-::: {.callout-tip icon=false}
-## What logistic regression does NOT require:
-- Normally distributed residuals
-- Homoskedasticity (constant variance)
-
-These are OLS-specific assumptions that do not apply to logistic regression — another advantage of using the right model for binary outcomes.
-:::
 :::
 
 ## Questions?
@@ -515,9 +529,9 @@ The coefficient $\beta$ in logistic regression is the **change in log-odds** for
 
 **The sign is always interpretable:**
 - Positive $\beta$: higher X → higher probability of Y = 1
-- Negative $\beta$ (`r b_educ_logit < 0`): more education → **lower** probability of union membership
+- Negative $\beta$: more education → **lower** probability of union membership
 
-But the magnitude requires transformation. There are two options: odds ratios, or predicted probabilities.
+But the magnitude requires transformation. There are two options: odds ratios or predicted probabilities.
 :::
 :::
 
@@ -590,37 +604,6 @@ modelsummary(
 **For your assignments and final paper:** report odds ratios, not log-odds. Always state what "OR = X" means in a plain-English sentence.
 :::
 
-### Adding Controls
-
-Adding `sex_f` as a control variable:
-
-```{r}
-#| echo: false
-#| eval: true
-
-model_logit_multi <- glm(union_member ~ educ + sex_f,
-                         family = binomial,
-                         data   = attain_logit)
-
-modelsummary(
-  list("Bivariate" = model_logit_biv, "Multiple" = model_logit_multi),
-  exponentiate = TRUE,
-  coef_rename  = c("(Intercept)"  = "Intercept",
-                   "educ"         = "Years of Education",
-                   "sex_ffemale"  = "Female"),
-  stars   = TRUE,
-  title   = "Odds Ratios: Union Membership",
-  gof_map = c("nobs", "AIC")
-)
-```
-
-::: {.callout-note icon=false}
-## Interpretation:
-**Years of Education:** After controlling for sex, each additional year of education is associated with a `r abs(round((exp(coef(model_logit_multi)[["educ"]]) - 1) * 100, 1))`% `r ifelse(exp(coef(model_logit_multi)[["educ"]]) < 1, "decrease", "increase")` in the odds of union membership (OR = `r round(exp(coef(model_logit_multi)[["educ"]]), 3)`), holding sex constant.
-
-**Female:** Women have `r abs(pct_chg_sex)`% `r ifelse(or_sex_female < 1, "lower", "higher")` lower odds of union membership than men (1- `r or_sex_female`), after controlling for education — consistent with occupational segregation patterns in 1991 GSS data.
-:::
-
 :::
 
 ## Categorical Predictors in Logit {.smaller}
@@ -670,22 +653,24 @@ Making logit results interpretable
 Odds ratios are better than log-odds, but they have a limitation:
 
 ::: {.fragment .fade-up}
-**The non-constant effect problem:** In logistic regression, the change in *probability* associated with a one-unit increase in X depends on where you start.
+**The non-constant effect problem:** In logistic regression, the change in *probability* associated with a one-unit increase in X depends on where you start. 
 
-- Going from `educ = 4` to `educ = 5` → small change in probability (if you're already near the floor/ceiling)
-- Going from `educ = 10` to `educ = 11` → larger change in probability (steeper part of the sigmoid)
+- Going from `educ = 7` to `educ = 8` → P(union) goes from `r round(plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*7)*100, 1)`% to `r round(plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*8)*100, 1)`% (Δ = `r round(abs(plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*8) - plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*7))*100, 2)` pp)
+- Going from `educ = 19` to `educ = 20` → P(union) goes from `r round(plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*19)*100, 1)`% to `r round(plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*20)*100, 1)`% (Δ = `r round(abs(plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*20) - plogis(coef(model_logit_biv)[1] + coef(model_logit_biv)[2]*19))*100, 2)` pp)
 
-The odds ratio gives **one summary number** that averages over this variation. But showing **predicted probabilities at specific values of X** is often more interpretable and more honest.
-:::
 
-::: {.fragment .fade-up}
 ::: {.callout-note icon=false}
-## For multiple regression models: "hold others constant"
-When you have more than one predictor, the predicted probability of Y = 1 depends on the values of all predictors. The standard approach: hold all other continuous variables at their sample mean, and all other categorical variables at their most common category (or specify the group of interest), then vary the key predictor.
+## Where you start matters
+The **odds ratio is a single constant number, but the actual probability change it represents is not constant** — it varies depending on where you are on the sigmoid curve. The odds ratio gives one summary number that averages over this variation. 
 :::
 :::
 
+
 ::: {.fragment .fade-up}
+This is best illustrated by showing **predicted probabilities at specific values of X** is often more interpretable and more honest.
+
+Same OR (`r or_educ`) at both points — different probability change. The red arrows in the figure show this directly. 
+
 ```{r}
 #| echo: false
 #| fig-height: 3.0
@@ -1018,7 +1003,7 @@ Unlike OLS, there is no simple $R^2$ for logistic regression. Focus your discuss
 
 ## Assignments {.smaller}
 
-**Weekly Assignment #10** — <span class="highlight">Due Thursday, April 23</span> *(last weekly assignment!)*
+**Weekly Assignment #10** — <span class="highlight">Due Thursday, April 23</span> 
 
 Using your research dataset:
 

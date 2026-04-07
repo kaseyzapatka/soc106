@@ -191,8 +191,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -231,14 +229,18 @@
 </section>
 <section id="housekeeping" class="slide level2 smaller">
 <h2>Housekeeping</h2>
+<p><strong>Weekly Assignment #8</strong></p>
+<ul>
+<li><strong>Feedback:</strong> Remember if your confidence interval incldues infinitiy (∞) then you probabally forgot to drop NAs fro your analysis</li>
+</ul>
 <p><strong>Weekly Assignment #9</strong></p>
 <ul>
 <li><span class="highlight">Due Thursday, April 9</span> — OLS regression from Week 11</li>
 <li>Use <code>modelsummary()</code> for a clean table; interpret the slope, R², and statistical significance</li>
 </ul>
-<p><strong>Weekly Assignment #10</strong> <em>(last weekly assignment!)</em></p>
+<p><strong>Weekly Assignment #10</strong></p>
 <ul>
-<li><span class="highlight">Due Thursday, April 23</span></li>
+<li><span class="highlight">Due Thursday, April 16</span></li>
 <li>Run a logistic regression on a binary outcome from your research dataset — today’s lecture covers everything you need</li>
 <li>Report the odds ratio for your key predictor; compute predicted probabilities at two or more values</li>
 </ul>
@@ -319,6 +321,18 @@
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)        educ 
  0.06198181  0.00180732 </code></pre>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpreting the LPM coefficient</strong></p>
+</div>
+<div class="callout-content">
+<p>Each additional year of education is associated with a <strong>0.18 percentage point increase</strong> in the probability of union membership.</p>
+</div>
 </div>
 </div>
 </div>
@@ -436,13 +450,14 @@
 <p>To build logistic regression, we first transform the outcome:</p>
 <div class="fragment fade-up">
 <p><strong>Step 1: Probability → Odds</strong></p>
-<p><span class="math display">\[\text{Odds} = \frac{P(Y = 1)}{P(Y = 0)} = \frac{P(Y = 1)}{1 - P(Y = 1)}\]</span></p>
+<p><span class="math display">\[\text{Probability} = \frac{P(Y = 1)}{P(Y = 0)} = \text{Odds} = \frac{P(Y = 1)}{1 - P(Y = 1)}\]</span></p>
 <ul>
 <li>Odds &gt; 1: event is <strong>more likely</strong> to happen than not</li>
 <li>Odds = 1: event equally likely to happen or not</li>
 <li>Odds &lt; 1: event is <strong>less likely</strong> to happen than not</li>
 </ul>
 <p><em>Example:</em> If 25% of workers are union members, the odds are <span class="math inline">\(0.25 / 0.75 = 0.33\)</span></p>
+<p>However, odds give us a number that ranges from <span class="math inline">\(0\)</span> to <span class="math inline">\(+\infty\)</span> — which is not linear and unbounded in one direction – this is not ideal for estimation!</p>
 </div>
 <div class="fragment fade-up">
 <p><strong>Step 2: Odds → Log-odds (Logit)</strong></p>
@@ -451,11 +466,17 @@
 </div>
 <div class="fragment fade-up">
 <table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th><span class="math inline">\(P(Y=1)\)</span></th>
-<th>Odds</th>
-<th>Log-odds (logit)</th>
+<th>Probability <span class="math inline">\(P(Y=1)\)</span></th>
+<th>Odds Ratio <span class="math inline">\(\frac{P}{1-P}\)</span></th>
+<th>Log-odds <span class="math inline">\(\log\!\left(\frac{P}{1-P}\right)\)</span></th>
 <th>Plain reading</th>
 </tr>
 </thead>
@@ -498,7 +519,7 @@
 <p><strong>Odds vs.&nbsp;Odds Ratios — not the same thing!</strong></p>
 </div>
 <div class="callout-content">
-<p>The table above shows raw <strong>odds</strong> (the ratio <span class="math inline">\(P/(1-P)\)</span> for one group or one value of X). An <strong>odds ratio</strong> compares the odds from two groups — it is the <em>ratio of two odds</em>: <span class="math inline">\(OR = \text{Odds}_{\text{group A}} / \text{Odds}_{\text{group B}}\)</span>. Log-odds is simply <span class="math inline">\(\log(\text{Odds})\)</span>, which is what the logistic regression model predicts directly.</p>
+<p>The table above shows the odds ratio (the ratio <span class="math inline">\(P/(1-P)\)</span> for one group or one value of X). An <strong>odds ratio</strong> compares the odds from two groups — it is the <em>ratio of two odds</em>: <span class="math inline">\(OR = \text{Odds}_{\text{group A}} / \text{Odds}_{\text{group B}}\)</span>. Log-odds is simply <span class="math inline">\(\log(\text{Odds})\)</span>, which is the defaul output of the logistic regression model.</p>
 </div>
 </div>
 </div>
@@ -583,47 +604,87 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <span id="cb7-5"><a></a>             <span class="at">title   =</span> <span class="st">"Logistic Regression: Union Membership ~ Education"</span>,</span>
 <span id="cb7-6"><a></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"logLik"</span>, <span class="st">"AIC"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Logistic Regression: Union Membership ~ Education</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">−2.674***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.303)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Years of Education</td>
-<td style="text-align: center;">0.023</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.022)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">2985</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Log.Lik.</td>
-<td style="text-align: center;">−872.925</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
+<!-- preamble start -->
 
-</table>
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_n95434xyr93t7qt2c3c1 = TinyTable.createTableFunctions("tinytable_n95434xyr93t7qt2c3c1");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '6', j: 2 } ], css_id: 'tinytable_css_7r3j09vttyvxvc2cwj3j',}, 
+          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_d8zmjj08o1mntm8as14a',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '5', j: 2 } ], css_id: 'tinytable_css_k4236ix69vipy2m65oj5',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_jluyfwavil9jl9hxtkrd',}, 
+          { positions: [ { i: '6', j: 1 } ], css_id: 'tinytable_css_hzwe171bt6iq4tmgh0ci',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_vc6dl9pmkr2kivvej3z4',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 } ], css_id: 'tinytable_css_xjpbw0tl5n2b7mfolkaa',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_m4ix312turi4eza1y1qt',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_n95434xyr93t7qt2c3c1.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_7r3j09vttyvxvc2cwj3j, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_7r3j09vttyvxvc2cwj3j {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_d8zmjj08o1mntm8as14a, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_d8zmjj08o1mntm8as14a {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_k4236ix69vipy2m65oj5, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_k4236ix69vipy2m65oj5 { text-align: center }
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_jluyfwavil9jl9hxtkrd, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_jluyfwavil9jl9hxtkrd {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_hzwe171bt6iq4tmgh0ci, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_hzwe171bt6iq4tmgh0ci {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_vc6dl9pmkr2kivvej3z4, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_vc6dl9pmkr2kivvej3z4 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_xjpbw0tl5n2b7mfolkaa, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_xjpbw0tl5n2b7mfolkaa { text-align: left }
+    #tinytable_n95434xyr93t7qt2c3c1 td.tinytable_css_m4ix312turi4eza1y1qt, #tinytable_n95434xyr93t7qt2c3c1 th.tinytable_css_m4ix312turi4eza1y1qt {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_n95434xyr93t7qt2c3c1" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <caption>Logistic Regression: Union Membership ~ Education</caption>
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">(1)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">Intercept</td>
+                  <td data-row="1" data-col="2">-2.674***</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.303)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">Years of Education</td>
+                  <td data-row="3" data-col="2">0.023</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.022)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">Num.Obs.</td>
+                  <td data-row="5" data-col="2">2985</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1">Log.Lik.</td>
+                  <td data-row="6" data-col="2">-872.925</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -635,6 +696,23 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <p>Logistic regression reports <strong>log-likelihood</strong> and <strong>AIC</strong> instead of R². We’ll interpret these as relative model fit metrics (lower AIC = better fit), but they are harder to communicate as percentages. We’ll rely on predicted probabilities to communicate effect sizes substantively.</p>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpreting the output</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Intercept (-2.674):</strong> the predicted log-odds of union membership when education = 0 — not substantively meaningful on its own</li>
+<li><strong>Years of Education (0.023):</strong> for each additional year of education, the <strong>log-odds</strong> of union membership change by 0.023 — the negative sign means more education is associated with <em>lower</em> odds of union membership</li>
+<li><strong>The p-value</strong> on education tells us whether this association is statistically distinguishable from zero — same logic as OLS</li>
+</ul>
+<p>Log-odds are hard to interpret directly. In the next section we convert them to <strong>odds ratios</strong> and <strong>predicted probabilities</strong>, which are much more communicable.</p>
 </div>
 </div>
 </div>
@@ -681,22 +759,6 @@ Number of Fisher Scoring iterations: 5</code></pre>
 </tbody>
 </table>
 </div>
-<div class="fragment fade-up">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>What logistic regression does NOT require:</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Normally distributed residuals</li>
-<li>Homoskedasticity (constant variance)</li>
-</ul>
-<p>These are OLS-specific assumptions that do not apply to logistic regression — another advantage of using the right model for binary outcomes.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="questions-1" class="slide level2">
 <h2>Questions?</h2>
@@ -724,8 +786,8 @@ Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 <div class="callout-content">
 <p>“The log-odds decrease by 0.023” is technically correct but nearly impossible to communicate to a general audience. We need a better scale.</p>
-<p><strong>The sign is always interpretable:</strong> - Positive <span class="math inline">\(\beta\)</span>: higher X → higher probability of Y = 1 - Negative <span class="math inline">\(\beta\)</span> (FALSE): more education → <strong>lower</strong> probability of union membership</p>
-<p>But the magnitude requires transformation. There are two options: odds ratios, or predicted probabilities.</p>
+<p><strong>The sign is always interpretable:</strong> - Positive <span class="math inline">\(\beta\)</span>: higher X → higher probability of Y = 1 - Negative <span class="math inline">\(\beta\)</span>: more education → <strong>lower</strong> probability of union membership</p>
+<p>But the magnitude requires transformation. There are two options: odds ratios or predicted probabilities.</p>
 </div>
 </div>
 </div>
@@ -786,7 +848,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <h2>Odds Ratios in <code>modelsummary()</code></h2>
 <p><code>modelsummary()</code> can display both log-odds and odds ratios — use <code>exponentiate = TRUE</code>:</p>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Side-by-Side Comparison</a></li><li><a href="#tabset-3-2">Reading the Table</a></li><li><a href="#tabset-3-3">Adding Controls</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Side-by-Side Comparison</a></li><li><a href="#tabset-3-2">Reading the Table</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
 <div class="cell">
@@ -800,50 +862,89 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <span id="cb8-8"><a></a>  <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"AIC"</span>)</span>
 <span id="cb8-9"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Log-Odds vs. Odds Ratios: same model, different scale</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Log-Odds</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Odds Ratios</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">−2.674***</td>
-<td style="text-align: center;">0.069***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.303)</td>
-<td style="text-align: center;">(0.021)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Years of Education</td>
-<td style="text-align: center;">0.023</td>
-<td style="text-align: center;">1.023</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.022)</td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.023)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">2985</td>
-<td style="text-align: center;">2985</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
+<!-- preamble start -->
 
-</table>
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_47cmqbk5sd0v2udkx86f = TinyTable.createTableFunctions("tinytable_47cmqbk5sd0v2udkx86f");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '5', j: 2 }, { i: '5', j: 3 } ], css_id: 'tinytable_css_m9n2ypxqs3m3vwj437ed',}, 
+          { positions: [ { i: '4', j: 2 }, { i: '4', j: 3 } ], css_id: 'tinytable_css_ks5z0bwikif20cg8tsl9',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 } ], css_id: 'tinytable_css_r3nymv8vvw96ea0ao0m6',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_s4i94ylzkyfpfnkojoee',}, 
+          { positions: [ { i: '5', j: 1 } ], css_id: 'tinytable_css_8cgdfvepc7vs4uiqwfbb',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_vhbvkknlq5fhnaboyqlx',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 } ], css_id: 'tinytable_css_ohbr7qcuejqgo816s1sy',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_5if6bvxbwzgqaq95mn5z',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_47cmqbk5sd0v2udkx86f.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_m9n2ypxqs3m3vwj437ed, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_m9n2ypxqs3m3vwj437ed {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_ks5z0bwikif20cg8tsl9, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_ks5z0bwikif20cg8tsl9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_r3nymv8vvw96ea0ao0m6, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_r3nymv8vvw96ea0ao0m6 { text-align: center }
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_s4i94ylzkyfpfnkojoee, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_s4i94ylzkyfpfnkojoee {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_8cgdfvepc7vs4uiqwfbb, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_8cgdfvepc7vs4uiqwfbb {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_vhbvkknlq5fhnaboyqlx, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_vhbvkknlq5fhnaboyqlx {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_ohbr7qcuejqgo816s1sy, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_ohbr7qcuejqgo816s1sy { text-align: left }
+    #tinytable_47cmqbk5sd0v2udkx86f td.tinytable_css_5if6bvxbwzgqaq95mn5z, #tinytable_47cmqbk5sd0v2udkx86f th.tinytable_css_5if6bvxbwzgqaq95mn5z {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_47cmqbk5sd0v2udkx86f" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <caption>Log-Odds vs. Odds Ratios: same model, different scale</caption>
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">Log-Odds</th>
+                <th scope="col" data-row="0" data-col="3">Odds Ratios</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="3">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">Intercept</td>
+                  <td data-row="1" data-col="2">-2.674***</td>
+                  <td data-row="1" data-col="3">0.069***</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.303)</td>
+                  <td data-row="2" data-col="3">(0.021)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">Years of Education</td>
+                  <td data-row="3" data-col="2">0.023</td>
+                  <td data-row="3" data-col="3">1.023</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.022)</td>
+                  <td data-row="4" data-col="3">(0.023)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">Num.Obs.</td>
+                  <td data-row="5" data-col="2">2985</td>
+                  <td data-row="5" data-col="3">2985</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </div>
@@ -858,78 +959,6 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <p><strong>Odds Ratios column:</strong> OR = 1.023. Values &lt; 1 mean lower odds; values &gt; 1 mean higher odds. An OR of 1.023 per year of education means: each additional year is associated with a <strong>2.3% increase in the odds</strong> of union membership.</p>
 <p><strong>Stars / p-value</strong> are identical in both columns — statistical significance does not change when you transform the scale.</p>
 <p><strong>For your assignments and final paper:</strong> report odds ratios, not log-odds. Always state what “OR = X” means in a plain-English sentence.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-3-3">
-<p>Adding <code>sex_f</code> as a control variable:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Odds Ratios: Union Membership</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Bivariate</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Multiple</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">0.069***</td>
-<td style="text-align: center;">0.103***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.021)</td>
-<td style="text-align: center;">(0.032)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Years of Education</td>
-<td style="text-align: center;">1.023</td>
-<td style="text-align: center;">1.019</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.023)</td>
-<td style="text-align: center;">(0.022)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Female</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">0.497***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.066)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">2985</td>
-<td style="text-align: center;">2985</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
-
-</table>
-</div>
-</div>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Interpretation:</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Years of Education:</strong> After controlling for sex, each additional year of education is associated with a 1.9% increase in the odds of union membership (OR = 1.019), holding sex constant.</p>
-<p><strong>Female:</strong> Women have 50.3% lower lower odds of union membership than men (1- 0.497), after controlling for education — consistent with occupational segregation patterns in 1991 GSS data.</p>
 </div>
 </div>
 </div>
@@ -960,66 +989,107 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <span id="cb9-16"><a></a>             <span class="at">stars   =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb9-17"><a></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"AIC"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept (lt high, baseline)</td>
-<td style="text-align: center;">0.083***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.014)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">High School</td>
-<td style="text-align: center;">1.162</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.219)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Junior College</td>
-<td style="text-align: center;">0.957</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.319)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bachelor's Degree</td>
-<td style="text-align: center;">1.137</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.262)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Graduate Degree</td>
-<td style="text-align: center;">1.224</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.353)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">2982</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
+<!-- preamble start -->
 
-</table>
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_4xngeondpk66509plaea = TinyTable.createTableFunctions("tinytable_4xngeondpk66509plaea");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '11', j: 2 } ], css_id: 'tinytable_css_gj43lbhujxi83qir1ytp',}, 
+          { positions: [ { i: '10', j: 2 } ], css_id: 'tinytable_css_fc7gvflfma6zw21p47iz',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 } ], css_id: 'tinytable_css_viunuid12qluiukgip94',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_7t0mx3vsnpy8ihw6jn8i',}, 
+          { positions: [ { i: '11', j: 1 } ], css_id: 'tinytable_css_xr7cmllxucjt6z0vdn7r',}, 
+          { positions: [ { i: '10', j: 1 } ], css_id: 'tinytable_css_n8daj1jtw0fj6aj0tkis',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 } ], css_id: 'tinytable_css_d70kwdhsk4xfkda5kn75',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_l6ftmv7u9jlbq2r98pyp',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_4xngeondpk66509plaea.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_gj43lbhujxi83qir1ytp, #tinytable_4xngeondpk66509plaea th.tinytable_css_gj43lbhujxi83qir1ytp {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_fc7gvflfma6zw21p47iz, #tinytable_4xngeondpk66509plaea th.tinytable_css_fc7gvflfma6zw21p47iz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_viunuid12qluiukgip94, #tinytable_4xngeondpk66509plaea th.tinytable_css_viunuid12qluiukgip94 { text-align: center }
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_7t0mx3vsnpy8ihw6jn8i, #tinytable_4xngeondpk66509plaea th.tinytable_css_7t0mx3vsnpy8ihw6jn8i {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_xr7cmllxucjt6z0vdn7r, #tinytable_4xngeondpk66509plaea th.tinytable_css_xr7cmllxucjt6z0vdn7r {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_n8daj1jtw0fj6aj0tkis, #tinytable_4xngeondpk66509plaea th.tinytable_css_n8daj1jtw0fj6aj0tkis {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_d70kwdhsk4xfkda5kn75, #tinytable_4xngeondpk66509plaea th.tinytable_css_d70kwdhsk4xfkda5kn75 { text-align: left }
+    #tinytable_4xngeondpk66509plaea td.tinytable_css_l6ftmv7u9jlbq2r98pyp, #tinytable_4xngeondpk66509plaea th.tinytable_css_l6ftmv7u9jlbq2r98pyp {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_4xngeondpk66509plaea" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">(1)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">Intercept (lt high, baseline)</td>
+                  <td data-row="1" data-col="2">0.083***</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.014)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">High School</td>
+                  <td data-row="3" data-col="2">1.162</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.219)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">Junior College</td>
+                  <td data-row="5" data-col="2">0.957</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.319)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">Bachelor's Degree</td>
+                  <td data-row="7" data-col="2">1.137</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2">(0.262)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">Graduate Degree</td>
+                  <td data-row="9" data-col="2">1.224</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1"></td>
+                  <td data-row="10" data-col="2">(0.353)</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">Num.Obs.</td>
+                  <td data-row="11" data-col="2">2982</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </div>
@@ -1050,29 +1120,28 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <div class="fragment fade-up">
 <p><strong>The non-constant effect problem:</strong> In logistic regression, the change in <em>probability</em> associated with a one-unit increase in X depends on where you start.</p>
 <ul>
-<li>Going from <code>educ = 4</code> to <code>educ = 5</code> → small change in probability (if you’re already near the floor/ceiling)</li>
-<li>Going from <code>educ = 10</code> to <code>educ = 11</code> → larger change in probability (steeper part of the sigmoid)</li>
+<li>Going from <code>educ = 7</code> to <code>educ = 8</code> → P(union) goes from 7.5% to 7.7% (Δ = 0.16 pp)</li>
+<li>Going from <code>educ = 19</code> to <code>educ = 20</code> → P(union) goes from 9.7% to 9.9% (Δ = 0.21 pp)</li>
 </ul>
-<p>The odds ratio gives <strong>one summary number</strong> that averages over this variation. But showing <strong>predicted probabilities at specific values of X</strong> is often more interpretable and more honest.</p>
-</div>
-<div class="fragment fade-up">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>For multiple regression models: “hold others constant”</strong></p>
+<p><strong>Where you start matters</strong></p>
 </div>
 <div class="callout-content">
-<p>When you have more than one predictor, the predicted probability of Y = 1 depends on the values of all predictors. The standard approach: hold all other continuous variables at their sample mean, and all other categorical variables at their most common category (or specify the group of interest), then vary the key predictor.</p>
+<p>The <strong>odds ratio is a single constant number, but the actual probability change it represents is not constant</strong> — it varies depending on where you are on the sigmoid curve. The odds ratio gives one summary number that averages over this variation.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment fade-up">
+<p>This is best illustrated by showing <strong>predicted probabilities at specific values of X</strong> is often more interpretable and more honest.</p>
+<p>Same OR (1.023) at both points — different probability change. The red arrows in the figure show this directly.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1133,7 +1202,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1170,7 +1239,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1605,7 +1674,7 @@ N
 </section>
 <section id="assignments" class="slide level2 smaller scrollable">
 <h2>Assignments</h2>
-<p><strong>Weekly Assignment #10</strong> — <span class="highlight">Due Thursday, April 23</span> <em>(last weekly assignment!)</em></p>
+<p><strong>Weekly Assignment #10</strong> — <span class="highlight">Due Thursday, April 23</span></p>
 <p>Using your research dataset:</p>
 <ol type="1">
 <li>Identify a <strong>binary outcome variable</strong> — state why this variable is binary and what Y = 1 means</li>
