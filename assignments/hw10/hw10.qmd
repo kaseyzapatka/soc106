@@ -29,7 +29,9 @@ Develop a hypothesis about how one (or more) independent variables (in the datas
 **Important Notes:**
 
 -   If you use a categorical independent variable, make sure to set a baseline category, and write down in your assignment what the baseline category is!
--   In writing up your results, first report whether the relationship is significant in the predicted direction. Next, report the percentage change in the odds — computed as $(OR - 1) \times 100$ — for each coefficient. Finally, report predicted probabilities at two or more values of the independent variable using a margins plot.
+-   In writing up your results, first report whether the relationship is significant in the predicted direction.
+    -   Interpret the coefficients for the key variable. They should be odds ratios (not logged odds) and it's best to report the percentage change in the odds — computed as $(OR - 1) \times 100$ — for each coefficient.
+    -   Report predicted probabilities at two or more values of the independent variable using a margins plot.
 
 ## Setup
 
@@ -158,7 +160,7 @@ options(scipen = 999)
 **Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Include:**
 
 1.  *Whether the relationship is significant in the predicted direction*
-2.  *The odds ratio for each independent variable and the percentage change in odds:* $(OR - 1) \times 100$
+2.  *Your interpretation of the odds ratio for each independent variable and the percentage change in odds:* $(OR - 1) \times 100$
 3.  *The predicted probabilities at two or more values of the independent variable (from your margins plot)*
 4.  *Whether you reject or fail to reject your null hypothesis*
 

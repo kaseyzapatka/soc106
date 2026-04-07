@@ -4151,7 +4151,11 @@ color: #f8f9fa !important;
 <p><strong>Important Notes:</strong></p>
 <ul>
 <li>If you use a categorical independent variable, make sure to set a baseline category, and write down in your assignment what the baseline category is!</li>
-<li>In writing up your results, first report whether the relationship is significant in the predicted direction. Next, report the percentage change in the odds — computed as <span class="math inline">\((OR - 1) \times 100\)</span> — for each coefficient. Finally, report predicted probabilities at two or more values of the independent variable using a margins plot.</li>
+<li>In writing up your results, first report whether the relationship is significant in the predicted direction.
+<ul>
+<li>Interpret the coefficients for the key variable. They should be odds ratios (not logged odds) and it’s best to report the percentage change in the odds — computed as <span class="math inline">\((OR - 1) \times 100\)</span> — for each coefficient.</li>
+<li>Report predicted probabilities at two or more values of the independent variable using a margins plot.</li>
+</ul></li>
 </ul>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
@@ -4253,7 +4257,7 @@ color: #f8f9fa !important;
 <p><strong>Present the results of the analysis here. This is not the place for extended commentary, just the basic results of your analysis. Include:</strong></p>
 <ol type="1">
 <li><em>Whether the relationship is significant in the predicted direction</em></li>
-<li><em>The odds ratio for each independent variable and the percentage change in odds:</em> <span class="math inline">\((OR - 1) \times 100\)</span></li>
+<li><em>Your interpretation of the odds ratio for each independent variable and the percentage change in odds:</em> <span class="math inline">\((OR - 1) \times 100\)</span></li>
 <li><em>The predicted probabilities at two or more values of the independent variable (from your margins plot)</em></li>
 <li><em>Whether you reject or fail to reject your null hypothesis</em></li>
 </ol>
