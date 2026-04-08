@@ -7,3 +7,28 @@
   text-decoration: underline;
   font-weight: 600;
 }
+
+
+/* ── modelsummary / gt table fix ─────────────────────────────────────
+   RevealJS CSS washes out table text regardless of backend. These rules
+   restore full-contrast rendering for gt, kableExtra, and tinytable.  */
+
+/* gt backend */
+.reveal .gt_table                        { font-size: 0.78em; color: #111 !important; }
+.reveal .gt_heading,
+.reveal .gt_subtitle                     { color: #111 !important; background-color: #fff !important; }
+.reveal .gt_col_heading                  { color: #111 !important; background-color: #f2f2f2 !important; font-weight: bold !important; }
+.reveal .gt_row                          { color: #111 !important; }
+.reveal .gt_stub                         { color: #111 !important; }
+.reveal .gt_sourcenote                   { color: #555 !important; }
+.reveal .gt_footnote                     { color: #555 !important; }
+
+/* kableExtra / kable backend */
+.reveal .kable-table                     { color: #111 !important; }
+.reveal .kable-table thead th            { background-color: #f2f2f2 !important; color: #111 !important; }
+.reveal .kable-table tbody td            { color: #111 !important; }
+
+/* general safety net for any table on a slide */
+.reveal table                            { color: #111 !important; opacity: 1 !important; }
+.reveal table td,
+.reveal table th                         { color: #111 !important; opacity: 1 !important; }

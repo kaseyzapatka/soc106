@@ -191,8 +191,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -231,7 +229,7 @@
 <h2>Housekeeping</h2>
 <p><strong>Weekly Assignment #10</strong></p>
 <ul>
-<li><span class="highlight">Due Thursday, April 23</span></li>
+<li><span class="highlight">Due Thursday, April 16</span></li>
 <li>Logistic regression on a binary outcome — covered last week</li>
 </ul>
 <p><strong>Weekly Assignment #11</strong></p>
@@ -246,7 +244,7 @@
 </ul>
 <p><strong>In-class presentations</strong></p>
 <ul>
-<li><span class="highlight">April 28</span> — 7–10 minutes per student will give you slide template</li>
+<li><span class="highlight">April 28/May 5</span> — 7–10 minutes per student, <a href="https://docs.google.com/presentation/d/1HJWAWjY6M1q7qL2f9029MmjlVGw9nUpg/edit?usp=sharing&amp;ouid=117362427260969253192&amp;rtpof=true&amp;sd=true">use this slide template</a> to keep it short</li>
 </ul>
 </section>
 <section id="where-we-are-in-the-course" class="slide level2 smaller">
@@ -337,7 +335,7 @@
 </div>
 <div class="callout-content">
 <p>What we’re doing here is the workhorse strategy for observational causal inference. But it has real limits: we can only control for variables we <strong>actually observe and measure</strong>. Unmeasured confounders still bias our estimates — and we can never fully rule them out with regression alone.</p>
-<p>Modern methods designed for this problem include: <strong>difference-in-differences</strong> (exploiting before/after comparisons), <strong>regression discontinuity</strong> (exploiting thresholds), and <strong>instrumental variables</strong> (finding exogenous variation in X). This course builds the logic; methods courses go deeper. For now: controlling for observed confounders is good practice, but <em>“I controlled for everything”</em> is always a theoretical claim, not a statistical guarantee.</p>
+<p>Modern methods designed for this problem include: <strong>difference-in-differences</strong> (exploiting before/after comparisons), <strong>regression discontinuity</strong> (exploiting thresholds), and <strong>instrumental variable analysis</strong> (finding exogenous variation in X). This course builds the logic; but there are more sophisticated methods you’ll need to go deeper. For now: controlling for observed confounders is good practice, but <em>“I controlled for everything”</em> is always a theoretical claim, not a statistical guarantee.</p>
 </div>
 </div>
 </div>
@@ -429,7 +427,7 @@
 <section id="controlling-for-confounders-in-r" class="slide level2 smaller scrollable">
 <h2>Controlling for Confounders in R</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">The Code</a></li><li><a href="#tabset-2-2">Model Comparison</a></li><li><a href="#tabset-2-3">Interpretation</a></li><li><a href="#tabset-2-4">Partial Regression Plot</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">The Code</a></li><li><a href="#tabset-2-2">Model Comparison</a></li><li><a href="#tabset-2-3">Interpretation</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="cell">
@@ -475,93 +473,131 @@
 <span id="cb2-12"><a></a>  <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>, <span class="st">"adj.r.squared"</span>)</span>
 <span id="cb2-13"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>OLS: Income by Education (with Controls)</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Bivariate</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">+ Sex</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">+ Sex + Age</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">−9830**</td>
-<td style="text-align: center;">−7092*</td>
-<td style="text-align: center;">−13468**</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(3468)</td>
-<td style="text-align: center;">(3557)</td>
-<td style="text-align: center;">(4562)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Years of Education</td>
-<td style="text-align: center;">3881***</td>
-<td style="text-align: center;">3877***</td>
-<td style="text-align: center;">4006***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(254)</td>
-<td style="text-align: center;">(254)</td>
-<td style="text-align: center;">(260)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Female</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">−4919***</td>
-<td style="text-align: center;">−4984***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">(1472)</td>
-<td style="text-align: center;">(1471)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Age</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">104*</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(47)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">2517</td>
-<td style="text-align: center;">2517</td>
-<td style="text-align: center;">2517</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">R2</td>
-<td style="text-align: center;">0.085</td>
-<td style="text-align: center;">0.089</td>
-<td style="text-align: center;">0.091</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">R2 Adj.</td>
-<td style="text-align: center;">0.084</td>
-<td style="text-align: center;">0.088</td>
-<td style="text-align: center;">0.090</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
+<!-- preamble start -->
 
-</table>
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_8e2pgmiyyp8sg5j4t83g = TinyTable.createTableFunctions("tinytable_8e2pgmiyyp8sg5j4t83g");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '11', j: 2 }, { i: '11', j: 3 }, { i: '11', j: 4 } ], css_id: 'tinytable_css_3r9govdl3xv6ut31cj8b',}, 
+          { positions: [ { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 } ], css_id: 'tinytable_css_6wxpm4cl59cyjo5kcjkd',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 } ], css_id: 'tinytable_css_c6i6rm3flnqoy9hzk88o',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_ywztrc5pm9h59r0l0yys',}, 
+          { positions: [ { i: '11', j: 1 } ], css_id: 'tinytable_css_qbti0r6dsxihsx43xrfi',}, 
+          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_sg5g0gchn936bjzcsbal',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 } ], css_id: 'tinytable_css_9rktwy0gvv6n6pzypnel',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_4vi34myco91pjcp7dbbt',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_8e2pgmiyyp8sg5j4t83g.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_3r9govdl3xv6ut31cj8b, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_3r9govdl3xv6ut31cj8b {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_6wxpm4cl59cyjo5kcjkd, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_6wxpm4cl59cyjo5kcjkd {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_c6i6rm3flnqoy9hzk88o, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_c6i6rm3flnqoy9hzk88o { text-align: center }
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_ywztrc5pm9h59r0l0yys, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_ywztrc5pm9h59r0l0yys {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_qbti0r6dsxihsx43xrfi, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_qbti0r6dsxihsx43xrfi {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_sg5g0gchn936bjzcsbal, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_sg5g0gchn936bjzcsbal {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_9rktwy0gvv6n6pzypnel, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_9rktwy0gvv6n6pzypnel { text-align: left }
+    #tinytable_8e2pgmiyyp8sg5j4t83g td.tinytable_css_4vi34myco91pjcp7dbbt, #tinytable_8e2pgmiyyp8sg5j4t83g th.tinytable_css_4vi34myco91pjcp7dbbt {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_8e2pgmiyyp8sg5j4t83g" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <caption>OLS: Income by Education (with Controls)</caption>
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">Bivariate</th>
+                <th scope="col" data-row="0" data-col="3">+ Sex</th>
+                <th scope="col" data-row="0" data-col="4">+ Sex + Age</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">Intercept</td>
+                  <td data-row="1" data-col="2">-9830**</td>
+                  <td data-row="1" data-col="3">-7092*</td>
+                  <td data-row="1" data-col="4">-13468**</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(3468)</td>
+                  <td data-row="2" data-col="3">(3557)</td>
+                  <td data-row="2" data-col="4">(4562)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">Years of Education</td>
+                  <td data-row="3" data-col="2">3881***</td>
+                  <td data-row="3" data-col="3">3877***</td>
+                  <td data-row="3" data-col="4">4006***</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(254)</td>
+                  <td data-row="4" data-col="3">(254)</td>
+                  <td data-row="4" data-col="4">(260)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">Female</td>
+                  <td data-row="5" data-col="2"></td>
+                  <td data-row="5" data-col="3">-4919***</td>
+                  <td data-row="5" data-col="4">-4984***</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2"></td>
+                  <td data-row="6" data-col="3">(1472)</td>
+                  <td data-row="6" data-col="4">(1471)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">Age</td>
+                  <td data-row="7" data-col="2"></td>
+                  <td data-row="7" data-col="3"></td>
+                  <td data-row="7" data-col="4">104*</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2"></td>
+                  <td data-row="8" data-col="3"></td>
+                  <td data-row="8" data-col="4">(47)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">Num.Obs.</td>
+                  <td data-row="9" data-col="2">2517</td>
+                  <td data-row="9" data-col="3">2517</td>
+                  <td data-row="9" data-col="4">2517</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1">R2</td>
+                  <td data-row="10" data-col="2">0.085</td>
+                  <td data-row="10" data-col="3">0.089</td>
+                  <td data-row="10" data-col="4">0.091</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">R2 Adj.</td>
+                  <td data-row="11" data-col="2">0.084</td>
+                  <td data-row="11" data-col="3">0.088</td>
+                  <td data-row="11" data-col="4">0.090</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </div>
@@ -575,33 +611,6 @@
 <p><strong>Education coefficient:</strong> In the bivariate model, each additional year of education is associated with a <strong>$3,881</strong> increase in income. After controlling for sex, the coefficient is <strong>$3,877</strong>, and after controlling for both sex and age, it is <strong>$4,006</strong>.</p>
 <p><strong>Female coefficient:</strong> After controlling for education, women earn approximately <strong>$4,919</strong> less than men. This is the <strong>direct effect</strong> of sex on income, <em>holding education constant</em> — evidence of a gender wage gap that is not explained by differences in educational attainment.</p>
 <p><strong>R² increases</strong> as we add controls. But more controls ≠ always better. Only include theoretically motivated confounders.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-2-4">
-<p>The added variable (partial regression) plot shows the education–income relationship <em>after</em> removing the variation explained by sex:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Residualize both income and education on sex</span></span>
-<span id="cb3-2"><a></a>resid_inc  <span class="ot">&lt;-</span> <span class="fu">resid</span>(<span class="fu">lm</span>(income91 <span class="sc">~</span> sex_f, <span class="at">data =</span> attain_sub))</span>
-<span id="cb3-3"><a></a>resid_educ <span class="ot">&lt;-</span> <span class="fu">resid</span>(<span class="fu">lm</span>(educ    <span class="sc">~</span> sex_f, <span class="at">data =</span> attain_sub))</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="fu">tibble</span>(<span class="at">educ_net_sex =</span> resid_educ, <span class="at">income_net_sex =</span> resid_inc) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> educ_net_sex, <span class="at">y =</span> income_net_sex)) <span class="sc">+</span></span>
-<span id="cb3-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">"gray50"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb3-8"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"#4E79A7"</span>, <span class="at">linewidth =</span> <span class="fl">1.4</span>, <span class="at">se =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb3-9"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-10"><a></a>    <span class="at">title   =</span> <span class="st">"Partial regression plot: education → income, net of sex"</span>,</span>
-<span id="cb3-11"><a></a>    <span class="at">subtitle =</span> <span class="st">"Each axis is residualized — sex's influence removed from both variables"</span>,</span>
-<span id="cb3-12"><a></a>    <span class="at">x =</span> <span class="st">"Education (residualized on sex)"</span>,</span>
-<span id="cb3-13"><a></a>    <span class="at">y =</span> <span class="st">"Income (residualized on sex)"</span></span>
-<span id="cb3-14"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb3-15"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</figure>
 </div>
 </div>
 </div>
@@ -681,7 +690,7 @@
 <h2>Parallel vs.&nbsp;Non-Parallel Slopes</h2>
 <p>The key visual difference between a model <strong>without</strong> an interaction and one <strong>with</strong> an interaction:</p>
 
-<img data-src="week13_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="callout callout-note no-icon callout-titled callout-style-default">
+<img data-src="week13_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>The key visual test for an interaction:</strong></p>
@@ -740,8 +749,8 @@
 </div>
 <div class="fragment fade-up">
 <p><strong>In R:</strong> use <code>*</code> to include both main effects and the interaction term:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">*</span> X2, <span class="at">data =</span> my_data)    <span class="co"># = Y ~ X1 + X2 + X1:X2</span></span>
-<span id="cb4-2"><a></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X1<span class="sc">:</span>X2, <span class="at">data =</span> my_data)  <span class="co"># same thing, written out</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">*</span> X2, <span class="at">data =</span> my_data)    <span class="co"># = Y ~ X1 + X2 + X1:X2</span></span>
+<span id="cb3-2"><a></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X1<span class="sc">:</span>X2, <span class="at">data =</span> my_data)  <span class="co"># same thing, written out</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment fade-up">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -1061,14 +1070,14 @@
 </div>
 <div class="fragment fade-up">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Without interaction: assumes same education slope for men and women</span></span>
-<span id="cb5-2"><a></a>model_main <span class="ot">&lt;-</span> <span class="fu">lm</span>(income91 <span class="sc">~</span> educ <span class="sc">+</span> sex_f, <span class="at">data =</span> attain_sub)</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a><span class="co"># With interaction: allows slopes to differ by sex</span></span>
-<span id="cb5-5"><a></a>model_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(income91 <span class="sc">~</span> educ <span class="sc">*</span> sex_f, <span class="at">data =</span> attain_sub)</span>
-<span id="cb5-6"><a></a></span>
-<span id="cb5-7"><a></a><span class="co"># Extract key coefficients</span></span>
-<span id="cb5-8"><a></a><span class="fu">coef</span>(model_interact)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Without interaction: assumes same education slope for men and women</span></span>
+<span id="cb4-2"><a></a>model_main <span class="ot">&lt;-</span> <span class="fu">lm</span>(income91 <span class="sc">~</span> educ <span class="sc">+</span> sex_f, <span class="at">data =</span> attain_sub)</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a><span class="co"># With interaction: allows slopes to differ by sex</span></span>
+<span id="cb4-5"><a></a>model_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(income91 <span class="sc">~</span> educ <span class="sc">*</span> sex_f, <span class="at">data =</span> attain_sub)</span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="co"># Extract key coefficients</span></span>
+<span id="cb4-8"><a></a><span class="fu">coef</span>(model_interact)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     (Intercept)             educ      sex_ffemale educ:sex_ffemale 
      -6547.43864       3836.33531      -6037.51913         83.89174 </code></pre>
@@ -1083,93 +1092,132 @@
 <div class="tab-content">
 <div id="tabset-5-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">modelsummary</span>(</span>
-<span id="cb7-2"><a></a>  <span class="fu">list</span>(<span class="st">"No Interaction"</span>   <span class="ot">=</span> model_main,</span>
-<span id="cb7-3"><a></a>       <span class="st">"With Interaction"</span> <span class="ot">=</span> model_interact),</span>
-<span id="cb7-4"><a></a>  <span class="at">coef_rename =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span>      <span class="ot">=</span> <span class="st">"Intercept"</span>,</span>
-<span id="cb7-5"><a></a>                  <span class="st">"educ"</span>             <span class="ot">=</span> <span class="st">"Years of Education"</span>,</span>
-<span id="cb7-6"><a></a>                  <span class="st">"sex_ffemale"</span>      <span class="ot">=</span> <span class="st">"Female"</span>,</span>
-<span id="cb7-7"><a></a>                  <span class="st">"educ:sex_ffemale"</span> <span class="ot">=</span> <span class="st">"Education × Female"</span>),</span>
-<span id="cb7-8"><a></a>  <span class="at">stars   =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-9"><a></a>  <span class="at">fmt     =</span> <span class="dv">0</span>,</span>
-<span id="cb7-10"><a></a>  <span class="at">title   =</span> <span class="st">"OLS: Income ~ Education × Sex"</span>,</span>
-<span id="cb7-11"><a></a>  <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>, <span class="st">"adj.r.squared"</span>)</span>
-<span id="cb7-12"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">modelsummary</span>(</span>
+<span id="cb6-2"><a></a>  <span class="fu">list</span>(<span class="st">"No Interaction"</span>   <span class="ot">=</span> model_main,</span>
+<span id="cb6-3"><a></a>       <span class="st">"With Interaction"</span> <span class="ot">=</span> model_interact),</span>
+<span id="cb6-4"><a></a>  <span class="at">coef_rename =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span>      <span class="ot">=</span> <span class="st">"Intercept"</span>,</span>
+<span id="cb6-5"><a></a>                  <span class="st">"educ"</span>             <span class="ot">=</span> <span class="st">"Years of Education"</span>,</span>
+<span id="cb6-6"><a></a>                  <span class="st">"sex_ffemale"</span>      <span class="ot">=</span> <span class="st">"Female"</span>,</span>
+<span id="cb6-7"><a></a>                  <span class="st">"educ:sex_ffemale"</span> <span class="ot">=</span> <span class="st">"Education × Female"</span>),</span>
+<span id="cb6-8"><a></a>  <span class="at">stars   =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-9"><a></a>  <span class="at">fmt     =</span> <span class="dv">0</span>,</span>
+<span id="cb6-10"><a></a>  <span class="at">title   =</span> <span class="st">"OLS: Income ~ Education × Sex"</span>,</span>
+<span id="cb6-11"><a></a>  <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>, <span class="st">"adj.r.squared"</span>)</span>
+<span id="cb6-12"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>OLS: Income ~ Education × Sex</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;No Interaction</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;With Interaction</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">−7092*</td>
-<td style="text-align: center;">−6547</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(3557)</td>
-<td style="text-align: center;">(4848)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Years of Education</td>
-<td style="text-align: center;">3877***</td>
-<td style="text-align: center;">3836***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(254)</td>
-<td style="text-align: center;">(354)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Female</td>
-<td style="text-align: center;">−4919***</td>
-<td style="text-align: center;">−6038</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(1472)</td>
-<td style="text-align: center;">(6928)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Education × Female</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">84</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(508)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">2517</td>
-<td style="text-align: center;">2517</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">R2</td>
-<td style="text-align: center;">0.089</td>
-<td style="text-align: center;">0.089</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">R2 Adj.</td>
-<td style="text-align: center;">0.088</td>
-<td style="text-align: center;">0.088</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
+<!-- preamble start -->
 
-</table>
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_ffnm197gmrpth4tsah59 = TinyTable.createTableFunctions("tinytable_ffnm197gmrpth4tsah59");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '11', j: 2 }, { i: '11', j: 3 } ], css_id: 'tinytable_css_duubu0o3irnbzps2l8b5',}, 
+          { positions: [ { i: '8', j: 2 }, { i: '8', j: 3 } ], css_id: 'tinytable_css_dcyy7vdijfezfjzhd0w2',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 } ], css_id: 'tinytable_css_e60tkn7z7gvq9zpgx8lj',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_tssvdvrdsj3itt8c77ys',}, 
+          { positions: [ { i: '11', j: 1 } ], css_id: 'tinytable_css_8935eqs116xzbjvlcspd',}, 
+          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_vephjbf2ufuik8ini2y9',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 } ], css_id: 'tinytable_css_ifhq75imakdyhi0j2inu',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_aa4q42uq29w5fapfbmbg',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_ffnm197gmrpth4tsah59.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_duubu0o3irnbzps2l8b5, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_duubu0o3irnbzps2l8b5 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_dcyy7vdijfezfjzhd0w2, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_dcyy7vdijfezfjzhd0w2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_e60tkn7z7gvq9zpgx8lj, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_e60tkn7z7gvq9zpgx8lj { text-align: center }
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_tssvdvrdsj3itt8c77ys, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_tssvdvrdsj3itt8c77ys {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_8935eqs116xzbjvlcspd, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_8935eqs116xzbjvlcspd {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_vephjbf2ufuik8ini2y9, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_vephjbf2ufuik8ini2y9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_ifhq75imakdyhi0j2inu, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_ifhq75imakdyhi0j2inu { text-align: left }
+    #tinytable_ffnm197gmrpth4tsah59 td.tinytable_css_aa4q42uq29w5fapfbmbg, #tinytable_ffnm197gmrpth4tsah59 th.tinytable_css_aa4q42uq29w5fapfbmbg {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_ffnm197gmrpth4tsah59" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <caption>OLS: Income ~ Education × Sex</caption>
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">No Interaction</th>
+                <th scope="col" data-row="0" data-col="3">With Interaction</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="3">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">Intercept</td>
+                  <td data-row="1" data-col="2">-7092*</td>
+                  <td data-row="1" data-col="3">-6547</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(3557)</td>
+                  <td data-row="2" data-col="3">(4848)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">Years of Education</td>
+                  <td data-row="3" data-col="2">3877***</td>
+                  <td data-row="3" data-col="3">3836***</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(254)</td>
+                  <td data-row="4" data-col="3">(354)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">Female</td>
+                  <td data-row="5" data-col="2">-4919***</td>
+                  <td data-row="5" data-col="3">-6038</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(1472)</td>
+                  <td data-row="6" data-col="3">(6928)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">Education × Female</td>
+                  <td data-row="7" data-col="2"></td>
+                  <td data-row="7" data-col="3">84</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2"></td>
+                  <td data-row="8" data-col="3">(508)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">Num.Obs.</td>
+                  <td data-row="9" data-col="2">2517</td>
+                  <td data-row="9" data-col="3">2517</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1">R2</td>
+                  <td data-row="10" data-col="2">0.089</td>
+                  <td data-row="10" data-col="3">0.089</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">R2 Adj.</td>
+                  <td data-row="11" data-col="2">0.088</td>
+                  <td data-row="11" data-col="3">0.088</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </div>
@@ -1226,14 +1274,14 @@
 <div id="tabset-5-3">
 <p>We can also calculate predicted incomes for specific profiles:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>profiles <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb8-2"><a></a>  <span class="at">educ  =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">16</span>),</span>
-<span id="cb8-3"><a></a>  <span class="at">sex_f =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>)</span>
-<span id="cb8-4"><a></a>)</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a>profiles <span class="sc">|&gt;</span></span>
-<span id="cb8-7"><a></a>  <span class="fu">mutate</span>(<span class="at">predicted_income =</span> <span class="fu">predict</span>(model_interact, <span class="at">newdata =</span> profiles)) <span class="sc">|&gt;</span></span>
-<span id="cb8-8"><a></a>  <span class="fu">mutate</span>(<span class="at">predicted_income =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(<span class="fu">round</span>(predicted_income)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>profiles <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-2"><a></a>  <span class="at">educ  =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">16</span>),</span>
+<span id="cb7-3"><a></a>  <span class="at">sex_f =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>)</span>
+<span id="cb7-4"><a></a>)</span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a>profiles <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a></a>  <span class="fu">mutate</span>(<span class="at">predicted_income =</span> <span class="fu">predict</span>(model_interact, <span class="at">newdata =</span> profiles)) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a></a>  <span class="fu">mutate</span>(<span class="at">predicted_income =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(<span class="fu">round</span>(predicted_income)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
    educ sex_f  predicted_income
@@ -1272,7 +1320,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1343,77 +1391,117 @@
 <div class="tab-content">
 <div id="tabset-7-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>attain_logit <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(union_member), <span class="sc">!</span><span class="fu">is.na</span>(educ), <span class="sc">!</span><span class="fu">is.na</span>(sex_f))</span>
-<span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a><span class="co"># Logistic regression with interaction</span></span>
-<span id="cb10-5"><a></a>model_logit_int <span class="ot">&lt;-</span> <span class="fu">glm</span>(union_member <span class="sc">~</span> educ <span class="sc">*</span> sex_f,</span>
-<span id="cb10-6"><a></a>                       <span class="at">family =</span> binomial,</span>
-<span id="cb10-7"><a></a>                       <span class="at">data   =</span> attain_logit)</span>
-<span id="cb10-8"><a></a></span>
-<span id="cb10-9"><a></a><span class="fu">modelsummary</span>(model_logit_int,</span>
-<span id="cb10-10"><a></a>             <span class="at">exponentiate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-11"><a></a>             <span class="at">coef_rename  =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span>      <span class="ot">=</span> <span class="st">"Intercept"</span>,</span>
-<span id="cb10-12"><a></a>                              <span class="st">"educ"</span>             <span class="ot">=</span> <span class="st">"Years of Education"</span>,</span>
-<span id="cb10-13"><a></a>                              <span class="st">"sex_ffemale"</span>      <span class="ot">=</span> <span class="st">"Female"</span>,</span>
-<span id="cb10-14"><a></a>                              <span class="st">"educ:sex_ffemale"</span> <span class="ot">=</span> <span class="st">"Education × Female"</span>),</span>
-<span id="cb10-15"><a></a>             <span class="at">stars   =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-16"><a></a>             <span class="at">title   =</span> <span class="st">"Logistic Regression with Interaction (Odds Ratios)"</span>,</span>
-<span id="cb10-17"><a></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"AIC"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>attain_logit <span class="ot">&lt;-</span> attain <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(union_member), <span class="sc">!</span><span class="fu">is.na</span>(educ), <span class="sc">!</span><span class="fu">is.na</span>(sex_f))</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="co"># Logistic regression with interaction</span></span>
+<span id="cb9-5"><a></a>model_logit_int <span class="ot">&lt;-</span> <span class="fu">glm</span>(union_member <span class="sc">~</span> educ <span class="sc">*</span> sex_f,</span>
+<span id="cb9-6"><a></a>                       <span class="at">family =</span> binomial,</span>
+<span id="cb9-7"><a></a>                       <span class="at">data   =</span> attain_logit)</span>
+<span id="cb9-8"><a></a></span>
+<span id="cb9-9"><a></a><span class="fu">modelsummary</span>(model_logit_int,</span>
+<span id="cb9-10"><a></a>             <span class="at">exponentiate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-11"><a></a>             <span class="at">coef_rename  =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span>      <span class="ot">=</span> <span class="st">"Intercept"</span>,</span>
+<span id="cb9-12"><a></a>                              <span class="st">"educ"</span>             <span class="ot">=</span> <span class="st">"Years of Education"</span>,</span>
+<span id="cb9-13"><a></a>                              <span class="st">"sex_ffemale"</span>      <span class="ot">=</span> <span class="st">"Female"</span>,</span>
+<span id="cb9-14"><a></a>                              <span class="st">"educ:sex_ffemale"</span> <span class="ot">=</span> <span class="st">"Education × Female"</span>),</span>
+<span id="cb9-15"><a></a>             <span class="at">stars   =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-16"><a></a>             <span class="at">title   =</span> <span class="st">"Logistic Regression with Interaction (Odds Ratios)"</span>,</span>
+<span id="cb9-17"><a></a>             <span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"AIC"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="table caption-top" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Logistic Regression with Interaction (Odds Ratios)</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Intercept</td>
-<td style="text-align: center;">0.337**</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.120)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Years of Education</td>
-<td style="text-align: center;">0.931**</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.025)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Female</td>
-<td style="text-align: center;">0.018***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.012)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Education × Female</td>
-<td style="text-align: center;">1.278***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.058)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">2985</td>
-</tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
+<!-- preamble start -->
 
-</table>
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_xvs85cgvv3ncpmki1ua8 = TinyTable.createTableFunctions("tinytable_xvs85cgvv3ncpmki1ua8");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '9', j: 2 } ], css_id: 'tinytable_css_j62vhswwx5glj4eyb0gk',}, 
+          { positions: [ { i: '8', j: 2 } ], css_id: 'tinytable_css_1tfr2mm8rfrsfeh31j1d',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 } ], css_id: 'tinytable_css_we1i4wku9i652tm22ik0',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_dv7fk7jndpd6fizqolfy',}, 
+          { positions: [ { i: '9', j: 1 } ], css_id: 'tinytable_css_ewhs4bk4z7wg6hindu7d',}, 
+          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_lisnete7d8y5c6lv0h2k',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 } ], css_id: 'tinytable_css_t5wbod305seudezk6zaw',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_k5h7ykkq4r0r9cirkr76',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_xvs85cgvv3ncpmki1ua8.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_j62vhswwx5glj4eyb0gk, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_j62vhswwx5glj4eyb0gk {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_1tfr2mm8rfrsfeh31j1d, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_1tfr2mm8rfrsfeh31j1d {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_we1i4wku9i652tm22ik0, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_we1i4wku9i652tm22ik0 { text-align: center }
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_dv7fk7jndpd6fizqolfy, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_dv7fk7jndpd6fizqolfy {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_ewhs4bk4z7wg6hindu7d, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_ewhs4bk4z7wg6hindu7d {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_lisnete7d8y5c6lv0h2k, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_lisnete7d8y5c6lv0h2k {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_t5wbod305seudezk6zaw, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_t5wbod305seudezk6zaw { text-align: left }
+    #tinytable_xvs85cgvv3ncpmki1ua8 td.tinytable_css_k5h7ykkq4r0r9cirkr76, #tinytable_xvs85cgvv3ncpmki1ua8 th.tinytable_css_k5h7ykkq4r0r9cirkr76 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_xvs85cgvv3ncpmki1ua8" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <caption>Logistic Regression with Interaction (Odds Ratios)</caption>
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">(1)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">Intercept</td>
+                  <td data-row="1" data-col="2">0.337**</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.120)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">Years of Education</td>
+                  <td data-row="3" data-col="2">0.931**</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.025)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">Female</td>
+                  <td data-row="5" data-col="2">0.018***</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.012)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">Education × Female</td>
+                  <td data-row="7" data-col="2">1.278***</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2">(0.058)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">Num.Obs.</td>
+                  <td data-row="9" data-col="2">2985</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -1429,29 +1517,29 @@
 </div>
 <div id="tabset-7-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggpredict</span>(model_logit_int, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"educ [6:20 by=0.5]"</span>, <span class="st">"sex_f"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a></a>  (\(pred) {</span>
-<span id="cb11-3"><a></a>    <span class="fu">ggplot</span>(pred, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> predicted, <span class="at">color =</span> group, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
-<span id="cb11-4"><a></a>      <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a></a>      <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"male"</span> <span class="ot">=</span> <span class="st">"#4E79A7"</span>, <span class="st">"female"</span> <span class="ot">=</span> <span class="st">"#E15759"</span>),</span>
-<span id="cb11-7"><a></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>), <span class="at">name =</span> <span class="st">"Sex"</span>) <span class="sc">+</span></span>
-<span id="cb11-8"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values  =</span> <span class="fu">c</span>(<span class="st">"male"</span> <span class="ot">=</span> <span class="st">"#4E79A7"</span>, <span class="st">"female"</span> <span class="ot">=</span> <span class="st">"#E15759"</span>),</span>
-<span id="cb11-9"><a></a>                        <span class="at">labels  =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>), <span class="at">name =</span> <span class="st">"Sex"</span>) <span class="sc">+</span></span>
-<span id="cb11-10"><a></a>      <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>),</span>
-<span id="cb11-11"><a></a>                         <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">NA</span>)) <span class="sc">+</span></span>
-<span id="cb11-12"><a></a>      <span class="fu">labs</span>(</span>
-<span id="cb11-13"><a></a>        <span class="at">title    =</span> <span class="st">"Predicted P(Union Member) by Education and Sex"</span>,</span>
-<span id="cb11-14"><a></a>        <span class="at">subtitle =</span> <span class="st">"Logistic regression with education × sex interaction"</span>,</span>
-<span id="cb11-15"><a></a>        <span class="at">x =</span> <span class="st">"Years of Education"</span>,</span>
-<span id="cb11-16"><a></a>        <span class="at">y =</span> <span class="st">"Predicted Probability"</span></span>
-<span id="cb11-17"><a></a>      ) <span class="sc">+</span></span>
-<span id="cb11-18"><a></a>      <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span>
-<span id="cb11-19"><a></a>  })()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggpredict</span>(model_logit_int, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"educ [6:20 by=0.5]"</span>, <span class="st">"sex_f"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  (\(pred) {</span>
+<span id="cb10-3"><a></a>    <span class="fu">ggplot</span>(pred, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> predicted, <span class="at">color =</span> group, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
+<span id="cb10-4"><a></a>      <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a></a>      <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"male"</span> <span class="ot">=</span> <span class="st">"#4E79A7"</span>, <span class="st">"female"</span> <span class="ot">=</span> <span class="st">"#E15759"</span>),</span>
+<span id="cb10-7"><a></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>), <span class="at">name =</span> <span class="st">"Sex"</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values  =</span> <span class="fu">c</span>(<span class="st">"male"</span> <span class="ot">=</span> <span class="st">"#4E79A7"</span>, <span class="st">"female"</span> <span class="ot">=</span> <span class="st">"#E15759"</span>),</span>
+<span id="cb10-9"><a></a>                        <span class="at">labels  =</span> <span class="fu">c</span>(<span class="st">"Men"</span>, <span class="st">"Women"</span>), <span class="at">name =</span> <span class="st">"Sex"</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a></a>      <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>),</span>
+<span id="cb10-11"><a></a>                         <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">NA</span>)) <span class="sc">+</span></span>
+<span id="cb10-12"><a></a>      <span class="fu">labs</span>(</span>
+<span id="cb10-13"><a></a>        <span class="at">title    =</span> <span class="st">"Predicted P(Union Member) by Education and Sex"</span>,</span>
+<span id="cb10-14"><a></a>        <span class="at">subtitle =</span> <span class="st">"Logistic regression with education × sex interaction"</span>,</span>
+<span id="cb10-15"><a></a>        <span class="at">x =</span> <span class="st">"Years of Education"</span>,</span>
+<span id="cb10-16"><a></a>        <span class="at">y =</span> <span class="st">"Predicted Probability"</span></span>
+<span id="cb10-17"><a></a>      ) <span class="sc">+</span></span>
+<span id="cb10-18"><a></a>      <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span>
+<span id="cb10-19"><a></a>  })()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1576,8 +1664,8 @@
 </div>
 <div class="callout-content">
 <p>Their regression is equivalent to:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">lm</span>(self_esteem <span class="sc">~</span> skin_tone <span class="sc">*</span> gender <span class="sc">+</span> education <span class="sc">+</span> income <span class="sc">+</span> age <span class="sc">+</span> ...,</span>
-<span id="cb12-2"><a></a>   <span class="at">data =</span> nsba)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">lm</span>(self_esteem <span class="sc">~</span> skin_tone <span class="sc">*</span> gender <span class="sc">+</span> education <span class="sc">+</span> income <span class="sc">+</span> age <span class="sc">+</span> ...,</span>
+<span id="cb11-2"><a></a>   <span class="at">data =</span> nsba)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The interaction term tests: is the effect of <code>skin_tone</code> on <code>self_esteem</code> different for women vs.&nbsp;men?</p>
 </div>
 </div>
@@ -1785,7 +1873,7 @@ High weight
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>

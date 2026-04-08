@@ -27,6 +27,7 @@ library(modelsummary)
 library(ggeffects)
 
 options(scipen = 999)
+options(modelsummary_factory_html = "gt")
 
 attain <- read_csv(here("data/attain.csv"))
 
@@ -74,6 +75,8 @@ p_int <- summary(model_interact)$coefficients["educ:sex_ffemale", "Pr(>|t|)"]
 p_int_label <- ifelse(p_int < 0.001, "p < 0.001",
                ifelse(p_int < 0.01,  "p < 0.01",
                ifelse(p_int < 0.05,  "p < 0.05", paste0("p = ", round(p_int, 3)))))
+sig_verdict <- ifelse(p_int < 0.05, "statistically significant", "not statistically significant")
+h0_verdict  <- ifelse(p_int < 0.05, "reject H₀", "fail to reject H₀")
 
 # Predicted income for specific profiles
 pred_12_m  <- round(predict(model_interact, newdata = data.frame(educ = 12, sex_f = "male")))
@@ -125,7 +128,7 @@ demo_crossing <- tibble(
 
 **Weekly Assignment #10**
 
-- <span class="highlight">Due Thursday, April 23</span>
+- <span class="highlight">Due Thursday, April 16</span>
 - Logistic regression on a binary outcome — covered last week
 
 **Weekly Assignment #11**
@@ -140,7 +143,7 @@ demo_crossing <- tibble(
 
 **In-class presentations**
 
-- <span class="highlight">April 28</span> — 7–10 minutes per student will give you slide template 
+- <span class="highlight">April 28/May 5</span> — 7–10 minutes per student, [use this slide template](https://docs.google.com/presentation/d/1HJWAWjY6M1q7qL2f9029MmjlVGw9nUpg/edit?usp=sharing&ouid=117362427260969253192&rtpof=true&sd=true) to keep it short
 
 
 ## Where We Are in the Course {.smaller}
@@ -199,7 +202,7 @@ Adding Z to the regression asks: *"Among people with the same value of Z, what i
 ## This is the foundation — but causal inference is harder
 What we're doing here is the workhorse strategy for observational causal inference. But it has real limits: we can only control for variables we **actually observe and measure**. Unmeasured confounders still bias our estimates — and we can never fully rule them out with regression alone.
 
-Modern methods designed for this problem include: **difference-in-differences** (exploiting before/after comparisons), **regression discontinuity** (exploiting thresholds), and **instrumental variables** (finding exogenous variation in X). This course builds the logic; methods courses go deeper. For now: controlling for observed confounders is good practice, but *"I controlled for everything"* is always a theoretical claim, not a statistical guarantee.
+Modern methods designed for this problem include: **difference-in-differences** (exploiting before/after comparisons), **regression discontinuity** (exploiting thresholds), and **instrumental variable analysis** (finding exogenous variation in X). This course builds the logic; but there are more sophisticated methods you'll need to go deeper. For now: controlling for observed confounders is good practice, but *"I controlled for everything"* is always a theoretical claim, not a statistical guarantee.
 :::
 :::
 
@@ -412,34 +415,6 @@ modelsummary(
 
 **R² increases** as we add controls. But more controls ≠ always better. Only include theoretically motivated confounders.
 :::
-
-### Partial Regression Plot
-
-The added variable (partial regression) plot shows the education–income relationship *after* removing the variation explained by sex:
-
-```{r}
-#| echo: true
-#| eval: true
-#| fig-height: 3.2
-#| warning: false
-
-# Residualize both income and education on sex
-resid_inc  <- resid(lm(income91 ~ sex_f, data = attain_sub))
-resid_educ <- resid(lm(educ    ~ sex_f, data = attain_sub))
-
-tibble(educ_net_sex = resid_educ, income_net_sex = resid_inc) |>
-  ggplot(aes(x = educ_net_sex, y = income_net_sex)) +
-  geom_point(alpha = 0.25, color = "gray50", size = 1.2) +
-  geom_smooth(method = "lm", color = "#4E79A7", linewidth = 1.4, se = TRUE) +
-  labs(
-    title   = "Partial regression plot: education → income, net of sex",
-    subtitle = "Each axis is residualized — sex's influence removed from both variables",
-    x = "Education (residualized on sex)",
-    y = "Income (residualized on sex)"
-  ) +
-  theme_minimal(base_size = 11)
-```
-
 :::
 
 
@@ -783,8 +758,8 @@ From the regression output:
 | Difference | `r b_int_term` (`r p_int_label`) |
 
 ::: {.callout-important icon=false}
-## Note: this interaction is not statistically significant
-In this example, `r p_int_label` — we **fail to reject H₀** that the education slope is the same for men and women. Even if both lower-order terms (education, female) were significant (only education is here), it's irrelevant: **significance of main effects tells you nothing about whether the interaction is real.** The only test that matters for moderation is the p-value on the interaction term itself (`educ:sex_ffemale`). A non-significant result means the data are consistent with parallel slopes — not that an interaction definitely doesn't exist (see the power note later).
+## Note: this interaction is `r sig_verdict`
+In this example, `r p_int_label` — we **`r h0_verdict`** that the education slope is the same for men and women. Even if both lower-order terms (education, female) were significant (only education is here), it's irrelevant: **significance of main effects tells you nothing about whether the interaction is real.** The only test that matters for moderation is the p-value on the interaction term itself (`educ:sex_ffemale`). A non-significant result means the data are consistent with parallel slopes — not that an interaction definitely doesn't exist (see the power note later).
 :::
 :::
 

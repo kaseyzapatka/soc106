@@ -27,6 +27,7 @@ library(modelsummary)
 library(ggeffects)
 
 options(scipen = 999)
+options(modelsummary_factory_html = "gt")
 
 attain <- read_csv(here("data/attain.csv"))
 
@@ -485,7 +486,7 @@ Logistic regression reports **log-likelihood** and **AIC** instead of R². We'll
 ::: {.callout-note icon=false}
 ## Interpreting the output
 - **Intercept (`r round(coef(model_logit_biv)[1], 3)`):** the predicted log-odds of union membership when education = 0 — not substantively meaningful on its own
-- **Years of Education (`r b_educ_logit`):** for each additional year of education, the **log-odds** of union membership change by `r b_educ_logit` — the negative sign means more education is associated with *lower* odds of union membership
+- **Years of Education (`r b_educ_logit`):** for each additional year of education, the **log-odds** of union membership change by `r b_educ_logit` — the `r ifelse(b_educ_logit < 0, "negative", "positive")` sign means more education is associated with *`r ifelse(b_educ_logit < 0, "lower", "higher")`* odds of union membership
 - **The p-value** on education tells us whether this association is statistically distinguishable from zero — same logic as OLS
 
 Log-odds are hard to interpret directly. In the next section we convert them to **odds ratios** and **predicted probabilities**, which are much more communicable.
@@ -597,7 +598,7 @@ modelsummary(
 
 **Log-Odds column:** Coefficient = `r b_educ_logit`. Sign tells direction; value is the change in log-odds per year of education. Hard to communicate directly.
 
-**Odds Ratios column:** OR = `r or_educ`. Values < 1 mean lower odds; values > 1 mean higher odds. An OR of `r or_educ` per year of education means: each additional year is associated with a **`r abs(pct_chg_educ)`% increase in the odds** of union membership.
+**Odds Ratios column:** OR = `r or_educ`. Values < 1 mean lower odds; values > 1 mean higher odds. An OR of `r or_educ` per year of education means: each additional year is associated with a **`r abs(pct_chg_educ)`% `r ifelse(pct_chg_educ < 0, "decrease", "increase")` in the odds** of union membership.
 
 **Stars / p-value** are identical in both columns — statistical significance does not change when you transform the scale.
 
