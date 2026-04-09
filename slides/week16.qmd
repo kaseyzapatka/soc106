@@ -1,0 +1,286 @@
+---
+title: "Week 16"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 05/05/2026
+date-format: long
+format:
+  revealjs:
+    slide-number: true
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    css: slides.css
+    scrollable: true
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+```{r}
+#| echo: false
+#| results: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+
+options(scipen = 999)
+
+interaction_example <- crossing(
+  education = seq(8, 16, by = 2),
+  group = c("Group A", "Group B")
+) |>
+  mutate(
+    expected_y = case_when(
+      group == "Group A" ~ 12 + 1.2 * education,
+      group == "Group B" ~ 20 + 0.4 * education
+    )
+  )
+
+interaction_plot <- ggplot(
+  interaction_example,
+  aes(x = education, y = expected_y, color = group)
+) +
+  geom_line(linewidth = 1.3) +
+  geom_point(size = 2.6) +
+  scale_color_manual(values = c("Group A" = "#4E79A7", "Group B" = "#E15759")) +
+  labs(
+    x = "Education",
+    y = "Expected outcome",
+    color = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position = "top",
+    panel.grid.minor = element_blank()
+  )
+```
+
+## Agenda {.smaller}
+
+- Final exam format and logistics
+- The major concept areas you should be ready for
+- How to study efficiently this week without trying to memorize everything
+
+::: {.callout-note icon=false}
+## Big picture
+This review is intentionally high-level. The goal is to help you organize your studying and recognize the kinds of reasoning the exam will ask for, not to preview exact questions.
+:::
+
+
+## Final Exam Format {.smaller}
+
+- **Date:** Monday, May 11, 2026
+- **Time:** 11:30 AM to 2:30 PM
+- **Place:** TBA
+- **Format:** closed-book, closed-computer
+- **Structure:** 10 multiple-choice questions and 10 short-answer questions
+- **Points:** 20 points total
+- **What you'll get:** all output you need is provided for you
+
+::: {.callout-tip icon=false}
+## What this means for studying
+Focus on concepts, interpretation, and choosing the right tool for the job. You do not need to memorize long stretches of code.
+:::
+
+
+## What You Should Be Ready To Do {.smaller}
+
+:::: {.columns}
+
+::: {.column width="48%"}
+**Multiple choice**
+
+- Identify variable types
+- Choose an appropriate probability distribution
+- Recognize skew and the normal-curve rules
+- Pick the right figure or test
+- Distinguish population from sample
+- Interpret a p-value or `R^2`
+:::
+
+::: {.column width="52%"}
+**Short answer**
+
+- Read a t-test/chi-square test
+- Interpret regression output
+- Read and interpret interaction terms and margins plots
+- Distinguish mediation from moderation
+- Evaluate sampling designs and representativeness
+- Critique a misleading figure
+- Interpret a confidence interval
+:::
+
+::::
+
+
+
+## Choosing the Right Tool {.smaller}
+
+| Goal | What the variables look like | Good choice |
+|---|---|---|
+| Show the distribution of one categorical variable | One categorical variable | Bar chart |
+| Show the distribution of one quantitative variable | One continuous/count variable | Histogram |
+| Compare the mean of a quantitative outcome across two groups | Quantitative `Y` + binary group | Two-sample t-test |
+| Study the relationship between two categorical variables | Categorical `X` + categorical `Y` | Chi-square test |
+| Model a continuous outcome | Quantitative `Y` | OLS regression |
+| Model a binary outcome | `Y = 0/1` | Logistic regression |
+
+::: {.callout-note icon=false}
+## On the exam
+Many mistakes come from choosing the wrong tool because the student did not first identify the outcome type.
+:::
+
+
+## Inference Refresher {.smaller}
+
+- The **68-95-99.7 rule** only applies to an approximately normal distribution
+- The **Central Limit Theorem** is about the sampling distribution of sample means, not about every raw sample looking normal
+- A **margin of error** is the plus-or-minus amount around an estimate
+- A **confidence interval** is the full range: estimate plus or minus the margin of error
+- Holding everything else constant, a **larger sample size** usually makes a confidence interval narrower
+- A **higher confidence level** usually makes a confidence interval wider
+
+::: {.callout-tip icon=false}
+## P-value wording to know well
+A p-value is the probability of getting results this extreme, or more extreme, **if the null hypothesis were true**.
+
+For any output you read on the exam: identify the **direction**, comment on **statistical significance**, then interpret **substantively** in plain language.
+:::
+
+
+## Reading OLS Output {.smaller}
+
+| Term | Estimate |
+|---|---:|
+| Intercept | 5.8*** |
+| Divorced | -0.9** |
+| Widowed | -0.6 |
+| Never married | -1.2*** |
+| Age | 0.02* |
+| `R^2` | 0.16 |
+
+*Outcome: life satisfaction (1–7 scale). Married is the omitted baseline.*
+
+- In OLS, the outcome is **continuous**
+- If one category is missing from the table, that missing category is the **baseline/reference group**
+- A coefficient tells you the expected difference in the outcome, **holding the other variables constant**
+- `R^2` tells you how much of the variation in the outcome is explained by the model
+
+::: {.callout-tip icon=false}
+## Study move
+Practice saying coefficient interpretations out loud using the phrase "holding the other variables constant."
+:::
+
+
+## Reading Logistic Regression Output {.smaller}
+
+| Term | Odds ratio |
+|---|---:|
+| Income (thousands) | 1.02** |
+| Age | 1.03*** |
+| Married (1 = yes) | 1.38* |
+
+*Outcome: whether the respondent participates in a community organization (1 = yes).*
+
+- In logistic regression, the outcome is **binary**
+- Odds ratio greater than 1 -> **higher odds**
+- Odds ratio less than 1 -> **lower odds**
+- Odds ratio equal to 1 -> **no association**
+- A quick interpretation shortcut is `(OR - 1) x 100`
+
+**Examples**
+
+- `1.38` -> about **38% higher odds**
+- `0.76` -> about **24% lower odds**
+
+
+## Interactions and Margins Plots {.smaller}
+
+An interaction asks whether the relationship between `X` and `Y` depends on a third variable.
+
+```{r}
+#| echo: false
+#| fig-height: 4.2
+#| fig-align: center
+print(interaction_plot)
+```
+
+- **Parallel lines** suggest little or no moderation
+- **Non-parallel lines** suggest the slope changes across groups or levels
+- The lower-order terms and the interaction term all matter for interpretation
+- A margins plot helps you describe the pattern visually, even before you write out the coefficients
+
+::: {.callout-note icon=false}
+## What to listen for in your own answer
+You should be able to say whether the relationship gets stronger, weaker, steeper, flatter, or changes direction across groups.
+:::
+
+
+## Moderation vs. Mediation {.smaller}
+
+| | Moderation | Mediation |
+|---|---|---|
+| Big question | **For whom** or **under what conditions** does `X` affect `Y`? | **How** or **why** does `X` affect `Y`? |
+| Third variable | Changes the slope | Carries the effect |
+| Typical model | Interaction term | Pathway story |
+| Visual idea | Non-parallel lines | `X -> M -> Y` |
+| Example | Education predicts income differently for men and women | Education raises income partly through job prestige |
+
+::: {.callout-tip icon=false}
+## Quick test
+Draw the arrows. If the third variable is **between** `X` and `Y`, think mediation. If it **changes the slope** of `X -> Y`, think moderation.
+:::
+
+
+## Sampling and Figure Critique {.smaller}
+
+:::: {.columns}
+
+::: {.column width="48%"}
+**Sampling**
+
+- A representative sample resembles the target population on the characteristics that matter
+- In cluster sampling you randomly select groups or locations first, then observe people within them (e.g., randomly select hospitals, then survey all patients inside)
+- Nonresponse or selection bias happens when some kinds of people are systematically harder to reach than others
+:::
+
+::: {.column width="52%"}
+**Figure critique**
+
+- Does the graph type match the variable?
+- Are the axes labeled clearly?
+- Is the title accurate?
+- Is the scale misleading or truncated in a way that exaggerates differences?
+- Are the units clear?
+:::
+
+::::
+
+
+## How to Study Efficiently This Week {.smaller}
+
+- Revisit the slides and assignments on these topics:
+  - Weeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests
+  - Week 11: OLS regression and `R^2`
+  - Week 12: logistic regression and odds ratios
+  - Week 13: interactions and margins plots
+  - Week 14: mediation versus moderation
+- Redo one example each of a t-test, an OLS model, a logistic model, and an interaction model
+- Practice turning output into short written interpretations
+- Review definitions you want to be able to write cleanly from memory:
+  - p-value
+  - confidence interval
+  - baseline/reference group
+  - moderation
+  - mediation
+  - representative sample
+
+::: {.callout-note icon=false}
+## Best use of your time
+Do not just reread code. Practice explaining what results mean.
+:::
+
+
+## Questions?
+
+- What topics still feel fuzzy?
+- Which type of output do you want to practice interpreting one more time?
