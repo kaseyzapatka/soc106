@@ -104,16 +104,6 @@ demo_crossing <- tibble(
 )
 
 # ---- WORKED EXAMPLE MODELS (also used in Visualizing slide) ----
-set.seed(42)
-n_sim <- 300
-sim_skin <- tibble(
-  skin_tone   = runif(n_sim, 1, 10),
-  income_z    = rnorm(n_sim),
-  self_esteem = 4.5 + 0.30 * skin_tone + 0.08 * income_z -
-                0.04 * skin_tone * income_z + rnorm(n_sim, 0, 1.2)
-)
-model_skin <- lm(self_esteem ~ skin_tone * income_z, data = sim_skin)
-
 set.seed(7)
 n_bb <- 400
 sim_bb <- tibble(
@@ -125,6 +115,45 @@ sim_bb <- tibble(
            rnorm(n_bb, 0, 8000)
 )
 model_bb <- lm(income ~ Black * female, data = sim_bb)
+
+bb_profiles <- tibble(
+  Black  = factor(c("White", "Black", "White", "Black"), levels = c("White", "Black")),
+  female = factor(c("Men",   "Men",   "Women", "Women"), levels = c("Men",   "Women"))
+)
+bb_preds <- round(predict(model_bb, newdata = bb_profiles))
+pred_wm  <- bb_preds[1]; pred_bm <- bb_preds[2]
+pred_ww  <- bb_preds[3]; pred_bw <- bb_preds[4]
+gap_race_men   <- pred_wm - pred_bm
+gap_race_women <- pred_ww - pred_bw
+gap_sex_white  <- pred_wm - pred_ww
+gap_sex_black  <- pred_bm - pred_bw
+gap_bb_total   <- pred_wm - pred_bw
+b_bb_alpha  <- round(coef(model_bb)[["(Intercept)"]])
+b_bb_black  <- round(coef(model_bb)[["BlackBlack"]])
+b_bb_women  <- round(coef(model_bb)[["femaleWomen"]])
+b_bb_int    <- round(coef(model_bb)[["BlackBlack:femaleWomen"]])
+
+p_bb        <- summary(model_bb)$coefficients["BlackBlack:femaleWomen", "Pr(>|t|)"]
+p_bb_label  <- ifelse(p_bb < 0.001, "p < 0.001",
+               ifelse(p_bb < 0.01,  "p < 0.01",
+               ifelse(p_bb < 0.05,  "p < 0.05", paste0("p = ", round(p_bb, 3)))))
+sig_bb      <- ifelse(p_bb < 0.05, "statistically significant", "not statistically significant")
+
+# Pre-formatted strings (no $ sign — use \$ in markdown to avoid pandoc math parsing)
+fmt_bb <- function(x) format(abs(x), big.mark = ",", scientific = FALSE)
+f_wm  <- fmt_bb(pred_wm);  f_bm  <- fmt_bb(pred_bm)
+f_ww  <- fmt_bb(pred_ww);  f_bw  <- fmt_bb(pred_bw)
+f_race_men   <- fmt_bb(gap_race_men);   f_race_women <- fmt_bb(gap_race_women)
+f_sex_white  <- fmt_bb(gap_sex_white);  f_sex_black  <- fmt_bb(gap_sex_black)
+f_bb_total   <- fmt_bb(gap_bb_total)
+f_alpha <- fmt_bb(b_bb_alpha); f_black <- fmt_bb(b_bb_black)
+f_women <- fmt_bb(b_bb_women); f_int   <- fmt_bb(b_bb_int)
+
+# Continuous × continuous: prestige × age → income
+model_prestige   <- lm(income91 ~ prestg80 * age, data = attain_sub)
+b_prest_age      <- round(coef(model_prestige)[["prestg80:age"]], 2)
+b_prest_age_dir  <- ifelse(b_prest_age > 0, "grows stronger", "weakens")
+b_prest_age_word <- ifelse(b_prest_age > 0, "compounds", "depreciates")
 ```
 
 ## Agenda {.smaller}
@@ -570,7 +599,7 @@ Using `Y ~ X1 * X2` in R enforces this automatically — it expands to `Y ~ X1 +
 
 ### Continuous × Continuous
 
-Both X₁ and X₂ are continuous (e.g., age × education → income).
+Both X₁ and X₂ are continuous (e.g., occupational prestige × age → income).
 
 $$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 
@@ -578,14 +607,13 @@ $$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 - Effect of X₂ = $\beta_2 + \beta_3 X_1$ — the slope for X₂ **depends on the value of X₁**
 
 ::: {.callout-note icon=false}
-## Evaluating at meaningful values
-In a continuous × continuous interaction, $\beta_1$ is the effect of $X_1$ **only when $X_2 = 0$** — which is often outside the range of your data and substantively meaningless. Instead, compute **simple slopes**: the effect of $X_1$ at low, average, and high values of $X_2$ (conventionally mean − 1 SD, mean, mean + 1 SD). Use `ggpredict(model, terms = c("X1", "X2 [meansd]"))` to compute and plot these automatically.
-:::
+## Interpreting direction
+The sign of $\beta_3$ tells you how the relationship changes:
 
-::: {.callout-note icon=false}
-## Evaluating direction:
-More common but less precise is to just describe the direction. For example, "As $X_2$ increases, the impact of $X_1$ increases/decreases (depending on +/- of $X_3$)".
+- **$\beta_3 > 0$**: as $X_2$ increases, the effect of $X_1$ on $Y$ **strengthens**
+- **$\beta_3 < 0$**: as $X_2$ increases, the effect of $X_1$ on $Y$ **weakens**
 
+**Our example:** `lm(income91 ~ prestg80 * age)` — does the income payoff of occupational prestige depend on career stage? If $\beta_3 > 0$, prestige matters *more* for income among older workers; if $\beta_3 < 0$, prestige pays off *less* as workers age. Use `ggpredict()` to visualize the pattern at a few representative ages.
 :::
 
 ### Continuous × Binary
@@ -632,42 +660,30 @@ $$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 
 ### Continuous × Continuous
 
-**Model:** `lm(self_esteem ~ skin_tone * income_z)` — does income moderate the impact of skin-tone on self-esteem?
+**Model:** `lm(income91 ~ prestg80 * age)` — does the income payoff of occupational prestige depend on career stage?
 
 ```{r}
 #| echo: false
 #| eval: true
 
 modelsummary(
-  model_skin,
-  coef_rename = c("(Intercept)"        = "Intercept",
-                  "skin_tone"          = "Skin Tone",
-                  "income_z"           = "Income (std.)",
-                  "skin_tone:income_z" = "Skin Tone × Income"),
+  model_prestige,
+  coef_rename = c("(Intercept)"  = "Intercept",
+                  "prestg80"     = "Occupational Prestige",
+                  "age"          = "Age",
+                  "prestg80:age" = "Prestige × Age"),
   stars   = TRUE,
   fmt     = 2,
-  title   = "OLS: Self-Esteem ~ Skin Tone × Income",
+  title   = "OLS: Income ~ Occupational Prestige × Age",
   gof_map = c("nobs", "r.squared")
 )
 ```
 
-One effective way to interpret the interaction is to calculate the effect size at **low, average, and high values** of income (e.g., low = −1 SD, mean = 0, high = +1 SD) (assuming income is standardized):
-
-| Income level | Calculation | Skin-tone slope |
-|---|---|---|
-| Low (−1 SD) | $0.30 + (-0.04)(-1)$ | **+0.34** |
-| Mean (0) | $0.30 + (-0.04)(0)$ | **+0.30** |
-| High (+1 SD) | $0.30 + (-0.04)(+1)$ | **+0.26** |
-
 ::: {.callout-tip icon=false}
-## Interpretation at meaningful values
-The simple slopes show that the positive effect of skin tone on self-esteem is strongest at **low income** (+0.34) and attenuates as income rises (+0.26 at high income). In other words, income **moderates** the impact of skin-tone on self-esteem: higher income weakens the relationship. $\beta_3 = -0.04$ tells us the skin-tone slope decreases by 0.04 for each 1-SD increase in income.
-:::
+## Interpretation
+`Prestige × Age` ($\beta_3$ = `r b_prest_age`) tells us that the prestige → income slope **`r b_prest_age_dir`** as workers get older — in other words, prestige **`r b_prest_age_word`** over a career. In the margins plot on the next slide, this will appear as `r ifelse(b_prest_age > 0, "steeper lines for older ages")`.
 
-::: {.callout-tip icon=false}
-## Interpretation using direction
-- "As income increases, the effect of skin tone descreases."
-- Or something a bit more precise: "At lower values of income, skin tone has a stronger positive association with self-esteem (+0.34), but as income increases the impact of skin tone on self-esteem weakens (+0.26)."
+**However, remember that the interaction is not statistically significant.**
 :::
 
 ### Continuous × Binary
@@ -691,15 +707,23 @@ modelsummary(
 )
 ```
 
+<br> 
+
 | Group | Slope for educ | Formula |
 |---|---|---|
 | Men (reference) | $\beta_1$ | Baseline slope |
 | Women | $\beta_1 + \beta_3$ | Baseline + interaction |
 | Difference | $\beta_3$ | The interaction term itself |
 
+<br> 
+
 ::: {.callout-tip icon=false}
 ## Interpretation
-Read `Education × Female` from the table: that is $\beta_3$, the difference in returns per year of education between women and men. If negative, women gain less per additional year. Note: `Female` ($\beta_2$) is the income gap at zero years of education — rarely meaningful on its own.
+The interaction of `Education × Female` ($\beta_3$ = `r scales::dollar(b_int_term)`) tells us that women's income return per additional year of education is **`r scales::dollar(abs(b_int_term))` `r ifelse(b_int_term < 0, "less", "more")`** than men's. Men gain `r scales::dollar(effect_men)` per year of education; women gain `r scales::dollar(effect_women)` — a difference that is `r sig_verdict` (`r p_int_label`).
+
+**High-level summary:** Education is strongly positively associated with income for both men and women. While women appear to have slightly higher returns to education than men (interaction term), this difference is not statistically significant. Women also have lower predicted income at low levels of education, though this difference is not statistically significant.
+
+**However, remember that the interaction is not statistically significant.**
 :::
 
 ### Binary × Binary
@@ -725,28 +749,30 @@ modelsummary(
 
 **Predicted incomes (2×2 table):**
 
-| | White ($X_1=0$) | Black ($X_1=1$) |
+| | White | Black |
 |---|---|---|
-| **Men** ($X_2=0$) | $\$65K$ | $\$65K-\$12K = \$53K$ |
-| **Women** ($X_2=1$) | $\$65K -\$12K  = \$47K$ |$\$65K -\$12K -\$18K +\$5K= \$40K$ |
+| **Men** | $\alpha$ = \$`r f_wm` | $\alpha + \beta_1$ = \$`r f_bm` |
+| **Women** | $\alpha + \beta_2$ = \$`r f_ww` | $\alpha + \beta_1 + \beta_2 + \beta_3$ = \$`r f_bw` |
+
+Where: $\alpha$ = \$`r f_alpha`, $\beta_1$ (Black) = −\$`r f_black`, $\beta_2$ (Women) = −\$`r f_women`, $\beta_3$ (interaction) = \$`r f_int`
 
 **Race gap within sex:**
 
-- Among men: \$65,000 − \$53,000 = **−\$12,000** ($\beta_1$)
-- Among women: \$47,000 − \$40,000 = **−\$7,000** ($\beta_1 + \beta_3$)
+- Among men: \$`r f_wm` − \$`r f_bm` = \$`r f_race_men` ($\beta_1$)
+- Among women: \$`r f_ww` − \$`r f_bw` = \$`r f_race_women` ($\beta_1 + \beta_3$)
 
 **Gender gap within race:**
 
-- Among white workers: \$65,000 − \$47,000 = **−\$18,000** ($\beta_2$)
-- Among Black workers: \$53,000 − \$40,000 = **−\$13,000** ($\beta_2 + \beta_3$)
+- Among white workers: \$`r f_wm` − \$`r f_ww` = \$`r f_sex_white` ($\beta_2$)
+- Among Black workers: \$`r f_bm` − \$`r f_bw` = \$`r f_sex_black` ($\beta_2 + \beta_3$)
 
 **Race + gender gap (white men vs. Black women):**
 
-- \$65,000 − \$40,000 = **−\$25,000** ($\beta_1 + \beta_2 + \beta_3 = -12{,}000 + (-18{,}000) + 5{,}000$)
+- \$`r f_wm` − \$`r f_bw` = \$`r f_bb_total` ($\beta_1 + \beta_2 + \beta_3$)
 
 ::: {.callout-tip icon=false}
 ## Interpretation
-The racial income gap is smaller for women (−\$7k) than for men (−\$12k), and the gender gap is smaller among Black workers (−\$13k) than among white workers (−\$18k). Both patterns are driven by the same thing: $\beta_3 = +5{,}000$. Black women face the largest combined disadvantage at −\$25,000 relative to white men.
+`Black × Women` ($\beta_3$ = `r scales::dollar(b_bb_int)`, `r p_bb_label`) is **`r sig_bb`**. We therefore **cannot conclude** that the racial income gap differs by sex — the data are consistent with the gaps being the same for men and women. The 2×2 table above illustrates the *mechanics* of reading a binary × binary model, but the interaction term itself does not clear the significance threshold needed to claim that non-additivity is real rather than sampling noise.
 :::
 
 :::
@@ -758,42 +784,63 @@ The racial income gap is smaller for women (−\$7k) than for men (−\$12k), an
 
 ### Continuous × Continuous
 
-**Model:** `lm(self_esteem ~ skin_tone * income_z)` — does income moderate the skin-tone → self-esteem relationship?
+**Model:** `lm(income91 ~ prestg80 * age)` — does the income payoff of occupational prestige depend on career stage?
 
 ```{r}
 #| echo: true
 #| eval: true
 #| code-fold: true
-#| fig-height: 3.5
+#| fig-height: 3.8
 #| warning: false
 
-ggpredict(model_skin, terms = c("skin_tone", "income_z [meansd]")) |>
+p_main <- ggpredict(model_prestige, terms = "prestg80") |>
+  ggplot(aes(x = x, y = predicted)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.15, fill = "#4E79A7") +
+  geom_line(linewidth = 1.4, color = "#4E79A7") +
+  scale_y_continuous(labels = scales::dollar_format(big.mark = ",")) +
+  labs(
+    title    = "Main effect only",
+    subtitle = "One slope — prestige → income (averaging over age)",
+    x = "Occupational Prestige Score",
+    y = "Predicted Income ($)"
+  ) +
+  theme_minimal(base_size = 10)
+
+p_int <- ggpredict(model_prestige, terms = c("prestg80", "age [30, 45, 60]")) |>
   ggplot(aes(x = x, y = predicted, color = group, fill = group)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.15, color = NA) +
   geom_line(linewidth = 1.4) +
   scale_color_manual(
     values = c("#E15759", "#4E79A7", "#59A14F"),
-    labels = c("Low income (−1 SD)", "Mean income", "High income (+1 SD)"),
-    name   = "Income level"
+    labels = c("Age 30", "Age 45", "Age 60"),
+    name   = "Age"
   ) +
   scale_fill_manual(
     values = c("#E15759", "#4E79A7", "#59A14F"),
-    labels = c("Low income (−1 SD)", "Mean income", "High income (+1 SD)"),
-    name   = "Income level"
+    labels = c("Age 30", "Age 45", "Age 60"),
+    name   = "Age"
   ) +
+  scale_y_continuous(labels = scales::dollar_format(big.mark = ",")) +
   labs(
-    title    = "Predicted Self-Esteem by Skin Tone and Income",
-    subtitle = "Slopes attenuate as income rises — income moderates the skin-tone effect",
-    x = "Skin Tone (1 = darkest, 10 = lightest)",
-    y = "Predicted Self-Esteem"
+    title    = "With interaction",
+    subtitle = "Slope varies by age — does prestige compound over a career?",
+    x = "Occupational Prestige Score",
+    y = "Predicted Income ($)"
   ) +
-  theme_minimal(base_size = 11) +
+  theme_minimal(base_size = 10) +
   theme(legend.position = "bottom")
+
+p_main + p_int
 ```
 
 ::: {.callout-tip icon=false}
 ## Reading the plot
-The three lines represent the simple slope of skin tone at low (−1 SD), mean, and high (+1 SD) income. The lines diverge: at low income the slope is steepest (+0.34), flattening as income rises (+0.26 at high income). Income **attenuates** the skin-tone effect — the moderator weakens the relationship.
+Each line shows the prestige → income slope at a different career stage (30, 45, 60). 
+
+- **Parallel lines** = no interaction, prestige pays off the same regardless of age. 
+- **Diverging lines** = interaction, the prestige premium grows (or shrinks) with age. 
+
+The sign of `Prestige × Age` in the model table tells you the direction; the plot makes it concrete.
 :::
 
 ### Continuous × Binary
@@ -832,7 +879,8 @@ ggpredict(model_interact, terms = c("educ [4:20 by=0.5]", "sex_f")) |>
 
 ::: {.callout-tip icon=false}
 ## Reading the plot
-The two lines show the income slope for men (blue) and women (red) across years of education. A steeper men's line means each additional year of school pays off more for men. Overlapping confidence ribbons signal uncertainty — the interaction term's p-value is the formal test of whether the slopes truly differ.
+The two lines show the income slope for men (blue) and women (red) across years of education. We know from the model output that the interaction is not significant and the lines are basically parallel. Additionally, the CIs overlap at nearly all points. 
+
 :::
 
 ### Binary × Binary
@@ -867,7 +915,9 @@ ggpredict(model_bb, terms = c("Black", "female")) |>
 
 ::: {.callout-tip icon=false}
 ## Reading the plot
-The **slope of the line** (drop from White to Black) represents the racial income gap. If the lines are parallel, the gap is identical for men and women — no interaction. Non-parallel lines mean the race penalty (or bonus) differs by sex. Here the gap is smaller for women than for men ($\beta_3 = +5{,}000$), meaning Black women face *less additional* racial penalty compared to Black men — but both lines are low relative to white men (intersectional disadvantage).
+The **drop from White to Black** on each line represents the racial income gap. **Parallel lines** mean the gap is identical for men and women — no interaction. Non-parallel lines suggest the gap differs by sex.
+
+`Black × Women` ($\beta_3$ = `r scales::dollar(b_bb_int)`, `r p_bb_label`) is **`r sig_bb`** — we cannot conclude that the racial income gap actually differs by sex. Any non-parallelism visible in the plot is consistent with sampling noise.
 :::
 
 :::
