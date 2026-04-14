@@ -1136,9 +1136,23 @@ modelsummary(model_logit_int,
              gof_map = c("nobs", "AIC"))
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+
+p_logit_int     <- summary(model_logit_int)$coefficients["educ:sex_ffemale", "Pr(>|z|)"]
+p_logit_label   <- ifelse(p_logit_int < 0.001, "p < 0.001",
+                   ifelse(p_logit_int < 0.01,  "p < 0.01",
+                   ifelse(p_logit_int < 0.05,  "p < 0.05", paste0("p = ", round(p_logit_int, 3)))))
+sig_logit       <- ifelse(p_logit_int < 0.05, "statistically significant", "not statistically significant")
+b_logit_int     <- coef(model_logit_int)[["educ:sex_ffemale"]]
+or_logit_int    <- round(exp(b_logit_int), 3)
+logit_int_dir   <- ifelse(b_logit_int < 0, "weaker for women than for men", "stronger for women than for men")
+```
+
 ::: {.callout-note icon=false}
 ## Interpreting the logistic interaction OR:
-The interaction OR (Education × Female) tells you how the **per-year education effect on the odds of union membership** differs between women and men. An OR < 1 for the interaction means women's odds multiply by *less* per year of education than men's. As with OLS, use `ggpredict()` to translate this into predicted probabilities — the visualization (next tab) makes the pattern much clearer.
+`Education × Female` (OR = `r or_logit_int`, `r p_logit_label`) is **`r sig_logit`**. An OR `r ifelse(or_logit_int < 1, "< 1 means women's odds of union membership multiply by *less* per year of education than men's — the education effect is weaker for women", "> 1 means women's odds multiply by *more* per year of education than men's — the education effect is stronger for women")`. Use `ggpredict()` to translate this into predicted probabilities and see the gap concretely.
 :::
 
 ### Visualization
@@ -1172,19 +1186,13 @@ ggpredict(model_logit_int, terms = c("educ [6:20 by=0.5]", "sex_f")) |>
 ```
 
 ::: {.callout-note icon=false}
-## Why are the curves S-shaped — and what do they mean?
+## Why are the curves S-shaped — and what does the interaction mean?
 
-**The S-curve is not from a quadratic term.** It comes from logistic regression itself: the model predicts *log-odds* as a linear function of education, but `ggpredict()` converts those to *probabilities* (which must stay between 0 and 1). That conversion — the logistic function — always produces an S-shaped (sigmoid) curve. No squared term needed.
+**The S-curve is not from a quadratic term.** It comes from logistic regression itself: the model predicts *log-odds* as a linear function of education, but `ggpredict()` converts those to *probabilities* (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.
 
 **Reading the interaction:**
 
-- At low education levels, men and women have similar (low) predicted probabilities of union membership
-- As education increases, men's probability rises more steeply — the lines **diverge**
-- This means the effect of education on union membership is **stronger for men** than for women
-- The interaction term in the model tests whether this divergence is statistically distinguishable from zero
-
-**Compared to OLS:** In a linear regression, diverging lines imply a constant *dollar* gap that grows linearly. In logistic regression, the divergence in probability space is non-linear — even if the underlying log-odds interaction is a fixed constant, the *probability* gap widens most rapidly in the middle of the distribution and compresses near 0 and 1. Always show the probability plot so readers can see the actual gap at relevant education levels.
-:::
+The interaction term (`Education × Female`, `r p_logit_label`) is **`r sig_logit`**. The log-odds coefficient is `r round(b_logit_int, 3)`, meaning the effect of education on the probability of union membership is **`r logit_int_dir`** — the lines in the plot diverge as education rises, and this divergence is statistically real.
 
 :::
 

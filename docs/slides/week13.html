@@ -1823,9 +1823,9 @@
 <h2>Interactions in Logistic Regression</h2>
 <p>Interaction terms work the same way in logistic regression — same syntax, same logic:</p>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Model Table</a></li><li><a href="#tabset-7-2">Visualization</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Model Table</a></li><li><a href="#tabset-10-2">Visualization</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-10-1">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1949,12 +1949,12 @@
 <p><strong>Interpreting the logistic interaction OR:</strong></p>
 </div>
 <div class="callout-content">
-<p>The interaction OR (Education × Female) tells you how the <strong>per-year education effect on the odds of union membership</strong> differs between women and men. An OR &lt; 1 for the interaction means women’s odds multiply by <em>less</em> per year of education than men’s. As with OLS, use <code>ggpredict()</code> to translate this into predicted probabilities — the visualization (next tab) makes the pattern much clearer.</p>
+<p><code>Education × Female</code> (OR = 1.278, p &lt; 0.001) is <strong>statistically significant</strong>. An OR &gt; 1 means women’s odds multiply by <em>more</em> per year of education than men’s — the education effect is stronger for women. Use <code>ggpredict()</code> to translate this into predicted probabilities and see the gap concretely.</p>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-10-2">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1981,7 +1981,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1989,29 +1989,18 @@
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Why are the curves S-shaped — and what do they mean?</strong></p>
+<p><strong>Why are the curves S-shaped — and what does the interaction mean?</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>The S-curve is not from a quadratic term.</strong> It comes from logistic regression itself: the model predicts <em>log-odds</em> as a linear function of education, but <code>ggpredict()</code> converts those to <em>probabilities</em> (which must stay between 0 and 1). That conversion — the logistic function — always produces an S-shaped (sigmoid) curve. No squared term needed.</p>
+<p><strong>The S-curve is not from a quadratic term.</strong> It comes from logistic regression itself: the model predicts <em>log-odds</em> as a linear function of education, but <code>ggpredict()</code> converts those to <em>probabilities</em> (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.</p>
 <p><strong>Reading the interaction:</strong></p>
-<ul>
-<li>At low education levels, men and women have similar (low) predicted probabilities of union membership</li>
-<li>As education increases, men’s probability rises more steeply — the lines <strong>diverge</strong></li>
-<li>This means the effect of education on union membership is <strong>stronger for men</strong> than for women</li>
-<li>The interaction term in the model tests whether this divergence is statistically distinguishable from zero</li>
-</ul>
-<p><strong>Compared to OLS:</strong> In a linear regression, diverging lines imply a constant <em>dollar</em> gap that grows linearly. In logistic regression, the divergence in probability space is non-linear — even if the underlying log-odds interaction is a fixed constant, the <em>probability</em> gap widens most rapidly in the middle of the distribution and compresses near 0 and 1. Always show the probability plot so readers can see the actual gap at relevant education levels.</p>
+<p>The interaction term (<code>Education × Female</code>, p &lt; 0.001) is <strong>statistically significant</strong>. The log-odds coefficient is 0.246, meaning the effect of education on the probability of union membership is <strong>stronger for women than for men</strong> — the lines in the plot diverge as education rises, and this divergence is statistically real.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</section>
 <section id="questions-2" class="slide level2">
 <h2>Questions?</h2>
-</section></section>
-<section>
+</section>
 <section id="reading-thompson-keith-2001" class="title-slide slide level1 center">
 <h1>Reading: Thompson &amp; Keith (2001)</h1>
 <p>Interactions in a classic race &amp; gender study</p>
@@ -2043,16 +2032,16 @@
 <section id="research-design" class="slide level2 smaller scrollable">
 <h2>Research Design</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Data &amp; Sample</a></li><li><a href="#tabset-8-2">Variables</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Data &amp; Sample</a></li><li><a href="#tabset-7-2">Variables</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1">
+<div id="tabset-7-1">
 <ul>
 <li><strong>Data:</strong> National Survey of Black Americans (NSBA), a nationally representative survey of Black adults</li>
 <li><strong>Sample:</strong> Black Americans aged 18+ — Wave I (1979–80) and Wave IV (1992)</li>
 <li><strong>Context:</strong> 1970s–80s US — ongoing de facto racial stratification and deeply gendered standards of beauty</li>
 </ul>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-7-2">
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -2119,9 +2108,9 @@
 <section id="key-results-the-skin-tone-gender-interaction" class="slide level2 smaller scrollable">
 <h2>Key Results: The Skin Tone × Gender Interaction</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">What They Found</a></li><li><a href="#tabset-9-2">Simplified Results Table</a></li><li><a href="#tabset-9-3">The Path Model</a></li><li><a href="#tabset-9-4">Discussion &amp; Interpretation (pp.&nbsp;351–354)</a></li><li><a href="#tabset-9-5">Lessons for Your Research</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">What They Found</a></li><li><a href="#tabset-8-2">Simplified Results Table</a></li><li><a href="#tabset-8-3">The Path Model</a></li><li><a href="#tabset-8-4">Discussion &amp; Interpretation (pp.&nbsp;351–354)</a></li><li><a href="#tabset-8-5">Lessons for Your Research</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1">
+<div id="tabset-8-1">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2144,7 +2133,7 @@
 </div>
 </div>
 </div>
-<div id="tabset-9-2">
+<div id="tabset-8-2">
 <p>Thompson &amp; Keith (2001), <strong>Table 4</strong> — significant interaction effects with simple slopes at low, average, and high values of the moderator. Models run <strong>separately by gender</strong>.</p>
 <table style="font-size:0.80em; width:100%; border-collapse:collapse;">
 <thead>
@@ -2310,18 +2299,18 @@ High weight
 </div>
 </div>
 </div>
-<div id="tabset-9-3">
+<div id="tabset-8-3">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-9-4">
+<div id="tabset-8-4">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2334,7 +2323,7 @@ High weight
 </div>
 </div>
 </div>
-<div id="tabset-9-5">
+<div id="tabset-8-5">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2411,9 +2400,9 @@ High weight
 <section id="key-takeaways" class="slide level2 smaller">
 <h2>Key Takeaways</h2>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Part 1 — Controls</a></li><li><a href="#tabset-10-2">Part 2 — Interactions</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Part 1 — Controls</a></li><li><a href="#tabset-9-2">Part 2 — Interactions</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-9-1">
 <ul>
 <li><strong>Confounders</strong> are variables that affect both X and Y, creating a spurious association between them</li>
 <li>Controlling for Z (<code>Y ~ X + Z</code>) asks: <em>“Among people with the same Z, what is the relationship between X and Y?”</em></li>
@@ -2422,7 +2411,7 @@ High weight
 <li>Do NOT control for mediators (variables caused by X that cause Y) — we’ll cover mediation next week</li>
 </ul>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-9-2">
 <ul>
 <li><p>An <strong>interaction</strong> occurs when Z moderates the effect of X on Y: the X → Y relationship differs across levels of Z</p></li>
 <li><p>Add an interaction with <code>lm(Y ~ X * Z)</code> — R automatically includes X, Z, and X:Z</p></li>
@@ -2541,6 +2530,11 @@ High weight
 </ul>
 
 
+</section>
+
+</div>
+</div>
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
