@@ -59,13 +59,14 @@ interaction_plot <- ggplot(
 
 **Weekly Assignment #11**
 
-- HW 11 was canceled - wanted to make sure you had time to work on final exam 
+- HW 11 was canceled - wanted to make sure you had time to work on final paper/exam 
 - Will still be able to drop lowest of 10 assignments.
 
 **In-class presentations**
 
 - <span class="highlight">Tuesday, April 28/Tuesday May, 5</span> — 7–10 minutes per student
-- Slide template on the course site; structure: question → data → results → so what
+- See [In-Class Presentation page](https://bcourses.berkeley.edu/courses/1551992/assignments/9023055) for presentation assignments
+- Use [slide template](https://docs.google.com/presentation/d/1HJWAWjY6M1q7qL2f9029MmjlVGw9nUpg/edit?slide=id.p1#slide=id.p1) on the course site; structure: question → data → results → so what
 - Practice out loud at least once before class
 
 **Final paper**
@@ -77,43 +78,19 @@ interaction_plot <- ggplot(
 
 ## Final Presentations {.smaller}
 
-Here is the schedule for final presentations. You'll need to send me your presentation 2 hours before class so I can load them on my laptop. 
+Here is the schedule for final presentations. You'll need to send me your presentation 2 hours before class so I can load them on my laptop.
 
-:::: {.columns}
-
-::: {.column width="50%"}
-**Tuesday, April 28**
-
-| # | Student |
-|---|---------|
-| 1 | Zhexin Chen |
-| 2 | Mengxuan Wu |
-| 3 | Arohi Behara |
-| 4 | Megan Farrenkopf |
-| 5 | Jenny Liu |
-| 6 | Bianca Chiu |
-| 7 | Srisha Raj |
-| 8 | Keyla Barcenas |
-| 9 | Mahak Rathi |
-:::
-
-::: {.column width="50%"}
-**Tuesday, May 5**
-
-| # | Student |
-|---|---------|
-| 1 | Lawrence So |
-| 2 | Doyoung Kwak |
-| 3 | Azariah Smith |
-| 4 | Macheng Xiang |
-| 5 | Violetta Wang |
-| 6 | Yihan Zhang |
-| 7 | Rose Kong |
-| 8 | Anthony Maldonado |
-| 9 | Claudia Gomez Bernal |
-:::
-
-::::
+| Order | Tuesday, April 28 | Tuesday, May 5 |
+|---|---|---|
+| 1 | Zhexin Chen | Lawrence So |
+| 2 | Mengxuan Wu | Doyoung Kwak |
+| 3 | Arohi Behara | Azariah Smith |
+| 4 | Megan Farrenkopf | Macheng Xiang |
+| 5 | Jenny Liu | Violetta Wang |
+| 6 | Bianca Chiu | Yihan Zhang |
+| 7 | Srisha Raj | Rose Kong |
+| 8 | Keyla Barcenas | Anthony Maldonado |
+| 9 | Mahak Rathi | Claudia Gomez Bernal |
 
 
 ## Agenda {.smaller}
@@ -151,6 +128,8 @@ Focus on concepts, interpretation, and choosing the right tool for the job. You 
 ::: {.column width="48%"}
 **Multiple choice**
 
+Choosing the right answer from 4 options. 
+
 - Identify variable types
 - Choose an appropriate probability distribution
 - Recognize skew and the normal-curve rules
@@ -161,6 +140,8 @@ Focus on concepts, interpretation, and choosing the right tool for the job. You 
 
 ::: {.column width="52%"}
 **Short answer**
+
+Give you output or a scenario and ask you to intepret. No by-hand calculations. Hand-write interpretations.
 
 - Read a t-test/chi-square test
 - Interpret regression output
@@ -180,10 +161,10 @@ Focus on concepts, interpretation, and choosing the right tool for the job. You 
 | Goal | What the variables look like | Good choice |
 |---|---|---|
 | Show the distribution of one categorical variable | One categorical variable | Bar chart |
-| Show the distribution of one quantitative variable | One continuous/count variable | Histogram |
-| Compare the mean of a quantitative outcome across two groups | Quantitative `Y` + binary group | Two-sample t-test |
+| Show the distribution of one continuous variable | One continuous variable | Histogram |
+| Compare the mean of a continuous outcome across two groups | Continuous `Y` + binary group | Two-sample t-test |
 | Study the relationship between two categorical variables | Categorical `X` + categorical `Y` | Chi-square test |
-| Model a continuous outcome | Quantitative `Y` | OLS regression |
+| Model a continuous outcome | Continuous `Y` | OLS regression |
 | Model a binary outcome | `Y = 0/1` | Logistic regression |
 
 ::: {.callout-note icon=false}
@@ -196,7 +177,7 @@ Many mistakes come from choosing the wrong tool because the student did not firs
 
 - The **68-95-99.7 rule** only applies to an approximately normal distribution
 - The **Central Limit Theorem** is about the sampling distribution of sample means, not about every raw sample looking normal
-- A **margin of error** is the plus-or-minus amount around an estimate
+- A **margin of error** is the single number (+/-) that measures error around an estimate
 - A **confidence interval** is the full range: estimate plus or minus the margin of error
 - Holding everything else constant, a **larger sample size** usually makes a confidence interval narrower
 - A **higher confidence level** usually makes a confidence interval wider
@@ -222,15 +203,10 @@ For any output you read on the exam: identify the **direction**, comment on **st
 
 *Outcome: life satisfaction (1–7 scale). Married is the omitted baseline.*
 
-- In OLS, the outcome is **continuous**
+- For OLS, the outcome is **continuous**.
 - If one category is missing from the table, that missing category is the **baseline/reference group**
-- A coefficient tells you the expected difference in the outcome, **holding the other variables constant**
-- `R^2` tells you how much of the variation in the outcome is explained by the model
-
-::: {.callout-tip icon=false}
-## Study move
-Practice saying coefficient interpretations out loud using the phrase "holding the other variables constant."
-:::
+- A coefficient tells you the expected difference in the outcome, for every 1-unit increase in in variable, **holding the other variables constant**
+- `R^2` tells you how much of the variation in the outcome is explained by the model. In this case, 16%.
 
 ::: {.callout-note icon=false}
 ## Sample interpretation — Never married
@@ -249,15 +225,13 @@ Respondents who have never been married are predicted to score 1.2 points lower 
 *Outcome: whether the respondent participates in a community organization (1 = yes).*
 
 - In logistic regression, the outcome is **binary**
-- Odds ratio greater than 1 -> **higher odds**
-- Odds ratio less than 1 -> **lower odds**
-- Odds ratio equal to 1 -> **no association**
+- Coefficients are interpreted as odds ratios: 
+  - Odds ratio greater than 1 -> **higher odds**
+  - Odds ratio less than 1 -> **lower odds**
+  - Odds ratio equal to 1 -> **no association**
 - A quick interpretation shortcut is `(OR - 1) x 100`
-
-**Examples**
-
-- `1.38` -> about **38% higher odds**
-- `0.76` -> about **24% lower odds**
+  - `1.38` -> `1.38-1` ~ **38% higher odds**
+  - `0.76` -> `1-0.76`~ **-24% lower odds**
 
 ::: {.callout-note icon=false}
 ## Sample interpretation — Age
@@ -308,8 +282,9 @@ If a third variable **changes the slope** of `X -> Y` across groups or levels, t
 ::: {.column width="48%"}
 **Sampling**
 
-- A representative sample resembles the target population on the characteristics that matter
-- In cluster sampling you randomly select groups or locations first, then observe people within them (e.g., randomly select hospitals, then survey all patients inside)
+- A **representative sample** resembles the target population on the characteristics that matter
+- In **stratified random sampling** you divide the population into subgroups (strata) first, then randomly sample from each — useful when you want to ensure representation of smaller groups (e.g., sample men and women separately)
+- In **cluster sampling** you randomly select groups or locations first, then observe people within them (e.g., randomly select hospitals, then survey all patients inside)
 - Nonresponse or selection bias happens when some kinds of people are systematically harder to reach than others
 :::
 
@@ -326,7 +301,7 @@ If a third variable **changes the slope** of `X -> Y` across groups or levels, t
 ::::
 
 
-## How to Study Efficiently This Week {.smaller}
+## How to Study For Final Exam {.smaller}
 
 - Revisit the slides and assignments on these topics:
   - Weeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests
@@ -334,7 +309,7 @@ If a third variable **changes the slope** of `X -> Y` across groups or levels, t
   - Week 12: logistic regression and odds ratios
   - Week 13: interactions (moderation) and margins plots
 - Redo one example each of a t-test, an OLS model, a logistic model, and an interaction model
-- Practice turning output into short written interpretations
+- Practice explaining output in short written interpretations
 - Review definitions you want to be able to write cleanly from memory:
   - p-value
   - confidence interval
