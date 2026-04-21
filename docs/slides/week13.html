@@ -809,25 +809,25 @@
 <thead>
 <tr class="header">
 <th>Group</th>
+<th>Full equation</th>
 <th>Slope for X₁</th>
-<th>Formula</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(X_2 = 0\)</span> (reference)</td>
+<td><span class="math inline">\(\alpha + \beta_1 X_1\)</span></td>
 <td><span class="math inline">\(\beta_1\)</span></td>
-<td>Slope for reference group</td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(X_2 = 1\)</span> (key group)</td>
+<td><span class="math inline">\((\alpha + \beta_2) + (\beta_1 + \beta_3) X_1\)</span></td>
 <td><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
-<td>Reference slope + interaction</td>
 </tr>
 <tr class="odd">
 <td><strong>Difference in slopes</strong></td>
+<td></td>
 <td><span class="math inline">\(\beta_3\)</span></td>
-<td>The interaction term itself</td>
 </tr>
 </tbody>
 </table>
@@ -1006,7 +1006,7 @@
 <p><strong>Main effect of Occupational Prestige</strong> (<span class="math inline">\(\beta_1\)</span> = 266.44): this is the effect of prestige on income <em>when age = 0</em> — a meaningless baseline. At the sample mean age (45.1 years), a one-unit increase in prestige is associated with <strong>$472.1 more income</strong> (266.44 + 4.56 × 45.1).</p>
 <p><strong>Main effect of Age</strong> (<span class="math inline">\(\beta_2\)</span> = -258.42): this is the effect of age on income <em>when prestige = 0</em> — again, not meaningful on its own. At the sample mean prestige score (43.6), each additional year of age is associated with <strong>$-59.6 less income</strong> (-258.42 + 4.56 × 43.6).</p>
 <p><strong>Interaction</strong> (<span class="math inline">\(\beta_3\)</span> = 4.56): the prestige → income slope <strong>grows stronger</strong> as workers get older — prestige <strong>compounds</strong> over a career. In the margins plot on the next slide, this will appear as “steeper lines for older ages”.</p>
-<p><strong>Keep in mind, however, this interaction is not statistically significant.</strong></p>
+<p><strong>High-level summary:</strong> Occupational prestige is positively associated with income, while age has a negative main effect on income at mean prestige levels. The positive interaction term suggests that the effect of prestige grows stronger with age — partially offsetting the negative age effect — but this interaction is <strong>not statistically significant,</strong> so the impact of prestige does not depend on age.</p>
 </div>
 </div>
 </div>
@@ -1151,7 +1151,7 @@
 <p><strong>Main effect of Education</strong> (<span class="math inline">\(\beta_1\)</span> = $3,836): the income return to one additional year of education <strong>for men</strong> (the reference group). Because <span class="math inline">\(X_2 = 0\)</span> for men, this is a straightforward slope — men gain $3,836 per year of schooling.</p>
 <p><strong>Main effect of Female</strong> (<span class="math inline">\(\beta_2\)</span> = -$6,038): the income gap between women and men <strong>when education = 0</strong> — the vertical distance between the two regression lines at their origin. This baseline intercept shift is not a substantively meaningful quantity on its own; use predicted values at realistic education levels to describe the actual income gap.</p>
 <p><strong>Interaction</strong> (<span class="math inline">\(\beta_3\)</span> = $84): women’s income return per additional year of education is <strong>$84 more</strong> than men’s. Men gain $3,836 per year; women gain $3,920 — a difference that is not statistically significant (p = 0.869).</p>
-<p><strong>High-level summary:</strong> Education is strongly positively associated with income for both men and women. While women appear to have slightly higher returns to education than men (interaction term), this difference is not statistically significant. Women also have lower predicted income at low levels of education, though this difference is not statistically significant.</p>
+<p><strong>High-level summary:</strong> Education is strongly positively associated with income for both men and women. The negative coefficient for women means they have lower predicted income at low levels of education. While women appear to have slightly higher returns to education than men (interaction term), this <strong>difference is not statistically significant.</strong></p>
 </div>
 </div>
 </div>
@@ -1310,7 +1310,7 @@
 <p><strong>Main effect of Race</strong> (<span class="math inline">\(\beta_1\)</span> = −$11,319): the income gap between white and Black men (the reference group for sex is men). Among men, Black workers earn $11,319 less than white workers.</p>
 <p><strong>Main effect of Sex</strong> (<span class="math inline">\(\beta_2\)</span> = −$17,639): the income gap between white men and white women (the reference group for race is white). Among white workers, women earn $17,639 less than men.</p>
 <p><strong>Interaction</strong> (<span class="math inline">\(\beta_3\)</span> = $2,683, p = 0.106): the additional income difference for Black women beyond what the two main effects predict additively. A positive <span class="math inline">\(\beta_3\)</span> means the combined penalty is <em>smaller</em> than the sum of the two gaps; negative means it is <em>larger</em>. This term is <strong>not statistically significant</strong>, so we cannot conclude that the racial income gap is meaningfully different for women versus men.</p>
-<p><strong>High-level summary:</strong> Both race and sex are independently associated with lower income. Black workers earn less than white workers, and women earn less than men. The interaction term suggests the two penalties may not simply add together for Black women, but this non-additivity does not clear the significance threshold — treat the main effects as the primary finding.</p>
+<p><strong>High-level summary:</strong> Both race and sex are independently associated with lower income. Black workers earn less than white workers, and women earn less than men. The interaction term–<strong>is not significant</strong>–but would suggest the two penalties do not simply add together for Black women.</p>
 </div>
 </div>
 </div>
@@ -1680,16 +1680,7 @@
 </tr>
 </tbody>
 </table>
-<div class="callout callout-important no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Note: this interaction is not statistically significant</strong></p>
-</div>
-<div class="callout-content">
-<p>In this example, p = 0.869 — we <strong>fail to reject H₀</strong> that the education slope is the same for men and women. Even if both lower-order terms (education, female) were significant (only education is here), it’s irrelevant: <strong>significance of main effects tells you nothing about whether the interaction is real.</strong> The only test that matters for moderation is the p-value on the interaction term itself (<code>educ:sex_ffemale</code>). A non-significant result means the data are consistent with parallel slopes — not that an interaction definitely doesn’t exist (see the power note later).</p>
-</div>
-</div>
-</div>
+<p><strong>High-level summary:</strong> Education is strongly positively associated with income for both men and women. The negative coefficient for women means they have lower predicted income at low levels of education. While women appear to have slightly higher returns to education than men (interaction term), <strong>this difference is not statistically significant.</strong></p>
 </div>
 </div>
 </div>
@@ -1766,9 +1757,8 @@
 </div>
 <div class="callout-content">
 <p><strong>Line slope:</strong> A steeper line = higher income return per year of education for that group.</p>
-<p><strong>Line gap at each X value:</strong> The vertical distance between men’s and women’s predicted incomes. If the lines are parallel (same slope), the gap is constant; if men’s line is steeper, the gap <strong>widens</strong> with education.</p>
-<p><strong>Confidence ribbons:</strong> Overlapping ribbons signal uncertainty about whether the two slopes are truly different. The formal test is the p-value on the interaction term — not visual ribbon comparison.</p>
-<p><strong>For your data:</strong> Replace <code>sex_f</code> with your moderating variable and run the same code. Do the slopes diverge?</p>
+<p><strong>Line gap at each X value:</strong> The vertical distance between men’s and women’s predicted incomes. If the lines are parallel (same slope), the gap is constant; if one line’s slope is steeper, the gap <strong>widens</strong> or <strong>decreases</strong> with education. Hard to tell in this case.</p>
+<p><strong>Confidence ribbons:</strong> Overlapping ribbons signal uncertainty about whether the two slopes are truly different. The formal test is the p-value on the interaction term. In this case, they mostly overlap.</p>
 </div>
 </div>
 </div>
@@ -1817,7 +1807,7 @@
 </section>
 <section id="interactions-in-logistic-regression" class="slide level2 smaller scrollable">
 <h2>Interactions in Logistic Regression</h2>
-<p>Interaction terms work the same way in logistic regression — same syntax, same logic:</p>
+<p>Interaction terms work the same way in logistic regression — same syntax, same logic. Let’s look at the interaction of education and sex on likely union membership.</p>
 <div class="panel-tabset">
 <ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Model Table</a></li><li><a href="#tabset-7-2">Visualization</a></li></ul>
 <div class="tab-content">
@@ -2076,18 +2066,23 @@
 <td>Interviewer-rated, 5-point scale (1 = very light, 5 = very dark)</td>
 </tr>
 <tr class="even">
-<td><strong>Moderator (X₂)</strong></td>
+<td><strong>Main Moderator (Sample)</strong></td>
 <td>Gender</td>
 <td>Binary: female / male</td>
 </tr>
 <tr class="odd">
-<td><strong>Interaction</strong></td>
-<td>Skin tone × Gender</td>
-<td>Tests whether the skin tone effect differs by gender</td>
+<td><strong>Secondary Moderators (X₂)</strong></td>
+<td>Income, Attractiveness, Weight</td>
+<td>Continuous measures</td>
 </tr>
 <tr class="even">
+<td><strong>Interaction</strong></td>
+<td>Skin tone × Income, × Attractiveness, × Weight,</td>
+<td>Tests whether the skin tone effect differs by Income, Attractiveness, and weight by gender</td>
+</tr>
+<tr class="odd">
 <td><strong>Controls</strong></td>
-<td>Education, income, age, marital status, region</td>
+<td>Education, age, marital status, region</td>
 <td>Individual characteristics</td>
 </tr>
 </tbody>
@@ -2098,10 +2093,9 @@
 <p><strong>Connecting to today’s framework:</strong></p>
 </div>
 <div class="callout-content">
-<p>Their regression is equivalent to:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">lm</span>(self_esteem <span class="sc">~</span> skin_tone <span class="sc">*</span> gender <span class="sc">+</span> education <span class="sc">+</span> income <span class="sc">+</span> age <span class="sc">+</span> ...,</span>
+<p>Their regression is equivalent to a three way interaction, for example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">lm</span>(self_esteem <span class="sc">~</span> skin_tone <span class="sc">*</span> gender <span class="sc">*</span> income <span class="sc">+</span> age <span class="sc">+</span> ...,</span>
 <span id="cb15-2"><a></a>   <span class="at">data =</span> nsba)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The interaction term tests: is the effect of <code>skin_tone</code> on <code>self_esteem</code> different for women vs.&nbsp;men?</p>
 </div>
 </div>
 </div>
@@ -2112,7 +2106,7 @@
 <section id="key-results-the-skin-tone-gender-interaction" class="slide level2 smaller scrollable">
 <h2>Key Results: The Skin Tone × Gender Interaction</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">What They Found</a></li><li><a href="#tabset-9-2">Simplified Results Table</a></li><li><a href="#tabset-9-3">The Path Model</a></li><li><a href="#tabset-9-4">Discussion &amp; Interpretation (pp.&nbsp;351–354)</a></li><li><a href="#tabset-9-5">Lessons for Your Research</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">What They Found</a></li><li><a href="#tabset-9-2">Simplified Results Table</a></li><li><a href="#tabset-9-3">Discussion &amp; Interpretation (pp.&nbsp;351–354)</a></li><li><a href="#tabset-9-4">Lessons for Your Research</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -2121,7 +2115,7 @@
 <p><strong>The core finding (Results pp.&nbsp;349–351):</strong></p>
 </div>
 <div class="callout-content">
-<p>Thompson &amp; Keith run <strong>separate OLS models for women and men</strong>. Rather than one skin-tone × gender term, they find <strong>continuous × continuous interactions</strong> within each gender’s model — the effect of skin tone depends on other social resources:</p>
+<p>Thompson &amp; Keith run <strong>separate OLS models for women and men</strong>. Rather than one skin-tone × gender * third moderateor term, they find <strong>continuous × continuous interactions</strong> within each gender’s model — the effect of skin tone depends on other social resources. To bear there out, they break make cut points by one of the continuous variables for comparison.</p>
 <p><strong>Women’s self-esteem</strong> (Table 4):</p>
 <ul>
 <li>Skin tone × <strong>Income</strong>: b¹ = −.035* — darker skin lowers self-esteem most for low-income women; the effect disappears at high income</li>
@@ -2304,17 +2298,6 @@ High weight
 </div>
 </div>
 <div id="tabset-9-3">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="week13_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-9-4">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2327,7 +2310,7 @@ High weight
 </div>
 </div>
 </div>
-<div id="tabset-9-5">
+<div id="tabset-9-4">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2405,34 +2388,12 @@ High weight
 </div>
 <div id="tabset-10-2">
 <ul>
-<li><p>An <strong>interaction</strong> occurs when Z moderates the effect of X on Y: the X → Y relationship differs across levels of Z</p></li>
-<li><p>Add an interaction with <code>lm(Y ~ X * Z)</code> — R automatically includes X, Z, and X:Z</p></li>
-<li><p><strong>Continuous × binary interaction:</strong></p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>Formula</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Effect of X for reference group</td>
-<td><span class="math inline">\(\hat\beta_1\)</span></td>
-</tr>
-<tr class="even">
-<td>Effect of X for key group</td>
-<td><span class="math inline">\(\hat\beta_1 + \hat\beta_3\)</span></td>
-</tr>
-<tr class="odd">
-<td>Test of moderation</td>
-<td>Is <span class="math inline">\(\hat\beta_3\)</span> significantly ≠ 0?</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>Always <strong>visualize</strong> with <code>ggpredict(model, terms = c("X", "Z"))</code> — parallel vs.&nbsp;crossing slopes</p></li>
-<li><p>Same logic applies to <strong>logistic regression</strong> with <code>glm(..., family = binomial)</code></p></li>
-<li><p>Interpret interactions <strong>substantively</strong> — connect to theory, not just p-values</p></li>
+<li>An <strong>interaction</strong> occurs when Z moderates the effect of X on Y: the X → Y relationship differs across levels of Z</li>
+<li>Add an interaction with <code>lm(Y ~ X * Z)</code> — R automatically includes X, Z, and X:Z</li>
+<li>Always interpret main and interaction effect together, how you do this varies slighly by measurement of interacting variables (binary vs continuous)</li>
+<li>Always <strong>visualize</strong> with <code>ggpredict(model, terms = c("X", "Z"))</code> — parallel vs.&nbsp;crossing slope, check the CIs</li>
+<li>Same logic applies to <strong>logistic regression</strong> with <code>glm(..., family = binomial)</code></li>
+<li>Interpret interactions <strong>substantively</strong> — connect to theory, not just p-values</li>
 </ul>
 <table class="caption-top">
 <colgroup>
@@ -2492,18 +2453,12 @@ High weight
 <section id="questions-4" class="slide level2">
 <h2>Questions?</h2>
 </section>
-<section id="assignments" class="slide level2 smaller scrollable">
+<section id="assignments" class="slide level2 smaller">
 <h2>Assignments</h2>
 <p><strong>Weekly Assignment #11</strong></p>
-<p>Using your research dataset, run an <strong>interaction analysis</strong>:</p>
-<ol type="1">
-<li>Identify a theoretical reason why Z might moderate your X → Y relationship — state your interaction hypothesis clearly</li>
-<li>Check for visual evidence: plot <code>ggplot(data, aes(x=X, y=Y, color=Z)) + geom_smooth(method="lm")</code></li>
-<li>Run two models: <code>lm(Y ~ X + Z)</code> (no interaction) and <code>lm(Y ~ X * Z)</code> (with interaction) and compare with <code>modelsummary()</code></li>
-<li>Interpret the interaction coefficient: which group has a larger slope? By how much?</li>
-<li>Report whether the interaction is statistically significant, and interpret what this means substantively</li>
-<li>Produce a <code>ggpredict(model, terms = c("X", "Z"))</code> visualization and describe the pattern</li>
-</ol>
+<ul>
+<li>Canceled to focus on final paper and final exam</li>
+</ul>
 <p><strong>Also upcoming:</strong></p>
 <ul>
 <li><strong>Revised Proposal with Outline</strong> — <span class="highlight">Due Thursday, April 16</span>

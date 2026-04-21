@@ -629,11 +629,11 @@ Most common in sociology: continuous X₁, binary X₂ (e.g., sex, race indicato
 
 $$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 
-| Group | Slope for X₁ | Formula |
+| Group | Full equation | Slope for X₁ |
 |---|---|---|
-| $X_2 = 0$ (reference) | $\beta_1$ | Slope for reference group |
-| $X_2 = 1$ (key group) | $\beta_1 + \beta_3$ | Reference slope + interaction |
-| **Difference in slopes** | $\beta_3$ | The interaction term itself |
+| $X_2 = 0$ (reference) | $\alpha + \beta_1 X_1$ | $\beta_1$ |
+| $X_2 = 1$ (key group) | $(\alpha + \beta_2) + (\beta_1 + \beta_3) X_1$ | $\beta_1 + \beta_3$ |
+| **Difference in slopes** | | $\beta_3$ |
 
 ::: {.callout-tip icon=false}
 ## Our example: education × sex → income
@@ -697,7 +697,7 @@ modelsummary(
 
 **Interaction** ($\beta_3$ = `r b_prest_age`): the prestige → income slope **`r b_prest_age_dir`** as workers get older — prestige **`r b_prest_age_word`** over a career. In the margins plot on the next slide, this will appear as "steeper lines for older ages".
 
-**Keep in mind, however, this interaction is not statistically significant.**
+**High-level summary:** Occupational prestige is positively associated with income, while age has a negative main effect on income at mean prestige levels. The positive interaction term suggests that the effect of prestige grows stronger with age — partially offsetting the negative age effect — but this interaction is **not statistically significant,** so the impact of prestige does not depend on age.
 :::
 
 ### Continuous × Binary
@@ -740,7 +740,7 @@ modelsummary(
 
 **Interaction** ($\beta_3$ = `r scales::dollar(b_int_term)`): women's income return per additional year of education is **`r scales::dollar(abs(b_int_term))` `r ifelse(b_int_term < 0, "less", "more")`** than men's. Men gain `r scales::dollar(effect_men)` per year; women gain `r scales::dollar(effect_women)` — a difference that is `r sig_verdict` (`r p_int_label`).
 
-**High-level summary:** Education is strongly positively associated with income for both men and women. While women appear to have slightly higher returns to education than men (interaction term), this difference is not statistically significant. Women also have lower predicted income at low levels of education, though this difference is not statistically significant.
+**High-level summary:** Education is strongly positively associated with income for both men and women. The negative coefficient for women means they have lower predicted income at low levels of education. While women appear to have slightly higher returns to education than men (interaction term), this **difference is not statistically significant.**  
 :::
 
 ### Binary × Binary
@@ -796,7 +796,7 @@ Where: $\alpha$ = \$`r f_alpha`, $\beta_1$ (Black) = −\$`r f_black`, $\beta_2$
 
 **Interaction** ($\beta_3$ = \$`r f_int`, `r p_bb_label`): the additional income difference for Black women beyond what the two main effects predict additively. A positive $\beta_3$ means the combined penalty is *smaller* than the sum of the two gaps; negative means it is *larger*. This term is **`r sig_bb`**, so we cannot conclude that the racial income gap is meaningfully different for women versus men.
 
-**High-level summary:** Both race and sex are independently associated with lower income. Black workers earn less than white workers, and women earn less than men. The interaction term suggests the two penalties may not simply add together for Black women, but this non-additivity does not clear the significance threshold — treat the main effects as the primary finding.
+**High-level summary:** Both race and sex are independently associated with lower income. Black workers earn less than white workers, and women earn less than men. The interaction term--**is not significant**--but would suggest the two penalties do not simply add together for Black women.
 :::
 
 :::
@@ -1013,10 +1013,7 @@ From the regression output:
 | Women | `r scales::dollar(effect_men)` + (`r b_int_term`) = **`r scales::dollar(effect_women)`** |
 | Difference | `r b_int_term` (`r p_int_label`) |
 
-::: {.callout-important icon=false}
-## Note: this interaction is `r sig_verdict`
-In this example, `r p_int_label` — we **`r h0_verdict`** that the education slope is the same for men and women. Even if both lower-order terms (education, female) were significant (only education is here), it's irrelevant: **significance of main effects tells you nothing about whether the interaction is real.** The only test that matters for moderation is the p-value on the interaction term itself (`educ:sex_ffemale`). A non-significant result means the data are consistent with parallel slopes — not that an interaction definitely doesn't exist (see the power note later).
-:::
+**High-level summary:** Education is strongly positively associated with income for both men and women. The negative coefficient for women means they have lower predicted income at low levels of education. While women appear to have slightly higher returns to education than men (interaction term), **this difference is not statistically significant.**  
 :::
 
 ### Predicted Incomes
@@ -1077,11 +1074,9 @@ ggpredict(model_interact, terms = c("educ [4:20 by=0.5]", "sex_f")) |>
 
 **Line slope:** A steeper line = higher income return per year of education for that group.
 
-**Line gap at each X value:** The vertical distance between men's and women's predicted incomes. If the lines are parallel (same slope), the gap is constant; if men's line is steeper, the gap **widens** with education.
+**Line gap at each X value:** The vertical distance between men's and women's predicted incomes. If the lines are parallel (same slope), the gap is constant; if one line's slope is  steeper, the gap **widens** or **decreases** with education. Hard to tell in this case.
 
-**Confidence ribbons:** Overlapping ribbons signal uncertainty about whether the two slopes are truly different. The formal test is the p-value on the interaction term — not visual ribbon comparison.
-
-**For your data:** Replace `sex_f` with your moderating variable and run the same code. Do the slopes diverge?
+**Confidence ribbons:** Overlapping ribbons signal uncertainty about whether the two slopes are truly different. The formal test is the p-value on the interaction term. In this case, they mostly overlap.
 :::
 
 :::
@@ -1122,7 +1117,7 @@ Interaction terms are often **hard to detect** — you need a large sample and a
 
 ## Interactions in Logistic Regression {.smaller .scrollable}
 
-Interaction terms work the same way in logistic regression — same syntax, same logic:
+Interaction terms work the same way in logistic regression — same syntax, same logic. Let's look at the interaction of education and sex on likely union membership. 
 
 ::: {.panel-tabset}
 
@@ -1284,20 +1279,19 @@ Thompson & Keith use **continuous × continuous interactions** to show that skin
 | **Outcome 1** | Self-esteem | Multi-item scale (Rosenberg items) |
 | **Outcome 2** | Self-efficacy | Multi-item scale (locus of control items) |
 | **Key predictor (X₁)** | Skin tone | Interviewer-rated, 5-point scale (1 = very light, 5 = very dark) |
-| **Moderator (X₂)** | Gender | Binary: female / male |
-| **Interaction** | Skin tone × Gender | Tests whether the skin tone effect differs by gender |
-| **Controls** | Education, income, age, marital status, region | Individual characteristics |
+| **Main Moderator (Sample)** | Gender | Binary: female / male |
+| **Secondary Moderators (X₂)** | Income, Attractiveness, Weight | Continuous measures |
+| **Interaction** | Skin tone × Income, × Attractiveness, × Weight, | Tests whether the skin tone effect differs by Income, Attractiveness, and weight by gender |
+| **Controls** | Education, age, marital status, region | Individual characteristics |
 
 ::: {.callout-tip icon=false}
 ## Connecting to today's framework:
-Their regression is equivalent to:
+Their regression is equivalent to a three way interaction, for example:
 
 ```r
-lm(self_esteem ~ skin_tone * gender + education + income + age + ...,
+lm(self_esteem ~ skin_tone * gender * income + age + ...,
    data = nsba)
 ```
-
-The interaction term tests: is the effect of `skin_tone` on `self_esteem` different for women vs. men?
 :::
 
 :::
@@ -1312,7 +1306,7 @@ The interaction term tests: is the effect of `skin_tone` on `self_esteem` differ
 ::: {.callout-note icon=false}
 ## The core finding (Results pp. 349–351):
 
-Thompson & Keith run **separate OLS models for women and men**. Rather than one skin-tone × gender term, they find **continuous × continuous interactions** within each gender's model — the effect of skin tone depends on other social resources:
+Thompson & Keith run **separate OLS models for women and men**. Rather than one skin-tone × gender * third moderateor term, they find **continuous × continuous interactions** within each gender's model — the effect of skin tone depends on other social resources. To bear there out, they break make cut points by one of the continuous variables for comparison.
 
 **Women's self-esteem** (Table 4):
 
@@ -1410,42 +1404,6 @@ Thompson & Keith (2001), **Table 4** — significant interaction effects with si
 **b¹** is the interaction coefficient — it tests whether the skin tone slope *changes* as the moderator increases (negative b¹ = the effect weakens as the moderator rises). **b²** gives the simple slope at specific moderator values: the effect of skin tone on self-esteem *for women at low income*, etc. The skin tone slope is significant at low and average income/attractiveness, but vanishes at high levels — darker skin penalizes women's self-esteem only when they lack other social resources.
 :::
 
-### The Path Model
-
-```{r}
-#| echo: false
-#| fig-height: 3.4
-#| fig-align: center
-#| warning: false
-
-ggplot() +
-  annotate("label", x = 0, y = 0,
-           label = "Skin Tone\n(darker = 5)",
-           fill = "#d0e4f5", color = "#4E79A7",
-           size = 4.2, fontface = "bold", label.size = 1.0) +
-  annotate("label", x = 4.5, y = 0,
-           label = "Self-Esteem\n(Y)",
-           fill = "#d0e4f5", color = "#4E79A7",
-           size = 4.2, fontface = "bold", label.size = 1.0) +
-  annotate("label", x = 2.25, y = 2.0,
-           label = "Gender\n(Moderator)",
-           fill = "#fff3cd", color = "#F28E2B",
-           size = 4.2, fontface = "bold", label.size = 1.0) +
-  annotate("segment", x = 0.62, xend = 3.88, y = 0, yend = 0,
-           arrow = arrow(type = "closed", length = unit(0.13, "in")),
-           color = "#4E79A7", linewidth = 1.3) +
-  annotate("segment", x = 2.25, xend = 2.25, y = 1.72, yend = 0.16,
-           arrow = arrow(type = "closed", length = unit(0.13, "in")),
-           color = "#F28E2B", linewidth = 1.3, linetype = "dashed") +
-  annotate("text", x = 2.25, y = -0.32,
-           label = "β₁ (for men) vs. β₁ + β₃ (for women)",
-           size = 3.2, color = "#4E79A7", fontface = "italic") +
-  annotate("text", x = 2.85, y = 1.0,
-           label = "β₃ (interaction)", size = 3.5, color = "#F28E2B", fontface = "bold") +
-  coord_cartesian(xlim = c(-0.8, 5.4), ylim = c(-0.7, 2.65)) +
-  theme_void(base_size = 12)
-```
-
 ### Discussion & Interpretation (pp. 351–354)
 
 ::: {.callout-note icon=false}
@@ -1502,15 +1460,8 @@ T&K's approach models what good interaction research looks like: they specify a 
 
 - An **interaction** occurs when Z moderates the effect of X on Y: the X → Y relationship differs across levels of Z
 - Add an interaction with `lm(Y ~ X * Z)` — R automatically includes X, Z, and X:Z
-- **Continuous × binary interaction:**
-
-  | | Formula |
-  |---|---|
-  | Effect of X for reference group | $\hat\beta_1$ |
-  | Effect of X for key group | $\hat\beta_1 + \hat\beta_3$ |
-  | Test of moderation | Is $\hat\beta_3$ significantly ≠ 0? |
-
-- Always **visualize** with `ggpredict(model, terms = c("X", "Z"))` — parallel vs. crossing slopes
+- Always interpret main and interaction effect together, how you do this varies slighly by measurement of interacting variables (binary vs continuous)
+- Always **visualize** with `ggpredict(model, terms = c("X", "Z"))` — parallel vs. crossing slope, check the CIs
 - Same logic applies to **logistic regression** with `glm(..., family = binomial)`
 - Interpret interactions **substantively** — connect to theory, not just p-values
 
@@ -1548,14 +1499,7 @@ Their paper shows how to: (1) justify the interaction based on theory, (2) run t
 
 **Weekly Assignment #11** 
 
-Using your research dataset, run an **interaction analysis**:
-
-1. Identify a theoretical reason why Z might moderate your X → Y relationship — state your interaction hypothesis clearly
-2. Check for visual evidence: plot `ggplot(data, aes(x=X, y=Y, color=Z)) + geom_smooth(method="lm")`
-3. Run two models: `lm(Y ~ X + Z)` (no interaction) and `lm(Y ~ X * Z)` (with interaction) and compare with `modelsummary()`
-4. Interpret the interaction coefficient: which group has a larger slope? By how much?
-5. Report whether the interaction is statistically significant, and interpret what this means substantively
-6. Produce a `ggpredict(model, terms = c("X", "Z"))` visualization and describe the pattern
+ - Canceled to focus on final paper and final exam
 
 **Also upcoming:**
 
