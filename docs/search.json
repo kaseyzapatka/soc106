@@ -4848,7 +4848,7 @@
     "href": "slides/week16.html#what-you-should-be-ready-to-do",
     "title": "Week 16",
     "section": "What You Should Be Ready To Do",
-    "text": "What You Should Be Ready To Do\n\n\nMultiple choice\n\nIdentify variable types\nChoose an appropriate probability distribution\nRecognize skew and the normal-curve rules\nPick the right figure or test\nDistinguish population from sample\nInterpret a p-value or R^2\n\n\nShort answer\n\nRead a t-test/chi-square test\nInterpret regression output\nRead and interpret interaction terms and margins plots\nExplain what moderation means and interpret an interaction coefficient\nEvaluate sampling designs and representativeness\nCritique a misleading figure\nInterpret a confidence interval"
+    "text": "What You Should Be Ready To Do\n\n\nMultiple choice\nChoosing the right answer from 4 options.\n\nIdentify variable types\nChoose an appropriate probability distribution\nRecognize skew and the normal-curve rules\nPick the right figure or test\nDistinguish population from sample\nInterpret a p-value or R^2\n\n\nShort answer\nGive you output or a scenario and ask you to intepret. No by-hand calculations. Hand-write interpretations.\n\nRead a t-test/chi-square test\nInterpret regression output\nRead and interpret interaction terms and margins plots\nExplain what moderation means and interpret an interaction coefficient\nEvaluate sampling designs and representativeness\nCritique a misleading figure\nInterpret a confidence interval"
   },
   {
     "objectID": "slides/week16.html#core-concepts-to-review",
@@ -4869,7 +4869,7 @@
     "href": "slides/week16.html#inference-refresher",
     "title": "Week 16",
     "section": "Inference Refresher",
-    "text": "Inference Refresher\n\nThe 68-95-99.7 rule only applies to an approximately normal distribution\nThe Central Limit Theorem is about the sampling distribution of sample means, not about every raw sample looking normal\nA margin of error is the plus-or-minus amount around an estimate\nA confidence interval is the full range: estimate plus or minus the margin of error\nHolding everything else constant, a larger sample size usually makes a confidence interval narrower\nA higher confidence level usually makes a confidence interval wider\n\n\n\n\nP-value wording to know well\n\n\nA p-value is the probability of getting results this extreme, or more extreme, if the null hypothesis were true.\nFor any output you read on the exam: identify the direction, comment on statistical significance, then interpret substantively in plain language."
+    "text": "Inference Refresher\n\nThe 68-95-99.7 rule only applies to an approximately normal distribution\nThe Central Limit Theorem is about the sampling distribution of sample means, not about every raw sample looking normal\nA margin of error is the single number (+/-) that measures error around an estimate\nA confidence interval is the full range: estimate plus or minus the margin of error\nHolding everything else constant, a larger sample size usually makes a confidence interval narrower\nA higher confidence level usually makes a confidence interval wider\n\n\n\n\nP-value wording to know well\n\n\nA p-value is the probability of getting results this extreme, or more extreme, if the null hypothesis were true.\nFor any output you read on the exam: identify the direction, comment on statistical significance, then interpret substantively in plain language."
   },
   {
     "objectID": "slides/week16.html#reading-a-t-test-or-confidence-interval",
@@ -4883,14 +4883,14 @@
     "href": "slides/week16.html#reading-ols-output",
     "title": "Week 16",
     "section": "Reading OLS Output",
-    "text": "Reading OLS Output\n\n\n\nTerm\nEstimate\n\n\n\n\nIntercept\n5.8***\n\n\nDivorced\n-0.9**\n\n\nWidowed\n-0.6\n\n\nNever married\n-1.2***\n\n\nAge\n0.02*\n\n\nR^2\n0.16\n\n\n\nOutcome: life satisfaction (1–7 scale). Married is the omitted baseline.\n\nIn OLS, the outcome is continuous\nIf one category is missing from the table, that missing category is the baseline/reference group\nA coefficient tells you the expected difference in the outcome, holding the other variables constant\nR^2 tells you how much of the variation in the outcome is explained by the model\n\n\n\n\nStudy move\n\n\nPractice saying coefficient interpretations out loud using the phrase “holding the other variables constant.”\n\n\n\n\n\n\nSample interpretation — Never married\n\n\nRespondents who have never been married are predicted to score 1.2 points lower on life satisfaction than married respondents (the reference group), holding age constant."
+    "text": "Reading OLS Output\n\n\n\nTerm\nEstimate\n\n\n\n\nIntercept\n5.8***\n\n\nDivorced\n-0.9**\n\n\nWidowed\n-0.6\n\n\nNever married\n-1.2***\n\n\nAge\n0.02*\n\n\nR^2\n0.16\n\n\n\nOutcome: life satisfaction (1–7 scale). Married is the omitted baseline.\n\nFor OLS, the outcome is continuous.\nIf one category is missing from the table, that missing category is the baseline/reference group\nA coefficient tells you the expected difference in the outcome, for every 1-unit increase in in variable, holding the other variables constant\nR^2 tells you how much of the variation in the outcome is explained by the model. In this case, 16%.\n\n\n\n\nSample interpretation — Never married\n\n\nRespondents who have never been married are predicted to score 1.2 points lower on life satisfaction than married respondents (the reference group), holding age constant."
   },
   {
     "objectID": "slides/week16.html#reading-logistic-regression-output",
     "href": "slides/week16.html#reading-logistic-regression-output",
     "title": "Week 16",
     "section": "Reading Logistic Regression Output",
-    "text": "Reading Logistic Regression Output\n\n\n\nTerm\nOdds ratio\n\n\n\n\nIncome (thousands)\n1.02**\n\n\nAge\n1.03***\n\n\nMarried (1 = yes)\n1.38*\n\n\n\nOutcome: whether the respondent participates in a community organization (1 = yes).\n\nIn logistic regression, the outcome is binary\nOdds ratio greater than 1 -&gt; higher odds\nOdds ratio less than 1 -&gt; lower odds\nOdds ratio equal to 1 -&gt; no association\nA quick interpretation shortcut is (OR - 1) x 100\n\nExamples\n\n1.38 -&gt; about 38% higher odds\n0.76 -&gt; about 24% lower odds\n\n\n\n\nSample interpretation — Age\n\n\nEach additional year of age is associated with odds of participating in a community organization that are about 3% higher, holding income and marital status constant."
+    "text": "Reading Logistic Regression Output\n\n\n\nTerm\nOdds ratio\n\n\n\n\nIncome (thousands)\n1.02**\n\n\nAge\n1.03***\n\n\nMarried (1 = yes)\n1.38*\n\n\n\nOutcome: whether the respondent participates in a community organization (1 = yes).\n\nIn logistic regression, the outcome is binary\nCoefficients are interpreted as odds ratios:\n\nOdds ratio greater than 1 -&gt; higher odds\nOdds ratio less than 1 -&gt; lower odds\nOdds ratio equal to 1 -&gt; no association\n\nA quick interpretation shortcut is (OR - 1) x 100\n\n1.38 -&gt; 1.38-1 ~ 38% higher odds\n0.76 -&gt; 1-0.76~ -24% lower odds\n\n\n\n\n\nSample interpretation — Age\n\n\nEach additional year of age is associated with odds of participating in a community organization that are about 3% higher, holding income and marital status constant."
   },
   {
     "objectID": "slides/week16.html#interactions-and-margins-plots",
@@ -4911,7 +4911,7 @@
     "href": "slides/week16.html#sampling-and-figure-critique",
     "title": "Week 16",
     "section": "Sampling and Figure Critique",
-    "text": "Sampling and Figure Critique\n\n\nSampling\n\nA representative sample resembles the target population on the characteristics that matter\nIn cluster sampling you randomly select groups or locations first, then observe people within them (e.g., randomly select hospitals, then survey all patients inside)\nNonresponse or selection bias happens when some kinds of people are systematically harder to reach than others\n\n\nFigure critique\n\nDoes the graph type match the variable?\nAre the axes labeled clearly?\nIs the title accurate?\nIs the scale misleading or truncated in a way that exaggerates differences?\nAre the units clear?"
+    "text": "Sampling and Figure Critique\n\n\nSampling\n\nA representative sample resembles the target population on the characteristics that matter\nIn stratified random sampling you divide the population into subgroups (strata) first, then randomly sample from each — useful when you want to ensure representation of smaller groups (e.g., sample men and women separately)\nIn cluster sampling you randomly select groups or locations first, then observe people within them (e.g., randomly select hospitals, then survey all patients inside)\nNonresponse or selection bias happens when some kinds of people are systematically harder to reach than others\n\n\nFigure critique\n\nDoes the graph type match the variable?\nAre the axes labeled clearly?\nIs the title accurate?\nIs the scale misleading or truncated in a way that exaggerates differences?\nAre the units clear?"
   },
   {
     "objectID": "slides/week16.html#how-to-study-efficiently-this-week",
@@ -4946,7 +4946,7 @@
     "href": "slides/week16.html#examples-of-choosing-the-right-tool",
     "title": "Week 16",
     "section": "Examples of Choosing the Right Tool",
-    "text": "Examples of Choosing the Right Tool\n\n\n\n\n\n\n\n\nGoal\nWhat the variables look like\nGood choice\n\n\n\n\nShow the distribution of one categorical variable\nOne categorical variable\nBar chart\n\n\nShow the distribution of one quantitative variable\nOne continuous/count variable\nHistogram\n\n\nCompare the mean of a quantitative outcome across two groups\nQuantitative Y + binary group\nTwo-sample t-test\n\n\nStudy the relationship between two categorical variables\nCategorical X + categorical Y\nChi-square test\n\n\nModel a continuous outcome\nQuantitative Y\nOLS regression\n\n\nModel a binary outcome\nY = 0/1\nLogistic regression\n\n\n\n\n\n\nOn the exam\n\n\nMany mistakes come from choosing the wrong tool because the student did not first identify the outcome type."
+    "text": "Examples of Choosing the Right Tool\n\n\n\n\n\n\n\n\nGoal\nWhat the variables look like\nGood choice\n\n\n\n\nShow the distribution of one categorical variable\nOne categorical variable\nBar chart\n\n\nShow the distribution of one continuous variable\nOne continuous variable\nHistogram\n\n\nCompare the mean of a continuous outcome across two groups\nContinuous Y + binary group\nTwo-sample t-test\n\n\nStudy the relationship between two categorical variables\nCategorical X + categorical Y\nChi-square test\n\n\nModel a continuous outcome\nContinuous Y\nOLS regression\n\n\nModel a binary outcome\nY = 0/1\nLogistic regression\n\n\n\n\n\n\nOn the exam\n\n\nMany mistakes come from choosing the wrong tool because the student did not first identify the outcome type."
   },
   {
     "objectID": "slides/week16.html#interactions-and-margins-plots-sample-interpretation",
@@ -4967,13 +4967,27 @@
     "href": "slides/week16.html#housekeeping",
     "title": "Week 16",
     "section": "Housekeeping",
-    "text": "Housekeeping\nWeekly Assignment #11\n\nHW 11 was canceled - wanted to make sure you had time to work on final exam\nWill still be able to drop lowest of 10 assignments.\n\nIn-class presentations\n\nTuesday, April 28/Tuesday May, 5 — 7–10 minutes per student\nSlide template on the course site; structure: question → data → results → so what\nPractice out loud at least once before class\n\nFinal paper\n\nDue Thursday, May 7\nShould include a regression model that answers your research question\nShould follow the formatting described in the final paper outline"
+    "text": "Housekeeping\nWeekly Assignment #11\n\nHW 11 was canceled - wanted to make sure you had time to work on final paper/exam\nWill still be able to drop lowest of 10 assignments.\n\nIn-class presentations\n\nTuesday, April 28/Tuesday May, 5 — 7–10 minutes per student\nSee In-Class Presentation page for presentation assignments\nUse slide template on the course site; structure: question → data → results → so what\nPractice out loud at least once before class\n\nFinal paper\n\nDue Thursday, May 7\nShould include a regression model that answers your research question\nShould follow the formatting described in the final paper outline"
   },
   {
     "objectID": "slides/week16.html#final-presentations",
     "href": "slides/week16.html#final-presentations",
     "title": "Week 16",
     "section": "Final Presentations",
-    "text": "Final Presentations\nHere is the schedule for final presentations. You’ll need to send me your presentation 2 hours before class so I can load them on my laptop.\n\n\nTuesday, April 28\n\n\n\n#\nStudent\n\n\n\n\n1\nZhexin Chen\n\n\n2\nMengxuan Wu\n\n\n3\nArohi Behara\n\n\n4\nMegan Farrenkopf\n\n\n5\nJenny Liu\n\n\n6\nBianca Chiu\n\n\n7\nSrisha Raj\n\n\n8\nKeyla Barcenas\n\n\n9\nMahak Rathi\n\n\n\n\nTuesday, May 5\n\n\n\n#\nStudent\n\n\n\n\n1\nLawrence So\n\n\n2\nDoyoung Kwak\n\n\n3\nAzariah Smith\n\n\n4\nMacheng Xiang\n\n\n5\nVioletta Wang\n\n\n6\nYihan Zhang\n\n\n7\nRose Kong\n\n\n8\nAnthony Maldonado\n\n\n9\nClaudia Gomez Bernal"
+    "text": "Final Presentations\nHere is the schedule for final presentations. You’ll need to send me your presentation 2 hours before class so I can load them on my laptop.\n\n\n\nOrder\nTuesday, April 28\nTuesday, May 5\n\n\n\n\n1\nZhexin Chen\nLawrence So\n\n\n2\nMengxuan Wu\nDoyoung Kwak\n\n\n3\nArohi Behara\nAzariah Smith\n\n\n4\nMegan Farrenkopf\nMacheng Xiang\n\n\n5\nJenny Liu\nVioletta Wang\n\n\n6\nBianca Chiu\nYihan Zhang\n\n\n7\nSrisha Raj\nRose Kong\n\n\n8\nKeyla Barcenas\nAnthony Maldonado\n\n\n9\nMahak Rathi\nClaudia Gomez Bernal"
+  },
+  {
+    "objectID": "slides/week16.html#how-to-study-efficiently-for-final-exam",
+    "href": "slides/week16.html#how-to-study-efficiently-for-final-exam",
+    "title": "Week 16",
+    "section": "How to Study Efficiently For Final Exam",
+    "text": "How to Study Efficiently For Final Exam\n\nRevisit the slides and assignments on these topics:\n\nWeeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests\nWeek 11: OLS regression and R^2\nWeek 12: logistic regression and odds ratios\nWeek 13: interactions (moderation) and margins plots\n\nRedo one example each of a t-test, an OLS model, a logistic model, and an interaction model\nPractice turning output into short written interpretations\nReview definitions you want to be able to write cleanly from memory:\n\np-value\nconfidence interval\nbaseline/reference group\nmoderation\nrepresentative sample\n\n\n\n\n\nBest use of your time\n\n\nDo not just reread code. Practice explaining what results mean."
+  },
+  {
+    "objectID": "slides/week16.html#how-to-study-for-final-exam",
+    "href": "slides/week16.html#how-to-study-for-final-exam",
+    "title": "Week 16",
+    "section": "How to Study For Final Exam",
+    "text": "How to Study For Final Exam\n\nRevisit the slides and assignments on these topics:\n\nWeeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests\nWeek 11: OLS regression and R^2\nWeek 12: logistic regression and odds ratios\nWeek 13: interactions (moderation) and margins plots\n\nRedo one example each of a t-test, an OLS model, a logistic model, and an interaction model\nPractice explaining output in short written interpretations\nReview definitions you want to be able to write cleanly from memory:\n\np-value\nconfidence interval\nbaseline/reference group\nmoderation\nrepresentative sample\n\n\n\n\n\nBest use of your time\n\n\nDo not just reread code. Practice explaining what results mean."
   }
 ]

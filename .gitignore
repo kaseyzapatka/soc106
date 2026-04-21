@@ -11,5 +11,6 @@ submissions/
 # files
 project_overview*
 *.txt
+roster.csv
 
 **/*.quarto_ipynb
