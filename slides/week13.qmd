@@ -792,7 +792,7 @@ Where: $\alpha$ = \$`r f_alpha`, $\beta_1$ (Black) = −\$`r f_black`, $\beta_2$
 
 **Main effect of Race** ($\beta_1$ = −\$`r f_black`): the income gap between white and Black men (the reference group for sex is men). Among men, Black workers earn \$`r f_race_men` less than white workers.
 
-**Main effect of Sex** ($\beta_2$ = −\$`r f_women`): the income gap between men and white women (the reference group for race is white). Among white workers, women earn \$`r f_sex_white` less than men.
+**Main effect of Sex** ($\beta_2$ = −\$`r f_women`): the income gap between white men and white women (the reference group for race is white). Among white workers, women earn \$`r f_sex_white` less than men.
 
 **Interaction** ($\beta_3$ = \$`r f_int`, `r p_bb_label`): the additional income difference for Black women beyond what the two main effects predict additively. A positive $\beta_3$ means the combined penalty is *smaller* than the sum of the two gaps; negative means it is *larger*. This term is **`r sig_bb`**, so we cannot conclude that the racial income gap is meaningfully different for women versus men.
 
@@ -1164,11 +1164,34 @@ sig_logit       <- ifelse(p_logit_int < 0.05, "statistically significant", "not 
 b_logit_int     <- coef(model_logit_int)[["educ:sex_ffemale"]]
 or_logit_int    <- round(exp(b_logit_int), 3)
 logit_int_dir   <- ifelse(b_logit_int < 0, "weaker for women than for men", "stronger for women than for men")
+
+# Main effect ORs and p-values
+or_logit_educ   <- round(exp(coef(model_logit_int)[["educ"]]), 3)
+or_logit_female <- round(exp(coef(model_logit_int)[["sex_ffemale"]]), 3)
+
+p_logit_educ    <- summary(model_logit_int)$coefficients["educ", "Pr(>|z|)"]
+p_logit_educ_label <- ifelse(p_logit_educ < 0.001, "p < 0.001",
+                      ifelse(p_logit_educ < 0.01,  "p < 0.01",
+                      ifelse(p_logit_educ < 0.05,  "p < 0.05", paste0("p = ", round(p_logit_educ, 3)))))
+sig_logit_educ  <- ifelse(p_logit_educ < 0.05, "statistically significant", "not statistically significant")
+
+p_logit_female  <- summary(model_logit_int)$coefficients["sex_ffemale", "Pr(>|z|)"]
+p_logit_female_label <- ifelse(p_logit_female < 0.001, "p < 0.001",
+                        ifelse(p_logit_female < 0.01,  "p < 0.01",
+                        ifelse(p_logit_female < 0.05,  "p < 0.05", paste0("p = ", round(p_logit_female, 3)))))
+sig_logit_female <- ifelse(p_logit_female < 0.05, "statistically significant", "not statistically significant")
 ```
 
 ::: {.callout-note icon=false}
-## Interpreting the logistic interaction OR:
-`Education × Female` (OR = `r or_logit_int`, `r p_logit_label`) is **`r sig_logit`**. An OR `r ifelse(or_logit_int < 1, "< 1 means women's odds of union membership multiply by *less* per year of education than men's — the education effect is weaker for women", "> 1 means women's odds multiply by *more* per year of education than men's — the education effect is stronger for women")`. Use `ggpredict()` to translate this into predicted probabilities and see the gap concretely.
+## Interpretation
+
+**Main effect of Education** (OR = `r or_logit_educ`, `r p_logit_educ_label`): for men (the reference group), each additional year of education multiplies the odds of union membership by `r or_logit_educ`. An OR `r ifelse(or_logit_educ > 1, "> 1 means education is positively associated with union membership among men", "< 1 means education is negatively associated with union membership among men")`. This effect is **`r sig_logit_educ`**.
+
+**Main effect of Female** (OR = `r or_logit_female`, `r p_logit_female_label`): the odds ratio comparing women to men **when education = 0** — a baseline intercept shift with no direct substantive meaning. Interpret the sex difference through predicted probabilities at realistic education values instead. This effect is **`r sig_logit_female`**.
+
+**Interaction: Education × Female** (OR = `r or_logit_int`, `r p_logit_label`): the ratio of education's OR for women to men. An OR `r ifelse(or_logit_int < 1, "< 1 means each year of education multiplies women's odds by *less* than men's — the education effect is weaker for women", "> 1 means each year of education multiplies women's odds by *more* than men's — the education effect is stronger for women")`. This interaction is **`r sig_logit`**.
+
+**High-level summary:** Education `r ifelse(or_logit_educ > 1, "increases", "decreases")` the odds of union membership for men. The interaction term tells us whether that effect differs for women — since it's positive, the effect of education is positive for women, which we'll see clearly in the margins plot.
 :::
 
 ### Visualization
@@ -1204,11 +1227,11 @@ ggpredict(model_logit_int, terms = c("educ [6:20 by=0.5]", "sex_f")) |>
 ::: {.callout-note icon=false}
 ## Why are the curves S-shaped — and what does the interaction mean?
 
-**The S-curve is not from a quadratic term.** It comes from logistic regression itself: the model predicts *log-odds* as a linear function of education, but `ggpredict()` converts those to *probabilities* (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.
+**The S-curve is not from a quadratic term.** It comes from logistic regression itself: the model estimates odds ratios on a multiplicative scale, but `ggpredict()` converts those to *probabilities* (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.
 
 **Reading the interaction:**
 
-The interaction term (`Education × Female`, `r p_logit_label`) is **`r sig_logit`**. The log-odds coefficient is `r round(b_logit_int, 3)`, meaning the effect of education on the probability of union membership is **`r logit_int_dir`** — the lines in the plot diverge as education rises, and this divergence is statistically real.
+The interaction OR (`Education × Female` = `r or_logit_int`, `r p_logit_label`) is **`r sig_logit`**. An OR `r ifelse(or_logit_int < 1, paste0("< 1 means each year of education multiplies women's odds of union membership by less than men's (specifically, by a factor of ", or_logit_int, " relative to men's OR of ", or_logit_educ, ") — so the lines converge as education rises"), paste0("> 1 means each year of education multiplies women's odds by more than men's (specifically, by a factor of ", or_logit_int, " relative to men's OR of ", or_logit_educ, ") — so the lines diverge as education rises"))`. This is why the probability curves `r ifelse(or_logit_int < 1, "converge", "diverge")` at higher education levels in the plot.
 
 :::
 
@@ -1451,9 +1474,6 @@ This is a **structural interpretation** of a statistical interaction. The intera
 | Thompson & Keith concept | Our framework |
 |---|---|
 | Run separate models for women and men | Stratified analysis — or a single model with gender interactions |
-| Skin tone × Income interaction (b¹ = −.035*) | Continuous × continuous: $\beta_3$ in `lm(Y ~ X1 * X2)` |
-| Simple slope at low income (+.376*) | $\hat\beta_1 + \hat\beta_3 \cdot X_2$ evaluated at a specific value of $X_2$ |
-| Simple slope vanishes at high income (−.005) | Effect of skin tone on self-esteem is **conditional** on income |
 | Different moderators for women vs. men | Theory first: income/attractiveness matter for women's status; weight for men's |
 | Connects to colorism + gender theory | Substantive interpretation of $\beta_3$ — not just a number |
 
@@ -1541,5 +1561,5 @@ Using your research dataset, run an **interaction analysis**:
 
 - **Revised Proposal with Outline** — <span class="highlight">Due Thursday, April 16</span>
   - Describe whether your final analysis includes any control variables or interaction hypotheses
-- **In-class presentations** — <span class="highlight">April 28</span>
+- **In-class presentations** — <span class="highlight">April 28/May 5</span>
 - **Final paper** — <span class="highlight">Due Thursday, May 7</span>

@@ -1308,7 +1308,7 @@
 </div>
 <div class="callout-content">
 <p><strong>Main effect of Race</strong> (<span class="math inline">\(\beta_1\)</span> = −$11,319): the income gap between white and Black men (the reference group for sex is men). Among men, Black workers earn $11,319 less than white workers.</p>
-<p><strong>Main effect of Sex</strong> (<span class="math inline">\(\beta_2\)</span> = −$17,639): the income gap between men and white women (the reference group for race is white). Among white workers, women earn $17,639 less than men.</p>
+<p><strong>Main effect of Sex</strong> (<span class="math inline">\(\beta_2\)</span> = −$17,639): the income gap between white men and white women (the reference group for race is white). Among white workers, women earn $17,639 less than men.</p>
 <p><strong>Interaction</strong> (<span class="math inline">\(\beta_3\)</span> = $2,683, p = 0.106): the additional income difference for Black women beyond what the two main effects predict additively. A positive <span class="math inline">\(\beta_3\)</span> means the combined penalty is <em>smaller</em> than the sum of the two gaps; negative means it is <em>larger</em>. This term is <strong>not statistically significant</strong>, so we cannot conclude that the racial income gap is meaningfully different for women versus men.</p>
 <p><strong>High-level summary:</strong> Both race and sex are independently associated with lower income. Black workers earn less than white workers, and women earn less than men. The interaction term suggests the two penalties may not simply add together for Black women, but this non-additivity does not clear the significance threshold — treat the main effects as the primary finding.</p>
 </div>
@@ -1942,10 +1942,13 @@
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Interpreting the logistic interaction OR:</strong></p>
+<p><strong>Interpretation</strong></p>
 </div>
 <div class="callout-content">
-<p><code>Education × Female</code> (OR = 1.278, p &lt; 0.001) is <strong>statistically significant</strong>. An OR &gt; 1 means women’s odds multiply by <em>more</em> per year of education than men’s — the education effect is stronger for women. Use <code>ggpredict()</code> to translate this into predicted probabilities and see the gap concretely.</p>
+<p><strong>Main effect of Education</strong> (OR = 0.931, p &lt; 0.01): for men (the reference group), each additional year of education multiplies the odds of union membership by 0.931. An OR &lt; 1 means education is negatively associated with union membership among men. This effect is <strong>statistically significant</strong>.</p>
+<p><strong>Main effect of Female</strong> (OR = 0.018, p &lt; 0.001): the odds ratio comparing women to men <strong>when education = 0</strong> — a baseline intercept shift with no direct substantive meaning. Interpret the sex difference through predicted probabilities at realistic education values instead. This effect is <strong>statistically significant</strong>.</p>
+<p><strong>Interaction: Education × Female</strong> (OR = 1.278, p &lt; 0.001): the ratio of education’s OR for women to men. An OR &gt; 1 means each year of education multiplies women’s odds by <em>more</em> than men’s — the education effect is stronger for women. This interaction is <strong>statistically significant</strong>.</p>
+<p><strong>High-level summary:</strong> Education decreases the odds of union membership for men. The interaction term tells us whether that effect differs for women — since it’s positive, the effect of education is positive for women, which we’ll see clearly in the margins plot.</p>
 </div>
 </div>
 </div>
@@ -1988,9 +1991,9 @@
 <p><strong>Why are the curves S-shaped — and what does the interaction mean?</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>The S-curve is not from a quadratic term.</strong> It comes from logistic regression itself: the model predicts <em>log-odds</em> as a linear function of education, but <code>ggpredict()</code> converts those to <em>probabilities</em> (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.</p>
+<p><strong>The S-curve is not from a quadratic term.</strong> It comes from logistic regression itself: the model estimates odds ratios on a multiplicative scale, but <code>ggpredict()</code> converts those to <em>probabilities</em> (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.</p>
 <p><strong>Reading the interaction:</strong></p>
-<p>The interaction term (<code>Education × Female</code>, p &lt; 0.001) is <strong>statistically significant</strong>. The log-odds coefficient is 0.246, meaning the effect of education on the probability of union membership is <strong>stronger for women than for men</strong> — the lines in the plot diverge as education rises, and this divergence is statistically real.</p>
+<p>The interaction OR (<code>Education × Female</code> = 1.278, p &lt; 0.001) is <strong>statistically significant</strong>. An OR &gt; 1 means each year of education multiplies women’s odds by more than men’s (specifically, by a factor of 1.278 relative to men’s OR of 0.931) — so the lines diverge as education rises. This is why the probability curves diverge at higher education levels in the plot.</p>
 </div>
 </div>
 </div>
@@ -2363,22 +2366,10 @@ High weight
 <td>Stratified analysis — or a single model with gender interactions</td>
 </tr>
 <tr class="even">
-<td>Skin tone × Income interaction (b¹ = −.035*)</td>
-<td>Continuous × continuous: <span class="math inline">\(\beta_3\)</span> in <code>lm(Y ~ X1 * X2)</code></td>
-</tr>
-<tr class="odd">
-<td>Simple slope at low income (+.376*)</td>
-<td><span class="math inline">\(\hat\beta_1 + \hat\beta_3 \cdot X_2\)</span> evaluated at a specific value of <span class="math inline">\(X_2\)</span></td>
-</tr>
-<tr class="even">
-<td>Simple slope vanishes at high income (−.005)</td>
-<td>Effect of skin tone on self-esteem is <strong>conditional</strong> on income</td>
-</tr>
-<tr class="odd">
 <td>Different moderators for women vs.&nbsp;men</td>
 <td>Theory first: income/attractiveness matter for women’s status; weight for men’s</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Connects to colorism + gender theory</td>
 <td>Substantive interpretation of <span class="math inline">\(\beta_3\)</span> — not just a number</td>
 </tr>
@@ -2519,7 +2510,7 @@ High weight
 <ul>
 <li>Describe whether your final analysis includes any control variables or interaction hypotheses</li>
 </ul></li>
-<li><strong>In-class presentations</strong> — <span class="highlight">April 28</span></li>
+<li><strong>In-class presentations</strong> — <span class="highlight">April 28/May 5</span></li>
 <li><strong>Final paper</strong> — <span class="highlight">Due Thursday, May 7</span></li>
 </ul>
 
