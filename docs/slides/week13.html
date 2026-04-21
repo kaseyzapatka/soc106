@@ -744,7 +744,7 @@
 <p><strong>Computing the effect for each group:</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[\text{Effect of } X_1 \text{ for reference group: } \hat\beta_1\]</span> <span class="math display">\[\text{Effect of } X_1 \text{ for other group: } \hat\beta_1 + \hat\beta_3\]</span></p>
+<p><span class="math display">\[\text{Effect of } X_1 \text{ for reference group: } \hat\beta_1\]</span> <span class="math display">\[\text{Effect of } X_1 \text{ for key group: } \hat\beta_1 + \hat\beta_3\]</span></p>
 <p><span class="math inline">\(\hat\beta_3\)</span> is the <strong>difference in slopes</strong> between the two groups. If <span class="math inline">\(\hat\beta_3 = 0\)</span>, the slopes are identical — no interaction.</p>
 </div>
 </div>
@@ -792,7 +792,7 @@
 <li><strong><span class="math inline">\(\beta_3 &gt; 0\)</span></strong>: as <span class="math inline">\(X_2\)</span> increases, the effect of <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span> <strong>strengthens</strong></li>
 <li><strong><span class="math inline">\(\beta_3 &lt; 0\)</span></strong>: as <span class="math inline">\(X_2\)</span> increases, the effect of <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span> <strong>weakens</strong></li>
 </ul>
-<p><strong>Our example:</strong> <code>lm(income91 ~ prestg80 * age)</code> — does the income payoff of occupational prestige depend on career stage? If <span class="math inline">\(\beta_3 &gt; 0\)</span>, prestige matters <em>more</em> for income among older workers; if <span class="math inline">\(\beta_3 &lt; 0\)</span>, prestige pays off <em>less</em> as workers age. Use <code>ggpredict()</code> to visualize the pattern at a few representative ages.</p>
+<p><strong>Test of moderation:</strong> is <span class="math inline">\(\beta_3\)</span> statistically significantly different from zero?</p>
 </div>
 </div>
 </div>
@@ -820,7 +820,7 @@
 <td>Slope for reference group</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(X_2 = 1\)</span> (other group)</td>
+<td><span class="math inline">\(X_2 = 1\)</span> (key group)</td>
 <td><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
 <td>Reference slope + interaction</td>
 </tr>
@@ -839,9 +839,10 @@
 <div class="callout-content">
 <ul>
 <li><span class="math inline">\(\beta_1\)</span> = income return to education <strong>for men</strong> (reference)</li>
+<li><span class="math inline">\(\beta_2\)</span> = income difference between women and men <strong>when education = 0</strong> — the intercept gap between the two regression lines. This is rarely a substantive quantity of interest; it just anchors where the women’s line starts. Use predicted values at realistic education levels to describe the actual income gap.</li>
 <li><span class="math inline">\(\beta_3\)</span> = how much women’s return differs from men’s — a positive <span class="math inline">\(\beta_3\)</span> means women benefit <em>more</em> per year; negative means women benefit <em>less</em></li>
-<li><strong>Test of moderation:</strong> is <span class="math inline">\(\beta_3\)</span> statistically significantly different from zero?</li>
 </ul>
+<p><strong>Test of moderation:</strong> is <span class="math inline">\(\beta_3\)</span> statistically significantly different from zero?</p>
 </div>
 </div>
 </div>
@@ -1002,8 +1003,10 @@
 <p><strong>Interpretation</strong></p>
 </div>
 <div class="callout-content">
-<p><code>Prestige × Age</code> (<span class="math inline">\(\beta_3\)</span> = 4.56) tells us that the prestige → income slope <strong>grows stronger</strong> as workers get older — in other words, prestige <strong>compounds</strong> over a career. In the margins plot on the next slide, this will appear as steeper lines for older ages.</p>
-<p><strong>However, remember that the interaction is not statistically significant.</strong></p>
+<p><strong>Main effect of Occupational Prestige</strong> (<span class="math inline">\(\beta_1\)</span> = 266.44): this is the effect of prestige on income <em>when age = 0</em> — a meaningless baseline. At the sample mean age (45.1 years), a one-unit increase in prestige is associated with <strong>$472.1 more income</strong> (266.44 + 4.56 × 45.1).</p>
+<p><strong>Main effect of Age</strong> (<span class="math inline">\(\beta_2\)</span> = -258.42): this is the effect of age on income <em>when prestige = 0</em> — again, not meaningful on its own. At the sample mean prestige score (43.6), each additional year of age is associated with <strong>$-59.6 less income</strong> (-258.42 + 4.56 × 43.6).</p>
+<p><strong>Interaction</strong> (<span class="math inline">\(\beta_3\)</span> = 4.56): the prestige → income slope <strong>grows stronger</strong> as workers get older — prestige <strong>compounds</strong> over a career. In the margins plot on the next slide, this will appear as “steeper lines for older ages”.</p>
+<p><strong>Keep in mind, however, this interaction is not statistically significant.</strong></p>
 </div>
 </div>
 </div>
@@ -1145,9 +1148,10 @@
 <p><strong>Interpretation</strong></p>
 </div>
 <div class="callout-content">
-<p>The interaction of <code>Education × Female</code> (<span class="math inline">\(\beta_3\)</span> = $84) tells us that women’s income return per additional year of education is <strong>$84 more</strong> than men’s. Men gain $3,836 per year of education; women gain $3,920 — a difference that is not statistically significant (p = 0.869).</p>
+<p><strong>Main effect of Education</strong> (<span class="math inline">\(\beta_1\)</span> = $3,836): the income return to one additional year of education <strong>for men</strong> (the reference group). Because <span class="math inline">\(X_2 = 0\)</span> for men, this is a straightforward slope — men gain $3,836 per year of schooling.</p>
+<p><strong>Main effect of Female</strong> (<span class="math inline">\(\beta_2\)</span> = -$6,038): the income gap between women and men <strong>when education = 0</strong> — the vertical distance between the two regression lines at their origin. This baseline intercept shift is not a substantively meaningful quantity on its own; use predicted values at realistic education levels to describe the actual income gap.</p>
+<p><strong>Interaction</strong> (<span class="math inline">\(\beta_3\)</span> = $84): women’s income return per additional year of education is <strong>$84 more</strong> than men’s. Men gain $3,836 per year; women gain $3,920 — a difference that is not statistically significant (p = 0.869).</p>
 <p><strong>High-level summary:</strong> Education is strongly positively associated with income for both men and women. While women appear to have slightly higher returns to education than men (interaction term), this difference is not statistically significant. Women also have lower predicted income at low levels of education, though this difference is not statistically significant.</p>
-<p><strong>However, remember that the interaction is not statistically significant.</strong></p>
 </div>
 </div>
 </div>
@@ -1303,7 +1307,10 @@
 <p><strong>Interpretation</strong></p>
 </div>
 <div class="callout-content">
-<p><code>Black × Women</code> (<span class="math inline">\(\beta_3\)</span> = $2,683, p = 0.106) is <strong>not statistically significant</strong>. We therefore <strong>cannot conclude</strong> that the racial income gap differs by sex — the data are consistent with the gaps being the same for men and women. The 2×2 table above illustrates the <em>mechanics</em> of reading a binary × binary model, but the interaction term itself does not clear the significance threshold needed to claim that non-additivity is real rather than sampling noise.</p>
+<p><strong>Main effect of Race</strong> (<span class="math inline">\(\beta_1\)</span> = −$11,319): the income gap between white and Black men (the reference group for sex is men). Among men, Black workers earn $11,319 less than white workers.</p>
+<p><strong>Main effect of Sex</strong> (<span class="math inline">\(\beta_2\)</span> = −$17,639): the income gap between men and white women (the reference group for race is white). Among white workers, women earn $17,639 less than men.</p>
+<p><strong>Interaction</strong> (<span class="math inline">\(\beta_3\)</span> = $2,683, p = 0.106): the additional income difference for Black women beyond what the two main effects predict additively. A positive <span class="math inline">\(\beta_3\)</span> means the combined penalty is <em>smaller</em> than the sum of the two gaps; negative means it is <em>larger</em>. This term is <strong>not statistically significant</strong>, so we cannot conclude that the racial income gap is meaningfully different for women versus men.</p>
+<p><strong>High-level summary:</strong> Both race and sex are independently associated with lower income. Black workers earn less than white workers, and women earn less than men. The interaction term suggests the two penalties may not simply add together for Black women, but this non-additivity does not clear the significance threshold — treat the main effects as the primary finding.</p>
 </div>
 </div>
 </div>
@@ -1318,47 +1325,35 @@
 <div class="tab-content">
 <div id="tabset-5-1">
 <p><strong>Model:</strong> <code>lm(income91 ~ prestg80 * age)</code> — does the income payoff of occupational prestige depend on career stage?</p>
+<p>People often visualize the dependency of one variable on the other by breaking the variable of interest into different groups. Here, age is broken into three relevant analytical groups; if there are no clear breaks, use standard deviations.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>p_main <span class="ot">&lt;-</span> <span class="fu">ggpredict</span>(model_prestige, <span class="at">terms =</span> <span class="st">"prestg80"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> predicted)) <span class="sc">+</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">fill =</span> <span class="st">"#4E79A7"</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.4</span>, <span class="at">color =</span> <span class="st">"#4E79A7"</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">","</span>)) <span class="sc">+</span></span>
-<span id="cb4-6"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-7"><a></a>    <span class="at">title    =</span> <span class="st">"Main effect only"</span>,</span>
-<span id="cb4-8"><a></a>    <span class="at">subtitle =</span> <span class="st">"One slope — prestige → income (averaging over age)"</span>,</span>
-<span id="cb4-9"><a></a>    <span class="at">x =</span> <span class="st">"Occupational Prestige Score"</span>,</span>
-<span id="cb4-10"><a></a>    <span class="at">y =</span> <span class="st">"Predicted Income ($)"</span></span>
-<span id="cb4-11"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-12"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>)</span>
-<span id="cb4-13"><a></a></span>
-<span id="cb4-14"><a></a>p_int <span class="ot">&lt;-</span> <span class="fu">ggpredict</span>(model_prestige, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"prestg80"</span>, <span class="st">"age [30, 45, 60]"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb4-15"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> predicted, <span class="at">color =</span> group, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
-<span id="cb4-16"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb4-17"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
-<span id="cb4-18"><a></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb4-19"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#E15759"</span>, <span class="st">"#4E79A7"</span>, <span class="st">"#59A14F"</span>),</span>
-<span id="cb4-20"><a></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Age 30"</span>, <span class="st">"Age 45"</span>, <span class="st">"Age 60"</span>),</span>
-<span id="cb4-21"><a></a>    <span class="at">name   =</span> <span class="st">"Age"</span></span>
-<span id="cb4-22"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-23"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb4-24"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#E15759"</span>, <span class="st">"#4E79A7"</span>, <span class="st">"#59A14F"</span>),</span>
-<span id="cb4-25"><a></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Age 30"</span>, <span class="st">"Age 45"</span>, <span class="st">"Age 60"</span>),</span>
-<span id="cb4-26"><a></a>    <span class="at">name   =</span> <span class="st">"Age"</span></span>
-<span id="cb4-27"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-28"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">","</span>)) <span class="sc">+</span></span>
-<span id="cb4-29"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-30"><a></a>    <span class="at">title    =</span> <span class="st">"With interaction"</span>,</span>
-<span id="cb4-31"><a></a>    <span class="at">subtitle =</span> <span class="st">"Slope varies by age — does prestige compound over a career?"</span>,</span>
-<span id="cb4-32"><a></a>    <span class="at">x =</span> <span class="st">"Occupational Prestige Score"</span>,</span>
-<span id="cb4-33"><a></a>    <span class="at">y =</span> <span class="st">"Predicted Income ($)"</span></span>
-<span id="cb4-34"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-35"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb4-36"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb4-37"><a></a></span>
-<span id="cb4-38"><a></a>p_main <span class="sc">+</span> p_int</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>p_int <span class="ot">&lt;-</span> <span class="fu">ggpredict</span>(model_prestige, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"prestg80"</span>, <span class="st">"age [30, 45, 60]"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> predicted, <span class="at">color =</span> group, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">alpha =</span> <span class="fl">0.15</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.4</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb4-6"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#E15759"</span>, <span class="st">"#4E79A7"</span>, <span class="st">"#59A14F"</span>),</span>
+<span id="cb4-7"><a></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Age 30"</span>, <span class="st">"Age 45"</span>, <span class="st">"Age 60"</span>),</span>
+<span id="cb4-8"><a></a>    <span class="at">name   =</span> <span class="st">"Age"</span></span>
+<span id="cb4-9"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb4-10"><a></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb4-11"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#E15759"</span>, <span class="st">"#4E79A7"</span>, <span class="st">"#59A14F"</span>),</span>
+<span id="cb4-12"><a></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Age 30"</span>, <span class="st">"Age 45"</span>, <span class="st">"Age 60"</span>),</span>
+<span id="cb4-13"><a></a>    <span class="at">name   =</span> <span class="st">"Age"</span></span>
+<span id="cb4-14"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb4-15"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">big.mark =</span> <span class="st">","</span>)) <span class="sc">+</span></span>
+<span id="cb4-16"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-17"><a></a>    <span class="at">title    =</span> <span class="st">"With interaction"</span>,</span>
+<span id="cb4-18"><a></a>    <span class="at">subtitle =</span> <span class="st">"Slope varies by age — does prestige compound over a career?"</span>,</span>
+<span id="cb4-19"><a></a>    <span class="at">x =</span> <span class="st">"Occupational Prestige Score"</span>,</span>
+<span id="cb4-20"><a></a>    <span class="at">y =</span> <span class="st">"Predicted Income ($)"</span></span>
+<span id="cb4-21"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb4-22"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb4-23"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb4-24"><a></a></span>
+<span id="cb4-25"><a></a>p_int</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1379,13 +1374,14 @@
 <li><strong>Parallel lines</strong> = no interaction, prestige pays off the same regardless of age.</li>
 <li><strong>Diverging lines</strong> = interaction, the prestige premium grows (or shrinks) with age.</li>
 </ul>
-<p>The sign of <code>Prestige × Age</code> in the model table tells you the direction; the plot makes it concrete.</p>
+<p>Here we see steeper lines for older ages as the coefficent for the interaction suggests, but the coefficient is not significant. <strong>Always check the confidence intervals</strong>: the interaction is significant wherever there is no overlap – no real difference in this figure.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-5-2">
 <p><strong>Model:</strong> <code>lm(income91 ~ educ * sex_f)</code> — does the income return to education differ by sex?</p>
+<p>This is simpler to visualize since the categories are already decided for you, unlike with a continuous by continuous interaction.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1823,9 +1819,9 @@
 <h2>Interactions in Logistic Regression</h2>
 <p>Interaction terms work the same way in logistic regression — same syntax, same logic:</p>
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Model Table</a></li><li><a href="#tabset-10-2">Visualization</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Model Table</a></li><li><a href="#tabset-7-2">Visualization</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1">
+<div id="tabset-7-1">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1954,7 +1950,7 @@
 </div>
 </div>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-7-2">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1998,9 +1994,14 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
 <section id="questions-2" class="slide level2">
 <h2>Questions?</h2>
-</section>
+</section></section>
+<section>
 <section id="reading-thompson-keith-2001" class="title-slide slide level1 center">
 <h1>Reading: Thompson &amp; Keith (2001)</h1>
 <p>Interactions in a classic race &amp; gender study</p>
@@ -2032,16 +2033,16 @@
 <section id="research-design" class="slide level2 smaller scrollable">
 <h2>Research Design</h2>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Data &amp; Sample</a></li><li><a href="#tabset-7-2">Variables</a></li></ul>
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Data &amp; Sample</a></li><li><a href="#tabset-8-2">Variables</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1">
+<div id="tabset-8-1">
 <ul>
 <li><strong>Data:</strong> National Survey of Black Americans (NSBA), a nationally representative survey of Black adults</li>
 <li><strong>Sample:</strong> Black Americans aged 18+ — Wave I (1979–80) and Wave IV (1992)</li>
 <li><strong>Context:</strong> 1970s–80s US — ongoing de facto racial stratification and deeply gendered standards of beauty</li>
 </ul>
 </div>
-<div id="tabset-7-2">
+<div id="tabset-8-2">
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -2108,9 +2109,9 @@
 <section id="key-results-the-skin-tone-gender-interaction" class="slide level2 smaller scrollable">
 <h2>Key Results: The Skin Tone × Gender Interaction</h2>
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">What They Found</a></li><li><a href="#tabset-8-2">Simplified Results Table</a></li><li><a href="#tabset-8-3">The Path Model</a></li><li><a href="#tabset-8-4">Discussion &amp; Interpretation (pp.&nbsp;351–354)</a></li><li><a href="#tabset-8-5">Lessons for Your Research</a></li></ul>
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">What They Found</a></li><li><a href="#tabset-9-2">Simplified Results Table</a></li><li><a href="#tabset-9-3">The Path Model</a></li><li><a href="#tabset-9-4">Discussion &amp; Interpretation (pp.&nbsp;351–354)</a></li><li><a href="#tabset-9-5">Lessons for Your Research</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1">
+<div id="tabset-9-1">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2133,7 +2134,7 @@
 </div>
 </div>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-9-2">
 <p>Thompson &amp; Keith (2001), <strong>Table 4</strong> — significant interaction effects with simple slopes at low, average, and high values of the moderator. Models run <strong>separately by gender</strong>.</p>
 <table style="font-size:0.80em; width:100%; border-collapse:collapse;">
 <thead>
@@ -2299,7 +2300,7 @@ High weight
 </div>
 </div>
 </div>
-<div id="tabset-8-3">
+<div id="tabset-9-3">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2310,7 +2311,7 @@ High weight
 </div>
 </div>
 </div>
-<div id="tabset-8-4">
+<div id="tabset-9-4">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2323,7 +2324,7 @@ High weight
 </div>
 </div>
 </div>
-<div id="tabset-8-5">
+<div id="tabset-9-5">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2400,9 +2401,9 @@ High weight
 <section id="key-takeaways" class="slide level2 smaller">
 <h2>Key Takeaways</h2>
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Part 1 — Controls</a></li><li><a href="#tabset-9-2">Part 2 — Interactions</a></li></ul>
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Part 1 — Controls</a></li><li><a href="#tabset-10-2">Part 2 — Interactions</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1">
+<div id="tabset-10-1">
 <ul>
 <li><strong>Confounders</strong> are variables that affect both X and Y, creating a spurious association between them</li>
 <li>Controlling for Z (<code>Y ~ X + Z</code>) asks: <em>“Among people with the same Z, what is the relationship between X and Y?”</em></li>
@@ -2411,7 +2412,7 @@ High weight
 <li>Do NOT control for mediators (variables caused by X that cause Y) — we’ll cover mediation next week</li>
 </ul>
 </div>
-<div id="tabset-9-2">
+<div id="tabset-10-2">
 <ul>
 <li><p>An <strong>interaction</strong> occurs when Z moderates the effect of X on Y: the X → Y relationship differs across levels of Z</p></li>
 <li><p>Add an interaction with <code>lm(Y ~ X * Z)</code> — R automatically includes X, Z, and X:Z</p></li>
@@ -2429,7 +2430,7 @@ High weight
 <td><span class="math inline">\(\hat\beta_1\)</span></td>
 </tr>
 <tr class="even">
-<td>Effect of X for other group</td>
+<td>Effect of X for key group</td>
 <td><span class="math inline">\(\hat\beta_1 + \hat\beta_3\)</span></td>
 </tr>
 <tr class="odd">
@@ -2502,7 +2503,7 @@ High weight
 </section>
 <section id="assignments" class="slide level2 smaller scrollable">
 <h2>Assignments</h2>
-<p><strong>Weekly Assignment #11</strong> — <span class="highlight">Due Thursday, April 23</span> <em>(optional — counts as extra credit)</em></p>
+<p><strong>Weekly Assignment #11</strong></p>
 <p>Using your research dataset, run an <strong>interaction analysis</strong>:</p>
 <ol type="1">
 <li>Identify a theoretical reason why Z might moderate your X → Y relationship — state your interaction hypothesis clearly</li>
@@ -2521,20 +2522,8 @@ High weight
 <li><strong>In-class presentations</strong> — <span class="highlight">April 28</span></li>
 <li><strong>Final paper</strong> — <span class="highlight">Due Thursday, May 7</span></li>
 </ul>
-</section>
-<section id="in-class-lab-today" class="slide level2 smaller">
-<h2>In-class lab today</h2>
-<ul>
-<li>Practice interaction analysis using <code>attain</code> dataset</li>
-<li>see lab #8 on bCourses</li>
-</ul>
 
 
-</section>
-
-</div>
-</div>
-</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
