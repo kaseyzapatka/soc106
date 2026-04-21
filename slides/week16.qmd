@@ -58,7 +58,7 @@ interaction_plot <- ggplot(
 
 - Final exam format and logistics
 - The major concept areas you should be ready for
-- How to study efficiently this week without trying to memorize everything
+- How to study efficiently during the final week without trying to memorize everything
 
 ::: {.callout-note icon=false}
 ## Big picture
@@ -70,7 +70,7 @@ This review is intentionally high-level. The goal is to help you organize your s
 
 - **Date:** Monday, May 11, 2026
 - **Time:** 11:30 AM to 2:30 PM
-- **Place:** TBA
+- **Place:** Dwinelle 246 (Here)
 - **Format:** closed-book, closed-computer
 - **Structure:** 10 multiple-choice questions and 10 short-answer questions
 - **Points:** 20 points total
@@ -103,7 +103,7 @@ Focus on concepts, interpretation, and choosing the right tool for the job. You 
 - Read a t-test/chi-square test
 - Interpret regression output
 - Read and interpret interaction terms and margins plots
-- Distinguish mediation from moderation
+- Explain what moderation means and interpret an interaction coefficient
 - Evaluate sampling designs and representativeness
 - Critique a misleading figure
 - Interpret a confidence interval
@@ -113,7 +113,7 @@ Focus on concepts, interpretation, and choosing the right tool for the job. You 
 
 
 
-## Choosing the Right Tool {.smaller}
+## Examples of Choosing the Right Tool {.smaller}
 
 | Goal | What the variables look like | Good choice |
 |---|---|---|
@@ -170,6 +170,11 @@ For any output you read on the exam: identify the **direction**, comment on **st
 Practice saying coefficient interpretations out loud using the phrase "holding the other variables constant."
 :::
 
+::: {.callout-note icon=false}
+## Sample interpretation — Never married
+Respondents who have never been married are predicted to score 1.2 points lower on life satisfaction than married respondents (the reference group), holding age constant.
+:::
+
 
 ## Reading Logistic Regression Output {.smaller}
 
@@ -192,6 +197,11 @@ Practice saying coefficient interpretations out loud using the phrase "holding t
 - `1.38` -> about **38% higher odds**
 - `0.76` -> about **24% lower odds**
 
+::: {.callout-note icon=false}
+## Sample interpretation — Age
+Each additional year of age is associated with odds of participating in a community organization that are about 3% higher, holding income and marital status constant.
+:::
+
 
 ## Interactions and Margins Plots {.smaller}
 
@@ -207,27 +217,25 @@ print(interaction_plot)
 - **Parallel lines** suggest little or no moderation
 - **Non-parallel lines** suggest the slope changes across groups or levels
 - The lower-order terms and the interaction term all matter for interpretation
-- A margins plot helps you describe the pattern visually, even before you write out the coefficients
 
 ::: {.callout-note icon=false}
-## What to listen for in your own answer
-You should be able to say whether the relationship gets stronger, weaker, steeper, flatter, or changes direction across groups.
+## Sample interpretation
+Group A's education slope (1.2) is steeper than Group B's (0.4) — group membership moderates the relationship between education and the outcome.
 :::
 
+## Moderation {.smaller}
 
-## Moderation vs. Mediation {.smaller}
-
-| | Moderation | Mediation |
-|---|---|---|
-| Big question | **For whom** or **under what conditions** does `X` affect `Y`? | **How** or **why** does `X` affect `Y`? |
-| Third variable | Changes the slope | Carries the effect |
-| Typical model | Interaction term | Pathway story |
-| Visual idea | Non-parallel lines | `X -> M -> Y` |
-| Example | Education predicts income differently for men and women | Education raises income partly through job prestige |
+| How to Identify | What Moderation does |
+|-|---|
+| Big question | **For whom** or **under what conditions** does `X` affect `Y`? |
+| Third variable | Changes the slope |
+| Typical model | Interaction term |
+| Visual idea | Non-parallel lines |
+| Example | Education predicts income differently for men and women |
 
 ::: {.callout-tip icon=false}
 ## Quick test
-Draw the arrows. If the third variable is **between** `X` and `Y`, think mediation. If it **changes the slope** of `X -> Y`, think moderation.
+If a third variable **changes the slope** of `X -> Y` across groups or levels, that is moderation. Look for non-parallel lines in a margins plot.
 :::
 
 
@@ -262,8 +270,7 @@ Draw the arrows. If the third variable is **between** `X` and `Y`, think mediati
   - Weeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests
   - Week 11: OLS regression and `R^2`
   - Week 12: logistic regression and odds ratios
-  - Week 13: interactions and margins plots
-  - Week 14: mediation versus moderation
+  - Week 13: interactions (moderation) and margins plots
 - Redo one example each of a t-test, an OLS model, a logistic model, and an interaction model
 - Practice turning output into short written interpretations
 - Review definitions you want to be able to write cleanly from memory:
@@ -271,7 +278,6 @@ Draw the arrows. If the third variable is **between** `X` and `Y`, think mediati
   - confidence interval
   - baseline/reference group
   - moderation
-  - mediation
   - representative sample
 
 ::: {.callout-note icon=false}
