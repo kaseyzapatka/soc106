@@ -763,9 +763,9 @@ emit_sa_answer(
 end_indent()
 ```
 
-**Question 18. Mediation or Moderation? (1.5 points)**
+**Question 18. Moderation (1.5 points)**
 
-A researcher first finds that education is positively associated with homeownership. After adding income to the model, the coefficient for education becomes much smaller. The researcher argues that part of the association between education and homeownership operates through income.
+A researcher wants to know whether the association between income and job satisfaction differs between part-time and full-time workers. They fit an OLS model predicting job satisfaction from income, employment type (full-time = 1, part-time = 0), and an income × full-time interaction term. The interaction coefficient is statistically significant and negative.
 
 ```{r}
 #| echo: false
@@ -773,39 +773,39 @@ A researcher first finds that education is positively associated with homeowners
 begin_indent()
 ```
 
-**a)** Is this pattern more consistent with **mediation** or **moderation**?
+**a)** In your own words, what does it mean for employment type to **moderate** the relationship between income and job satisfaction? Answer in 1–2 sentences.
 
 ```{r}
 #| echo: false
 #| results: asis
 emit_sa_answer(
-  "This pattern is more consistent with mediation.",
-  rubric = "0.5 points for correctly identifying the pattern as mediation.",
-  space = 0.55
-)
-```
-
-**b)** Explain why in 1-2 sentences.
-
-```{r}
-#| echo: false
-#| results: asis
-emit_sa_answer(
-  "It is mediation because income is being treated as the mechanism that helps carry the effect of education to homeownership. The key clue is that the education coefficient shrinks after income is added, which is consistent with a pathway story rather than a different-effect-for-different-groups story.",
-  rubric = "0.5 points for explaining that income is the mechanism or pathway linking education to homeownership.",
+  "Moderation means that the strength or direction of the relationship between income and job satisfaction is not the same for part-time and full-time workers. Employment type changes the slope of income, so the association depends on which group you are looking at.",
+  rubric = "0.5 points for explaining that moderation means the income slope differs across groups (part-time vs. full-time).",
   space = 0.95
 )
 ```
 
-**c)** Draw a simple path diagram with arrows to show the claim.
+**b)** The income coefficient for part-time workers (the reference group) is 0.04. Interpret this coefficient in a complete sentence.
 
 ```{r}
 #| echo: false
 #| results: asis
 emit_sa_answer(
-  "Education -> Income -> Homeownership",
-  rubric = "0.5 points for a correct path diagram showing income between education and homeownership.",
-  space = 0.90
+  "Among part-time workers, each one-unit increase in income is associated with a 0.04-point increase in predicted job satisfaction, holding other variables constant.",
+  rubric = "0.5 points for a correct interpretation of the lower-order income coefficient as the slope for the reference group.",
+  space = 0.85
+)
+```
+
+**c)** The interaction coefficient is −0.03. In 1–2 sentences, explain what this tells you about how the income slope differs between part-time and full-time workers.
+
+```{r}
+#| echo: false
+#| results: asis
+emit_sa_answer(
+  "The negative interaction means the income slope is weaker for full-time workers than for part-time workers. For full-time workers, the income slope is 0.04 + (−0.03) = 0.01, so income is associated with much smaller gains in job satisfaction compared to part-time workers.",
+  rubric = "0.5 points for correctly combining the lower-order and interaction terms to show that the income slope is smaller for full-time workers.",
+  space = 1.00
 )
 ```
 

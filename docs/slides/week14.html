@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="dcterms.date" content="2026-04-21">
   <title>Sociology 106 – Week 14</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="slides.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -209,7 +212,7 @@
 <h2>Agenda</h2>
 <p><strong>Housekeeping:</strong></p>
 <ul>
-<li>Final paper, HW #11, In-class presentations</li>
+<li>Final paper, HW #11 (canceled), In-class presentations</li>
 </ul>
 <p><strong>Statistical content — three parts:</strong></p>
 <ul>
@@ -217,28 +220,25 @@
 <li><strong>Part 2</strong>: Mediation analysis — path models, Baron &amp; Kenny, R implementation</li>
 <li><strong>Part 3</strong>: Multicollinearity — when predictors are too similar</li>
 </ul>
-<p><strong>In-class lab:</strong></p>
-<ul>
-<li>Mediation analysis on your own research data</li>
-</ul>
 </section>
 <section id="housekeeping" class="slide level2 smaller">
 <h2>Housekeeping</h2>
 <p><strong>Weekly Assignment #11</strong></p>
 <ul>
-<li><span class="highlight">Due Thursday, April 24</span> — interaction analysis (from Week 13)</li>
+<li>HW 11 was canceled - wanted to make sure you had time to work on final exam</li>
+<li>Will still be able to drop lowest of 10 assignments.</li>
 </ul>
 <p><strong>In-class presentations</strong></p>
 <ul>
-<li><span class="highlight">Monday, April 28</span> — 7–10 minutes per student</li>
+<li><span class="highlight">Tuesday, April 28/Tuesday May, 5</span> — 7–10 minutes per student</li>
 <li>Slide template on the course site; structure: question → data → results → so what</li>
 <li>Practice out loud at least once before class</li>
 </ul>
 <p><strong>Final paper</strong></p>
 <ul>
-<li><span class="highlight">Due Monday, May 5</span></li>
-<li>Should include at least: bivariate model, multivariate model with controls, and one extension (interaction, mediation, or logistic)</li>
-<li>Today’s lecture covers mediation and multicollinearity — both are relevant to writing up results</li>
+<li><span class="highlight">Due Thursday, May 7</span></li>
+<li>Should include a regression model that answers your research question</li>
+<li>Should follow the formatting described in the <a href="https://www.kaseyzapatka.com/soc106/assignments/paper/03_proposal_outline.html">final paper outline</a></li>
 </ul>
 </section>
 <section id="where-we-are-in-the-course" class="slide level2 smaller">
@@ -1740,12 +1740,11 @@ age      -0.22     0.02  1.00</code></pre>
 </section>
 <section id="assignments" class="slide level2 smaller scrollable">
 <h2>Assignments</h2>
-<p><strong>HW #11</strong> — <span class="highlight">Due Thursday, April 24</span></p>
 <ul>
-<li>Interaction analysis on your research data</li>
-<li>See Week 13 slides for the template</li>
+<li>HW 11 was canceled - wanted to make sure you had time to work on final exam</li>
+<li>Will still be able to drop lowest of 10 assignments.</li>
 </ul>
-<p><strong>Final Paper</strong> — <span class="highlight">Due Monday, May 5</span></p>
+<p><strong>Final Paper</strong> — <span class="highlight">Due Thursday, May 7</span></p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1764,48 +1763,11 @@ age      -0.22     0.02  1.00</code></pre>
 </div>
 </div>
 </div>
-<p><strong>In-class presentations</strong> — <span class="highlight">Monday, April 28</span></p>
+<p><strong>In-class presentations</strong> — <span class="highlight">Tuesday, April 28/May 5.</span></p>
 <ul>
 <li>7–10 minutes: question → data → results → so what</li>
 <li>Don’t show the full model table to the class — use a coefficient plot or highlight 2–3 key numbers</li>
 </ul>
-</section>
-<section id="in-class-lab" class="slide level2 smaller">
-<h2>In-Class Lab</h2>
-<p><strong>Today: Mediation analysis on your own data</strong></p>
-<p>Work through the following steps:</p>
-<div class="fragment fade-up">
-<p><strong>Step 1: Identify your mediation hypothesis</strong></p>
-<ul>
-<li>What is your X (key predictor)?</li>
-<li>What is your Y (outcome)?</li>
-<li>What variable M sits on the causal path between them?</li>
-<li>Write one sentence: “I expect [X] to affect [Y] partly through [M] because…”</li>
-</ul>
-</div>
-<div class="fragment fade-up">
-<p><strong>Step 2: Fit the three Baron &amp; Kenny models</strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># Replace X, M, Y with your variable names</span></span>
-<span id="cb19-2"><a></a>step1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X,     <span class="at">data =</span> your_data)   <span class="co"># total effect</span></span>
-<span id="cb19-3"><a></a>step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(M <span class="sc">~</span> X,     <span class="at">data =</span> your_data)   <span class="co"># a path</span></span>
-<span id="cb19-4"><a></a>step3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> M, <span class="at">data =</span> your_data)   <span class="co"># b path + direct effect</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment fade-up">
-<p><strong>Step 3: Bootstrap the indirect effect</strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>med_result <span class="ot">&lt;-</span> <span class="fu">mediate</span>(step2, step3, <span class="at">treat =</span> <span class="st">"X"</span>, <span class="at">mediator =</span> <span class="st">"M"</span>,</span>
-<span id="cb20-2"><a></a>                      <span class="at">boot =</span> <span class="cn">TRUE</span>, <span class="at">sims =</span> <span class="dv">500</span>)</span>
-<span id="cb20-3"><a></a><span class="fu">summary</span>(med_result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="fragment fade-up">
-<p><strong>Step 4: Check multicollinearity on your final multivariate model</strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">vif</span>(your_multivariate_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
 
 
 </section></section>

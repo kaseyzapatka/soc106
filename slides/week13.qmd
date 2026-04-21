@@ -154,6 +154,13 @@ model_prestige   <- lm(income91 ~ prestg80 * age, data = attain_sub)
 b_prest_age      <- round(coef(model_prestige)[["prestg80:age"]], 2)
 b_prest_age_dir  <- ifelse(b_prest_age > 0, "grows stronger", "weakens")
 b_prest_age_word <- ifelse(b_prest_age > 0, "compounds", "depreciates")
+
+b_prestg80_main  <- round(coef(model_prestige)[["prestg80"]], 2)
+b_age_main       <- round(coef(model_prestige)[["age"]], 2)
+mean_age         <- round(mean(attain_sub$age, na.rm = TRUE), 1)
+mean_prestg80    <- round(mean(attain_sub$prestg80, na.rm = TRUE), 1)
+effect_prest_at_mean_age  <- round(b_prestg80_main + b_prest_age * mean_age, 2)
+effect_age_at_mean_prest  <- round(b_age_main + b_prest_age * mean_prestg80, 2)
 ```
 
 ## Agenda {.smaller}
@@ -569,7 +576,7 @@ $$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 ::: {.callout-note icon=false}
 ## Computing the effect for each group:
 $$\text{Effect of } X_1 \text{ for reference group: } \hat\beta_1$$
-$$\text{Effect of } X_1 \text{ for other group: } \hat\beta_1 + \hat\beta_3$$
+$$\text{Effect of } X_1 \text{ for key group: } \hat\beta_1 + \hat\beta_3$$
 
 $\hat\beta_3$ is the **difference in slopes** between the two groups. If $\hat\beta_3 = 0$, the slopes are identical — no interaction.
 :::
@@ -613,7 +620,7 @@ The sign of $\beta_3$ tells you how the relationship changes:
 - **$\beta_3 > 0$**: as $X_2$ increases, the effect of $X_1$ on $Y$ **strengthens**
 - **$\beta_3 < 0$**: as $X_2$ increases, the effect of $X_1$ on $Y$ **weakens**
 
-**Our example:** `lm(income91 ~ prestg80 * age)` — does the income payoff of occupational prestige depend on career stage? If $\beta_3 > 0$, prestige matters *more* for income among older workers; if $\beta_3 < 0$, prestige pays off *less* as workers age. Use `ggpredict()` to visualize the pattern at a few representative ages.
+**Test of moderation:** is $\beta_3$ statistically significantly different from zero?
 :::
 
 ### Continuous × Binary
@@ -625,14 +632,16 @@ $$\hat{Y} = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)$$
 | Group | Slope for X₁ | Formula |
 |---|---|---|
 | $X_2 = 0$ (reference) | $\beta_1$ | Slope for reference group |
-| $X_2 = 1$ (other group) | $\beta_1 + \beta_3$ | Reference slope + interaction |
+| $X_2 = 1$ (key group) | $\beta_1 + \beta_3$ | Reference slope + interaction |
 | **Difference in slopes** | $\beta_3$ | The interaction term itself |
 
 ::: {.callout-tip icon=false}
 ## Our example: education × sex → income
 - $\beta_1$ = income return to education **for men** (reference)
+- $\beta_2$ = income difference between women and men **when education = 0** — the intercept gap between the two regression lines. This is rarely a substantive quantity of interest; it just anchors where the women's line starts. Use predicted values at realistic education levels to describe the actual income gap.
 - $\beta_3$ = how much women's return differs from men's — a positive $\beta_3$ means women benefit *more* per year; negative means women benefit *less*
-- **Test of moderation:** is $\beta_3$ statistically significantly different from zero?
+
+**Test of moderation:** is $\beta_3$ statistically significantly different from zero?
 :::
 
 ### Binary × Binary
@@ -681,9 +690,14 @@ modelsummary(
 
 ::: {.callout-tip icon=false}
 ## Interpretation
-`Prestige × Age` ($\beta_3$ = `r b_prest_age`) tells us that the prestige → income slope **`r b_prest_age_dir`** as workers get older — in other words, prestige **`r b_prest_age_word`** over a career. In the margins plot on the next slide, this will appear as `r ifelse(b_prest_age > 0, "steeper lines for older ages")`.
 
-**However, remember that the interaction is not statistically significant.**
+**Main effect of Occupational Prestige** ($\beta_1$ = `r b_prestg80_main`): this is the effect of prestige on income *when age = 0* — a meaningless baseline. At the sample mean age (`r mean_age` years), a one-unit increase in prestige is associated with **\$`r effect_prest_at_mean_age` more income** (`r b_prestg80_main` + `r b_prest_age` × `r mean_age`).
+
+**Main effect of Age** ($\beta_2$ = `r b_age_main`): this is the effect of age on income *when prestige = 0* — again, not meaningful on its own. At the sample mean prestige score (`r mean_prestg80`), each additional year of age is associated with **\$`r effect_age_at_mean_prest` `r ifelse(effect_age_at_mean_prest >= 0, "more", "less")` income** (`r b_age_main` + `r b_prest_age` × `r mean_prestg80`).
+
+**Interaction** ($\beta_3$ = `r b_prest_age`): the prestige → income slope **`r b_prest_age_dir`** as workers get older — prestige **`r b_prest_age_word`** over a career. In the margins plot on the next slide, this will appear as "steeper lines for older ages".
+
+**Keep in mind, however, this interaction is not statistically significant.**
 :::
 
 ### Continuous × Binary
@@ -719,11 +733,14 @@ modelsummary(
 
 ::: {.callout-tip icon=false}
 ## Interpretation
-The interaction of `Education × Female` ($\beta_3$ = `r scales::dollar(b_int_term)`) tells us that women's income return per additional year of education is **`r scales::dollar(abs(b_int_term))` `r ifelse(b_int_term < 0, "less", "more")`** than men's. Men gain `r scales::dollar(effect_men)` per year of education; women gain `r scales::dollar(effect_women)` — a difference that is `r sig_verdict` (`r p_int_label`).
+
+**Main effect of Education** ($\beta_1$ = `r scales::dollar(b_int_educ)`): the income return to one additional year of education **for men** (the reference group). Because $X_2 = 0$ for men, this is a straightforward slope — men gain `r scales::dollar(b_int_educ)` per year of schooling.
+
+**Main effect of Female** ($\beta_2$ = `r scales::dollar(b_int_sex)`): the income gap between women and men **when education = 0** — the vertical distance between the two regression lines at their origin. This baseline intercept shift is not a substantively meaningful quantity on its own; use predicted values at realistic education levels to describe the actual income gap.
+
+**Interaction** ($\beta_3$ = `r scales::dollar(b_int_term)`): women's income return per additional year of education is **`r scales::dollar(abs(b_int_term))` `r ifelse(b_int_term < 0, "less", "more")`** than men's. Men gain `r scales::dollar(effect_men)` per year; women gain `r scales::dollar(effect_women)` — a difference that is `r sig_verdict` (`r p_int_label`).
 
 **High-level summary:** Education is strongly positively associated with income for both men and women. While women appear to have slightly higher returns to education than men (interaction term), this difference is not statistically significant. Women also have lower predicted income at low levels of education, though this difference is not statistically significant.
-
-**However, remember that the interaction is not statistically significant.**
 :::
 
 ### Binary × Binary
@@ -772,7 +789,14 @@ Where: $\alpha$ = \$`r f_alpha`, $\beta_1$ (Black) = −\$`r f_black`, $\beta_2$
 
 ::: {.callout-tip icon=false}
 ## Interpretation
-`Black × Women` ($\beta_3$ = `r scales::dollar(b_bb_int)`, `r p_bb_label`) is **`r sig_bb`**. We therefore **cannot conclude** that the racial income gap differs by sex — the data are consistent with the gaps being the same for men and women. The 2×2 table above illustrates the *mechanics* of reading a binary × binary model, but the interaction term itself does not clear the significance threshold needed to claim that non-additivity is real rather than sampling noise.
+
+**Main effect of Race** ($\beta_1$ = −\$`r f_black`): the income gap between white and Black men (the reference group for sex is men). Among men, Black workers earn \$`r f_race_men` less than white workers.
+
+**Main effect of Sex** ($\beta_2$ = −\$`r f_women`): the income gap between white men and white women (the reference group for race is white). Among white workers, women earn \$`r f_sex_white` less than men.
+
+**Interaction** ($\beta_3$ = \$`r f_int`, `r p_bb_label`): the additional income difference for Black women beyond what the two main effects predict additively. A positive $\beta_3$ means the combined penalty is *smaller* than the sum of the two gaps; negative means it is *larger*. This term is **`r sig_bb`**, so we cannot conclude that the racial income gap is meaningfully different for women versus men.
+
+**High-level summary:** Both race and sex are independently associated with lower income. Black workers earn less than white workers, and women earn less than men. The interaction term suggests the two penalties may not simply add together for Black women, but this non-additivity does not clear the significance threshold — treat the main effects as the primary finding.
 :::
 
 :::
@@ -786,25 +810,14 @@ Where: $\alpha$ = \$`r f_alpha`, $\beta_1$ (Black) = −\$`r f_black`, $\beta_2$
 
 **Model:** `lm(income91 ~ prestg80 * age)` — does the income payoff of occupational prestige depend on career stage?
 
+People often visualize the dependency of one variable on the other by breaking the variable of interest into different groups. Here, age is broken into three relevant analytical groups; if there are no clear breaks, use standard deviations. 
+
 ```{r}
 #| echo: true
 #| eval: true
 #| code-fold: true
 #| fig-height: 3.8
 #| warning: false
-
-p_main <- ggpredict(model_prestige, terms = "prestg80") |>
-  ggplot(aes(x = x, y = predicted)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.15, fill = "#4E79A7") +
-  geom_line(linewidth = 1.4, color = "#4E79A7") +
-  scale_y_continuous(labels = scales::dollar_format(big.mark = ",")) +
-  labs(
-    title    = "Main effect only",
-    subtitle = "One slope — prestige → income (averaging over age)",
-    x = "Occupational Prestige Score",
-    y = "Predicted Income ($)"
-  ) +
-  theme_minimal(base_size = 10)
 
 p_int <- ggpredict(model_prestige, terms = c("prestg80", "age [30, 45, 60]")) |>
   ggplot(aes(x = x, y = predicted, color = group, fill = group)) +
@@ -830,7 +843,7 @@ p_int <- ggpredict(model_prestige, terms = c("prestg80", "age [30, 45, 60]")) |>
   theme_minimal(base_size = 10) +
   theme(legend.position = "bottom")
 
-p_main + p_int
+p_int
 ```
 
 ::: {.callout-tip icon=false}
@@ -840,12 +853,15 @@ Each line shows the prestige → income slope at a different career stage (30, 4
 - **Parallel lines** = no interaction, prestige pays off the same regardless of age. 
 - **Diverging lines** = interaction, the prestige premium grows (or shrinks) with age. 
 
-The sign of `Prestige × Age` in the model table tells you the direction; the plot makes it concrete.
+Here we see steeper lines for older ages as the coefficent for the interaction suggests, but the coefficient is not significant. **Always check the confidence intervals**: the interaction is significant wherever there is no overlap -- no real difference in this figure.
+
 :::
 
 ### Continuous × Binary
 
 **Model:** `lm(income91 ~ educ * sex_f)` — does the income return to education differ by sex?
+
+This is simpler to visualize since the categories are already decided for you, unlike with a continuous by continuous interaction. 
 
 ```{r}
 #| echo: true
@@ -1148,11 +1164,34 @@ sig_logit       <- ifelse(p_logit_int < 0.05, "statistically significant", "not 
 b_logit_int     <- coef(model_logit_int)[["educ:sex_ffemale"]]
 or_logit_int    <- round(exp(b_logit_int), 3)
 logit_int_dir   <- ifelse(b_logit_int < 0, "weaker for women than for men", "stronger for women than for men")
+
+# Main effect ORs and p-values
+or_logit_educ   <- round(exp(coef(model_logit_int)[["educ"]]), 3)
+or_logit_female <- round(exp(coef(model_logit_int)[["sex_ffemale"]]), 3)
+
+p_logit_educ    <- summary(model_logit_int)$coefficients["educ", "Pr(>|z|)"]
+p_logit_educ_label <- ifelse(p_logit_educ < 0.001, "p < 0.001",
+                      ifelse(p_logit_educ < 0.01,  "p < 0.01",
+                      ifelse(p_logit_educ < 0.05,  "p < 0.05", paste0("p = ", round(p_logit_educ, 3)))))
+sig_logit_educ  <- ifelse(p_logit_educ < 0.05, "statistically significant", "not statistically significant")
+
+p_logit_female  <- summary(model_logit_int)$coefficients["sex_ffemale", "Pr(>|z|)"]
+p_logit_female_label <- ifelse(p_logit_female < 0.001, "p < 0.001",
+                        ifelse(p_logit_female < 0.01,  "p < 0.01",
+                        ifelse(p_logit_female < 0.05,  "p < 0.05", paste0("p = ", round(p_logit_female, 3)))))
+sig_logit_female <- ifelse(p_logit_female < 0.05, "statistically significant", "not statistically significant")
 ```
 
 ::: {.callout-note icon=false}
-## Interpreting the logistic interaction OR:
-`Education × Female` (OR = `r or_logit_int`, `r p_logit_label`) is **`r sig_logit`**. An OR `r ifelse(or_logit_int < 1, "< 1 means women's odds of union membership multiply by *less* per year of education than men's — the education effect is weaker for women", "> 1 means women's odds multiply by *more* per year of education than men's — the education effect is stronger for women")`. Use `ggpredict()` to translate this into predicted probabilities and see the gap concretely.
+## Interpretation
+
+**Main effect of Education** (OR = `r or_logit_educ`, `r p_logit_educ_label`): for men (the reference group), each additional year of education multiplies the odds of union membership by `r or_logit_educ`. An OR `r ifelse(or_logit_educ > 1, "> 1 means education is positively associated with union membership among men", "< 1 means education is negatively associated with union membership among men")`. This effect is **`r sig_logit_educ`**.
+
+**Main effect of Female** (OR = `r or_logit_female`, `r p_logit_female_label`): the odds ratio comparing women to men **when education = 0** — a baseline intercept shift with no direct substantive meaning. Interpret the sex difference through predicted probabilities at realistic education values instead. This effect is **`r sig_logit_female`**.
+
+**Interaction: Education × Female** (OR = `r or_logit_int`, `r p_logit_label`): the ratio of education's OR for women to men. An OR `r ifelse(or_logit_int < 1, "< 1 means each year of education multiplies women's odds by *less* than men's — the education effect is weaker for women", "> 1 means each year of education multiplies women's odds by *more* than men's — the education effect is stronger for women")`. This interaction is **`r sig_logit`**.
+
+**High-level summary:** Education `r ifelse(or_logit_educ > 1, "increases", "decreases")` the odds of union membership for men. The interaction term tells us whether that effect differs for women — since it's positive, the effect of education is positive for women, which we'll see clearly in the margins plot.
 :::
 
 ### Visualization
@@ -1188,11 +1227,13 @@ ggpredict(model_logit_int, terms = c("educ [6:20 by=0.5]", "sex_f")) |>
 ::: {.callout-note icon=false}
 ## Why are the curves S-shaped — and what does the interaction mean?
 
-**The S-curve is not from a quadratic term.** It comes from logistic regression itself: the model predicts *log-odds* as a linear function of education, but `ggpredict()` converts those to *probabilities* (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.
+**The S-curve is not from a quadratic term.** It comes from logistic regression itself: the model estimates odds ratios on a multiplicative scale, but `ggpredict()` converts those to *probabilities* (which must stay between 0 and 1). That conversion always produces an S-shaped (sigmoid) curve.
 
 **Reading the interaction:**
 
-The interaction term (`Education × Female`, `r p_logit_label`) is **`r sig_logit`**. The log-odds coefficient is `r round(b_logit_int, 3)`, meaning the effect of education on the probability of union membership is **`r logit_int_dir`** — the lines in the plot diverge as education rises, and this divergence is statistically real.
+The interaction OR (`Education × Female` = `r or_logit_int`, `r p_logit_label`) is **`r sig_logit`**. An OR `r ifelse(or_logit_int < 1, paste0("< 1 means each year of education multiplies women's odds of union membership by less than men's (specifically, by a factor of ", or_logit_int, " relative to men's OR of ", or_logit_educ, ") — so the lines converge as education rises"), paste0("> 1 means each year of education multiplies women's odds by more than men's (specifically, by a factor of ", or_logit_int, " relative to men's OR of ", or_logit_educ, ") — so the lines diverge as education rises"))`. This is why the probability curves `r ifelse(or_logit_int < 1, "converge", "diverge")` at higher education levels in the plot.
+
+:::
 
 :::
 
@@ -1433,9 +1474,6 @@ This is a **structural interpretation** of a statistical interaction. The intera
 | Thompson & Keith concept | Our framework |
 |---|---|
 | Run separate models for women and men | Stratified analysis — or a single model with gender interactions |
-| Skin tone × Income interaction (b¹ = −.035*) | Continuous × continuous: $\beta_3$ in `lm(Y ~ X1 * X2)` |
-| Simple slope at low income (+.376*) | $\hat\beta_1 + \hat\beta_3 \cdot X_2$ evaluated at a specific value of $X_2$ |
-| Simple slope vanishes at high income (−.005) | Effect of skin tone on self-esteem is **conditional** on income |
 | Different moderators for women vs. men | Theory first: income/attractiveness matter for women's status; weight for men's |
 | Connects to colorism + gender theory | Substantive interpretation of $\beta_3$ — not just a number |
 
@@ -1469,7 +1507,7 @@ T&K's approach models what good interaction research looks like: they specify a 
   | | Formula |
   |---|---|
   | Effect of X for reference group | $\hat\beta_1$ |
-  | Effect of X for other group | $\hat\beta_1 + \hat\beta_3$ |
+  | Effect of X for key group | $\hat\beta_1 + \hat\beta_3$ |
   | Test of moderation | Is $\hat\beta_3$ significantly ≠ 0? |
 
 - Always **visualize** with `ggpredict(model, terms = c("X", "Z"))` — parallel vs. crossing slopes
@@ -1508,7 +1546,7 @@ Their paper shows how to: (1) justify the interaction based on theory, (2) run t
 
 ## Assignments {.smaller}
 
-**Weekly Assignment #11** — <span class="highlight">Due Thursday, April 23</span> *(optional — counts as extra credit)*
+**Weekly Assignment #11** 
 
 Using your research dataset, run an **interaction analysis**:
 
@@ -1523,10 +1561,5 @@ Using your research dataset, run an **interaction analysis**:
 
 - **Revised Proposal with Outline** — <span class="highlight">Due Thursday, April 16</span>
   - Describe whether your final analysis includes any control variables or interaction hypotheses
-- **In-class presentations** — <span class="highlight">April 28</span>
+- **In-class presentations** — <span class="highlight">April 28/May 5</span>
 - **Final paper** — <span class="highlight">Due Thursday, May 7</span>
-
-## In-class lab today {.smaller}
-
-- Practice interaction analysis using `attain` dataset
-- see lab #8 on bCourses
