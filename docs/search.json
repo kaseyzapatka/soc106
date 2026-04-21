@@ -1271,14 +1271,14 @@
     "href": "slides/index.html",
     "title": "Lecture Slides",
     "section": "",
-    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: Mediation analysis and multicollinearity\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final Exam (11:30AM - 2:30PM)"
+    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: Mediation analysis and multicollinearity (supplemental)\nWeek 15: Research presentations\nWeek 16: Research presentations/ RRR Week – no new material\nWeek 17: Final Exam - May 11 from 11:30AM - 2:30PM in Dwinelle 246"
   },
   {
     "objectID": "slides/index.html#slides",
     "href": "slides/index.html#slides",
     "title": "Lecture Slides",
     "section": "",
-    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: Mediation analysis and multicollinearity\nWeek 15: Research presentations; wrap-up\nWeek 16: RRR Week – no new material\nWeek 17: Final Exam (11:30AM - 2:30PM)"
+    "text": "Week 1: Introduction\nWeek 2: Statistical computing in R\nWeek 3: Visualizing distributions\nWeek 4: Summarizing distributions\nWeek 5: Basics of probability theory\nWeek 6: Probability models of distributions\nWeek 7: Sampling distributions\nWeek 8: Estimates and confidence intervals\nWeek 9: Hypothesis testing\nWeek 10: Spring Recess – no class\nWeek 11: Linear regression\nWeek 12: Logistic regression\nWeek 13: Extensions to regression\nWeek 14: Mediation analysis and multicollinearity (supplemental)\nWeek 15: Research presentations\nWeek 16: Research presentations/ RRR Week – no new material\nWeek 17: Final Exam - May 11 from 11:30AM - 2:30PM in Dwinelle 246"
   },
   {
     "objectID": "slides/week8.html#agenda",
@@ -4561,14 +4561,14 @@
     "href": "slides/week14.html#agenda",
     "title": "Week 14",
     "section": "Agenda",
-    "text": "Agenda\nHousekeeping:\n\nFinal paper, HW #11, In-class presentations\n\nStatistical content — three parts:\n\nPart 1: Mediation vs. moderation — getting the concepts straight\nPart 2: Mediation analysis — path models, Baron & Kenny, R implementation\nPart 3: Multicollinearity — when predictors are too similar\n\nIn-class lab:\n\nMediation analysis on your own research data"
+    "text": "Agenda\nHousekeeping:\n\nFinal paper, HW #11 (canceled), In-class presentations\n\nStatistical content — three parts:\n\nPart 1: Mediation vs. moderation — getting the concepts straight\nPart 2: Mediation analysis — path models, Baron & Kenny, R implementation\nPart 3: Multicollinearity — when predictors are too similar"
   },
   {
     "objectID": "slides/week14.html#housekeeping",
     "href": "slides/week14.html#housekeeping",
     "title": "Week 14",
     "section": "Housekeeping",
-    "text": "Housekeeping\nWeekly Assignment #11\n\nDue Thursday, April 24 — interaction analysis (from Week 13)\n\nIn-class presentations\n\nMonday, April 28 — 7–10 minutes per student\nSlide template on the course site; structure: question → data → results → so what\nPractice out loud at least once before class\n\nFinal paper\n\nDue Monday, May 5\nShould include at least: bivariate model, multivariate model with controls, and one extension (interaction, mediation, or logistic)\nToday’s lecture covers mediation and multicollinearity — both are relevant to writing up results"
+    "text": "Housekeeping\nWeekly Assignment #11\n\nHW 11 was canceled - wanted to make sure you had time to work on final exam\nWill still be able to drop lowest of 10 assignments.\n\nIn-class presentations\n\nTuesday, April 28/Tuesday May, 5 — 7–10 minutes per student\nSlide template on the course site; structure: question → data → results → so what\nPractice out loud at least once before class\n\nFinal paper\n\nDue Thursday, May 7\nShould include a regression model that answers your research question\nShould follow the formatting described in the final paper outline"
   },
   {
     "objectID": "slides/week14.html#where-we-are-in-the-course",
@@ -4708,7 +4708,7 @@
     "href": "slides/week14.html#assignments",
     "title": "Week 14",
     "section": "Assignments",
-    "text": "Assignments\nHW #11 — Due Thursday, April 24\n\nInteraction analysis on your research data\nSee Week 13 slides for the template\n\nFinal Paper — Due Monday, May 5\n\n\n\nFinal paper components\n\n\n\nIntroduction and research question\nData and methods (describe attain.csv or your dataset, key variables, analytic strategy)\nResults: bivariate model → multivariate model → extension (interaction or mediation)\nDiscussion: what do the results mean? connect to literature\nLimitations: cross-sectional data, measurement issues, omitted variables\nModel table using modelsummary() with robust SEs\nAt least one visualization (scatter + regression line, coefficient plot, or marginal effects plot)\n\n\n\n\nIn-class presentations — Monday, April 28\n\n7–10 minutes: question → data → results → so what\nDon’t show the full model table to the class — use a coefficient plot or highlight 2–3 key numbers"
+    "text": "Assignments\n\nHW 11 was canceled - wanted to make sure you had time to work on final exam\nWill still be able to drop lowest of 10 assignments.\n\nFinal Paper — Due Thursday, May 7\n\n\n\nFinal paper components\n\n\n\nIntroduction and research question\nData and methods (describe attain.csv or your dataset, key variables, analytic strategy)\nResults: bivariate model → multivariate model → extension (interaction or mediation)\nDiscussion: what do the results mean? connect to literature\nLimitations: cross-sectional data, measurement issues, omitted variables\nModel table using modelsummary() with robust SEs\nAt least one visualization (scatter + regression line, coefficient plot, or marginal effects plot)\n\n\n\n\nIn-class presentations — Tuesday, April 28/May 5.\n\n7–10 minutes: question → data → results → so what\nDon’t show the full model table to the class — use a coefficient plot or highlight 2–3 key numbers"
   },
   {
     "objectID": "slides/week14.html#in-class-lab",
@@ -4848,7 +4848,7 @@
     "href": "slides/week16.html#what-you-should-be-ready-to-do",
     "title": "Week 16",
     "section": "What You Should Be Ready To Do",
-    "text": "What You Should Be Ready To Do\n\n\nMultiple choice\n\nIdentify variable types\nChoose an appropriate probability distribution\nRecognize skew and the normal-curve rules\nPick the right figure or test\nDistinguish population from sample\nInterpret a p-value or R^2\n\n\nShort answer\n\nRead a t-test/chi-square test\nInterpret regression output\nRead and interpret interaction terms and margins plots\nArticulate why a relationship is mediation\nEvaluate sampling designs and representativeness\nCritique a misleading figure\nInterpret a confidence interval"
+    "text": "What You Should Be Ready To Do\n\n\nMultiple choice\n\nIdentify variable types\nChoose an appropriate probability distribution\nRecognize skew and the normal-curve rules\nPick the right figure or test\nDistinguish population from sample\nInterpret a p-value or R^2\n\n\nShort answer\n\nRead a t-test/chi-square test\nInterpret regression output\nRead and interpret interaction terms and margins plots\nExplain what moderation means and interpret an interaction coefficient\nEvaluate sampling designs and representativeness\nCritique a misleading figure\nInterpret a confidence interval"
   },
   {
     "objectID": "slides/week16.html#core-concepts-to-review",
@@ -4883,21 +4883,21 @@
     "href": "slides/week16.html#reading-ols-output",
     "title": "Week 16",
     "section": "Reading OLS Output",
-    "text": "Reading OLS Output\n\n\n\nTerm\nEstimate\n\n\n\n\nIntercept\n5.8***\n\n\nDivorced\n-0.9**\n\n\nWidowed\n-0.6\n\n\nNever married\n-1.2***\n\n\nAge\n0.02*\n\n\nR^2\n0.16\n\n\n\nOutcome: life satisfaction (1–7 scale). Married is the omitted baseline.\n\nIn OLS, the outcome is continuous\nIf one category is missing from the table, that missing category is the baseline/reference group\nA coefficient tells you the expected difference in the outcome, holding the other variables constant\nR^2 tells you how much of the variation in the outcome is explained by the model\n\n\n\n\nStudy move\n\n\nPractice saying coefficient interpretations out loud using the phrase “holding the other variables constant.”"
+    "text": "Reading OLS Output\n\n\n\nTerm\nEstimate\n\n\n\n\nIntercept\n5.8***\n\n\nDivorced\n-0.9**\n\n\nWidowed\n-0.6\n\n\nNever married\n-1.2***\n\n\nAge\n0.02*\n\n\nR^2\n0.16\n\n\n\nOutcome: life satisfaction (1–7 scale). Married is the omitted baseline.\n\nIn OLS, the outcome is continuous\nIf one category is missing from the table, that missing category is the baseline/reference group\nA coefficient tells you the expected difference in the outcome, holding the other variables constant\nR^2 tells you how much of the variation in the outcome is explained by the model\n\n\n\n\nStudy move\n\n\nPractice saying coefficient interpretations out loud using the phrase “holding the other variables constant.”\n\n\n\n\n\n\nSample interpretation — Never married\n\n\nRespondents who have never been married are predicted to score 1.2 points lower on life satisfaction than married respondents (the reference group), holding age constant."
   },
   {
     "objectID": "slides/week16.html#reading-logistic-regression-output",
     "href": "slides/week16.html#reading-logistic-regression-output",
     "title": "Week 16",
     "section": "Reading Logistic Regression Output",
-    "text": "Reading Logistic Regression Output\n\n\n\nTerm\nOdds ratio\n\n\n\n\nIncome (thousands)\n1.02**\n\n\nAge\n1.03***\n\n\nMarried (1 = yes)\n1.38*\n\n\n\nOutcome: whether the respondent participates in a community organization (1 = yes).\n\nIn logistic regression, the outcome is binary\nOdds ratio greater than 1 -&gt; higher odds\nOdds ratio less than 1 -&gt; lower odds\nOdds ratio equal to 1 -&gt; no association\nA quick interpretation shortcut is (OR - 1) x 100\n\nExamples\n\n1.38 -&gt; about 38% higher odds\n0.76 -&gt; about 24% lower odds"
+    "text": "Reading Logistic Regression Output\n\n\n\nTerm\nOdds ratio\n\n\n\n\nIncome (thousands)\n1.02**\n\n\nAge\n1.03***\n\n\nMarried (1 = yes)\n1.38*\n\n\n\nOutcome: whether the respondent participates in a community organization (1 = yes).\n\nIn logistic regression, the outcome is binary\nOdds ratio greater than 1 -&gt; higher odds\nOdds ratio less than 1 -&gt; lower odds\nOdds ratio equal to 1 -&gt; no association\nA quick interpretation shortcut is (OR - 1) x 100\n\nExamples\n\n1.38 -&gt; about 38% higher odds\n0.76 -&gt; about 24% lower odds\n\n\n\n\nSample interpretation — Age\n\n\nEach additional year of age is associated with odds of participating in a community organization that are about 3% higher, holding income and marital status constant."
   },
   {
     "objectID": "slides/week16.html#interactions-and-margins-plots",
     "href": "slides/week16.html#interactions-and-margins-plots",
     "title": "Week 16",
     "section": "Interactions and Margins Plots",
-    "text": "Interactions and Margins Plots\nAn interaction asks whether the relationship between X and Y depends on a third variable.\n\n\nParallel lines suggest little or no moderation\nNon-parallel lines suggest the slope changes across groups or levels\nThe lower-order terms and the interaction term all matter for interpretation\nA margins plot helps you describe the pattern visually, even before you write out the coefficients\n\n\n\n\nWhat to listen for in your own answer\n\n\nYou should be able to say whether the relationship gets stronger, weaker, steeper, flatter, or changes direction across groups."
+    "text": "Interactions and Margins Plots\nAn interaction asks whether the relationship between X and Y depends on a third variable.\n\n\nParallel lines suggest little or no moderation\nNon-parallel lines suggest the slope changes across groups or levels\nThe lower-order terms and the interaction term all matter for interpretation\n\n\n\n\nSample interpretation\n\n\nGroup A’s education slope (1.2) is steeper than Group B’s (0.4) — group membership moderates the relationship between education and the outcome."
   },
   {
     "objectID": "slides/week16.html#moderation-vs.-mediation",
@@ -4918,7 +4918,7 @@
     "href": "slides/week16.html#how-to-study-efficiently-this-week",
     "title": "Week 16",
     "section": "How to Study Efficiently This Week",
-    "text": "How to Study Efficiently This Week\n\nRevisit the slides and assignments on these topics:\n\nWeeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests\nWeek 11: OLS regression and R^2\nWeek 12: logistic regression and odds ratios\nWeek 13: interactions and margins plots\nWeek 14: moderation and interactions\n\nRedo one example each of a t-test, an OLS model, a logistic model, and an interaction model\nPractice turning output into short written interpretations\nReview definitions you want to be able to write cleanly from memory:\n\np-value\nconfidence interval\nbaseline/reference group\nmoderation\nrepresentative sample\n\n\n\n\n\nBest use of your time\n\n\nDo not just reread code. Practice explaining what results mean."
+    "text": "How to Study Efficiently This Week\n\nRevisit the slides and assignments on these topics:\n\nWeeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests\nWeek 11: OLS regression and R^2\nWeek 12: logistic regression and odds ratios\nWeek 13: interactions (moderation) and margins plots\n\nRedo one example each of a t-test, an OLS model, a logistic model, and an interaction model\nPractice turning output into short written interpretations\nReview definitions you want to be able to write cleanly from memory:\n\np-value\nconfidence interval\nbaseline/reference group\nmoderation\nrepresentative sample\n\n\n\n\n\nBest use of your time\n\n\nDo not just reread code. Practice explaining what results mean."
   },
   {
     "objectID": "slides/week16.html#questions",
@@ -4939,6 +4939,41 @@
     "href": "slides/week16.html#moderation",
     "title": "Week 16",
     "section": "Moderation",
-    "text": "Moderation\n\n\n\n\n\n\n\n\nModeration\n\n\n\n\nBig question\nFor whom or under what conditions does X affect Y?\n\n\nThird variable\nChanges the slope\n\n\nTypical model\nInteraction term\n\n\nVisual idea\nNon-parallel lines\n\n\nExample\nEducation predicts income differently for men and women\n\n\n\n\n\n\nQuick test\n\n\nIf a third variable changes the slope of X -&gt; Y across groups or levels, that is moderation. Look for non-parallel lines in a margins plot."
+    "text": "Moderation\n\n\n\n\n\n\n\nHow to Identify\nWhat Moderation does\n\n\n\n\nBig question\nFor whom or under what conditions does X affect Y?\n\n\nThird variable\nChanges the slope\n\n\nTypical model\nInteraction term\n\n\nVisual idea\nNon-parallel lines\n\n\nExample\nEducation predicts income differently for men and women\n\n\n\n\n\n\nQuick test\n\n\nIf a third variable changes the slope of X -&gt; Y across groups or levels, that is moderation. Look for non-parallel lines in a margins plot."
+  },
+  {
+    "objectID": "slides/week16.html#examples-of-choosing-the-right-tool",
+    "href": "slides/week16.html#examples-of-choosing-the-right-tool",
+    "title": "Week 16",
+    "section": "Examples of Choosing the Right Tool",
+    "text": "Examples of Choosing the Right Tool\n\n\n\n\n\n\n\n\nGoal\nWhat the variables look like\nGood choice\n\n\n\n\nShow the distribution of one categorical variable\nOne categorical variable\nBar chart\n\n\nShow the distribution of one quantitative variable\nOne continuous/count variable\nHistogram\n\n\nCompare the mean of a quantitative outcome across two groups\nQuantitative Y + binary group\nTwo-sample t-test\n\n\nStudy the relationship between two categorical variables\nCategorical X + categorical Y\nChi-square test\n\n\nModel a continuous outcome\nQuantitative Y\nOLS regression\n\n\nModel a binary outcome\nY = 0/1\nLogistic regression\n\n\n\n\n\n\nOn the exam\n\n\nMany mistakes come from choosing the wrong tool because the student did not first identify the outcome type."
+  },
+  {
+    "objectID": "slides/week16.html#interactions-and-margins-plots-sample-interpretation",
+    "href": "slides/week16.html#interactions-and-margins-plots-sample-interpretation",
+    "title": "Week 16",
+    "section": "Interactions and Margins Plots — Sample Interpretation",
+    "text": "Interactions and Margins Plots — Sample Interpretation\n\n\n\nSample interpretation — Interaction\n\n\nThe relationship between education and the expected outcome is stronger for Group A than for Group B. For Group A, each additional unit of education is associated with a 1.2-point increase in the expected outcome. For Group B, that same increase in education is associated with only a 0.4-point increase. The non-parallel lines indicate that group membership moderates the association between education and the outcome."
+  },
+  {
+    "objectID": "slides/week16.html#interactions-and-margins-plots-key-points",
+    "href": "slides/week16.html#interactions-and-margins-plots-key-points",
+    "title": "Week 16",
+    "section": "Interactions and Margins Plots — Key Points",
+    "text": "Interactions and Margins Plots — Key Points\n\nParallel lines suggest little or no moderation\nNon-parallel lines suggest the slope changes across groups or levels\nThe lower-order terms and the interaction term all matter for interpretation\nA margins plot helps you describe the pattern visually, even before you write out the coefficients\n\n\n\n\nSample interpretation — Interaction\n\n\nThe relationship between education and the expected outcome is stronger for Group A than for Group B. For Group A, each additional unit of education is associated with a 1.2-point increase in the expected outcome. For Group B, that same increase in education is associated with only a 0.4-point increase. The non-parallel lines indicate that group membership moderates the association between education and the outcome."
+  },
+  {
+    "objectID": "slides/week16.html#housekeeping",
+    "href": "slides/week16.html#housekeeping",
+    "title": "Week 16",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nWeekly Assignment #11\n\nHW 11 was canceled - wanted to make sure you had time to work on final exam\nWill still be able to drop lowest of 10 assignments.\n\nIn-class presentations\n\nTuesday, April 28/Tuesday May, 5 — 7–10 minutes per student\nSlide template on the course site; structure: question → data → results → so what\nPractice out loud at least once before class\n\nFinal paper\n\nDue Thursday, May 7\nShould include a regression model that answers your research question\nShould follow the formatting described in the final paper outline"
+  },
+  {
+    "objectID": "slides/week16.html#final-presentations",
+    "href": "slides/week16.html#final-presentations",
+    "title": "Week 16",
+    "section": "Final Presentations",
+    "text": "Final Presentations\nHere is the schedule for final presentations. You’ll need to send me your presentation 2 hours before class so I can load them on my laptop.\n\n\nTuesday, April 28\n\n\n\n#\nStudent\n\n\n\n\n1\nZhexin Chen\n\n\n2\nMengxuan Wu\n\n\n3\nArohi Behara\n\n\n4\nMegan Farrenkopf\n\n\n5\nJenny Liu\n\n\n6\nBianca Chiu\n\n\n7\nSrisha Raj\n\n\n8\nKeyla Barcenas\n\n\n9\nMahak Rathi\n\n\n\n\nTuesday, May 5\n\n\n\n#\nStudent\n\n\n\n\n1\nLawrence So\n\n\n2\nDoyoung Kwak\n\n\n3\nAzariah Smith\n\n\n4\nMacheng Xiang\n\n\n5\nVioletta Wang\n\n\n6\nYihan Zhang\n\n\n7\nRose Kong\n\n\n8\nAnthony Maldonado\n\n\n9\nClaudia Gomez Bernal"
   }
 ]

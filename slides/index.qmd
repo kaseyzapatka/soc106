@@ -17,7 +17,7 @@ title: "Lecture Slides"
 - [Week 11: Linear regression](week11.html)
 - [Week 12: Logistic regression](week12.html)
 - [Week 13: Extensions to regression](week13.html)
-- [Week 14: Mediation analysis and multicollinearity](week14.html) 
-- Week 15: Research presentations; wrap-up
-- Week 16: RRR Week – no new material
-- Week 17: Final Exam (11:30AM - 2:30PM)
+- [Week 14: Mediation analysis and multicollinearity (supplemental)](week14.html) 
+- Week 15: Research presentations
+- Week 16: Research presentations/ [RRR Week – no new material](week16.html) 
+- Week 17: Final Exam - May 11 from 11:30AM - 2:30PM in Dwinelle 246

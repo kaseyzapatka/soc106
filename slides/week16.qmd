@@ -54,6 +54,68 @@ interaction_plot <- ggplot(
   )
 ```
 
+
+## Housekeeping {.smaller}
+
+**Weekly Assignment #11**
+
+- HW 11 was canceled - wanted to make sure you had time to work on final exam 
+- Will still be able to drop lowest of 10 assignments.
+
+**In-class presentations**
+
+- <span class="highlight">Tuesday, April 28/Tuesday May, 5</span> — 7–10 minutes per student
+- Slide template on the course site; structure: question → data → results → so what
+- Practice out loud at least once before class
+
+**Final paper**
+
+- <span class="highlight">Due Thursday, May 7</span>
+- Should include a regression model that answers your research question
+- Should follow the formatting described in the [final paper outline](https://www.kaseyzapatka.com/soc106/assignments/paper/03_proposal_outline.html) 
+
+
+## Final Presentations {.smaller}
+
+Here is the schedule for final presentations. You'll need to send me your presentation 2 hours before class so I can load them on my laptop. 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Tuesday, April 28**
+
+| # | Student |
+|---|---------|
+| 1 | Zhexin Chen |
+| 2 | Mengxuan Wu |
+| 3 | Arohi Behara |
+| 4 | Megan Farrenkopf |
+| 5 | Jenny Liu |
+| 6 | Bianca Chiu |
+| 7 | Srisha Raj |
+| 8 | Keyla Barcenas |
+| 9 | Mahak Rathi |
+:::
+
+::: {.column width="50%"}
+**Tuesday, May 5**
+
+| # | Student |
+|---|---------|
+| 1 | Lawrence So |
+| 2 | Doyoung Kwak |
+| 3 | Azariah Smith |
+| 4 | Macheng Xiang |
+| 5 | Violetta Wang |
+| 6 | Yihan Zhang |
+| 7 | Rose Kong |
+| 8 | Anthony Maldonado |
+| 9 | Claudia Gomez Bernal |
+:::
+
+::::
+
+
 ## Agenda {.smaller}
 
 - Final exam format and logistics

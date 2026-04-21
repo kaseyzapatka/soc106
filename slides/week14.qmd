@@ -102,7 +102,7 @@ pct_mediated <- round(100 * abs(acme_est) / abs(total_est))
 
 **Housekeeping:**
 
-- Final paper, HW #11, In-class presentations
+- Final paper, HW #11 (canceled), In-class presentations
 
 **Statistical content — three parts:**
 
@@ -110,27 +110,25 @@ pct_mediated <- round(100 * abs(acme_est) / abs(total_est))
 - **Part 2**: Mediation analysis — path models, Baron & Kenny, R implementation
 - **Part 3**: Multicollinearity — when predictors are too similar
 
-**In-class lab:**
-
-- Mediation analysis on your own research data
 
 ## Housekeeping {.smaller}
 
 **Weekly Assignment #11**
 
-- <span class="highlight">Due Thursday, April 24</span> — interaction analysis (from Week 13)
+- HW 11 was canceled - wanted to make sure you had time to work on final exam 
+- Will still be able to drop lowest of 10 assignments.
 
 **In-class presentations**
 
-- <span class="highlight">Monday, April 28</span> — 7–10 minutes per student
+- <span class="highlight">Tuesday, April 28/Tuesday May, 5</span> — 7–10 minutes per student
 - Slide template on the course site; structure: question → data → results → so what
 - Practice out loud at least once before class
 
 **Final paper**
 
-- <span class="highlight">Due Monday, May 5</span>
-- Should include at least: bivariate model, multivariate model with controls, and one extension (interaction, mediation, or logistic)
-- Today's lecture covers mediation and multicollinearity — both are relevant to writing up results
+- <span class="highlight">Due Thursday, May 7</span>
+- Should include a regression model that answers your research question
+- Should follow the formatting described in the [final paper outline](https://www.kaseyzapatka.com/soc106/assignments/paper/03_proposal_outline.html) 
 
 
 ## Where We Are in the Course {.smaller}
@@ -1345,12 +1343,10 @@ This course has moved from "is there a relationship?" (correlations, chi-squared
 
 ## Assignments {.smaller}
 
-**HW #11** — <span class="highlight">Due Thursday, April 24</span>
+- HW 11 was canceled - wanted to make sure you had time to work on final exam 
+- Will still be able to drop lowest of 10 assignments.
 
-- Interaction analysis on your research data
-- See Week 13 slides for the template
-
-**Final Paper** — <span class="highlight">Due Monday, May 5</span>
+**Final Paper** — <span class="highlight">Due Thursday, May 7</span>
 
 ::: {.callout-note icon=false}
 ## Final paper components
@@ -1363,60 +1359,7 @@ This course has moved from "is there a relationship?" (correlations, chi-squared
 7. At least one visualization (scatter + regression line, coefficient plot, or marginal effects plot)
 :::
 
-**In-class presentations** — <span class="highlight">Monday, April 28</span>
+**In-class presentations** — <span class="highlight">Tuesday, April 28/May 5.</span>
 
 - 7–10 minutes: question → data → results → so what
 - Don't show the full model table to the class — use a coefficient plot or highlight 2–3 key numbers
-
-
-## In-Class Lab {.smaller}
-
-**Today: Mediation analysis on your own data**
-
-Work through the following steps:
-
-::: {.fragment .fade-up}
-**Step 1: Identify your mediation hypothesis**
-
-- What is your X (key predictor)?
-- What is your Y (outcome)?
-- What variable M sits on the causal path between them?
-- Write one sentence: "I expect [X] to affect [Y] partly through [M] because..."
-:::
-
-::: {.fragment .fade-up}
-**Step 2: Fit the three Baron & Kenny models**
-
-```{r}
-#| echo: true
-#| eval: false
-
-# Replace X, M, Y with your variable names
-step1 <- lm(Y ~ X,     data = your_data)   # total effect
-step2 <- lm(M ~ X,     data = your_data)   # a path
-step3 <- lm(Y ~ X + M, data = your_data)   # b path + direct effect
-```
-:::
-
-::: {.fragment .fade-up}
-**Step 3: Bootstrap the indirect effect**
-
-```{r}
-#| echo: true
-#| eval: false
-
-med_result <- mediate(step2, step3, treat = "X", mediator = "M",
-                      boot = TRUE, sims = 500)
-summary(med_result)
-```
-:::
-
-::: {.fragment .fade-up}
-**Step 4: Check multicollinearity on your final multivariate model**
-
-```{r}
-#| echo: true
-#| eval: false
-vif(your_multivariate_model)
-```
-:::
