@@ -1,0 +1,68 @@
+---
+title: "Week 15"
+subtitle: "Sociology 106: Quantitative Sociological Methods"
+date: 04/28/2026
+date-format: long
+format:
+  revealjs:
+    slide-number: true
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    css: slides.css
+    scrollable: true
+    footer: '[GitHub course repo](https://www.kaseyzapatka.com/soc106)'
+---
+
+## Agenda {.smaller}
+
+- Housekeeping
+- Presentations
+- Evaluations
+
+
+## Housekeeping {.smaller}
+
+**Next week: second round of presentations**
+
+- Tuesday, May 5, 2026
+- 7-10 minutes per student
+- Send your presentation 2 hours before class so I can load it on my laptop
+- upload your presentations on bCourses please
+
+**Final exam**
+
+- Monday, May 11, 2026
+- 11:30 AM to 2:30 PM
+- Dwinelle 246
+- Closed-book, closed-computer
+- see [slides for final exam prep](https://www.kaseyzapatka.com/soc106/slides/week16.html#/title-slide)
+
+**Final paper**
+
+- Due Thursday, May 7, 2026 by 11:59 pm
+- Should include a regression model that answers your research question
+- Should follow the formatting described in the [final paper outline](https://www.kaseyzapatka.com/soc106/assignments/paper/03_proposal_outline.html)
+
+
+## Final Presentations {.smaller}
+
+Here is the schedule for today's final presentations: 
+
+| Order | Tuesday, April 28 |
+|---|---|
+| 1 | Zhexin Chen |
+| 2 | Mengxuan Wu |
+| 3 | Arohi Behara |
+| 4 | Megan Farrenkopf |
+| 5 | Jenny Liu |
+| 6 | Bianca Chiu |
+| 7 | Srisha Raj |
+| 8 | Keyla Barcenas |
+| 9 | Mahak Rathi |
+
+
+## Course Evaluations
+
+
+I'll give you about 10-15 mins at the end of class for [Course Evaluations](http://course-evaluations.berkeley.edu/) 
