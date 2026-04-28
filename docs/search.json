@@ -4989,5 +4989,33 @@
     "title": "Week 16",
     "section": "How to Study For Final Exam",
     "text": "How to Study For Final Exam\n\nRevisit the slides and assignments on these topics:\n\nWeeks 7-9: sampling, distributions, CLT, confidence intervals, hypothesis tests\nWeek 11: OLS regression and R^2\nWeek 12: logistic regression and odds ratios\nWeek 13: interactions (moderation) and margins plots\n\nRedo one example each of a t-test, an OLS model, a logistic model, and an interaction model\nPractice explaining output in short written interpretations\nReview definitions you want to be able to write cleanly from memory:\n\np-value\nconfidence interval\nbaseline/reference group\nmoderation\nrepresentative sample\n\n\n\n\n\nBest use of your time\n\n\nDo not just reread code. Practice explaining what results mean."
+  },
+  {
+    "objectID": "slides/week15.html#agenda",
+    "href": "slides/week15.html#agenda",
+    "title": "Week 15",
+    "section": "Agenda",
+    "text": "Agenda\n\nHousekeeping\nPresentations\nEvaluations"
+  },
+  {
+    "objectID": "slides/week15.html#housekeeping",
+    "href": "slides/week15.html#housekeeping",
+    "title": "Week 15",
+    "section": "Housekeeping",
+    "text": "Housekeeping\nNext week: second round of presentations\n\nTuesday, May 5, 2026\n7-10 minutes per student\nSend your presentation 2 hours before class so I can load it on my laptop\nupload your presentations on bCourses please\n\nFinal exam\n\nMonday, May 11, 2026\n11:30 AM to 2:30 PM\nDwinelle 246\nClosed-book, closed-computer\nsee slides for final exam prep\n\nFinal paper\n\nDue Thursday, May 7, 2026 by 11:59 pm\nShould include a regression model that answers your research question\nShould follow the formatting described in the final paper outline"
+  },
+  {
+    "objectID": "slides/week15.html#final-presentations",
+    "href": "slides/week15.html#final-presentations",
+    "title": "Week 15",
+    "section": "Final Presentations",
+    "text": "Final Presentations\nHere is the schedule for today’s final presentations:\n\n\n\nOrder\nTuesday, April 28\n\n\n\n\n1\nZhexin Chen\n\n\n2\nMengxuan Wu\n\n\n3\nArohi Behara\n\n\n4\nMegan Farrenkopf\n\n\n5\nJenny Liu\n\n\n6\nBianca Chiu\n\n\n7\nSrisha Raj\n\n\n8\nKeyla Barcenas\n\n\n9\nMahak Rathi"
+  },
+  {
+    "objectID": "slides/week15.html#course-evaluations",
+    "href": "slides/week15.html#course-evaluations",
+    "title": "Week 15",
+    "section": "Course Evaluations",
+    "text": "Course Evaluations\nI’ll give you about 10-15 mins at the end of class for Course Evaluations"
   }
 ]
