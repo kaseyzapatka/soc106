@@ -10,9 +10,9 @@ title: " "
 
 Here are some examples of what I'm expecting at each stage of the proposal process: 
 
-- [01-Paper proposal example](paper/01_proposal.html)
-- [02-Bibliography example](paper/02_bibliography.html)
-- [03-Final paper outline](paper/03_proposal_outline.html)
+- [01-Paper proposal example](_paper/01_proposal.html)
+- [02-Bibliography example](_paper/02_bibliography.html)
+- [03-Final paper outline](_paper/03_proposal_outline.html)
 
 - [04-Presentation example](https://docs.google.com/presentation/d/1VUibaOSO74Qp1wvPY2gEgKOa7xUdPVy9/edit?usp=sharing&ouid=117362427260969253192&rtpof=true&sd=true)
 - [04-Presentation template](https://docs.google.com/presentation/d/1HJWAWjY6M1q7qL2f9029MmjlVGw9nUpg/edit?usp=sharing&ouid=117362427260969253192&rtpof=true&sd=true) - feel free to use this template 
