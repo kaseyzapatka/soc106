@@ -73,7 +73,7 @@ interaction_plot <- ggplot(
 
 - <span class="highlight">Due Thursday, May 7</span>
 - Should include a regression model that answers your research question
-- Should follow the formatting described in the [final paper outline](https://www.kaseyzapatka.com/soc106/assignments/paper/03_proposal_outline.html) 
+- Should follow the formatting described in the [final paper outline](https://www.kaseyzapatka.com/soc106/assignments/_paper/03_proposal_outline.html) 
 
 
 ## Final Presentations {.smaller}
